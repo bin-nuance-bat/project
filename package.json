@@ -16,5 +16,14 @@
   },
   "devDependencies": {
     "prettier": "1.13.7"
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    }
   }
 }
