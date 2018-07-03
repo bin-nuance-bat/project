@@ -37,7 +37,6 @@ class WebcamCapture extends React.Component {
 			className="videoStream"
 			screenshotWidth={224}
 		  />
-		<button onClick={this.capture}>Capture photo</button>
 		</div>
 	  );
 	}
