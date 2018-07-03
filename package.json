@@ -19,7 +19,7 @@
 	},
 	"husky": {
 		"hooks": {
-			"pre-commit": "./node_modules/.bin/prettier --write ./src/*/*/*.js"
+			"pre-commit": ["./node_modules/.bin/prettier --write ./src/*/*/*.js"]
 		}
 	},
 	"devDependencies": {
