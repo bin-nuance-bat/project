@@ -5,8 +5,8 @@ const ConfirmationBox = props => {
 		<div>
 			<div>{props.text}</div>
 			<div>
-				<button onClick={props.ifYes}>Yes</button>
-				<button onClick={props.ifNo}>No</button>
+				<button onClick={props.onYes}>Yes</button>
+				<button onClick={props.onNo}>No</button>
 			</div>
 		</div>
 	);

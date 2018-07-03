@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 import './App.css';
 import WebcamCaptureContainer from '../WebcamCapture/WebcamCaptureContainer.js';
+import ConfirmationBox from '../ConfirmationBox/ConfirmationBox';
 
 class App extends Component {
 	state = {
-		loading: true
+		loading: true,
+		likelyItem: null
 	};
 
 	componentDidMount() {
@@ -22,6 +24,11 @@ class App extends Component {
 				</header>
 				<hr />
 				<WebcamCaptureContainer />
+				<ConfirmationBox
+					text={'Did you choose: ' + this.state.likelyItem + '?'}
+					// onYes={} hide confirmation box
+					// onNo={} prompt user to select correct item
+				/>
 			</div>
 		);
 	}
