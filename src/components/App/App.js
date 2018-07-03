@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
-import WebcamCapture from '../WebcamCapture/WebcamCapture.js';
+import WebcamCaptureContainer from '../WebcamCapture/WebcamCaptureContainer.js';
 
 class App extends Component {
 	state = {
@@ -21,7 +21,7 @@ class App extends Component {
 					Please take and item and show it to the camera
 				</header>
 				<hr />
-				<WebcamCapture />
+				<WebcamCaptureContainer />
 			</div>
 		);
 	}
