@@ -4,8 +4,6 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
-		"enzyme": "^3.3.0",
-		"enzyme-adapter-react-16": "^1.1.1",
 		"react": "^16.4.1",
 		"react-dom": "^16.4.1",
 		"react-scripts": "1.1.4",
@@ -13,6 +11,7 @@
 	},
 	"scripts": {
 		"prettify": "prettier --write ./src/**/*.js",
+		"puppeteer-test": "node test/puppeteer.js",
 		"start": "react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test --env=jsdom",
@@ -26,13 +25,17 @@
 	},
 	"husky": {
 		"hooks": {
-			"pre-commit": "lint-staged"
+			"pre-commit": "lint-staged",
+			"pre-push": "npm run puppeteer-test"
 		}
 	},
 	"devDependencies": {
 		"husky": "^1.0.0-rc.10",
 		"lint-staged": "^7.2.0",
-		"prettier": "1.13.7"
+		"prettier": "1.13.7",
+		"enzyme": "^3.3.0",
+		"enzyme-adapter-react-16": "^1.1.1",
+		"puppeteer": "^1.5.0",
 	},
 	"eslintConfig": {
 		"parserOptions": {
