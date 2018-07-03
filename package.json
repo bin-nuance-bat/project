@@ -12,17 +12,22 @@
 		"react-webcam": "^1.0.1"
 	},
 	"scripts": {
-		"precommit": "lint-staged",
+		"prettify": "prettier --write src/**/*.js",
 		"start": "react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test --env=jsdom",
 		"eject": "react-scripts eject"
 	},
 	"lint-staged": {
-		"***.js": [
-			"./node_modules/.bin/prettier --write",
+		"*.js": [
+			"npm run prettify",
 			"git add"
 		]
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
 	},
 	"devDependencies": {
 		"husky": "^0.14.3",
