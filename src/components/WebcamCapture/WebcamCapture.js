@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './WebcamCapture.css';
 import Webcam from 'react-webcam';
 
-class WebcamCapture extends React.Component {
+class WebcamCapture extends Component {
 	constructor(props) {
 		super(props);
 		this.webcam = React.createRef();
@@ -10,7 +10,7 @@ class WebcamCapture extends React.Component {
 	}
 
 	capture() {
-		const imageSrc = this.webcam.current.getScreenshot();
+		return this.webcam.current.getScreenshot();
 	}
 
 	render() {
