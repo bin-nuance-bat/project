@@ -11,35 +11,33 @@ class WebcamCapture extends React.Component {
 	}
   
 	capture() {
-	  const imageSrc = this.webcam.current.getScreenshot();
-	  console.log(imageSrc)
-	  };
+		const imageSrc = this.webcam.current.getScreenshot();
+	}
   
 	render() {
-	  const height = 400; 
-	  const width = 400; 
+		const height = 400; 
+		const width = 400; 
 
-	  const videoConstraints = {
-		width,
-		height,
-		facingMode: 'user',
-	  };
+	  	const videoConstraints = {
+			width,
+			height,
+			facingMode: 'user',
+		};
   
-	  return (
-		<div>
-		  <Webcam
-			audio={false}
-			height={height}
-			ref={this.webcam}
-			screenshotFormat="image/jpeg"
-			width={width}
-			videoConstraints={videoConstraints}
-			className="videoStream"
-			screenshotWidth={224}
-		  />
-		</div>
-	  );
+	  	return (
+			<div>
+		  		<Webcam
+					audio={false}
+					height={height}
+					ref={this.webcam}
+					screenshotFormat="image/jpeg"
+					width={width}
+					videoConstraints={videoConstraints}
+					className="videoStream"
+					screenshotWidth={224}/>
+			</div>
+	  	);
 	}
-  }
+}
 
-export default WebcamCapture
+export default WebcamCapture;
