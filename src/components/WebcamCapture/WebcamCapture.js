@@ -2,17 +2,45 @@ import React, { Component } from 'react';
 import './WebcamCapture.css';
 import Webcam from 'react-webcam';
 
-const WebcamCapture = () => {
+class WebcamCapture extends React.Component {
 
-	const videoConstraints = {
-		width: 400,
-		height: 400,
+	constructor(props) {
+		super(props);
+		this.webcam = React.createRef();
+		this.capture = this.capture.bind(this);
+	}
+  
+	capture() {
+	  const imageSrc = this.webcam.current.getScreenshot();
+	  console.log(imageSrc)
+	  };
+  
+	render() {
+	  const height = 400; 
+	  const width = 400; 
+
+	  const videoConstraints = {
+		width,
+		height,
 		facingMode: 'user',
 	  };
-
-    return(
-		<Webcam className="videoStream" audio={false} height={400} width={400} videoConstraints={videoConstraints} />
-	) ;
-}
+  
+	  return (
+		<div>
+		  <Webcam
+			audio={false}
+			height={height}
+			ref={this.webcam}
+			screenshotFormat="image/jpeg"
+			width={width}
+			videoConstraints={videoConstraints}
+			className="videoStream"
+			screenshotWidth={224}
+		  />
+		<button onClick={this.capture}>Capture photo</button>
+		</div>
+	  );
+	}
+  }
 
 export default WebcamCapture

@@ -1,4 +1,5 @@
 .videoStream {
     margin: 0px auto;
-    border: 10px #333 solid;
+    width: 400px;
+    height: 400px;
   }
