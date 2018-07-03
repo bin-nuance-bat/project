@@ -18,9 +18,15 @@
 		"test": "react-scripts test --env=jsdom",
 		"eject": "react-scripts eject"
 	},
+	"lint-staged": {
+		"*.js": [
+			"npm run prettify",
+			"git add"
+		]
+	},
 	"husky": {
 		"hooks": {
-			"precommit --no-verify": ["npm run prettify"]
+			"pre-commit": "lint-staged"
 		}
 	},
 	"devDependencies": {
