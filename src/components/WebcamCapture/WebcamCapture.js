@@ -23,6 +23,8 @@ class WebcamCapture extends React.Component {
 			facingMode: 'user'
 		};
 
+		if (!this.webcam.current) return <div>Cannot access camera</div>;
+
 		return (
 			<div>
 				<Webcam
