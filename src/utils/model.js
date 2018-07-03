@@ -42,15 +42,3 @@ export default class Model {
         });
     }
 }
-
-let model;
-
-async function loadModel() {
-    model = await loadFrozenModel('/model/web_model.pb', '/model/weights_manifest.json');
-}
-
-export async function execute(element) {
-    console.log(element);
-    await loadModel();
-    return model.predict({input: tf.fromPixels(element)});
-}
