@@ -28,7 +28,8 @@
 	},
 	"husky": {
 		"hooks": {
-			"pre-commit": ["lint-staged", "npm run puppeteer-test"]
+			"pre-commit": "lint-staged",
+			"pre-push": "npm run puppeteer-test"
 		}
 	},
 	"devDependencies": {
