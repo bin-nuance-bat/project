@@ -12,6 +12,7 @@
 		"react-webcam": "^1.0.1"
 	},
 	"scripts": {
+		"prettify": "prettier --write ./src/**/*.js",
 		"start": "react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test --env=jsdom",
@@ -19,7 +20,7 @@
 	},
 	"husky": {
 		"hooks": {
-			"pre-commit": ["echo 'pppp'", "./node_modules/.bin/prettier --write ./src/*/*/*.js"]
+			"precommit --no-verify": ["npm run prettify"]
 		}
 	},
 	"devDependencies": {
