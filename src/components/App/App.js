@@ -16,6 +16,11 @@ class App extends Component {
 
 		return (
 			<div>
+				<header>
+					<h1> Honesty Store Kiosk</h1>
+					Please take and item and show it to the camera
+				</header>
+				<hr />
 				<WebcamCapture />
 			</div>
 		);
