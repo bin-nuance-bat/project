@@ -7,7 +7,7 @@ import Adapter from 'enzyme-adapter-react-16';
 configure({adapter: new Adapter()});
 
 it('renders a list correctly', () => {
-    const items = ["apple", "mars"]
+    const items = [ {name:"apple", index: 0}, {name: "mars", index: 1}]
     const wrapper = shallow(<ButtonList items={items} onClick={console.log}/>);
     expect(wrapper.find("button")).toHaveLength(2);
     expect(wrapper.find("button").at(0).contains('apple')).toBeTruthy();
@@ -15,7 +15,7 @@ it('renders a list correctly', () => {
 });
 
 it('Click functions properly', () => {
-    const items = ["apple", "mars"]
+    const items = [ {name:"apple", index: 0}, {name: "mars", index: 1}]
     let testFunc = jest.fn();
     const wrapper = shallow(<ButtonList items={items} onClick={testFunc}/>);
     wrapper.find("button").at(0).simulate('click');

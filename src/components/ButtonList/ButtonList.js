@@ -3,9 +3,9 @@ import React from 'react';
 const ButtonList = props => {
 	return (
 		<div>
-			{props.items.map((item, index) => (
-				<div key={index}>
-					<button onClick={() => props.onClick(index)}>{item}</button>
+			{props.items.map((item) => (
+				<div key={item.index}>
+					<button onClick={() => props.onClick(item.index)}>{item.name}</button>
 				</div>
 			))}
 		</div>
