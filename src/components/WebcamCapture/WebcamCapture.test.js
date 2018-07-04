@@ -1,5 +1,5 @@
 import React from 'react';
-import WebcamCapture from './webcamcapture.js';
+import WebcamCapture from './WebcamCapture.js';
 import {shallow, configure} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Webcam from 'react-webcam';
