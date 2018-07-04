@@ -29,6 +29,14 @@ class App extends Component {
 					Please take an item and show it to the camera
 				</header>
 				<hr />
+				Slack Username:
+				<input
+					value={this.state.currentUser}
+					onChange={event => {
+						this.setState({currentUser: event.target.value});
+					}}
+				/>
+				<hr />
 				<WebcamCaptureContainer confirmMatch={this.confirmMatch} />
 				{this.state.prediction && (
 					<ConfirmationBoxContainer
