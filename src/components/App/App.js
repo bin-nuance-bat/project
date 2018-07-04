@@ -12,6 +12,10 @@ class App extends Component {
 		storeList: []
 	};
 
+	componentDidMount() {
+		this.getStoreList();
+	}
+
 	getStoreList() {
 		getStore(this.addListToState);
 	}
