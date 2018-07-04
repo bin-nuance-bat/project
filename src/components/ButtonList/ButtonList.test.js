@@ -32,5 +32,5 @@ it('Click functions properly', () => {
 		.find('button')
 		.at(0)
 		.simulate('click');
-	expect(testFunc).toHaveBeenCalledWith(0);
+	expect(testFunc).toHaveBeenCalledWith(0, 'apple');
 });
