@@ -1,5 +1,4 @@
-const token =
-	'xoxp-3623867403-382730537825-392897254546-81cd737fcea8aa23dfe82d6652c47a51';
+const token = '';
 
 const usernameToID = async username => {
 	let members;
