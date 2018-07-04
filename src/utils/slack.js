@@ -1,4 +1,4 @@
-const token = '';
+const token = process.env.SLACK_TOKEN;
 
 const usernameToID = async username => {
 	let members;
