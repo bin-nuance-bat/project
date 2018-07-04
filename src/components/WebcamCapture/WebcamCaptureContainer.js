@@ -22,8 +22,8 @@ class WebcamCaptureContainer extends Component {
 		if (navigator.mediaDevices) {
 			navigator.mediaDevices
 				.getUserMedia({video: true})
-				.catch(err => this.setState({cameraConnected: false}))
-				.then(connected => {
+				.catch(() => this.setState({cameraConnected: false}))
+				.then(() => {
 					this.setState({cameraConnected: true});
 					this.ticker = setInterval(() => {
 						const img = new Image(224, 224);
