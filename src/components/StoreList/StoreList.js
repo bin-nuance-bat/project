@@ -1,6 +1,7 @@
 import React from 'react';
 import ButtonList from '../ButtonList/ButtonList';
 import getStore from '../../utils/honestyStore.js';
+import sendSlackMessage from '../../utils/slack';
 
 export default class StoreList extends React.Component {
 	state = {
@@ -26,7 +27,17 @@ export default class StoreList extends React.Component {
 			<div>
 				<ButtonList
 					items={this.state.storeList}
-					onClick={storeCode => console.log(storeCode)}
+					onClick={(itemName, storeCode) => {
+						try {
+							sendSlackMessage(
+								this.props.username,
+								itemName,
+								storeCode
+							);
+						} catch (error) {
+							alert(error);
+						}
+					}}
 				/>
 			</div>
 		);

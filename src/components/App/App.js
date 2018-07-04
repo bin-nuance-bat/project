@@ -7,7 +7,8 @@ import StoreList from './../StoreList/StoreList';
 class App extends Component {
 	state = {
 		prediction: null,
-		showList: true
+		showList: false,
+		currentUser: ''
 	};
 
 	setPrediction = label => {
@@ -30,7 +31,9 @@ class App extends Component {
 						onNo={() => this.setState({showList: true})}
 					/>
 				)}
-				{this.state.showList && <StoreList />}
+				{this.state.showList && (
+					<StoreList username={this.state.currentUser} />
+				)}
 			</div>
 		);
 	}
