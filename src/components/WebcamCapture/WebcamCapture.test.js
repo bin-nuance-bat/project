@@ -1,12 +1,11 @@
 import React from 'react';
-import WebcamCapture from './WebcamCapture.js';
 import {shallow, configure} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import Webcam from 'react-webcam';
+import WebcamCaptureContainer from './WebcamCaptureContainer';
 
 configure({adapter: new Adapter()});
 
-it('It renders a webcam component with class videoStream', () => {
-	const wrapper = shallow(<WebcamCapture />);
-	expect(wrapper.contains(<Webcam className="videoStream" />)).toEqual(true);
+it('It renders a webcam capture container correctly', () => {
+	const wrapper = shallow(<WebcamCaptureContainer />);
+	expect(wrapper).toHaveLength(1);
 });
