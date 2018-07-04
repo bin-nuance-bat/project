@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import './App.css';
 import WebcamCaptureContainer from '../WebcamCapture/WebcamCaptureContainer.js';
-import ConfirmationBox from '../ConfirmationBox/ConfirmationBox';
+
+import ConfirmationBoxContainer from '../ConfirmationBox/ConfirmationBoxContainer';
 import StoreList from './../StoreList/StoreList';
 
 class App extends Component {
@@ -11,9 +12,14 @@ class App extends Component {
 		currentUser: ''
 	};
 
-	setPrediction = label => {
-		if (!this.state.prediction) this.setState({prediction: label});
-	};
+	constructor(props) {
+		super(props);
+		this.confirmMatch = this.confirmMatch.bind(this);
+	}
+
+	confirmMatch(index, img) {
+		if (!this.state.prediction) this.setState({prediction: {index, img}});
+	}
 
 	render() {
 		return (
@@ -25,11 +31,12 @@ class App extends Component {
 				<hr />
 				<WebcamCaptureContainer confirmMatch={this.confirmMatch} />
 				{this.state.prediction && (
-					<ConfirmationBox
-						text={'Did you choose: ' + this.state.prediction + '?'}
+					<ConfirmationBoxContainer
+						item={this.state.prediction.index}
 						onYes={() => this.setState({prediction: null})}
-						onNo={() => this.setState({showList: true})}
-					/>
+						onNo={() => this.setState({showList: true})}>
+						<img src={this.state.prediction.img} alt="" />
+					</ConfirmationBoxContainer>
 				)}
 				{this.state.showList && (
 					<StoreList username={this.state.currentUser} />
