@@ -28,7 +28,7 @@ class WebcamCaptureContainer extends Component {
 		return (
 			<WebcamCapture
 				cameraConnected={this.state.cameraConnected}
-				ref={this.webcam}
+				cameraRef={this.webcam}
 			/>
 		);
 	}

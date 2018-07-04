@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './WebcamCapture.css';
 import Webcam from 'react-webcam';
 
@@ -18,7 +18,7 @@ const WebcamCapture = props => {
 				<Webcam
 					audio={false}
 					height={height}
-					ref={props.ref}
+					ref={props.cameraRef}
 					screenshotFormat="image/jpeg"
 					width={width}
 					videoConstraints={videoConstraints}
