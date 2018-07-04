@@ -3,7 +3,6 @@ import './App.css';
 import WebcamCaptureContainer from '../WebcamCapture/WebcamCaptureContainer.js';
 
 import ConfirmationBoxContainer from '../ConfirmationBox/ConfirmationBoxContainer';
-import getStore from '../../utils/honestyStore.js';
 import StoreList from './../StoreList/StoreList';
 
 class App extends Component {
@@ -15,26 +14,7 @@ class App extends Component {
 
 	constructor(props) {
 		super(props);
-		this.getStoreList = this.getStoreList.bind(this);
 		this.confirmMatch = this.confirmMatch.bind(this);
-	}
-
-	componentDidMount() {
-		this.getStoreList();
-	}
-
-	getStoreList() {
-		getStore((err, items) => {
-			if (err) return;
-			this.setState({
-				storeList: items.map(item => ({
-					name:
-						item.name +
-						(item.qualifier ? ' ' + item.qualifier : ''),
-					index: item.id
-				}))
-			});
-		});
 	}
 
 	confirmMatch(index, img) {
