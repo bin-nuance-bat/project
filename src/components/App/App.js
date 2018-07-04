@@ -2,33 +2,13 @@ import React, {Component} from 'react';
 import './App.css';
 import WebcamCaptureContainer from '../WebcamCapture/WebcamCaptureContainer.js';
 import ConfirmationBox from '../ConfirmationBox/ConfirmationBox';
-import ButtonList from '../ButtonList/ButtonList';
-import getStore from '../../utils/honestyStore.js';
+import StoreList from './../StoreList/StoreList';
 
 class App extends Component {
 	state = {
 		prediction: null,
-		showList: false,
-		storeList: []
+		showList: true
 	};
-
-	componentDidMount() {
-		this.getStoreList();
-	}
-
-	getStoreList() {
-		getStore((err, items) => {
-			if (err) return;
-			this.setState({
-				storeList: items.map(item => ({
-					name:
-						item.name +
-						(item.qualifier ? ' ' + item.qualifier : ''),
-					index: item.id
-				}))
-			});
-		});
-	}
 
 	setPrediction = label => {
 		if (!this.state.prediction) this.setState({prediction: label});
@@ -50,12 +30,7 @@ class App extends Component {
 						onNo={() => this.setState({showList: true})}
 					/>
 				)}
-				{this.state.showList && (
-					<ButtonList
-						items={this.state.storeList}
-						onClick={storeCode => console.log(storeCode)}
-					/>
-				)}
+				{this.state.showList && <StoreList />}
 			</div>
 		);
 	}
