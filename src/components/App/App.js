@@ -8,7 +8,8 @@ import getStore from '../../utils/honestyStore.js'
 class App extends Component {
 	state = {
 		prediction: null,
-		showList: false
+		showList: false,
+		storeList: []
 	};
 
 	getStoreList() {
