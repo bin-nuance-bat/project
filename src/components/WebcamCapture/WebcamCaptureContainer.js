@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import './WebcamCapture.css';
 import WebcamCapture from './WebcamCapture';
+import Model from '../../utils/model';
+
+const ML_THRESHOLD = 0.1;
+const ML_UNKNOWN = 13;
 
 class WebcamCaptureContainer extends Component {
 	state = {
@@ -10,20 +14,41 @@ class WebcamCaptureContainer extends Component {
 	constructor(props) {
 		super(props);
 		this.webcam = React.createRef();
-		this.capture = this.capture.bind(this);
-	}
-
-	capture() {
-		return this.webcam.current.getScreenshot();
+		this.model = new Model();
+		this.model.load();
 	}
 
 	componentDidMount() {
 		if (navigator.mediaDevices) {
 			navigator.mediaDevices
 				.getUserMedia({video: true})
-				.then(connected => this.setState({cameraConnected: true}))
-				.catch(err => this.setState({cameraConnected: false}));
+				.catch(err => this.setState({cameraConnected: false}))
+				.then(connected => {
+					this.setState({cameraConnected: true});
+					this.ticker = setInterval(() => {
+						const img = new Image(224, 224);
+						img.src = this.webcam.current.getScreenshot();
+						img.onload = () => {
+							this.model.predict(img).then(item => {
+								console.log(item);
+								if (
+									item.value > ML_THRESHOLD &&
+									item.index !== ML_UNKNOWN
+								) {
+									this.props.confirmMatch(
+										item.index,
+										img.src
+									);
+								}
+							});
+						};
+					}, 1000);
+				});
 		}
+	}
+
+	componentWillUnmount() {
+		clearInterval(this.ticker);
 	}
 
 	render() {

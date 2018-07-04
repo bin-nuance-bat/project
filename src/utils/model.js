@@ -1,6 +1,5 @@
 import * as tf from '@tensorflow/tfjs';
 import {loadFrozenModel} from '@tensorflow/tfjs-converter';
-import LABELS from './labels';
 
 const PREPROCESS_DIVISOR = tf.scalar(255 / 2);
 
@@ -46,8 +45,6 @@ export default class Model {
 			return b.value - a.value;
 		});
 
-		return predictionList.map(p => {
-			return {label: LABELS[p.index], value: p.value};
-		});
+		return predictionList[0];
 	}
 }

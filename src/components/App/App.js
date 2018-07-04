@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import WebcamCaptureContainer from '../WebcamCapture/WebcamCaptureContainer.js';
-import ConfirmationBox from '../ConfirmationBox/ConfirmationBox';
+import ConfirmationBoxContainer from '../ConfirmationBox/ConfirmationBoxContainer';
 import ButtonList from '../ButtonList/ButtonList';
 import getStore from '../../utils/honestyStore.js';
 
@@ -11,6 +11,12 @@ class App extends Component {
 		showList: false,
 		storeList: []
 	};
+
+	constructor(props) {
+		super(props);
+		this.getStoreList = this.getStoreList.bind(this);
+		this.confirmMatch = this.confirmMatch.bind(this);
+	}
 
 	componentDidMount() {
 		this.getStoreList();
@@ -30,9 +36,9 @@ class App extends Component {
 		});
 	}
 
-	setPrediction = label => {
-		if (!this.state.prediction) this.setState({prediction: label});
-	};
+	confirmMatch(index, img) {
+		if (!this.state.prediction) this.setState({prediction: {index, img}});
+	}
 
 	render() {
 		return (
@@ -44,11 +50,12 @@ class App extends Component {
 				<hr />
 				<WebcamCaptureContainer confirmMatch={this.confirmMatch} />
 				{this.state.prediction && (
-					<ConfirmationBox
-						text={'Did you choose: ' + this.state.prediction + '?'}
+					<ConfirmationBoxContainer
+						item={this.state.prediction.index}
 						onYes={() => this.setState({prediction: null})}
-						onNo={() => this.setState({showList: true})}
-					/>
+						onNo={() => this.setState({showList: true})}>
+						<img src={this.state.prediction.img} alt="" />
+					</ConfirmationBoxContainer>
 				)}
 				{this.state.showList && (
 					<ButtonList
