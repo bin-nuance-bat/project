@@ -5,17 +5,10 @@ import ConfirmationBox from '../ConfirmationBox/ConfirmationBox';
 
 class App extends Component {
 	state = {
-		loading: true,
 		likelyItem: null
 	};
 
-	componentDidMount() {
-		this.setState({loading: false});
-	}
-
 	render() {
-		if (this.state.loading) return <div>Loading...</div>;
-
 		return (
 			<div>
 				<header>
