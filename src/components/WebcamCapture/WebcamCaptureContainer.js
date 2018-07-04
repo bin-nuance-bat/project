@@ -22,15 +22,15 @@ class WebcamCaptureContainer extends Component {
 		if (navigator.mediaDevices) {
 			navigator.mediaDevices
 				.getUserMedia({video: true})
-				.catch(() => this.setState({cameraConnected: false}))
 				.then(() => {
 					this.setState({cameraConnected: true});
+
 					this.ticker = setInterval(() => {
 						const img = new Image(224, 224);
 						img.src = this.webcam.current.getScreenshot();
+
 						img.onload = () => {
 							this.model.predict(img).then(item => {
-								console.log(item);
 								if (
 									item.value > ML_THRESHOLD &&
 									item.index !== ML_UNKNOWN
@@ -43,7 +43,8 @@ class WebcamCaptureContainer extends Component {
 							});
 						};
 					}, 1000);
-				});
+				})
+				.catch(() => this.setState({cameraConnected: false}));
 		}
 	}
 
