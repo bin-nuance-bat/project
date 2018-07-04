@@ -2,10 +2,6 @@ language: node_js
 
 node_js:
   - '10'
-  
-branches:
-  except:
-    - foo
 
 script:
   - npm install && npm test
@@ -17,4 +13,4 @@ deploy:
     secure: GB1CpfzJeEraJzLv1dusZpnbY0zk3+8mdRQDkwwhOs7ku/t0Y5n9jnmapU83kryNPUjpjQ5Y7ZP0jTaxe2GQn/xSr8472E9uHStN4onfFnw01oo9/4U9HUiIV8llDRYXnu5/NwnJaz9vU2Wdk+fIGzwQQ60lDdWy0RDCSlWZYOIzf9Dx0lhxOPC3Yq4nEjHDL5j+jGrheWlNr//ld0IVZflkLDtkSw5V0lqe2db6WpX7pSr7vqfRY1apaEWk/dfzAi5xQqLhQJRv5hm7s/byFM1+YFHZrMO7VGFAmyUscVRPYE9CEacbBwh6A5fAx4VHRxAxXbo5TcNn6HrT79wltWDKCbs9k2tkjvUeJZBkmPKgpY6H2TMU1jg1W0+FFNBqA0aNs7A6GGiQGbz27dQ/Zt4xnPwiA3tcYlD05oiAdcgfbMaUEekua73GRS/bHFp+PGva4yH4sf9L4V0HeA7SZPeqgpxI0nYlaZ9sMB3Ool3cKnf4xHKtOBBvSZpGfLsrhcyNEP89GAAdsLFQ/LV8KweAkxsgC/dqE6fbKf4jHyj8yNjrR6lKx2gpUY6OE5mrnsAAzthDr+Y1n9ivOkrMYGTgE9J5Ky3jvjcL7qyLlAqF/j7Zc53menBcLSm18LwZWBZuTuboSs1gy6Wi8kUGueqSQ5cmn1uHq72lRQWUNaI=
   branches:
     only:
-      - dev
+      - master
