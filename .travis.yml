@@ -3,13 +3,12 @@ language: node_js
 node_js:
   - '10'
 
+branches:
+  only:
+    - master
+    - config
+
 script:
   - npm install && npm test
-  - npm run build
-  
-deploy:
-  provider: firebase
-  token:
-    secure: "gfGVp1avtHfKk+gRYXHSO7R25ocGNndA2wcPf+4jH8D+kcrYm+RXwF2yQEkTv99F0783ICpUVAi73dVllas9QQ6VoNf/ObY9NJgCVKmBF7M9lXLCkgVE3D3YmxTr1GJ+jNQ+tVran3Xc6aXYh7BbrIea4G69iy8vGmj44hSY+6osZ0H3U9jgWlI+E1ccVfFs6qBFpLHGap+NnN1TWdIuGVWk62FA7oqiF4DS6WQ99Bfa6+Tg6rAaVEUMZO9LikCn5E5bWh58A9//4pD5AA0LbeBTmkSd6jyzgvJyHoDBkV4JNAwUX2deO6LZCRMxI1S53otPPN/o8wOkhnzvYRGKvZ6vEP4XtiSY641wns2zQ7VvOI9J9WjZa0xnupogrvak/18SbmG9IQnMRKwLIod28D3NHEZnLmVc5+IAhhc5ttZ98yOoSwrpyfRpxiaNLabo7/dX2n4rhxAwOgpH1TVZUwd9sDyA7sm+qqZL7pvd12KlLldSNcL6ZVytX/8l19ENefNUSy+3WxY30YSC9Y0mIkE3fA+be4b0hp+Udl15g2sCTHWBqM+tDfbhNFVqOMQVoDoYpWRIuUmAUUHedGLRsUNsTGGmw5Qvdeji+ah30LOsJi/nqjmRWAZdU3huaQ2iU3BwNfSwuksFbf/U6MkVwJEDe0/YUKNH+2x7SHL+lyw="
-  on:
-    branch: master
+  - npm install -g firebase-tools
+  - npm run deploy
