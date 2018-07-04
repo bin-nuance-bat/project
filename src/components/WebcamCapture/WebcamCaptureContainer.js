@@ -18,10 +18,12 @@ class WebcamCaptureContainer extends Component {
 	}
 
 	componentDidMount() {
-		navigator.mediaDevices
-			.getUserMedia({video: true})
-			.then(connected => this.setState({cameraConnected: true}))
-			.catch(err => this.setState({cameraConnected: false}));
+		if (navigator.mediaDevices) {
+			navigator.mediaDevices
+				.getUserMedia({video: true})
+				.then(connected => this.setState({cameraConnected: true}))
+				.catch(err => this.setState({cameraConnected: false}));
+		}
 	}
 
 	render() {
