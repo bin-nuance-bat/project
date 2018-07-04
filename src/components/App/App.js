@@ -3,7 +3,7 @@ import './App.css';
 import WebcamCaptureContainer from '../WebcamCapture/WebcamCaptureContainer.js';
 import ConfirmationBox from '../ConfirmationBox/ConfirmationBox';
 import ButtonList from '../ButtonList/ButtonList';
-import getStore from '../../utils/honestyStore.js'
+import getStore from '../../utils/honestyStore.js';
 
 class App extends Component {
 	state = {
@@ -17,15 +17,17 @@ class App extends Component {
 	}
 
 	getStoreList() {
-		getStore(this.addListToState);
-	}
-
-	addListToState(storeData) {
-		const items = storeData.store.items;
-		const storeList = items.map((item) => {
-			return {name: item.name + " " + item.qualifier, index: item.id}
-											})
-		this.setState({storeList});
+		getStore((err, items) => {
+			if (err) return;
+			this.setState({
+				storeList: items.map(item => ({
+					name:
+						item.name +
+						(item.qualifier ? ' ' + item.qualifier : ''),
+					index: item.id
+				}))
+			});
+		});
 	}
 
 	setPrediction = label => {
@@ -49,7 +51,10 @@ class App extends Component {
 					/>
 				)}
 				{this.state.showList && (
-					<ButtonList items={this.state.storeList} />
+					<ButtonList
+						items={this.state.storeList}
+						onClick={storeCode => console.log(storeCode)}
+					/>
 				)}
 			</div>
 		);
