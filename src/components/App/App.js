@@ -17,11 +17,13 @@ class App extends Component {
 				</header>
 				<hr />
 				<WebcamCaptureContainer />
-				<ConfirmationBox
-					text={'Did you choose: ' + this.state.likelyItem + '?'}
-					// onYes={} hide confirmation box
-					// onNo={} prompt user to select correct item
-				/>
+				{this.state.likelyItem && (
+					<ConfirmationBox
+						text={'Did you choose: ' + this.state.likelyItem + '?'}
+						// onYes={} hide confirmation box
+						// onNo={} prompt user to select correct item
+					/>
+				)}
 			</div>
 		);
 	}
