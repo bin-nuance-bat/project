@@ -6,7 +6,7 @@ const ButtonList = props => {
 			{props.items.map(item => (
 				<div key={item.index}>
 					<button
-						onClick={() => props.onClick(item.name, item.index)}>
+						onClick={() => props.onClick(item.index, item.name)}>
 						{item.name}
 					</button>
 				</div>

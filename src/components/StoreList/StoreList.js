@@ -27,7 +27,7 @@ export default class StoreList extends React.Component {
 			<div>
 				<ButtonList
 					items={this.state.storeList}
-					onClick={(itemName, storeCode) => {
+					onClick={(storeCode, itemName) => {
 						try {
 							sendSlackMessage(
 								this.props.username,
