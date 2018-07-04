@@ -7,6 +7,9 @@ async function getStore(callBack) {
             "Content-Type": "application/json; charset=utf-8",
         },
         body: JSON.stringify({storeCode: "sl-ncl"}), 
-    }).then( (res) => callBack(res) );
+    }).then( (res) => res.json() )
+      .then((res) => (callBack(res)));
 
 }
+
+export default getStore
