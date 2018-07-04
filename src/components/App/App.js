@@ -1,15 +1,16 @@
 import React, {Component} from 'react';
 import './App.css';
 import WebcamCaptureContainer from '../WebcamCapture/WebcamCaptureContainer.js';
+
 import ConfirmationBoxContainer from '../ConfirmationBox/ConfirmationBoxContainer';
-import ButtonList from '../ButtonList/ButtonList';
 import getStore from '../../utils/honestyStore.js';
+import StoreList from './../StoreList/StoreList';
 
 class App extends Component {
 	state = {
 		prediction: null,
 		showList: false,
-		storeList: []
+		currentUser: ''
 	};
 
 	constructor(props) {
@@ -58,10 +59,7 @@ class App extends Component {
 					</ConfirmationBoxContainer>
 				)}
 				{this.state.showList && (
-					<ButtonList
-						items={this.state.storeList}
-						onClick={storeCode => console.log(storeCode)}
-					/>
+					<StoreList username={this.state.currentUser} />
 				)}
 			</div>
 		);
