@@ -6,6 +6,7 @@ import ConfirmationBoxContainer from '../ConfirmationBox/ConfirmationBoxContaine
 import {StoreList} from './../StoreList/StoreList';
 import ErrorMessage from './../ErrorMessage/ErrorMessage';
 import {loadUsers} from './../../utils/slack';
+import {setUsers, setSlackUserFetchError, setCurrentUser} from './actions';
 
 class App extends Component {
 	state = {
@@ -27,11 +28,13 @@ class App extends Component {
 	}
 
 	changeCurrentUser = currentUser => {
-		this.setState({currentUser});
+		this.props.setCurrentUser(currentUser);
 	};
 
 	componentDidMount() {
-		this.props.loadUsers().catch(error => console.log(error));
+		this.props
+			.loadUsers()
+			.catch(() => this.props.setSlackUserFetchError(true));
 	}
 
 	render() {
@@ -44,7 +47,7 @@ class App extends Component {
 				<hr />
 				Slack Username:
 				<input
-					value={this.state.currentUser}
+					value={this.props.currentUser}
 					onChange={event =>
 						this.changeCurrentUser(event.target.value)
 					}
@@ -62,7 +65,7 @@ class App extends Component {
 				{this.state.showList && (
 					<StoreList
 						storeList={this.props.storeList}
-						username={this.state.currentUser}
+						username={this.props.currentUser}
 						users={this.props.users}
 					/>
 				)}
@@ -78,7 +81,8 @@ const mapStateToProps = state => {
 	return {
 		storeList: state.storeList,
 		users: state.users,
-		slackUserFetchError: state.slackUserFetchError
+		slackUserFetchError: state.slackUserFetchError,
+		currentUser: state.currentUser
 	};
 };
 
@@ -86,17 +90,11 @@ const mapDispatchToProps = dispatch => {
 	return {
 		loadUsers: () =>
 			loadUsers(users => {
-				if (users)
-					dispatch({
-						type: 'SET_USERS',
-						users
-					});
-				else
-					dispatch({
-						type: 'SET_SLACK_USER_FETCH_ERROR',
-						slackUserFetchError: true
-					});
-			})
+				if (users) dispatch(setUsers(users));
+				else dispatch(setSlackUserFetchError(true));
+			}),
+		setSlackUserFetchError: () => dispatch(setSlackUserFetchError(true)),
+		setCurrentUser: currentUser => dispatch(setCurrentUser(currentUser))
 	};
 };
 
