@@ -21,7 +21,10 @@ class App extends Component {
 	}
 
 	confirmMatch(index, img) {
-		if (!this.state.prediction) this.setState({prediction: {index, img}});
+		this.setState(
+			prevState =>
+				prevState.prediction ? null : {prediction: {index, img}}
+		);
 	}
 
 	loadUsers() {
