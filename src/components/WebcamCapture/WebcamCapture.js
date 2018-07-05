@@ -33,7 +33,8 @@ const WebcamCapture = props => {
 };
 
 WebcamCapture.propTypes = {
-	cameraConnected: PropTypes.bool.isRequired
+	cameraConnected: PropTypes.bool.isRequired,
+	cameraRef: PropTypes.object.isRequired
 };
 
 export default WebcamCapture;

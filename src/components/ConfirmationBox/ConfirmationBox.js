@@ -17,7 +17,8 @@ const ConfirmationBox = props => {
 ConfirmationBox.propTypes = {
 	onYes: PropTypes.func.isRequired,
 	onNo: PropTypes.any.isRequired,
-	text: PropTypes.string.isRequired
+	text: PropTypes.string.isRequired,
+	children: PropTypes.node
 };
 
 export default ConfirmationBox;
