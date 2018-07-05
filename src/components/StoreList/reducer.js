@@ -1,9 +1,6 @@
 import {SET_STORELIST} from './actionTypes';
-import {storeList} from './actions';
 
-export default function setStoreList(storeList) {
-	return {
-		type: SET_STORELIST,
-		storeList
-	};
+export default function storeList(state = [], action) {
+	if (action.type === SET_STORELIST) return action.store;
+	return state;
 }

@@ -6,10 +6,10 @@ import App from './components/App/App';
 import registerServiceWorker from './registerServiceWorker';
 import {createStore, applyMiddleware, combineReducers, compose} from 'redux';
 import thunk from 'redux-thunk';
-import storeListReducer from './components/StoreList/reducer';
-import appReducer from './components/App/reducer';
+import storeList from './components/StoreList/reducer';
+import {users, userFetchError} from './components/App/reducer';
 
-const rootReducer = combineReducers({storeListReducer, appReducer});
+const rootReducer = combineReducers({storeList, users, userFetchError});
 
 const store = createStore(
 	rootReducer,
