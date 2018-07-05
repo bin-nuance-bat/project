@@ -1,6 +1,7 @@
 import React from 'react';
 import './WebcamCapture.css';
 import Webcam from 'react-webcam';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 const WebcamCapture = props => {
 	const height = 400;
@@ -28,7 +29,7 @@ const WebcamCapture = props => {
 			</div>
 		);
 	}
-	return <div>Cannot access camera</div>;
+	return <ErrorMessage text={'cannot access camera'} />;
 };
 
 export default WebcamCapture;

@@ -3,6 +3,7 @@ import './App.css';
 import WebcamCaptureContainer from '../WebcamCapture/WebcamCaptureContainer.js';
 import ConfirmationBoxContainer from '../ConfirmationBox/ConfirmationBoxContainer';
 import StoreList from './../StoreList/StoreList';
+import ErrorMessage from './../ErrorMessage/ErrorMessage';
 
 const token = process.env.SLACK_TOKEN;
 
@@ -27,9 +28,10 @@ class App extends Component {
 		fetch(`https://slack.com/api/users.list?token=${token}`)
 			.then(res => res.json())
 			.then(data => {
+				if (!data.ok) throw new Error();
 				this.setState({users: data.members});
 			})
-			.catch(err => err);
+			.catch(err => this.setState({fetchUserSlackError: true}));
 	}
 
 	componentDidMount() {
@@ -67,6 +69,9 @@ class App extends Component {
 						users={this.state.users}
 						slackToken={token}
 					/>
+				)}
+				{this.state.fetchUserSlackError && (
+					<ErrorMessage text={'failed to fetch users'} />
 				)}
 			</div>
 		);
