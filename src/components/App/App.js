@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import './App.css';
 import WebcamCaptureContainer from '../WebcamCapture/WebcamCaptureContainer.js';
 
 import ConfirmationBoxContainer from '../ConfirmationBox/ConfirmationBoxContainer';

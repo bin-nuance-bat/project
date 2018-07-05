@@ -33,8 +33,8 @@ const sendSlackMessage = async (username, itemName, storeCode) => {
 	await fetch(`http://slack.com/api/chat.postMessage?token=${token}&
 	channel=${id}&
 	text=${`Click to purchase your ${itemName}: https://honesty.store/item/${storeCode}`}`)
-		.then(res => alert('Payment reminder sent to Slack'))
-		.catch(error => alert('Error: failed to send reminder'));
+		.then(() => alert('Payment reminder sent to Slack'))
+		.catch(() => alert('Error: failed to send reminder'));
 	return true;
 };
 

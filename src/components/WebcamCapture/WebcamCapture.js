@@ -1,6 +1,7 @@
 import React from 'react';
 import './WebcamCapture.css';
 import Webcam from 'react-webcam';
+import PropTypes from 'prop-types';
 
 const WebcamCapture = props => {
 	const height = 400;
@@ -29,6 +30,10 @@ const WebcamCapture = props => {
 		);
 	}
 	return <div>Cannot access camera</div>;
+};
+
+WebcamCapture.propTypes = {
+	cameraConnected: PropTypes.bool.isRequired
 };
 
 export default WebcamCapture;
