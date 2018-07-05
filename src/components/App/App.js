@@ -10,7 +10,7 @@ import {loadUsers} from './../../utils/slack';
 class App extends Component {
 	state = {
 		prediction: null,
-		showList: false,
+		showList: true,
 		currentUser: ''
 	};
 
@@ -61,6 +61,7 @@ class App extends Component {
 				)}
 				{this.state.showList && (
 					<StoreList
+						storeList={this.props.storeList}
 						username={this.state.currentUser}
 						users={this.props.users}
 					/>
@@ -72,6 +73,13 @@ class App extends Component {
 		);
 	}
 }
+
+const mapStateToProps = state => {
+	console.log(state);
+	return {
+		storeList: state.storeListReducer
+	};
+};
 
 const mapDispatchToProps = dispatch => {
 	return {
@@ -91,4 +99,7 @@ const mapDispatchToProps = dispatch => {
 	};
 };
 
-export default connect(mapDispatchToProps)(App);
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(App);

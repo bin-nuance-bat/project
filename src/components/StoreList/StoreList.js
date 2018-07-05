@@ -14,7 +14,7 @@ class StoreList extends React.Component {
 		return (
 			<div>
 				<ButtonList
-					items={this.state.storeList}
+					items={this.props.storeList}
 					onClick={(storeCode, itemName) => {
 						try {
 							let id = getUserSlackID(
@@ -28,7 +28,7 @@ class StoreList extends React.Component {
 						}
 					}}
 				/>
-				{this.state.sendSlackMessageError && (
+				{this.props.sendSlackMessageError && (
 					<ErrorMessage text={'failed to send Slack message'} />
 				)}
 			</div>
@@ -38,7 +38,8 @@ class StoreList extends React.Component {
 
 const mapStateToProps = state => {
 	return {
-		storeList: state.storeList
+		storeList: state.storeList,
+		sendSlackMessageError: state.sendSlackMessageError
 	};
 };
 
