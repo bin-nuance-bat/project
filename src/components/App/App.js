@@ -25,6 +25,10 @@ class App extends Component {
 		);
 	}
 
+	changeCurrentUser = currentUser => {
+		this.setState({currentUser});
+	};
+
 	componentDidMount() {
 		props.loadUsers();
 	}
@@ -40,9 +44,9 @@ class App extends Component {
 				Slack Username:
 				<input
 					value={this.state.currentUser}
-					onChange={event => {
-						this.setState({currentUser: event.target.value});
-					}}
+					onChange={event =>
+						this.changeCurrentUser(event.target.value)
+					}
 				/>
 				<hr />
 				<WebcamCaptureContainer confirmMatch={this.confirmMatch} />
