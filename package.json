@@ -14,10 +14,10 @@
 		"prettify": "prettier --write ./src/**/*.js",
 		"puppeteer-test": "node test/puppeteer.js",
 		"start": "react-scripts start",
-		"build": "react-scripts build",
+		"build": "rm -r node_modules/@tensorflow/tfjs-converter/dist-es6 && react-scripts build",
 		"test": "react-scripts test --env=jsdom",
 		"eject": "react-scripts eject",
-		"deploy": "react-scripts build && firebase deploy --token $FIREBASE_TOKEN"
+		"deploy": "npm install -g firebase-tools && npm run build && firebase deploy --token $FIREBASE_TOKEN"
 	},
 	"lint-staged": {
 		"*.js": [
