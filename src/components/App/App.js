@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import WebcamCaptureContainer from '../WebcamCapture/WebcamCaptureContainer.js';
 import ConfirmationBoxContainer from '../ConfirmationBox/ConfirmationBoxContainer';
-import StoreList from './../StoreList/StoreList';
+import {StoreList} from './../StoreList/StoreList';
 import ErrorMessage from './../ErrorMessage/ErrorMessage';
 import {loadUsers} from './../../utils/slack';
 

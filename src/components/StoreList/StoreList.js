@@ -3,24 +3,11 @@ import ButtonList from '../ButtonList/ButtonList';
 import getStore from '../../utils/honestyStore.js';
 import {sendSlackMessage, getUserSlackID} from '../../utils/slack';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import {connect} from 'react-redux';
 
-export default class StoreList extends React.Component {
-	state = {
-		storeList: []
-	};
-
+class StoreList extends React.Component {
 	componentDidMount() {
-		getStore((err, items) => {
-			if (err) return;
-			this.setState({
-				storeList: items.map(item => ({
-					name:
-						item.name +
-						(item.qualifier ? ' ' + item.qualifier : ''),
-					index: item.id
-				}))
-			});
-		});
+		this.props.setStore();
 	}
 
 	render() {
@@ -48,3 +35,31 @@ export default class StoreList extends React.Component {
 		);
 	}
 }
+
+const mapStateToProps = state => {
+	return {
+		storeList: state.storeList
+	};
+};
+
+const mapDispatchToProps = dispatch => {
+	return {
+		setStore: getStore((err, items) => {
+			if (err) return;
+			let storeList = items.map(item => ({
+				name: item.name + (item.qualifier ? ' ' + item.qualifier : ''),
+				index: item.id
+			}));
+			dispatch({
+				type: 'SET_STORE',
+				store: storeList
+			});
+		})
+	};
+};
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(StoreList);
+export {StoreList};
