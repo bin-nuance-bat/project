@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ConfirmationBox from './ConfirmationBox';
 import labels from '../../utils/labels';
+import PropTypes from 'prop-types';
 
 class ConfirmationBoxContainer extends Component {
 	render() {
