@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import WebcamCaptureContainer from '../WebcamCapture/WebcamCaptureContainer.js';
-
+import Trainer from '../Trainer/Trainer.js';
 import ConfirmationBoxContainer from '../ConfirmationBox/ConfirmationBoxContainer';
 import StoreList from './../StoreList/StoreList';
 
@@ -22,6 +22,7 @@ class App extends Component {
 	}
 
 	render() {
+		if (window.location.pathname === '/training') return <Trainer />;
 		return (
 			<div>
 				<header>
