@@ -5,7 +5,7 @@ export function users(state = [], action) {
 	return state;
 }
 
-export function userFetchError(state = false, action) {
+export function slackUserFetchError(state = false, action) {
 	if (action.type === SET_SLACK_USER_FETCH_ERROR)
 		return action.slackUserFetchError;
 	return state;

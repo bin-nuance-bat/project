@@ -76,7 +76,9 @@ class App extends Component {
 
 const mapStateToProps = state => {
 	return {
-		storeList: state.storeListReducer
+		storeList: state.storeList,
+		users: state.users,
+		slackUserFetchError: state.slackUserFetchError
 	};
 };
 

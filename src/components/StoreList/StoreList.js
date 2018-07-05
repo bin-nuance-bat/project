@@ -6,10 +6,6 @@ import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import {connect} from 'react-redux';
 
 class StoreList extends React.Component {
-	componentDidMount() {
-		this.props.setStore();
-	}
-
 	render() {
 		return (
 			<div>

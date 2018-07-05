@@ -7,9 +7,9 @@ import registerServiceWorker from './registerServiceWorker';
 import {createStore, applyMiddleware, combineReducers, compose} from 'redux';
 import thunk from 'redux-thunk';
 import storeList from './components/StoreList/reducer';
-import {users, userFetchError} from './components/App/reducer';
+import {users, slackUserFetchError} from './components/App/reducer';
 
-const rootReducer = combineReducers({storeList, users, userFetchError});
+const rootReducer = combineReducers({storeList, users, slackUserFetchError});
 
 const store = createStore(
 	rootReducer,
