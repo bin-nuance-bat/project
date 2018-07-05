@@ -10,7 +10,6 @@ class App extends Component {
 	state = {
 		prediction: null,
 		showList: false,
-		users: [],
 		currentUser: ''
 	};
 
@@ -27,10 +26,7 @@ class App extends Component {
 	}
 
 	componentDidMount() {
-		loadUsers(users => {
-			if (users) this.setState({users: users});
-			else this.setState({fetchUserSlackError: true});
-		});
+		props.loadUsers();
 	}
 
 	render() {
@@ -61,7 +57,7 @@ class App extends Component {
 				{this.state.showList && (
 					<StoreList
 						username={this.state.currentUser}
-						users={this.state.users}
+						users={this.props.users}
 					/>
 				)}
 				{this.state.fetchUserSlackError && (
@@ -72,4 +68,15 @@ class App extends Component {
 	}
 }
 
-export default App;
+const mapDispatchToProps = dispatch => {
+	loadUsers: loadUsers(users => {
+		if (users)
+			dispatch({
+				type: SET_USERS,
+				users
+			});
+		else this.setState({fetchUserSlackError: true});
+	});
+};
+
+export default connect({mapDispatchToProps})(App);

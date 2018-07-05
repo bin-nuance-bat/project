@@ -7,7 +7,7 @@ const getUserSlackID = (username, users) => {
 	return user ? user.id : null;
 };
 
-const loadUsers = async callback => {
+const loadUsers = callback => {
 	fetch(`https://slack.com/api/users.list?token=${token}`)
 		.then(res => res.json())
 		.then(data => {
