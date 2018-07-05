@@ -8,18 +8,11 @@ export default class StoreList extends React.Component {
 	};
 
 	usernameToID = username => {
-		console.log(this.props.users);
-		let users = this.props.users;
-		let i = users.length;
-		while (i--) {
-			if (
-				users[i].name === username ||
-				users[i].profile.real_name === username
-			) {
-				return users[i].id;
-			}
-		}
-		return null;
+		const user = this.props.users.find(
+			user =>
+				user.name === username || user.profile.real_name === username
+		);
+		return user ? user.id : null;
 	};
 
 	sendSlackMessage = async (username, itemName, storeCode) => {
