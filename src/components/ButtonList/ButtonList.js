@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const ButtonList = props => {
 	return (
@@ -13,6 +14,13 @@ const ButtonList = props => {
 			))}
 		</div>
 	);
+};
+
+ButtonList.propTypes = {
+	items: PropTypes.shape({
+		index: PropTypes.string,
+		name: PropTypes.string
+	}).isRequired
 };
 
 export default ButtonList;

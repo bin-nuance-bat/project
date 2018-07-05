@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import ButtonList from './ButtonList';
 import {shallow, configure} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
