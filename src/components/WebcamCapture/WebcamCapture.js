@@ -29,7 +29,7 @@ const WebcamCapture = props => {
 			</div>
 		);
 	}
-	return <ErrorMessage text={'cannot access camera'} />;
+	return <ErrorMessage text={'failed to load video feed'} />;
 };
 
 export default WebcamCapture;
