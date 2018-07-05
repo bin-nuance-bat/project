@@ -1,8 +1,19 @@
 body {
     padding: 30px;
+    font-size: 18px;
 }
 
 .col {
     float: left;
     padding: 0 20px;
+}
+
+select, input, button {
+    margin: 5px;
+    padding: 10px;
+    font-size: 18px;
+}
+
+#status-text {
+    font-size: 22px;
 }

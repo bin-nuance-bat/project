@@ -197,7 +197,7 @@ class Trainer extends Component {
 			return;
 		}
 		window.localStorage.setItem('items', JSON.stringify(this.items));
-		return await model.save('indexeddb://store-model');
+		return await model.save('downloads://store-model');
 	}
 
 	async loadModel() {
@@ -211,6 +211,10 @@ class Trainer extends Component {
 			model = await tf.loadModel('indexeddb://store-model');
 			this.init();
 		}
+	}
+
+	componentDidMount() {
+		document.addEventListener('keypress', e => {});
 	}
 
 	componentDidCatch(err, info) {
@@ -236,7 +240,6 @@ class Trainer extends Component {
 						cameraConnected={true}
 						cameraRef={this.webcam}
 					/>
-					<br />
 					<span id="status-text">
 						Load or start a new model to begin.<br />
 						{JSON.stringify(this.state.err)}
