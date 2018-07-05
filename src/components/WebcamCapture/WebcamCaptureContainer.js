@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './WebcamCapture.css';
 import WebcamCapture from './WebcamCapture';
 import Model from '../../utils/model';
+import PropTypes from 'prop-types';
 
 const ML_THRESHOLD = 0.1;
 const ML_UNKNOWN = 13;
@@ -14,8 +15,11 @@ class WebcamCaptureContainer extends Component {
 	constructor(props) {
 		super(props);
 		this.webcam = React.createRef();
-		this.model = new Model();
-		this.model.load();
+
+		if (this.props.loadModel) {
+			this.model = new Model();
+			this.model.load();
+		}
 	}
 
 	componentDidMount() {
@@ -61,5 +65,9 @@ class WebcamCaptureContainer extends Component {
 		);
 	}
 }
+
+WebcamCaptureContainer.propTypes = {
+	loadModel: PropTypes.bool
+};
 
 export default WebcamCaptureContainer;
