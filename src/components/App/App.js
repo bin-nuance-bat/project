@@ -1,14 +1,16 @@
 import React, {Component} from 'react';
 import './App.css';
 import WebcamCaptureContainer from '../WebcamCapture/WebcamCaptureContainer.js';
-
 import ConfirmationBoxContainer from '../ConfirmationBox/ConfirmationBoxContainer';
 import StoreList from './../StoreList/StoreList';
+
+const token = process.env.SLACK_TOKEN;
 
 class App extends Component {
 	state = {
 		prediction: null,
 		showList: false,
+		users: [],
 		currentUser: ''
 	};
 
@@ -19,6 +21,19 @@ class App extends Component {
 
 	confirmMatch(index, img) {
 		if (!this.state.prediction) this.setState({prediction: {index, img}});
+	}
+
+	loadUsers() {
+		fetch(`https://slack.com/api/users.list?token=${token}`)
+			.then(res => res.json())
+			.then(data => {
+				this.setState({users: data.members});
+			})
+			.catch(err => err);
+	}
+
+	componentDidMount() {
+		this.loadUsers();
 	}
 
 	render() {
@@ -47,7 +62,11 @@ class App extends Component {
 					</ConfirmationBoxContainer>
 				)}
 				{this.state.showList && (
-					<StoreList username={this.state.currentUser} />
+					<StoreList
+						username={this.state.currentUser}
+						users={this.state.users}
+						slackToken={token}
+					/>
 				)}
 			</div>
 		);
