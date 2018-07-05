@@ -2,6 +2,7 @@ import React from 'react';
 import ButtonList from '../ButtonList/ButtonList';
 import getStore from '../../utils/honestyStore.js';
 import {sendSlackMessage, getUserSlackID} from '../../utils/slack';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 export default class StoreList extends React.Component {
 	state = {
