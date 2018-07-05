@@ -18,7 +18,8 @@ class ConfirmationBoxContainer extends Component {
 
 ConfirmationBoxContainer.propTypes = {
 	item: PropTypes.string.isRequired,
-	onNo: PropTypes.any.isRequired
+	onNo: PropTypes.any.isRequired,
+	children: PropTypes.node
 };
 
 export default ConfirmationBoxContainer;
