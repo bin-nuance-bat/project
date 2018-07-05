@@ -17,6 +17,7 @@ class App extends Component {
 	}
 
 	confirmMatch(index, img) {
+		const a = 99;
 		if (!this.state.prediction) this.setState({prediction: {index, img}});
 	}
 
