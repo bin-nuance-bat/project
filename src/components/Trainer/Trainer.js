@@ -21,13 +21,6 @@ async function loadMobilenet() {
 	return tf.model({inputs: mobilenet.inputs, outputs: layer.output});
 }
 
-function getName(item) {
-	if (typeof item === 'number') {
-		item = this.items[item];
-	}
-	return item.name + (item.qualifier ? ` (${item.qualifier})` : '');
-}
-
 class Trainer extends Component {
 	constructor(props) {
 		super(props);
@@ -37,21 +30,29 @@ class Trainer extends Component {
 
 		this.init = this.init.bind(this);
 		this.capture = this.capture.bind(this);
+		this.getName = this.getName.bind(this);
 		this.addExample = this.addExample.bind(this);
 		this.train = this.train.bind(this);
 		this.predict = this.predict.bind(this);
 		this.newModel = this.newModel.bind(this);
 		this.saveModel = this.saveModel.bind(this);
 		this.loadModel = this.loadModel.bind(this);
+		this.exportModel = this.exportModel.bind(this);
 
-		this.items = [{name: 'Unknown'}];
+		this.items = [{name: 'Unknown', mlCount: 0}];
 
 		this.state = {
 			learningRate: 0.0001,
 			batchSize: 0.4,
 			epochs: 20,
-			hiddenUnits: 100
+			hiddenUnits: 100,
+			status: 'Load or start a new model to begin.'
 		};
+	}
+
+	getName(i) {
+		let item = this.items[i];
+		return item.name + (item.qualifier ? ` (${item.qualifier})` : '');
 	}
 
 	cropImage(img) {
@@ -78,23 +79,33 @@ class Trainer extends Component {
 	}
 
 	async addExample() {
-		tf.tidy(() => {
-			controllerDataset.addExample(
-				mobilenet.predict(this.capture()),
-				this.item.current.value
+		if (!controllerDataset) {
+			this.setStatus('Please load or create a model first');
+			return;
+		}
+		for (let i = 0; i < 100; i++) {
+			tf.tidy(() => {
+				controllerDataset.addExample(
+					mobilenet.predict(this.capture()),
+					this.item.current.value
+				);
+			});
+			document.getElementById(`${this.item.current.value}-count`)
+				.innerHTML++;
+			this.items[this.item.current.value].mlCount++;
+			this.setStatus(
+				`Added image of ${this.getName(this.item.current.value)}!`
 			);
-		});
-		document.getElementById(`${this.item.current.value}-count`).innerHTML++;
-		this.setStatus(`Added image of ${getName(this.item.current.value)}!`);
-		await tf.nextFrame();
+			await tf.nextFrame();
+		}
 	}
 
 	setStatus(status) {
-		document.getElementById('status-text').innerHTML = status;
+		this.setState({status});
 	}
 
 	async train() {
-		if (controllerDataset.xs === null) {
+		if (!controllerDataset || controllerDataset.xs === null) {
 			this.setStatus('Please collect some training images first!');
 			return;
 		}
@@ -185,6 +196,9 @@ class Trainer extends Component {
 		) {
 			this.setStatus('Fetching store data...');
 			getStore((err, store) => {
+				for (let item in store) {
+					store[item].mlCount = 0;
+				}
 				this.items = this.items.concat(store);
 				this.init();
 			});
@@ -197,24 +211,59 @@ class Trainer extends Component {
 			return;
 		}
 		window.localStorage.setItem('items', JSON.stringify(this.items));
-		return await model.save('downloads://store-model');
+		return await model.save('indexeddb://store-model');
 	}
 
-	async loadModel() {
+	loadModel() {
 		if (
 			!this.model ||
 			window.confirm(
 				'Loading the model will overwrite any training you have done. Continue?'
 			)
 		) {
-			this.items = JSON.parse(window.localStorage.getItem('items'));
-			model = await tf.loadModel('indexeddb://store-model');
-			this.init();
+			tf.loadModel('indexeddb://store-model')
+				.then(() => {
+					this.items = JSON.parse(
+						window.localStorage.getItem('items')
+					);
+					for (let item in this.items) {
+						document.getElementById(
+							item + '-count'
+						).innerHTML = this.items[item].mlCount;
+					}
+					this.init();
+				})
+				.catch(() => {
+					this.setStatus('No saved model found');
+				});
 		}
+	}
+
+	async exportModel() {
+		if (!this.model) {
+			this.setStatus('Please train a model to export.');
+			return;
+		}
+
+		// Save model and download it
+		this.saveModel();
+		tf.io.copyModel('indexeddb://store-model', 'downloads://store-model');
+
+		// Create JSON file with items in and download it
+		const blob = new Blob([JSON.stringify(this.items)], {
+			type: 'text/json'
+		});
+		const elem = window.document.createElement('a');
+		elem.href = window.URL.createObjectURL(blob);
+		elem.download = 'items.json';
+		document.body.appendChild(elem);
+		elem.click();
+		document.body.removeChild(elem);
 	}
 
 	componentDidMount() {
 		document.addEventListener('keypress', e => {});
+		window.test = this.getName;
 	}
 
 	componentDidCatch(err, info) {
@@ -228,7 +277,7 @@ class Trainer extends Component {
 					<select ref={this.item}>
 						{this.items.map((item, i) => (
 							<option key={i} value={i}>
-								{getName(item)}
+								{this.getName(i)}
 							</option>
 						))}
 					</select>
@@ -241,7 +290,8 @@ class Trainer extends Component {
 						cameraRef={this.webcam}
 					/>
 					<span id="status-text">
-						Load or start a new model to begin.<br />
+						{this.state.status}
+						<br />
 						{JSON.stringify(this.state.err)}
 					</span>
 				</div>
@@ -298,8 +348,9 @@ class Trainer extends Component {
 					<button onClick={this.train}>Train</button>
 					<button onClick={this.predict}>Predict</button>
 					<button onClick={this.newModel}>New Model</button> <br />
-					<button onClick={this.loadModel}>Load Model</button>
-					<button onClick={this.saveModel}>Save Model</button>
+					<button onClick={this.loadModel}>Load</button>
+					<button onClick={this.saveModel}>Save</button>
+					<button onClick={this.exportModel}>Export</button>
 				</div>
 
 				<table className="col">
@@ -310,12 +361,14 @@ class Trainer extends Component {
 						</tr>
 					</thead>
 					<tbody>
-						{this.items.map((item, i) => (
-							<tr key={i}>
-								<td>{getName(item)}</td>
-								<td id={`${i}-count`}>0</td>
-							</tr>
-						))}
+						{this.items.map((item, i) => {
+							return (
+								<tr key={i}>
+									<td>{this.getName(i)}</td>
+									<td id={`${i}-count`}>0</td>
+								</tr>
+							);
+						})}
 					</tbody>
 				</table>
 			</div>
