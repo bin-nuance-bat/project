@@ -42,9 +42,9 @@ const mapStateToProps = state => {
 	};
 };
 
-const mapDispatchToProps = dispatch => {
-	return {
-		setStore: getStore((err, items) => {
+function getStoreList() {
+	return dispatch => {
+		getStore((err, items) => {
 			if (err) return;
 			let storeList = items.map(item => ({
 				name: item.name + (item.qualifier ? ' ' + item.qualifier : ''),
@@ -54,7 +54,12 @@ const mapDispatchToProps = dispatch => {
 				type: 'SET_STORE',
 				store: storeList
 			});
-		})
+		});
+	};
+}
+const mapDispatchToProps = dispatch => {
+	return {
+		getStoreList
 	};
 };
 

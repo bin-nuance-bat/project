@@ -10,7 +10,8 @@
 		"react-redux": "^5.0.7",
 		"react-scripts": "1.1.4",
 		"react-webcam": "^1.0.1",
-		"redux": "^4.0.0"
+		"redux": "^4.0.0",
+		"redux-thunk": "^2.3.0"
 	},
 	"scripts": {
 		"prettify": "prettier --write ./src/**/*.js",

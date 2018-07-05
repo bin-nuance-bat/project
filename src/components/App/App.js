@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import './App.css';
 import WebcamCaptureContainer from '../WebcamCapture/WebcamCaptureContainer.js';
 import ConfirmationBoxContainer from '../ConfirmationBox/ConfirmationBoxContainer';
@@ -30,7 +31,7 @@ class App extends Component {
 	};
 
 	componentDidMount() {
-		props.loadUsers();
+		this.props.loadUsers();
 	}
 
 	render() {
@@ -72,15 +73,15 @@ class App extends Component {
 	}
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = dispatch => ({
 	loadUsers: loadUsers(users => {
 		if (users)
 			dispatch({
-				type: SET_USERS,
+				type: 'SET_USERS',
 				users
 			});
 		else this.setState({fetchUserSlackError: true});
-	});
-};
+	})
+});
 
-export default connect({mapDispatchToProps})(App);
+export default connect(mapDispatchToProps)(App);
