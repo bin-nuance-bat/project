@@ -7,14 +7,13 @@ const getUserSlackID = (username, users) => {
 	return user ? user.id : null;
 };
 
-const loadUsers = callback => {
-	fetch(`https://slack.com/api/users.list?token=${token}`)
+const loadUsers = () => {
+	return fetch(`https://slack.com/api/users.list?token=${token}`)
 		.then(res => res.json())
 		.then(data => {
-			if (!data.ok) callback(null);
-			else callback(data.members);
-		})
-		.catch(err => callback(null));
+			if (!data.ok) return Error('failed to fetch users');
+			else return data.members;
+		});
 };
 
 const sendSlackMessage = async (id, itemName, storeCode) => {

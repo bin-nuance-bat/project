@@ -31,7 +31,7 @@ class App extends Component {
 	};
 
 	componentDidMount() {
-		this.props.loadUsers();
+		this.props.loadUsers().catch(error => console.log(error));
 	}
 
 	render() {
@@ -73,15 +73,22 @@ class App extends Component {
 	}
 }
 
-const mapDispatchToProps = dispatch => ({
-	loadUsers: loadUsers(users => {
-		if (users)
-			dispatch({
-				type: 'SET_USERS',
-				users
-			});
-		else this.setState({fetchUserSlackError: true});
-	})
-});
+const mapDispatchToProps = dispatch => {
+	return {
+		loadUsers: () =>
+			loadUsers(users => {
+				if (users)
+					dispatch({
+						type: 'SET_USERS',
+						users
+					});
+				else
+					dispatch({
+						type: 'SET_SLACK_USER_FETCH_ERROR',
+						slackUserFetchError: true
+					});
+			})
+	};
+};
 
 export default connect(mapDispatchToProps)(App);
