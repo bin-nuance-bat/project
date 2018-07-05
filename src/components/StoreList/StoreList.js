@@ -51,7 +51,7 @@ function getStoreList() {
 				index: item.id
 			}));
 			dispatch({
-				type: 'SET_STORE',
+				type: 'SET_STORELIST',
 				store: storeList
 			});
 		});
