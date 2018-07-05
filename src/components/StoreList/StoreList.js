@@ -1,19 +1,11 @@
 import React from 'react';
 import ButtonList from '../ButtonList/ButtonList';
 import getStore from '../../utils/honestyStore.js';
+import {sendSlackMessage, getUserSlackID} from '../../utils/slack';
 
 export default class StoreList extends React.Component {
 	state = {
 		storeList: []
-	};
-
-	getUserSlackID = () => {
-		const user = this.props.users.find(
-			user =>
-				user.name === this.props.currentUser ||
-				user.profile.real_name === this.props.currentUser
-		);
-		return user ? user.id : null;
 	};
 
 	componentDidMount() {
@@ -37,9 +29,12 @@ export default class StoreList extends React.Component {
 					items={this.state.storeList}
 					onClick={(storeCode, itemName) => {
 						try {
-							let id = this.getUserSlackID();
+							let id = getUserSlackID(
+								this.props.currentUser,
+								this.props.users
+							);
 							if (!id) throw new Error();
-							this.sendSlackMessage(id, itemName, storeCode);
+							sendSlackMessage(id, itemName, storeCode);
 						} catch (error) {
 							this.setState({sendSlackMessageError: true});
 						}
