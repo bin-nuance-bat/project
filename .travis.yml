@@ -8,8 +8,13 @@ branches:
     - master
     - config
 
+deploy:
+  provider: script
+  script: npm run deploy
+  on:
+    branch: master
+
 script:
   - npm install && npm test
   - npm install -g firebase-tools
-  - rm -r node_modules/@tensorflow/tfjs-converter/dist-es6
-  - npm run deploy
+  
