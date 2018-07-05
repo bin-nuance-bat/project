@@ -5,4 +5,4 @@ const puppeteer = require('puppeteer');
 	//const page = await browser.newPage();
 	// extend
 	await browser.close();
-})().catch(err => err);
+})()
