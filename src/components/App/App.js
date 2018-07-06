@@ -6,9 +6,7 @@ import ErrorMessage from './../ErrorMessage/ErrorMessage';
 
 class App extends React.Component {
 	state = {
-		prediction: null,
-		showList: true,
-		currentUser: ''
+		prediction: null
 	};
 
 	constructor(props) {

@@ -6,6 +6,7 @@ import {setUsers, setSlackUserFetchError, setCurrentUser} from './actions';
 const mapStateToProps = state => {
 	return {
 		storeList: state.storeList,
+		showList: state.showList,
 		users: state.users,
 		slackUserFetchError: state.slackUserFetchError,
 		currentUser: state.currentUser
