@@ -44,7 +44,10 @@ class App extends React.Component {
 					<ConfirmationBoxContainer
 						item={this.props.prediction.index}
 						onYes={() => this.props.setPrediction(null)}
-						onNo={() => this.props.setShowList(true)}>
+						onNo={() => {
+							this.props.setPrediction(null);
+							this.props.setShowList(true);
+						}}>
 						<img src={this.props.prediction.img} alt="" />
 					</ConfirmationBoxContainer>
 				)}

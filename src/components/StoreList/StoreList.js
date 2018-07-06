@@ -14,23 +14,16 @@ class StoreList extends React.Component {
 				<ButtonList
 					items={this.props.storeList}
 					onClick={(storeCode, itemName) => {
-						try {
-							let id = getUserSlackID(
-								this.props.currentUser,
-								this.props.users
-							);
-							if (!id) throw new Error();
-							sendSlackMessage(id, itemName, storeCode);
-						} catch (error) {
-							this.setState({sendSlackMessageError: true});
-						}
+						let id = getUserSlackID(
+							this.props.currentUser,
+							this.props.users
+						);
+						sendSlackMessage(id, itemName, storeCode);
+						this.props.setShowList(false);
 					}}
 				/>
 				{this.props.loadStoreListError && (
 					<ErrorMessage text={'failed to load store items'} />
-				)}
-				{this.props.sendSlackMessageError && (
-					<ErrorMessage text={'failed to send Slack message'} />
 				)}
 			</div>
 		);
