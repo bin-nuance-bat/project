@@ -14,6 +14,7 @@ class AppContainer extends Component {
 	constructor(props) {
 		super(props);
 		this.confirmMatch = this.confirmMatch.bind(this);
+		this.changeCurrentUser = this.changeCurrentUser.bind(this);
 	}
 
 	confirmMatch(index, img) {
@@ -43,6 +44,7 @@ class AppContainer extends Component {
 				confirmMatch={this.confirmMatch}
 				storeList={this.props.storeList}
 				users={this.props.users}
+				changeCurrentUser={this.changeCurrentUser}
 			/>
 		);
 	}

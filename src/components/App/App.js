@@ -15,7 +15,7 @@ const App = props => {
 			Slack Username:
 			<input
 				value={props.currentUser}
-				onChange={event => this.changeCurrentUser(event.target.value)}
+				onChange={event => props.changeCurrentUser(event.target.value)}
 			/>
 			<hr />
 			<WebcamCaptureContainer confirmMatch={props.confirmMatch} />
