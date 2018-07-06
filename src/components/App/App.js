@@ -51,12 +51,7 @@ class App extends React.Component {
 						<img src={this.props.prediction.img} alt="" />
 					</ConfirmationBoxContainer>
 				)}
-				{this.props.showList && (
-					<StoreListContainer
-						storeList={this.props.storeList}
-						loadStoreListError={this.props.loadStoreListError}
-					/>
-				)}
+				{this.props.showList && <StoreListContainer />}
 				{this.props.slackUserFetchError && (
 					<ErrorMessage text={'failed to fetch users'} />
 				)}
