@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import WebcamCaptureContainer from '../WebcamCapture/WebcamCaptureContainer.js';
-import ConfirmationBoxContainer from '../ConfirmationBox/ConfirmationBoxContainer';
 import StoreList from './../StoreList/StoreList';
+import ConfirmationBox from '../ConfirmationBox/ConfirmationBox';
 
 class App extends Component {
 	state = {

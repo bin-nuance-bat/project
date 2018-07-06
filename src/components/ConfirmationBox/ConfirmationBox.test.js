@@ -16,5 +16,3 @@ it('calls the correct functions when clicked', () => {
 	wrapper.find('#NO').simulate('click');
 	expect(testFuncNo).toHaveBeenCalledTimes(1);
 });
-
-it('Has the correct item name ', () => {});
