@@ -1,4 +1,4 @@
-const token = process.env.SLACK_TOKEN;
+const token = process.env.REACT_APP_SLACK_TOKEN;
 
 export const getUserSlackID = (username, users) => {
 	const user = users.find(
