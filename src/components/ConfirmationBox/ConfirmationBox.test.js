@@ -5,14 +5,16 @@ import ConfirmationBox from './ConfirmationBox';
 
 configure({adapter: new Adapter()});
 
-it('calls the correct functions when clicked', () => {
-	const testFuncYes = jest.fn();
-	const testFuncNo = jest.fn();
-	const wrapper = shallow(
-		<ConfirmationBox onYes={testFuncYes} onNo={testFuncNo} />
-	);
+it('calls the onYes correct functions when clicked', () => {
+	const mockFuncYes = jest.fn();
+	const wrapper = shallow(<ConfirmationBox onYes={mockFuncYes} />);
 	wrapper.find('#YES').simulate('click');
-	expect(testFuncYes).toHaveBeenCalledTimes(1);
+	expect(mockFuncYes).toHaveBeenCalledTimes(1);
+});
+
+it('calls the onNo correct functions when clicked', () => {
+	const mockFuncNo = jest.fn();
+	const wrapper = shallow(<ConfirmationBox onNo={mockFuncNo} />);
 	wrapper.find('#NO').simulate('click');
-	expect(testFuncNo).toHaveBeenCalledTimes(1);
+	expect(mockFuncNo).toHaveBeenCalledTimes(1);
 });
