@@ -71,7 +71,8 @@
 			"setInterval": true,
 			"process": true,
 			"navigator": true,
-			"Image": true
+			"Image": true,
+			"window": true
 		}
 	}
 }
