@@ -1,9 +1,10 @@
 const getStore = callback => {
-	fetch('https://honesty.store/api/v1/session', {
+	fetch('https://honesty.store/api/v1/register', {
 		method: 'POST',
 		headers: {
-			Authorization: 'Bearer: ' + process.env.HONESTY_STORE_TOKEN
-		}
+			'Content-Type': 'application/json; charset=utf-8'
+		},
+		body: JSON.stringify({storeCode: 'sl-ncl'})
 	})
 		.then(res => res.json())
 		.then(res => callback(null, res.response.store.items))
