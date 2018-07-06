@@ -9,8 +9,11 @@
 		"eslint-plugin-react": "^7.10.0",
 		"react": "^16.4.1",
 		"react-dom": "^16.4.1",
+		"react-redux": "^5.0.7",
 		"react-scripts": "1.1.4",
-		"react-webcam": "^1.0.1"
+		"react-webcam": "^1.0.1",
+		"redux": "^4.0.0",
+		"redux-thunk": "^2.3.0"
 	},
 	"scripts": {
 		"prettify": "prettier --write ./src/**/*.js",
@@ -72,7 +75,8 @@
 			"setInterval": true,
 			"process": true,
 			"navigator": true,
-			"Image": true
+			"Image": true,
+			"window": true
 		}
 	}
 }

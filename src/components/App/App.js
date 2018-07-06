@@ -1,22 +1,26 @@
-import React, {Component} from 'react';
+import React from 'react';
 import WebcamCaptureContainer from '../WebcamCapture/WebcamCaptureContainer.js';
-import StoreList from './../StoreList/StoreList';
-import ConfirmationBox from '../ConfirmationBox/ConfirmationBox';
+import ConfirmationBoxContainer from '../ConfirmationBox/ConfirmationBoxContainer';
+import StoreListContainer from '../StoreList/StoreListContainer';
+import ErrorMessage from './../ErrorMessage/ErrorMessage';
 
-class App extends Component {
-	state = {
-		prediction: null,
-		showList: false,
-		currentUser: ''
-	};
-
+class App extends React.Component {
 	constructor(props) {
 		super(props);
-		this.confirmMatch = this.confirmMatch.bind(this);
+		this.setPrediction = this.setPrediction.bind(this);
+		this.changeCurrentUser = this.changeCurrentUser.bind(this);
 	}
 
-	confirmMatch(index, img) {
-		if (!this.state.prediction) this.setState({prediction: {index, img}});
+	setPrediction(index, img) {
+		if (!this.props.prediction) this.props.setPrediction({index, img});
+	}
+
+	changeCurrentUser = currentUser => {
+		this.props.setCurrentUser(currentUser);
+	};
+
+	componentDidMount() {
+		this.props.loadUsers();
 	}
 
 	render() {
@@ -27,20 +31,29 @@ class App extends Component {
 					Please take an item and show it to the camera
 				</header>
 				<hr />
-				<WebcamCaptureContainer
-					loadModel={true}
-					confirmMatch={this.confirmMatch}
+				Slack Username:
+				<input
+					value={this.props.currentUser}
+					onChange={event =>
+						this.changeCurrentUser(event.target.value)
+					}
 				/>
-				{this.state.prediction && (
-					<ConfirmationBox
-						item={this.state.prediction.index}
-						onYes={() => this.setState({prediction: null})}
-						onNo={() => this.setState({showList: true})}>
-						<img src={this.state.prediction.img} alt="" />
-					</ConfirmationBox>
+				<hr />
+				<WebcamCaptureContainer confirmMatch={this.setPrediction} />
+				{this.props.prediction && (
+					<ConfirmationBoxContainer
+						item={this.props.prediction.index}
+						onYes={() => this.props.setPrediction(null)}
+						onNo={() => {
+							this.props.setPrediction(null);
+							this.props.setShowList(true);
+						}}>
+						<img src={this.props.prediction.img} alt="" />
+					</ConfirmationBoxContainer>
 				)}
-				{this.state.showList && (
-					<StoreList username={this.state.currentUser} />
+				{this.props.showList && <StoreListContainer />}
+				{this.props.slackUserFetchError && (
+					<ErrorMessage text="failed to fetch users" />
 				)}
 			</div>
 		);

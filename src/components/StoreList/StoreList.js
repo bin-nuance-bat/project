@@ -1,52 +1,33 @@
 import React from 'react';
 import ButtonList from '../ButtonList/ButtonList';
-import getHonestyStoreItems from '../../utils/honestyStore.js';
-import sendSlackMessage from '../../utils/slack';
-import PropTypes from 'prop-types';
+import {sendSlackMessage, getUserSlackID} from '../../utils/slack';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 class StoreList extends React.Component {
-	state = {
-		storeList: []
-	};
-
 	componentDidMount() {
-		getHonestyStoreItems((err, items) => {
-			if (err) return;
-			this.setState({
-				storeList: items.map(item => ({
-					name:
-						item.name +
-						(item.qualifier ? ' ' + item.qualifier : ''),
-					index: item.id
-				}))
-			});
-		});
+		this.props.getStoreList();
 	}
 
 	render() {
 		return (
 			<div>
 				<ButtonList
-					items={this.state.storeList}
+					items={this.props.storeList}
 					onClick={(storeCode, itemName) => {
-						try {
-							sendSlackMessage(
-								this.props.username,
-								itemName,
-								storeCode
-							);
-						} catch (error) {
-							alert(error);
-						}
+						let id = getUserSlackID(
+							this.props.currentUser,
+							this.props.users
+						);
+						sendSlackMessage(id, itemName, storeCode);
+						this.props.setShowList(false);
 					}}
 				/>
+				{this.props.loadStoreListError && (
+					<ErrorMessage text="failed to load store items" />
+				)}
 			</div>
 		);
 	}
 }
-
-StoreList.propTypes = {
-	username: PropTypes.string.isRequired
-};
 
 export default StoreList;

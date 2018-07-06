@@ -1,41 +1,25 @@
 const token = process.env.REACT_APP_SLACK_TOKEN;
 
-const usernameToID = async username => {
-	let members;
-	await fetch(`https://slack.com/api/users.list?token=${token}`)
+export const getUserSlackID = (username, users) => {
+	const user = users.find(
+		user => user.name === username || user.profile.real_name === username
+	);
+	return user ? user.id : null;
+};
+
+export const loadUsers = () => {
+	return fetch(`https://slack.com/api/users.list?token=${token}`)
 		.then(res => res.json())
 		.then(data => {
-			members = data.members;
-		})
-		.catch(err => err);
-
-	if (!members) return null;
-
-	let i = members.length;
-	while (i--) {
-		if (
-			members[i].name === username ||
-			members[i].profile.real_name === username
-		) {
-			return members[i].id;
-		}
-	}
-	return null;
+			if (!data.ok) throw Error('failed to fetch users');
+			else return data.members;
+		});
 };
 
-const sendSlackMessage = async (username, itemName, storeCode) => {
-	let id = await usernameToID(username);
-	if (!id) {
-		alert('Error: Slack user not found');
-		return null;
-	}
-
-	await fetch(`http://slack.com/api/chat.postMessage?token=${token}&
+export const sendSlackMessage = async (id, itemName, storeCode) => {
+	await fetch(`http://slack.com/api/chat.postMessage?token=${
+		this.props.token
+	}&
 	channel=${id}&
-	text=${`Click to purchase your ${itemName}: https://honesty.store/item/${storeCode}`}`)
-		.then(() => alert('Payment reminder sent to Slack'))
-		.catch(() => alert('Error: failed to send reminder'));
-	return true;
+	text=${`Click to purchase your ${itemName}: https://honesty.store/item/${storeCode}`}`);
 };
-
-export default sendSlackMessage;
