@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import WebcamCaptureContainer from '../WebcamCapture/WebcamCaptureContainer.js';
-
-import ConfirmationBoxContainer from '../ConfirmationBox/ConfirmationBoxContainer';
 import StoreList from './../StoreList/StoreList';
+import ConfirmationBox from '../ConfirmationBox/ConfirmationBox';
 
 class App extends Component {
 	state = {
@@ -28,14 +27,17 @@ class App extends Component {
 					Please take an item and show it to the camera
 				</header>
 				<hr />
-				<WebcamCaptureContainer confirmMatch={this.confirmMatch} />
+				<WebcamCaptureContainer
+					loadModel={true}
+					confirmMatch={this.confirmMatch}
+				/>
 				{this.state.prediction && (
-					<ConfirmationBoxContainer
+					<ConfirmationBox
 						item={this.state.prediction.index}
 						onYes={() => this.setState({prediction: null})}
 						onNo={() => this.setState({showList: true})}>
 						<img src={this.state.prediction.img} alt="" />
-					</ConfirmationBoxContainer>
+					</ConfirmationBox>
 				)}
 				{this.state.showList && (
 					<StoreList username={this.state.currentUser} />
