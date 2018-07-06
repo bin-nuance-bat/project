@@ -2,8 +2,9 @@ import React from 'react';
 import ButtonList from '../ButtonList/ButtonList';
 import getStore from '../../utils/honestyStore.js';
 import sendSlackMessage from '../../utils/slack';
+import PropTypes from 'prop-types';
 
-export default class StoreList extends React.Component {
+class StoreList extends React.Component {
 	state = {
 		storeList: []
 	};
@@ -43,3 +44,9 @@ export default class StoreList extends React.Component {
 		);
 	}
 }
+
+StoreList.propTypes = {
+	username: PropTypes.string.isRequired
+};
+
+export default StoreList;

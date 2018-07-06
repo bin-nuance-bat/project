@@ -67,7 +67,8 @@ class WebcamCaptureContainer extends Component {
 }
 
 WebcamCaptureContainer.propTypes = {
-	loadModel: PropTypes.bool
+	loadModel: PropTypes.bool,
+	confirmMatch: PropTypes.func.isRequired
 };
 
 export default WebcamCaptureContainer;

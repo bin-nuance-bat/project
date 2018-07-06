@@ -17,10 +17,12 @@ const ButtonList = props => {
 };
 
 ButtonList.propTypes = {
-	items: PropTypes.shape({
-		index: PropTypes.string,
-		name: PropTypes.string
-	}).isRequired
+	items: PropTypes.arrayOf(
+		PropTypes.shape({
+			index: PropTypes.string.isRequired,
+			name: PropTypes.string.isRequired
+		}).isRequired
+	).isRequired
 };
 
 export default ButtonList;
