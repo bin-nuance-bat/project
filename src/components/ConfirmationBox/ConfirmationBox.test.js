@@ -18,3 +18,8 @@ it('calls the onNo correct functions when clicked', () => {
 	wrapper.find('#NO').simulate('click');
 	expect(mockFuncNo).toHaveBeenCalledTimes(1);
 });
+
+it('Contains "Is this a" for asking user to check match', () => {
+	const wrapper = shallow(<ConfirmationBox />);
+	expect(wrapper.text().includes('Is this a')).toBeTruthy();
+});

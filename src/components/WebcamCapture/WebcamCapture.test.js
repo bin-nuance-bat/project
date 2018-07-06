@@ -27,5 +27,3 @@ it('Renders webcam with screenshot format of jpeg', () => {
 		'image/jpeg'
 	);
 });
-
-//[screenshotFormat="image/jpeg"][screenshotWidth=224]')
