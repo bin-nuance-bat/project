@@ -7,7 +7,7 @@ import ErrorMessage from './../ErrorMessage/ErrorMessage';
 class App extends React.Component {
 	constructor(props) {
 		super(props);
-		this.confirmMatch = this.setPrediction.bind(this);
+		this.setPrediction = this.setPrediction.bind(this);
 		this.changeCurrentUser = this.changeCurrentUser.bind(this);
 	}
 
