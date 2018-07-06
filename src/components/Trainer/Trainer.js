@@ -1,25 +1,8 @@
 import React, {Component} from 'react';
 import WebcamCapture from '../WebcamCapture/WebcamCapture';
-import {ControllerDataset} from './controller_dataset';
-import getStore from '../../utils/honestyStore.js';
+import Model from './Model';
 import * as tf from '@tensorflow/tfjs';
 import './Trainer.css';
-
-let controllerDataset;
-let mobilenet;
-let model;
-
-// Loads mobilenet and returns a model that returns the internal activation
-// we'll use as input to our classifier model.
-async function loadMobilenet() {
-	const mobilenet = await tf.loadModel(
-		'https://storage.googleapis.com/tfjs-models/tfjs/mobilenet_v1_0.25_224/model.json'
-	);
-
-	// Return a model that outputs an internal activation.
-	const layer = mobilenet.getLayer('conv_pw_13_relu');
-	return tf.model({inputs: mobilenet.inputs, outputs: layer.output});
-}
 
 class Trainer extends Component {
 	constructor(props) {
@@ -27,32 +10,33 @@ class Trainer extends Component {
 
 		this.webcam = React.createRef();
 		this.item = React.createRef();
+		this.traner = React.createRef();
 
-		this.init = this.init.bind(this);
 		this.capture = this.capture.bind(this);
+		this.model = new Model(this.setStatus.bind(this));
 		this.getName = this.getName.bind(this);
 		this.addExample = this.addExample.bind(this);
 		this.train = this.train.bind(this);
 		this.predict = this.predict.bind(this);
-		this.newModel = this.newModel.bind(this);
-		this.saveModel = this.saveModel.bind(this);
-		this.loadModel = this.loadModel.bind(this);
-		this.exportModel = this.exportModel.bind(this);
-
-		this.items = [{name: 'Unknown', mlCount: 0}];
 
 		this.state = {
 			learningRate: 0.0001,
 			batchSize: 0.4,
 			epochs: 20,
 			hiddenUnits: 100,
-			status: 'Load or start a new model to begin.'
+			status: 'Load or start a new model to begin.',
+			item: 0
 		};
 	}
 
-	getName(i) {
-		let item = this.items[i];
-		return item.name + (item.qualifier ? ` (${item.qualifier})` : '');
+	capture() {
+		return tf.tidy(() => {
+			return this.cropImage(tf.fromPixels(this.webcam.current.video))
+				.expandDims(0)
+				.toFloat()
+				.div(tf.scalar(127))
+				.sub(tf.scalar(1));
+		});
 	}
 
 	cropImage(img) {
@@ -68,214 +52,40 @@ class Trainer extends Component {
 		);
 	}
 
-	capture() {
-		return tf.tidy(() => {
-			return this.cropImage(tf.fromPixels(this.webcam.current.video))
-				.expandDims(0)
-				.toFloat()
-				.div(tf.scalar(127))
-				.sub(tf.scalar(1));
-		});
+	addExample() {
+		this.model.addExample(this.capture(), this.state.item);
 	}
 
-	async addExample() {
-		if (!controllerDataset) {
-			this.setStatus('Please load or create a model first');
-			return;
-		}
-		for (let i = 0; i < 100; i++) {
-			tf.tidy(() => {
-				controllerDataset.addExample(
-					mobilenet.predict(this.capture()),
-					this.item.current.value
-				);
-			});
-			document.getElementById(`${this.item.current.value}-count`)
-				.innerHTML++;
-			this.items[this.item.current.value].mlCount++;
-			this.setStatus(
-				`Added image of ${this.getName(this.item.current.value)}!`
-			);
-			await tf.nextFrame();
-		}
+	train() {
+		this.model.train(
+			this.state.hiddenUnits,
+			this.state.batchSize,
+			this.state.learningRate,
+			this.state.epochs
+		);
+	}
+
+	predict() {
+		this.model.predict(this.capture());
+	}
+
+	getName(i) {
+		let item = this.model.items[i];
+		return item.name + (item.qualifier ? ` (${item.qualifier})` : '');
 	}
 
 	setStatus(status) {
 		this.setState({status});
 	}
 
-	async train() {
-		if (!controllerDataset || controllerDataset.xs === null) {
-			this.setStatus('Please collect some training images first!');
-			return;
-		}
-
-		this.setStatus('Training model, please wait...');
-		await tf.nextFrame();
-
-		model = tf.sequential({
-			layers: [
-				tf.layers.flatten({inputShape: [7, 7, 256]}),
-				tf.layers.dense({
-					units: this.state.hiddenUnits,
-					activation: 'relu',
-					kernelInitializer: 'varianceScaling',
-					useBias: true
-				}),
-				tf.layers.dense({
-					units: this.items.length,
-					kernelInitializer: 'varianceScaling',
-					useBias: false,
-					activation: 'softmax'
-				})
-			]
-		});
-
-		const optimizer = tf.train.adam(this.state.learningRate);
-		model.compile({optimizer, loss: 'categoricalCrossentropy'});
-
-		const batchSize = Math.floor(
-			controllerDataset.xs.shape[0] * this.state.batchSize
-		);
-		if (!(batchSize > 0)) {
-			this.setStatus(
-				'Batch size invalid, please choose a number 0 < x < 1'
-			);
-			return;
-		}
-
-		model.fit(controllerDataset.xs, controllerDataset.ys, {
-			batchSize,
-			epochs: this.state.epochs,
-			callbacks: {
-				onBatchEnd: async (batch, logs) => {
-					this.setStatus('Training. Loss: ' + logs.loss.toFixed(5));
-					await tf.nextFrame();
-				},
-				onTrainEnd: async () => {
-					this.setStatus('Finished Training. Try me out!');
-					await tf.nextFrame();
-				}
-			}
-		});
-	}
-
-	async predict() {
-		if (!model) {
-			this.setStatus('Please train the model first');
-			return;
-		}
-		this.setStatus('Predicting...');
-		const predictedClass = tf.tidy(() => {
-			const image = this.capture();
-			const activation = mobilenet.predict(image);
-			const predictions = model.predict(activation);
-			return predictions.as1D().argMax();
-		});
-
-		const classId = (await predictedClass.data())[0];
-		predictedClass.dispose();
-		this.setStatus('I think this is a ' + this.items[classId]);
-	}
-
-	async init() {
-		controllerDataset = new ControllerDataset(this.items.length);
-		mobilenet = await loadMobilenet();
-		await tf.nextFrame();
-		tf.tidy(() => mobilenet.predict(this.capture()));
-		this.setStatus('Ready');
-		this.forceUpdate();
-	}
-
-	newModel() {
-		if (
-			!this.model ||
-			window.confirm(
-				'Loading the model will overwrite any training you have done. Continue?'
-			)
-		) {
-			this.setStatus('Fetching store data...');
-			getStore((err, store) => {
-				for (let item in store) {
-					store[item].mlCount = 0;
-				}
-				this.items = this.items.concat(store);
-				this.init();
-			});
-		}
-	}
-
-	async saveModel() {
-		if (!this.model) {
-			this.setStatus('Please train a model to save.');
-			return;
-		}
-		window.localStorage.setItem('items', JSON.stringify(this.items));
-		return await model.save('indexeddb://store-model');
-	}
-
-	loadModel() {
-		if (
-			!this.model ||
-			window.confirm(
-				'Loading the model will overwrite any training you have done. Continue?'
-			)
-		) {
-			tf.loadModel('indexeddb://store-model')
-				.then(() => {
-					this.items = JSON.parse(
-						window.localStorage.getItem('items')
-					);
-					for (let item in this.items) {
-						document.getElementById(
-							item + '-count'
-						).innerHTML = this.items[item].mlCount;
-					}
-					this.init();
-				})
-				.catch(() => {
-					this.setStatus('No saved model found');
-				});
-		}
-	}
-
-	async exportModel() {
-		if (!this.model) {
-			this.setStatus('Please train a model to export.');
-			return;
-		}
-
-		// Save model and download it
-		this.saveModel();
-		tf.io.copyModel('indexeddb://store-model', 'downloads://store-model');
-
-		// Create JSON file with items in and download it
-		const blob = new Blob([JSON.stringify(this.items)], {
-			type: 'text/json'
-		});
-		const elem = window.document.createElement('a');
-		elem.href = window.URL.createObjectURL(blob);
-		elem.download = 'items.json';
-		document.body.appendChild(elem);
-		elem.click();
-		document.body.removeChild(elem);
-	}
-
-	componentDidMount() {
-		document.addEventListener('keypress', e => {});
-		window.test = this.getName;
-	}
-
-	componentDidCatch(err, info) {
-		this.setState({error: {err, info}});
-	}
-
 	render() {
 		return (
 			<div>
 				<div className="col" style={{textAlign: 'center'}}>
-					<select ref={this.item}>
-						{this.items.map((item, i) => (
+					<select
+						value={this.state.item}
+						onChange={e => this.setState({item: e.target.value})}>
+						{this.model.items.map((item, i) => (
 							<option key={i} value={i}>
 								{this.getName(i)}
 							</option>
@@ -289,11 +99,7 @@ class Trainer extends Component {
 						cameraConnected={true}
 						cameraRef={this.webcam}
 					/>
-					<span id="status-text">
-						{this.state.status}
-						<br />
-						{JSON.stringify(this.state.err)}
-					</span>
+					<span id="status-text">{this.state.status}</span>
 				</div>
 
 				<div className="col">
@@ -347,10 +153,13 @@ class Trainer extends Component {
 					<br />
 					<button onClick={this.train}>Train</button>
 					<button onClick={this.predict}>Predict</button>
-					<button onClick={this.newModel}>New Model</button> <br />
-					<button onClick={this.loadModel}>Load</button>
-					<button onClick={this.saveModel}>Save</button>
-					<button onClick={this.exportModel}>Export</button>
+					<button onClick={this.model.newModel}>
+						New Model
+					</button>{' '}
+					<br />
+					<button onClick={this.model.loadModel}>Load</button>
+					<button onClick={this.model.saveModel}>Save</button>
+					<button onClick={this.model.exportModel}>Export</button>
 				</div>
 
 				<table className="col">
@@ -361,7 +170,7 @@ class Trainer extends Component {
 						</tr>
 					</thead>
 					<tbody>
-						{this.items.map((item, i) => {
+						{this.model.items.map((item, i) => {
 							return (
 								<tr key={i}>
 									<td>{this.getName(i)}</td>
