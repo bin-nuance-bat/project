@@ -1,28 +1,7 @@
-import React from 'react';
 import getStore from '../../utils/honestyStore.js';
 import StoreList from './StoreList';
 import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
 import {setStoreList} from './actions';
-
-export class StoreListContainer extends React.Component {
-	componentDidMount() {
-		// console.log(this.props);
-	}
-
-	render() {
-		return (
-			<StoreList
-				storeList={this.props.storeList}
-				sendSlackMessageError={this.props.sendSlackMessageError}
-			/>
-		);
-	}
-}
-
-StoreListContainer.propTypes = {
-	username: PropTypes.string.isRequired
-};
 
 const mapStateToProps = state => {
 	return {
@@ -35,20 +14,22 @@ const mapDispatchToProps = dispatch => {
 	return {
 		getStoreList: () =>
 			getStore()
-				.then(items => {
+				.then(items =>
 					items.map(item => ({
 						name:
 							item.name +
 							(item.qualifier ? ' ' + item.qualifier : ''),
 						index: item.id
-					}));
+					}))
+				)
+				.then(storeList => {
+					dispatch(setStoreList(storeList));
 				})
-				.then(storeList => dispatch(setStoreList(storeList)))
-				.catch(err => console.log(err))
+				.catch(err => console.error(err))
 	};
 };
 
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(StoreListContainer);
+)(StoreList);
