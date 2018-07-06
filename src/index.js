@@ -14,7 +14,8 @@ import {
 import {
 	users,
 	slackUserFetchError,
-	currentUser
+	currentUser,
+	prediction
 } from './components/App/reducer';
 
 const rootReducer = combineReducers({
@@ -23,7 +24,8 @@ const rootReducer = combineReducers({
 	users,
 	slackUserFetchError,
 	currentUser,
-	showList
+	showList,
+	prediction
 });
 
 const store = createStore(

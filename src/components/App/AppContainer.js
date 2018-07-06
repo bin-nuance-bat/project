@@ -9,7 +9,8 @@ const mapStateToProps = state => {
 		showList: state.showList,
 		users: state.users,
 		slackUserFetchError: state.slackUserFetchError,
-		currentUser: state.currentUser
+		currentUser: state.currentUser,
+		prediction: state.prediction
 	};
 };
 

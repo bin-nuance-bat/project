@@ -5,10 +5,6 @@ import StoreListContainer from '../StoreList/StoreListContainer';
 import ErrorMessage from './../ErrorMessage/ErrorMessage';
 
 class App extends React.Component {
-	state = {
-		prediction: null
-	};
-
 	constructor(props) {
 		super(props);
 		this.confirmMatch = this.confirmMatch.bind(this);
@@ -49,10 +45,10 @@ class App extends React.Component {
 				<WebcamCaptureContainer confirmMatch={this.confirmMatch} />
 				{this.props.prediction && (
 					<ConfirmationBoxContainer
-						item={this.state.prediction.index}
+						item={this.props.prediction.index}
 						onYes={() => this.setState({prediction: null})}
 						onNo={() => this.setState({showList: true})}>
-						<img src={this.state.prediction.img} alt="" />
+						<img src={this.props.prediction.img} alt="" />
 					</ConfirmationBoxContainer>
 				)}
 				{this.props.showList && (
