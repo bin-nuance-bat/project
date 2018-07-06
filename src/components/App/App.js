@@ -32,12 +32,12 @@ class App extends Component {
 					confirmMatch={this.confirmMatch}
 				/>
 				{this.state.prediction && (
-					<ConfirmationBoxContainer
+					<ConfirmationBox
 						item={this.state.prediction.index}
 						onYes={() => this.setState({prediction: null})}
 						onNo={() => this.setState({showList: true})}>
 						<img src={this.state.prediction.img} alt="" />
-					</ConfirmationBoxContainer>
+					</ConfirmationBox>
 				)}
 				{this.state.showList && (
 					<StoreList username={this.state.currentUser} />
