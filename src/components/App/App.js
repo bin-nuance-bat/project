@@ -7,15 +7,12 @@ import ErrorMessage from './../ErrorMessage/ErrorMessage';
 class App extends React.Component {
 	constructor(props) {
 		super(props);
-		this.confirmMatch = this.confirmMatch.bind(this);
+		this.confirmMatch = this.setPrediction.bind(this);
 		this.changeCurrentUser = this.changeCurrentUser.bind(this);
 	}
 
-	confirmMatch(index, img) {
-		this.setState(
-			prevState =>
-				prevState.prediction ? null : {prediction: {index, img}}
-		);
+	setPrediction(index, img) {
+		if (!this.props.prediction) this.props.setPrediction({index, img});
 	}
 
 	changeCurrentUser = currentUser => {
@@ -42,12 +39,12 @@ class App extends React.Component {
 					}
 				/>
 				<hr />
-				<WebcamCaptureContainer confirmMatch={this.confirmMatch} />
+				<WebcamCaptureContainer confirmMatch={this.setPrediction} />
 				{this.props.prediction && (
 					<ConfirmationBoxContainer
 						item={this.props.prediction.index}
-						onYes={() => this.setState({prediction: null})}
-						onNo={() => this.setState({showList: true})}>
+						onYes={() => this.props.setPrediction(null)}
+						onNo={() => this.props.setShowList(true)}>
 						<img src={this.props.prediction.img} alt="" />
 					</ConfirmationBoxContainer>
 				)}

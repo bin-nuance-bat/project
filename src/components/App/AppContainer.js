@@ -1,7 +1,13 @@
 import {connect} from 'react-redux';
 import App from './App';
 import {loadUsers} from './../../utils/slack';
-import {setUsers, setSlackUserFetchError, setCurrentUser} from './actions';
+import {
+	setUsers,
+	setSlackUserFetchError,
+	setCurrentUser,
+	setPrediction
+} from './actions';
+import {setShowList} from './../StoreList/actions';
 
 const mapStateToProps = state => {
 	return {
@@ -20,7 +26,9 @@ const mapDispatchToProps = dispatch => {
 			loadUsers()
 				.then(users => dispatch(setUsers(users)))
 				.catch(error => dispatch(setSlackUserFetchError(true))),
-		setCurrentUser: currentUser => dispatch(setCurrentUser(currentUser))
+		setCurrentUser: currentUser => dispatch(setCurrentUser(currentUser)),
+		setPrediction: prediction => dispatch(setPrediction(prediction)),
+		setShowList: showList => dispatch(setShowList(showList))
 	};
 };
 
