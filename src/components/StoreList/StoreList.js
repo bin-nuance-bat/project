@@ -4,8 +4,9 @@ import getStore from '../../utils/honestyStore.js';
 import {sendSlackMessage, getUserSlackID} from '../../utils/slack';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 
-class StoreList extends React.Component {
+export class StoreList extends React.Component {
 	render() {
 		return (
 			<div>
@@ -31,6 +32,10 @@ class StoreList extends React.Component {
 		);
 	}
 }
+
+StoreList.propTypes = {
+	username: PropTypes.string.isRequired
+};
 
 const mapStateToProps = state => {
 	return {
@@ -64,4 +69,3 @@ export default connect(
 	mapStateToProps,
 	mapDispatchToProps
 )(StoreList);
-export {StoreList};

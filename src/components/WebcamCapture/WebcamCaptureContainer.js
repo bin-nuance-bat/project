@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './WebcamCapture.css';
 import WebcamCapture from './WebcamCapture';
 import Model from '../../utils/model';
+import PropTypes from 'prop-types';
 
 const ML_THRESHOLD = 0.1;
 const ML_UNKNOWN = 13;
@@ -61,5 +62,9 @@ class WebcamCaptureContainer extends Component {
 		);
 	}
 }
+
+WebcamCaptureContainer.propTypes = {
+	confirmMatch: PropTypes.func.isRequired
+};
 
 export default WebcamCaptureContainer;
