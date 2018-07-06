@@ -5,7 +5,6 @@ import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 class StoreList extends React.Component {
 	componentDidMount() {
-		console.log(this.props);
 		this.props.getStoreList();
 	}
 

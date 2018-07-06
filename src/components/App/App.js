@@ -4,42 +4,73 @@ import ConfirmationBoxContainer from '../ConfirmationBox/ConfirmationBoxContaine
 import StoreListContainer from '../StoreList/StoreListContainer';
 import ErrorMessage from './../ErrorMessage/ErrorMessage';
 
-const App = props => {
-	return (
-		<div>
-			<header>
-				<h1> Honesty Store Kiosk</h1>
-				Please take an item and show it to the camera
-			</header>
-			<hr />
-			Slack Username:
-			<input
-				value={props.currentUser}
-				onChange={event => props.changeCurrentUser(event.target.value)}
-			/>
-			<hr />
-			<WebcamCaptureContainer confirmMatch={props.confirmMatch} />
-			{props.prediction && (
-				<ConfirmationBoxContainer
-					item={this.state.prediction.index}
-					onYes={() => this.setState({prediction: null})}
-					onNo={() => this.setState({showList: true})}>
-					<img src={this.state.prediction.img} alt="" />
-				</ConfirmationBoxContainer>
-			)}
-			{props.showList && (
-				<StoreListContainer
-					storeList={props.storeList}
-					loadStoreListError={props.loadStoreListError}
-					username={props.currentUser}
-					users={props.users}
+class App extends React.Component {
+	state = {
+		prediction: null,
+		showList: true,
+		currentUser: ''
+	};
+
+	constructor(props) {
+		super(props);
+		this.confirmMatch = this.confirmMatch.bind(this);
+		this.changeCurrentUser = this.changeCurrentUser.bind(this);
+	}
+
+	confirmMatch(index, img) {
+		this.setState(
+			prevState =>
+				prevState.prediction ? null : {prediction: {index, img}}
+		);
+	}
+
+	changeCurrentUser = currentUser => {
+		this.props.setCurrentUser(currentUser);
+	};
+
+	componentDidMount() {
+		this.props
+			.loadUsers()
+			.catch(() => this.props.setSlackUserFetchError(true));
+	}
+
+	render() {
+		return (
+			<div>
+				<header>
+					<h1> Honesty Store Kiosk</h1>
+					Please take an item and show it to the camera
+				</header>
+				<hr />
+				Slack Username:
+				<input
+					value={this.props.currentUser}
+					onChange={event =>
+						this.changeCurrentUser(event.target.value)
+					}
 				/>
-			)}
-			{props.slackUserFetchError && (
-				<ErrorMessage text={'failed to fetch users'} />
-			)}
-		</div>
-	);
-};
+				<hr />
+				<WebcamCaptureContainer confirmMatch={this.confirmMatch} />
+				{this.props.prediction && (
+					<ConfirmationBoxContainer
+						item={this.state.prediction.index}
+						onYes={() => this.setState({prediction: null})}
+						onNo={() => this.setState({showList: true})}>
+						<img src={this.state.prediction.img} alt="" />
+					</ConfirmationBoxContainer>
+				)}
+				{this.props.showList && (
+					<StoreListContainer
+						storeList={this.props.storeList}
+						loadStoreListError={this.props.loadStoreListError}
+					/>
+				)}
+				{this.props.slackUserFetchError && (
+					<ErrorMessage text={'failed to fetch users'} />
+				)}
+			</div>
+		);
+	}
+}
 
 export default App;

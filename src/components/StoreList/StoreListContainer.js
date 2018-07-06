@@ -6,8 +6,9 @@ import {setStoreList, setLoadStoreListError} from './actions';
 const mapStateToProps = state => {
 	return {
 		storeList: state.storeList,
-		sendSlackMessageError: state.sendSlackMessageError,
-		loadStoreListError: state.loadStoreListError
+		loadStoreListError: state.loadStoreListError,
+		currentUser: state.currentUser,
+		users: state.users
 	};
 };
 
