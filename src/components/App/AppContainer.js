@@ -13,7 +13,6 @@ const mapStateToProps = state => {
 	return {
 		storeList: state.storeList,
 		showList: state.showList,
-		users: state.users,
 		slackUserFetchError: state.slackUserFetchError,
 		currentUser: state.currentUser,
 		prediction: state.prediction
