@@ -3,10 +3,11 @@ import getStore from '../../utils/honestyStore.js';
 import StoreList from './StoreList';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
+import {setStoreList} from './actions';
 
 export class StoreListContainer extends React.Component {
 	componentDidMount() {
-		console.log(this.props);
+		// console.log(this.props);
 	}
 
 	render() {
@@ -32,22 +33,18 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		getStoreList: getStore()
-			.then(items => {
-				items.map(item => ({
-					name:
-						item.name +
-						(item.qualifier ? ' ' + item.qualifier : ''),
-					index: item.id
-				}));
-			})
-			.then(storeList => {
-				dispatch({
-					type: 'SET_STORELIST',
-					store: storeList
-				});
-			})
-			.catch(err => console.log(err))
+		getStoreList: () =>
+			getStore()
+				.then(items => {
+					items.map(item => ({
+						name:
+							item.name +
+							(item.qualifier ? ' ' + item.qualifier : ''),
+						index: item.id
+					}));
+				})
+				.then(storeList => dispatch(setStoreList(storeList)))
+				.catch(err => console.log(err))
 	};
 };
 
