@@ -1,7 +1,7 @@
 import React from 'react';
 import WebcamCaptureContainer from '../WebcamCapture/WebcamCaptureContainer.js';
 import ConfirmationBoxContainer from '../ConfirmationBox/ConfirmationBoxContainer';
-import {StoreList} from './../StoreList/StoreList';
+import {StoreListContainer} from '../StoreList/StoreListContainer';
 import ErrorMessage from './../ErrorMessage/ErrorMessage';
 
 const App = props => {
@@ -28,7 +28,7 @@ const App = props => {
 				</ConfirmationBoxContainer>
 			)}
 			{props.showList && (
-				<StoreList
+				<StoreListContainer
 					storeList={props.storeList}
 					username={props.currentUser}
 					users={props.users}
