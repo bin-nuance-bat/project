@@ -74,6 +74,12 @@ class Trainer extends Component {
 		return item.name + (item.qualifier ? ` (${item.qualifier})` : '');
 	}
 
+	remove(i) {
+		this.model.items.splice(i, 1);
+		this.model.init();
+		this.forceUpdate();
+	}
+
 	setStatus(status) {
 		this.setState({status});
 	}
@@ -175,6 +181,11 @@ class Trainer extends Component {
 								<tr key={i}>
 									<td>{this.getName(i)}</td>
 									<td id={`${i}-count`}>0</td>
+									<td>
+										<button onClick={() => this.remove(i)}>
+											&times;
+										</button>
+									</td>
 								</tr>
 							);
 						})}

@@ -1,14 +1,15 @@
 import * as tf from '@tensorflow/tfjs';
 import {ControllerDataset} from './controller_dataset';
 import getStore from '../../utils/honestyStore.js';
+import * as MobileNet from '@tensorflow-models/mobilenet';
 
 class Model {
-	constructor(status, items) {
+	constructor(status) {
 		this.setStatus = status;
 		this.items = [{name: 'Unknown', mlCount: 0}];
 
+		this.getName = this.getName.bind(this);
 		this.init = this.init.bind(this);
-		this.loadMobilenet = this.loadMobilenet.bind(this);
 		this.newModel = this.newModel.bind(this);
 		this.loadModel = this.loadModel.bind(this);
 		this.saveModel = this.saveModel.bind(this);
@@ -18,20 +19,17 @@ class Model {
 		this.predict = this.predict.bind(this);
 	}
 
-	async init() {
-		this.controllerDataset = new ControllerDataset(this.items.length);
-		this.mobilenet = await this.loadMobilenet();
-		await tf.nextFrame();
-		this.setStatus('Ready');
+	getName(i) {
+		let item = this.items[i];
+		return item.name + (item.qualifier ? ` (${item.qualifier})` : '');
 	}
 
-	async loadMobilenet() {
-		const mobilenet = await tf.loadModel(
-			'https://storage.googleapis.com/tfjs-models/tfjs/mobilenet_v1_0.25_224/model.json'
-		);
-
-		const layer = mobilenet.getLayer('conv_pw_13_relu');
-		return tf.model({inputs: mobilenet.inputs, outputs: layer.output});
+	async init() {
+		this.controllerDataset = new ControllerDataset(this.items.length);
+		this.mobilenet = await MobileNet.load();
+		await tf.nextFrame();
+		await tf.nextFrame();
+		this.setStatus('Ready');
 	}
 
 	newModel() {
@@ -43,8 +41,11 @@ class Model {
 		) {
 			this.setStatus('Fetching store data...');
 			getStore((err, store) => {
-				for (let item in store) {
-					store[item].mlCount = 0;
+				let i = store.length;
+				while (i--) {
+					store[i].count < 1
+						? store.splice(i, 1)
+						: (store[i].mlCount = 0);
 				}
 				this.items = this.items.concat(store);
 				this.init();
@@ -113,16 +114,20 @@ class Model {
 			this.setStatus('Please load or create a model first');
 			return;
 		}
-		for (let i = 0; i < 100; i++) {
+
+		for (let i = 1; i <= 100; i++) {
 			tf.tidy(() => {
 				this.controllerDataset.addExample(
-					this.mobilenet.predict(image),
+					this.mobilenet.infer(image, 'conv_pw_13_relu'),
 					label
 				);
 			});
+
 			document.getElementById(`${label}-count`).innerHTML++;
 			this.items[label].mlCount++;
-			this.setStatus(`Added image of ${this.getName(label)}!`);
+			this.setStatus(
+				`Adding images of ${this.getName(label)} (${i}/100)`
+			);
 			await tf.nextFrame();
 		}
 	}
@@ -197,7 +202,8 @@ class Model {
 
 		const classId = (await predictedClass.data())[0];
 		predictedClass.dispose();
-		this.setStatus('I think this is a ' + this.items[classId]);
+		console.log(classId);
+		this.setStatus('I think this is a ' + this.getName[classId]);
 	}
 }
 

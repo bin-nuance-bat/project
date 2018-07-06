@@ -46,10 +46,18 @@ export class ControllerDataset {
 			this.ys = tf.keep(y);
 		} else {
 			const oldX = this.xs;
-			this.xs = tf.keep(oldX.concat(example, 0));
+			try {
+				this.xs = tf.keep(oldX.concat(example, 0));
+			} catch (e) {
+				console.log(e);
+			}
 
 			const oldY = this.ys;
-			this.ys = tf.keep(oldY.concat(y, 0));
+			try {
+				this.ys = tf.keep(oldY.concat(y, 0));
+			} catch (e) {
+				console.log(e);
+			}
 
 			oldX.dispose();
 			oldY.dispose();
