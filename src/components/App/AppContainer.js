@@ -41,6 +41,7 @@ class AppContainer extends Component {
 				prediction={this.state.prediction}
 				showList={this.state.showList}
 				slackUserFetchError={this.props.slackUserFetchError}
+				loadStoreListError={this.props.loadStoreListError}
 				confirmMatch={this.confirmMatch}
 				storeList={this.props.storeList}
 				users={this.props.users}

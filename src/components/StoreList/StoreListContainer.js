@@ -1,12 +1,13 @@
 import getStore from '../../utils/honestyStore.js';
 import StoreList from './StoreList';
 import {connect} from 'react-redux';
-import {setStoreList} from './actions';
+import {setStoreList, setLoadStoreListError} from './actions';
 
 const mapStateToProps = state => {
 	return {
 		storeList: state.storeList,
-		sendSlackMessageError: state.sendSlackMessageError
+		sendSlackMessageError: state.sendSlackMessageError,
+		loadStoreListError: state.loadStoreListError
 	};
 };
 
@@ -25,7 +26,7 @@ const mapDispatchToProps = dispatch => {
 				.then(storeList => {
 					dispatch(setStoreList(storeList));
 				})
-				.catch(err => console.error(err))
+				.catch(err => dispatch(setLoadStoreListError(true)))
 	};
 };
 

@@ -5,6 +5,7 @@ import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 class StoreList extends React.Component {
 	componentDidMount() {
+		console.log(this.props);
 		this.props.getStoreList();
 	}
 
@@ -26,6 +27,9 @@ class StoreList extends React.Component {
 						}
 					}}
 				/>
+				{this.props.loadStoreListError && (
+					<ErrorMessage text={'failed to load store items'} />
+				)}
 				{this.props.sendSlackMessageError && (
 					<ErrorMessage text={'failed to send Slack message'} />
 				)}

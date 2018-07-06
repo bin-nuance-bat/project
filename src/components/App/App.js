@@ -30,6 +30,7 @@ const App = props => {
 			{props.showList && (
 				<StoreListContainer
 					storeList={props.storeList}
+					loadStoreListError={props.loadStoreListError}
 					username={props.currentUser}
 					users={props.users}
 				/>
