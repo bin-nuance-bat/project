@@ -23,7 +23,7 @@ class StoreList extends React.Component {
 					}}
 				/>
 				{this.props.loadStoreListError && (
-					<ErrorMessage text={'failed to load store items'} />
+					<ErrorMessage text="failed to load store items" />
 				)}
 			</div>
 		);

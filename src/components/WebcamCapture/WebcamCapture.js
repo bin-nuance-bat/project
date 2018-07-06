@@ -30,7 +30,7 @@ const WebcamCapture = props => {
 			</div>
 		);
 	}
-	return <ErrorMessage text={'failed to load video feed'} />;
+	return <ErrorMessage text="failed to load video feed" />;
 };
 
 WebcamCapture.propTypes = {
