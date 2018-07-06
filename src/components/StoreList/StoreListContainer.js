@@ -5,6 +5,10 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
 export class StoreListContainer extends React.Component {
+	componentDidMount() {
+		console.log(this.props);
+	}
+
 	render() {
 		return (
 			<StoreList
@@ -26,24 +30,24 @@ const mapStateToProps = state => {
 	};
 };
 
-function getStoreList() {
-	return dispatch => {
-		getStore((err, items) => {
-			if (err) return;
-			let storeList = items.map(item => ({
-				name: item.name + (item.qualifier ? ' ' + item.qualifier : ''),
-				index: item.id
-			}));
-			dispatch({
-				type: 'SET_STORELIST',
-				store: storeList
-			});
-		});
-	};
-}
 const mapDispatchToProps = dispatch => {
 	return {
-		getStoreList
+		getStoreList: getStore()
+			.then(items => {
+				items.map(item => ({
+					name:
+						item.name +
+						(item.qualifier ? ' ' + item.qualifier : ''),
+					index: item.id
+				}));
+			})
+			.then(storeList => {
+				dispatch({
+					type: 'SET_STORELIST',
+					store: storeList
+				});
+			})
+			.catch(err => console.log(err))
 	};
 };
 
