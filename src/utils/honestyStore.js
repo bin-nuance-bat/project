@@ -1,4 +1,4 @@
-const getStore = callback => {
+const getHonestyStoreItems = callback => {
 	fetch('https://honesty.store/api/v1/register', {
 		method: 'POST',
 		headers: {
@@ -11,4 +11,4 @@ const getStore = callback => {
 		.catch(err => callback(err));
 };
 
-export default getStore;
+export default getHonestyStoreItems;

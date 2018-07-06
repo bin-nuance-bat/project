@@ -1,6 +1,6 @@
 import React from 'react';
 import ButtonList from '../ButtonList/ButtonList';
-import getStore from '../../utils/honestyStore.js';
+import getHonestyStoreItems from '../../utils/honestyStore.js';
 import sendSlackMessage from '../../utils/slack';
 import PropTypes from 'prop-types';
 
@@ -10,7 +10,7 @@ class StoreList extends React.Component {
 	};
 
 	componentDidMount() {
-		getStore((err, items) => {
+		getHonestyStoreItems((err, items) => {
 			if (err) return;
 			this.setState({
 				storeList: items.map(item => ({
