@@ -8,7 +8,7 @@ class ConfirmationBoxContainer extends Component {
 		return (
 			<ConfirmationBox
 				text={`Is this a ${labels[this.props.item]}?`}
-				onYes={this.confirm}
+				onYes={this.props.onYes}
 				onNo={this.props.onNo}>
 				{this.props.children}
 			</ConfirmationBox>
