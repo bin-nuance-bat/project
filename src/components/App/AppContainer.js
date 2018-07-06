@@ -15,10 +15,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
 	return {
 		loadUsers: () =>
-			loadUsers(users => {
-				if (users) dispatch(setUsers(users));
-				else dispatch(setSlackUserFetchError(true));
-			}),
+			loadUsers()
+				.then(users => dispatch(setUsers(users)))
+				.catch(error => dispatch(setSlackUserFetchError(true))),
 		setSlackUserFetchError: () => dispatch(setSlackUserFetchError(true)),
 		setCurrentUser: currentUser => dispatch(setCurrentUser(currentUser))
 	};

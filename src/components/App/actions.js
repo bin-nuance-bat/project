@@ -12,6 +12,7 @@ export function setUsers(users) {
 }
 
 export function setSlackUserFetchError(error) {
+	console.log('error');
 	return {
 		type: SET_SLACK_USER_FETCH_ERROR,
 		error

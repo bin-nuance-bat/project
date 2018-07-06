@@ -29,12 +29,11 @@ class App extends React.Component {
 	};
 
 	componentDidMount() {
-		this.props
-			.loadUsers()
-			.catch(() => this.props.setSlackUserFetchError(true));
+		this.props.loadUsers();
 	}
 
 	render() {
+		console.log(this.props);
 		return (
 			<div>
 				<header>
