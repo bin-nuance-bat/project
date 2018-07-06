@@ -53,7 +53,7 @@ class App extends React.Component {
 				)}
 				{this.props.showList && <StoreListContainer />}
 				{this.props.slackUserFetchError && (
-					<ErrorMessage text={'failed to fetch users'} />
+					<ErrorMessage text="failed to fetch users" />
 				)}
 			</div>
 		);
