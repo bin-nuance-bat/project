@@ -18,7 +18,6 @@ const mapDispatchToProps = dispatch => {
 			loadUsers()
 				.then(users => dispatch(setUsers(users)))
 				.catch(error => dispatch(setSlackUserFetchError(true))),
-		setSlackUserFetchError: () => dispatch(setSlackUserFetchError(true)),
 		setCurrentUser: currentUser => dispatch(setCurrentUser(currentUser))
 	};
 };

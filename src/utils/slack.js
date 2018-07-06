@@ -8,7 +8,7 @@ export const getUserSlackID = (username, users) => {
 };
 
 export const loadUsers = () => {
-	return fetch(`https://slack.co/api/users.list?token=${token}`)
+	return fetch(`https://slack.com/api/users.list?token=${token}`)
 		.then(res => res.json())
 		.then(data => {
 			if (!data.ok) throw Error('failed to fetch users');
