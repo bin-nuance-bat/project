@@ -54,7 +54,7 @@ class App extends React.Component {
 				/>
 				{this.props.prediction && (
 					<ConfirmationBox
-						item={this.props.prediction.index}
+						itemIndex={this.props.prediction.index}
 						onYes={() => {
 							let id = getUserSlackID(
 								this.props.currentUser,
