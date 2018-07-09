@@ -50,7 +50,9 @@ class WebcamCaptureContainer extends Component {
 						};
 					}, 1000);
 				})
-				.catch(() => this.setState({cameraConnected: false}));
+				.catch(() =>
+					this.setState({cameraConnected: false, isDetecting: false})
+				);
 		}
 	}
 
