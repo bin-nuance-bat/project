@@ -23,7 +23,6 @@
 		"test": "react-scripts test --env=jsdom",
 		"eject": "react-scripts eject",
 		"deploy": "react-scripts build && firebase deploy --token $FIREBASE_TOKEN",
-		"deploy-dev": "react-scripts build && firebase use dev && firebase deploy --token $FIREBASE_TOKEN",
 		"lint": "eslint **/*.js"
 	},
 	"lint-staged": {
