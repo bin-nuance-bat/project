@@ -7,14 +7,14 @@ configure({adapter: new Adapter()});
 
 it('calls the onYes correct functions when clicked', () => {
 	const mockFuncYes = jest.fn();
-	const wrapper = shallow(<ConfirmationBox onYes={mockFuncYes} />);
+	const wrapper = shallow(<ConfirmationBox item={0} onYes={mockFuncYes} />);
 	wrapper.find('#YES').simulate('click');
 	expect(mockFuncYes).toHaveBeenCalledTimes(1);
 });
 
 it('calls the onNo correct functions when clicked', () => {
 	const mockFuncNo = jest.fn();
-	const wrapper = shallow(<ConfirmationBox onNo={mockFuncNo} />);
+	const wrapper = shallow(<ConfirmationBox item={0} onNo={mockFuncNo} />);
 	wrapper.find('#NO').simulate('click');
 	expect(mockFuncNo).toHaveBeenCalledTimes(1);
 });
