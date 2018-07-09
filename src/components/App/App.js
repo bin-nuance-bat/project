@@ -5,7 +5,6 @@ import StoreListContainer from '../StoreList/StoreListContainer';
 import ErrorMessage from './../ErrorMessage/ErrorMessage';
 import PropTypes from 'prop-types';
 import {getUserSlackID, sendSlackMessage} from './../../utils/slack';
-import labels from './../../utils/labels';
 import {Notification} from './../Notification/Notification';
 
 class App extends React.Component {
