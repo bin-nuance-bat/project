@@ -1,7 +1,6 @@
-import getStore from '../../utils/honestyStore.js';
 import StoreList from './StoreList';
 import {connect} from 'react-redux';
-import {setStoreList, setLoadStoreListError, setShowList} from './actions';
+import {setShowList} from './actions';
 
 const mapStateToProps = state => {
 	return {

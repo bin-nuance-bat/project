@@ -4,6 +4,8 @@ import ConfirmationBox from '../ConfirmationBox/ConfirmationBox';
 import StoreListContainer from '../StoreList/StoreListContainer';
 import ErrorMessage from './../ErrorMessage/ErrorMessage';
 import PropTypes from 'prop-types';
+import {getUserSlackID, sendSlackMessage} from './../../utils/slack';
+import labels from './../../utils/labels';
 
 class App extends React.Component {
 	constructor(props) {
@@ -22,7 +24,14 @@ class App extends React.Component {
 
 	componentDidMount() {
 		this.props.loadUsers();
+		this.props.getStoreList();
 	}
+
+	getStoreCode = name => {
+		for (let item in this.props.storeList) {
+			if (item.name === name) return item.index;
+		}
+	};
 
 	render() {
 		return (
@@ -40,11 +49,22 @@ class App extends React.Component {
 					}
 				/>
 				<hr />
-				<WebcamCaptureContainer confirmMatch={this.setPrediction} />
+				<WebcamCaptureContainer
+					loadModel
+					confirmMatch={this.setPrediction}
+				/>
 				{this.props.prediction && (
 					<ConfirmationBox
 						item={this.props.prediction.index}
-						onYes={() => this.props.setPrediction(null)}
+						onYes={() => {
+							let id = getUserSlackID(
+								this.props.currentUser,
+								this.props.users
+							);
+							const name = labels[this.props.prediction.index][0];
+							sendSlackMessage(id, name, this.getStoreCode(name));
+							this.props.setPrediction(null);
+						}}
 						onNo={() => {
 							this.props.setPrediction(null);
 							this.props.setShowList(true);
