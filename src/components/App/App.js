@@ -1,6 +1,6 @@
 import React from 'react';
 import WebcamCaptureContainer from '../WebcamCapture/WebcamCaptureContainer.js';
-import ConfirmationBoxContainer from '../ConfirmationBox/ConfirmationBoxContainer';
+import ConfirmationBox from '../ConfirmationBox/ConfirmationBox';
 import StoreListContainer from '../StoreList/StoreListContainer';
 import ErrorMessage from './../ErrorMessage/ErrorMessage';
 
