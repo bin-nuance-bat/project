@@ -1,14 +1,14 @@
 language: node_js
 
 node_js:
-  - '10'
+- '10'
 
 deploy:
   provider: script
-  script: npm run deploy
+  script: npm install && npm run deploy
   on:
     branch: master
 
 script:
-  - npm install && npm test
-  - npm run lint
+- npm install && npm test
+- npm run lint
