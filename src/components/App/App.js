@@ -110,7 +110,7 @@ class App extends React.Component {
 							}
 							onYes={this.handleYes}
   							onNo={this.handleNo}>
-							<img src={this.props.prediction.img} alt="" />
+							<img src={this.props.prediction.img} alt={this.props.prediction.name} />
 						</ConfirmationBox>
 					)}
 				{this.props.showList && (
