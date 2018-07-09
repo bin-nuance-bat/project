@@ -2,6 +2,7 @@ import React from 'react';
 import ButtonList from '../ButtonList/ButtonList';
 import {sendSlackMessage, getUserSlackID} from '../../utils/slack';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import PropTypes from 'prop-types';
 
 class StoreList extends React.Component {
 	componentDidMount() {
@@ -29,5 +30,14 @@ class StoreList extends React.Component {
 		);
 	}
 }
+
+StoreList.propTypes = {
+	getStoreList: PropTypes.func.isRequired,
+	setShowList: PropTypes.func.isRequired,
+	loadStoreListError: PropTypes.func.isRequired,
+	currentUser: PropTypes.string,
+	users: PropTypes.arrayOf(PropTypes.object).isRequired,
+	storeList: PropTypes.arrayOf(PropTypes.object).isRequired
+};
 
 export default StoreList;
