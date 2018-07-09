@@ -3,6 +3,7 @@ import WebcamCaptureContainer from '../WebcamCapture/WebcamCaptureContainer.js';
 import ConfirmationBox from '../ConfirmationBox/ConfirmationBox';
 import StoreListContainer from '../StoreList/StoreListContainer';
 import ErrorMessage from './../ErrorMessage/ErrorMessage';
+import PropTypes from 'prop-types';
 
 class App extends React.Component {
 	constructor(props) {
@@ -59,5 +60,19 @@ class App extends React.Component {
 		);
 	}
 }
+
+App.propTypes = {
+	prediction: PropTypes.shape({
+		index: PropTypes.number.isRequired,
+		img: PropTypes.string.isRequired
+	}),
+	setPrediction: PropTypes.func.isRequired,
+	setCurrentUser: PropTypes.func.isRequired,
+	loadUsers: PropTypes.func.isRequired,
+	setShowList: PropTypes.func.isRequired,
+	showList: PropTypes.func.isRequired,
+	slackUserFetchError: PropTypes.func.isRequired,
+	currentUser: PropTypes.string
+};
 
 export default App;

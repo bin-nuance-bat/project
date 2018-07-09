@@ -24,7 +24,7 @@ const mapDispatchToProps = dispatch => {
 		loadUsers: () =>
 			loadUsers()
 				.then(users => dispatch(setUsers(users)))
-				.catch(error => dispatch(setSlackUserFetchError(true))),
+				.catch(() => dispatch(setSlackUserFetchError(true))),
 		setCurrentUser: currentUser => dispatch(setCurrentUser(currentUser)),
 		setPrediction: prediction => dispatch(setPrediction(prediction)),
 		setShowList: showList => dispatch(setShowList(showList))
