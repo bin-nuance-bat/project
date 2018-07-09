@@ -3,9 +3,9 @@ import './WebcamCapture.css';
 import WebcamCapture from './WebcamCapture';
 import Model from '../../utils/model';
 import PropTypes from 'prop-types';
+import getStore from '../../utils/honestyStore';
 
-const ML_THRESHOLD = 0.1;
-const ML_UNKNOWN = 13;
+const ML_THRESHOLD = 0.06;
 
 class WebcamCaptureContainer extends Component {
 	state = {
@@ -16,6 +16,7 @@ class WebcamCaptureContainer extends Component {
 	constructor(props) {
 		super(props);
 		this.webcam = React.createRef();
+		getStore().then(res => (this.store = res));
 
 		if (this.props.loadModel) {
 			this.model = new Model();
@@ -41,13 +42,9 @@ class WebcamCaptureContainer extends Component {
 							this.model.predict(img).then(item => {
 								if (
 									item.value > ML_THRESHOLD &&
-									item.index !== ML_UNKNOWN
+									item.id !== ''
 								) {
-									console.log('confirmMatch');
-									this.props.confirmMatch(
-										item.index,
-										img.src
-									);
+									this.props.confirmMatch(item.id, img.src);
 								}
 							});
 						};

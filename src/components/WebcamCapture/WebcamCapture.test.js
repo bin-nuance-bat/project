@@ -1,5 +1,5 @@
 import React from 'react';
-import {render, shallow, configure} from 'enzyme';
+import {shallow, configure} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import WebcamCapture from './WebcamCapture';
 

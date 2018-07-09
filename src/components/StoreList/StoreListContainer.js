@@ -4,7 +4,7 @@ import {setShowList} from './actions';
 
 const mapStateToProps = state => {
 	return {
-		storeList: state.storeList,
+		storeList: Object.values(state.storeList),
 		loadStoreListError: state.loadStoreListError,
 		currentUser: state.currentUser,
 		users: state.users
