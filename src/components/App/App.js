@@ -2,10 +2,8 @@ import React from 'react';
 import WebcamCaptureContainer from '../WebcamCapture/WebcamCaptureContainer.js';
 import ConfirmationBox from '../ConfirmationBox/ConfirmationBox';
 import StoreListContainer from '../StoreList/StoreListContainer';
-import ErrorMessage from './../ErrorMessage/ErrorMessage';
 import PropTypes from 'prop-types';
 import {getUserSlackID, sendSlackMessage} from './../../utils/slack';
-import labels from './../../utils/labels';
 import {Notification} from './../Notification/Notification';
 
 const NOTIFICATION_DURATION = 5000;
@@ -19,7 +17,8 @@ class App extends React.Component {
 
 		this.state = {
 			showNotification: false,
-			notificationMessage: ''
+			notificationMessage: '',
+			isError: false
 		};
 	}
 
@@ -37,8 +36,8 @@ class App extends React.Component {
 		}
 	};
 
-	showNotification = notificationMessage => {
-		this.setState({notificationMessage, showNotification: true});
+	showNotification = (notificationMessage, isError) => {
+		this.setState({notificationMessage, showNotification: true, isError});
 
 		setTimeout(() => {
 			this.setState({showNotification: false});
@@ -50,21 +49,23 @@ class App extends React.Component {
 		this.props.getStoreList();
 	}
 
-	componentDidUpdate() {
-		if (this.props.slackUserFetchError)
+	componentDidUpdate(prevProps) {
+		if (!prevProps.slackUserFetchError && this.props.slackUserFetchError) {
+			this.showNotification('Error: failed to load users', true);
 			setTimeout(() => {
 				this.props.setSlackUserFetchError(false);
 			}, NOTIFICATION_DURATION);
+		}
 	}
 
 	render() {
 		return (
 			<div>
 				{this.state.showNotification && (
-					<Notification message={this.state.notificationMessage} />
-				)}
-				{this.props.slackUserFetchError && (
-					<ErrorMessage text="failed to fetch users" />
+					<Notification
+						message={this.state.notificationMessage}
+						isError={this.state.isError}
+					/>
 				)}
 				<header>
 					<h1> Honesty Store Kiosk</h1>
@@ -86,7 +87,7 @@ class App extends React.Component {
 				{this.props.prediction && (
 					<ConfirmationBox
 						item={this.props.storeList[this.props.prediction.id]}
-						onYes={() => {
+						onYes={async () => {
 							let id = getUserSlackID(
 								this.props.currentUser,
 								this.props.users
@@ -94,13 +95,22 @@ class App extends React.Component {
 							const name = this.props.storeList[
 								this.props.prediction.id
 							].name;
-							sendSlackMessage(
+							let result = await sendSlackMessage(
 								id,
 								name,
 								this.props.prediction.id
 							);
 							this.props.setPrediction(null);
-							this.showNotification('Reminder sent to Slack');
+							if (result)
+								this.showNotification(
+									'Reminder sent to Slack',
+									false
+								);
+							else
+								this.showNotification(
+									'Failed to send reminder to Slack',
+									true
+								);
 						}}
 						onNo={() => {
 							this.props.setPrediction(null);

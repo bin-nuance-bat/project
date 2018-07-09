@@ -23,7 +23,8 @@ export const sendSlackMessage = async (id, itemName, storeCode) => {
 		}&
 		channel=${id}&
 		text=${`Click to purchase your ${itemName}: https://honesty.store/item/${storeCode}`}`);
+		return true;
 	} catch (error) {
-		console.error('Failed to obtain env variable: SLACK_TOKEN');
+		return false;
 	}
 };

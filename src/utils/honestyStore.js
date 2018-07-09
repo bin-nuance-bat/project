@@ -8,10 +8,10 @@ const getStore = () => {
 	})
 		.then(res => res.json())
 		.then(res =>
-			res.response.store.items.reduce(
-				(map, obj) => ((map[obj.id] = obj), map),
-				{}
-			)
+			res.response.store.items.reduce((map, obj) => {
+				map[obj.id] = obj;
+				return map;
+			}, {})
 		);
 };
 
