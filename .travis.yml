@@ -7,7 +7,9 @@ deploy:
   provider: script
   script: npm install && npm run deploy-dev
   on:
-    branch: dev
+    branch:
+      - dev
+      - config
   
   provider: script
   script: npm install && npm run deploy
