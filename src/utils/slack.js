@@ -1,5 +1,4 @@
-const token =
-	'xoxp-3623867403-382730537825-392851186291-c8b53445e943772888721a9219405a42';
+const token = process.env.REACT_APP_SLACK_TOKEN;
 
 export const getUserSlackID = (username, users) => {
 	const user = users.find(
