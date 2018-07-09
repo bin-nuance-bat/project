@@ -41,7 +41,7 @@ class App extends React.Component {
 				<hr />
 				<WebcamCaptureContainer confirmMatch={this.setPrediction} />
 				{this.props.prediction && (
-					<ConfirmationBoxContainer
+					<ConfirmationBox
 						item={this.props.prediction.index}
 						onYes={() => this.props.setPrediction(null)}
 						onNo={() => {
@@ -49,7 +49,7 @@ class App extends React.Component {
 							this.props.setShowList(true);
 						}}>
 						<img src={this.props.prediction.img} alt="" />
-					</ConfirmationBoxContainer>
+					</ConfirmationBox>
 				)}
 				{this.props.showList && <StoreListContainer />}
 				{this.props.slackUserFetchError && (
