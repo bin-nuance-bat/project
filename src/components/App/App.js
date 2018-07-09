@@ -5,7 +5,7 @@ import StoreListContainer from '../StoreList/StoreListContainer';
 import PropTypes from 'prop-types';
 import {getUserSlackID, sendSlackMessage} from './../../utils/slack';
 import {Notification} from './../Notification/Notification';
-import 'App.css';
+import './App.css';
 
 const NOTIFICATION_DURATION = 5000;
 
