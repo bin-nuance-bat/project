@@ -5,12 +5,18 @@ import StoreListContainer from '../StoreList/StoreListContainer';
 import ErrorMessage from './../ErrorMessage/ErrorMessage';
 import {getUserSlackID, sendSlackMessage} from './../../utils/slack';
 import labels from './../../utils/labels';
+import {Notification} from './../Notification/Notification';
 
 class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.setPrediction = this.setPrediction.bind(this);
 		this.changeCurrentUser = this.changeCurrentUser.bind(this);
+
+		this.state = {
+			showNotification: false,
+			notificationMessage: ''
+		};
 	}
 
 	setPrediction(index, img) {
@@ -32,9 +38,23 @@ class App extends React.Component {
 		}
 	};
 
+	showNotification = message => {
+		this.setState(
+			{notificationMessage: message, showNotification: true},
+			() => {
+				setTimeout(() => {
+					this.setState({showNotification: false});
+				}, 10000);
+			}
+		);
+	};
+
 	render() {
 		return (
 			<div>
+				{this.state.showNotification && (
+					<Notification message={this.state.notificationMessage} />
+				)}
 				<header>
 					<h1> Honesty Store Kiosk</h1>
 					Please take an item and show it to the camera
@@ -63,6 +83,7 @@ class App extends React.Component {
 							const name = labels[this.props.prediction.index][0];
 							sendSlackMessage(id, name, this.getStoreCode(name));
 							this.props.setPrediction(null);
+							this.showNotification('Reminder sent to slack');
 						}}
 						onNo={() => {
 							this.props.setPrediction(null);
