@@ -22,7 +22,7 @@ const ConfirmationBox = props => {
 ConfirmationBox.propTypes = {
 	onYes: PropTypes.func.isRequired,
 	onNo: PropTypes.any.isRequired,
-	item: PropTypes.string.isRequired,
+	item: PropTypes.number.isRequired,
 	children: PropTypes.node
 };
 
