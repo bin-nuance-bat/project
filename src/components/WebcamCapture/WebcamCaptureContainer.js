@@ -61,9 +61,12 @@ class WebcamCaptureContainer extends Component {
 	}
 
 	render() {
+		if (this.state.isDetecting) {
+			return null;
+		}
+
 		return (
 			<WebcamCapture
-				isDetecting={this.state.isDetecting}
 				cameraConnected={this.state.cameraConnected}
 				cameraRef={this.webcam}
 			/>
