@@ -27,7 +27,7 @@ const mapDispatchToProps = dispatch => {
 				.then(storeList => {
 					dispatch(setStoreList(storeList));
 				})
-				.catch(err => dispatch(setLoadStoreListError(true))),
+				.catch(() => dispatch(setLoadStoreListError(true))),
 		setShowList: showList => dispatch(setShowList(showList))
 	};
 };
