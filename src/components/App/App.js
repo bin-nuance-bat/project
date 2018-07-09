@@ -90,11 +90,11 @@ App.propTypes = {
 	setCurrentUser: PropTypes.func.isRequired,
 	loadUsers: PropTypes.func.isRequired,
 	setShowList: PropTypes.func.isRequired,
-	showList: PropTypes.boolean.isRequired,
+	showList: PropTypes.bool.isRequired,
 	getStoreList: PropTypes.func.isRequired,
 	storeList: PropTypes.arrayOf(PropTypes.object).isRequired,
 	users: PropTypes.arrayOf(PropTypes.string).isRequired,
-	slackUserFetchError: PropTypes.boolean.isRequired,
+	slackUserFetchError: PropTypes.bool.isRequired,
 	currentUser: PropTypes.string
 };
 
