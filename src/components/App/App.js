@@ -31,11 +31,6 @@ class App extends React.Component {
 		this.props.setCurrentUser(currentUser);
 	};
 
-	componentDidMount() {
-		this.props.loadUsers();
-		this.props.getStoreList();
-	}
-
 	getStoreCode = name => {
 		for (let item in this.props.storeList) {
 			if (item.name === name) return item.index;
@@ -50,12 +45,19 @@ class App extends React.Component {
 		}, NOTIFICATION_DURATION);
 	};
 
-	render() {
+	componentDidMount() {
+		this.props.loadUsers();
+		this.props.getStoreList();
+	}
+
+	componentDidUpdate() {
 		if (this.props.slackUserFetchError)
 			setTimeout(() => {
 				this.props.setSlackUserFetchError(false);
 			}, NOTIFICATION_DURATION);
+	}
 
+	render() {
 		return (
 			<div>
 				{this.state.showNotification && (
