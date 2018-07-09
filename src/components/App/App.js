@@ -8,6 +8,8 @@ import {getUserSlackID, sendSlackMessage} from './../../utils/slack';
 import labels from './../../utils/labels';
 import {Notification} from './../Notification/Notification';
 
+const NOTIFICATION_DURATION = 5000;
+
 class App extends React.Component {
 	constructor(props) {
 		super(props);
@@ -45,14 +47,14 @@ class App extends React.Component {
 
 		setTimeout(() => {
 			this.setState({showNotification: false});
-		}, 5000);
+		}, NOTIFICATION_DURATION);
 	};
 
 	render() {
 		if (this.props.slackUserFetchError)
 			setTimeout(() => {
 				this.props.setSlackUserFetchError(false);
-			}, 5000);
+			}, NOTIFICATION_DURATION);
 
 		return (
 			<div>
