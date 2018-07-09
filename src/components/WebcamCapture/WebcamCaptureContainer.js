@@ -9,6 +9,7 @@ const ML_UNKNOWN = 13;
 
 class WebcamCaptureContainer extends Component {
 	state = {
+		isDetecting: true,
 		cameraConnected: false
 	};
 
@@ -27,7 +28,10 @@ class WebcamCaptureContainer extends Component {
 			navigator.mediaDevices
 				.getUserMedia({video: true})
 				.then(() => {
-					this.setState({cameraConnected: true});
+					this.setState({
+						cameraConnected: true,
+						isDetecting: false
+					});
 
 					this.ticker = setInterval(() => {
 						const img = new Image(224, 224);
@@ -39,6 +43,7 @@ class WebcamCaptureContainer extends Component {
 									item.value > ML_THRESHOLD &&
 									item.index !== ML_UNKNOWN
 								) {
+									console.log('confirmMatch');
 									this.props.confirmMatch(
 										item.index,
 										img.src
@@ -59,6 +64,7 @@ class WebcamCaptureContainer extends Component {
 	render() {
 		return (
 			<WebcamCapture
+				isDetecting={this.state.isDetecting}
 				cameraConnected={this.state.cameraConnected}
 				cameraRef={this.webcam}
 			/>
