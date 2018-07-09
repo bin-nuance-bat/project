@@ -13,6 +13,7 @@ const StoreList = props => {
 					let id = getUserSlackID(props.currentUser, props.users);
 					sendSlackMessage(id, itemName, storeCode);
 					props.setShowList(false);
+					props.showNotification('Reminder sent to Slack');
 				}}
 			/>
 			{props.loadStoreListError && (

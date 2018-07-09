@@ -12,6 +12,7 @@ class App extends React.Component {
 		super(props);
 		this.setPrediction = this.setPrediction.bind(this);
 		this.changeCurrentUser = this.changeCurrentUser.bind(this);
+		this.showNotification = this.showNotification.bind(this);
 
 		this.state = {
 			showNotification: false,
@@ -83,7 +84,7 @@ class App extends React.Component {
 							const name = labels[this.props.prediction.index][0];
 							sendSlackMessage(id, name, this.getStoreCode(name));
 							this.props.setPrediction(null);
-							this.showNotification('Reminder sent to slack');
+							this.showNotification('Reminder sent to Slack');
 						}}
 						onNo={() => {
 							this.props.setPrediction(null);
@@ -92,7 +93,11 @@ class App extends React.Component {
 						<img src={this.props.prediction.img} alt="" />
 					</ConfirmationBox>
 				)}
-				{this.props.showList && <StoreListContainer />}
+				{this.props.showList && (
+					<StoreListContainer
+						showNotification={this.showNotification}
+					/>
+				)}
 				{this.props.slackUserFetchError && (
 					<ErrorMessage text="failed to fetch users" />
 				)}
