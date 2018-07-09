@@ -1,3 +1,5 @@
+import labels from './labels.json';
+
 const token = process.env.REACT_APP_SLACK_TOKEN;
 
 export const getUserSlackID = (username, users) => {
@@ -17,11 +19,17 @@ export const loadUsers = () => {
 };
 
 export const sendSlackMessage = async (id, itemName, storeCode) => {
+	for (let item in labels) {
+		if (item === storeCode) break;
+		else return false;
+	}
+
 	try {
 		await fetch(`http://slack.com/api/chat.postMessage?token=${token}&
 		channel=${id}&
 		text=${`Click to purchase your ${itemName}: https://honesty.store/item/${storeCode}`}`);
+		return true;
 	} catch (error) {
-		console.error('Failed to obtain env variable: SLACK_TOKEN');
+		return false;
 	}
 };

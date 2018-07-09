@@ -10,11 +10,22 @@ const StoreList = props => {
 			Please select the correct item:
 			<ButtonList
 				items={props.storeList}
-				onClick={(storeCode, itemName) => {
+				onClick={async (storeCode, itemName) => {
 					let id = getUserSlackID(props.currentUser, props.users);
-					sendSlackMessage(id, itemName, storeCode);
+					let result = await sendSlackMessage(
+						id,
+						itemName,
+						storeCode
+					);
 					props.setShowList(false);
 					props.showNotification('Reminder sent to Slack');
+					if (result)
+						props.showNotification('Reminder sent to Slack', false);
+					else
+						props.showNotification(
+							'Failed to send reminder to Slack',
+							true
+						);
 				}}
 			/>
 			{props.loadStoreListError && (
