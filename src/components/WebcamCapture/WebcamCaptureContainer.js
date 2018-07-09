@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import getStore from '../../utils/honestyStore';
 
 const ML_THRESHOLD = 0.06;
-const ML_UNKNOWN = 13;
 
 class WebcamCaptureContainer extends Component {
 	state = {
@@ -37,7 +36,6 @@ class WebcamCaptureContainer extends Component {
 
 						img.onload = () => {
 							this.model.predict(img).then(item => {
-								console.log(item.value, this.store[item.id]);
 								if (
 									item.value > ML_THRESHOLD &&
 									item.id !== ''
