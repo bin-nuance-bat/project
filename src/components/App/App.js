@@ -40,15 +40,12 @@ class App extends React.Component {
 		}
 	};
 
-	showNotification = message => {
-		this.setState(
-			{notificationMessage: message, showNotification: true},
-			() => {
-				setTimeout(() => {
-					this.setState({showNotification: false});
-				}, 5000);
-			}
-		);
+	showNotification = notificationMessage => {
+		this.setState({notificationMessage, showNotification: true});
+
+		setTimeout(() => {
+			this.setState({showNotification: false});
+		}, 5000);
 	};
 
 	render() {
