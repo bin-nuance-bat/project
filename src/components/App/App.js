@@ -1,6 +1,6 @@
 import React from 'react';
 import WebcamCaptureContainer from '../WebcamCapture/WebcamCaptureContainer.js';
-import ConfirmationBoxContainer from '../ConfirmationBox/ConfirmationBoxContainer';
+import ConfirmationBox from '../ConfirmationBox/ConfirmationBox';
 import StoreListContainer from '../StoreList/StoreListContainer';
 import ErrorMessage from './../ErrorMessage/ErrorMessage';
 import {getUserSlackID, sendSlackMessage} from './../../utils/slack';
@@ -53,7 +53,7 @@ class App extends React.Component {
 					confirmMatch={this.setPrediction}
 				/>
 				{this.props.prediction && (
-					<ConfirmationBoxContainer
+					<ConfirmationBox
 						item={this.props.prediction.index}
 						onYes={() => {
 							let id = getUserSlackID(
@@ -69,7 +69,7 @@ class App extends React.Component {
 							this.props.setShowList(true);
 						}}>
 						<img src={this.props.prediction.img} alt="" />
-					</ConfirmationBoxContainer>
+					</ConfirmationBox>
 				)}
 				{this.props.showList && <StoreListContainer />}
 				{this.props.slackUserFetchError && (
