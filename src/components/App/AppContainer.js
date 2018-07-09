@@ -30,24 +30,18 @@ const mapDispatchToProps = dispatch => {
 		loadUsers: () =>
 			loadUsers()
 				.then(users => dispatch(setUsers(users)))
-				.catch(error => dispatch(setSlackUserFetchError(true))),
+				.catch(() => dispatch(setSlackUserFetchError(true))),
 		setCurrentUser: currentUser => dispatch(setCurrentUser(currentUser)),
 		setPrediction: prediction => dispatch(setPrediction(prediction)),
 		setShowList: showList => dispatch(setShowList(showList)),
+		setSlackUserFetchError: isError =>
+			dispatch(setSlackUserFetchError(isError)),
 		getStoreList: () =>
 			getStore()
-				.then(items =>
-					items.map(item => ({
-						name:
-							item.name +
-							(item.qualifier ? ' ' + item.qualifier : ''),
-						index: item.id
-					}))
-				)
 				.then(storeList => {
 					dispatch(setStoreList(storeList));
 				})
-				.catch(err => dispatch(setLoadStoreListError(true)))
+				.catch(() => dispatch(setLoadStoreListError(true)))
 	};
 };
 

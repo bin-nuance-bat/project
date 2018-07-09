@@ -1,4 +1,4 @@
-const token = process.env.SLACK_TOKEN;
+const token = process.env.REACT_APP_SLACK_TOKEN;
 
 export const getUserSlackID = (username, users) => {
 	const user = users.find(
@@ -17,9 +17,11 @@ export const loadUsers = () => {
 };
 
 export const sendSlackMessage = async (id, itemName, storeCode) => {
-	await fetch(`http://slack.com/api/chat.postMessage?token=${
-		this.props.token
-	}&
-	channel=${id}&
-	text=${`Click to purchase your ${itemName}: https://honesty.store/item/${storeCode}`}`);
+	try {
+		await fetch(`http://slack.com/api/chat.postMessage?token=${token}&
+		channel=${id}&
+		text=${`Click to purchase your ${itemName}: https://honesty.store/item/${storeCode}`}`);
+	} catch (error) {
+		console.error('Failed to obtain env variable: SLACK_TOKEN');
+	}
 };
