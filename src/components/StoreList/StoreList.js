@@ -6,6 +6,7 @@ import ErrorMessage from '../ErrorMessage/ErrorMessage';
 const StoreList = props => {
 	return (
 		<div>
+			Please select the correct item:
 			<ButtonList
 				items={props.storeList}
 				onClick={(storeCode, itemName) => {

@@ -21,7 +21,7 @@ export function currentUser(state = '', action) {
 	return state;
 }
 
-export function prediction(state = {index: 0, img: 'svg'}, action) {
+export function prediction(state = null, action) {
 	if (action.type === SET_PREDICTION) return action.prediction;
 	return state;
 }

@@ -44,7 +44,7 @@ class App extends React.Component {
 			() => {
 				setTimeout(() => {
 					this.setState({showNotification: false});
-				}, 10000);
+				}, 5000);
 			}
 		);
 	};
@@ -74,7 +74,7 @@ class App extends React.Component {
 				/>
 				{this.props.prediction && (
 					<ConfirmationBox
-						item={this.props.prediction.index}
+						itemIndex={this.props.prediction.index}
 						onYes={() => {
 							let id = getUserSlackID(
 								this.props.currentUser,
