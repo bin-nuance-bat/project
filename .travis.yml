@@ -1,14 +1,20 @@
 language: node_js
 
 node_js:
-  - '10'
+- '10'
 
 deploy:
-  provider: script
-  script: npm run deploy
+  provider: firebase
   on:
-    branch: master
+    branch: config
+  token:
+    secure: YVZWiVnOh96lb2TYCLb0LwjSHi6e2drJc9aAQpfIt5iz92YyBpoWlArY3LYSnGronQ56SVBjH8k+/VL3J3K4gTLbePmmpASgjeb2ZqNT18pAIa4RF8I7TPnuTA0IT8ak/JVEt2MlmSOBuDmMyp/lIFV314xhsc4eR+yJKwVyeNLXAyL+TXmtKwBsdYXS1eSJwiUbjsyeV/qCTTAf9q7tyqfVYRf87ZwDCHRW3K3g8k9dlbtzQlojTgaJ2VrfVAglStACXsm1axOSGqqgC4QA5RfcDUi4Lhtw/pDP+QHTingVWYjVlrOqmsIh7pTU5KmSiCgkpngrXV3DlonzQpIlFl3eRt0oz8YBdl5kvJcNYvuA8Kmui6F+A5ECibuWR7Nb0VyPnKuDVXfHPrG3A+lh1/Hj9RO4PE/o4SBazIqbUivQFC5TY1TKNq1PFVZtgvytSSg349TJuShAAZPLlMrqfpxKpAYuFIOV8rwKkruOEY/7xd00WaLDUZzlxwe0Dq2+1KBjJJ0X+W1wdSLP3wm70uRAYj55Uzv2VhyW9s6LEByQKhstkR5gTzJ8WqhX0T8ZYqgpzIZwNqCyVeuEjoTVkP9TaF7np1palIVug+Iw6SIELCZYhX6Kb3Z2N9NymcHsNiLd8JFQnMHwkzm7has6c9MkbmDTWNwbQXqiLxtbGfI=
+  project: honesty-store-kiosk-dev
 
 script:
-  - npm install && npm test
-  - npm run lint
+- npm install && npm test
+- npm run lint
+
+env:
+  global:
+    secure: YVZWiVnOh96lb2TYCLb0LwjSHi6e2drJc9aAQpfIt5iz92YyBpoWlArY3LYSnGronQ56SVBjH8k+/VL3J3K4gTLbePmmpASgjeb2ZqNT18pAIa4RF8I7TPnuTA0IT8ak/JVEt2MlmSOBuDmMyp/lIFV314xhsc4eR+yJKwVyeNLXAyL+TXmtKwBsdYXS1eSJwiUbjsyeV/qCTTAf9q7tyqfVYRf87ZwDCHRW3K3g8k9dlbtzQlojTgaJ2VrfVAglStACXsm1axOSGqqgC4QA5RfcDUi4Lhtw/pDP+QHTingVWYjVlrOqmsIh7pTU5KmSiCgkpngrXV3DlonzQpIlFl3eRt0oz8YBdl5kvJcNYvuA8Kmui6F+A5ECibuWR7Nb0VyPnKuDVXfHPrG3A+lh1/Hj9RO4PE/o4SBazIqbUivQFC5TY1TKNq1PFVZtgvytSSg349TJuShAAZPLlMrqfpxKpAYuFIOV8rwKkruOEY/7xd00WaLDUZzlxwe0Dq2+1KBjJJ0X+W1wdSLP3wm70uRAYj55Uzv2VhyW9s6LEByQKhstkR5gTzJ8WqhX0T8ZYqgpzIZwNqCyVeuEjoTVkP9TaF7np1palIVug+Iw6SIELCZYhX6Kb3Z2N9NymcHsNiLd8JFQnMHwkzm7has6c9MkbmDTWNwbQXqiLxtbGfI=
