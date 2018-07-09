@@ -82,32 +82,35 @@ class App extends React.Component {
 					loadModel
 					confirmMatch={this.setPrediction}
 				/>
-				{this.props.prediction && (
-					<ConfirmationBox
-						item={this.props.storeList[this.props.prediction.id]}
-						onYes={() => {
-							let id = getUserSlackID(
-								this.props.currentUser,
-								this.props.users
-							);
-							const name = this.props.storeList[
-								this.props.prediction.id
-							].name;
-							sendSlackMessage(
-								id,
-								name,
-								this.props.prediction.id
-							);
-							this.props.setPrediction(null);
-							this.showNotification('Reminder sent to Slack');
-						}}
-						onNo={() => {
-							this.props.setPrediction(null);
-							this.props.setShowList(true);
-						}}>
-						<img src={this.props.prediction.img} alt="" />
-					</ConfirmationBox>
-				)}
+				{this.props.prediction &&
+					this.props.storeList[this.props.prediction.id] && (
+						<ConfirmationBox
+							item={
+								this.props.storeList[this.props.prediction.id]
+							}
+							onYes={() => {
+								let id = getUserSlackID(
+									this.props.currentUser,
+									this.props.users
+								);
+								const name = this.props.storeList[
+									this.props.prediction.id
+								].name;
+								sendSlackMessage(
+									id,
+									name,
+									this.props.prediction.id
+								);
+								this.props.setPrediction(null);
+								this.showNotification('Reminder sent to Slack');
+							}}
+							onNo={() => {
+								this.props.setPrediction(null);
+								this.props.setShowList(true);
+							}}>
+							<img src={this.props.prediction.img} alt="" />
+						</ConfirmationBox>
+					)}
 				{this.props.showList && (
 					<StoreListContainer
 						showNotification={this.showNotification}

@@ -9,7 +9,11 @@ it('calls the onYes correct functions when clicked', () => {
 	const mockFuncYes = jest.fn();
 	const mockFuncNo = jest.fn();
 	const wrapper = shallow(
-		<ConfirmationBox itemIndex={0} onYes={mockFuncYes} onNo={mockFuncNo} />
+		<ConfirmationBox
+			item={{name: 'test', id: 'xxx'}}
+			onYes={mockFuncYes}
+			onNo={mockFuncNo}
+		/>
 	);
 	wrapper.find('#YES').simulate('click');
 	expect(mockFuncYes).toHaveBeenCalledTimes(1);
@@ -19,7 +23,11 @@ it('calls the onNo correct functions when clicked', () => {
 	const mockFuncNo = jest.fn();
 	const mockFuncYes = jest.fn();
 	const wrapper = shallow(
-		<ConfirmationBox itemIndex={0} onYes={mockFuncYes} onNo={mockFuncNo} />
+		<ConfirmationBox
+			item={{name: 'test', id: 'xxx'}}
+			onYes={mockFuncYes}
+			onNo={mockFuncNo}
+		/>
 	);
 	wrapper.find('#NO').simulate('click');
 	expect(mockFuncNo).toHaveBeenCalledTimes(1);

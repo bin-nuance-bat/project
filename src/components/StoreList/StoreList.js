@@ -9,7 +9,7 @@ const StoreList = props => {
 		<div>
 			Please select the correct item:
 			<ButtonList
-				items={Object.entries(props.storeList)}
+				items={Object.values(props.storeList)}
 				onClick={(storeCode, itemName) => {
 					let id = getUserSlackID(props.currentUser, props.users);
 					sendSlackMessage(id, itemName, storeCode);
@@ -25,9 +25,7 @@ const StoreList = props => {
 };
 
 StoreList.propTypes = {
-	getStoreList: PropTypes.func.isRequired,
 	setShowList: PropTypes.func.isRequired,
-	loadStoreListError: PropTypes.func.isRequired,
 	currentUser: PropTypes.string,
 	users: PropTypes.arrayOf(PropTypes.object).isRequired,
 	storeList: PropTypes.objectOf(PropTypes.object).isRequired
