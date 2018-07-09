@@ -2,6 +2,7 @@ import React from 'react';
 import ButtonList from '../ButtonList/ButtonList';
 import {sendSlackMessage, getUserSlackID} from '../../utils/slack';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import PropTypes from 'prop-types';
 
 const StoreList = props => {
 	return (
@@ -19,6 +20,15 @@ const StoreList = props => {
 			)}
 		</div>
 	);
+};
+
+StoreList.propTypes = {
+	getStoreList: PropTypes.func.isRequired,
+	setShowList: PropTypes.func.isRequired,
+	loadStoreListError: PropTypes.func.isRequired,
+	currentUser: PropTypes.string,
+	users: PropTypes.arrayOf(PropTypes.object).isRequired,
+	storeList: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export default StoreList;
