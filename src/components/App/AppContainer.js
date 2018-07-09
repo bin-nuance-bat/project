@@ -34,6 +34,8 @@ const mapDispatchToProps = dispatch => {
 		setCurrentUser: currentUser => dispatch(setCurrentUser(currentUser)),
 		setPrediction: prediction => dispatch(setPrediction(prediction)),
 		setShowList: showList => dispatch(setShowList(showList)),
+		setSlackUserFetchError: isError =>
+			dispatch(setSlackUserFetchError(isError)),
 		getStoreList: () =>
 			getStore()
 				.then(items =>

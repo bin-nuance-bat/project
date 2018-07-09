@@ -51,10 +51,18 @@ class App extends React.Component {
 	};
 
 	render() {
+		if (this.props.slackUserFetchError)
+			setTimeout(() => {
+				this.props.setSlackUserFetchError(false);
+			}, 5000);
+
 		return (
 			<div>
 				{this.state.showNotification && (
 					<Notification message={this.state.notificationMessage} />
+				)}
+				{this.props.slackUserFetchError && (
+					<ErrorMessage text="failed to fetch users" />
 				)}
 				<header>
 					<h1> Honesty Store Kiosk</h1>
@@ -97,9 +105,6 @@ class App extends React.Component {
 					<StoreListContainer
 						showNotification={this.showNotification}
 					/>
-				)}
-				{this.props.slackUserFetchError && (
-					<ErrorMessage text="failed to fetch users" />
 				)}
 			</div>
 		);
