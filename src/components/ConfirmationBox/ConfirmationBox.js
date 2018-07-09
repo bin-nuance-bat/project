@@ -5,7 +5,7 @@ import labels from '../../utils/labels';
 const ConfirmationBox = props => {
 	return (
 		<div>
-			<div>{`Is this a ${labels[props.item]}?`}</div>
+			<div>{`Is this a ${labels[props.item][0]}?`}</div>
 			{props.children}
 			<div>
 				<button id="YES" onClick={props.onYes}>
