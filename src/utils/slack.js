@@ -18,9 +18,7 @@ export const loadUsers = () => {
 
 export const sendSlackMessage = async (id, itemName, storeCode) => {
 	try {
-		await fetch(`http://slack.com/api/chat.postMessage?token=${
-			this.props.token
-		}&
+		await fetch(`http://slack.com/api/chat.postMessage?token=${token}&
 		channel=${id}&
 		text=${`Click to purchase your ${itemName}: https://honesty.store/item/${storeCode}`}`);
 	} catch (error) {
