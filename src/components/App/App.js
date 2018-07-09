@@ -50,26 +50,17 @@ class App extends React.Component {
 		);
 	};
 
-	onYes={() => {
-								let id = getUserSlackID(
-									this.props.currentUser,
-									this.props.users
-								);
-								const name = this.props.storeList[
-									this.props.prediction.id
-								].name;
-								sendSlackMessage(
-									id,
-									name,
-									this.props.prediction.id
-								);
-								this.props.setPrediction(null);
-								this.showNotification('Reminder sent to Slack');
-							}}
-	onNo={() => {
-								this.props.setPrediction(null);
-								this.props.setShowList(true);
-							}}
+	onYes() {
+		let id = getUserSlackID(this.props.currentUser, this.props.users);
+		const name = this.props.storeList[this.props.prediction.id].name;
+		sendSlackMessage(id, name, this.props.prediction.id);
+		this.props.setPrediction(null);
+		this.showNotification('Reminder sent to Slack');
+	}
+	onNo() {
+		this.props.setPrediction(null);
+		this.props.setShowList(true);
+	}
 
 	render() {
 		if (this.props.slackUserFetchError)
@@ -108,8 +99,8 @@ class App extends React.Component {
 							item={
 								this.props.storeList[this.props.prediction.id]
 							}
-							onYes={this.handleYes}
-  							onNo={this.handleNo}>
+							onYes={this.onYes}
+							onNo={this.onNo}>
 							<img src={this.props.prediction.img} alt="" />
 						</ConfirmationBox>
 					)}

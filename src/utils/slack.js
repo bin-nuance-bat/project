@@ -1,4 +1,5 @@
-const token = process.env.REACT_APP_SLACK_TOKEN;
+const token =
+	'xoxp-3623867403-382730537825-392851186291-c8b53445e943772888721a9219405a42';
 
 export const getUserSlackID = (username, users) => {
 	const user = users.find(
@@ -18,9 +19,7 @@ export const loadUsers = () => {
 
 export const sendSlackMessage = async (id, itemName, storeCode) => {
 	try {
-		await fetch(`http://slack.com/api/chat.postMessage?token=${
-			token
-		}&
+		await fetch(`http://slack.com/api/chat.postMessage?token=${token}&
 		channel=${id}&
 		text=${`Click to purchase your ${itemName}: https://honesty.store/item/${storeCode}`}`);
 	} catch (error) {
