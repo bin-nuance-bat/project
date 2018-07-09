@@ -14,6 +14,8 @@ class App extends React.Component {
 		this.setPrediction = this.setPrediction.bind(this);
 		this.changeCurrentUser = this.changeCurrentUser.bind(this);
 		this.showNotification = this.showNotification.bind(this);
+		this.handleYes = this.handleYes.bind(this);
+		this.handleNo = this.handleNo.bind(this);
 
 		this.state = {
 			showNotification: false,
