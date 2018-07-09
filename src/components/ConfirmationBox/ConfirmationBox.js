@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const ConfirmationBox = props => {
 	return (
 		<div>
-			<div>{`Is this a ${props.item.name}?`}</div>
+			<div>{`Did you take ${props.item.name}?`}</div>
 			{props.children}
 			<div>
 				<button id="YES" onClick={props.onYes}>
