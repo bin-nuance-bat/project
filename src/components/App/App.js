@@ -5,7 +5,6 @@ import StoreListContainer from '../StoreList/StoreListContainer';
 import ErrorMessage from './../ErrorMessage/ErrorMessage';
 import PropTypes from 'prop-types';
 import {getUserSlackID, sendSlackMessage} from './../../utils/slack';
-import labels from './../../utils/labels';
 import {Notification} from './../Notification/Notification';
 
 class App extends React.Component {
@@ -51,6 +50,27 @@ class App extends React.Component {
 		);
 	};
 
+	onYes={() => {
+								let id = getUserSlackID(
+									this.props.currentUser,
+									this.props.users
+								);
+								const name = this.props.storeList[
+									this.props.prediction.id
+								].name;
+								sendSlackMessage(
+									id,
+									name,
+									this.props.prediction.id
+								);
+								this.props.setPrediction(null);
+								this.showNotification('Reminder sent to Slack');
+							}}
+	onNo={() => {
+								this.props.setPrediction(null);
+								this.props.setShowList(true);
+							}}
+
 	render() {
 		if (this.props.slackUserFetchError)
 			setTimeout(() => {
@@ -88,26 +108,8 @@ class App extends React.Component {
 							item={
 								this.props.storeList[this.props.prediction.id]
 							}
-							onYes={() => {
-								let id = getUserSlackID(
-									this.props.currentUser,
-									this.props.users
-								);
-								const name = this.props.storeList[
-									this.props.prediction.id
-								].name;
-								sendSlackMessage(
-									id,
-									name,
-									this.props.prediction.id
-								);
-								this.props.setPrediction(null);
-								this.showNotification('Reminder sent to Slack');
-							}}
-							onNo={() => {
-								this.props.setPrediction(null);
-								this.props.setShowList(true);
-							}}>
+							onYes={this.handleYes}
+  							onNo={this.handleNo}>
 							<img src={this.props.prediction.img} alt="" />
 						</ConfirmationBox>
 					)}
