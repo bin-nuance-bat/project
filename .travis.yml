@@ -5,10 +5,14 @@ node_js:
 
 deploy:
   provider: script
+  script: npm install && npm run deploy-dev
+  on:
+    branch: dev
+  
+  provider: script
   script: npm install && npm run deploy
   on:
-    branch: config
-  project: honesty-store-kiosk-dev
+    branch: master
 
 script:
 - npm install && npm test
