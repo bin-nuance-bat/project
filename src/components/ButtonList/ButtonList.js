@@ -5,10 +5,10 @@ const ButtonList = props => {
 	return (
 		<div>
 			{props.items.map(item => (
-				<div key={item.index}>
+				<div key={item[0]}>
 					<button
-						onClick={() => props.onClick(item.index, item.name)}>
-						{item.name}
+						onClick={() => props.onClick(item[0], item[1].name)}>
+						{item[1].name}
 					</button>
 				</div>
 			))}

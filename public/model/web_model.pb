@@ -1129,12 +1129,12 @@ _
 W
 'final_retrain_ops/weights/final_weightsConst*
 valueB	€
-*
+!*
 dtype0
 P
 %final_retrain_ops/biases/final_biasesConst*
 value
-B*
+B!*
 dtype0
 e
 "module_apply_default/hub_input/MulMulPlaceholder$module_apply_default/hub_input/Mul/y*

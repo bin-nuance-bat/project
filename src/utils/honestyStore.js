@@ -7,7 +7,12 @@ const getStore = () => {
 		body: JSON.stringify({storeCode: 'sl-ncl'})
 	})
 		.then(res => res.json())
-		.then(res => res.response.store.items);
+		.then(res =>
+			res.response.store.items.reduce(
+				(map, obj) => ((map[obj.id] = obj), map),
+				{}
+			)
+		);
 };
 
 export default getStore;

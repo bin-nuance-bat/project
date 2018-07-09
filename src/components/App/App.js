@@ -21,8 +21,8 @@ class App extends React.Component {
 		};
 	}
 
-	setPrediction(index, img) {
-		if (!this.props.prediction) this.props.setPrediction({index, img});
+	setPrediction(id, img) {
+		if (!this.props.prediction) this.props.setPrediction({id, img});
 	}
 
 	changeCurrentUser = currentUser => {
@@ -84,14 +84,20 @@ class App extends React.Component {
 				/>
 				{this.props.prediction && (
 					<ConfirmationBox
-						itemIndex={this.props.prediction.index}
+						item={this.props.storeList[this.props.prediction.id]}
 						onYes={() => {
 							let id = getUserSlackID(
 								this.props.currentUser,
 								this.props.users
 							);
-							const name = labels[this.props.prediction.index][0];
-							sendSlackMessage(id, name, this.getStoreCode(name));
+							const name = this.props.storeList[
+								this.props.prediction.id
+							].name;
+							sendSlackMessage(
+								id,
+								name,
+								this.props.prediction.id
+							);
 							this.props.setPrediction(null);
 							this.showNotification('Reminder sent to Slack');
 						}}
@@ -114,7 +120,7 @@ class App extends React.Component {
 
 App.propTypes = {
 	prediction: PropTypes.shape({
-		index: PropTypes.number.isRequired,
+		id: PropTypes.string.isRequired,
 		img: PropTypes.string.isRequired
 	}),
 	setPrediction: PropTypes.func.isRequired,
@@ -123,7 +129,7 @@ App.propTypes = {
 	setShowList: PropTypes.func.isRequired,
 	showList: PropTypes.bool.isRequired,
 	getStoreList: PropTypes.func.isRequired,
-	storeList: PropTypes.arrayOf(PropTypes.object).isRequired,
+	storeList: PropTypes.objectOf(PropTypes.object).isRequired,
 	users: PropTypes.arrayOf(PropTypes.object).isRequired,
 	slackUserFetchError: PropTypes.bool.isRequired,
 	currentUser: PropTypes.string

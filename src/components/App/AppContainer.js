@@ -38,14 +38,6 @@ const mapDispatchToProps = dispatch => {
 			dispatch(setSlackUserFetchError(isError)),
 		getStoreList: () =>
 			getStore()
-				.then(items =>
-					items.map(item => ({
-						name:
-							item.name +
-							(item.qualifier ? ' ' + item.qualifier : ''),
-						index: item.id
-					}))
-				)
 				.then(storeList => {
 					dispatch(setStoreList(storeList));
 				})
