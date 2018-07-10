@@ -1,7 +1,7 @@
 import React from 'react';
 import './WebcamCapture.css';
 import Webcam from 'react-webcam';
-import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import {Notification} from './../Notification/Notification';
 import PropTypes from 'prop-types';
 
 const WebcamCapture = props => {
@@ -30,7 +30,7 @@ const WebcamCapture = props => {
 			</div>
 		);
 	}
-	return <ErrorMessage text="failed to load video feed" />;
+	return <Notification message="failed to load video feed" isError={true} />;
 };
 
 WebcamCapture.propTypes = {

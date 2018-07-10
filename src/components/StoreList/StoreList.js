@@ -1,7 +1,7 @@
 import React from 'react';
 import ButtonList from '../ButtonList/ButtonList';
 import {sendSlackMessage, getUserSlackID} from '../../utils/slack';
-import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import {Notification} from './../Notification/Notification';
 import PropTypes from 'prop-types';
 
 const StoreList = props => {
@@ -18,7 +18,10 @@ const StoreList = props => {
 				}}
 			/>
 			{props.loadStoreListError && (
-				<ErrorMessage text="failed to load store items" />
+				<Notification
+					message="failed to load store items"
+					isError={true}
+				/>
 			)}
 		</div>
 	);
