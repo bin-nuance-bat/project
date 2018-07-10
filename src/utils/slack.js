@@ -25,7 +25,7 @@ export const sendSlackMessage = async (id, itemName, storeCode) => {
 		if (labels[i] === storeCode) break;
 	}
 	if (i === labels.length) return false;
-
+	if (!token) return false;
 	try {
 		await fetch(`https://slack.com/api/chat.postMessage?token=${token}&
 		channel=${id}&
