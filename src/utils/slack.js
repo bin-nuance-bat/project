@@ -19,10 +19,12 @@ export const loadUsers = () => {
 };
 
 export const sendSlackMessage = async (id, itemName, storeCode) => {
-	for (let item in labels) {
-		if (item === storeCode) break;
-		else return false;
+	// check that the saved store code exists
+	let i = 0;
+	for (; i < labels.length; i++) {
+		if (labels[i] === storeCode) break;
 	}
+	if (i === labels.length) return false;
 
 	try {
 		await fetch(`https://slack.com/api/chat.postMessage?token=${token}&
