@@ -16,10 +16,6 @@ class App extends React.Component {
 		isError: false
 	};
 
-	setPrediction = (id, img) => {
-		if (!this.props.prediction) this.props.setPrediction({id, img});
-	};
-
 	getStoreCode = name => {
 		for (let item in this.props.storeList) {
 			if (item.name === name) return item.index;
@@ -78,10 +74,7 @@ class App extends React.Component {
 				<hr />
 				<UsernameEntryContainer />
 				<hr />
-				<WebcamCaptureContainer
-					loadModel
-					confirmMatch={this.setPrediction}
-				/>
+				<WebcamCaptureContainer confirmMatch={this.setPrediction} />
 				{this.props.prediction && (
 					<ConfirmationBox
 						item={this.props.storeList[this.props.prediction.id]}
@@ -105,7 +98,6 @@ App.propTypes = {
 		id: PropTypes.string.isRequired,
 		img: PropTypes.string.isRequired
 	}),
-	setPrediction: PropTypes.func.isRequired,
 	loadUsers: PropTypes.func.isRequired,
 	setShowList: PropTypes.func.isRequired,
 	showList: PropTypes.bool.isRequired,

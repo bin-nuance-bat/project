@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import App from './App';
-import {setSlackUserFetchError, setPrediction, loadUsers} from './actions';
+import {setSlackUserFetchError, loadUsers} from './actions';
 import {loadStoreList, setShowList} from './../StoreList/actions';
 
 const mapStateToProps = state => {
@@ -17,7 +17,6 @@ const mapDispatchToProps = dispatch => {
 	return {
 		loadUsers,
 		loadStoreList,
-		setPrediction: prediction => dispatch(setPrediction(prediction)),
 		setShowList: showList => dispatch(setShowList(showList)),
 		setSlackUserFetchError: isError =>
 			dispatch(setSlackUserFetchError(isError))

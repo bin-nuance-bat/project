@@ -1,8 +1,4 @@
-import {
-	SET_USERS,
-	SET_SLACK_USER_FETCH_ERROR,
-	SET_PREDICTION
-} from './actionTypes';
+import {SET_USERS, SET_SLACK_USER_FETCH_ERROR} from './actionTypes';
 
 export function users(state = [], action) {
 	if (action.type === SET_USERS) return action.users;
@@ -12,10 +8,5 @@ export function users(state = [], action) {
 export function slackUserFetchError(state = false, action) {
 	if (action.type === SET_SLACK_USER_FETCH_ERROR)
 		return action.slackUserFetchError;
-	return state;
-}
-
-export function prediction(state = null, action) {
-	if (action.type === SET_PREDICTION) return action.prediction;
 	return state;
 }
