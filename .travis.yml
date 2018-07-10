@@ -3,13 +3,17 @@ language: node_js
 node_js:
 - '10'
 
+install: true
+
+script:
+- npm run lint
+- npm test
+- npm run build
+
 deploy:
+  skip_cleanup: true
   provider: script
   script: npm run deploy
   on:
     branch: master
     branch: config
-
-script:
-- npm install && npm test
-- npm run lint
