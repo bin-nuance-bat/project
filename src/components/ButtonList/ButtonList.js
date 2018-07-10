@@ -18,7 +18,7 @@ const ButtonList = props => {
 ButtonList.propTypes = {
 	items: PropTypes.arrayOf(
 		PropTypes.shape({
-			index: PropTypes.string.isRequired,
+			id: PropTypes.string.isRequired,
 			name: PropTypes.string.isRequired
 		}).isRequired
 	).isRequired
