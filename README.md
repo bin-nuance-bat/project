@@ -66,11 +66,11 @@ This will generate a production build in the `build/` directory. Simply deploy e
 - Isaac Lapworth - [@isaac-lapworth](https://github.com/isaac-lapworth)
 - Gurveer Arora - [@HelloUniverseNo31415](https://github.com/HelloUniverseNo31415)
 
-Also see the project [contributors] for a full list of participants in this project.
+Also see the project [contributors](../graphs/contributors) for a full list of participants in this project.
 
 ## License
 
-This project is licensed under the MIT License - see [LICENSE.md](https://github.com/bin-nuance-bat/project/blob/master/LICENSE.md) for more details.
+This project is licensed under the MIT License - see [LICENSE.md](LICENSE.md) for more details.
 
 ## Acknowledgements 
 
