@@ -37,7 +37,7 @@ const StoreList = props => {
 StoreList.propTypes = {
 	getStoreList: PropTypes.func.isRequired,
 	setShowList: PropTypes.func.isRequired,
-	loadStoreListError: PropTypes.func.isRequired,
+	loadStoreListError: PropTypes.bool.isRequired,
 	currentUser: PropTypes.string,
 	users: PropTypes.arrayOf(PropTypes.object).isRequired,
 	storeList: PropTypes.objectOf(PropTypes.object).isRequired
