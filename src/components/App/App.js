@@ -132,7 +132,8 @@ App.propTypes = {
 	storeList: PropTypes.objectOf(PropTypes.object).isRequired,
 	users: PropTypes.arrayOf(PropTypes.object).isRequired,
 	slackUserFetchError: PropTypes.bool.isRequired,
-	currentUser: PropTypes.string
+	currentUser: PropTypes.string.isRequired,
+	setSlackUserFetchError: PropTypes.func
 };
 
 export default App;

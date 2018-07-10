@@ -41,7 +41,9 @@ StoreList.propTypes = {
 	setShowList: PropTypes.func.isRequired,
 	currentUser: PropTypes.string,
 	users: PropTypes.arrayOf(PropTypes.object).isRequired,
-	storeList: PropTypes.objectOf(PropTypes.object).isRequired
+	storeList: PropTypes.arrayOf(PropTypes.object).isRequired,
+	showNotification: PropTypes.func.isRequired,
+	loadStoreListError: PropTypes.func.isRequired
 };
 
 export default StoreList;
