@@ -8,6 +8,7 @@ deploy:
   script: npm install && npm run deploy
   on:
     branch: master
+    branch: config
 
 script:
 - npm install && npm test
