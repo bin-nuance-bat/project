@@ -17,11 +17,3 @@ deploy:
   on:
     branch: master
   project: honesty-store-kiosk
-
-  # Development builds
-  provider: firebase
-  token: $FIREBASE_TOKEN
-  on:
-    all_banches: true
-    condition: $TRAVIS_BRANCH != master
-  project: honesty-store-kiosk-dev
