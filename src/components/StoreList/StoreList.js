@@ -1,45 +1,44 @@
 import React from 'react';
 import ButtonList from '../ButtonList/ButtonList';
-import getStore from '../../utils/honestyStore.js';
-import sendSlackMessage from '../../utils/slack';
+import {sendSlackMessage, getUserSlackID} from '../../utils/slack';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import PropTypes from 'prop-types';
 
-export default class StoreList extends React.Component {
-	state = {
-		storeList: []
-	};
+const StoreList = props => {
+	return (
+		<div>
+			Please select the correct item:
+			<ButtonList
+				items={props.storeList}
+				onClick={async (storeCode, itemName) => {
+					let id = getUserSlackID(props.currentUser, props.users);
+					let result = await sendSlackMessage(
+						id,
+						itemName,
+						storeCode
+					);
+					props.setShowList(false);
+					if (result)
+						props.showNotification('Reminder sent to Slack', false);
+					else
+						props.showNotification(
+							'Failed to send reminder to Slack',
+							true
+						);
+				}}
+			/>
+			{props.loadStoreListError && (
+				<ErrorMessage text="failed to load store items" />
+			)}
+		</div>
+	);
+};
 
-	componentDidMount() {
-		getStore((err, items) => {
-			if (err) return;
-			this.setState({
-				storeList: items.map(item => ({
-					name:
-						item.name +
-						(item.qualifier ? ' ' + item.qualifier : ''),
-					index: item.id
-				}))
-			});
-		});
-	}
+StoreList.propTypes = {
+	setShowList: PropTypes.func.isRequired,
+	currentUser: PropTypes.string,
+	users: PropTypes.arrayOf(PropTypes.object).isRequired,
+	storeList: PropTypes.objectOf(PropTypes.object).isRequired
+};
 
-	render() {
-		return (
-			<div>
-				<ButtonList
-					items={this.state.storeList}
-					onClick={(storeCode, itemName) => {
-						try {
-							sendSlackMessage(
-								this.props.username,
-								itemName,
-								storeCode
-							);
-						} catch (error) {
-							alert(error);
-						}
-					}}
-				/>
-			</div>
-		);
-	}
-}
+export default StoreList;

@@ -1,9 +1,16 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import AppContainer from './AppContainer';
+import {shallow, configure} from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import store from '../../utils/reduxStore';
+import {Provider} from 'react-redux';
+
+configure({adapter: new Adapter()});
 
 it('renders without crashing', () => {
-	const div = document.createElement('div');
-	ReactDOM.render(<App />, div);
-	ReactDOM.unmountComponentAtNode(div);
+	shallow(
+		<Provider store={store}>
+			<AppContainer />
+		</Provider>
+	);
 });

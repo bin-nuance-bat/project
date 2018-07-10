@@ -1,6 +1,8 @@
 import React from 'react';
 import './WebcamCapture.css';
 import Webcam from 'react-webcam';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import PropTypes from 'prop-types';
 
 const WebcamCapture = props => {
 	const height = 400;
@@ -11,6 +13,10 @@ const WebcamCapture = props => {
 		height,
 		facingMode: 'user'
 	};
+
+	if (props.isDetecting) {
+		return null;
+	}
 
 	if (props.cameraConnected) {
 		return (
@@ -28,7 +34,12 @@ const WebcamCapture = props => {
 			</div>
 		);
 	}
-	return <div>Cannot access camera</div>;
+	return <ErrorMessage text="failed to load video feed" />;
+};
+
+WebcamCapture.propTypes = {
+	cameraConnected: PropTypes.bool.isRequired,
+	cameraRef: PropTypes.object.isRequired
 };
 
 export default WebcamCapture;

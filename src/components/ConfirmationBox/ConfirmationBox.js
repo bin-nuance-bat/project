@@ -1,16 +1,28 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const ConfirmationBox = props => {
 	return (
 		<div>
-			<div>{props.text}</div>
+			<div>{`Did you take ${props.item.name}?`}</div>
 			{props.children}
 			<div>
-				<button onClick={props.onYes}>Yes</button>
-				<button onClick={props.onNo}>No</button>
+				<button id="YES" onClick={props.onYes}>
+					Yes
+				</button>
+				<button id="NO" onClick={props.onNo}>
+					No
+				</button>
 			</div>
 		</div>
 	);
+};
+
+ConfirmationBox.propTypes = {
+	onYes: PropTypes.func.isRequired,
+	onNo: PropTypes.any.isRequired,
+	item: PropTypes.object.isRequired,
+	children: PropTypes.node
 };
 
 export default ConfirmationBox;

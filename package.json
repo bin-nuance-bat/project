@@ -4,21 +4,26 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
-		"@tensorflow-models/mobilenet": "^0.1.1",
-		"@tensorflow/tfjs": "^0.11.7",
+		"@tensorflow/tfjs": "^0.12.0",
+		"babel-plugin-syntax-class-properties": "^6.13.0",
+		"eslint-plugin-react": "^7.10.0",
 		"react": "^16.4.1",
 		"react-dom": "^16.4.1",
+		"react-redux": "^5.0.7",
 		"react-scripts": "1.1.4",
-		"react-webcam": "^1.0.1"
+		"react-webcam": "^1.0.1",
+		"redux": "^4.0.0",
+		"redux-thunk": "^2.3.0"
 	},
 	"scripts": {
 		"prettify": "prettier --write ./src/**/*.js",
 		"puppeteer-test": "node test/puppeteer.js",
 		"start": "react-scripts start",
-		"build": "react-scripts build",
+		"build": "rm -rf node_modules/@tensorflow/tfjs-converter/dist-es6 && react-scripts build",
 		"test": "react-scripts test --env=jsdom",
 		"eject": "react-scripts eject",
-		"deploy": "react-scripts build && firebase deploy --token $FIREBASE_TOKEN"
+		"deploy": "firebase use default && firebase deploy --token $FIREBASE_TOKEN",
+		"lint": "eslint **/*.js"
 	},
 	"lint-staged": {
 		"*.js": [
@@ -33,20 +38,45 @@
 		}
 	},
 	"devDependencies": {
+		"babel-core": "^6.26.3",
+		"babel-jest": "^23.2.0",
+		"babel-preset-env": "^1.7.0",
 		"enzyme": "^3.3.0",
 		"enzyme-adapter-react-16": "^1.1.1",
 		"husky": "^1.0.0-rc.10",
+		"jest": "^23.3.0",
 		"lint-staged": "^7.2.0",
 		"prettier": "^1.13.7",
 		"puppeteer": "^1.5.0"
 	},
 	"eslintConfig": {
+		"parser": "babel-eslint",
+		"extends": [
+			"eslint:recommended",
+			"plugin:react/recommended"
+		],
 		"parserOptions": {
 			"ecmaVersion": 9,
 			"sourceType": "module",
 			"ecmaFeatures": {
 				"jsx": true
 			}
+		},
+		"globals": {
+			"alert": true,
+			"console": true,
+			"fetch": true,
+			"require": true,
+			"jest": true,
+			"it": true,
+			"expect": true,
+			"document": true,
+			"clearInterval": true,
+			"setInterval": true,
+			"process": true,
+			"navigator": true,
+			"Image": true,
+			"window": true
 		}
 	}
 }
