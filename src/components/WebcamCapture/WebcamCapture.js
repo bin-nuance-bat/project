@@ -14,25 +14,23 @@ const WebcamCapture = props => {
 		facingMode: 'user'
 	};
 
-	if (!props.cameraConnected)
+	if (props.cameraConnected) {
 		return (
-			<Notification message="failed to load video feed" isError={true} />
+			<div>
+				<Webcam
+					audio={false}
+					height={height}
+					ref={props.cameraRef}
+					screenshotFormat="image/jpeg"
+					width={width}
+					videoConstraints={videoConstraints}
+					className="videoStream"
+					screenshotWidth={224}
+				/>
+			</div>
 		);
-
-	return (
-		<div>
-			<Webcam
-				audio={false}
-				height={height}
-				ref={props.cameraRef}
-				screenshotFormat="image/jpeg"
-				width={width}
-				videoConstraints={videoConstraints}
-				className="videoStream"
-				screenshotWidth={224}
-			/>
-		</div>
-	);
+	}
+	return <Notification message="failed to load video feed" isError={true} />;
 };
 
 WebcamCapture.propTypes = {
