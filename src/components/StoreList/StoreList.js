@@ -1,7 +1,7 @@
 import React from 'react';
 import ButtonList from '../ButtonList/ButtonList';
 import {sendSlackMessage, getUserSlackID} from '../../utils/slack';
-import {Notification} from './../Notification/Notification';
+import Notification from './../Notification/Notification';
 import PropTypes from 'prop-types';
 
 const StoreList = props => {
