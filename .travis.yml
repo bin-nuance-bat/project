@@ -1,21 +1,20 @@
 language: node_js
 
 node_js:
-- '10'
+  - '10'
 
 install: npm install
 
 script:
-- npm run lint
-- npm test
-- npm run build
-
-before_deploy: npm install firebase-tools -g
+  - npm run lint
+  - npm test
+  - npm run build
 
 deploy:
   skip_cleanup: true
-  provider: script
-  script: npm run deploy
+  provider: firebase
+  token:
+    secure: bVaLK5ijG2ik6urfJdg398QaNvuG/HIlppvnIMZr9ARINPcWy9f7lzc9QXuJKlUneiic6LMafM9d02BYbcQt1IyzBcUNR4jMYzS++XtgrQptWeI/feoxYljCsRvW8nfCYFzshRAqJJKrV70aLOT+nEScmm1qh0QZdpUPYbcn8Ts+0S8DBh1xU0wO5d0i8ypQAd6X0/OQ+xR3F5Y9wW5C4C7/piq2wL1MWeoA9/KebQ1fFu43Q2b8r35KaYeBlvVKOtSOGbapGfl8GR/QdzyrPA8KZwTlC0ulcgQwDIHiZoaVITt7eV4UDzTT8lmb7Ll638Hic3lmHLkA7/qDHk93p44kYYpAxRQ2XXHA8lcWo0lHg2SQUDqxqiirddJ4noWWRF6RFFOQOe6hNKaVe3DqeezgljFQrMmsEuXWNCKrpPWAbha4IRO7iVnR9DgeG6hFuO4D12XYjH2lCAEahRCFDftbqy9bINrC5WTgRgnhZ6eDNT0tJcDAadxijOSMCv319HJphCo2uOqM1EXwashICaZOd0Wx4yQVvUpTMg5pfPcBeR/Bw39MqQkTarakfPYMBfT1qe7t2Xk5lTmBrJCHCbJG4I/hhfNZEKilStkTnUq1ksqrr75hgr9p0X9qkD3DCALRdZWs8OnI64YAoFRZxFjCoX2KnMtwS49HMTDh92k=
   on:
-    branch: master
     branch: config
+    
