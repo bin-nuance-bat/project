@@ -1,6 +1,6 @@
-# honesty.store Kiosk
+# honesty.store Kiosk  [![Build Status](https://travis-ci.com/bin-nuance-bat/project.svg?branch=master)](https://travis-ci.com/bin-nuance-bat/project)
 
-[![Build Status](https://travis-ci.com/bin-nuance-bat/project.svg?branch=master)](https://travis-ci.com/bin-nuance-bat/project) - [Live Demo](https://honesty-store-kiosk.firebaseapp.com/)
+[Live Demo](https://honesty-store-kiosk.firebaseapp.com/)
 
 The honesty.store Kiosk is a mobile interface designed for use with [honesty.store](https://honesty.store) as a way to receive additional product info and receive friendly reminders to pay for products via Slack. This process is designed to be as seamless as possible by using a machine-learning model to identify what product you are holding in front of the device camera.
 
