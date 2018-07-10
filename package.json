@@ -22,7 +22,7 @@
 		"build": "rm -rf node_modules/@tensorflow/tfjs-converter/dist-es6 && react-scripts build",
 		"test": "react-scripts test --env=jsdom",
 		"eject": "react-scripts eject",
-		"deploy": "firebase deploy --token $FIREBASE_TOKEN",
+		"deploy": "firebase use default && firebase deploy --token $FIREBASE_TOKEN",
 		"lint": "eslint **/*.js"
 	},
 	"lint-staged": {
