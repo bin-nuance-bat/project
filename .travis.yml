@@ -16,5 +16,9 @@ deploy:
   token: $FIREBASE_TOKEN
   on:
     branch: master
-    branch: config
   project: honesty-store-kiosk
+
+  # Development builds
+  provider: firebase
+  token: $FIREBASE_TOKEN
+  project: honesty-store-kiosk-dev
