@@ -9,7 +9,7 @@ const StoreList = props => {
 		<div>
 			Please select the correct item:
 			<ButtonList
-				items={props.storeList}
+				items={Object.entries(props.storeList)}
 				onClick={async (storeCode, itemName) => {
 					let id = getUserSlackID(props.currentUser, props.users);
 					let result = await sendSlackMessage(
@@ -18,7 +18,6 @@ const StoreList = props => {
 						storeCode
 					);
 					props.setShowList(false);
-					props.showNotification('Reminder sent to Slack');
 					if (result)
 						props.showNotification('Reminder sent to Slack', false);
 					else
@@ -36,7 +35,9 @@ const StoreList = props => {
 };
 
 StoreList.propTypes = {
+	getStoreList: PropTypes.func.isRequired,
 	setShowList: PropTypes.func.isRequired,
+	loadStoreListError: PropTypes.func.isRequired,
 	currentUser: PropTypes.string,
 	users: PropTypes.arrayOf(PropTypes.object).isRequired,
 	storeList: PropTypes.objectOf(PropTypes.object).isRequired
