@@ -48,9 +48,10 @@ class WebcamCapture extends Component {
 							this.model.predict(img).then(item => {
 								if (
 									item.value > ML_THRESHOLD &&
-									item.id !== ''
+									item.id !== '' &&
+									!this.props.prediction
 								) {
-									this.props.confirmMatch(item.id, img.src);
+									this.props.setPrediction(item.id, img.src);
 								}
 							});
 						};
