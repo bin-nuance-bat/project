@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.com/bin-nuance-bat/project.svg?branch=master)](https://travis-ci.com/bin-nuance-bat/project) - [Live Demo](https://honesty-store-kiosk.firebaseapp.com/)
 
-The honesty.store Kiosk is a mobile interface designed for use with [honesty.store](https://honesty.store) as a way to receive additional product info and receive friendly reminders to pay for products via Slack. This process is designed to be as seemless as possible by using a machine-learning model to identify what product you are holding in front of the device camera.
+The honesty.store Kiosk is a mobile interface designed for use with [honesty.store](https://honesty.store) as a way to receive additional product info and receive friendly reminders to pay for products via Slack. This process is designed to be as seamless as possible by using a machine-learning model to identify what product you are holding in front of the device camera.
 
 ## Getting started
 
@@ -62,9 +62,9 @@ This will generate a production build in the `build/` directory. Simply deploy e
 
 ## Authors
 
-- Will Caine (@cainy393)
-- Isaac Lapworth (@isaac-lapworth)
-- Gurveer Arora (@HelloUniverseNo31415)
+- Will Caine - @cainy393
+- Isaac Lapworth - @isaac-lapworth
+- Gurveer Arora - @HelloUniverseNo31415
 
 Also see the project [contributors] for a full list of participants in this project.
 
@@ -74,6 +74,7 @@ This project is licensed under the MIT License - see [LICENSE.md](https://github
 
 ## Acknowledgements 
 
-- Chris Price (@chrisprice) - honesty.store creator
-- Craig Ayre (@craigayre) - Tech Support
-- Emma Clennett (@eclennett) - Tech Support
+- Paul Hands - Project Management
+- Chris Price - @chrisprice - honesty.store creator
+- Craig Ayre - @craigayre - Tech Support
+- Emma Clennett - @eclennett - Tech Support
