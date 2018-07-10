@@ -62,21 +62,11 @@
 				"jsx": true
 			}
 		},
-		"globals": {
-			"alert": true,
-			"console": true,
-			"fetch": true,
-			"require": true,
-			"jest": true,
-			"it": true,
-			"expect": true,
-			"document": true,
-			"clearInterval": true,
-			"setInterval": true,
-			"process": true,
-			"navigator": true,
-			"Image": true,
-			"window": true
-		}
+		"env": {
+            "browser": true,
+            "jest": true,
+            "node": true
+        }
+		
 	}
 }
