@@ -9,24 +9,15 @@ import {Notification} from './../Notification/Notification';
 const NOTIFICATION_DURATION = 5000;
 
 class App extends React.Component {
-	constructor(props) {
-		super(props);
-		this.setPrediction = this.setPrediction.bind(this);
-		this.changeCurrentUser = this.changeCurrentUser.bind(this);
-		this.showNotification = this.showNotification.bind(this);
-		this.handleYes = this.handleYes.bind(this);
-		this.handleNo = this.handleNo.bind(this);
+	state = {
+		showNotification: false,
+		notificationMessage: '',
+		isError: false
+	};
 
-		this.state = {
-			showNotification: false,
-			notificationMessage: '',
-			isError: false
-		};
-	}
-
-	setPrediction(id, img) {
+	setPrediction = (id, img) => {
 		if (!this.props.prediction) this.props.setPrediction({id, img});
-	}
+	};
 
 	changeCurrentUser = currentUser => {
 		this.props.setCurrentUser(currentUser);
