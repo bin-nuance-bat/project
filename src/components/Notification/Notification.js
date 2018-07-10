@@ -12,5 +12,5 @@ export const Notification = props => {
 
 Notification.propTypes = {
 	isError: PropTypes.bool.isRequired,
-	message: propTypes.string.isRequired
+	message: PropTypes.string.isRequired
 };
