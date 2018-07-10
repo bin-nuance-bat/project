@@ -8,3 +8,8 @@ export const Notification = props => {
 		</div>
 	);
 };
+
+App.propTypes = {
+	isError: PropTypes.bool.isRequired,
+	message: propTypes.string.isRequired
+};
