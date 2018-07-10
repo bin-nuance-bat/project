@@ -9,11 +9,7 @@ it("Tells the user that webcam isn't found if not found", () => {
 	const wrapper = shallow(
 		<WebcamCapture cameraConnected={false} cameraRef={{current: null}} />
 	);
-	// expect(wrapper.find('Notifiation').props().isError).toBeTruthy();
-	console.log(wrapper.at(0));
-	console.log(wrapper.find('Notification'));
 	expect(wrapper.find('Notification')).toHaveLength(1);
-	//expect(wrapper.find('ErrorMessage')).toHaveLength(1);
 });
 
 it('Renders webcam with screenshot width of 224', () => {
