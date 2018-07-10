@@ -9,7 +9,7 @@ const StoreList = props => {
 		<div>
 			Please select the correct item:
 			<ButtonList
-				items={Object.entries(props.storeList)}
+				items={props.storeList}
 				onClick={async (storeCode, itemName) => {
 					let id = getUserSlackID(props.currentUser, props.users);
 					let result = await sendSlackMessage(
