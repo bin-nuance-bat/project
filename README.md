@@ -62,9 +62,9 @@ This will generate a production build in the `build/` directory. Simply deploy e
 
 ## Authors
 
-- Will Caine - @cainy393
-- Isaac Lapworth - @isaac-lapworth
-- Gurveer Arora - @HelloUniverseNo31415
+- Will Caine - [@cainy393](https://github.com/cainy393)
+- Isaac Lapworth - [@isaac-lapworth](https://github.com/isaac-lapworth)
+- Gurveer Arora - [@HelloUniverseNo31415](https://github.com/HelloUniverseNo31415)
 
 Also see the project [contributors] for a full list of participants in this project.
 
@@ -74,7 +74,7 @@ This project is licensed under the MIT License - see [LICENSE.md](https://github
 
 ## Acknowledgements 
 
-- Paul Hands - Project Management
-- Chris Price - @chrisprice - honesty.store creator
-- Craig Ayre - @craigayre - Tech Support
-- Emma Clennett - @eclennett - Tech Support
+- [Paul Hands](https://github.com/paulhands) - Project Management
+- [Chris Price](https://github.com/chrisprice) - Creator of honesty.store
+- [Craig Ayre](https://github.com/craigayre) - Tech Support
+- [Emma Clennett](https://github.com/eclennett) - Tech Support
