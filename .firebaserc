@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "honesty-store-kiosk"
+    "default": "honesty-store-kiosk",
+    "dev": "honesty-store-kiosk-dev"
   }
 }
