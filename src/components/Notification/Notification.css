@@ -1,4 +1,11 @@
-.notification {
+.notificationError {
+	color: red;
+	width: 100%;
+	text-align: center;
+}
+
+.notificationSuccess {
+	color: lightgreen;
 	width: 100%;
 	text-align: center;
 }
