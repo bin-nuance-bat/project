@@ -10,8 +10,8 @@ it("Tells the user that webcam isn't found if not found", () => {
 		<WebcamCapture cameraConnected={false} cameraRef={{current: null}} />
 	);
 	// expect(wrapper.find('Notifiation').props().isError).toBeTruthy();
-	console.log(wrapper);
-	console.log(wrapper.find('Webcam'));
+	console.log(wrapper.at(0));
+	console.log(wrapper.find('Notification'));
 	expect(wrapper.find('Notification')).toHaveLength(1);
 	//expect(wrapper.find('ErrorMessage')).toHaveLength(1);
 });

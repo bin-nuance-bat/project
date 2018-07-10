@@ -2,7 +2,7 @@ import React from 'react';
 import './WebcamCapture.css';
 import Webcam from 'react-webcam';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
-import {Notification} from './../Notification/Notification';
+import Notification from './../Notification/Notification';
 import PropTypes from 'prop-types';
 
 const WebcamCapture = props => {
@@ -15,23 +15,25 @@ const WebcamCapture = props => {
 		facingMode: 'user'
 	};
 
-	if (props.cameraConnected) {
+	if (!props.cameraConnected)
 		return (
-			<div>
-				<Webcam
-					audio={false}
-					height={height}
-					ref={props.cameraRef}
-					screenshotFormat="image/jpeg"
-					width={width}
-					videoConstraints={videoConstraints}
-					className="videoStream"
-					screenshotWidth={224}
-				/>
-			</div>
+			<Notification message="failed to load video feed" isError={true} />
 		);
-	}
-	return <Notification message="failed to load video feed" isError={true} />;
+
+	return (
+		<div>
+			<Webcam
+				audio={false}
+				height={height}
+				ref={props.cameraRef}
+				screenshotFormat="image/jpeg"
+				width={width}
+				videoConstraints={videoConstraints}
+				className="videoStream"
+				screenshotWidth={224}
+			/>
+		</div>
+	);
 };
 
 WebcamCapture.propTypes = {
