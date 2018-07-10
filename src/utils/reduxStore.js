@@ -8,9 +8,9 @@ import {
 import {
 	users,
 	slackUserFetchError,
-	currentUser,
 	prediction
 } from '../components/App/reducer';
+import {currentUser} from '../components/UsernameEntry/reducer';
 
 const rootReducer = combineReducers({
 	storeList,

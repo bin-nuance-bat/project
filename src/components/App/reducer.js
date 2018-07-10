@@ -1,7 +1,6 @@
 import {
 	SET_USERS,
 	SET_SLACK_USER_FETCH_ERROR,
-	SET_CURRENT_USER,
 	SET_PREDICTION
 } from './actionTypes';
 
@@ -13,11 +12,6 @@ export function users(state = [], action) {
 export function slackUserFetchError(state = false, action) {
 	if (action.type === SET_SLACK_USER_FETCH_ERROR)
 		return action.slackUserFetchError;
-	return state;
-}
-
-export function currentUser(state = '', action) {
-	if (action.type === SET_CURRENT_USER) return action.currentUser;
 	return state;
 }
 

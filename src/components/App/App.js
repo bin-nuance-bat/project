@@ -5,6 +5,7 @@ import StoreListContainer from '../StoreList/StoreListContainer';
 import PropTypes from 'prop-types';
 import {getUserSlackID, sendSlackMessage} from './../../utils/slack';
 import {Notification} from './../Notification/Notification';
+import UsernameEntryContainer from '../UsernameEntry/UsernameEntryContainer.js';
 
 const NOTIFICATION_DURATION = 5000;
 
@@ -17,10 +18,6 @@ class App extends React.Component {
 
 	setPrediction = (id, img) => {
 		if (!this.props.prediction) this.props.setPrediction({id, img});
-	};
-
-	changeCurrentUser = currentUser => {
-		this.props.setCurrentUser(currentUser);
 	};
 
 	getStoreCode = name => {
@@ -79,13 +76,7 @@ class App extends React.Component {
 					Please take an item and show it to the camera
 				</header>
 				<hr />
-				Slack Username:
-				<input
-					value={this.props.currentUser}
-					onChange={event =>
-						this.changeCurrentUser(event.target.value)
-					}
-				/>
+				<UsernameEntryContainer />
 				<hr />
 				<WebcamCaptureContainer
 					loadModel
@@ -115,15 +106,13 @@ App.propTypes = {
 		img: PropTypes.string.isRequired
 	}),
 	setPrediction: PropTypes.func.isRequired,
-	setCurrentUser: PropTypes.func.isRequired,
 	loadUsers: PropTypes.func.isRequired,
 	setShowList: PropTypes.func.isRequired,
 	showList: PropTypes.bool.isRequired,
 	loadStoreList: PropTypes.func.isRequired,
 	storeList: PropTypes.objectOf(PropTypes.object).isRequired,
 	users: PropTypes.arrayOf(PropTypes.object).isRequired,
-	slackUserFetchError: PropTypes.bool.isRequired,
-	currentUser: PropTypes.string
+	slackUserFetchError: PropTypes.bool.isRequired
 };
 
 export default App;
