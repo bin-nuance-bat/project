@@ -74,7 +74,7 @@ class App extends React.Component {
 				<hr />
 				<UsernameEntryContainer />
 				<hr />
-				<WebcamCaptureContainer confirmMatch={this.setPrediction} />
+				<WebcamCaptureContainer />
 				{this.props.prediction && (
 					<ConfirmationBox
 						item={this.props.storeList[this.props.prediction.id]}
