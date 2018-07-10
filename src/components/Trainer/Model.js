@@ -3,6 +3,8 @@ import {ControllerDataset} from './controller_dataset';
 import getStore from '../../utils/honestyStore.js';
 import * as MobileNet from '@tensorflow-models/mobilenet';
 
+const BURST_COUNT = 10;
+
 class Model {
 	constructor(status) {
 		this.setStatus = status;
@@ -40,7 +42,8 @@ class Model {
 			)
 		) {
 			this.setStatus('Fetching store data...');
-			getStore((err, store) => {
+			getStore().then(store => {
+				store = Object.values(store);
 				let i = store.length;
 				while (i--) {
 					store[i].count < 1
@@ -115,7 +118,7 @@ class Model {
 			return;
 		}
 
-		for (let i = 1; i <= 100; i++) {
+		for (let i = 1; i <= BURST_COUNT; i++) {
 			tf.tidy(() => {
 				this.controllerDataset.addExample(
 					this.mobilenet.infer(image, 'conv_pw_13_relu'),
@@ -126,7 +129,7 @@ class Model {
 			document.getElementById(`${label}-count`).innerHTML++;
 			this.items[label].mlCount++;
 			this.setStatus(
-				`Adding images of ${this.getName(label)} (${i}/100)`
+				`Adding images of ${this.getName(label)} (${i}/${BURST_COUNT})`
 			);
 			await tf.nextFrame();
 		}
