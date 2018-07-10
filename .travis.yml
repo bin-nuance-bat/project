@@ -21,4 +21,6 @@ deploy:
   # Development builds
   provider: firebase
   token: $FIREBASE_TOKEN
+  on:
+    all_banches: true
   project: honesty-store-kiosk-dev
