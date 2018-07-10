@@ -1,7 +1,6 @@
 import React from 'react';
 import './WebcamCapture.css';
 import Webcam from 'react-webcam';
-import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import Notification from './../Notification/Notification';
 import PropTypes from 'prop-types';
 
