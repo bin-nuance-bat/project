@@ -14,6 +14,10 @@ const WebcamCapture = props => {
 		facingMode: 'user'
 	};
 
+	if (props.isDetecting) {
+		return null;
+	}
+
 	if (props.cameraConnected) {
 		return (
 			<div>

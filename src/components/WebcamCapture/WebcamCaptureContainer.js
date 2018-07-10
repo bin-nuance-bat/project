@@ -9,6 +9,7 @@ const ML_THRESHOLD = 0.06;
 
 class WebcamCaptureContainer extends Component {
 	state = {
+		isDetecting: true,
 		cameraConnected: false
 	};
 
@@ -28,7 +29,10 @@ class WebcamCaptureContainer extends Component {
 			navigator.mediaDevices
 				.getUserMedia({video: true})
 				.then(() => {
-					this.setState({cameraConnected: true});
+					this.setState({
+						cameraConnected: true,
+						isDetecting: false
+					});
 
 					this.ticker = setInterval(() => {
 						const img = new Image(224, 224);
@@ -46,7 +50,9 @@ class WebcamCaptureContainer extends Component {
 						};
 					}, 1000);
 				})
-				.catch(() => this.setState({cameraConnected: false}));
+				.catch(() =>
+					this.setState({cameraConnected: false, isDetecting: false})
+				);
 		}
 	}
 
@@ -55,6 +61,10 @@ class WebcamCaptureContainer extends Component {
 	}
 
 	render() {
+		if (this.state.isDetecting) {
+			return null;
+		}
+
 		return (
 			<WebcamCapture
 				cameraConnected={this.state.cameraConnected}
