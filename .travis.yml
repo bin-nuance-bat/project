@@ -23,4 +23,5 @@ deploy:
   token: $FIREBASE_TOKEN
   on:
     all_banches: true
+    condition: $TRAVIS_BRANCH != master
   project: honesty-store-kiosk-dev
