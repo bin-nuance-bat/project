@@ -1,18 +1,12 @@
 import {connect} from 'react-redux';
 import App from './App';
-import getStore from '../../utils/honestyStore.js';
-import {loadUsers} from './../../utils/slack';
 import {
-	setUsers,
 	setSlackUserFetchError,
 	setCurrentUser,
-	setPrediction
+	setPrediction,
+	loadUsers
 } from './actions';
-import {
-	setStoreList,
-	setLoadStoreListError,
-	setShowList
-} from './../StoreList/actions';
+import {loadStoreList, setShowList} from './../StoreList/actions';
 
 const mapStateToProps = state => {
 	return {
@@ -27,21 +21,13 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		loadUsers: () =>
-			loadUsers()
-				.then(users => dispatch(setUsers(users)))
-				.catch(() => dispatch(setSlackUserFetchError(true))),
+		loadUsers,
+		loadStoreList,
 		setCurrentUser: currentUser => dispatch(setCurrentUser(currentUser)),
 		setPrediction: prediction => dispatch(setPrediction(prediction)),
 		setShowList: showList => dispatch(setShowList(showList)),
 		setSlackUserFetchError: isError =>
-			dispatch(setSlackUserFetchError(isError)),
-		getStoreList: () =>
-			getStore()
-				.then(storeList => {
-					dispatch(setStoreList(storeList));
-				})
-				.catch(() => dispatch(setLoadStoreListError(true)))
+			dispatch(setSlackUserFetchError(isError))
 	};
 };
 

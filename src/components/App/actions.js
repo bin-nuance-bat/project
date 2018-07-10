@@ -5,6 +5,8 @@ import {
 	SET_PREDICTION
 } from './actionTypes';
 
+import {loadUsers as reallyLoadUsers} from './../../utils/slack';
+
 export function setUsers(users) {
 	return {
 		type: SET_USERS,
@@ -32,3 +34,8 @@ export function setPrediction(prediction) {
 		prediction
 	};
 }
+
+export const loadUsers = () => (dispatch, getState) =>
+	reallyLoadUsers()
+		.then(users => dispatch(setUsers(users)))
+		.catch(() => dispatch(setSlackUserFetchError(true)));

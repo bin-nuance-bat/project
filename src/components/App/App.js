@@ -48,7 +48,7 @@ class App extends React.Component {
 
 	componentDidMount() {
 		this.props.loadUsers();
-		this.props.getStoreList();
+		this.props.loadStoreList();
 	}
 
 	componentDidUpdate(prevProps) {
@@ -128,7 +128,7 @@ App.propTypes = {
 	loadUsers: PropTypes.func.isRequired,
 	setShowList: PropTypes.func.isRequired,
 	showList: PropTypes.bool.isRequired,
-	getStoreList: PropTypes.func.isRequired,
+	loadStoreList: PropTypes.func.isRequired,
 	storeList: PropTypes.objectOf(PropTypes.object).isRequired,
 	users: PropTypes.arrayOf(PropTypes.object).isRequired,
 	slackUserFetchError: PropTypes.bool.isRequired,
