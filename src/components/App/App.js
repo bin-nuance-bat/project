@@ -25,7 +25,10 @@ const App = props => {
 			<div>
 				<button
 					className="buttonBlue"
-					onClick={() => props.setSendWithPhoto(true)}>
+					onClick={() => {
+						props.setSendWithPhoto(true);
+						props.history.push('/scanitem');
+					}}>
 					Send a SnackChat
 				</button>
 			</div>
@@ -33,7 +36,10 @@ const App = props => {
 			<div>
 				<button
 					className="buttonWhite"
-					onClick={() => props.setSendWithPhoto(false)}>
+					onClick={() => {
+						props.setSendWithPhoto(false);
+						props.history.push('/disclaimer');
+					}}>
 					Send a reminder without a photo
 				</button>
 			</div>

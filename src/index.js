@@ -14,6 +14,8 @@ ReactDOM.render(
 		<Router>
 			<Switch>
 				<Route exact path="/" component={AppContainer} />
+				{/* <Route exact path="/disclaimer" component={Disclaimer} />}
+				<Route exact path="/scanitem" component={ScanItem} />} */}
 				<Route exact path="/old" component={OldAppContainer} />
 				<Route exact path="/training" component={Trainer} />
 			</Switch>
