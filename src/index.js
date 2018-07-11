@@ -14,6 +14,7 @@ ReactDOM.render(
 			<Switch>
 				<Route path="/" component={NewApp} />
 				<Route path="/old" component={AppContainer} />
+				{/* <Route path="/training" component={TrainingPage} /> */}
 			</Switch>
 		</Router>
 	</Provider>,
