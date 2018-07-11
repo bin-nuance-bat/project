@@ -10,19 +10,19 @@ configure({adapter: new Adapter()});
 it("Tells the user that webcam isn't found if not found", () => {
 	const wrapper = shallow(<WebcamCapture />);
 	wrapper.setState({isDetecting: false});
-	expect(wrapper.find('Notification')).toHaveLength(1);
+	expect(wrapper.find(Notification)).toHaveLength(1);
 });
 
 it('Renders webcam with screenshot width of 224', () => {
 	const wrapper = shallow(<WebcamCapture />);
 	wrapper.setState({isDetecting: false, cameraConnected: true});
-	expect(wrapper.find('Webcam').props().screenshotWidth).toEqual(224);
+	expect(wrapper.find(Webcam).props().screenshotWidth).toEqual(224);
 });
 
 it('Renders webcam with screenshot format of jpeg', () => {
 	const wrapper = shallow(<WebcamCapture />);
 	wrapper.setState({isDetecting: false, cameraConnected: true});
-	expect(wrapper.find('Webcam').props().screenshotFormat).toEqual(
+	expect(wrapper.find(Webcam).props().screenshotFormat).toEqual(
 		'image/jpeg'
 	);
 });
