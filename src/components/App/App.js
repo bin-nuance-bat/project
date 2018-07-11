@@ -7,7 +7,6 @@ import {getUserSlackID, sendSlackMessage} from './../../utils/slack';
 import Notification from './../Notification/Notification';
 import './App.css';
 
-
 const NOTIFICATION_DURATION = 5000;
 
 class App extends React.Component {

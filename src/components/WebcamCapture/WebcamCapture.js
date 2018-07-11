@@ -1,31 +1,27 @@
 import React from 'react';
-import './WebcamCapture.css';
 import Webcam from 'react-webcam';
 import Notification from './../Notification/Notification';
 import PropTypes from 'prop-types';
+import './WebcamCapture.css';
 
 const WebcamCapture = props => {
-	const height = 400;
-	const width = 400;
+	const height = 640;
+	const width = 480;
 
 	const videoConstraints = {
-		width,
-		height,
-		facingMode: 'user'
+		audio: false
 	};
 
 	if (props.cameraConnected) {
 		return (
-			<div>
+			<div className="container">
 				<Webcam
 					audio={false}
-					height={height}
 					ref={props.cameraRef}
 					screenshotFormat="image/jpeg"
-					width={width}
-					videoConstraints={videoConstraints}
+					//videoConstraints={videoConstraints}
 					className="videoStream"
-					screenshotWidth={224}
+					screenshotWidth={300}
 				/>
 			</div>
 		);
