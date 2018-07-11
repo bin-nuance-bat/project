@@ -37,6 +37,7 @@ class WebcamCapture extends Component {
 						!this.props.prediction
 					) {
 						this.props.setPrediction(item.id, img.src);
+						this.history.push('/confirmitem');
 					}
 				});
 			};

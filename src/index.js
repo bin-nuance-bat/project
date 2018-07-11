@@ -10,6 +10,7 @@ import AppContainer from './components/App/container';
 import Trainer from './components/Trainer/Trainer';
 import WebcamCaptureContainer from './components/WebcamCapture/WebcamCaptureContainer';
 import Disclaimer from './components/Disclaimer/Disclaimer';
+import ConfirmationBox from './components/ConfirmationBox/ConfirmationBox';
 
 ReactDOM.render(
 	<Provider store={store}>
@@ -22,6 +23,7 @@ ReactDOM.render(
 					path="/scanitem"
 					component={WebcamCaptureContainer}
 				/>
+				<Route exact path="/confirmitem" component={ConfirmationBox} />
 				<Route exact path="/old" component={OldAppContainer} />
 				<Route exact path="/training" component={Trainer} />
 			</Switch>
