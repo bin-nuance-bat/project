@@ -7,6 +7,7 @@ import store from './utils/reduxStore';
 import registerServiceWorker from './registerServiceWorker';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import NewApp from './components/NewApp/NewApp';
+import Trainer from './components/Trainer/Trainer';
 
 ReactDOM.render(
 	<Provider store={store}>
@@ -14,7 +15,7 @@ ReactDOM.render(
 			<Switch>
 				<Route path="/" component={NewApp} />
 				<Route path="/old" component={AppContainer} />
-				{/* <Route path="/training" component={TrainingPage} /> */}
+				<Route path="/training" component={Trainer} />
 			</Switch>
 		</Router>
 	</Provider>,
