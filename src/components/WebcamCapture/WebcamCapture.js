@@ -3,7 +3,6 @@ import './WebcamCapture.css';
 import Webcam from 'react-webcam';
 import Notification from './../Notification/Notification';
 import PropTypes from 'prop-types';
-import getStore from './../../utils/honestyStore';
 import Model from './../../utils/model';
 
 const ML_THRESHOLD = 0.06;
@@ -25,9 +24,8 @@ class WebcamCapture extends Component {
 	constructor(props) {
 		super(props);
 		this.webcam = React.createRef();
-		getStore().then(res => (this.store = res));
-		this.model = new Model();
-		this.model.load();
+		// this.model = new Model();
+		// this.model.load();
 	}
 
 	componentDidMount() {
