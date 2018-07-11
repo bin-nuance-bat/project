@@ -24,11 +24,6 @@ class WebcamCapture extends Component {
 	webcam = React.createRef();
 	model = new Model();
 
-	constructor(props) {
-		super(props);
-		this.model.load();
-	}
-
 	setupScreenshotInterval() {
 		this.ticker = setInterval(() => {
 			const img = new Image(224, 224);
@@ -64,6 +59,8 @@ class WebcamCapture extends Component {
 	}
 
 	componentDidMount() {
+		this.model.load();
+
 		if (!navigator.mediaDevices) return;
 		this.setupWebcam();
 	}
