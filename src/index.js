@@ -20,7 +20,7 @@ ReactDOM.render(
 					exact
 					path="/scanitem"
 					component={WebcamCaptureContainer}
-				/>}
+				/>
 				<Route exact path="/old" component={OldAppContainer} />
 				<Route exact path="/training" component={Trainer} />
 			</Switch>
