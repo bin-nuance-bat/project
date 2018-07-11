@@ -37,7 +37,7 @@ class WebcamCapture extends Component {
 						!this.props.prediction
 					) {
 						this.props.setPrediction(item.id, img.src);
-						this.history.push('/confirmitem');
+						this.props.history.push('/confirmitem');
 					}
 				});
 			};
@@ -85,7 +85,7 @@ class WebcamCapture extends Component {
 						ref={this.webcam}
 						screenshotFormat="image/jpeg"
 						width={width}
-						videoConstraints={videoConstraints}
+						// videoConstraints={videoConstraints}
 						className="videoStream"
 						screenshotWidth={224}
 					/>
