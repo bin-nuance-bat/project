@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import setActualItem from './actions';
+import {setActualItem} from './actions';
+import {connect} from 'react-redux';
 
 class ConfirmationBox extends Component {
 	handleYes = () => {
@@ -34,7 +35,14 @@ class ConfirmationBox extends Component {
 
 ConfirmationBox.propTypes = {
 	prediction: PropTypes.object.isRequired,
-	storeList: PropTypes.objectOf(object).isRequired
+	storeList: PropTypes.objectOf(PropTypes.object).isRequired
+};
+
+const mapStateToProps = state => {
+	return {
+		prediction: state.prediction,
+		storeList: state.storeList
+	};
 };
 
 const mapDispatchToProps = dispatch => {
