@@ -25,7 +25,6 @@ class WebcamCapture extends Component {
 	constructor(props) {
 		super(props);
 		this.webcam = React.createRef();
-		getStore().then(res => (this.store = res));
 		this.model = new Model();
 		this.model.load();
 	}
