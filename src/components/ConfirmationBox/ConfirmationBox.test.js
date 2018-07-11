@@ -15,7 +15,7 @@ it('calls the onYes correct functions when clicked', () => {
 			onNo={mockFuncNo}
 		/>
 	);
-	wrapper.find('#YES').simulate('click');
+	wrapper.find('[testID="YES"]').simulate('click');
 	expect(mockFuncYes).toHaveBeenCalledTimes(1);
 });
 
@@ -29,6 +29,6 @@ it('calls the onNo correct functions when clicked', () => {
 			onNo={mockFuncNo}
 		/>
 	);
-	wrapper.find('#NO').simulate('click');
+	wrapper.find('[testID="NO"]').simulate('click');
 	expect(mockFuncNo).toHaveBeenCalledTimes(1);
 });
