@@ -17,7 +17,7 @@ const App = props => {
 						transform="translate(1422.954 276.615)"
 					/>
 				</svg>
-				Paying Later?
+				Paying later?
 			</h2>
 			<br />
 			Send yourself a reminder on Slack
