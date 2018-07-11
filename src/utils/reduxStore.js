@@ -5,12 +5,9 @@ import {
 	loadStoreListError,
 	showList
 } from '../components/StoreList/reducer';
-import {
-	users,
-	slackUserFetchError,
-	currentUser,
-	prediction
-} from '../components/App/reducer';
+import {users, slackUserFetchError} from '../components/App/reducer';
+import {currentUser} from '../components/UsernameEntry/reducer';
+import {prediction} from '../components/WebcamCapture/reducer';
 
 const rootReducer = combineReducers({
 	storeList,
