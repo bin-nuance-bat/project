@@ -1,9 +1,11 @@
 body, button {
-    font-family: Segoe UI;
+	font-family: Segoe UI;
+	font-size: 250%;
 }
 
 body {
-	color: #111;
+	color: #0a3d5f;
+	width: 100%;
 }
 
 button {
@@ -14,6 +16,13 @@ button {
 	border: solid 1px;
 	margin-top: 5px;
 	margin-bottom: 5px;
+	display: block;
+	width: 100%;
+	font-size: 100%;
+}
+
+hr {
+	border: none;
 }
 
 .buttonBlue {
@@ -26,7 +35,19 @@ button {
 	background-color: white;
 }
 
-.homepage {
-	width: 500px;
+.cls-1 {
+	fill: #ffcd00;
+}
+
+#halo {
+	position: absolute;
+	transform: translate(-12px, -2px);
+	width: 45px;
+	height: 50px;
+}
+
+#homepage {
+	width: 70%;
 	flex: auto;
+	margin: 0 auto;
 }
