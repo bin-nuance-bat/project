@@ -1,9 +1,6 @@
-import {
-	SET_USERS,
-	SET_SLACK_USER_FETCH_ERROR,
-	SET_CURRENT_USER,
-	SET_PREDICTION
-} from './actionTypes';
+import {SET_USERS, SET_SLACK_USER_FETCH_ERROR} from './actionTypes';
+
+import {loadUsers as fetchUsers} from './../../utils/slack';
 
 export function setUsers(users) {
 	return {
@@ -19,16 +16,7 @@ export function setSlackUserFetchError(slackUserFetchError) {
 	};
 }
 
-export function setCurrentUser(currentUser) {
-	return {
-		type: SET_CURRENT_USER,
-		currentUser
-	};
-}
-
-export function setPrediction(prediction) {
-	return {
-		type: SET_PREDICTION,
-		prediction
-	};
-}
+export const loadUsers = () => (dispatch, getState) =>
+	fetchUsers()
+		.then(users => dispatch(setUsers(users)))
+		.catch(() => dispatch(setSlackUserFetchError(true)));

@@ -4,33 +4,17 @@ import ConfirmationBox from '../ConfirmationBox/ConfirmationBox';
 import StoreListContainer from '../StoreList/StoreListContainer';
 import PropTypes from 'prop-types';
 import {getUserSlackID, sendSlackMessage} from './../../utils/slack';
+import UsernameEntryContainer from '../UsernameEntry/UsernameEntryContainer.js';
 import Notification from './../Notification/Notification';
 import './App.css';
 
 const NOTIFICATION_DURATION = 5000;
 
 class App extends React.Component {
-	constructor(props) {
-		super(props);
-		this.setPrediction = this.setPrediction.bind(this);
-		this.changeCurrentUser = this.changeCurrentUser.bind(this);
-		this.showNotification = this.showNotification.bind(this);
-		this.handleYes = this.handleYes.bind(this);
-		this.handleNo = this.handleNo.bind(this);
-
-		this.state = {
-			showNotification: false,
-			notificationMessage: '',
-			isError: false
-		};
-	}
-
-	setPrediction(id, img) {
-		if (!this.props.prediction) this.props.setPrediction({id, img});
-	}
-
-	changeCurrentUser = currentUser => {
-		this.props.setCurrentUser(currentUser);
+	state = {
+		showNotification: false,
+		notificationMessage: '',
+		isError: false
 	};
 
 	getStoreCode = name => {
@@ -49,7 +33,7 @@ class App extends React.Component {
 
 	componentDidMount() {
 		this.props.loadUsers();
-		this.props.getStoreList();
+		this.props.loadStoreList();
 	}
 
 	componentDidUpdate(prevProps) {
@@ -89,18 +73,9 @@ class App extends React.Component {
 					Please take an item and show it to the camera
 				</header>
 				<hr />
-				Slack Username:
-				<input
-					value={this.props.currentUser}
-					onChange={event =>
-						this.changeCurrentUser(event.target.value)
-					}
-				/>
+				<UsernameEntryContainer />
 				<hr />
-				<WebcamCaptureContainer
-					loadModel
-					confirmMatch={this.setPrediction}
-				/>
+				<WebcamCaptureContainer />
 				{this.props.prediction && (
 					<ConfirmationBox
 						item={this.props.storeList[this.props.prediction.id]}
@@ -128,17 +103,13 @@ App.propTypes = {
 		id: PropTypes.string.isRequired,
 		img: PropTypes.string.isRequired
 	}),
-	setPrediction: PropTypes.func.isRequired,
-	setCurrentUser: PropTypes.func.isRequired,
 	loadUsers: PropTypes.func.isRequired,
 	setShowList: PropTypes.func.isRequired,
 	showList: PropTypes.bool.isRequired,
-	getStoreList: PropTypes.func.isRequired,
+	loadStoreList: PropTypes.func.isRequired,
 	storeList: PropTypes.objectOf(PropTypes.object).isRequired,
 	users: PropTypes.arrayOf(PropTypes.object).isRequired,
-	slackUserFetchError: PropTypes.bool.isRequired,
-	currentUser: PropTypes.string.isRequired,
-	setSlackUserFetchError: PropTypes.func
+	slackUserFetchError: PropTypes.bool.isRequired
 };
 
 export default App;
