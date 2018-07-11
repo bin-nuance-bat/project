@@ -77,9 +77,7 @@ class WebcamCapture extends Component {
 		if (this.state.cameraConnected) {
 			return (
 				<div>
-					<header>
-						Please take an item and show it to the camera
-					</header>
+					<header>Hold up your snack to the camera</header>
 					<Webcam
 						audio={false}
 						height={height}
