@@ -3,7 +3,6 @@ import './WebcamCapture.css';
 import Webcam from 'react-webcam';
 import Notification from './../Notification/Notification';
 import PropTypes from 'prop-types';
-import getStore from './../../utils/honestyStore';
 import Model from './../../utils/model';
 
 const ML_THRESHOLD = 0.06;
