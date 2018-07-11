@@ -1,0 +1,32 @@
+body, button {
+    font-family: Segoe UI;
+}
+
+body {
+	color: #111;
+}
+
+button {
+	border-radius: 5px;
+	padding-left: 5%;
+	padding-right: 5%;
+	padding-bottom: 1%;
+	border: solid 1px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.buttonBlue {
+	color: white;
+	background-color: #71cce2; 
+}
+
+.buttonWhite {
+	color: #71cce2;
+	background-color: white;
+}
+
+.homepage {
+	width: 500px;
+	flex: auto;
+}
