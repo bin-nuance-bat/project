@@ -62,7 +62,7 @@ class WebcamCaptureContainer extends Component {
 
 	render() {
 		if (this.state.isDetecting) {
-			return <button>NULL</button>;
+			return null;
 		}
 
 		return (

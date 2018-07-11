@@ -5,13 +5,6 @@ import PropTypes from 'prop-types';
 import './WebcamCapture.css';
 
 const WebcamCapture = props => {
-	const height = 640;
-	const width = 480;
-
-	const videoConstraints = {
-		audio: false
-	};
-
 	if (props.cameraConnected) {
 		return (
 			<div className="container">
@@ -19,7 +12,6 @@ const WebcamCapture = props => {
 					audio={false}
 					ref={props.cameraRef}
 					screenshotFormat="image/jpeg"
-					//videoConstraints={videoConstraints}
 					className="videoStream"
 					screenshotWidth={300}
 				/>

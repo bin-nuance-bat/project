@@ -3,3 +3,9 @@ body {
 	position: relative;
 	padding-left: 30px;
 }
+
+.crop {
+	width: 400px;
+	height: 400px;
+	object-fit: cover;
+}
