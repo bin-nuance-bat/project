@@ -15,53 +15,109 @@
  * =============================================================================
  */
 import * as tf from '@tensorflow/tfjs';
+import firebase from 'firebase/app';
+import 'firebase/firestore';
 
-/**
- * A dataset for webcam controls which allows the user to add example Tensors
- * for particular labels. This object will concat them into two large xs and ys.
- */
 export class ControllerDataset {
-	constructor(numClasses) {
-		this.numClasses = numClasses;
+	constructor() {
+		firebase.initializeApp({
+			apiKey: 'AIzaSyBVuVNKx-rx2ON0RxbfGfbGPpiymbMrxj8',
+			authDomain: 'honesty-store-kiosk.firebaseapp.com',
+			projectId: 'honesty-store-kiosk'
+		});
+		this.db = firebase.firestore();
+		this.db.settings({timestampsInSnapshots: true});
+
+		this.index = 0;
+		window.db = this.db;
+		window.getBatch = this.getBatch.bind(this);
+		window.getClassCount = this.getClassCount.bind(this);
 	}
 
-	/**
-	 * Adds an example to the controller dataset.
-	 * @param {Tensor} example A tensor representing the example. It can be an image,
-	 *     an activation, or any other type of Tensor.
-	 * @param {number} label The label of the example. Should be a number.
-	 */
-	addExample(example, label) {
-		// One-hot encode the label.
-		const y = tf.tidy(() =>
-			tf.oneHot(tf.tensor1d([label]).toInt(), this.numClasses)
+	async addExample(img, activation, label) {
+		this.db
+			.collection('item_data')
+			.doc(label)
+			.set({
+				count:
+					this.db
+						.collection('item_data')
+						.doc(label)
+						.get() + 1
+			});
+
+		this.db
+			.collection('training_data')
+			.add({
+				img,
+				activation: tf
+					.squeeze(activation)
+					.dataSync()
+					.join(','),
+				label,
+				random: Math.random(),
+				trusted: true
+			})
+			.then(ref => {
+				console.log(ref);
+				return true;
+			})
+			.catch(err => {
+				console.error(err);
+				return false;
+			});
+	}
+
+	async getClassCount() {
+		let items = await this.db.collection('item_data').get();
+		return items.size;
+	}
+
+	async getBatch(batchSize = 100, randomness = 0.1) {
+		let batch = {};
+
+		while (Object.keys(batch).length < batchSize) {
+			const snapshot = await this.db
+				.collection('training_data')
+				.orderBy('random')
+				.startAt(Math.random())
+				.limit(batchSize * randomness)
+				.get();
+
+			snapshot.forEach(doc => {
+				console.log('Adding doc:', doc.data());
+				batch[doc.is] = doc.data();
+			});
+			console.log(batch);
+		}
+
+		return Object.values(batch).splice(0, batchSize);
+	}
+
+	async getTensors() {
+		const batch = this.getBatch();
+		let classCount = this.getClassCount();
+		let xs, ys;
+
+		xs = tf.keep(batch[0].activation);
+		ys = tf.keep(
+			tf.tidy(() =>
+				tf.oneHot(tf.tensor1d([batch[0].label]).toInt(), classCount)
+			)
 		);
 
-		if (this.xs == null) {
-			// For the first example that gets added, keep example and y so that the
-			// ControllerDataset owns the memory of the inputs. This makes sure that
-			// if addExample() is called in a tf.tidy(), these Tensors will not get
-			// disposed.
-			this.xs = tf.keep(example);
-			this.ys = tf.keep(y);
-		} else {
-			const oldX = this.xs;
-			try {
-				this.xs = tf.keep(oldX.concat(example, 0));
-			} catch (e) {
-				console.log(e);
-			}
+		for (let i = 1; i < batch.length; i++) {
+			const y = tf.tidy(() =>
+				tf.oneHot(tf.tensor1d([batch[i].label]).toInt(), classCount)
+			);
 
-			const oldY = this.ys;
-			try {
-				this.ys = tf.keep(oldY.concat(y, 0));
-			} catch (e) {
-				console.log(e);
-			}
+			const oldX = xs;
+			xs = tf.keep(oldX.concat(batch[i].activation, 0));
 
-			oldX.dispose();
-			oldY.dispose();
-			y.dispose();
+			const oldY = ys;
+			ys = tf.keep(oldY.concat(y, 0));
 		}
+
+		return xs, ys;
 	}
 }

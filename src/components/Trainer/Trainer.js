@@ -24,7 +24,7 @@ class Trainer extends Component {
 			batchSize: 0.4,
 			epochs: 20,
 			hiddenUnits: 100,
-			status: 'Load or start a new model to begin.',
+			status: 'Loading...',
 			item: 0
 		};
 	}
@@ -53,7 +53,11 @@ class Trainer extends Component {
 	}
 
 	addExample() {
-		this.model.addExample(this.capture(), this.state.item);
+		this.model.addExample(
+			this.webcam.current.getScreenshot(),
+			this.capture(),
+			this.state.item
+		);
 	}
 
 	train() {
@@ -69,13 +73,12 @@ class Trainer extends Component {
 		this.model.predict(this.capture());
 	}
 
-	getName(i) {
-		let item = this.model.items[i];
+	getName(item) {
 		return item.name + (item.qualifier ? ` (${item.qualifier})` : '');
 	}
 
-	remove(i) {
-		this.model.items.splice(i, 1);
+	remove(item) {
+		delete this.model.items[item.id];
 		this.model.init();
 		this.forceUpdate();
 	}
@@ -91,9 +94,9 @@ class Trainer extends Component {
 					<select
 						value={this.state.item}
 						onChange={e => this.setState({item: e.target.value})}>
-						{this.model.items.map((item, i) => (
-							<option key={i} value={i}>
-								{this.getName(i)}
+						{Object.values(this.model.items).map(item => (
+							<option key={item.id} value={item.id}>
+								{this.getName(item)}
 							</option>
 						))}
 					</select>
@@ -157,40 +160,52 @@ class Trainer extends Component {
 					</label>
 					<br />
 					<br />
+					<label>Model</label>
+					<br />
 					<button onClick={this.train}>Train</button>
 					<button onClick={this.predict}>Predict</button>
-					<button onClick={this.model.newModel}>
-						New Model
-					</button>{' '}
-					<br />
 					<button onClick={this.model.loadModel}>Load</button>
+					<br />
 					<button onClick={this.model.saveModel}>Save</button>
 					<button onClick={this.model.exportModel}>Export</button>
+					<br />
+					<br />
+					<label>Data</label>
+					<br />
+					<button onClick={this.model.loadStore}>Load Store</button>
+					<button onClick={this.model.loadData}>Load Training</button>
 				</div>
 
-				<table className="col">
-					<thead>
-						<tr>
-							<th>Item</th>
-							<th>Count</th>
-						</tr>
-					</thead>
-					<tbody>
-						{this.model.items.map((item, i) => {
-							return (
-								<tr key={i}>
-									<td>{this.getName(i)}</td>
-									<td id={`${i}-count`}>0</td>
-									<td>
-										<button onClick={() => this.remove(i)}>
-											&times;
-										</button>
-									</td>
-								</tr>
-							);
-						})}
-					</tbody>
-				</table>
+				<div
+					className="col"
+					style={{maxHeight: 600, overflowY: 'scroll'}}>
+					<table>
+						<thead>
+							<tr>
+								<th>Item</th>
+								<th>Count</th>
+							</tr>
+						</thead>
+						<tbody>
+							{Object.values(this.model.items).map(item => {
+								return (
+									<tr key={item.id}>
+										<td>{this.getName(item)}</td>
+										<td id={`${item.id}-count`}>0</td>
+										<td>
+											<button
+												onClick={() =>
+													this.remove(item)
+												}>
+												&times;
+											</button>
+										</td>
+									</tr>
+								);
+							})}
+						</tbody>
+					</table>
+				</div>
 			</div>
 		);
 	}

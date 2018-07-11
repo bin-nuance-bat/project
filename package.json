@@ -9,6 +9,7 @@
 		"ajv": "^6.5.2",
 		"babel-plugin-syntax-class-properties": "^6.13.0",
 		"eslint-plugin-react": "^7.10.0",
+		"firebase": "^5.2.0",
 		"react": "^16.4.1",
 		"react-dom": "^16.4.1",
 		"react-redux": "^5.0.7",

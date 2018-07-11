@@ -3,22 +3,24 @@ import {ControllerDataset} from './controller_dataset';
 import getStore from '../../utils/honestyStore.js';
 import * as MobileNet from '@tensorflow-models/mobilenet';
 
-const BURST_COUNT = 10;
+const BURST_COUNT = 1;
 
 class Model {
 	constructor(status) {
 		this.setStatus = status;
-		this.items = [{name: 'Unknown', mlCount: 0}];
+		this.items = [{name: 'Unknown', mlCount: 0, id: ''}];
 
 		this.getName = this.getName.bind(this);
 		this.init = this.init.bind(this);
-		this.newModel = this.newModel.bind(this);
+		this.loadStore = this.loadStore.bind(this);
 		this.loadModel = this.loadModel.bind(this);
 		this.saveModel = this.saveModel.bind(this);
 		this.exportModel = this.exportModel.bind(this);
 		this.addExample = this.addExample.bind(this);
 		this.train = this.train.bind(this);
 		this.predict = this.predict.bind(this);
+
+		this.init();
 	}
 
 	getName(i) {
@@ -34,7 +36,7 @@ class Model {
 		this.setStatus('Ready');
 	}
 
-	newModel() {
+	async loadStore() {
 		if (
 			!this.model ||
 			window.confirm(
@@ -42,17 +44,8 @@ class Model {
 			)
 		) {
 			this.setStatus('Fetching store data...');
-			getStore().then(store => {
-				store = Object.values(store);
-				let i = store.length;
-				while (i--) {
-					store[i].count < 1
-						? store.splice(i, 1)
-						: (store[i].mlCount = 0);
-				}
-				this.items = this.items.concat(store);
-				this.init();
-			});
+			this.items = await getStore();
+			this.setStatus('Ready');
 		}
 	}
 
@@ -64,7 +57,8 @@ class Model {
 			)
 		) {
 			tf.loadModel('indexeddb://store-model')
-				.then(() => {
+				.then(model => {
+					this.model = model;
 					this.items = JSON.parse(
 						window.localStorage.getItem('items')
 					);
@@ -112,16 +106,12 @@ class Model {
 		document.body.removeChild(elem);
 	}
 
-	async addExample(image, label) {
-		if (!this.controllerDataset) {
-			this.setStatus('Please load or create a model first');
-			return;
-		}
-
+	async addExample(img, tensor, label) {
 		for (let i = 1; i <= BURST_COUNT; i++) {
 			tf.tidy(() => {
 				this.controllerDataset.addExample(
-					this.mobilenet.infer(image, 'conv_pw_13_relu'),
+					img,
+					this.mobilenet.infer(tensor, 'conv_pw_13_relu'),
 					label
 				);
 			});
@@ -136,58 +126,69 @@ class Model {
 	}
 
 	async train(hiddenUnits, batchSizeFraction, learningRate, epochs) {
-		if (!this.controllerDataset || this.controllerDataset.xs === null) {
-			this.setStatus('Please collect some training images first!');
-			return;
-		}
+		this.setStatus('Loading training data from DB...');
 
-		this.setStatus('Training model, please wait...');
-		await tf.nextFrame();
+		let data = await this.controllerDataset.getData();
+		console.log(data.data());
 
-		this.model = tf.sequential({
-			layers: [
-				tf.layers.flatten({inputShape: [7, 7, 256]}),
-				tf.layers.dense({
-					units: hiddenUnits,
-					activation: 'relu',
-					kernelInitializer: 'varianceScaling',
-					useBias: true
-				}),
-				tf.layers.dense({
-					units: this.items.length,
-					kernelInitializer: 'varianceScaling',
-					useBias: false,
-					activation: 'softmax'
-				})
-			]
-		});
-
-		const optimizer = tf.train.adam(learningRate);
-		this.model.compile({optimizer, loss: 'categoricalCrossentropy'});
-
-		const batchSize = Math.floor(
-			this.controllerDataset.xs.shape[0] * batchSizeFraction
-		);
-		if (!(batchSize > 0)) {
-			this.setStatus(
-				'Batch size invalid, please choose a number 0 < x < 1'
-			);
-			return;
-		}
-
-		this.model.fit(this.controllerDataset.xs, this.controllerDataset.ys, {
-			batchSize,
-			epochs,
-			callbacks: {
-				onBatchEnd: async (batch, logs) => {
-					this.setStatus('Training. Loss: ' + logs.loss.toFixed(5));
-					await tf.nextFrame();
-				},
-				onTrainEnd: async () => {
-					this.setStatus('Finished Training. Try me out!');
-					await tf.nextFrame();
-				}
+		this.controllerDataset.getTensors().then(async (xs, ys) => {
+			if (!xs) {
+				this.setStatus('Please collect some training images first!');
+				return;
 			}
+
+			this.setStatus('Training model, please wait...');
+			await tf.nextFrame();
+
+			if (!this.model) {
+				this.setStatus('Generating new model');
+				this.model = tf.sequential({
+					layers: [
+						tf.layers.flatten({inputShape: [7, 7, 256]}),
+						tf.layers.dense({
+							units: hiddenUnits,
+							activation: 'relu',
+							kernelInitializer: 'varianceScaling',
+							useBias: true
+						}),
+						tf.layers.dense({
+							units: this.items.length,
+							kernelInitializer: 'varianceScaling',
+							useBias: false,
+							activation: 'softmax'
+						})
+					]
+				});
+			}
+
+			const optimizer = tf.train.adam(learningRate);
+			this.model.compile({optimizer, loss: 'categoricalCrossentropy'});
+
+			const batchSize = Math.floor(xs.shape[0] * batchSizeFraction);
+
+			if (!(batchSize > 0)) {
+				this.setStatus(
+					'Batch size invalid, please choose a number 0 < x < 1'
+				);
+				return;
+			}
+
+			this.model.fit(xs, ys, {
+				batchSize,
+				epochs,
+				callbacks: {
+					onBatchEnd: async (batch, logs) => {
+						this.setStatus(
+							'Training. Loss: ' + logs.loss.toFixed(5)
+						);
+						await tf.nextFrame();
+					},
+					onTrainEnd: async () => {
+						this.setStatus('Finished Training. Try me out!');
+						await tf.nextFrame();
+					}
+				}
+			});
 		});
 	}
 
