@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 
 const App = props => {
+	props.loadStoreList();
 	return (
 		<div id="homepage">
 			<h2 id="heading">

@@ -5,7 +5,9 @@ import {connect} from 'react-redux';
 
 class ConfirmationBox extends Component {
 	handleYes = () => {
-		// set name of
+		this.props.setActualItem(
+			this.props.storeList[this.props.prediction.id].name
+		);
 		// go to slack enter
 	};
 
