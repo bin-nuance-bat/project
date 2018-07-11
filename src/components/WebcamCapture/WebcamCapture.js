@@ -21,44 +21,49 @@ class WebcamCapture extends Component {
 		cameraConnected: false
 	};
 
-	constructor(props) {
-		super(props);
-		this.webcam = React.createRef();
-		this.model = new Model();
-		this.model.load();
+
+	webcam = React.createRef();
+	model = new Model();
+
+	setupScreenshotInterval() {
+		this.ticker = setInterval(() => {
+			const img = new Image(224, 224);
+			img.src = this.webcam.current.getScreenshot();
+
+			img.onload = () => {
+				this.model.predict(img).then(item => {
+					if (
+						item.value > ML_THRESHOLD &&
+						item.id !== '' &&
+						!this.props.prediction
+					) {
+						this.props.setPrediction(item.id, img.src);
+					}
+				});
+			};
+		}, 1000);
+	}
+
+	setupWebcam() {
+		navigator.mediaDevices
+			.getUserMedia({video: true})
+			.then(() => {
+				this.setState({
+					cameraConnected: true,
+					isDetecting: false
+				});
+				this.setupScreenshotInterval();
+			})
+			.catch(() =>
+				this.setState({cameraConnected: false, isDetecting: false})
+			);
 	}
 
 	componentDidMount() {
-		if (navigator.mediaDevices) {
-			navigator.mediaDevices
-				.getUserMedia({video: true})
-				.then(() => {
-					this.setState({
-						cameraConnected: true,
-						isDetecting: false
-					});
+		this.model.load();
 
-					this.ticker = setInterval(() => {
-						const img = new Image(224, 224);
-						img.src = this.webcam.current.getScreenshot();
-
-						img.onload = () => {
-							this.model.predict(img).then(item => {
-								if (
-									item.value > ML_THRESHOLD &&
-									item.id !== '' &&
-									!this.props.prediction
-								) {
-									this.props.setPrediction(item.id, img.src);
-								}
-							});
-						};
-					}, 1000);
-				})
-				.catch(() =>
-					this.setState({cameraConnected: false, isDetecting: false})
-				);
-		}
+		if (!navigator.mediaDevices) return;
+		this.setupWebcam();
 	}
 
 	componentWillUnmount() {
