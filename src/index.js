@@ -8,14 +8,19 @@ import registerServiceWorker from './registerServiceWorker';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import AppContainer from './components/App/container';
 import Trainer from './components/Trainer/Trainer';
+import WebcamCaptureContainer from './components/WebcamCapture/WebcamCaptureContainer';
 
 ReactDOM.render(
 	<Provider store={store}>
 		<Router>
 			<Switch>
 				<Route exact path="/" component={AppContainer} />
-				{/* <Route exact path="/disclaimer" component={Disclaimer} />}
-				<Route exact path="/scanitem" component={ScanItem} />} */}
+				{/* <Route exact path="/disclaimer" component={Disclaimer} />} */}
+				<Route
+					exact
+					path="/scanitem"
+					component={WebcamCaptureContainer}
+				/>}
 				<Route exact path="/old" component={OldAppContainer} />
 				<Route exact path="/training" component={Trainer} />
 			</Switch>
