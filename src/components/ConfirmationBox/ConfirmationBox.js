@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import setActualItem from './actions';
 
 class ConfirmationBox extends Component {
 	handleYes = () => {
+		// set name of
 		// go to slack enter
 	};
 
@@ -14,7 +16,7 @@ class ConfirmationBox extends Component {
 		return (
 			<div>
 				<div>{`Did you take ${
-					this.props.storeList[this.props.prediction.id]
+					this.props.storeList[this.props.prediction.id].name
 				}?`}</div>
 				<img src={this.props.prediction.img} alt="" />
 				<div>
@@ -32,10 +34,18 @@ class ConfirmationBox extends Component {
 
 ConfirmationBox.propTypes = {
 	prediction: PropTypes.object.isRequired,
-	storeList: PropTypes.object.isRequired
+	storeList: PropTypes.objectOf(object).isRequired
+};
+
+const mapDispatchToProps = dispatch => {
+	return {
+		setActualItem: itemName => {
+			dispatch(setActualItem(itemName));
+		}
+	};
 };
 
 export default connect(
 	mapStateToProps,
-	null
+	mapDispatchToProps
 )(ConfirmationBox);
