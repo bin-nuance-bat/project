@@ -10,6 +10,9 @@
 		"react": "^16.4.1",
 		"react-dom": "^16.4.1",
 		"react-redux": "^5.0.7",
+		"react-router": "^4.3.1",
+		"react-router-dom": "^4.3.1",
+		"react-router-redux": "^4.0.8",
 		"react-scripts": "1.1.4",
 		"react-webcam": "^1.0.1",
 		"redux": "^4.0.0",
@@ -63,10 +66,9 @@
 			}
 		},
 		"env": {
-            "browser": true,
-            "jest": true,
-            "node": true
-        }
-		
+			"browser": true,
+			"jest": true,
+			"node": true
+		}
 	}
 }
