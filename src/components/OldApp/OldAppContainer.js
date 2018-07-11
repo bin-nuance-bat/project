@@ -13,14 +13,11 @@ const mapStateToProps = state => {
 	};
 };
 
-const mapDispatchToProps = dispatch => {
-	return {
-		loadUsers,
-		loadStoreList,
-		setShowList: showList => dispatch(setShowList(showList)),
-		setSlackUserFetchError: isError =>
-			dispatch(setSlackUserFetchError(isError))
-	};
+const mapDispatchToProps = {
+	loadUsers,
+	loadStoreList,
+	setShowList,
+	setSlackUserFetchError
 };
 
 export default connect(
