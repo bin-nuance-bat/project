@@ -18,7 +18,7 @@ it('Renders webcam with screenshot width of 300', () => {
 	const wrapper = shallow(
 		<WebcamCapture cameraConnected={true} cameraRef={{test: 'value'}} />
 	);
-	expect(wrapper.find(Webcam).props().screenshotWidth).toEqual(224);
+	expect(wrapper.find(Webcam).props().screenshotWidth).toEqual(300);
 });
 
 it('Renders webcam with screenshot format of jpeg', () => {
