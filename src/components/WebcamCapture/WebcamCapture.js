@@ -22,10 +22,10 @@ class WebcamCapture extends Component {
 	};
 
 	webcam = React.createRef();
+	model = new Model();
 
 	constructor(props) {
 		super(props);
-		this.model = new Model();
 		this.model.load();
 	}
 
