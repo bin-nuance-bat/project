@@ -1,6 +1,11 @@
 .videoStream {
-    margin: 0px auto;
-    width: 400px;
-    height: 400px;
-    transform: rotateY(180deg);
-  }
+	width: 400px;
+	height: 400px;
+	object-fit: cover;
+	transform: rotateY(180deg);
+}
+
+.container {
+	display: block;
+	overflow: hidden;
+}

@@ -81,7 +81,11 @@ class App extends React.Component {
 						item={this.props.storeList[this.props.prediction.id]}
 						onYes={this.handleYes}
 						onNo={this.handleNo}>
-						<img src={this.props.prediction.img} alt="" />
+						<img
+							class="crop"
+							src={this.props.prediction.img}
+							alt=""
+						/>
 					</ConfirmationBox>
 				)}
 				{this.props.showList && (
