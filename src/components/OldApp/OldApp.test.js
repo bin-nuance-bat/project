@@ -1,5 +1,5 @@
 import React from 'react';
-import AppContainer from './AppContainer';
+import AppContainer from './OldAppContainer';
 import {shallow, configure} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import store from '../../utils/reduxStore';
