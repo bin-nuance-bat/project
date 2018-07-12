@@ -1,7 +1,11 @@
 import React from 'react';
 
 class SnackChat extends React.Component {
-	state = {videoSrc: null};
+	constructor(props) {
+		super(props);
+		this.state = {videoSrc: null};
+		window.setTimeout(this.takePhoto, 5000);
+	}
 
 	componentDidMount() {
 		if (navigator.getUserMedia) {
@@ -11,6 +15,10 @@ class SnackChat extends React.Component {
 				function() {}
 			);
 		}
+	}
+
+	takePhoto() {
+		this.getCanvas();
 	}
 
 	handleVideo(stream) {
