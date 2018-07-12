@@ -25,7 +25,6 @@ const App = props => {
 			</div>
 			<button
 				id="snackchatButton"
-				className="buttonBlue"
 				onClick={() => {
 					props.setSendWithPhoto(true);
 					props.history.push('/scanitem');
@@ -34,7 +33,6 @@ const App = props => {
 			</button>
 			<button
 				id="noPhotoButton"
-				className="buttonWhite"
 				onClick={() => {
 					props.setSendWithPhoto(false);
 					props.history.push('/disclaimer');
