@@ -31,7 +31,7 @@ button {
 
 #snackchatButton {
   border: none;
-  fill: #47BED8;
+  background-color: #47BED8;
   margin-bottom: 64px; }
 
 #noPhotoButton {
