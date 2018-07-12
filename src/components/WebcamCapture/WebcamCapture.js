@@ -71,7 +71,7 @@ class WebcamCapture extends Component {
 
 		if (this.state.cameraConnected) {
 			return (
-				<div>
+				<div className="container">
 					<header>Hold up your snack to the camera</header>
 					<Webcam
 						audio={false}
@@ -81,7 +81,7 @@ class WebcamCapture extends Component {
 						width={width}
 						// videoConstraints={videoConstraints}
 						className="videoStream"
-						screenshotWidth={224}
+						screenshotWidth={300}
 					/>
 				</div>
 			);

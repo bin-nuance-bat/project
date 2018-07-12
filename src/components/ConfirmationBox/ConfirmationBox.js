@@ -21,7 +21,7 @@ class ConfirmationBox extends Component {
 				<div>{`Did you take ${
 					this.props.storeList[this.props.prediction.id].name
 				}?`}</div>
-				<img src={this.props.prediction.img} alt="" />
+				<img src={this.props.prediction.img} alt="" className="crop" />
 				<div>
 					<button testID="YES" onClick={this.handleYes}>
 						Yes
