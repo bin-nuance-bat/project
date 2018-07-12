@@ -1,18 +1,18 @@
 import {connect} from 'react-redux';
-import UsernameEntry from './UsernameEntry';
-import {setCurrentUser} from './actions';
+import EditSnack from './EditSnack';
+import {setActualItem} from '../ConfirmationBox/actions';
 
 const mapStateToProps = state => {
 	return {
-		currentUser: state.currentUser
+		items: Object.values(state.storeList)
 	};
 };
 
 const mapDispatchToProps = {
-	setCurrentUser
+	setActualItem
 };
 
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(UsernameEntry);
+)(EditSnack);
