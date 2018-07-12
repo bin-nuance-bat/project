@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 const StoreList = props => {
 	return (
 		<div>
-			Please select the correct item:
+			My snack is a:
 			<ButtonList
 				items={props.storeList}
 				onClick={async (storeCode, itemName) => {
