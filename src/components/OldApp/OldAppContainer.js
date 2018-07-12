@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import App from './App';
+import App from './OldApp';
 import {setSlackUserFetchError, loadUsers} from './actions';
 import {loadStoreList, setShowList} from './../StoreList/actions';
 
