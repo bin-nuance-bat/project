@@ -1,6 +1,6 @@
 import React from 'react';
 
-class ConfirmationBox extends Component {
+class ConfirmationBox extends React.Component {
 	handleYes = () => {
 		this.props.setActualItem(
 			this.props.storeList[this.props.prediction.id].name
