@@ -1,6 +1,6 @@
 import {SET_USERS, SET_SLACK_USER_FETCH_ERROR} from './actionTypes';
 
-import {loadUsers as reallyLoadUsers} from './../../utils/slack';
+import {loadUsers as fetchUsers} from './../../utils/slack';
 
 export function setUsers(users) {
 	return {
@@ -17,6 +17,6 @@ export function setSlackUserFetchError(slackUserFetchError) {
 }
 
 export const loadUsers = () => (dispatch, getState) =>
-	reallyLoadUsers()
+	fetchUsers()
 		.then(users => dispatch(setUsers(users)))
 		.catch(() => dispatch(setSlackUserFetchError(true)));
