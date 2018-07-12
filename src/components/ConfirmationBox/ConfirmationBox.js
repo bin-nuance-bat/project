@@ -7,10 +7,10 @@ const ConfirmationBox = props => {
 			<div>{`Did you take ${props.item.name}?`}</div>
 			{props.children}
 			<div>
-				<button testID="YES" onClick={props.onYes}>
+				<button data-test-id="YES" onClick={props.onYes}>
 					Yes
 				</button>
-				<button testID="NO" onClick={props.onNo}>
+				<button data-test-id="NO" onClick={props.onNo}>
 					No
 				</button>
 			</div>

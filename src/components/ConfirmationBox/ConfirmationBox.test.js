@@ -16,7 +16,7 @@ it('calls the onYes correct functions when clicked', () => {
 			store={{}}
 		/>
 	);
-	wrapper.find('[testID="YES"]').simulate('click');
+	wrapper.find('[data-test-id="YES"]').simulate('click');
 	expect(mockFuncYes).toHaveBeenCalledTimes(1);
 });
 
@@ -31,6 +31,6 @@ it('calls the onNo correct functions when clicked', () => {
 			store={{}}
 		/>
 	);
-	wrapper.find('[testID="NO"]').simulate('click');
+	wrapper.find('[data-test-id="NO"]').simulate('click');
 	expect(mockFuncNo).toHaveBeenCalledTimes(1);
 });
