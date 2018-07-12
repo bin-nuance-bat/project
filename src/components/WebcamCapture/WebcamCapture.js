@@ -9,12 +9,6 @@ const ML_THRESHOLD = 0.06;
 const height = 400;
 const width = 400;
 
-const videoConstraints = {
-	width,
-	height,
-	facingMode: 'user'
-};
-
 class WebcamCapture extends Component {
 	state = {
 		isDetecting: true,
@@ -37,6 +31,7 @@ class WebcamCapture extends Component {
 						!this.props.prediction
 					) {
 						this.props.setPrediction(item.id, img.src);
+						this.props.history.push('/confirmitem');
 					}
 				});
 			};
@@ -77,13 +72,14 @@ class WebcamCapture extends Component {
 		if (this.state.cameraConnected) {
 			return (
 				<div>
+					<header>Hold up your snack to the camera</header>
 					<Webcam
 						audio={false}
 						height={height}
 						ref={this.webcam}
 						screenshotFormat="image/jpeg"
 						width={width}
-						videoConstraints={videoConstraints}
+						// videoConstraints={videoConstraints}
 						className="videoStream"
 						screenshotWidth={224}
 					/>
