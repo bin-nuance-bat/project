@@ -8,7 +8,9 @@ class EditSnack extends React.Component {
 		return (
 			<ButtonList
 				items={Object.values(this.props.storeList)}
-				onClick={() => {}}
+				onClick={(id, name) => {
+					this.props.setActualItem(name);
+				}}
 			/>
 		);
 	}
