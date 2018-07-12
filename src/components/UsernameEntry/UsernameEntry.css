@@ -1,44 +1,37 @@
 input {
-	width: 100%;
-	font-size: 80%;
-	border: none;
-	border-bottom: 1px dotted black;
-}
+  width: 100%;
+  font-size: 80%;
+  border: none;
+  border-bottom: 1px dotted black; }
 
 .flexColumn {
-	display: flex;
-	flex-direction: column;
-}
+  display: flex;
+  flex-direction: column; }
 
 .flexRow {
-	display: flex;
-	flex-direction: row;
-}
+  display: flex;
+  flex-direction: row; }
 
 button {
-	border-radius: 5px;
-	padding-left: 5%;
-	padding-right: 5%;
-	padding-bottom: 1%;
-	border: solid 1px;
-	margin-top: 5px;
-	margin-bottom: 5px;
-	display: block;
-	width: 100%;
-	font-size: 90%;
-}
+  border-radius: 5px;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-bottom: 1%;
+  border: solid 1px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: block;
+  width: 100%;
+  font-size: 90%; }
 
 .buttonBlue {
-	color: white;
-	background-color: #71cce2; 
-}
+  color: white;
+  background-color: #71cce2; }
 
 #contents {
-	padding-top: 100px;
-	padding-left: 80px;
-	width: 70%;
-}
+  padding-top: 100px;
+  padding-left: 80px;
+  width: 70%; }
 
 #slackIcon {
-	margin-right: 20px;
-}
+  margin-right: 20px; }

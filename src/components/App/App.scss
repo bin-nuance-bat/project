@@ -1,0 +1,58 @@
+body, button {
+	font-family: apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Helvetica,sans-serif;
+}
+
+body {
+	background-color: #0a3d5f;
+	width: 100%;
+	color: #FFFFFF;
+	text-align: center;
+}
+
+#homepage {
+	padding-top: 256px;
+	transform: translate(-15px, 0px);
+}
+
+#heading {
+	font-size: 53px;
+	margin-top: 0px;
+	margin-bottom: 82px;
+}
+
+#subheading {
+	font-size: 30px;
+	margin-bottom: 160px;
+}
+
+button {
+	font-size: 30px;
+	border-radius: 12px;
+	width: 488px;
+	height: 64px;
+	color: white;
+	padding: 0px;
+	display: inline-block;
+}
+
+#snackchatButton {
+	border: none;
+	fill: #47BED8;
+	margin-bottom: 64px;
+}
+
+#noPhotoButton {
+	background-color: #0a3d5f;
+	border: 2px solid white;
+}
+
+.cls-1 {
+	fill: #ffcd00;
+}
+
+#halo {
+	position: absolute;
+	transform: translate(-12px, -2px);
+	width: 45px;
+	height: 50px;
+}

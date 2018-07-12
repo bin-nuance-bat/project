@@ -61,4 +61,4 @@ typings/
 .next
 
 # SASS generated css files
-src/*/*/*.css
+src/**/*.css
