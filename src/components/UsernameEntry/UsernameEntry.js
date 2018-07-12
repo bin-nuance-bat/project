@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import SlackIcon from './../../res/SlackIcon';
+import SlackIcon from './SlackIcon';
 import './UsernameEntry.css';
 
 class UsernameEntry extends React.Component {
@@ -10,16 +10,20 @@ class UsernameEntry extends React.Component {
 
 	render() {
 		return (
-			<div>
-				<SlackIcon size={100} />
-				Your Slack handle is...
-				<div>
-					<input
-						value={this.props.currentUser}
-						onChange={event =>
-							this.props.setCurrentUser(event.target.value)
-						}
-					/>
+			<div id="contents" className="flex-row">
+				<div id="slackIcon">
+					<SlackIcon size={100} />
+				</div>
+				<div className="flex-column">
+					<label id="formLabel">Your Slack handle is...</label>
+					<div>
+						<input
+							value={this.props.currentUser}
+							onChange={event =>
+								this.props.setCurrentUser(event.target.value)
+							}
+						/>
+					</div>
 				</div>
 			</div>
 		);
