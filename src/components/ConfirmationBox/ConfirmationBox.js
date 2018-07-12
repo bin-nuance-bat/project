@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {setActualItem} from './actions';
 import {connect} from 'react-redux';
+import './ConfirmationBox.css';
 
 class ConfirmationBox extends Component {
 	handleYes = () => {
@@ -21,7 +22,7 @@ class ConfirmationBox extends Component {
 				<div>{`Did you take ${
 					this.props.storeList[this.props.prediction.id].name
 				}?`}</div>
-				<img src={this.props.prediction.img} alt="" className="crop" />
+				<img src={this.props.prediction.img} alt="" class="crop" />
 				<div>
 					<button testID="YES" onClick={this.handleYes}>
 						Yes
