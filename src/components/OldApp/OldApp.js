@@ -4,7 +4,7 @@ import ConfirmationBox from '../ConfirmationBox/ConfirmationBox';
 import StoreListContainer from '../StoreList/StoreListContainer';
 import PropTypes from 'prop-types';
 import {getUserSlackID, sendSlackMessage} from './../../utils/slack';
-import UsernameEntryContainer from '../UsernameEntry/UsernameEntryContainer.js';
+import UsernameEntryContainer from '../UsernameEntry/container';
 import Notification from './../Notification/Notification';
 import './OldApp.css';
 
