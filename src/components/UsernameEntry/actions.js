@@ -4,7 +4,6 @@ import {
 	SET_SEND_REMINDER_ERROR
 } from './actionTypes';
 import labels from './../../utils/labels.json';
-import store from './../../utils/reduxStore';
 
 const token = process.env.REACT_APP_SLACK_TOKEN;
 
@@ -47,8 +46,8 @@ const getIDByUsername = (username, users) => {
 	return user ? user.id : null;
 };
 
-export const sendSlackMessage = username => dispatch => {
-	let state = store.getState();
+export const sendSlackMessage = username => async (dispatch, getState) => {
+	let state = getState();
 	let id = getIDByUsername(username, state.users);
 
 	let storeCode = state.prediction ? state.prediction.id : '';
@@ -64,7 +63,7 @@ export const sendSlackMessage = username => dispatch => {
 	if (i === labels.length) dispatch(setSendReminderError(true));
 
 	try {
-		fetch(`https://slack.com/api/chat.postMessage?token=${token}&
+		await fetch(`https://slack.com/api/chat.postMessage?token=${token}&
 		channel=${id}&
 		text=${`Click to purchase your ${itemName}: https://honesty.store/item/${storeCode}`}`);
 		dispatch(setSendReminderError(false));

@@ -79,7 +79,6 @@ class WebcamCapture extends Component {
 						ref={this.webcam}
 						screenshotFormat="image/jpeg"
 						width={width}
-						// videoConstraints={videoConstraints}
 						className="videoStream"
 						screenshotWidth={224}
 					/>

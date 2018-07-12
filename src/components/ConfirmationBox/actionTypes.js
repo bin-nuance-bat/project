@@ -1,1 +1,1 @@
-export const SET_ACTUALITEM = 'SET_ACTUALITEM';
+export const SET_ACTUAL_ITEM = 'SET_ACTUAL_ITEM';
