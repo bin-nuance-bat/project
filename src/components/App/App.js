@@ -20,30 +20,27 @@ const App = props => {
 				</svg>
 				Paying later?
 			</h2>
-			<br />
-			Send yourself a reminder on Slack
-			<hr />
-			<div>
-				<button
-					className="buttonBlue"
-					onClick={() => {
-						props.setSendWithPhoto(true);
-						props.history.push('/scanitem');
-					}}>
-					Send a SnackChat
-				</button>
+			<div id="subheading">
+				Why not send yourself a reminder on Slack?
 			</div>
-			<hr />
-			<div>
-				<button
-					className="buttonWhite"
-					onClick={() => {
-						props.setSendWithPhoto(false);
-						props.history.push('/disclaimer');
-					}}>
-					Send a reminder without a photo
-				</button>
-			</div>
+			<button
+				id="snackchatButton"
+				className="buttonBlue"
+				onClick={() => {
+					props.setSendWithPhoto(true);
+					props.history.push('/scanitem');
+				}}>
+				Send a SnackChat
+			</button>
+			<button
+				id="noPhotoButton"
+				className="buttonWhite"
+				onClick={() => {
+					props.setSendWithPhoto(false);
+					props.history.push('/disclaimer');
+				}}>
+				Send a reminder without a photo
+			</button>
 		</div>
 	);
 };
