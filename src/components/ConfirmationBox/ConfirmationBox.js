@@ -6,7 +6,6 @@ class ConfirmationBox extends Component {
 		this.props.setActualItem(
 			this.props.storeList[this.props.prediction.id].name
 		);
-		console.log(this.props);
 		this.props.history.push('/slackname');
 	};
 
