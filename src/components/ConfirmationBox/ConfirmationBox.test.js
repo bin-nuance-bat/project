@@ -13,6 +13,7 @@ it('calls the onYes correct functions when clicked', () => {
 			item={{name: 'test', id: 'xxx'}}
 			onYes={mockFuncYes}
 			onNo={mockFuncNo}
+			store={{}}
 		/>
 	);
 	wrapper.find('[testID="YES"]').simulate('click');
@@ -27,6 +28,7 @@ it('calls the onNo correct functions when clicked', () => {
 			item={{name: 'test', id: 'xxx'}}
 			onYes={mockFuncYes}
 			onNo={mockFuncNo}
+			store={{}}
 		/>
 	);
 	wrapper.find('[testID="NO"]').simulate('click');
