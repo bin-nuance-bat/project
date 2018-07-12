@@ -12,7 +12,7 @@ class ConfirmationBox extends Component {
 	};
 
 	handleNo = () => {
-		// go to item enter
+		this.props.history.push('/editSnack');
 	};
 
 	render() {
