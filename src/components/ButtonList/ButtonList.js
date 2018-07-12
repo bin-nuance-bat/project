@@ -8,7 +8,7 @@ class ButtonList extends React.Component {
 	};
 
 	componentDidUpdate(prevProps, prevState) {
-		if (prevState.userEntry != this.state.userEntry) {
+		if (prevState.userEntry !== this.state.userEntry) {
 			const currentList = this.props.items.filter(item =>
 				item.name.includes(this.state.userEntry)
 			);

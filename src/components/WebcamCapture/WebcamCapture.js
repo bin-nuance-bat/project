@@ -9,12 +9,6 @@ const ML_THRESHOLD = 0.06;
 const height = 400;
 const width = 400;
 
-const videoConstraints = {
-	width,
-	height,
-	facingMode: 'user'
-};
-
 class WebcamCapture extends Component {
 	state = {
 		isDetecting: true,

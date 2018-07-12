@@ -2,22 +2,41 @@ input {
 	width: 100%;
 	font-size: 80%;
 	border: none;
-	border-bottom: 1px solid black;
+	border-bottom: 1px dotted black;
 }
 
-.flex-column {
+.flexColumn {
 	display: flex;
 	flex-direction: column;
 }
 
-.flex-row {
+.flexRow {
 	display: flex;
 	flex-direction: row;
 }
 
+button {
+	border-radius: 5px;
+	padding-left: 5%;
+	padding-right: 5%;
+	padding-bottom: 1%;
+	border: solid 1px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	display: block;
+	width: 100%;
+	font-size: 90%;
+}
+
+.buttonBlue {
+	color: white;
+	background-color: #71cce2; 
+}
+
 #contents {
-	padding-top: 80px;
-	padding-left: 60px;
+	padding-top: 100px;
+	padding-left: 80px;
+	width: 70%;
 }
 
 #slackIcon {
