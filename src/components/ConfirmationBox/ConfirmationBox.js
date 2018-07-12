@@ -8,7 +8,7 @@ class ConfirmationBox extends Component {
 		this.props.setActualItem(
 			this.props.storeList[this.props.prediction.id].name
 		);
-		// go to slack enter
+		this.props.history.push('/slackname');
 	};
 
 	handleNo = () => {
