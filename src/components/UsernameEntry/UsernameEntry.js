@@ -6,6 +6,7 @@ import './UsernameEntry.css';
 class UsernameEntry extends React.Component {
 	sendReminder = () => {
 		this.props.sendSlackMessage(this.props.currentUser);
+		// handle this.props.sendReminderError
 	};
 
 	componentDidMount() {
@@ -47,7 +48,8 @@ UsernameEntry.propTypes = {
 	users: PropTypes.arrayOf(PropTypes.object).isRequired,
 	currentUser: PropTypes.string,
 	setCurrentUser: PropTypes.func.isRequired,
-	loadUsers: PropTypes.func.isRequired
+	loadUsers: PropTypes.func.isRequired,
+	sendReminderError: PropTypes.bool.isRequired
 };
 
 export default UsernameEntry;
