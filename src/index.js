@@ -19,7 +19,7 @@ ReactDOM.render(
 		<Router>
 			<Switch>
 				<Route exact path="/" component={AppContainer} />
-				<Route exact path="/disclaimer" component={Disclaimer} />}
+				<Route exact path="/disclaimer" component={Disclaimer} />
 				<Route
 					exact
 					path="/scanitem"
