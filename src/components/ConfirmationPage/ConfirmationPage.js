@@ -18,7 +18,7 @@ class ConfirmationPage extends Component {
 	render() {
 		return (
 			<div>
-				Enjoy your this.props.storeList[this.props.prediction.id].name
+				Enjoy your {this.props.storeList[this.props.prediction.id].name}
 			</div>
 		);
 	}

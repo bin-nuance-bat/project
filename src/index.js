@@ -13,19 +13,21 @@ import Disclaimer from './components/Disclaimer/Disclaimer';
 import ConfirmationBox from './components/ConfirmationBox/ConfirmationBox';
 import UsernameEntryContainer from './components/UsernameEntry/container';
 import ConfirmationPage from './components/ConfirmationPage/container';
+import EditSnack from './components/EditSnack/EditSnack';
 
 ReactDOM.render(
 	<Provider store={store}>
 		<Router>
 			<Switch>
 				<Route exact path="/" component={AppContainer} />
-				<Route exact path="/disclaimer" component={Disclaimer} />}
+				<Route exact path="/disclaimer" component={Disclaimer} />
 				<Route
 					exact
 					path="/scanitem"
 					component={WebcamCaptureContainer}
 				/>
 				<Route exact path="/confirmitem" component={ConfirmationBox} />
+				<Route exact path="/editSnack" component={EditSnack} />
 				<Route
 					exact
 					path="/slackname"
