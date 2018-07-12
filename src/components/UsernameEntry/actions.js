@@ -30,17 +30,7 @@ export const loadUsers = () => dispatch => {
 			else return data.members;
 		})
 		.then(users => dispatch(setUsers(users)))
-		.catch(() =>
-			dispatch(
-				setUsers([
-					{
-						id: '1',
-						name: 'ilapworth',
-						profile: {real_name: 'Isaac Lapworth'}
-					}
-				])
-			)
-		);
+		.catch(() => dispatch(setUsers([])));
 };
 
 function setSendReminderError(sendReminderError) {

@@ -21,17 +21,22 @@ class UsernameEntry extends React.Component {
 						<SlackIcon size={100} />
 					</div>
 					<div className="flexColumn">
-						<label id="formLabel">Your Slack handle is...</label>
-						<div>
-							<input
-								value={this.props.currentUser}
-								onChange={event =>
-									this.props.setCurrentUser(
-										event.target.value
-									)
-								}
-							/>
-						</div>
+						<label id="formLabel" for="enterName">
+							Your Slack handle is...
+						</label>
+						<input
+							list="slackUsers"
+							name="enterName"
+							value={this.props.currentUser}
+							onChange={event =>
+								this.props.setCurrentUser(event.target.value)
+							}
+						/>
+						<datalist id="slackUsers">
+							{this.props.users.map((user, index) => (
+								<option key={index} value={user.name} />
+							))}
+						</datalist>
 					</div>
 				</div>
 				<div>
