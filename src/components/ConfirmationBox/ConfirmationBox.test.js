@@ -5,30 +5,38 @@ import ConfirmationBox from './ConfirmationBox';
 
 configure({adapter: new Adapter()});
 
-it('calls the onYes correct functions when clicked', () => {
-	const mockFuncYes = jest.fn();
-	const mockFuncNo = jest.fn();
-	const wrapper = shallow(
-		<ConfirmationBox
-			item={{name: 'test', id: 'xxx'}}
-			onYes={mockFuncYes}
-			onNo={mockFuncNo}
-		/>
-	);
-	wrapper.find('[testID="YES"]').simulate('click');
-	expect(mockFuncYes).toHaveBeenCalledTimes(1);
+const getProps = () => {
+	return {
+		setActualItem: jest.fn(),
+		storeList: {xxx: {id: 'xxx', name: 'Alfred'}},
+		prediction: {id: 'xxx'},
+
+		history: {
+			push: jest.fn()
+		}
+	};
+};
+
+it('calls setActualItem when yes is clicked', () => {
+	const mockProps = getProps();
+
+	const wrapper = shallow(<ConfirmationBox {...mockProps} />);
+	wrapper.find({testattribute: 'YES'}).simulate('click');
+	expect(mockProps.setActualItem).toHaveBeenCalledWith('Alfred');
 });
 
-it('calls the onNo correct functions when clicked', () => {
-	const mockFuncNo = jest.fn();
-	const mockFuncYes = jest.fn();
-	const wrapper = shallow(
-		<ConfirmationBox
-			item={{name: 'test', id: 'xxx'}}
-			onYes={mockFuncYes}
-			onNo={mockFuncNo}
-		/>
-	);
-	wrapper.find('[testID="NO"]').simulate('click');
-	expect(mockFuncNo).toHaveBeenCalledTimes(1);
+it('Goes to username entry page if yes clicked', () => {
+	const mockProps = getProps();
+
+	const wrapper = shallow(<ConfirmationBox {...mockProps} />);
+	wrapper.find({testattribute: 'YES'}).simulate('click');
+	expect(mockProps.history.push).toHaveBeenCalledWith('/slackname');
+});
+
+it('Goes to edit snack page if no clicked', () => {
+	const mockProps = getProps();
+
+	const wrapper = shallow(<ConfirmationBox {...mockProps} />);
+	wrapper.find({testattribute: 'NO'}).simulate('click');
+	expect(mockProps.history.push).toHaveBeenCalledWith('/editSnack');
 });

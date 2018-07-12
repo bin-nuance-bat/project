@@ -1,13 +1,12 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {setActualItem} from './actions';
-import {connect} from 'react-redux';
 
 class ConfirmationBox extends Component {
 	handleYes = () => {
 		this.props.setActualItem(
 			this.props.storeList[this.props.prediction.id].name
 		);
+		console.log(this.props);
 		this.props.history.push('/slackname');
 	};
 
@@ -23,10 +22,10 @@ class ConfirmationBox extends Component {
 				}?`}</div>
 				<img src={this.props.prediction.img} alt="" />
 				<div>
-					<button testID="YES" onClick={this.handleYes}>
+					<button testattribute="YES" onClick={this.handleYes}>
 						Yes
 					</button>
-					<button testID="NO" onClick={this.handleNo}>
+					<button testattribute="NO" onClick={this.handleNo}>
 						No
 					</button>
 				</div>
@@ -40,22 +39,4 @@ ConfirmationBox.propTypes = {
 	storeList: PropTypes.objectOf(PropTypes.object).isRequired
 };
 
-const mapStateToProps = state => {
-	return {
-		prediction: state.prediction,
-		storeList: state.storeList
-	};
-};
-
-const mapDispatchToProps = dispatch => {
-	return {
-		setActualItem: itemName => {
-			dispatch(setActualItem(itemName));
-		}
-	};
-};
-
-export default connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(ConfirmationBox);
+export default ConfirmationBox;
