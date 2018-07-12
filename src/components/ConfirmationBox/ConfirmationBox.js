@@ -1,5 +1,4 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 
 class ConfirmationBox extends Component {
 	handleYes = () => {
@@ -32,10 +31,5 @@ class ConfirmationBox extends Component {
 		);
 	}
 }
-
-ConfirmationBox.propTypes = {
-	prediction: PropTypes.object.isRequired,
-	storeList: PropTypes.objectOf(PropTypes.object).isRequired
-};
 
 export default ConfirmationBox;

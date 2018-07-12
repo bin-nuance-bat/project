@@ -1,8 +1,8 @@
-import {SET_ACTUALITEM} from './actionTypes';
+import {SET_ACTUAL_ITEM} from './actionTypes';
 
 export function setActualItem(actualItem) {
 	return {
-		type: SET_ACTUALITEM,
+		type: SET_ACTUAL_ITEM,
 		name: actualItem
 	};
 }

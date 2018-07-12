@@ -12,7 +12,7 @@ import WebcamCaptureContainer from './components/WebcamCapture/WebcamCaptureCont
 import Disclaimer from './components/Disclaimer/Disclaimer';
 import ConfirmationBox from './components/ConfirmationBox/container';
 import UsernameEntryContainer from './components/UsernameEntry/container';
-import EditSnack from './components/EditSnack/EditSnack';
+import EditSnack from './components/EditSnack/container';
 
 ReactDOM.render(
 	<Provider store={store}>
@@ -26,7 +26,7 @@ ReactDOM.render(
 					component={WebcamCaptureContainer}
 				/>
 				<Route exact path="/confirmitem" component={ConfirmationBox} />
-				<Route exact path="/editSnack" component={EditSnack} />
+				<Route exact path="/editsnack" component={EditSnack} />
 				<Route
 					exact
 					path="/slackname"
