@@ -12,7 +12,7 @@ import WebcamCaptureContainer from './components/WebcamCapture/WebcamCaptureCont
 import Disclaimer from './components/Disclaimer/Disclaimer';
 import ConfirmationBox from './components/ConfirmationBox/ConfirmationBox';
 import UsernameEntryContainer from './components/UsernameEntry/container';
-import ConfirmationPage from './components/ConfirmationPage/ConfirmationPage';
+import ConfirmationPage from './components/ConfirmationPage/container';
 
 ReactDOM.render(
 	<Provider store={store}>

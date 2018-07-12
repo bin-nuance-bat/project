@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
 
 class ConfirmationPage extends Component {
 	constructor(props) {
@@ -19,21 +18,15 @@ class ConfirmationPage extends Component {
 	render() {
 		return (
 			<div>
-				Enjoy your {this.props.storeList[this.props.prediction.id].name}
+				Enjoy your this.props.storeList[this.props.prediction.id].name
 			</div>
 		);
 	}
 }
 
 ConfirmationPage.propTypes = {
-	prediction: PropTypes.object
+	prediction: PropTypes.object,
+	storeList: PropTypes.objectOf(PropTypes.object)
 };
 
-const mapStateToProps = state => {
-	return {
-		prediction: state.prediction,
-		storeList: state.storeList
-	};
-};
-
-export default connect(mapStateToProps)(ConfirmationPage);
+export default ConfirmationPage;
