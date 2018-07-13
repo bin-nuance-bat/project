@@ -3,20 +3,18 @@ import PropTypes from 'prop-types';
 
 class ButtonList extends React.Component {
 	state = {
-		currentList: this.props.items,
 		userEntry: ''
 	};
 
-	componentDidUpdate(prevProps, prevState) {
-		if (prevState.userEntry !== this.state.userEntry) {
-			const currentList = this.props.items.filter(item =>
-				item.name.includes(this.state.userEntry)
-			);
-			this.setState({currentList});
-		}
+	getFilteredList() {
+		return this.props.items.filter(item =>
+			item.name.includes(this.state.userEntry)
+		);
 	}
 
 	render() {
+		const filteredList = this.getFilteredList();
+
 		return (
 			<div>
 				<input
@@ -25,7 +23,7 @@ class ButtonList extends React.Component {
 						this.setState({userEntry: event.target.value})
 					}
 				/>
-				{this.state.currentList.map(item => (
+				{filteredList.map(item => (
 					<div key={item.id}>
 						<button
 							onClick={() =>

@@ -1,36 +1,21 @@
-import {connect} from 'react-redux';
 import React from 'react';
-import {setActualItem} from '../ConfirmationBox/actions';
+import PropTypes from 'prop-types';
 import ButtonList from '../ButtonList/ButtonList';
 
-class EditSnack extends React.Component {
-	render() {
-		return (
-			<ButtonList
-				items={Object.values(this.props.storeList)}
-				onClick={(id, name) => {
-					this.props.setActualItem(name);
-				}}
-			/>
-		);
-	}
-}
-
-const mapStateToProps = state => {
-	return {
-		storeList: state.storeList
-	};
+const EditSnack = props => {
+	return (
+		<ButtonList
+			items={props.items}
+			onClick={(id, name) => {
+				props.setActualItem(name);
+			}}
+		/>
+	);
 };
 
-const mapDispatchToProps = dispatch => {
-	return {
-		setActualItem: itemName => {
-			dispatch(setActualItem(itemName));
-		}
-	};
+EditSnack.propTypes = {
+	setActualItem: PropTypes.func.isRequired,
+	items: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
-export default connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(EditSnack);
+export default EditSnack;

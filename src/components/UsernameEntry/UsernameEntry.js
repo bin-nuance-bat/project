@@ -2,16 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SlackIcon from './SlackIcon';
 import './UsernameEntry.css';
-// import {sendSlackMessage} from './../../utils/slack';
 
 class UsernameEntry extends React.Component {
+	sendReminder = () => {
+		this.props.sendSlackMessage(this.props.currentUser);
+		// handle this.props.sendReminderError
+	};
+
 	componentDidMount() {
 		this.props.loadUsers();
 	}
-
-	sendReminder = () => {
-		// send slack message - should just require currentUser and retrieve the item name/ID elsewhere
-	};
 
 	render() {
 		return (
@@ -48,7 +48,8 @@ UsernameEntry.propTypes = {
 	users: PropTypes.arrayOf(PropTypes.object).isRequired,
 	currentUser: PropTypes.string,
 	setCurrentUser: PropTypes.func.isRequired,
-	loadUsers: PropTypes.func.isRequired
+	loadUsers: PropTypes.func.isRequired,
+	sendReminderError: PropTypes.bool.isRequired
 };
 
 export default UsernameEntry;

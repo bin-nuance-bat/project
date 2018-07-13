@@ -70,5 +70,8 @@
 			"jest": true,
 			"node": true
 		}
+	},
+	"resolutions": {
+		"eslint-scope": "3.7.1"
 	}
 }

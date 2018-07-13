@@ -1,6 +1,6 @@
-import {SET_ACTUALITEM} from './actionTypes';
+import {SET_ACTUAL_ITEM} from './actionTypes';
 
 export function actualItem(state = {}, action) {
-	if (action.type === SET_ACTUALITEM) return action.name;
+	if (action.type === SET_ACTUAL_ITEM) return action.name;
 	return state;
 }
