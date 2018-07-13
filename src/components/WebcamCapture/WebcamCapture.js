@@ -5,7 +5,6 @@ import Notification from './../Notification/Notification';
 import PropTypes from 'prop-types';
 import Model from './../../utils/model';
 
-const ML_THRESHOLD = 0.06;
 const height = 400;
 const width = 400;
 
