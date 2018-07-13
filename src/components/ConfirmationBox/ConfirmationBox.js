@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 class ConfirmationBox extends React.Component {
 	handleYes = () => {
 		this.props.setActualItem(this.props.name);
-		this.props.history.push('/slackname');
+		const nextPage = this.props.sendWithPhoto ? 'snackchat' : 'slackname';
+		this.props.history.push('/' + nextPage);
 	};
 
 	handleNo = () => {
