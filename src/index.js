@@ -12,7 +12,7 @@ import WebcamCaptureContainer from './components/WebcamCapture/WebcamCaptureCont
 import Disclaimer from './components/Disclaimer/Disclaimer';
 import ConfirmationBox from './components/ConfirmationBox/container';
 import UsernameEntryContainer from './components/UsernameEntry/container';
-import EditSnack from './components/EditSnack/container';
+import EditSnack from './components/EditSnack/EditSnackContainer';
 
 ReactDOM.render(
 	<Provider store={store}>
