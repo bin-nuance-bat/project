@@ -9,7 +9,6 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import AppContainer from './components/App/container';
 import Trainer from './components/Trainer/Trainer';
 import SnackChat from './components/SnackChat/SnackChat';
-import WebcamCaptureContainer from './components/WebcamCapture/WebcamCaptureContainer';
 import ItemRecognition from './components/ItemRecognition/ItemRecogContainer';
 import Disclaimer from './components/Disclaimer/Disclaimer';
 import ConfirmationBox from './components/ConfirmationBox/container';
