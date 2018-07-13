@@ -13,6 +13,7 @@ import {
 import {prediction} from '../components/ItemRecognition/ItemRecogReducer';
 import {sendWithPhoto} from '../components/App/reducer';
 import {actualItem} from '../components/ConfirmationBox/reducer';
+import {snackChat} from '../components/SnackChat/SnackChatReducer';
 
 const rootReducer = combineReducers({
 	storeList,
@@ -24,7 +25,8 @@ const rootReducer = combineReducers({
 	prediction,
 	sendWithPhoto,
 	actualItem,
-	sendReminderError
+	sendReminderError,
+	snackChat
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

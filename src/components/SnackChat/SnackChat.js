@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 class SnackChat extends Component {
 	initialTime = new Date();
-	state = {counter: 5};
+	state = {counter: 1};
 
 	componentDidMount() {
 		this.timer = setInterval(this.tick, 1000);
@@ -16,7 +16,8 @@ class SnackChat extends Component {
 
 	handleImg = img => {
 		if (this.state.counter <= 0) {
-			this.props.setSnackChat(img);
+			this.props.setSnackChat(img.src);
+			this.props.history.push('slackName');
 		}
 	};
 
