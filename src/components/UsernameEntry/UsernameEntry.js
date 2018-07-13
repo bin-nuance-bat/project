@@ -4,9 +4,10 @@ import SlackIcon from './SlackIcon';
 import './UsernameEntry.css';
 
 class UsernameEntry extends React.Component {
-	sendReminder = () => {
-		this.props.sendSlackMessage(this.props.currentUser);
-		// handle this.props.sendReminderError
+	sendReminder = async () => {
+		let result = await this.props.sendSlackMessage(this.props.currentUser);
+		if (result) this.props.history.push('/success');
+		// TODO handle when result is false (i.e. message fails to send - redirect to error page?)
 	};
 
 	componentDidMount() {

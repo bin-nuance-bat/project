@@ -60,14 +60,14 @@ export const sendSlackMessage = username => async (dispatch, getState) => {
 	for (; i < labels.length; i++) {
 		if (labels[i] === storeCode) break;
 	}
-	if (i === labels.length) dispatch(setSendReminderError(true));
+	if (i === labels.length) return false;
 
 	try {
 		await fetch(`https://slack.com/api/chat.postMessage?token=${token}&
 		channel=${id}&
 		text=${`Click to purchase your ${itemName}: https://honesty.store/item/${storeCode}`}`);
-		dispatch(setSendReminderError(false));
+		return true;
 	} catch (error) {
-		dispatch(setSendReminderError(true));
+		return false;
 	}
 };
