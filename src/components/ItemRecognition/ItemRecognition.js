@@ -6,6 +6,10 @@ import WebcamCapture from '../WebcamCapture/WebcamCaptureContainer';
 
 const ML_THRESHOLD = 0.06;
 
-class ItemRecognition extends Component {}
+class ItemRecognition extends Component {
+	render() {
+		return <WebcamCapture />;
+	}
+}
 
 export default ItemRecognition;
