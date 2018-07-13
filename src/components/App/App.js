@@ -7,6 +7,11 @@ class App extends React.Component {
 	}
 
 	render() {
+		const {setSendWithPhoto, history} = this.props;
+		const scanItem = (withPhoto = false) => {
+			setSendWithPhoto(withPhoto);
+			history.push('/scanitem');
+		};
 		return (
 			<div id="homepage">
 				<h2 id="heading">Paying later?</h2>
@@ -16,21 +21,13 @@ class App extends React.Component {
 				<div>
 					<button
 						className="buttonBlue"
-						onClick={() => {
-							this.props.setSendWithPhoto(true);
-							this.props.history.push('/scanitem');
-						}}>
+						onClick={() => scanItem(true)}>
 						Send a SnackChat
 					</button>
 				</div>
 				<hr />
 				<div>
-					<button
-						className="buttonWhite"
-						onClick={() => {
-							this.props.setSendWithPhoto(false);
-							this.props.history.push('/disclaimer');
-						}}>
+					<button className="buttonWhite" onClick={() => scanItem()}>
 						Send a reminder without a photo
 					</button>
 				</div>

@@ -7,7 +7,8 @@ const EditSnack = props => {
 		<ButtonList
 			items={props.items}
 			onClick={(id, name) => {
-				props.setActualItem(name);
+				props.setActualItem(id);
+				props.history.push('/slackname');
 			}}
 		/>
 	);

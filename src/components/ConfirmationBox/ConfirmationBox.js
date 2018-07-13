@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class ConfirmationBox extends React.Component {
 	handleYes = () => {
-		this.props.setActualItem(this.props.name);
+		this.props.setActualItem(this.props.id);
 		this.props.history.push('/slackname');
 	};
 
@@ -31,6 +31,7 @@ class ConfirmationBox extends React.Component {
 
 ConfirmationBox.propTypes = {
 	name: PropTypes.string.isRequired,
+	id: PropTypes.string.isRequired,
 	img: PropTypes.string.isRequired
 };
 

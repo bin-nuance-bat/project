@@ -60,7 +60,7 @@ export const sendSlackMessage = username => async (dispatch, getState) => {
 	let state = getState();
 	let id = getIDByUsername(username, state.users);
 
-	let storeCode = state.prediction ? state.prediction.id : '';
+	let storeCode = state.actualItem;
 	let itemName = state.storeList[storeCode]
 		? state.storeList[storeCode].name
 		: '';
