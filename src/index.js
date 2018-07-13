@@ -8,7 +8,7 @@ import registerServiceWorker from './registerServiceWorker';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import AppContainer from './components/App/container';
 import Trainer from './components/Trainer/Trainer';
-import WebcamCaptureContainer from './components/WebcamCapture/WebcamCaptureContainer';
+import WebcamCaptureContainer from './components/WebcamCapture/container';
 import Disclaimer from './components/Disclaimer/Disclaimer';
 import ConfirmationBox from './components/ConfirmationBox/ConfirmationBox';
 import UsernameEntryContainer from './components/UsernameEntry/container';

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Model from './../../utils/model';
-import WebcamCapture from '../WebcamCapture/WebcamCaptureContainer';
+import WebcamCapture from '../WebcamCapture/container';
 
 const ML_THRESHOLD = 0.06;
 
