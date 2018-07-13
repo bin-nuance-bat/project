@@ -37,7 +37,10 @@ class ItemRecognition extends Component {
 
 ItemRecognition.propTypes = {
 	setPrediction: PropTypes.func.isRequired,
-	prediction: PropTypes.object
+	prediction: PropTypes.shape({
+		name: PropTypes.string,
+		img: PropTypes.string.isRequired
+	})
 };
 
 export default ItemRecognition;

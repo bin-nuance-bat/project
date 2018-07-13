@@ -1,8 +1,10 @@
 import {SET_PREDICTION} from './ItemRecogActionTypes';
 
-export function setPrediction(prediction) {
-	return {
-		type: SET_PREDICTION,
-		prediction
-	};
-}
+const predict = prediction => ({
+	type: SET_PREDICTION,
+	prediction
+});
+
+export const setPrediction = (id, img) => dispatch => {
+	dispatch(predict({id, img}));
+};
