@@ -3,7 +3,6 @@ import './WebcamCapture.css';
 import Webcam from 'react-webcam';
 import Notification from './../Notification/Notification';
 import PropTypes from 'prop-types';
-import Model from './../../utils/model';
 
 const height = 400;
 const width = 400;
@@ -15,7 +14,6 @@ class WebcamCapture extends Component {
 	};
 
 	webcam = React.createRef();
-	model = new Model();
 
 	setupScreenshotInterval() {
 		this.ticker = setInterval(() => {
@@ -23,18 +21,9 @@ class WebcamCapture extends Component {
 			img.src = this.webcam.current.getScreenshot();
 
 			img.onload = () => {
-				this.model.predict(img).then(item => {
-					if (
-						item.value > ML_THRESHOLD &&
-						item.id !== '' &&
-						!this.props.prediction
-					) {
-						this.props.setPrediction(item.id, img.src);
-						this.props.history.push('/confirmitem');
-					}
-				});
+				this.props.onImgLoad;
 			};
-		}, 1000);
+		}, this.props.interval);
 	}
 
 	setupWebcam() {
@@ -53,8 +42,6 @@ class WebcamCapture extends Component {
 	}
 
 	componentDidMount() {
-		this.model.load();
-
 		if (!navigator.mediaDevices) return;
 		this.setupWebcam();
 	}
@@ -71,7 +58,6 @@ class WebcamCapture extends Component {
 		if (this.state.cameraConnected) {
 			return (
 				<div>
-					<header>Hold up your snack to the camera</header>
 					<Webcam
 						audio={false}
 						height={height}
@@ -91,8 +77,8 @@ class WebcamCapture extends Component {
 }
 
 WebcamCapture.propTypes = {
-	setPrediction: PropTypes.func.isRequired,
-	prediction: PropTypes.object
+	onImgLoad: PropTypes.func.isRequired,
+	interval: PropTypes.number.isRequired
 };
 
 export default WebcamCapture;
