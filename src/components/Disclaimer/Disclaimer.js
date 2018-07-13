@@ -13,7 +13,7 @@ const Disclaimer = props => {
 				<Logo />
 			</div>
 			<div>
-				<Glyphicon id="cameraIcon" glyph="camera" />
+				<Glyphicon id="bigCameraIcon" glyph="camera" />
 			</div>
 			<div className="infoText">
 				As part of this process we will use the tablet's front-facing
