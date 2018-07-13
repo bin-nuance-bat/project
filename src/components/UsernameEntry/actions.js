@@ -1,7 +1,7 @@
 import {
 	SET_USERS,
-	SET_CURRENT_USER,
-	SET_SEND_REMINDER_ERROR
+	SET_CURRENT_USER
+	// SET_SEND_REMINDER_ERROR
 } from './actionTypes';
 import labels from './../../utils/labels.json';
 
@@ -32,12 +32,12 @@ export const loadUsers = () => dispatch => {
 		.catch(() => dispatch(setUsers([])));
 };
 
-function setSendReminderError(sendReminderError) {
-	return {
-		type: SET_SEND_REMINDER_ERROR,
-		sendReminderError
-	};
-}
+// function setSendReminderError(sendReminderError) {
+// 	return {
+// 		type: SET_SEND_REMINDER_ERROR,
+// 		sendReminderError
+// 	};
+// }
 
 const getIDByUsername = (username, users) => {
 	const user = users.find(
