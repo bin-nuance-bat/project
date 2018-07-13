@@ -13,6 +13,9 @@
 		"react": "^16.4.1",
 		"react-dom": "^16.4.1",
 		"react-redux": "^5.0.7",
+		"react-router": "^4.3.1",
+		"react-router-dom": "^4.3.1",
+		"react-router-redux": "^4.0.8",
 		"react-scripts": "1.1.4",
 		"react-webcam": "^1.0.1",
 		"redux": "^4.0.0",
@@ -65,21 +68,13 @@
 				"jsx": true
 			}
 		},
-		"globals": {
-			"alert": true,
-			"console": true,
-			"fetch": true,
-			"require": true,
+		"env": {
+			"browser": true,
 			"jest": true,
-			"it": true,
-			"expect": true,
-			"document": true,
-			"clearInterval": true,
-			"setInterval": true,
-			"process": true,
-			"navigator": true,
-			"Image": true,
-			"window": true
+			"node": true
 		}
+	},
+	"resolutions": {
+		"eslint-scope": "3.7.1"
 	}
 }

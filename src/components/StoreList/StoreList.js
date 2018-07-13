@@ -1,13 +1,13 @@
 import React from 'react';
 import ButtonList from '../ButtonList/ButtonList';
 import {sendSlackMessage, getUserSlackID} from '../../utils/slack';
-import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import Notification from './../Notification/Notification';
 import PropTypes from 'prop-types';
 
 const StoreList = props => {
 	return (
 		<div>
-			Please select the correct item:
+			My snack is a:
 			<ButtonList
 				items={props.storeList}
 				onClick={async (storeCode, itemName) => {
@@ -28,7 +28,10 @@ const StoreList = props => {
 				}}
 			/>
 			{props.loadStoreListError && (
-				<ErrorMessage text="failed to load store items" />
+				<Notification
+					message="failed to load store items"
+					isError={true}
+				/>
 			)}
 		</div>
 	);
@@ -38,7 +41,9 @@ StoreList.propTypes = {
 	setShowList: PropTypes.func.isRequired,
 	currentUser: PropTypes.string,
 	users: PropTypes.arrayOf(PropTypes.object).isRequired,
-	storeList: PropTypes.objectOf(PropTypes.object).isRequired
+	storeList: PropTypes.arrayOf(PropTypes.object).isRequired,
+	showNotification: PropTypes.func.isRequired,
+	loadStoreListError: PropTypes.func.isRequired
 };
 
 export default StoreList;

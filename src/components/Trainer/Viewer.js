@@ -44,7 +44,6 @@ export default class Viewer extends Component {
 				});
 			});
 			this.setState({images});
-			console.log(images.length);
 		});
 	};
 

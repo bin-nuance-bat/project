@@ -1,28 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ConfirmationBox = props => {
-	return (
-		<div>
-			<div>{`Did you take ${props.item.name}?`}</div>
-			{props.children}
+class ConfirmationBox extends React.Component {
+	handleYes = () => {
+		this.props.setActualItem(this.props.name);
+		this.props.history.push('/slackname');
+	};
+
+	handleNo = () => {
+		this.props.history.push('/editSnack');
+	};
+
+	render() {
+		return (
 			<div>
-				<button id="YES" onClick={props.onYes}>
-					Yes
-				</button>
-				<button id="NO" onClick={props.onNo}>
-					No
-				</button>
+				<div>{`Did you take ${this.props.name}?`}</div>
+				<img src={this.props.img} alt="" />
+				<div>
+					<button testAttribute="YES" onClick={this.handleYes}>
+						Yes
+					</button>
+					<button testAttribute="NO" onClick={this.handleNo}>
+						No
+					</button>
+				</div>
 			</div>
-		</div>
-	);
-};
+		);
+	}
+}
 
 ConfirmationBox.propTypes = {
-	onYes: PropTypes.func.isRequired,
-	onNo: PropTypes.any.isRequired,
-	item: PropTypes.object.isRequired,
-	children: PropTypes.node
+	name: PropTypes.string.isRequired,
+	img: PropTypes.string.isRequired
 };
 
 export default ConfirmationBox;

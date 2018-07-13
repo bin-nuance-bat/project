@@ -5,12 +5,14 @@ import {
 	loadStoreListError,
 	showList
 } from '../components/StoreList/reducer';
+import {users, slackUserFetchError} from '../components/OldApp/reducer';
 import {
-	users,
-	slackUserFetchError,
 	currentUser,
-	prediction
-} from '../components/App/reducer';
+	sendReminderError
+} from '../components/UsernameEntry/reducer';
+import {prediction} from '../components/WebcamCapture/reducer';
+import {sendWithPhoto} from '../components/App/reducer';
+import {actualItem} from '../components/ConfirmationBox/reducer';
 
 const rootReducer = combineReducers({
 	storeList,
@@ -19,7 +21,10 @@ const rootReducer = combineReducers({
 	slackUserFetchError,
 	currentUser,
 	showList,
-	prediction
+	prediction,
+	sendWithPhoto,
+	actualItem,
+	sendReminderError
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

@@ -4,6 +4,8 @@ import {
 	SET_SHOW_LIST
 } from './actionTypes';
 
+import fetchItems from '../../utils/honestyStore.js';
+
 export function setStoreList(storeList) {
 	return {
 		type: SET_STORELIST,
@@ -24,3 +26,8 @@ export function setShowList(showList) {
 		showList
 	};
 }
+
+export const loadStoreList = () => (dispatch, props) =>
+	fetchItems()
+		.then(storeList => dispatch(setStoreList(storeList)))
+		.catch(() => dispatch(setLoadStoreListError(true)));
