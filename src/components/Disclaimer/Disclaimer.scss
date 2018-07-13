@@ -1,4 +1,5 @@
 @import '../App/App.scss';
+@import '../../utils/constants.scss';
 
 .button {
 
@@ -9,14 +10,14 @@
 		font-size: 400%;
 		position: absolute;
 		transform: translate(-45vw, 1vh);
-		-webkit-text-stroke: 9px #0a3d5f;
+		-webkit-text-stroke: 9px $dark-blue;
 	}
 
 	&-accept{
 		transform: translate(-13px);
 		border-radius: 12px;
 		margin-top: 64px;
-		background-color: #47BED8;
+		background-color: $light-blue;
 		margin-bottom: 64px;
 	}
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SlackIcon from './SlackIcon';
 import './UsernameEntry.css';
+import Logo from '../Logo/Logo';
 
 class UsernameEntry extends React.Component {
 	sendReminder = async () => {
@@ -16,34 +17,41 @@ class UsernameEntry extends React.Component {
 
 	render() {
 		return (
-			<div id="contents" className="flexColumn">
-				<div className="flexRow">
-					<div id="slackIcon">
-						<SlackIcon size={100} />
+			<div>
+				<Logo />
+				<div id="contents" className="flexColumn">
+					<div className="flexRow">
+						<div id="slackIcon">
+							<SlackIcon size={100} />
+						</div>
+						<div className="flexColumn">
+							<label id="formLabel" for="enterName">
+								Your Slack handle is...
+							</label>
+							<input
+								list="slackUsers"
+								name="enterName"
+								value={this.props.currentUser}
+								onChange={event =>
+									this.props.setCurrentUser(
+										event.target.value
+									)
+								}
+							/>
+							<datalist id="slackUsers">
+								{this.props.users.map((user, index) => (
+									<option key={index} value={user.name} />
+								))}
+							</datalist>
+						</div>
 					</div>
-					<div className="flexColumn">
-						<label id="formLabel" for="enterName">
-							Your Slack handle is...
-						</label>
-						<input
-							list="slackUsers"
-							name="enterName"
-							value={this.props.currentUser}
-							onChange={event =>
-								this.props.setCurrentUser(event.target.value)
-							}
-						/>
-						<datalist id="slackUsers">
-							{this.props.users.map((user, index) => (
-								<option key={index} value={user.name} />
-							))}
-						</datalist>
+					<div>
+						<button
+							onClick={this.sendReminder}
+							className="buttonBlue">
+							Send me this reminder
+						</button>
 					</div>
-				</div>
-				<div>
-					<button onClick={this.sendReminder} className="buttonBlue">
-						Send me this reminder
-					</button>
 				</div>
 			</div>
 		);

@@ -1,7 +1,7 @@
 body {
   font-family: apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Helvetica,sans-serif;
   background-color: #0a3d5f;
-  color: #FFFFFF;
+  color: #ffffff;
   width: 100%;
   text-align: center; }
 
@@ -29,7 +29,7 @@ body {
   border: none;
   background-color: #0a3d5f; }
   .button-snackchat {
-    background-color: #47BED8;
+    background-color: #47bed8;
     margin-bottom: 64px; }
   .button-nophoto {
     border: 2px solid white; }
