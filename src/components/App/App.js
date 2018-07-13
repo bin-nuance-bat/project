@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import Logo from '../Logo/Logo';
 
 class App extends React.Component {
 	componentDidMount() {
@@ -8,27 +9,30 @@ class App extends React.Component {
 
 	render() {
 		return (
-			<div id="homepage">
-				<h2 id="heading">Paying later?</h2>
-				<div id="subheading">
-					Why not send yourself a reminder on Slack?
+			<div>
+				<Logo />
+				<div id="homepage">
+					<h2 id="heading">Paying later?</h2>
+					<div id="subheading">
+						Why not send yourself a reminder on Slack?
+					</div>
+					<button
+						id="snackchatButton"
+						onClick={() => {
+							this.props.setSendWithPhoto(true);
+							this.props.history.push('/scanitem');
+						}}>
+						Send a SnackChat
+					</button>
+					<button
+						id="noPhotoButton"
+						onClick={() => {
+							this.props.setSendWithPhoto(false);
+							this.props.history.push('/disclaimer');
+						}}>
+						Send a reminder without a photo
+					</button>
 				</div>
-				<button
-					id="snackchatButton"
-					onClick={() => {
-						this.props.setSendWithPhoto(true);
-						this.props.history.push('/scanitem');
-					}}>
-					Send a SnackChat
-				</button>
-				<button
-					id="noPhotoButton"
-					onClick={() => {
-						this.props.setSendWithPhoto(false);
-						this.props.history.push('/disclaimer');
-					}}>
-					Send a reminder without a photo
-				</button>
 			</div>
 		);
 	}
