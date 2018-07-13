@@ -48,7 +48,7 @@ class UsernameEntry extends React.Component {
 					<div>
 						<button
 							onClick={this.sendReminder}
-							className="buttonBlue">
+							className="button button-accept">
 							Send me this reminder
 						</button>
 					</div>
