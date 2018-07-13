@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import {getUserSlackID, sendSlackMessage} from './../../utils/slack';
 import {Notification} from './../Notification/Notification';
 import Trainer from '../Trainer/Trainer';
+import Viewer from '../Trainer/Viewer';
 
 const NOTIFICATION_DURATION = 5000;
 
@@ -77,6 +78,7 @@ class App extends React.Component {
 
 	render() {
 		if (window.location.pathname === '/training') return <Trainer />;
+		if (window.location.pathname === '/preview') return <Viewer />;
 		return (
 			<div>
 				{this.state.showNotification && (

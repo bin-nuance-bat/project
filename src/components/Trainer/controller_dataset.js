@@ -19,7 +19,9 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 
 export class ControllerDataset {
-	constructor() {
+	constructor(status) {
+		this.setStatus = status;
+
 		firebase.initializeApp({
 			apiKey: 'AIzaSyBVuVNKx-rx2ON0RxbfGfbGPpiymbMrxj8',
 			authDomain: 'honesty-store-kiosk.firebaseapp.com',
@@ -28,44 +30,91 @@ export class ControllerDataset {
 		this.db = firebase.firestore();
 		this.db.settings({timestampsInSnapshots: true});
 
-		this.index = 0;
 		window.db = this.db;
 		window.getBatch = this.getBatch.bind(this);
 		window.getClassCount = this.getClassCount.bind(this);
 	}
 
+	async setItemTrainingCounts(itemObj) {
+		const items = await this.db.collection('item_data').get();
+		items.forEach(item => {
+			itemObj[item.id].mlCount = item.data().count;
+		});
+		return itemObj;
+	}
+
 	async addExample(img, activation, label) {
+		const item = await this.db
+			.collection('item_data')
+			.doc(label)
+			.get();
 		this.db
 			.collection('item_data')
 			.doc(label)
 			.set({
-				count:
-					this.db
-						.collection('item_data')
-						.doc(label)
-						.get() + 1
+				count: item.exists ? item.data().count + 1 : 1
 			});
 
 		this.db
 			.collection('training_data')
 			.add({
 				img,
-				activation: tf
-					.squeeze(activation)
-					.dataSync()
-					.join(','),
+				activation: activation.dataSync().join(','),
 				label,
 				random: Math.random(),
 				trusted: true
 			})
 			.then(ref => {
-				console.log(ref);
-				return true;
+				activation.dispose();
 			})
 			.catch(err => {
-				console.error(err);
-				return false;
+				activation.dispose();
 			});
+	}
+
+	async addExamples(examples) {
+		if (examples.length < 1) return;
+
+		const item = await this.db
+			.collection('item_data')
+			.doc(examples[0].label)
+			.get();
+
+		this.db
+			.collection('item_data')
+			.doc(examples[0].label)
+			.set({
+				count: item.exists
+					? item.data().count + examples.length
+					: examples.length
+			});
+
+		for (let i in examples) {
+			this.db
+				.collection('training_data')
+				.add({
+					img: examples[i].img,
+					activation: examples[i].activation.dataSync().join(','),
+					label: examples[i].label,
+					random: Math.random(),
+					trusted: true
+				})
+				.then(() => {
+					examples[i].activation.dispose();
+					this.setStatus(
+						`Uploading images (${parseInt(i) + 1}/${
+							examples.length
+						})`
+					);
+					if (parseInt(i) + 1 >= examples.length) {
+						this.setStatus('Done');
+					}
+				})
+				.catch(err => {
+					console.error(err);
+					examples[i].activation.dispose();
+				});
+		}
 	}
 
 	async getClassCount() {
@@ -112,7 +161,7 @@ export class ControllerDataset {
 			);
 
 			const oldX = xs;
-			xs = tf.keep(oldX.concat(batch[i].activation, 0));
+			xs = tf.keep(oldX.concat(batch[i].activation.split(','), 0));
 
 			const oldY = ys;
 			ys = tf.keep(oldY.concat(y, 0));

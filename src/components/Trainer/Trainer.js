@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import WebcamCapture from '../WebcamCapture/WebcamCapture';
+import ItemSelector from './ItemSelector';
 import Model from './Model';
 import * as tf from '@tensorflow/tfjs';
 import './Trainer.css';
@@ -11,6 +12,8 @@ class Trainer extends Component {
 		this.webcam = React.createRef();
 		this.item = React.createRef();
 		this.traner = React.createRef();
+		this.files = React.createRef();
+		this.fileIndex = 0;
 
 		this.capture = this.capture.bind(this);
 		this.model = new Model(this.setStatus.bind(this));
@@ -24,20 +27,32 @@ class Trainer extends Component {
 			batchSize: 0.4,
 			epochs: 20,
 			hiddenUnits: 100,
-			status: 'Loading...',
-			item: 0
+			burstCount: 1,
+			status: 'Loading model...',
+			item: 'unknown',
+			busy: true
 		};
 	}
 
-	capture() {
+	capture(src) {
 		return tf.tidy(() => {
-			return this.cropImage(tf.fromPixels(this.webcam.current.video))
+			return this.cropImage(tf.fromPixels(src))
 				.expandDims(0)
 				.toFloat()
 				.div(tf.scalar(127))
 				.sub(tf.scalar(1));
 		});
 	}
+
+	captureFromFile = async () => {
+		return new Promise(resolve => {
+			const img = new Image();
+			img.src = this.images[this.fileIndex];
+			img.onload = () => {
+				resolve(this.capture(img));
+			};
+		});
+	};
 
 	cropImage(img) {
 		const size = Math.min(img.shape[0], img.shape[1]);
@@ -52,15 +67,47 @@ class Trainer extends Component {
 		);
 	}
 
+	screenshot = () => {
+		return this.webcam.current.getScreenshot();
+	};
+
 	addExample() {
+		this.setState({busy: true});
 		this.model.addExample(
-			this.webcam.current.getScreenshot(),
-			this.capture(),
-			this.state.item
+			this.screenshot,
+			() => this.capture(this.webcam.current.video),
+			this.state.item,
+			this.state.burstCount
 		);
 	}
 
+	addFromFile = () => {
+		this.setState({busy: true});
+
+		this.images = [];
+		this.fileIndex = 0;
+		let index = 0;
+		const reader = new FileReader();
+
+		reader.addEventListener('load', result => {
+			this.images.push(result.target.result);
+			if (index < this.files.current.files.length) {
+				reader.readAsDataURL(this.files.current.files[index++]);
+			} else {
+				this.model.addExample(
+					() => this.images[this.fileIndex++],
+					this.captureFromFile,
+					this.state.item,
+					this.files.current.files.length
+				);
+			}
+		});
+
+		reader.readAsDataURL(this.files.current.files[index++]);
+	};
+
 	train() {
+		this.setState({busy: true});
 		this.model.train(
 			this.state.hiddenUnits,
 			this.state.batchSize,
@@ -70,6 +117,7 @@ class Trainer extends Component {
 	}
 
 	predict() {
+		this.setState({busy: true});
 		this.model.predict(this.capture());
 	}
 
@@ -77,38 +125,57 @@ class Trainer extends Component {
 		return item.name + (item.qualifier ? ` (${item.qualifier})` : '');
 	}
 
-	remove(item) {
-		delete this.model.items[item.id];
-		this.model.init();
-		this.forceUpdate();
-	}
-
 	setStatus(status) {
 		this.setState({status});
+		if (status === 'Done') this.setState({busy: false});
 	}
 
 	render() {
 		return (
 			<div>
 				<div className="col" style={{textAlign: 'center'}}>
-					<select
-						value={this.state.item}
-						onChange={e => this.setState({item: e.target.value})}>
-						{Object.values(this.model.items).map(item => (
-							<option key={item.id} value={item.id}>
-								{this.getName(item)}
-							</option>
-						))}
-					</select>
-					<button onClick={this.addExample}>Add Example</button>
-					<br />
+					<span id="status-text">{this.state.status}</span>
 					<br />
 					<WebcamCapture
-						style={{width: 400, height: 400}}
 						cameraConnected={true}
 						cameraRef={this.webcam}
 					/>
-					<span id="status-text">{this.state.status}</span>
+					<br />
+					<ItemSelector
+						item={this.state.item}
+						items={Object.values(this.model.items)}
+						setItem={item => this.setState({item})}
+						disabled={this.state.busy}
+					/>
+					<br />
+					<label>Burst Count:</label>
+					<input
+						type="text"
+						value={this.state.burstCount}
+						size={3}
+						maxLength={3}
+						disabled={this.state.busy}
+						onChange={e =>
+							this.setState({burstCount: e.target.value})
+						}
+					/>
+					<button
+						onClick={this.addExample}
+						disabled={this.state.busy}>
+						Add From Camera
+					</button>
+					<br />
+					<input
+						type="file"
+						multiple
+						ref={this.files}
+						disabled={this.state.busy}
+					/>
+					<button
+						onClick={this.addFromFile}
+						disabled={this.state.busy}>
+						Add From File
+					</button>
 				</div>
 
 				<div className="col">
@@ -116,10 +183,10 @@ class Trainer extends Component {
 						Learning rate:<br />
 						<input
 							type="text"
+							value={this.state.learningRate}
 							onChange={e =>
 								this.setState({learningRate: e.target.value})
 							}
-							value={this.state.learningRate}
 						/>
 					</label>
 					<br />
@@ -128,10 +195,10 @@ class Trainer extends Component {
 						Batch Size:<br />
 						<input
 							type="text"
+							value={this.state.batchSize}
 							onChange={e =>
 								this.setState({batchSize: e.target.value})
 							}
-							value={this.state.batchSize}
 						/>
 					</label>
 					<br />
@@ -140,10 +207,10 @@ class Trainer extends Component {
 						Epochs:<br />
 						<input
 							type="text"
+							value={this.state.epochs}
 							onChange={e =>
 								this.setState({epochs: e.target.value})
 							}
-							value={this.state.epochs}
 						/>
 					</label>
 					<br />
@@ -152,28 +219,36 @@ class Trainer extends Component {
 						Hidden Units:<br />
 						<input
 							type="text"
+							value={this.state.hiddenUnits}
 							onChange={e =>
 								this.setState({hiddenUnits: e.target.value})
 							}
-							value={this.state.hiddenUnits}
 						/>
 					</label>
 					<br />
 					<br />
-					<label>Model</label>
+					<button onClick={this.train} disabled={this.state.busy}>
+						Train
+					</button>
+					<button onClick={this.predict} disabled={this.state.busy}>
+						Predict
+					</button>
 					<br />
-					<button onClick={this.train}>Train</button>
-					<button onClick={this.predict}>Predict</button>
-					<button onClick={this.model.loadModel}>Load</button>
-					<br />
-					<button onClick={this.model.saveModel}>Save</button>
-					<button onClick={this.model.exportModel}>Export</button>
-					<br />
-					<br />
-					<label>Data</label>
-					<br />
-					<button onClick={this.model.loadStore}>Load Store</button>
-					<button onClick={this.model.loadData}>Load Training</button>
+					<button
+						onClick={this.model.loadModel}
+						disabled={this.state.busy}>
+						Load
+					</button>
+					<button
+						onClick={this.model.saveModel}
+						disabled={this.state.busy}>
+						Save
+					</button>
+					<button
+						onClick={this.model.exportModel}
+						disabled={this.state.busy}>
+						Export
+					</button>
 				</div>
 
 				<div
@@ -191,14 +266,8 @@ class Trainer extends Component {
 								return (
 									<tr key={item.id}>
 										<td>{this.getName(item)}</td>
-										<td id={`${item.id}-count`}>0</td>
-										<td>
-											<button
-												onClick={() =>
-													this.remove(item)
-												}>
-												&times;
-											</button>
+										<td id={`${item.id}-count`}>
+											{item.mlCount ? item.mlCount : 0}
 										</td>
 									</tr>
 								);

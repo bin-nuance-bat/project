@@ -3,12 +3,10 @@ import {ControllerDataset} from './controller_dataset';
 import getStore from '../../utils/honestyStore.js';
 import * as MobileNet from '@tensorflow-models/mobilenet';
 
-const BURST_COUNT = 1;
-
 class Model {
 	constructor(status) {
 		this.setStatus = status;
-		this.items = [{name: 'Unknown', mlCount: 0, id: ''}];
+		this.items = {unknown: {name: 'Unknown', id: 'unknown'}};
 
 		this.getName = this.getName.bind(this);
 		this.init = this.init.bind(this);
@@ -29,11 +27,11 @@ class Model {
 	}
 
 	async init() {
-		this.controllerDataset = new ControllerDataset(this.items.length);
+		this.controllerDataset = new ControllerDataset(this.setStatus);
 		this.mobilenet = await MobileNet.load();
-		await tf.nextFrame();
-		await tf.nextFrame();
-		this.setStatus('Ready');
+		await this.loadStore();
+		await this.loadData();
+		this.setStatus('Done');
 	}
 
 	async loadStore() {
@@ -44,10 +42,16 @@ class Model {
 			)
 		) {
 			this.setStatus('Fetching store data...');
-			this.items = await getStore();
-			this.setStatus('Ready');
+			Object.assign(this.items, await getStore());
 		}
 	}
+
+	loadData = async () => {
+		this.setStatus('Fetching training data...');
+		this.items = await this.controllerDataset.setItemTrainingCounts(
+			this.items
+		);
+	};
 
 	loadModel() {
 		if (
@@ -106,30 +110,29 @@ class Model {
 		document.body.removeChild(elem);
 	}
 
-	async addExample(img, tensor, label) {
-		for (let i = 1; i <= BURST_COUNT; i++) {
-			tf.tidy(() => {
-				this.controllerDataset.addExample(
-					img,
-					this.mobilenet.infer(tensor, 'conv_pw_13_relu'),
-					label
-				);
+	async addExample(getImg, getTensor, label, count) {
+		let examples = [];
+		for (let i = 1; i <= count; i++) {
+			const tensor = await getTensor();
+			examples.push({
+				img: getImg(),
+				label,
+				activation: this.mobilenet.infer(tensor, 'conv_pw_13_relu')
 			});
 
 			document.getElementById(`${label}-count`).innerHTML++;
 			this.items[label].mlCount++;
 			this.setStatus(
-				`Adding images of ${this.getName(label)} (${i}/${BURST_COUNT})`
+				`Processing images of ${this.getName(label)} (${i}/${count})`
 			);
-			await tf.nextFrame();
+			//await tf.nextFrame();
 		}
+		this.setStatus('Submitting images to database...');
+		this.controllerDataset.addExamples(examples);
 	}
 
 	async train(hiddenUnits, batchSizeFraction, learningRate, epochs) {
 		this.setStatus('Loading training data from DB...');
-
-		let data = await this.controllerDataset.getData();
-		console.log(data.data());
 
 		this.controllerDataset.getTensors().then(async (xs, ys) => {
 			if (!xs) {
@@ -206,7 +209,6 @@ class Model {
 
 		const classId = (await predictedClass.data())[0];
 		predictedClass.dispose();
-		console.log(classId);
 		this.setStatus('I think this is a ' + this.getName[classId]);
 	}
 }
