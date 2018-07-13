@@ -10,7 +10,7 @@ import AppContainer from './components/App/container';
 import Trainer from './components/Trainer/Trainer';
 import WebcamCaptureContainer from './components/WebcamCapture/WebcamCaptureContainer';
 import Disclaimer from './components/Disclaimer/Disclaimer';
-import ConfirmationBox from './components/ConfirmationBox/ConfirmationBox';
+import ConfirmationBox from './components/ConfirmationBox/container';
 import UsernameEntryContainer from './components/UsernameEntry/container';
 import EditSnack from './components/EditSnack/container';
 
