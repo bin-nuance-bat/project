@@ -1,45 +1,46 @@
-#backButton {
-	float: left;
-	width: 10vw;
-	height: 10vh;
-	font-size: 400%;
-	transform: translate(-380px, 5px);
-	position: absolute;
-	background-color: #0a3d5f;
-	border: none;
-	-webkit-text-stroke: 9px #0a3d5f;
+@import '../App/App.scss';
+
+.button {
+
+	&-back {
+		float: left;
+		width: 10vw;
+		height: 10vh;
+		font-size: 400%;
+		position: absolute;
+		transform: translate(-45vw, 1vh);
+		-webkit-text-stroke: 9px #0a3d5f;
+	}
+
+	&-accept{
+		transform: translate(-13px);
+		border-radius: 12px;
+		margin-top: 64px;
+		background-color: #47BED8;
+		margin-bottom: 64px;
+	}
 }
 
-#bigCameraIcon {
-	padding-top: 144px;
+.cameraicon {
+	&-big {
+		padding-top: 144px;
+		transform: translate(-20px);
+		font-size: 400%;
+	}
+}
+
+.lockicon {
+	padding-top: 96px;
 	transform: translate(-20px);
 	font-size: 400%;
 }
 
-#lockIcon {
-	padding-top: 96px;
-	transform: translate(-13px);
-	font-size: 400%;
-}
-
-.infoText {
-	transform: translate(-13px);
-	display: inline-block;
-	font-size: 30px;
-	padding-top: 24px;
-	width: 544px;
-}
-
-#acceptButton {
-	transform: translate(-13px);
-	font-size: 30px;
-	border-radius: 12px;
-	width: 488px;
-	height: 64px;
-	color: white;
-	margin-top: 64px;
-	display: inline-block;
-	border: none;
-	background-color: #47BED8;
-	margin-bottom: 64px;
+.text {
+	&-info {
+		transform: translate(-13px);
+		display: inline-block;
+		font-size: 30px;
+		padding-top: 24px;
+		width: 544px;
+	}
 }

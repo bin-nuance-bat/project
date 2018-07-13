@@ -5,10 +5,10 @@ import FreddoHand from './../FreddoHand/FreddoHand';
 
 const SuccessPage = props => {
 	return (
-		<div id="page" onClick={() => props.history.push('/')}>
+		<div onClick={() => props.history.push('/')}>
 			<Logo />
-			<div id="message">Reminder sent!</div>
-			<div id="hand">
+			<div className="text text-remindersent">Reminder sent!</div>
+			<div className="hand">
 				<FreddoHand />
 			</div>
 		</div>

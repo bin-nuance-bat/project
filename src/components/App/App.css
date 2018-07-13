@@ -1,43 +1,39 @@
-body, button {
-  font-family: apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Helvetica,sans-serif; }
-
 body {
+  font-family: apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Helvetica,sans-serif;
   background-color: #0a3d5f;
-  width: 100%;
   color: #FFFFFF;
+  width: 100%;
   text-align: center; }
 
-#homepage {
+.page-home {
   padding-top: 176px;
   transform: translate(-15px, 0px); }
 
-#heading {
-  font-size: 53px;
-  margin-top: 0px;
-  margin-bottom: 82px; }
+.text {
+  color: #FFFFFF; }
+  .text-payinglater {
+    font-size: 53px;
+    margin-top: 0px;
+    margin-bottom: 82px; }
+  .text-subheading {
+    font-size: 30px;
+    margin-bottom: 160px; }
 
-#subheading {
-  font-size: 30px;
-  margin-bottom: 160px; }
-
-button {
+.button {
   font-size: 30px;
   border-radius: 12px;
   width: 488px;
   height: 64px;
-  color: white;
   padding: 0px;
-  display: inline-block; }
-
-#snackchatButton {
+  display: inline-block;
   border: none;
-  background-color: #47BED8;
-  margin-bottom: 64px; }
+  background-color: #0a3d5f; }
+  .button-snackchat {
+    background-color: #47BED8;
+    margin-bottom: 64px; }
+  .button-nophoto {
+    border: 2px solid white; }
 
-#noPhotoButton {
-  background-color: #0a3d5f;
-  border: 2px solid white; }
-
-#cameraIcon {
+.cameraicon-small {
   margin-left: 24px;
   transform: translate(0px, 2px); }

@@ -6,29 +6,31 @@ import './Disclaimer.css';
 const Disclaimer = props => {
 	return (
 		<div>
-			<div id="header">
-				<button id="backButton" onClick={() => props.history.push('/')}>
+			<div>
+				<button
+					className="button button-back"
+					onClick={() => props.history.push('/')}>
 					<Glyphicon glyph="chevron-left" />
 				</button>
 				<Logo />
 			</div>
 			<div>
-				<Glyphicon id="bigCameraIcon" glyph="camera" />
+				<Glyphicon className="cameraicon-big" glyph="camera" />
 			</div>
-			<div className="infoText">
+			<div className="text text-info">
 				As part of this process we will use the tablet's front-facing
 				camera to attempt to identify your snack.
 			</div>
 			<div>
-				<Glyphicon id="lockIcon" glyph="lock" />
+				<Glyphicon className="lockicon" glyph="lock" />
 			</div>
-			<div className="infoText">
+			<div className="text text-info">
 				Images may be stored in order to increase the accuracy of the
 				item recognition, but they will not be used for any other
 				purpose or shared with any third parties.
 			</div>
 			<button
-				id="acceptButton"
+				className="button button-accept"
 				onClick={() => props.history.push('/scanitem')}>
 				Accept and continue
 			</button>

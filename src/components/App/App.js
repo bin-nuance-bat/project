@@ -12,22 +12,25 @@ class App extends React.Component {
 		return (
 			<div>
 				<Logo />
-				<div id="homepage">
-					<h2 id="heading">Paying later?</h2>
-					<div id="subheading">
+				<div className="page-home">
+					<h2 className="text text-payinglater">Paying later?</h2>
+					<div className="text text-subheading">
 						Why not send yourself a reminder on Slack?
 					</div>
 					<button
-						id="snackchatButton"
+						className="button button-snackchat"
 						onClick={() => {
 							this.props.setSendWithPhoto(true);
 							this.props.history.push('/disclaimer');
 						}}>
 						Send a SnackChat
-						<Glyphicon id="cameraIcon" glyph="camera" />
+						<Glyphicon
+							className="cameraicon-small"
+							glyph="camera"
+						/>
 					</button>
 					<button
-						id="noPhotoButton"
+						className="button button-nophoto"
 						onClick={() => {
 							this.props.setSendWithPhoto(false);
 							this.props.history.push('/scanitem');
