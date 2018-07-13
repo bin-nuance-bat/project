@@ -1,20 +1,15 @@
 import ConfirmationBox from './ConfirmationBox';
 import {setActualItem} from './actions';
+import {getPredictionName, getPredictionImg} from './ConfirmationBoxSelectors';
 import {connect} from 'react-redux';
 
-const mapStateToProps = state => {
-	return {
-		prediction: state.prediction,
-		storeList: state.storeList
-	};
-};
+const mapStateToProps = state => ({
+	name: getPredictionName(state),
+	img: getPredictionImg(state)
+});
 
-const mapDispatchToProps = dispatch => {
-	return {
-		setActualItem: itemName => {
-			dispatch(setActualItem(itemName));
-		}
-	};
+const mapDispatchToProps = {
+	setActualItem
 };
 
 export default connect(

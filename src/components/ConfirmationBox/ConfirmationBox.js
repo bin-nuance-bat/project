@@ -1,10 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class ConfirmationBox extends React.Component {
 	handleYes = () => {
-		this.props.setActualItem(
-			this.props.storeList[this.props.prediction.id].name
-		);
+		this.props.setActualItem(this.props.name);
 		this.props.history.push('/slackname');
 	};
 
@@ -15,15 +14,13 @@ class ConfirmationBox extends React.Component {
 	render() {
 		return (
 			<div>
-				<div>{`Did you take ${
-					this.props.storeList[this.props.prediction.id].name
-				}?`}</div>
-				<img src={this.props.prediction.img} alt="" />
+				<div>{`Did you take ${this.props.name}?`}</div>
+				<img src={this.props.img} alt="" />
 				<div>
-					<button testattribute="YES" onClick={this.handleYes}>
+					<button testAttribute="YES" onClick={this.handleYes}>
 						Yes
 					</button>
-					<button testattribute="NO" onClick={this.handleNo}>
+					<button testAttribute="NO" onClick={this.handleNo}>
 						No
 					</button>
 				</div>
@@ -31,5 +28,10 @@ class ConfirmationBox extends React.Component {
 		);
 	}
 }
+
+ConfirmationBox.propTypes = {
+	name: PropTypes.string.isRequired,
+	img: PropTypes.string.isRequired
+};
 
 export default ConfirmationBox;

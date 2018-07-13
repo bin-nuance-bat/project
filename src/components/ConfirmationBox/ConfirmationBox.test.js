@@ -7,13 +7,11 @@ configure({adapter: new Adapter()});
 
 const getProps = () => {
 	return {
-		setActualItem: jest.fn(),
-		storeList: {xxx: {id: 'xxx', name: 'Alfred'}},
-		prediction: {id: 'xxx'},
-
+		name: 'fooBar',
 		history: {
 			push: jest.fn()
-		}
+		},
+		setActualItem: jest.fn()
 	};
 };
 
@@ -21,15 +19,15 @@ it('calls setActualItem when yes is clicked', () => {
 	const mockProps = getProps();
 
 	const wrapper = shallow(<ConfirmationBox {...mockProps} />);
-	wrapper.find({testattribute: 'YES'}).simulate('click');
-	expect(mockProps.setActualItem).toHaveBeenCalledWith('Alfred');
+	wrapper.find({testAttribute: 'YES'}).simulate('click');
+	expect(mockProps.setActualItem).toHaveBeenCalledWith('fooBar');
 });
 
 it('Goes to username entry page if yes clicked', () => {
 	const mockProps = getProps();
 
 	const wrapper = shallow(<ConfirmationBox {...mockProps} />);
-	wrapper.find({testattribute: 'YES'}).simulate('click');
+	wrapper.find({testAttribute: 'YES'}).simulate('click');
 	expect(mockProps.history.push).toHaveBeenCalledWith('/slackname');
 });
 
@@ -37,6 +35,6 @@ it('Goes to edit snack page if no clicked', () => {
 	const mockProps = getProps();
 
 	const wrapper = shallow(<ConfirmationBox {...mockProps} />);
-	wrapper.find({testattribute: 'NO'}).simulate('click');
+	wrapper.find({testAttribute: 'NO'}).simulate('click');
 	expect(mockProps.history.push).toHaveBeenCalledWith('/editSnack');
 });
