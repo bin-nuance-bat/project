@@ -13,6 +13,7 @@ class ItemRecognition extends Component {
 	}
 
 	handleImg = img => {
+		console.log('a');
 		this.model.predict(img).then(item => {
 			if (
 				item.value > ML_THRESHOLD &&
@@ -26,8 +27,12 @@ class ItemRecognition extends Component {
 	};
 
 	render() {
-		<header>Hold up your snack to the camera</header>;
-		return <WebcamCapture onImgLoad={this.handleImg} interval={1000} />;
+		return (
+			<div>
+				<header>Hold up your snack to the camera</header>
+				<WebcamCapture onImgLoad={this.handleImg} interval={1000} />
+			</div>
+		);
 	}
 }
 

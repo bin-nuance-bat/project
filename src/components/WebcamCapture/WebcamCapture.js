@@ -19,9 +19,8 @@ class WebcamCapture extends Component {
 		this.ticker = setInterval(() => {
 			const img = new Image(224, 224);
 			img.src = this.webcam.current.getScreenshot();
-
 			img.onload = () => {
-				this.props.onImgLoad;
+				this.props.onImgLoad(img);
 			};
 		}, this.props.interval);
 	}
