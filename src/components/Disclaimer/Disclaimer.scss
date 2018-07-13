@@ -1,0 +1,45 @@
+#backButton {
+	float: left;
+	width: 10vw;
+	height: 10vh;
+	font-size: 400%;
+	transform: translate(-380px, 5px);
+	position: absolute;
+	background-color: #0a3d5f;
+	border: none;
+	-webkit-text-stroke: 9px #0a3d5f;
+}
+
+#cameraIcon {
+	padding-top: 144px;
+	transform: translate(-30px);
+	font-size: 400%;
+}
+
+#lockIcon {
+	padding-top: 96px;
+	transform: translate(-13px);
+	font-size: 400%;
+}
+
+.infoText {
+	transform: translate(-13px);
+	display: inline-block;
+	font-size: 30px;
+	padding-top: 24px;
+	width: 544px;
+}
+
+#acceptButton {
+	transform: translate(-13px);
+	font-size: 30px;
+	border-radius: 12px;
+	width: 488px;
+	height: 64px;
+	color: white;
+	margin-top: 64px;
+	display: inline-block;
+	border: none;
+	background-color: #47BED8;
+	margin-bottom: 64px;
+}
