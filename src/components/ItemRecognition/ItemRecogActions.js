@@ -1,4 +1,4 @@
-import {SET_PREDICTION} from './actionTypes';
+import {SET_PREDICTION} from './ItemRecogActionTypes';
 
 export function setPrediction(prediction) {
 	return {

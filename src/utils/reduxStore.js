@@ -10,7 +10,7 @@ import {
 	currentUser,
 	sendReminderError
 } from '../components/UsernameEntry/reducer';
-import {prediction} from '../components/ItemRecognition/reducer';
+import {prediction} from '../components/ItemRecognition/ItemRecogReducer';
 import {sendWithPhoto} from '../components/App/reducer';
 import {actualItem} from '../components/ConfirmationBox/reducer';
 

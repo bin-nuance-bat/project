@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import ItemRecognition from './ItemRecognition';
-import {setPrediction} from './actions';
+import {setPrediction} from './ItemRecogActions';
 
 const mapStateToProps = state => {
 	return {prediction: state.prediction};
