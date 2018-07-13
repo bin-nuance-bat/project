@@ -1,4 +1,5 @@
 import React from 'react';
+import Webcam from 'react-webcam';
 
 class SnackChat extends React.Component {
 	constructor(props) {
