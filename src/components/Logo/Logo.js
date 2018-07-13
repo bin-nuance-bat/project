@@ -1,10 +1,13 @@
 import React from 'react';
 import logo from './logo.svg';
 import './Logo.css';
+import {NavLink} from 'react-router-dom';
 
 const Logo = () => (
 	<div>
-		<img src={logo} id="logo" alt="" />
+		<NavLink to="/">
+			<img src={logo} id="logo" alt="" />
+		</NavLink>
 	</div>
 );
 
