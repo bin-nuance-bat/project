@@ -16,12 +16,7 @@ class Trainer extends Component {
 		this.files = React.createRef();
 		this.fileIndex = 0;
 
-		this.capture = this.capture.bind(this);
 		this.model = new Model(this.setStatus.bind(this));
-		this.getName = this.getName.bind(this);
-		this.addExample = this.addExample.bind(this);
-		this.train = this.train.bind(this);
-		this.predict = this.predict.bind(this);
 
 		this.state = {
 			learningRate: 0.0001,
@@ -39,7 +34,7 @@ class Trainer extends Component {
 		};
 	}
 
-	capture(src) {
+	capture = src => {
 		return tf.tidy(() => {
 			return this.cropImage(tf.fromPixels(src))
 				.expandDims(0)
@@ -47,7 +42,7 @@ class Trainer extends Component {
 				.div(tf.scalar(127))
 				.sub(tf.scalar(1));
 		});
-	}
+	};
 
 	captureFromFile = async () => {
 		return new Promise(resolve => {
@@ -59,7 +54,7 @@ class Trainer extends Component {
 		});
 	};
 
-	cropImage(img) {
+	cropImage = img => {
 		const size = Math.min(img.shape[0], img.shape[1]);
 		const centerHeight = img.shape[0] / 2;
 		const beginHeight = centerHeight - size / 2;
@@ -70,13 +65,13 @@ class Trainer extends Component {
 			img.slice([beginHeight, beginWidth, 0], [size, size, 3]),
 			[224, 224]
 		);
-	}
+	};
 
 	screenshot = () => {
 		return this.webcam.current.webcam.current.getScreenshot();
 	};
 
-	addExample() {
+	addExample = () => {
 		this.setState({busy: true});
 		this.model.addExample(
 			this.screenshot,
@@ -84,7 +79,7 @@ class Trainer extends Component {
 			this.state.item,
 			this.state.burstCount
 		);
-	}
+	};
 
 	addFromFile = () => {
 		this.setState({busy: true});
@@ -111,7 +106,7 @@ class Trainer extends Component {
 		reader.readAsDataURL(this.files.current.files[index++]);
 	};
 
-	train() {
+	train = () => {
 		this.setState({busy: true});
 		this.model.train(
 			this.state.hiddenUnits,
@@ -122,9 +117,9 @@ class Trainer extends Component {
 			this.state.randomness,
 			Date.parse(this.state.since)
 		);
-	}
+	};
 
-	predict() {
+	predict = () => {
 		if (this.webcam.current.webcam.current) {
 			this.setState({busy: true});
 			this.model.predict(
@@ -133,16 +128,16 @@ class Trainer extends Component {
 		} else {
 			this.setStatus('Please connect a camera.');
 		}
-	}
+	};
 
-	getName(item) {
+	getName = item => {
 		return item.name + (item.qualifier ? ` (${item.qualifier})` : '');
-	}
+	};
 
-	setStatus(status) {
+	setStatus = status => {
 		this.setState({status});
 		if (status.indexOf('...') === -1) this.setState({busy: false});
-	}
+	};
 
 	render() {
 		return (
