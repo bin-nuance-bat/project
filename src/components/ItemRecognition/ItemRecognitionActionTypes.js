@@ -1,0 +1,1 @@
+export const SET_PREDICTION = 'SET_PREDICTION';
