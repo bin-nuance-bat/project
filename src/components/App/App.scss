@@ -1,0 +1,58 @@
+@import '../../utils/constants.scss';
+
+body {
+	font-family: apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Helvetica,sans-serif;
+	background-color: $dark-blue;
+	color: $white;
+	width: 100%;
+	text-align: center;
+}
+
+.page {
+	&-home {
+		padding-top: 176px;
+		transform: translate(-15px, 0px);
+	}
+}
+
+.text {
+	color: #FFFFFF;
+		
+	&-payinglater{
+		font-size: 53px;
+		margin-top: 0px;
+		margin-bottom: 82px;
+	}
+
+	&-subheading {
+		font-size: 30px;
+		margin-bottom: 160px;
+	}
+}
+
+.button {
+	font-size: 30px;
+	border-radius: 12px;
+	width: 488px;
+	height: 64px;
+	padding: 0px;
+	display: inline-block;
+	border: none;
+	background-color: $dark-blue;
+
+	&-snackchat {
+		background-color: $light-blue;
+		margin-bottom: 64px;
+	}
+
+	&-nophoto {
+		border: 2px solid white;
+	}
+}
+
+.cameraicon {
+	&-small {
+		margin-left: 24px;
+		transform: translate(0px, 2px);
+	}
+}
