@@ -63,15 +63,10 @@ class Model {
 			tf.loadModel('indexeddb://store-model')
 				.then(model => {
 					this.model = model;
-					this.items = JSON.parse(
+					this.classes = JSON.parse(
 						window.localStorage.getItem('items')
 					);
-					for (let item in this.items) {
-						document.getElementById(
-							item + '-count'
-						).innerHTML = this.items[item].mlCount;
-					}
-					this.init();
+					this.setStatus('Loaded model!');
 				})
 				.catch(() => {
 					this.setStatus('No saved model found');
@@ -84,8 +79,9 @@ class Model {
 			this.setStatus('Please train a model to save.');
 			return;
 		}
-		window.localStorage.setItem('items', JSON.stringify(this.items));
-		return await this.model.save('indexeddb://store-model');
+		window.localStorage.setItem('items', JSON.stringify(this.classes));
+		await this.model.save('indexeddb://store-model');
+		this.setStatus('Saved model!');
 	}
 
 	async exportModel() {
@@ -134,17 +130,28 @@ class Model {
 	async train(hiddenUnits, batchSizeFraction, learningRate, epochs) {
 		this.setStatus('Loading training data from DB...');
 
-		this.controllerDataset.getTensors().then(async ({xs, ys}) => {
+		this.controllerDataset.getTensors().then(async ({xs, ys, classes}) => {
 			if (!xs) {
 				this.setStatus('Please collect some training images first!');
 				return;
 			}
 
+			const batchSize = Math.floor(xs.shape[0] * batchSizeFraction);
+
+			if (!(batchSize > 0)) {
+				this.setStatus(
+					'Batch size invalid, please choose a number 0 < x < 1'
+				);
+				return;
+			}
+
+			this.classes = classes;
+
 			this.setStatus('Training model, please wait...');
 			await tf.nextFrame();
 
 			if (!this.model) {
-				this.setStatus('Generating new model');
+				this.setStatus('Generating new model...');
 				this.model = tf.sequential({
 					layers: [
 						tf.layers.flatten({inputShape: [7, 7, 1024]}),
@@ -155,7 +162,7 @@ class Model {
 							useBias: true
 						}),
 						tf.layers.dense({
-							units: await this.controllerDataset.getClassCount(),
+							units: classes.length,
 							kernelInitializer: 'varianceScaling',
 							useBias: false,
 							activation: 'softmax'
@@ -167,22 +174,13 @@ class Model {
 			const optimizer = tf.train.adam(learningRate);
 			this.model.compile({optimizer, loss: 'categoricalCrossentropy'});
 
-			const batchSize = Math.floor(xs.shape[0] * batchSizeFraction);
-
-			if (!(batchSize > 0)) {
-				this.setStatus(
-					'Batch size invalid, please choose a number 0 < x < 1'
-				);
-				return;
-			}
-
 			this.model.fit(xs, ys, {
 				batchSize,
 				epochs,
 				callbacks: {
 					onBatchEnd: async (batch, logs) => {
 						this.setStatus(
-							'Training. Loss: ' + logs.loss.toFixed(5)
+							'Training... Loss: ' + logs.loss.toFixed(5)
 						);
 						await tf.nextFrame();
 					},
@@ -202,14 +200,16 @@ class Model {
 		}
 		this.setStatus('Predicting...');
 		const predictedClass = tf.tidy(() => {
-			const activation = this.mobilenet.predict(image);
+			const activation = this.mobilenet.infer(image, 'conv_pw_13_relu');
 			const predictions = this.model.predict(activation);
 			return predictions.as1D().argMax();
 		});
 
 		const classId = (await predictedClass.data())[0];
 		predictedClass.dispose();
-		this.setStatus('I think this is a ' + this.getName[classId]);
+		this.setStatus(
+			'I think this is a ' + this.getName(this.classes[classId])
+		);
 	}
 }
 

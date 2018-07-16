@@ -29,6 +29,8 @@ export class ControllerDataset {
 		});
 		this.db = firebase.firestore();
 		this.db.settings({timestampsInSnapshots: true});
+
+		window.db = this.db;
 	}
 
 	async setItemTrainingCounts(itemObj) {
@@ -113,12 +115,16 @@ export class ControllerDataset {
 		}
 	}
 
-	async getClassCount() {
-		let items = await this.db.collection('item_data').get();
-		return items.size;
+	async getClasses() {
+		const items = await this.db.collection('item_data').get();
+		let idList = [];
+		items.forEach(doc => {
+			idList.push(doc.id);
+		});
+		return idList;
 	}
 
-	async getBatch(batchSize = 10, randomness = 1) {
+	async getBatch(batchSize = 100, randomness = 0.1) {
 		return new Promise(async resolve => {
 			let batch = {};
 
@@ -133,6 +139,11 @@ export class ControllerDataset {
 				await snapshot.forEach(doc => {
 					batch[doc.id] = doc.data();
 				});
+				this.setStatus(
+					`Fetching data... (${
+						Object.keys(batch).length
+					}/${batchSize})`
+				);
 			}
 
 			resolve(Object.values(batch).splice(0, batchSize));
@@ -141,7 +152,7 @@ export class ControllerDataset {
 
 	async getTensors() {
 		const batch = await this.getBatch();
-		let classCount = await this.getClassCount();
+		let classes = await this.getClasses();
 		let xs, ys;
 
 		xs = tf.keep(
@@ -149,13 +160,19 @@ export class ControllerDataset {
 		);
 		ys = tf.keep(
 			tf.tidy(() =>
-				tf.oneHot(tf.tensor1d([batch[0].label]).toInt(), classCount)
+				tf.oneHot(
+					tf.tensor1d([classes.indexOf(batch[0].label)]).toInt(),
+					classes.length
+				)
 			)
 		);
 
 		for (let i = 1; i < batch.length; i++) {
 			const y = tf.tidy(() =>
-				tf.oneHot(tf.tensor1d([batch[i].label]).toInt(), classCount)
+				tf.oneHot(
+					tf.tensor1d([classes.indexOf(batch[i].label)]).toInt(),
+					classes.length
+				)
 			);
 
 			const oldX = xs;
@@ -175,6 +192,6 @@ export class ControllerDataset {
 			ys = tf.keep(oldY.concat(y, 0));
 		}
 
-		return {xs, ys};
+		return {xs, ys, classes};
 	}
 }

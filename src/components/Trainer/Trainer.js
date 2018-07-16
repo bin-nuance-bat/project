@@ -28,7 +28,7 @@ class Trainer extends Component {
 			epochs: 20,
 			hiddenUnits: 100,
 			burstCount: 1,
-			status: 'Loading model...',
+			status: 'Loading mobilenet...',
 			item: 'unknown',
 			busy: true
 		};
@@ -117,8 +117,14 @@ class Trainer extends Component {
 	}
 
 	predict() {
-		this.setState({busy: true});
-		this.model.predict(this.capture());
+		if (this.webcam.current.webcam.current) {
+			this.setState({busy: true});
+			this.model.predict(
+				this.capture(this.webcam.current.webcam.current.video)
+			);
+		} else {
+			this.setStatus('Please connect a camera.');
+		}
 	}
 
 	getName(item) {
@@ -127,7 +133,7 @@ class Trainer extends Component {
 
 	setStatus(status) {
 		this.setState({status});
-		if (status === 'Done') this.setState({busy: false});
+		if (status.indexOf('...') === -1) this.setState({busy: false});
 	}
 
 	render() {
@@ -136,7 +142,11 @@ class Trainer extends Component {
 				<div className="col" style={{textAlign: 'center'}}>
 					<span id="status-text">{this.state.status}</span>
 					<br />
-					<WebcamCapture cameraConnected={true} ref={this.webcam} />
+					<WebcamCapture
+						setPrediction={() => {}}
+						history={{push: () => {}}}
+						ref={this.webcam}
+					/>
 					<br />
 					<ItemSelector
 						item={this.state.item}
