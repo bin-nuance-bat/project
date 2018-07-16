@@ -29,10 +29,6 @@ export class ControllerDataset {
 		});
 		this.db = firebase.firestore();
 		this.db.settings({timestampsInSnapshots: true});
-
-		window.db = this.db;
-		window.getBatch = this.getBatch.bind(this);
-		window.getClassCount = this.getClassCount.bind(this);
 	}
 
 	async setItemTrainingCounts(itemObj) {
@@ -122,33 +118,35 @@ export class ControllerDataset {
 		return items.size;
 	}
 
-	async getBatch(batchSize = 100, randomness = 0.1) {
-		let batch = {};
+	async getBatch(batchSize = 10, randomness = 1) {
+		return new Promise(async resolve => {
+			let batch = {};
 
-		while (Object.keys(batch).length < batchSize) {
-			const snapshot = await this.db
-				.collection('training_data')
-				.orderBy('random')
-				.startAt(Math.random())
-				.limit(batchSize * randomness)
-				.get();
+			while (Object.keys(batch).length < batchSize) {
+				const snapshot = await this.db
+					.collection('training_data')
+					.orderBy('random')
+					.startAt(Math.random())
+					.limit(batchSize * randomness)
+					.get();
 
-			snapshot.forEach(doc => {
-				console.log('Adding doc:', doc.data());
-				batch[doc.is] = doc.data();
-			});
-			console.log(batch);
-		}
+				await snapshot.forEach(doc => {
+					batch[doc.id] = doc.data();
+				});
+			}
 
-		return Object.values(batch).splice(0, batchSize);
+			resolve(Object.values(batch).splice(0, batchSize));
+		});
 	}
 
 	async getTensors() {
-		const batch = this.getBatch();
-		let classCount = this.getClassCount();
+		const batch = await this.getBatch();
+		let classCount = await this.getClassCount();
 		let xs, ys;
 
-		xs = tf.keep(batch[0].activation);
+		xs = tf.keep(
+			tf.tensor4d(batch[0].activation.split(','), [1, 7, 7, 1024])
+		);
 		ys = tf.keep(
 			tf.tidy(() =>
 				tf.oneHot(tf.tensor1d([batch[0].label]).toInt(), classCount)
@@ -161,7 +159,17 @@ export class ControllerDataset {
 			);
 
 			const oldX = xs;
-			xs = tf.keep(oldX.concat(batch[i].activation.split(','), 0));
+			xs = tf.keep(
+				oldX.concat(
+					tf.tensor4d(batch[i].activation.split(','), [
+						1,
+						7,
+						7,
+						1024
+					]),
+					0
+				)
+			);
 
 			const oldY = ys;
 			ys = tf.keep(oldY.concat(y, 0));

@@ -68,14 +68,14 @@ class Trainer extends Component {
 	}
 
 	screenshot = () => {
-		return this.webcam.current.getScreenshot();
+		return this.webcam.current.webcam.current.getScreenshot();
 	};
 
 	addExample() {
 		this.setState({busy: true});
 		this.model.addExample(
 			this.screenshot,
-			() => this.capture(this.webcam.current.video),
+			() => this.capture(this.webcam.current.webcam.current.video),
 			this.state.item,
 			this.state.burstCount
 		);
@@ -136,10 +136,7 @@ class Trainer extends Component {
 				<div className="col" style={{textAlign: 'center'}}>
 					<span id="status-text">{this.state.status}</span>
 					<br />
-					<WebcamCapture
-						cameraConnected={true}
-						cameraRef={this.webcam}
-					/>
+					<WebcamCapture cameraConnected={true} ref={this.webcam} />
 					<br />
 					<ItemSelector
 						item={this.state.item}
@@ -160,8 +157,15 @@ class Trainer extends Component {
 						}
 					/>
 					<button
-						onClick={this.addExample}
-						disabled={this.state.busy || !this.webcam.current}>
+						onClick={() =>
+							this.addExample(
+								this.webcam.current.webcam.current.video
+							)
+						}
+						disabled={
+							this.state.busy ||
+							!this.webcam.current.webcam.current
+						}>
 						Add From Camera
 					</button>
 					<br />

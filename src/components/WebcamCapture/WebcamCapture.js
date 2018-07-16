@@ -92,7 +92,7 @@ class WebcamCapture extends Component {
 }
 
 WebcamCapture.propTypes = {
-	setPrediction: PropTypes.func.isRequired,
+	setPrediction: PropTypes.func,
 	prediction: PropTypes.object
 };
 

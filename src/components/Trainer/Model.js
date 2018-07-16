@@ -147,7 +147,7 @@ class Model {
 				this.setStatus('Generating new model');
 				this.model = tf.sequential({
 					layers: [
-						tf.layers.flatten({inputShape: [7, 7, 256]}),
+						tf.layers.flatten({inputShape: [7, 7, 1024]}),
 						tf.layers.dense({
 							units: hiddenUnits,
 							activation: 'relu',
@@ -155,7 +155,7 @@ class Model {
 							useBias: true
 						}),
 						tf.layers.dense({
-							units: this.items.length,
+							units: await this.controllerDataset.getClassCount(),
 							kernelInitializer: 'varianceScaling',
 							useBias: false,
 							activation: 'softmax'
