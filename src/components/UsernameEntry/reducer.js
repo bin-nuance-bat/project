@@ -1,8 +1,4 @@
-import {
-	SET_USERS,
-	SET_CURRENT_USER,
-	SET_SEND_REMINDER_ERROR
-} from './actionTypes';
+import {SET_USERS, SET_CURRENT_USER} from './actionTypes';
 
 export function users(state = [], action) {
 	if (action.type === SET_USERS) return action.users;
