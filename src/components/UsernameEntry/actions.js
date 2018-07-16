@@ -1,18 +1,10 @@
 import {
-	SET_USERS,
-	SET_CURRENT_USER
+	SET_USERS
 	// SET_SEND_REMINDER_ERROR
 } from './actionTypes';
 import labels from './../../utils/labels.json';
 
 const token = process.env.REACT_APP_SLACK_TOKEN;
-
-export function setCurrentUser(currentUser) {
-	return {
-		type: SET_CURRENT_USER,
-		currentUser
-	};
-}
 
 function setUsers(users) {
 	return {

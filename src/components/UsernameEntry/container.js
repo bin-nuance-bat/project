@@ -1,10 +1,9 @@
 import {connect} from 'react-redux';
 import UsernameEntry from './UsernameEntry';
-import {loadUsers, setCurrentUser, sendSlackMessage} from './actions';
+import {loadUsers, sendSlackMessage} from './actions';
 
 const mapStateToProps = state => {
 	return {
-		currentUser: state.currentUser,
 		users: state.users,
 		sendReminderError: state.sendReminderError
 	};
@@ -12,8 +11,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
 	sendSlackMessage,
-	loadUsers,
-	setCurrentUser
+	loadUsers
 };
 
 export default connect(
