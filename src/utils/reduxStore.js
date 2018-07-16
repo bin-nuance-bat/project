@@ -22,7 +22,6 @@ const rootReducer = combineReducers({
 	prediction,
 	sendWithPhoto,
 	actualItem,
-	sendReminderError,
 	snackChat
 });
 
