@@ -4,7 +4,10 @@ import PropTypes from 'prop-types';
 
 class SnackChat extends Component {
 	initialTime = new Date();
-	state = {counter: 5};
+	constructor(props) {
+    super(props);
+    this.state = {counter: 5};
+  }
 
 	componentDidMount() {
 		this.timer = setInterval(this.tick, 1000);
