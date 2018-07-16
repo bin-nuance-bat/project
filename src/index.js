@@ -8,11 +8,12 @@ import registerServiceWorker from './registerServiceWorker';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import AppContainer from './components/App/container';
 import Trainer from './components/Trainer/Trainer';
-import WebcamCaptureContainer from './components/WebcamCapture/WebcamCaptureContainer';
+import ItemRecognition from './components/ItemRecognition/ItemRecognitionContainer';
 import Disclaimer from './components/Disclaimer/Disclaimer';
 import ConfirmationBox from './components/ConfirmationBox/container';
 import UsernameEntryContainer from './components/UsernameEntry/container';
-import EditSnack from './components/EditSnack/EditSnackContainer';
+import EditSnack from './components/EditSnack/container';
+import SuccessPage from './components/SuccessPage/SuccessPage';
 
 ReactDOM.render(
 	<Provider store={store}>
@@ -20,11 +21,7 @@ ReactDOM.render(
 			<Switch>
 				<Route exact path="/" component={AppContainer} />
 				<Route exact path="/disclaimer" component={Disclaimer} />
-				<Route
-					exact
-					path="/scanitem"
-					component={WebcamCaptureContainer}
-				/>
+				<Route exact path="/scanitem" component={ItemRecognition} />
 				<Route exact path="/confirmitem" component={ConfirmationBox} />
 				<Route exact path="/editsnack" component={EditSnack} />
 				<Route
@@ -32,6 +29,7 @@ ReactDOM.render(
 					path="/slackname"
 					component={UsernameEntryContainer}
 				/>
+				<Route exact path="/success" component={SuccessPage} />
 				<Route exact path="/old" component={OldAppContainer} />
 				<Route exact path="/training" component={Trainer} />
 			</Switch>
