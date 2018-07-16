@@ -13,9 +13,3 @@ export function currentUser(state = '', action) {
 	if (action.type === SET_CURRENT_USER) return action.currentUser;
 	return state;
 }
-
-export function sendReminderError(state = true, action) {
-	if (action.type === SET_SEND_REMINDER_ERROR)
-		return action.sendReminderError;
-	return state;
-}

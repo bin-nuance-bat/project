@@ -1,8 +1,4 @@
-import {
-	SET_USERS,
-	SET_CURRENT_USER
-	// SET_SEND_REMINDER_ERROR
-} from './actionTypes';
+import {SET_USERS, SET_CURRENT_USER} from './actionTypes';
 import labels from './../../utils/labels.json';
 
 const token = process.env.REACT_APP_SLACK_TOKEN;
@@ -31,13 +27,6 @@ export const loadUsers = () => dispatch => {
 		.then(users => dispatch(setUsers(users)))
 		.catch(() => dispatch(setUsers([])));
 };
-
-// function setSendReminderError(sendReminderError) {
-// 	return {
-// 		type: SET_SEND_REMINDER_ERROR,
-// 		sendReminderError
-// 	};
-// }
 
 const getIDByUsername = (username, users) => {
 	const user = users.find(
