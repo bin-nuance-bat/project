@@ -161,7 +161,7 @@ class Trainer extends Component {
 					/>
 					<button
 						onClick={this.addExample}
-						disabled={this.state.busy}>
+						disabled={this.state.busy || !this.webcam.current}>
 						Add From Camera
 					</button>
 					<br />

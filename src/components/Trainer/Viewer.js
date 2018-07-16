@@ -26,6 +26,7 @@ export default class Viewer extends Component {
 
 		getStore().then(store => {
 			Object.assign(this.items, store);
+			this.forceUpdate();
 		});
 	}
 
@@ -69,7 +70,11 @@ export default class Viewer extends Component {
 				<br />
 
 				{this.state.images.map(image => (
-					<ImagePreview image={image} remove={this.remove} />
+					<ImagePreview
+						key={image.id}
+						image={image}
+						remove={this.remove}
+					/>
 				))}
 			</div>
 		);
