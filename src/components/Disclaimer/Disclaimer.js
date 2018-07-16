@@ -18,8 +18,8 @@ const Disclaimer = props => {
 				<Glyphicon className="cameraicon-big" glyph="camera" />
 			</div>
 			<div className="text text-info">
-				As part of this process we will use the tablet's front-facing
-				camera to attempt to identify your snack.
+				As part of this process we will use the tablet&#39;s
+				front-facing camera to attempt to identify your snack.
 			</div>
 			<div>
 				<Glyphicon className="lockicon" glyph="lock" />

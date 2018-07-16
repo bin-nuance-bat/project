@@ -1,2 +1,1 @@
 export const SET_USERS = 'SET_USERS';
-export const SET_SEND_REMINDER_ERROR = 'SET_SEND_REMINDER_ERROR';
