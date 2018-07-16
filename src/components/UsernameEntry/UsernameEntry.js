@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import SlackIcon from './SlackIcon';
 import './UsernameEntry.css';
 import Logo from '../Logo/Logo';
 
@@ -19,40 +18,11 @@ class UsernameEntry extends React.Component {
 		return (
 			<div>
 				<Logo />
-				<div id="contents" className="flexColumn">
-					<div className="flexRow">
-						<div id="slackIcon">
-							<SlackIcon size={100} />
-						</div>
-						<div className="flexColumn">
-							<label id="formLabel" for="enterName">
-								Your Slack handle is...
-							</label>
-							<input
-								list="slackUsers"
-								name="enterName"
-								value={this.props.currentUser}
-								onChange={event =>
-									this.props.setCurrentUser(
-										event.target.value
-									)
-								}
-							/>
-							<datalist id="slackUsers">
-								{this.props.users.map((user, index) => (
-									<option key={index} value={user.name} />
-								))}
-							</datalist>
-						</div>
-					</div>
-					<div>
-						<button
-							onClick={this.sendReminder}
-							className="button button-accept">
-							Send me this reminder
-						</button>
-					</div>
+				<div className="text-select-slack">
+					Please select your slack handle to send a reminder
 				</div>
+				<div>~list component~</div>
+				<button className="button button-next">Next</button>
 			</div>
 		);
 	}
