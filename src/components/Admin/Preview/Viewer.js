@@ -6,14 +6,19 @@ import ImagePreview from './ImagePreview';
 import getStore from '../../../utils/honestyStore.js';
 
 export default class Viewer extends Component {
-	items = {
-		all: {name: 'All Items', id: 'all'},
-		unknown: {name: 'Unknown Item', id: 'unknown'}
-	};
-	state = {
-		item: 'all',
-		images: []
-	};
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			item: 'all',
+			images: []
+		};
+
+		this.items = {
+			all: {name: 'All Items', id: 'all'},
+			unknown: {name: 'Unknown Item', id: 'unknown'}
+		};
+	}
 
 	componentDidMount() {
 		firebase.initializeApp({

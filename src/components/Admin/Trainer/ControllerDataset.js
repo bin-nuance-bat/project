@@ -25,12 +25,12 @@ export class ControllerDataset {
 		firebase.initializeApp({
 			apiKey: 'AIzaSyBVuVNKx-rx2ON0RxbfGfbGPpiymbMrxj8',
 			authDomain: 'honesty-store-kiosk.firebaseapp.com',
-			projectId: 'honesty-store-kiosk'
+			projectId: 'honesty-store-kiosk',
+			storageBucket: 'honesty-store-kiosk.appspot.com'
 		});
+		this.store = firebase.storage();
 		this.db = firebase.firestore();
 		this.db.settings({timestampsInSnapshots: true});
-
-		window.db = this.db;
 	}
 
 	async setItemTrainingCounts(itemObj) {
@@ -195,5 +195,9 @@ export class ControllerDataset {
 		}
 
 		return {xs, ys, classes};
+	}
+
+	uploadModel(model) {
+		const ref = this.store.child('models/' + Date.now());
 	}
 }

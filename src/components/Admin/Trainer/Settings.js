@@ -2,9 +2,13 @@ import React, {Component} from 'react';
 import Input from './Input';
 
 export default class Settings extends Component {
-	state = {
-		advanced: false
-	};
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			advanced: false
+		};
+	}
 
 	render() {
 		return (
