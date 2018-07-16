@@ -41,11 +41,12 @@ export default class Viewer extends Component {
 			ref = ref.where('label', '==', this.state.item);
 		ref.get().then(rows => {
 			let images = [];
-			rows.forEach(image => {
-				const img = image.data();
+			rows.forEach(row => {
+				const img = row.data();
 				images.push({
 					id: image.id,
 					uri: img.img,
+					item: img.label,
 					trusted: img.trusted
 				});
 			});
@@ -53,13 +54,25 @@ export default class Viewer extends Component {
 		});
 	};
 
-	remove = e => {
+	remove = async event => {
 		this.db
 			.collection('training_data')
-			.doc(e.target.dataset.id)
+			.doc(event.target.dataset.id)
 			.delete()
 			.then(() => {
 				this.getImages();
+			});
+
+		const item = await this.db
+			.collection('item_data')
+			.doc(examples[0].label)
+			.get();
+
+		this.db
+			.collection('item_data')
+			.doc(event.target.dataset.item)
+			.set({
+				count: item.data().count - 1
 			});
 	};
 

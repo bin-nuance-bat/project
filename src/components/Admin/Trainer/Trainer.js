@@ -113,14 +113,25 @@ class Trainer extends Component {
 
 	train = () => {
 		this.setState({busy: true});
+
+		const {
+			hiddenUnits,
+			batchSizeFraction,
+			learningRate,
+			epochs,
+			setSize,
+			randomness,
+			since
+		} = this.state;
+
 		this.model.train(
-			this.state.hiddenUnits,
-			this.state.batchSizeFraction,
-			this.state.learningRate,
-			this.state.epochs,
-			this.state.setSize,
-			this.state.randomness,
-			Date.parse(this.state.since)
+			hiddenUnits,
+			batchSizeFraction,
+			learningRate,
+			epochs,
+			setSize,
+			randomness,
+			Date.parse(since)
 		);
 	};
 

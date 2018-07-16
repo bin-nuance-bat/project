@@ -7,13 +7,10 @@ const Input = props => {
 				<label>
 					{props.label}:<br />
 					<input
-						type={props.type ? props.type : 'text'}
+						type={props.type ? props.type : 'number'}
 						value={props.value}
 						onChange={e =>
-							this.props.setState(
-								'batchSizeFraction',
-								e.target.value
-							)
+							props.setState('batchSizeFraction', e.target.value)
 						}
 					/>
 				</label>

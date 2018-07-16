@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import Input from './Input';
 
 export default class Settings extends Component {
@@ -10,6 +11,10 @@ export default class Settings extends Component {
 		};
 	}
 
+	toggleAdvanced = () => {
+		this.setState({advanced: !this.state.advanced});
+	};
+
 	render() {
 		return (
 			<div className="col">
@@ -17,9 +22,7 @@ export default class Settings extends Component {
 					<label>
 						<input
 							type="checkbox"
-							onChange={() =>
-								this.setState({advanced: !this.state.advanced})
-							}
+							onChange={this.toggleAdvanced}
 							checked={this.state.advanced}
 						/>Show advanced settings
 					</label>
@@ -97,3 +100,18 @@ export default class Settings extends Component {
 		);
 	}
 }
+
+Settings.propTypes = {
+	model: PropTypes.object.isRequired,
+	busy: PropTypes.bool.isRequired,
+	learningRate: PropTypes.number.isRequired,
+	batchSizeFraction: PropTypes.number.isRequired,
+	epochs: PropTypes.number.isRequired,
+	hiddenUnits: PropTypes.number.isRequired,
+	setSize: PropTypes.number.isRequired,
+	randomness: PropTypes.number.isRequired,
+	since: PropTypes.string.isRequired,
+	train: PropTypes.func.isRequired,
+	predict: PropTypes.func.isRequired,
+	setState: PropTypes.func.isRequired
+};

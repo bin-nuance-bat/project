@@ -6,7 +6,10 @@ const ImagePreview = props => {
 		<div>
 			<img src={props.image.uri} alt={props.image.id} />
 			<br />
-			<button onClick={props.remove} data-id={props.image.id}>
+			<button
+				onClick={props.remove}
+				data-id={props.image.id}
+				data-item={props.image.item}>
 				Remove
 			</button>
 		</div>

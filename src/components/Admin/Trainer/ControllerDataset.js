@@ -17,6 +17,7 @@
 import * as tf from '@tensorflow/tfjs';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
+import 'firebase/storage';
 
 export class ControllerDataset {
 	constructor(status) {
@@ -25,8 +26,7 @@ export class ControllerDataset {
 		firebase.initializeApp({
 			apiKey: 'AIzaSyBVuVNKx-rx2ON0RxbfGfbGPpiymbMrxj8',
 			authDomain: 'honesty-store-kiosk.firebaseapp.com',
-			projectId: 'honesty-store-kiosk',
-			storageBucket: 'honesty-store-kiosk.appspot.com'
+			projectId: 'honesty-store-kiosk'
 		});
 		this.store = firebase.storage();
 		this.db = firebase.firestore();
@@ -36,7 +36,8 @@ export class ControllerDataset {
 	async setItemTrainingCounts(itemObj) {
 		const items = await this.db.collection('item_data').get();
 		items.forEach(item => {
-			itemObj[item.id].mlCount = item.data().count;
+			const count = item.data().count;
+			itemObj[item.id].mlCount = count ? count : 0;
 		});
 		return itemObj;
 	}
@@ -46,6 +47,7 @@ export class ControllerDataset {
 			.collection('item_data')
 			.doc(label)
 			.get();
+
 		this.db
 			.collection('item_data')
 			.doc(label)
@@ -141,6 +143,7 @@ export class ControllerDataset {
 				await snapshot.forEach(doc => {
 					batch[doc.id] = doc.data();
 				});
+
 				this.setStatus(
 					`Fetching data... (${
 						Object.keys(batch).length
@@ -195,9 +198,5 @@ export class ControllerDataset {
 		}
 
 		return {xs, ys, classes};
-	}
-
-	uploadModel(model) {
-		const ref = this.store.child('models/' + Date.now());
 	}
 }
