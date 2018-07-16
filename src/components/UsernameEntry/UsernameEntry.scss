@@ -3,3 +3,19 @@
 input {
 	color: black;
 }
+
+.text {
+	&-select-slack {
+		margin-left: 120px;
+		font-size: 30px;
+		width: 514px;
+	}
+}
+
+.button {
+	&-next{
+		height: 80px !important;
+		width: 272px !important;
+		background-color: $light-blue !important;
+	}
+}
