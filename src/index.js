@@ -28,6 +28,7 @@ ReactDOM.render(
 					path="/slackname"
 					component={UsernameEntryContainer}
 				/>
+				<Route exact path="/success" component={SuccessPage} />
 				<Route exact path="/old" component={OldAppContainer} />
 				<Route exact path="/training" component={Trainer} />
 			</Switch>

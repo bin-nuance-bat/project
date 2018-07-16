@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import SlackIcon from './SlackIcon';
 import './UsernameEntry.css';
+import Logo from '../Logo/Logo';
 
 class UsernameEntry extends React.Component {
-	sendReminder = () => {
-		this.props.sendSlackMessage(this.props.currentUser);
-		// handle this.props.sendReminderError
+	sendReminder = async () => {
+		let result = await this.props.sendSlackMessage(this.props.currentUser);
+		if (result) this.props.history.push('/success');
+		// TODO handle when result is false (i.e. message fails to send - redirect to error page?)
 	};
 
 	componentDidMount() {
@@ -15,30 +16,13 @@ class UsernameEntry extends React.Component {
 
 	render() {
 		return (
-			<div id="contents" className="flexColumn">
-				<div className="flexRow">
-					<div id="slackIcon">
-						<SlackIcon size={100} />
-					</div>
-					<div className="flexColumn">
-						<label id="formLabel">Your Slack handle is...</label>
-						<div>
-							<input
-								value={this.props.currentUser}
-								onChange={event =>
-									this.props.setCurrentUser(
-										event.target.value
-									)
-								}
-							/>
-						</div>
-					</div>
+			<div>
+				<Logo />
+				<div className="text-select-slack">
+					Please select your slack handle to send a reminder
 				</div>
-				<div>
-					<button onClick={this.sendReminder} className="buttonBlue">
-						Send me this reminder
-					</button>
-				</div>
+				<div>~list component~</div>
+				<button className="button button-next">Next</button>
 			</div>
 		);
 	}

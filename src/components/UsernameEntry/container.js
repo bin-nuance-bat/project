@@ -5,8 +5,7 @@ import {loadUsers, setCurrentUser, sendSlackMessage} from './actions';
 const mapStateToProps = state => {
 	return {
 		currentUser: state.currentUser,
-		users: state.users,
-		sendReminderError: state.sendReminderError
+		users: state.users
 	};
 };
 

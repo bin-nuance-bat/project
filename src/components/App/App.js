@@ -1,5 +1,7 @@
 import React from 'react';
 import './App.css';
+import Logo from '../Logo/Logo';
+import {Glyphicon} from 'react-bootstrap';
 
 class App extends React.Component {
 	componentDidMount() {
@@ -10,24 +12,28 @@ class App extends React.Component {
 		const {setSendWithPhoto, history} = this.props;
 		const scanItem = (withPhoto = false) => {
 			setSendWithPhoto(withPhoto);
-			history.push('/scanitem');
+			history.push('/disclaimer');
 		};
 		return (
-			<div id="homepage">
-				<h2 id="heading">Paying later?</h2>
-				<br />
-				Send yourself a reminder on Slack
-				<hr />
-				<div>
+			<div>
+				<Logo />
+				<div className="page-home">
+					<h2 className="text text-payinglater">Paying later?</h2>
+					<div className="text text-subheading">
+						Why not send yourself a reminder on Slack?
+					</div>
 					<button
-						className="buttonBlue"
+						className="button button-snackchat"
 						onClick={() => scanItem(true)}>
 						Send a SnackChat
+						<Glyphicon
+							className="cameraicon-small"
+							glyph="camera"
+						/>
 					</button>
-				</div>
-				<hr />
-				<div>
-					<button className="buttonWhite" onClick={() => scanItem()}>
+					<button
+						className="button button-nophoto"
+						onClick={() => scanItem()}>
 						Send a reminder without a photo
 					</button>
 				</div>
