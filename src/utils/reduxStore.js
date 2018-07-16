@@ -20,8 +20,7 @@ const rootReducer = combineReducers({
 	showList,
 	prediction,
 	sendWithPhoto,
-	actualItem,
-	sendReminderError
+	actualItem
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
