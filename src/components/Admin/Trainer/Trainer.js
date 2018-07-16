@@ -210,6 +210,8 @@ class Trainer extends Component {
 					setSize={this.state.setSize}
 					randomness={this.state.randomness}
 					since={this.state.since}
+					train={this.train}
+					predict={this.predict}
 					setState={(key, val) => this.setState({[key]: val})}
 				/>
 
