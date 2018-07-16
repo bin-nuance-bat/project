@@ -102,11 +102,11 @@ export class ControllerDataset {
 				.then(() => {
 					examples[i].activation.dispose();
 					this.setStatus(
-						`Uploading images (${parseInt(i) + 1}/${
+						`Uploading images (${parseInt(i, 10) + 1}/${
 							examples.length
 						})`
 					);
-					if (parseInt(i) + 1 >= examples.length) {
+					if (parseInt(i, 10) + 1 >= examples.length) {
 						this.setStatus('Done');
 					}
 				})
@@ -167,6 +167,6 @@ export class ControllerDataset {
 			ys = tf.keep(oldY.concat(y, 0));
 		}
 
-		return xs, ys;
+		return {xs, ys};
 	}
 }

@@ -134,7 +134,7 @@ class Model {
 	async train(hiddenUnits, batchSizeFraction, learningRate, epochs) {
 		this.setStatus('Loading training data from DB...');
 
-		this.controllerDataset.getTensors().then(async (xs, ys) => {
+		this.controllerDataset.getTensors().then(async ({xs, ys}) => {
 			if (!xs) {
 				this.setStatus('Please collect some training images first!');
 				return;
