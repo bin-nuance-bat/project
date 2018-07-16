@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import WebcamCapture from '../WebcamCapture/container';
+import WebcamCapture from '../WebcamCapture/WebcamCaptureContainer';
 import PropTypes from 'prop-types';
 
 class SnackChat extends Component {
