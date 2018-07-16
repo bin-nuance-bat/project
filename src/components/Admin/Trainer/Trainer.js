@@ -82,6 +82,11 @@ class Trainer extends Component {
 	};
 
 	addFromFile = () => {
+		if (this.files.current.files.length < 1) {
+			this.setStatus('Please choose some files first.');
+			return;
+		}
+
 		this.setState({busy: true});
 
 		this.images = [];

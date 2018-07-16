@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Input from './Input';
 
 export default class Settings extends Component {
 	state = {
@@ -19,108 +20,47 @@ export default class Settings extends Component {
 						/>Show advanced settings
 					</label>
 				</div>
-				{this.state.advanced && (
-					<div className="formGroup">
-						<label>
-							Learning rate:<br />
-							<input
-								type="text"
-								value={this.props.learningRate}
-								onChange={e =>
-									this.props.setState(
-										'learningRate',
-										e.target.value
-									)
-								}
-							/>
-						</label>
-					</div>
-				)}
-				{this.state.advanced && (
-					<div className="formGroup">
-						<label>
-							Batch Size Fraction:<br />
-							<input
-								type="text"
-								value={this.props.batchSizeFraction}
-								onChange={e =>
-									this.props.setState(
-										'batchSizeFraction',
-										e.target.value
-									)
-								}
-							/>
-						</label>
-					</div>
-				)}
-				<div className="formGroup">
-					<label>
-						Epochs:<br />
-						<input
-							type="text"
-							value={this.props.epochs}
-							onChange={e =>
-								this.props.setState('epochs', e.target.value)
-							}
-						/>
-					</label>
-				</div>
-				{this.state.advanced && (
-					<div className="formGroup">
-						<label>
-							Hidden Units:<br />
-							<input
-								type="text"
-								value={this.props.hiddenUnits}
-								onChange={e =>
-									this.props.setState(
-										'hiddenUnits',
-										e.target.value
-									)
-								}
-							/>
-						</label>
-					</div>
-				)}
-				<div className="formGroup">
-					<label>
-						Training Set Size:<br />
-						<input
-							type="text"
-							value={this.props.setSize}
-							onChange={e =>
-								this.props.setState('setSize', e.target.value)
-							}
-						/>
-					</label>
-				</div>
-				<div className="formGroup">
-					<label>
-						Randomness:<br />
-						<input
-							type="text"
-							value={this.props.randomness}
-							onChange={e =>
-								this.props.setState(
-									'randomness',
-									e.target.value
-								)
-							}
-						/>
-					</label>
-				</div>
-				<div className="formGroup">
-					<label>
-						Use images since:<br />
-						<input
-							type="datetime-local"
-							value={this.props.since}
-							onChange={e => {
-								this.props.setState('since', e.target.value);
-							}}
-						/>
-					</label>
-				</div>
+
+				<Input
+					label="Learning Rate"
+					value={this.props.learningRate}
+					hide={!this.state.advanced}
+					setState={this.props.setState}
+				/>
+				<Input
+					label="Batch Size Fraction"
+					value={this.props.batchSizeFraction}
+					hide={!this.state.advanced}
+					setState={this.props.setState}
+				/>
+				<Input
+					label="Epochs"
+					value={this.props.epochs}
+					setState={this.props.setState}
+				/>
+				<Input
+					label="Hidden Units"
+					value={this.props.hiddenUnits}
+					hide={!this.state.advanced}
+					setState={this.props.setState}
+				/>
+				<Input
+					label="Training Set Size"
+					value={this.props.setSize}
+					setState={this.props.setState}
+				/>
+				<Input
+					label="Randomness"
+					value={this.props.randomness}
+					setState={this.props.setState}
+				/>
+				<Input
+					label="Use Images Since"
+					value={this.props.since}
+					type="datetime-local"
+					setState={this.props.setState}
+				/>
+
 				<div className="formGroup">
 					<button
 						onClick={this.props.train}
