@@ -1,5 +1,5 @@
 import * as tf from '@tensorflow/tfjs';
-import {ControllerDataset} from './controller_dataset';
+import {ControllerDataset} from './ControllerDataset';
 import getStore from '../../utils/honestyStore.js';
 import * as MobileNet from '@tensorflow-models/mobilenet';
 
