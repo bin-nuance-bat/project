@@ -8,7 +8,7 @@ import registerServiceWorker from './registerServiceWorker';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import AppContainer from './components/App/container';
 import Trainer from './components/Trainer/Trainer';
-import WebcamCaptureContainer from './components/WebcamCapture/WebcamCaptureContainer';
+import ItemRecognition from './components/ItemRecognition/ItemRecognitionContainer';
 import Disclaimer from './components/Disclaimer/Disclaimer';
 import ConfirmationBox from './components/ConfirmationBox/container';
 import UsernameEntryContainer from './components/UsernameEntry/container';
@@ -20,11 +20,7 @@ ReactDOM.render(
 			<Switch>
 				<Route exact path="/" component={AppContainer} />
 				<Route exact path="/disclaimer" component={Disclaimer} />
-				<Route
-					exact
-					path="/scanitem"
-					component={WebcamCaptureContainer}
-				/>
+				<Route exact path="/scanitem" component={ItemRecognition} />
 				<Route exact path="/confirmitem" component={ConfirmationBox} />
 				<Route exact path="/editsnack" component={EditSnack} />
 				<Route
