@@ -1,4 +1,4 @@
-import {SET_PREDICTION} from './ItemRecogActionTypes';
+import {SET_PREDICTION} from './ItemRecognitionActionTypes';
 
 const predict = prediction => ({
 	type: SET_PREDICTION,
