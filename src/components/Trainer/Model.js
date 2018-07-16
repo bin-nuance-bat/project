@@ -127,70 +127,84 @@ class Model {
 		this.controllerDataset.addExamples(examples);
 	}
 
-	async train(hiddenUnits, batchSizeFraction, learningRate, epochs) {
+	async train(
+		hiddenUnits,
+		batchSizeFraction,
+		learningRate,
+		epochs,
+		setSize,
+		randomness
+	) {
 		this.setStatus('Loading training data from DB...');
 
-		this.controllerDataset.getTensors().then(async ({xs, ys, classes}) => {
-			if (!xs) {
-				this.setStatus('Please collect some training images first!');
-				return;
-			}
-
-			const batchSize = Math.floor(xs.shape[0] * batchSizeFraction);
-
-			if (!(batchSize > 0)) {
-				this.setStatus(
-					'Batch size invalid, please choose a number 0 < x < 1'
-				);
-				return;
-			}
-
-			this.classes = classes;
-
-			this.setStatus('Training model, please wait...');
-			await tf.nextFrame();
-
-			if (!this.model) {
-				this.setStatus('Generating new model...');
-				this.model = tf.sequential({
-					layers: [
-						tf.layers.flatten({inputShape: [7, 7, 1024]}),
-						tf.layers.dense({
-							units: hiddenUnits,
-							activation: 'relu',
-							kernelInitializer: 'varianceScaling',
-							useBias: true
-						}),
-						tf.layers.dense({
-							units: classes.length,
-							kernelInitializer: 'varianceScaling',
-							useBias: false,
-							activation: 'softmax'
-						})
-					]
-				});
-			}
-
-			const optimizer = tf.train.adam(learningRate);
-			this.model.compile({optimizer, loss: 'categoricalCrossentropy'});
-
-			this.model.fit(xs, ys, {
-				batchSize,
-				epochs,
-				callbacks: {
-					onBatchEnd: async (batch, logs) => {
-						this.setStatus(
-							'Training... Loss: ' + logs.loss.toFixed(5)
-						);
-						await tf.nextFrame();
-					},
-					onTrainEnd: async () => {
-						this.setStatus('Finished Training. Try me out!');
-						await tf.nextFrame();
-					}
+		this.controllerDataset
+			.getTensors(setSize, randomness)
+			.then(async ({xs, ys, classes}) => {
+				if (!xs) {
+					this.setStatus(
+						'Please collect some training images first!'
+					);
+					return;
 				}
+
+				const batchSize = Math.floor(xs.shape[0] * batchSizeFraction);
+
+				if (!(batchSize > 0)) {
+					this.setStatus(
+						'Batch size invalid, please choose a number 0 < x < 1'
+					);
+					return;
+				}
+
+				this.classes = classes;
+
+				this.setStatus('Training model, please wait...');
+				await tf.nextFrame();
+
+				if (!this.model) {
+					this.setStatus('Generating new model...');
+					this.model = tf.sequential({
+						layers: [
+							tf.layers.flatten({inputShape: [7, 7, 1024]}),
+							tf.layers.dense({
+								units: hiddenUnits,
+								activation: 'relu',
+								kernelInitializer: 'varianceScaling',
+								useBias: true
+							}),
+							tf.layers.dense({
+								units: classes.length,
+								kernelInitializer: 'varianceScaling',
+								useBias: false,
+								activation: 'softmax'
+							})
+						]
+					});
+				}
+
+				const optimizer = tf.train.adam(learningRate);
+				this.model.compile({
+					optimizer,
+					loss: 'categoricalCrossentropy'
+				});
+
+				this.model.fit(xs, ys, {
+					batchSize,
+					epochs,
+					callbacks: {
+						onBatchEnd: async (batch, logs) => {
+							this.setStatus(
+								'Training... Loss: ' + logs.loss.toFixed(5)
+							);
+							await tf.nextFrame();
+						},
+						onTrainEnd: async () => {
+							this.setStatus('Finished Training. Try me out!');
+							await tf.nextFrame();
+						}
+					}
+				});
 			});
-		});
 	}
 
 	async predict(image) {

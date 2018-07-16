@@ -124,7 +124,7 @@ export class ControllerDataset {
 		return idList;
 	}
 
-	async getBatch(batchSize = 100, randomness = 0.1) {
+	async getBatch(batchSize, randomness) {
 		return new Promise(async resolve => {
 			let batch = {};
 
@@ -150,8 +150,8 @@ export class ControllerDataset {
 		});
 	}
 
-	async getTensors() {
-		const batch = await this.getBatch();
+	async getTensors(setSize = 200, randomness = 0.1) {
+		const batch = await this.getBatch(setSize, randomness);
 		let classes = await this.getClasses();
 		let xs, ys;
 

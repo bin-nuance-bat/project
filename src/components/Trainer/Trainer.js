@@ -24,9 +24,11 @@ class Trainer extends Component {
 
 		this.state = {
 			learningRate: 0.0001,
-			batchSize: 0.4,
-			epochs: 20,
+			batchSizeFraction: 0.4,
+			epochs: 200,
 			hiddenUnits: 100,
+			setSize: 200,
+			randomness: 0.1,
 			burstCount: 1,
 			status: 'Loading mobilenet...',
 			item: 'unknown',
@@ -110,9 +112,11 @@ class Trainer extends Component {
 		this.setState({busy: true});
 		this.model.train(
 			this.state.hiddenUnits,
-			this.state.batchSize,
+			this.state.batchSizeFraction,
 			this.state.learningRate,
-			this.state.epochs
+			this.state.epochs,
+			this.state.setSize,
+			this.state.randomness
 		);
 	}
 
@@ -206,12 +210,14 @@ class Trainer extends Component {
 					<br />
 					<br />
 					<label>
-						Batch Size:<br />
+						Batch Size Fraction:<br />
 						<input
 							type="text"
-							value={this.state.batchSize}
+							value={this.state.batchSizeFraction}
 							onChange={e =>
-								this.setState({batchSize: e.target.value})
+								this.setState({
+									batchSizeFraction: e.target.value
+								})
 							}
 						/>
 					</label>
@@ -236,6 +242,30 @@ class Trainer extends Component {
 							value={this.state.hiddenUnits}
 							onChange={e =>
 								this.setState({hiddenUnits: e.target.value})
+							}
+						/>
+					</label>
+					<br />
+					<br />
+					<label>
+						Training Set Size:<br />
+						<input
+							type="text"
+							value={this.state.setSize}
+							onChange={e =>
+								this.setState({setSize: e.target.value})
+							}
+						/>
+					</label>
+					<br />
+					<br />
+					<label>
+						Randomness:<br />
+						<input
+							type="text"
+							value={this.state.randomness}
+							onChange={e =>
+								this.setState({randomness: e.target.value})
 							}
 						/>
 					</label>
@@ -267,7 +297,7 @@ class Trainer extends Component {
 
 				<div
 					className="col"
-					style={{maxHeight: 600, overflowY: 'scroll'}}>
+					style={{maxHeight: 800, overflowY: 'scroll'}}>
 					<table>
 						<thead>
 							<tr>
