@@ -30,6 +30,7 @@ class Trainer extends Component {
 			setSize: 200,
 			randomness: 0.1,
 			burstCount: 1,
+			advanced: false,
 			status: 'Loading mobilenet...',
 			item: 'unknown',
 			busy: true
@@ -197,102 +198,129 @@ class Trainer extends Component {
 				</div>
 
 				<div className="col">
-					<label>
-						Learning rate:<br />
-						<input
-							type="text"
-							value={this.state.learningRate}
-							onChange={e =>
-								this.setState({learningRate: e.target.value})
-							}
-						/>
-					</label>
-					<br />
-					<br />
-					<label>
-						Batch Size Fraction:<br />
-						<input
-							type="text"
-							value={this.state.batchSizeFraction}
-							onChange={e =>
-								this.setState({
-									batchSizeFraction: e.target.value
-								})
-							}
-						/>
-					</label>
-					<br />
-					<br />
-					<label>
-						Epochs:<br />
-						<input
-							type="text"
-							value={this.state.epochs}
-							onChange={e =>
-								this.setState({epochs: e.target.value})
-							}
-						/>
-					</label>
-					<br />
-					<br />
-					<label>
-						Hidden Units:<br />
-						<input
-							type="text"
-							value={this.state.hiddenUnits}
-							onChange={e =>
-								this.setState({hiddenUnits: e.target.value})
-							}
-						/>
-					</label>
-					<br />
-					<br />
-					<label>
-						Training Set Size:<br />
-						<input
-							type="text"
-							value={this.state.setSize}
-							onChange={e =>
-								this.setState({setSize: e.target.value})
-							}
-						/>
-					</label>
-					<br />
-					<br />
-					<label>
-						Randomness:<br />
-						<input
-							type="text"
-							value={this.state.randomness}
-							onChange={e =>
-								this.setState({randomness: e.target.value})
-							}
-						/>
-					</label>
-					<br />
-					<br />
-					<button onClick={this.train} disabled={this.state.busy}>
-						Train
-					</button>
-					<button onClick={this.predict} disabled={this.state.busy}>
-						Predict
-					</button>
-					<br />
-					<button
-						onClick={this.model.loadModel}
-						disabled={this.state.busy}>
-						Load
-					</button>
-					<button
-						onClick={this.model.saveModel}
-						disabled={this.state.busy}>
-						Save
-					</button>
-					<button
-						onClick={this.model.exportModel}
-						disabled={this.state.busy}>
-						Export
-					</button>
+					<div className="formGroup">
+						<label>
+							<input
+								type="checkbox"
+								checked={this.state.advanced}
+								onChange={e =>
+									this.setState({
+										advanced: !this.state.advanced
+									})
+								}
+							/>Show advanced settings
+						</label>
+					</div>
+					{this.state.advanced && (
+						<div className="formGroup">
+							<label>
+								Learning rate:<br />
+								<input
+									type="text"
+									value={this.state.learningRate}
+									onChange={e =>
+										this.setState({
+											learningRate: e.target.value
+										})
+									}
+								/>
+							</label>
+						</div>
+					)}
+					{this.state.advanced && (
+						<div className="formGroup">
+							<label>
+								Batch Size Fraction:<br />
+								<input
+									type="text"
+									value={this.state.batchSizeFraction}
+									onChange={e =>
+										this.setState({
+											batchSizeFraction: e.target.value
+										})
+									}
+								/>
+							</label>
+						</div>
+					)}
+					<div className="formGroup">
+						<label>
+							Epochs:<br />
+							<input
+								type="text"
+								value={this.state.epochs}
+								onChange={e =>
+									this.setState({epochs: e.target.value})
+								}
+							/>
+						</label>
+					</div>
+					{this.state.advanced && (
+						<div className="formGroup">
+							<label>
+								Hidden Units:<br />
+								<input
+									type="text"
+									value={this.state.hiddenUnits}
+									onChange={e =>
+										this.setState({
+											hiddenUnits: e.target.value
+										})
+									}
+								/>
+							</label>
+						</div>
+					)}
+					<div className="formGroup">
+						<label>
+							Training Set Size:<br />
+							<input
+								type="text"
+								value={this.state.setSize}
+								onChange={e =>
+									this.setState({setSize: e.target.value})
+								}
+							/>
+						</label>
+					</div>
+					<div className="formGroup">
+						<label>
+							Randomness:<br />
+							<input
+								type="text"
+								value={this.state.randomness}
+								onChange={e =>
+									this.setState({randomness: e.target.value})
+								}
+							/>
+						</label>
+					</div>
+					<div className="formGroup">
+						<button onClick={this.train} disabled={this.state.busy}>
+							Train
+						</button>
+						<button
+							onClick={this.predict}
+							disabled={this.state.busy}>
+							Predict
+						</button>
+						<br />
+						<button
+							onClick={this.model.loadModel}
+							disabled={this.state.busy}>
+							Load
+						</button>
+						<button
+							onClick={this.model.saveModel}
+							disabled={this.state.busy}>
+							Save
+						</button>
+						<button
+							onClick={this.model.exportModel}
+							disabled={this.state.busy}>
+							Export
+						</button>
+					</div>
 				</div>
 
 				<div
