@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Logo from '../Logo/Logo';
 
 class ConfirmationBox extends React.Component {
 	handleYes = () => {
@@ -14,6 +15,7 @@ class ConfirmationBox extends React.Component {
 	render() {
 		return (
 			<div>
+				<Logo />
 				<div>{`Did you take ${this.props.name}?`}</div>
 				<img src={this.props.img} alt="" />
 				<div>
