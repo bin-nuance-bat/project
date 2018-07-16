@@ -124,13 +124,15 @@ export class ControllerDataset {
 		return idList;
 	}
 
-	async getBatch(batchSize, randomness) {
+	async getBatch(batchSize, randomness, since) {
 		return new Promise(async resolve => {
 			let batch = {};
 
 			while (Object.keys(batch).length < batchSize) {
 				const snapshot = await this.db
 					.collection('training_data')
+					.orderBy('timestamp')
+					.startAt(since)
 					.orderBy('random')
 					.startAt(Math.random())
 					.limit(batchSize * randomness)
@@ -150,8 +152,8 @@ export class ControllerDataset {
 		});
 	}
 
-	async getTensors(setSize = 200, randomness = 0.1) {
-		const batch = await this.getBatch(setSize, randomness);
+	async getTensors(setSize = 200, randomness = 0.1, since = 0) {
+		const batch = await this.getBatch(setSize, randomness, since);
 		let classes = await this.getClasses();
 		let xs, ys;
 

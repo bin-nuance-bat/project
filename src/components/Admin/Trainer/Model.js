@@ -133,12 +133,13 @@ class Model {
 		learningRate,
 		epochs,
 		setSize,
-		randomness
+		randomness,
+		since
 	) {
 		this.setStatus('Loading training data from DB...');
 
 		this.controllerDataset
-			.getTensors(setSize, randomness)
+			.getTensors(setSize, randomness, since)
 			.then(async ({xs, ys, classes}) => {
 				if (!xs) {
 					this.setStatus(

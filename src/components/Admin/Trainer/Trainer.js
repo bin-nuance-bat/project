@@ -30,6 +30,7 @@ class Trainer extends Component {
 			hiddenUnits: 100,
 			setSize: 200,
 			randomness: 0.1,
+			since: '1970-01-01T00:00',
 			burstCount: 1,
 			advanced: false,
 			status: 'Loading mobilenet...',
@@ -118,7 +119,8 @@ class Trainer extends Component {
 			this.state.learningRate,
 			this.state.epochs,
 			this.state.setSize,
-			this.state.randomness
+			this.state.randomness,
+			Date.parse(this.state.since)
 		);
 	}
 
@@ -207,6 +209,7 @@ class Trainer extends Component {
 					hiddenUnits={this.state.hiddenUnits}
 					setSize={this.state.setSize}
 					randomness={this.state.randomness}
+					since={this.state.since}
 					setState={(key, val) => this.setState({[key]: val})}
 				/>
 

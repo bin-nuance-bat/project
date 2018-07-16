@@ -110,6 +110,18 @@ export default class Settings extends Component {
 					</label>
 				</div>
 				<div className="formGroup">
+					<label>
+						Use images since:<br />
+						<input
+							type="datetime-local"
+							value={this.props.since}
+							onChange={e => {
+								this.props.setState('since', e.target.value);
+							}}
+						/>
+					</label>
+				</div>
+				<div className="formGroup">
 					<button
 						onClick={this.props.train}
 						disabled={this.props.busy}>
