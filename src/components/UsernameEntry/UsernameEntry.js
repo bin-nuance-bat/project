@@ -25,7 +25,7 @@ class UsernameEntry extends React.Component {
 				<div>
 					<ButtonList
 						items={this.props.users}
-						onClick={(id, name) => this.sendReminder(name)}
+						handleClick={(id, name) => this.sendReminder(name)}
 					/>
 				</div>
 				<button className="button button-next">Next</button>
@@ -36,8 +36,7 @@ class UsernameEntry extends React.Component {
 
 UsernameEntry.propTypes = {
 	users: PropTypes.arrayOf(PropTypes.object).isRequired,
-	loadUsers: PropTypes.func.isRequired,
-	sendReminderError: PropTypes.bool.isRequired
+	loadUsers: PropTypes.func.isRequired
 };
 
 export default UsernameEntry;
