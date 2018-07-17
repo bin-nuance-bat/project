@@ -13,12 +13,13 @@ class SnackChat extends Component {
 		this.state = {
 			counter: 5,
 			overlay: (
-				<svg width="100" height="100">
-					<circle cx="10" cy="10" r="10" fill="yellow" />
+				<svg width="2" height="500">
+					<rect width="2" height="500" fill="yellow" />
 				</svg>
 			), // TODO make this a prop which is svg matching the chosen item
 			overlayX: 0,
-			overlayY: 0
+			overlayY: 0,
+			overlayRotation: 0
 		};
 	}
 
@@ -27,7 +28,7 @@ class SnackChat extends Component {
 	};
 
 	componentDidMount() {
-		this.timer = setInterval(this.tick, 1000);
+		// this.timer = setInterval(this.tick, 1000);
 		this.loadPosenet();
 	}
 
@@ -44,10 +45,22 @@ class SnackChat extends Component {
 			this.props.history.push('/slackName');
 		} else {
 			const pose = await this.net.estimateSinglePose(img, 0.5, true, 16);
-			console.log(pose.keypoints[0].score);
+			let leftShoulderPosition = pose.keypoints[5].position;
+			let rightShoulderPosition = pose.keypoints[6].position;
+
 			this.setState({
-				overlayX: 300 - pose.keypoints[0].position.x,
-				overlayY: pose.keypoints[0].position.y
+				overlayX:
+					300 -
+					(rightShoulderPosition.x + leftShoulderPosition.x) / 2,
+				overlayY:
+					(leftShoulderPosition.y + rightShoulderPosition.y) / 2,
+				overlayRotation:
+					(-360 / 2) *
+					Math.PI *
+					Math.atan(
+						(leftShoulderPosition.y - rightShoulderPosition.y) /
+							(rightShoulderPosition.x + leftShoulderPosition.x)
+					)
 			});
 		}
 	};
@@ -65,7 +78,10 @@ class SnackChat extends Component {
 						className="overlay"
 						style={{
 							left: `${this.state.overlayX}px`,
-							top: `${this.state.overlayY}px`
+							top: `${this.state.overlayY}px`,
+							transform: `rotate(${
+								this.state.overlayRotation
+							}deg)`
 						}}>
 						{this.state.overlay}
 					</div>
