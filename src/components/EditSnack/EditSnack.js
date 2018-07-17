@@ -1,16 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ButtonList from '../ButtonList/ButtonList';
+import Logo from '../Logo/Logo';
 
 const EditSnack = props => {
 	return (
-		<ButtonList
-			items={props.items}
-			onClick={(id, name) => {
-				props.setActualItem(id);
-				props.history.push('/slackname');
-			}}
-		/>
+		<div>
+			<Logo />
+			<ButtonList
+				items={props.items}
+				onClick={(id, name) => {
+					props.setActualItem(id);
+					props.history.push('/slackname');
+				}}
+			/>
+		</div>
 	);
 };
 
