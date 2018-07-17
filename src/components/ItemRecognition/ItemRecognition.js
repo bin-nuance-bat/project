@@ -10,6 +10,7 @@ class ItemRecognition extends Component {
 	model = new Model();
 
 	componentDidMount() {
+		this.props.setPrediction(null, null);
 		this.model.load();
 	}
 

@@ -1,14 +1,7 @@
-import {SET_USERS, SET_CURRENT_USER} from './actionTypes';
+import {SET_USERS} from './actionTypes';
 import labels from './../../utils/labels.json';
 
 const token = process.env.REACT_APP_SLACK_TOKEN;
-
-export function setCurrentUser(currentUser) {
-	return {
-		type: SET_CURRENT_USER,
-		currentUser
-	};
-}
 
 function setUsers(users) {
 	return {
