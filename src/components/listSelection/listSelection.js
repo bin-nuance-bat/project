@@ -1,6 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 import './ListSelection.css';
+import line from './assets/line.svg';
 
 const compare = (a, b) => {
 	if (a[0] > b[0]) return 1;
@@ -18,13 +19,13 @@ const ListSelection = ({items}) => {
 	return (
 		<div className="listselection">
 			{groupedItems.map(([group, groupItems]) => (
-				<div key={group}>
-					<p className="listtext group">{group.toUpperCase()}</p>
-					<hr />
+				<div className="listgroup" key={group}>
+					<p className="listtext grouptext">{group.toUpperCase()}</p>
+					<img src={line} alt="" />
 					{groupItems.map(item => (
-						<div key={item.id}>
+						<div className="listitem" key={item.id}>
 							<img className="itemicon" src={item.image} alt="" />
-							<p className="listtext item">{item.name}</p>
+							<p className="listtext itemtext">{item.name}</p>
 						</div>
 					))}
 				</div>
