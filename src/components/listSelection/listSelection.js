@@ -10,7 +10,13 @@ const ListSelection = ({items}) => {
 	return Object.entries(groupedItems).map(([group, groupItems]) => (
 		<div key={group}>
 			<h6>{group.toUpperCase()}</h6>
-			{groupItems.map(item => <div key={item.id}>{item.name}</div>)}
+			<hr />
+			{groupItems.map(item => (
+				<div key={item.id}>
+					<img src={item.image} className="logo" alt="" />
+					{item.name}
+				</div>
+			))}
 		</div>
 	));
 };
