@@ -4,7 +4,7 @@ import Webcam from 'react-webcam';
 import Notification from './../Notification/Notification';
 import PropTypes from 'prop-types';
 
-const height = 400;
+const height = 300;
 const width = 400;
 
 class WebcamCapture extends Component {
@@ -56,17 +56,15 @@ class WebcamCapture extends Component {
 
 		if (this.state.cameraConnected) {
 			return (
-				<div className="container">
-					<Webcam
-						audio={false}
-						height={height}
-						ref={this.webcam}
-						screenshotFormat="image/jpeg"
-						width={width}
-						className="videoStream"
-						screenshotWidth={300}
-					/>
-				</div>
+				<Webcam
+					audio={false}
+					height={height}
+					ref={this.webcam}
+					screenshotFormat="image/jpeg"
+					width={width}
+					className="videoStream"
+					screenshotWidth={300}
+				/>
 			);
 		}
 		return (

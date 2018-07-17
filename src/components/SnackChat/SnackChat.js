@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import WebcamCapture from '../WebcamCapture/WebcamCaptureContainer';
 import PropTypes from 'prop-types';
 import * as posenet from '@tensorflow-models/posenet';
+import './SnackChat.css';
+import Logo from '../Logo/Logo';
 
 class SnackChat extends Component {
 	initialTime = new Date();
@@ -16,7 +18,7 @@ class SnackChat extends Component {
 	};
 
 	componentDidMount() {
-		this.timer = setInterval(this.tick, 1000);
+		// this.timer = setInterval(this.tick, 1000);
 		this.loadPosenet();
 	}
 
@@ -41,10 +43,14 @@ class SnackChat extends Component {
 		return (
 			<div>
 				<header>
+					<Logo />
 					Smile, you are on snackchat:
 					{this.state.counter}
 				</header>
-				<WebcamCapture onImgLoad={this.handleImg} interval={333} />
+				<div className="feed">
+					<div className="overlay">overlay svg goes here</div>
+					<WebcamCapture onImgLoad={this.handleImg} interval={333} />
+				</div>
 			</div>
 		);
 	}
