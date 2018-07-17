@@ -1,3 +1,10 @@
+.feed {
+	overflow: hidden;
+	height: 300px;
+	width: 300px;
+	position: relative;
+}
+
 .overlay {
 	position: absolute;
 	display: inline-block;

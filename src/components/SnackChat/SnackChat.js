@@ -10,7 +10,16 @@ class SnackChat extends Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {counter: 5};
+		this.state = {
+			counter: 5,
+			overlay: (
+				<svg width="100" height="100">
+					<circle cx="10" cy="10" r="10" fill="yellow" />
+				</svg>
+			), // TODO make this a prop which is svg matching the chosen item
+			overlayX: 0,
+			overlayY: 0
+		};
 	}
 
 	loadPosenet = async () => {
@@ -18,7 +27,7 @@ class SnackChat extends Component {
 	};
 
 	componentDidMount() {
-		// this.timer = setInterval(this.tick, 1000);
+		this.timer = setInterval(this.tick, 1000);
 		this.loadPosenet();
 	}
 
@@ -35,7 +44,11 @@ class SnackChat extends Component {
 			this.props.history.push('/slackName');
 		} else {
 			const pose = await this.net.estimateSinglePose(img, 0.5, true, 16);
-			// TODO calculate overlay position + display
+			console.log(pose.keypoints[0].score);
+			this.setState({
+				overlayX: 300 - pose.keypoints[0].position.x,
+				overlayY: pose.keypoints[0].position.y
+			});
 		}
 	};
 
@@ -48,7 +61,14 @@ class SnackChat extends Component {
 					{this.state.counter}
 				</header>
 				<div className="feed">
-					<div className="overlay">overlay svg goes here</div>
+					<div
+						className="overlay"
+						style={{
+							left: `${this.state.overlayX}px`,
+							top: `${this.state.overlayY}px`
+						}}>
+						{this.state.overlay}
+					</div>
 					<WebcamCapture onImgLoad={this.handleImg} interval={333} />
 				</div>
 			</div>
