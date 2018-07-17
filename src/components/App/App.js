@@ -8,6 +8,16 @@ class App extends React.Component {
 		this.props.loadStoreList();
 	}
 
+	handleSnackChatClick() {
+		this.props.setSendWithPhoto(true);
+		this.props.history.push('/disclaimer');
+	}
+
+	handleReminderNoPhotoClick() {
+		this.props.setSendWithPhoto(false);
+		this.props.history.push('/disclaimer');
+	}
+
 	render() {
 		return (
 			<div>
@@ -19,10 +29,7 @@ class App extends React.Component {
 					</div>
 					<button
 						className="button button-snackchat"
-						onClick={() => {
-							this.props.setSendWithPhoto(true);
-							this.props.history.push('/disclaimer');
-						}}>
+						onClick={this.handleSnackChatClick}>
 						Send a SnackChat
 						<Glyphicon
 							className="cameraicon-small"
@@ -31,10 +38,7 @@ class App extends React.Component {
 					</button>
 					<button
 						className="button button-nophoto"
-						onClick={() => {
-							this.props.setSendWithPhoto(false);
-							this.props.history.push('/scanitem');
-						}}>
+						onClick={this.handleReminderNoPhotoClick}>
 						Send a reminder without a photo
 					</button>
 				</div>

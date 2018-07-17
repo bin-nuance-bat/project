@@ -5,15 +5,13 @@ import Logo from '../Logo/Logo';
 
 const EditSnack = props => {
 	return (
-		<div>
-			<Logo />
-			<ButtonList
-				items={props.items}
-				onClick={(id, name) => {
-					props.setActualItem(name);
-				}}
-			/>
-		</div>
+		<ButtonList
+			items={props.items}
+			onClick={(id, name) => {
+				props.setActualItem(id);
+				props.history.push('/slackname');
+			}}
+		/>
 	);
 };
 

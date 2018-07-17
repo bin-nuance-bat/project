@@ -4,6 +4,10 @@ export const getPredictionName = state => {
 		: 'UNKNOWN';
 };
 
+export const getPredictionId = state => {
+	return state.prediction ? state.prediction.id : null;
+};
+
 export const getPredictionImg = state => {
 	return state.prediction ? state.prediction.img : null;
 };

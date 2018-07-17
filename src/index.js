@@ -8,11 +8,12 @@ import registerServiceWorker from './registerServiceWorker';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import AppContainer from './components/App/container';
 import Trainer from './components/Trainer/Trainer';
+import SnackChat from './components/SnackChat/SnackChatContainer';
 import ItemRecognition from './components/ItemRecognition/ItemRecognitionContainer';
 import Disclaimer from './components/Disclaimer/Disclaimer';
 import ConfirmationBox from './components/ConfirmationBox/container';
 import UsernameEntryContainer from './components/UsernameEntry/container';
-import EditSnack from './components/EditSnack/container';
+import EditSnack from './components/EditSnack/EditSnackContainer';
 import SuccessPage from './components/SuccessPage/SuccessPage';
 
 ReactDOM.render(
@@ -20,6 +21,7 @@ ReactDOM.render(
 		<Router>
 			<Switch>
 				<Route exact path="/" component={AppContainer} />
+				<Route exact path="/snackchat" component={SnackChat} />
 				<Route exact path="/disclaimer" component={Disclaimer} />
 				<Route exact path="/scanitem" component={ItemRecognition} />
 				<Route exact path="/confirmitem" component={ConfirmationBox} />
