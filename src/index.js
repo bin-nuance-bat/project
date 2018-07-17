@@ -15,6 +15,7 @@ import ConfirmationBox from './components/ConfirmationBox/container';
 import UsernameEntryContainer from './components/UsernameEntry/container';
 import EditSnack from './components/EditSnack/EditSnackContainer';
 import SuccessPage from './components/SuccessPage/SuccessPage';
+import list from './compoents/listSelection/test';
 
 ReactDOM.render(
 	<Provider store={store}>
@@ -34,6 +35,7 @@ ReactDOM.render(
 				<Route exact path="/success" component={SuccessPage} />
 				<Route exact path="/old" component={OldAppContainer} />
 				<Route exact path="/training" component={Trainer} />
+				<Route exact path="/test" component={list} />
 			</Switch>
 		</Router>
 	</Provider>,
