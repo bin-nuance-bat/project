@@ -8,7 +8,10 @@ const imgFilesObject = importImages.keys().reduce((images, key) => {
 
 const test = () => {
 	const items = [
-		{id: 'foo', name: 'aar', image: imgFilesObject['./skittles.svg']},
+		{
+			id: 'foo',
+			name: 'aar'
+		},
 		{
 			id: 'foo2',
 			name: 'cbar',
@@ -45,7 +48,7 @@ const test = () => {
 	return (
 		<div>
 			<h3 style={{position: 'sticky', top: '0'}}>Find Thing</h3>
-			<ListSelection items={items} />
+			<ListSelection items={items} onClick={console.log} />
 		</div>
 	);
 };

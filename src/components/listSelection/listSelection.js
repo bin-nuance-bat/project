@@ -14,8 +14,8 @@ const getGroupedItems = items => {
 	return Object.entries(groupList).sort(compare);
 };
 
-const ListSelection = ({items}) => {
-	const groupedItems = getGroupedItems(items);
+const ListSelection = props => {
+	const groupedItems = getGroupedItems(props.items);
 	return (
 		<div className="listselection">
 			{groupedItems.map(([group, groupItems]) => (
@@ -23,9 +23,22 @@ const ListSelection = ({items}) => {
 					<p className="listtext grouptext">{group.toUpperCase()}</p>
 					<img src={line} alt="" />
 					{groupItems.map(item => (
-						<div className="listitem" key={item.id}>
-							<img className="itemicon" src={item.image} alt="" />
-							<p className="listtext itemtext">{item.name}</p>
+						<div
+							className="listitem"
+							key={item.id}
+							name={item.id}
+							onClick={e =>
+								props.onClick(e.target.getAttribute('name'))
+							}>
+							<img
+								name={item.id}
+								className="itemicon"
+								src={item.image}
+								alt=""
+							/>
+							<p name={item.id} className="listtext itemtext">
+								{item.name}
+							</p>
 						</div>
 					))}
 				</div>
