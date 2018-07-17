@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 class ConfirmationBox extends React.Component {
 	handleYes = () => {
-		const { setActualItem, name, sendWithPhoto, history } = this.props;
-		setActualItem(name);
+		const {setActualItem, id, sendWithPhoto, history} = this.props;
+		setActualItem(id);
 		const nextPage = sendWithPhoto ? 'snackchat' : 'slackname';
 		history.push('/' + nextPage);
 	};
@@ -33,6 +33,7 @@ class ConfirmationBox extends React.Component {
 
 ConfirmationBox.propTypes = {
 	name: PropTypes.string.isRequired,
+	id: PropTypes.string.isRequired,
 	img: PropTypes.string.isRequired
 };
 
