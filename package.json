@@ -35,6 +35,7 @@
 		"build": "npm-run-all build-css build-js",
 		"test": "react-scripts test --env=jsdom",
 		"eject": "react-scripts eject",
+		"deploy-local": "npm run build && firebase deploy",
 		"deploy": "firebase use default && firebase deploy --token $FIREBASE_TOKEN",
 		"lint": "eslint **/*.js"
 	},
