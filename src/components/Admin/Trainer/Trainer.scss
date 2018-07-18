@@ -1,3 +1,5 @@
+@import '../../../utils/constants.scss';
+
 body {
     padding: 30px;
     font-size: 18px;
@@ -8,14 +10,24 @@ body {
     padding: 0 20px;
 }
 
-select, input, button {
-    margin: 5px;
-    padding: 10px;
-    font-size: 18px;
+.container {
+    width: auto;
+}
+
+select {
+    color: $black;
+    margin: 10px 0;
 }
 
 input[type=checkbox] {
     width: auto !important;
+}
+
+.button-trainer {
+    width: auto;
+    margin: 20px 5px;
+    padding: 10px;
+    background-color: $light-blue;
 }
 
 .formGroup {

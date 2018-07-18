@@ -44,7 +44,7 @@ export default class Viewer extends Component {
 			rows.forEach(row => {
 				const img = row.data();
 				images.push({
-					id: image.id,
+					id: row.id,
 					uri: img.img,
 					item: img.label,
 					trusted: img.trusted
@@ -65,7 +65,7 @@ export default class Viewer extends Component {
 
 		const item = await this.db
 			.collection('item_data')
-			.doc(examples[0].label)
+			.doc(event.target.dataset.item)
 			.get();
 
 		this.db

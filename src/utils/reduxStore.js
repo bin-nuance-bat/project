@@ -6,25 +6,21 @@ import {
 	showList
 } from '../components/StoreList/reducer';
 import {users, slackUserFetchError} from '../components/OldApp/reducer';
-import {
-	currentUser,
-	sendReminderError
-} from '../components/UsernameEntry/reducer';
-import {prediction} from '../components/WebcamCapture/reducer';
+import {prediction} from '../components/ItemRecognition/ItemRecognitionReducer';
 import {sendWithPhoto} from '../components/App/reducer';
 import {actualItem} from '../components/ConfirmationBox/reducer';
+import {snackChat} from '../components/SnackChat/SnackChatReducer';
 
 const rootReducer = combineReducers({
 	storeList,
 	loadStoreListError,
 	users,
 	slackUserFetchError,
-	currentUser,
 	showList,
 	prediction,
 	sendWithPhoto,
 	actualItem,
-	sendReminderError
+	snackChat
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

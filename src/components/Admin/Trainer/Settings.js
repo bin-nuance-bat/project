@@ -70,27 +70,32 @@ export default class Settings extends Component {
 
 				<div className="formGroup">
 					<button
+						className="button button-trainer"
 						onClick={this.props.train}
 						disabled={this.props.busy}>
 						Train
 					</button>
 					<button
+						className="button button-trainer"
 						onClick={this.props.predict}
 						disabled={this.props.busy}>
 						Predict
 					</button>
 					<br />
 					<button
+						className="button button-trainer"
 						onClick={this.props.model.loadModel}
 						disabled={this.props.busy}>
 						Load
 					</button>
 					<button
+						className="button button-trainer"
 						onClick={this.props.model.saveModel}
 						disabled={this.props.busy}>
 						Save
 					</button>
 					<button
+						className="button button-trainer"
 						onClick={this.props.model.exportModel}
 						disabled={this.props.busy}>
 						Export

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import WebcamCapture from '../../WebcamCapture/WebcamCapture';
+import Webcam from 'react-webcam';
 import ItemSelector from '../ItemSelector';
 import Model from './Model';
 import * as tf from '@tensorflow/tfjs';
@@ -68,14 +68,14 @@ class Trainer extends Component {
 	};
 
 	screenshot = () => {
-		return this.webcam.current.webcam.current.getScreenshot();
+		return this.webcam.current.getScreenshot();
 	};
 
 	addExample = () => {
 		this.setState({busy: true});
 		this.model.addExample(
 			this.screenshot,
-			() => this.capture(this.webcam.current.webcam.current.video),
+			() => this.capture(this.webcam.current.video),
 			this.state.item,
 			this.state.burstCount
 		);
@@ -136,11 +136,9 @@ class Trainer extends Component {
 	};
 
 	predict = () => {
-		if (this.webcam.current.webcam.current) {
+		if (this.webcam.current) {
 			this.setState({busy: true});
-			this.model.predict(
-				this.capture(this.webcam.current.webcam.current.video)
-			);
+			this.model.predict(this.capture(this.webcam.current.video));
 		} else {
 			this.setStatus('Please connect a camera.');
 		}
@@ -175,10 +173,13 @@ class Trainer extends Component {
 				<div className="col" style={{textAlign: 'center'}}>
 					<span id="status-text">{status}</span>
 					<br />
-					<WebcamCapture
-						setPrediction={() => {}}
-						history={{push: () => {}}}
+					<Webcam
+						audio={false}
+						height={400}
+						width={400}
+						screenshotWidth={224}
 						ref={this.webcam}
+						screenshotFormat="image/jpeg"
 					/>
 					<br />
 					<ItemSelector
@@ -199,13 +200,13 @@ class Trainer extends Component {
 							this.setState({burstCount: e.target.value})
 						}
 					/>
+					<br />
 					<button
+						className="button button-trainer"
 						onClick={() =>
-							this.addExample(
-								this.webcam.current.webcam.current.video
-							)
+							this.addExample(this.webcam.current.video)
 						}
-						disabled={busy || !this.webcam.current.webcam.current}>
+						disabled={busy || !this.webcam.current}>
 						Add From Camera
 					</button>
 					<br />
@@ -215,7 +216,11 @@ class Trainer extends Component {
 						ref={this.files}
 						disabled={busy}
 					/>
-					<button onClick={this.addFromFile} disabled={busy}>
+					<br />
+					<button
+						className="button button-trainer"
+						onClick={this.addFromFile}
+						disabled={busy}>
 						Add From File
 					</button>
 				</div>

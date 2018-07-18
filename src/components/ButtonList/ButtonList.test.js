@@ -8,7 +8,7 @@ configure({adapter: new Adapter()});
 it('renders a list correctly', () => {
 	const items = [{name: 'apple', id: 'xxx'}, {name: 'mars', id: 'yyy'}];
 	const wrapper = shallow(
-		<ButtonList items={items} onClick={function() {}} />
+		<ButtonList items={items} handleClick={function() {}} />
 	);
 	expect(wrapper.find('button')).toHaveLength(2);
 	expect(
@@ -28,7 +28,9 @@ it('renders a list correctly', () => {
 it('Click functions properly', () => {
 	const items = [{name: 'apple', id: 'xxx'}, {name: 'mars', id: 'yyy'}];
 	let testFunc = jest.fn();
-	const wrapper = shallow(<ButtonList items={items} onClick={testFunc} />);
+	const wrapper = shallow(
+		<ButtonList items={items} handleClick={testFunc} />
+	);
 	wrapper
 		.find('button')
 		.at(0)

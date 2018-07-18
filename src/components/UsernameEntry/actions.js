@@ -1,18 +1,7 @@
-import {
-	SET_USERS,
-	SET_CURRENT_USER,
-	SET_SEND_REMINDER_ERROR
-} from './actionTypes';
+import {SET_USERS} from './actionTypes';
 import labels from './../../utils/labels.json';
 
 const token = process.env.REACT_APP_SLACK_TOKEN;
-
-export function setCurrentUser(currentUser) {
-	return {
-		type: SET_CURRENT_USER,
-		currentUser
-	};
-}
 
 function setUsers(users) {
 	return {
@@ -29,25 +18,8 @@ export const loadUsers = () => dispatch => {
 			else return data.members;
 		})
 		.then(users => dispatch(setUsers(users)))
-		.catch(() =>
-			dispatch(
-				setUsers([
-					{
-						id: '1',
-						name: 'ilapworth',
-						profile: {real_name: 'Isaac Lapworth'}
-					}
-				])
-			)
-		);
+		.catch(() => dispatch(setUsers([])));
 };
-
-function setSendReminderError(sendReminderError) {
-	return {
-		type: SET_SEND_REMINDER_ERROR,
-		sendReminderError
-	};
-}
 
 const getIDByUsername = (username, users) => {
 	const user = users.find(
@@ -60,7 +32,7 @@ export const sendSlackMessage = username => async (dispatch, getState) => {
 	let state = getState();
 	let id = getIDByUsername(username, state.users);
 
-	let storeCode = state.prediction ? state.prediction.id : '';
+	let storeCode = state.actualItem;
 	let itemName = state.storeList[storeCode]
 		? state.storeList[storeCode].name
 		: '';
@@ -70,14 +42,14 @@ export const sendSlackMessage = username => async (dispatch, getState) => {
 	for (; i < labels.length; i++) {
 		if (labels[i] === storeCode) break;
 	}
-	if (i === labels.length) dispatch(setSendReminderError(true));
+	if (i === labels.length) return false;
 
 	try {
 		await fetch(`https://slack.com/api/chat.postMessage?token=${token}&
 		channel=${id}&
 		text=${`Click to purchase your ${itemName}: https://honesty.store/item/${storeCode}`}`);
-		dispatch(setSendReminderError(false));
+		return true;
 	} catch (error) {
-		dispatch(setSendReminderError(true));
+		return false;
 	}
 };

@@ -1,12 +1,11 @@
 import React from 'react';
-import WebcamCaptureContainer from '../WebcamCapture/WebcamCaptureContainer.js';
+import WebcamCaptureContainer from '../WebcamCapture/WebcamCaptureContainer';
 import ConfirmationBox from '../ConfirmationBox/ConfirmationBox';
 import StoreListContainer from '../StoreList/StoreListContainer';
 import PropTypes from 'prop-types';
 import {getUserSlackID, sendSlackMessage} from './../../utils/slack';
 import UsernameEntryContainer from '../UsernameEntry/container';
 import Notification from './../Notification/Notification';
-import './OldApp.css';
 
 const NOTIFICATION_DURATION = 5000;
 
