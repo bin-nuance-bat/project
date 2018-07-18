@@ -81,7 +81,7 @@ export class ControllerDataset {
 		const items = await this.db.collection('item_data').get();
 		let idList = [];
 		items.forEach(doc => {
-			idList.push(doc.id);
+			if (doc.data().count > 0) idList.push(doc.id);
 		});
 		return idList;
 	}

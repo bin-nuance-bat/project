@@ -32,32 +32,38 @@ export default class Settings extends Component {
 					label="Learning Rate"
 					value={this.props.learningRate}
 					hide={!this.state.advanced}
+					range={[0.00001, 0.1]}
 					setState={val => this.props.setState('learningRate', val)}
 				/>
 				<Input
 					label="Batch Size Fraction"
 					value={this.props.batchSizeFraction}
 					hide={!this.state.advanced}
+					range={[0.1, 1]}
 					setState={val => this.props.setState('learningRate', val)}
 				/>
 				<Input
 					label="Epochs"
 					value={this.props.epochs}
+					range={[1, 5000]}
 					setState={val => this.props.setState('epochs', val)}
 				/>
 				<Input
 					label="Hidden Units"
 					value={this.props.hiddenUnits}
 					hide={!this.state.advanced}
+					range={[10, 500]}
 					setState={val => this.props.setState('hiddenUnits', val)}
 				/>
 				<Input
 					label="Training Set Size"
 					value={this.props.setSize}
+					range={[50, 500]}
 					setState={val => this.props.setState('setSize', val)}
 				/>
 				<Input
 					label="Randomness"
+					range={[0.1, 1]}
 					value={this.props.randomness}
 					setState={val => this.props.setState('randmoness', val)}
 				/>
