@@ -53,18 +53,18 @@ ShallowWrapper {
           />
           <div
                     className="listitem"
-                    name="sample-bar"
+                    data-key="sample-bar"
                     onClick={[Function]}
           >
                     <img
                               alt=""
                               className="itemicon"
-                              name="sample-bar"
+                              data-key="sample-bar"
                               src=""
                     />
                     <p
                               className="listtext itemtext"
-                              name="sample-bar"
+                              data-key="sample-bar"
                     >
                               bar
                     </p>
@@ -84,36 +84,36 @@ ShallowWrapper {
           />
           <div
                     className="listitem"
-                    name="sample-foo"
+                    data-key="sample-foo"
                     onClick={[Function]}
           >
                     <img
                               alt=""
                               className="itemicon"
-                              name="sample-foo"
+                              data-key="sample-foo"
                               src=""
                     />
                     <p
                               className="listtext itemtext"
-                              name="sample-foo"
+                              data-key="sample-foo"
                     >
                               foo
                     </p>
           </div>
           <div
                     className="listitem"
-                    name="sample-foobar"
+                    data-key="sample-foobar"
                     onClick={[Function]}
           >
                     <img
                               alt=""
                               className="itemicon"
-                              name="sample-foobar"
+                              data-key="sample-foobar"
                               src=""
                     />
                     <p
                               className="listtext itemtext"
-                              name="sample-foobar"
+                              data-key="sample-foobar"
                     >
                               foobar
                     </p>
@@ -142,18 +142,18 @@ ShallowWrapper {
             Array [
               <div
                 className="listitem"
-                name="sample-bar"
+                data-key="sample-bar"
                 onClick={[Function]}
 >
                 <img
                                 alt=""
                                 className="itemicon"
-                                name="sample-bar"
+                                data-key="sample-bar"
                                 src=""
                 />
                 <p
                                 className="listtext itemtext"
-                                name="sample-bar"
+                                data-key="sample-bar"
                 >
                                 bar
                 </p>
@@ -197,18 +197,18 @@ ShallowWrapper {
                 <img
                   alt=""
                   className="itemicon"
-                  name="sample-bar"
+                  data-key="sample-bar"
                   src=""
 />,
                 <p
                   className="listtext itemtext"
-                  name="sample-bar"
+                  data-key="sample-bar"
 >
                   bar
 </p>,
               ],
               "className": "listitem",
-              "name": "sample-bar",
+              "data-key": "sample-bar",
               "onClick": [Function],
             },
             "ref": null,
@@ -220,7 +220,7 @@ ShallowWrapper {
                 "props": Object {
                   "alt": "",
                   "className": "itemicon",
-                  "name": "sample-bar",
+                  "data-key": "sample-bar",
                   "src": "",
                 },
                 "ref": null,
@@ -234,7 +234,7 @@ ShallowWrapper {
                 "props": Object {
                   "children": "bar",
                   "className": "listtext itemtext",
-                  "name": "sample-bar",
+                  "data-key": "sample-bar",
                 },
                 "ref": null,
                 "rendered": "bar",
@@ -264,36 +264,36 @@ ShallowWrapper {
             Array [
               <div
                 className="listitem"
-                name="sample-foo"
+                data-key="sample-foo"
                 onClick={[Function]}
 >
                 <img
                                 alt=""
                                 className="itemicon"
-                                name="sample-foo"
+                                data-key="sample-foo"
                                 src=""
                 />
                 <p
                                 className="listtext itemtext"
-                                name="sample-foo"
+                                data-key="sample-foo"
                 >
                                 foo
                 </p>
 </div>,
               <div
                 className="listitem"
-                name="sample-foobar"
+                data-key="sample-foobar"
                 onClick={[Function]}
 >
                 <img
                                 alt=""
                                 className="itemicon"
-                                name="sample-foobar"
+                                data-key="sample-foobar"
                                 src=""
                 />
                 <p
                                 className="listtext itemtext"
-                                name="sample-foobar"
+                                data-key="sample-foobar"
                 >
                                 foobar
                 </p>
@@ -337,18 +337,18 @@ ShallowWrapper {
                 <img
                   alt=""
                   className="itemicon"
-                  name="sample-foo"
+                  data-key="sample-foo"
                   src=""
 />,
                 <p
                   className="listtext itemtext"
-                  name="sample-foo"
+                  data-key="sample-foo"
 >
                   foo
 </p>,
               ],
               "className": "listitem",
-              "name": "sample-foo",
+              "data-key": "sample-foo",
               "onClick": [Function],
             },
             "ref": null,
@@ -360,7 +360,7 @@ ShallowWrapper {
                 "props": Object {
                   "alt": "",
                   "className": "itemicon",
-                  "name": "sample-foo",
+                  "data-key": "sample-foo",
                   "src": "",
                 },
                 "ref": null,
@@ -374,7 +374,7 @@ ShallowWrapper {
                 "props": Object {
                   "children": "foo",
                   "className": "listtext itemtext",
-                  "name": "sample-foo",
+                  "data-key": "sample-foo",
                 },
                 "ref": null,
                 "rendered": "foo",
@@ -392,18 +392,18 @@ ShallowWrapper {
                 <img
                   alt=""
                   className="itemicon"
-                  name="sample-foobar"
+                  data-key="sample-foobar"
                   src=""
 />,
                 <p
                   className="listtext itemtext"
-                  name="sample-foobar"
+                  data-key="sample-foobar"
 >
                   foobar
 </p>,
               ],
               "className": "listitem",
-              "name": "sample-foobar",
+              "data-key": "sample-foobar",
               "onClick": [Function],
             },
             "ref": null,
@@ -415,7 +415,7 @@ ShallowWrapper {
                 "props": Object {
                   "alt": "",
                   "className": "itemicon",
-                  "name": "sample-foobar",
+                  "data-key": "sample-foobar",
                   "src": "",
                 },
                 "ref": null,
@@ -429,7 +429,7 @@ ShallowWrapper {
                 "props": Object {
                   "children": "foobar",
                   "className": "listtext itemtext",
-                  "name": "sample-foobar",
+                  "data-key": "sample-foobar",
                 },
                 "ref": null,
                 "rendered": "foobar",
@@ -465,18 +465,18 @@ ShallowWrapper {
             />
             <div
                         className="listitem"
-                        name="sample-bar"
+                        data-key="sample-bar"
                         onClick={[Function]}
             >
                         <img
                                     alt=""
                                     className="itemicon"
-                                    name="sample-bar"
+                                    data-key="sample-bar"
                                     src=""
                         />
                         <p
                                     className="listtext itemtext"
-                                    name="sample-bar"
+                                    data-key="sample-bar"
                         >
                                     bar
                         </p>
@@ -496,36 +496,36 @@ ShallowWrapper {
             />
             <div
                         className="listitem"
-                        name="sample-foo"
+                        data-key="sample-foo"
                         onClick={[Function]}
             >
                         <img
                                     alt=""
                                     className="itemicon"
-                                    name="sample-foo"
+                                    data-key="sample-foo"
                                     src=""
                         />
                         <p
                                     className="listtext itemtext"
-                                    name="sample-foo"
+                                    data-key="sample-foo"
                         >
                                     foo
                         </p>
             </div>
             <div
                         className="listitem"
-                        name="sample-foobar"
+                        data-key="sample-foobar"
                         onClick={[Function]}
             >
                         <img
                                     alt=""
                                     className="itemicon"
-                                    name="sample-foobar"
+                                    data-key="sample-foobar"
                                     src=""
                         />
                         <p
                                     className="listtext itemtext"
-                                    name="sample-foobar"
+                                    data-key="sample-foobar"
                         >
                                     foobar
                         </p>
@@ -554,18 +554,18 @@ ShallowWrapper {
               Array [
                 <div
                   className="listitem"
-                  name="sample-bar"
+                  data-key="sample-bar"
                   onClick={[Function]}
 >
                   <img
                                     alt=""
                                     className="itemicon"
-                                    name="sample-bar"
+                                    data-key="sample-bar"
                                     src=""
                   />
                   <p
                                     className="listtext itemtext"
-                                    name="sample-bar"
+                                    data-key="sample-bar"
                   >
                                     bar
                   </p>
@@ -609,18 +609,18 @@ ShallowWrapper {
                   <img
                     alt=""
                     className="itemicon"
-                    name="sample-bar"
+                    data-key="sample-bar"
                     src=""
 />,
                   <p
                     className="listtext itemtext"
-                    name="sample-bar"
+                    data-key="sample-bar"
 >
                     bar
 </p>,
                 ],
                 "className": "listitem",
-                "name": "sample-bar",
+                "data-key": "sample-bar",
                 "onClick": [Function],
               },
               "ref": null,
@@ -632,7 +632,7 @@ ShallowWrapper {
                   "props": Object {
                     "alt": "",
                     "className": "itemicon",
-                    "name": "sample-bar",
+                    "data-key": "sample-bar",
                     "src": "",
                   },
                   "ref": null,
@@ -646,7 +646,7 @@ ShallowWrapper {
                   "props": Object {
                     "children": "bar",
                     "className": "listtext itemtext",
-                    "name": "sample-bar",
+                    "data-key": "sample-bar",
                   },
                   "ref": null,
                   "rendered": "bar",
@@ -676,36 +676,36 @@ ShallowWrapper {
               Array [
                 <div
                   className="listitem"
-                  name="sample-foo"
+                  data-key="sample-foo"
                   onClick={[Function]}
 >
                   <img
                                     alt=""
                                     className="itemicon"
-                                    name="sample-foo"
+                                    data-key="sample-foo"
                                     src=""
                   />
                   <p
                                     className="listtext itemtext"
-                                    name="sample-foo"
+                                    data-key="sample-foo"
                   >
                                     foo
                   </p>
 </div>,
                 <div
                   className="listitem"
-                  name="sample-foobar"
+                  data-key="sample-foobar"
                   onClick={[Function]}
 >
                   <img
                                     alt=""
                                     className="itemicon"
-                                    name="sample-foobar"
+                                    data-key="sample-foobar"
                                     src=""
                   />
                   <p
                                     className="listtext itemtext"
-                                    name="sample-foobar"
+                                    data-key="sample-foobar"
                   >
                                     foobar
                   </p>
@@ -749,18 +749,18 @@ ShallowWrapper {
                   <img
                     alt=""
                     className="itemicon"
-                    name="sample-foo"
+                    data-key="sample-foo"
                     src=""
 />,
                   <p
                     className="listtext itemtext"
-                    name="sample-foo"
+                    data-key="sample-foo"
 >
                     foo
 </p>,
                 ],
                 "className": "listitem",
-                "name": "sample-foo",
+                "data-key": "sample-foo",
                 "onClick": [Function],
               },
               "ref": null,
@@ -772,7 +772,7 @@ ShallowWrapper {
                   "props": Object {
                     "alt": "",
                     "className": "itemicon",
-                    "name": "sample-foo",
+                    "data-key": "sample-foo",
                     "src": "",
                   },
                   "ref": null,
@@ -786,7 +786,7 @@ ShallowWrapper {
                   "props": Object {
                     "children": "foo",
                     "className": "listtext itemtext",
-                    "name": "sample-foo",
+                    "data-key": "sample-foo",
                   },
                   "ref": null,
                   "rendered": "foo",
@@ -804,18 +804,18 @@ ShallowWrapper {
                   <img
                     alt=""
                     className="itemicon"
-                    name="sample-foobar"
+                    data-key="sample-foobar"
                     src=""
 />,
                   <p
                     className="listtext itemtext"
-                    name="sample-foobar"
+                    data-key="sample-foobar"
 >
                     foobar
 </p>,
                 ],
                 "className": "listitem",
-                "name": "sample-foobar",
+                "data-key": "sample-foobar",
                 "onClick": [Function],
               },
               "ref": null,
@@ -827,7 +827,7 @@ ShallowWrapper {
                   "props": Object {
                     "alt": "",
                     "className": "itemicon",
-                    "name": "sample-foobar",
+                    "data-key": "sample-foobar",
                     "src": "",
                   },
                   "ref": null,
@@ -841,7 +841,7 @@ ShallowWrapper {
                   "props": Object {
                     "children": "foobar",
                     "className": "listtext itemtext",
-                    "name": "sample-foobar",
+                    "data-key": "sample-foobar",
                   },
                   "ref": null,
                   "rendered": "foobar",

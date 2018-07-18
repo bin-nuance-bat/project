@@ -971,16 +971,24 @@ const test = () => {
 		}
 	].map(item => {
 		const relativeImagePath = './' + item.image;
-
+		let actualImagePath;
+		if (imgFilesObject[relativeImagePath]) {
+			actualImagePath =
+				'./' + item.image.endsWith('.svg')
+					? './' + item.image
+					: './' + item.image + '.svg';
+		} else {
+			actualImagePath = './misc-bar.svg';
+		}
+		// const actualImagePath = imgFilesObject[relativeImagePath]
+		// 	? './' + item.image.endsWith('.svg')
+		// 		? './' + item.image
+		// 		: './' + item.image + '.svg'
+		// 	: './misc-bar.svg';
+		const image = importImages(actualImagePath);
 		return {
 			...item,
-			image: importImages(
-				imgFilesObject['./' + item.image]
-					? './' + item.image.endsWith('.svg')
-						? './' + item.image
-						: './' + item.image + '.svg'
-					: './misc-bar.svg'
-			)
+			image
 		};
 	});
 

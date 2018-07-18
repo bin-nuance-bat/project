@@ -1,5 +1,5 @@
 import React from 'react';
-import {shallow, configure} from 'enzyme';
+import {shallow, configure, mount} from 'enzyme';
 import ListSelection from './ListSelection';
 import Adapter from 'enzyme-adapter-react-16';
 
@@ -19,19 +19,19 @@ it('Gnerates the list correctly', () => {
 });
 
 it('Calls the required function', () => {
-	const props = {
-		onClick: jest.fn(),
-		items: [
-			{name: 'foo', id: 'sample-foo', image: ''},
-			{name: 'bar', id: 'sample-bar', image: ''},
-			{name: 'foobar', id: 'sample-foobar', image: ''}
-		]
-	};
+	const mockFunc = jest.fn();
+	const items = [
+		{name: 'foo', id: 'sample-foo', image: ''},
+		{name: 'bar', id: 'sample-bar', image: ''},
+		{name: 'foobar', id: 'sample-foobar', image: ''}
+	];
 
-	const wrapper = shallow(<ListSelection {...props} />);
+	const wrapper = mount(<ListSelection items={items} onClick={mockFunc} />);
+	console.log(wrapper);
+	console.log(wrapper.find('div[data-key="sample-foo"]').at(0));
 	wrapper
-		.find('[name="foo"]')
+		.find('div[data-key="sample-foo"]')
 		.at(0)
 		.simulate('click');
-	expect(props.onClick).toHaveBeenCalledWith('sample-foo');
+	expect(mockFunc).toHaveBeenCalledWith('sample-foo');
 });
