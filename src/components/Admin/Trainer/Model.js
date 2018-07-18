@@ -4,11 +4,14 @@ import getStore from '../../../utils/honestyStore.js';
 import * as MobileNet from '@tensorflow-models/mobilenet';
 
 class Model {
-	constructor(status) {
-		this.setStatus = status;
+	constructor(setReadyStatus, setBusyStatus) {
 		this.items = {unknown: {name: 'Unknown', id: 'unknown'}};
-
-		this.init();
+		this.setReadyStatus = setReadyStatus;
+		this.setBusyStatus = setBusyStatus;
+		this.controllerDataset = new ControllerDataset(
+			setReadyStatus,
+			setBusyStatus
+		);
 	}
 
 	getName(i) {
@@ -16,34 +19,36 @@ class Model {
 		return item.name + (item.qualifier ? ` (${item.qualifier})` : '');
 	}
 
-	async init() {
-		this.controllerDataset = new ControllerDataset(this.setStatus);
-		this.mobilenet = await MobileNet.load();
-		await this.loadStore();
-		await this.loadData();
-		this.setStatus('Done');
+	init() {
+		this.setBusyStatus('Loading data...');
+		return Promise.all([
+			MobileNet.load().then(res => {
+				this.mobilenet = res;
+			}),
+			this.loadStore()
+		])
+			.then(this.loadTrainingData)
+			.then(() => this.setReadyStatus('Done'));
 	}
 
-	async loadStore() {
+	loadStore = async () => {
 		if (
 			!this.model ||
 			window.confirm(
 				'Loading the model will overwrite any training you have done. Continue?'
 			)
 		) {
-			this.setStatus('Fetching store data...');
 			Object.assign(this.items, await getStore());
 		}
-	}
+	};
 
-	loadData = async () => {
-		this.setStatus('Fetching training data...');
+	loadTrainingData = async () => {
 		this.items = await this.controllerDataset.setItemTrainingCounts(
 			this.items
 		);
 	};
 
-	loadModel() {
+	loadModel = () => {
 		if (
 			!this.model ||
 			window.confirm(
@@ -56,27 +61,27 @@ class Model {
 					this.classes = JSON.parse(
 						window.localStorage.getItem('items')
 					);
-					this.setStatus('Loaded model!');
+					this.setReadyStatus('Loaded model!');
 				})
 				.catch(() => {
-					this.setStatus('No saved model found');
+					this.setReadyStatus('No saved model found');
 				});
 		}
-	}
+	};
 
-	async saveModel() {
+	saveModel = async () => {
 		if (!this.model) {
-			this.setStatus('Please train a model to save.');
+			this.setReadyStatus('Please train a model to save.');
 			return;
 		}
 		window.localStorage.setItem('items', JSON.stringify(this.classes));
 		await this.model.save('indexeddb://store-model');
-		this.setStatus('Saved model!');
-	}
+		this.setReadyStatus('Saved model!');
+	};
 
-	async exportModel() {
+	exportModel = async () => {
 		if (!this.model) {
-			this.setStatus('Please train a model to export.');
+			this.setReadyStatus('Please train a model to export.');
 			return;
 		}
 
@@ -94,7 +99,7 @@ class Model {
 		document.body.appendChild(elem);
 		elem.click();
 		document.body.removeChild(elem);
-	}
+	};
 
 	async addExample(getImg, getTensor, label, count) {
 		let examples = [];
@@ -108,12 +113,12 @@ class Model {
 
 			document.getElementById(`${label}-count`).innerHTML++;
 			this.items[label].mlCount++;
-			this.setStatus(
+			this.setBusyStatus(
 				`Processing images of ${this.getName(label)} (${i}/${count})`
 			);
 			await tf.nextFrame();
 		}
-		this.setStatus('Submitting images to database...');
+		this.setBusyStatus('Submitting images to database...');
 		this.controllerDataset.addExamples(examples);
 	}
 
@@ -126,13 +131,13 @@ class Model {
 		randomness,
 		since
 	) {
-		this.setStatus('Loading training data from DB...');
+		this.setBusyStatus('Loading training data from DB...');
 
 		this.controllerDataset
 			.getTensors(setSize, randomness, since)
 			.then(async ({xs, ys, classes}) => {
 				if (!xs) {
-					this.setStatus(
+					this.setReadyStatus(
 						'Please collect some training images first!'
 					);
 					return;
@@ -141,7 +146,7 @@ class Model {
 				const batchSize = Math.floor(xs.shape[0] * batchSizeFraction);
 
 				if (!(batchSize > 0)) {
-					this.setStatus(
+					this.setReadyStatus(
 						'Batch size invalid, please choose a number 0 < x < 1'
 					);
 					return;
@@ -149,11 +154,11 @@ class Model {
 
 				this.classes = classes;
 
-				this.setStatus('Training model, please wait...');
+				this.setBusyStatus('Training model, please wait...');
 				await tf.nextFrame();
 
 				if (!this.model) {
-					this.setStatus('Generating new model...');
+					this.setBusyStatus('Generating new model...');
 
 					this.model = tf.sequential({
 						layers: [
@@ -185,13 +190,15 @@ class Model {
 					epochs,
 					callbacks: {
 						onBatchEnd: async (batch, logs) => {
-							this.setStatus(
+							this.setBusyStatus(
 								'Training... Loss: ' + logs.loss.toFixed(5)
 							);
 							await tf.nextFrame();
 						},
 						onTrainEnd: async () => {
-							this.setStatus('Finished Training. Try me out!');
+							this.setReadyStatus(
+								'Finished Training. Try me out!'
+							);
 							await tf.nextFrame();
 						}
 					}
@@ -201,10 +208,10 @@ class Model {
 
 	async predict(image) {
 		if (!this.model) {
-			this.setStatus('Please train the model first');
+			this.setReadyStatus('Please train the model first');
 			return;
 		}
-		this.setStatus('Predicting...');
+		this.setBusyStatus('Predicting...');
 		const predictedClass = tf.tidy(() => {
 			const activation = this.mobilenet.infer(image, 'conv_pw_13_relu');
 			const predictions = this.model.predict(activation);
@@ -213,7 +220,7 @@ class Model {
 
 		const classId = (await predictedClass.data())[0];
 		predictedClass.dispose();
-		this.setStatus(
+		this.setReadyStatus(
 			'I think this is a ' + this.getName(this.classes[classId])
 		);
 	}

@@ -7,31 +7,34 @@ import './Trainer.css';
 import Settings from './Settings';
 
 class Trainer extends Component {
-	constructor(props) {
-		super(props);
+	state = {
+		learningRate: '0.0001',
+		batchSizeFraction: '0.4',
+		epochs: '200',
+		hiddenUnits: '100',
+		setSize: '100',
+		randomness: '0.1',
+		since: '1970-01-01T00:00',
+		burstCount: 1,
+		advanced: false,
+		status: 'Loading...',
+		item: 'unknown',
+		busy: true
+	};
 
-		this.webcam = React.createRef();
-		this.item = React.createRef();
-		this.traner = React.createRef();
-		this.files = React.createRef();
-		this.fileIndex = 0;
+	webcam = React.createRef();
+	item = React.createRef();
+	traner = React.createRef();
+	files = React.createRef();
+	fileIndex = 0;
 
-		this.model = new Model(this.setStatus.bind(this));
+	setReadyStatus = status => this.setState({status, busy: false});
+	setBusyStatus = status => this.setState({status, busy: true});
 
-		this.state = {
-			learningRate: '0.0001',
-			batchSizeFraction: '0.4',
-			epochs: '200',
-			hiddenUnits: '100',
-			setSize: '200',
-			randomness: '0.1',
-			since: '1970-01-01T00:00',
-			burstCount: 1,
-			advanced: false,
-			status: 'Loading mobilenet...',
-			item: 'unknown',
-			busy: true
-		};
+	model = new Model(this.setReadyStatus, this.setBusyStatus);
+
+	componentDidMount() {
+		this.model.init();
 	}
 
 	capture = src => {
@@ -83,7 +86,7 @@ class Trainer extends Component {
 
 	addFromFile = () => {
 		if (this.files.current.files.length < 1) {
-			this.setStatus('Please choose some files first.');
+			this.setReadyStatus('Please choose some files first.');
 			return;
 		}
 
@@ -140,17 +143,12 @@ class Trainer extends Component {
 			this.setState({busy: true});
 			this.model.predict(this.capture(this.webcam.current.video));
 		} else {
-			this.setStatus('Please connect a camera.');
+			this.setReadyStatus('Please connect a camera.');
 		}
 	};
 
 	getName = item => {
 		return item.name + (item.qualifier ? ` (${item.qualifier})` : '');
-	};
-
-	setStatus = status => {
-		this.setState({status});
-		if (status.indexOf('...') === -1) this.setState({busy: false});
 	};
 
 	render() {
@@ -168,23 +166,27 @@ class Trainer extends Component {
 			burstCount
 		} = this.state;
 
+		const items = this.model ? this.model.items : {};
+
 		return (
 			<div>
 				<div className="col" style={{textAlign: 'center'}}>
 					<span id="status-text">{status}</span>
 					<br />
-					<Webcam
-						audio={false}
-						height={400}
-						width={400}
-						screenshotWidth={224}
-						ref={this.webcam}
-						screenshotFormat="image/jpeg"
-					/>
+					<div className="webcam-container">
+						<Webcam
+							audio={false}
+							height={400}
+							width={400}
+							screenshotWidth={224}
+							ref={this.webcam}
+							screenshotFormat="image/jpeg"
+						/>
+					</div>
 					<br />
 					<ItemSelector
 						item={item}
-						items={Object.values(this.model.items)}
+						items={Object.values(items)}
 						setItem={item => this.setState({item})}
 						disabled={busy}
 					/>
@@ -251,7 +253,7 @@ class Trainer extends Component {
 							</tr>
 						</thead>
 						<tbody>
-							{Object.values(this.model.items).map(item => {
+							{Object.values(items).map(item => {
 								return (
 									<tr key={item.id}>
 										<td>{this.getName(item)}</td>

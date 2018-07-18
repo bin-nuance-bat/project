@@ -4,19 +4,18 @@ import 'firebase/firestore';
 import 'firebase/storage';
 
 export class ControllerDataset {
-	constructor(status) {
-		this.setStatus = status;
+	constructor(setReadyStatus, setBusyStatus) {
+		this.setReadyStatus = setReadyStatus;
+		this.setBusyStatus = setBusyStatus;
 
 		firebase.initializeApp({
-			apiKey: 'AIzaSyBVuVNKx-rx2ON0RxbfGfbGPpiymbMrxj8',
-			authDomain: 'honesty-store-kiosk.firebaseapp.com',
-			projectId: 'honesty-store-kiosk'
+			apiKey: 'AIzaSyCil4dbMoESn0Q0LccFg_dpG4gIa-Z1xro',
+			authDomain: 'honesty-store-kiosk-dev.firebaseapp.com',
+			projectId: 'honesty-store-kiosk-dev'
 		});
 		this.store = firebase.storage();
 		this.db = firebase.firestore();
 		this.db.settings({timestampsInSnapshots: true});
-
-		window.db = this.db;
 	}
 
 	async setItemTrainingCounts(itemObj) {
@@ -30,7 +29,7 @@ export class ControllerDataset {
 
 	async addExamples(examples) {
 		if (examples.length < 1) {
-			this.setStatus('Please provide at least one image.');
+			this.setReadyStatus('Please provide at least one image.');
 			return;
 		}
 
@@ -61,13 +60,13 @@ export class ControllerDataset {
 				})
 				.then(() => {
 					examples[i].activation.dispose();
-					this.setStatus(
+					this.setBusyStatus(
 						`Uploading images... (${parseInt(i, 10) + 1}/${
 							examples.length
 						})`
 					);
 					if (parseInt(i, 10) + 1 >= examples.length) {
-						this.setStatus('Done');
+						this.setReadyStatus('Done');
 					}
 				})
 				.catch(err => {
@@ -103,7 +102,7 @@ export class ControllerDataset {
 							batch[doc.id] = doc.data();
 						});
 
-						this.setStatus(
+						this.setBusyStatus(
 							`Fetching data... (${
 								Object.keys(batch).length
 							}/${batchSize})`

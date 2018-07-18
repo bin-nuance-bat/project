@@ -10,13 +10,24 @@ body {
     padding: 0 20px;
 }
 
-.container {
-    width: auto;
+.webcam-container {
+    width: 400px;
+    height: 400px;
+    overflow: hidden;
+}
+
+.webcam-container video {
+    object-fit: cover;
 }
 
 select {
     color: $black;
     margin: 10px 0;
+}
+
+select, input {
+    padding: 5px;
+    width: 100%;
 }
 
 input[type=checkbox] {
@@ -28,6 +39,10 @@ input[type=checkbox] {
     margin: 20px 5px;
     padding: 10px;
     background-color: $light-blue;
+}
+
+.button-trainer:disabled {
+    background-color: $dark-blue;
 }
 
 .formGroup {
