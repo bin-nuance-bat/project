@@ -8,18 +8,16 @@ import html2canvas from 'html2canvas';
 
 class SnackChat extends Component {
 	initialTime = new Date();
+	svgHeight = 100;
+	svgWidth = 50;
 
 	constructor(props) {
 		super(props);
 		this.state = {
 			counter: 5,
-			overlay: (
-				<svg width="2" height="100">
-					<rect width="2" height="100" fill="yellow" />
-				</svg>
-			), // TODO make this a prop which is svg matching the chosen item
-			overlayX: 0,
-			overlayY: 0,
+			overlayX: undefined,
+			overlayY: undefined,
+			overlayScale: 1,
 			overlayRotation: 0
 		};
 	}
@@ -34,30 +32,42 @@ class SnackChat extends Component {
 	}
 
 	tick = () => {
-		if (this.state.counter > -1)
+		if (this.state.counter > 0)
 			this.setState(prevState => ({counter: prevState.counter - 1}));
 		else clearInterval(this.timer);
 	};
 
 	handleImg = async img => {
 		if (this.state.counter === 0) {
-			await html2canvas(this.refs.feed).then(canvas => {
+			await html2canvas(this.feedRef.current).then(canvas => {
 				let snackchatSrc = canvas.toDataURL('image/png');
 				this.props.setSnackChat(snackchatSrc);
 			});
 
-			// this.props.history.push('/slackName');
+			this.props.history.push('/slackName');
 		} else {
-			const pose = await this.net.estimateSinglePose(img, 0.5, true, 16);
+			const pose = await this.net.estimateSinglePose(
+				img,
+				0.5,
+				true,
+				16,
+				5,
+				0.7
+			);
 			let leftShoulderPosition = pose.keypoints[5].position;
 			let rightShoulderPosition = pose.keypoints[6].position;
 
 			this.setState({
 				overlayX:
 					300 -
-					(rightShoulderPosition.x + leftShoulderPosition.x) / 2,
+					(rightShoulderPosition.x + leftShoulderPosition.x) / 2 -
+					this.svgWidth / 2,
 				overlayY:
-					(leftShoulderPosition.y + rightShoulderPosition.y) / 2,
+					(leftShoulderPosition.y + rightShoulderPosition.y) / 2 -
+					this.svgHeight / 2,
+				overlayScale:
+					((leftShoulderPosition.x - rightShoulderPosition.x) / 300) *
+					4, // there must be a better way of calculating this
 				overlayRotation:
 					(-360 / 2) *
 					Math.PI *
@@ -69,7 +79,13 @@ class SnackChat extends Component {
 		}
 	};
 
+	feedRef = React.createRef();
+
 	render() {
+		let showOverlay =
+			this.state.overlayX !== undefined &&
+			this.state.overlayY !== undefined;
+
 		return (
 			<div>
 				<header>
@@ -77,18 +93,26 @@ class SnackChat extends Component {
 					Smile, you are on snackchat:
 					{this.state.counter}
 				</header>
-				<div ref="feed" className="feed">
-					<div
-						className="overlay"
-						style={{
-							left: `${this.state.overlayX}px`,
-							top: `${this.state.overlayY}px`,
-							transform: `rotate(${
-								this.state.overlayRotation
-							}deg)`
-						}}>
-						{this.state.overlay}
-					</div>
+				<div ref={this.feedRef} className="feed">
+					{showOverlay && (
+						<div
+							className="overlay"
+							style={{
+								left: this.state.overlayX,
+								top: this.state.overlayY,
+								transform: `rotate(${
+									this.state.overlayRotation
+								}deg) scale(${this.state.overlayScale})`
+							}}>
+							<svg width={this.svgWidth} height={this.svgHeight}>
+								<rect
+									width={this.svgWidth}
+									height={this.svgHeight}
+									fill="yellow"
+								/>
+							</svg>
+						</div>
+					)}
 					<WebcamCapture onImgLoad={this.handleImg} interval={333} />
 				</div>
 			</div>
