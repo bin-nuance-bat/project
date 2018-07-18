@@ -38,6 +38,7 @@ body {
 	padding: 0px;
 	display: inline-block;
 	border: none;
+	color: $white;
 	background-color: $dark-blue;
 
 	&-snackchat {
@@ -50,9 +51,7 @@ body {
 	}
 }
 
-.cameraicon {
-	&-small {
-		margin-left: 24px;
-		transform: translate(0px, 2px);
-	}
+.smallcamera {
+	margin-left: 24px;
+	vertical-align: -0.15em;
 }
