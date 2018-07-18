@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Webcam from 'react-webcam';
 import Notification from './../Notification/Notification';
 import PropTypes from 'prop-types';
+import './WebcamCapture.css';
 
 const height = 400;
 const width = 400;
@@ -55,9 +56,8 @@ class WebcamCapture extends Component {
 
 		if (this.state.cameraConnected) {
 			return (
-				<div style={{width, height, overflow: 'hidden'}}>
+				<div className="webcam-container">
 					<Webcam
-						style={{objectFit: 'cover', transform: 'rotateY(180deg)'}}
 						audio={false}
 						height={height}
 						ref={this.webcam}
