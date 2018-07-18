@@ -156,10 +156,24 @@ class Trainer extends Component {
 	};
 
 	render() {
+		const {
+			learningRate,
+			batchSizeFraction,
+			epochs,
+			hiddenUnits,
+			setSize,
+			randomness,
+			since,
+			busy,
+			status,
+			item,
+			burstCount
+		} = this.state;
+
 		return (
 			<div>
 				<div className="col" style={{textAlign: 'center'}}>
-					<span id="status-text">{this.state.status}</span>
+					<span id="status-text">{status}</span>
 					<br />
 					<WebcamCapture
 						setPrediction={() => {}}
@@ -168,19 +182,19 @@ class Trainer extends Component {
 					/>
 					<br />
 					<ItemSelector
-						item={this.state.item}
+						item={item}
 						items={Object.values(this.model.items)}
 						setItem={item => this.setState({item})}
-						disabled={this.state.busy}
+						disabled={busy}
 					/>
 					<br />
 					<label>Burst Count:</label>
 					<input
 						type="text"
-						value={this.state.burstCount}
+						value={burstCount}
 						size={3}
 						maxLength={3}
-						disabled={this.state.busy}
+						disabled={busy}
 						onChange={e =>
 							this.setState({burstCount: e.target.value})
 						}
@@ -191,10 +205,7 @@ class Trainer extends Component {
 								this.webcam.current.webcam.current.video
 							)
 						}
-						disabled={
-							this.state.busy ||
-							!this.webcam.current.webcam.current
-						}>
+						disabled={busy || !this.webcam.current.webcam.current}>
 						Add From Camera
 					</button>
 					<br />
@@ -202,25 +213,23 @@ class Trainer extends Component {
 						type="file"
 						multiple
 						ref={this.files}
-						disabled={this.state.busy}
+						disabled={busy}
 					/>
-					<button
-						onClick={this.addFromFile}
-						disabled={this.state.busy}>
+					<button onClick={this.addFromFile} disabled={busy}>
 						Add From File
 					</button>
 				</div>
 
 				<Settings
 					model={this.model}
-					busy={this.state.busy}
-					learningRate={this.state.learningRate}
-					batchSizeFraction={this.state.batchSizeFraction}
-					epochs={this.state.epochs}
-					hiddenUnits={this.state.hiddenUnits}
-					setSize={this.state.setSize}
-					randomness={this.state.randomness}
-					since={this.state.since}
+					busy={busy}
+					learningRate={learningRate}
+					batchSizeFraction={batchSizeFraction}
+					epochs={epochs}
+					hiddenUnits={hiddenUnits}
+					setSize={setSize}
+					randomness={randomness}
+					since={since}
 					train={this.train}
 					predict={this.predict}
 					setState={(key, val) => this.setState({[key]: val})}
