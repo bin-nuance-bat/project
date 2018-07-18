@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import * as posenet from '@tensorflow-models/posenet';
 import './SnackChat.css';
 import Logo from '../Logo/Logo';
+import html2canvas from 'html2canvas';
 
 class SnackChat extends Component {
 	initialTime = new Date();
@@ -13,8 +14,8 @@ class SnackChat extends Component {
 		this.state = {
 			counter: 5,
 			overlay: (
-				<svg width="2" height="500">
-					<rect width="2" height="500" fill="yellow" />
+				<svg width="2" height="100">
+					<rect width="2" height="100" fill="yellow" />
 				</svg>
 			), // TODO make this a prop which is svg matching the chosen item
 			overlayX: 0,
@@ -28,21 +29,24 @@ class SnackChat extends Component {
 	};
 
 	componentDidMount() {
-		// this.timer = setInterval(this.tick, 1000);
+		this.timer = setInterval(this.tick, 1000);
 		this.loadPosenet();
 	}
 
 	tick = () => {
-		if (this.state.counter > 0)
+		if (this.state.counter > -1)
 			this.setState(prevState => ({counter: prevState.counter - 1}));
 		else clearInterval(this.timer);
 	};
 
 	handleImg = async img => {
 		if (this.state.counter === 0) {
-			// TODO combine overlay into final image to upload + save in store for later upload
-			this.props.setSnackChat(img.src);
-			this.props.history.push('/slackName');
+			await html2canvas(this.refs.feed).then(canvas => {
+				let snackchatSrc = canvas.toDataURL('image/png');
+				this.props.setSnackChat(snackchatSrc);
+			});
+
+			// this.props.history.push('/slackName');
 		} else {
 			const pose = await this.net.estimateSinglePose(img, 0.5, true, 16);
 			let leftShoulderPosition = pose.keypoints[5].position;
@@ -73,7 +77,7 @@ class SnackChat extends Component {
 					Smile, you are on snackchat:
 					{this.state.counter}
 				</header>
-				<div className="feed">
+				<div ref="feed" className="feed">
 					<div
 						className="overlay"
 						style={{
