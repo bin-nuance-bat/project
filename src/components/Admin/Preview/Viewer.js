@@ -11,12 +11,11 @@ export default class Viewer extends Component {
 
 		this.state = {
 			item: 'all',
-			images: []
-		};
-
-		this.items = {
-			all: {name: 'All Items', id: 'all'},
-			unknown: {name: 'Unknown Item', id: 'unknown'}
+			images: [],
+			items: {
+				all: {name: 'All Items', id: 'all'},
+				unknown: {name: 'Unknown Item', id: 'unknown'}
+			}
 		};
 	}
 
@@ -30,8 +29,12 @@ export default class Viewer extends Component {
 		this.db.settings({timestampsInSnapshots: true});
 
 		getStore().then(store => {
-			Object.assign(this.items, store);
-			this.forceUpdate();
+			this.setState(prevState => ({
+				items: {
+					...prevState.items,
+					...store
+				}
+			}));
 		});
 	}
 

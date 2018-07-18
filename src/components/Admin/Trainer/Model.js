@@ -111,7 +111,7 @@ class Model {
 			this.setStatus(
 				`Processing images of ${this.getName(label)} (${i}/${count})`
 			);
-			//await tf.nextFrame();
+			await tf.nextFrame();
 		}
 		this.setStatus('Submitting images to database...');
 		this.controllerDataset.addExamples(examples);
@@ -154,7 +154,7 @@ class Model {
 
 				if (!this.model) {
 					this.setStatus('Generating new model...');
-					console.log(classes);
+
 					this.model = tf.sequential({
 						layers: [
 							tf.layers.flatten({inputShape: [7, 7, 1024]}),
