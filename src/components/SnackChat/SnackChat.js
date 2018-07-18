@@ -15,6 +15,7 @@ class SnackChat extends Component {
 
 	constructor(props) {
 		super(props);
+
 		this.state = {
 			counter: 5,
 			overlayX: undefined,

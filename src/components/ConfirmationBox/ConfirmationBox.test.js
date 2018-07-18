@@ -8,10 +8,12 @@ configure({adapter: new Adapter()});
 const getProps = () => {
 	return {
 		name: 'fooBar',
+		id: 'sample-id',
 		history: {
 			push: jest.fn()
 		},
-		setActualItem: jest.fn()
+		setActualItem: jest.fn(),
+		img: 'barFoo'
 	};
 };
 
@@ -20,7 +22,7 @@ it('calls setActualItem when yes is clicked', () => {
 
 	const wrapper = shallow(<ConfirmationBox {...mockProps} />);
 	wrapper.find({testAttribute: 'YES'}).simulate('click');
-	expect(mockProps.setActualItem).toHaveBeenCalledWith('fooBar');
+	expect(mockProps.setActualItem).toHaveBeenCalledWith('sample-id');
 });
 
 it('Goes to username entry page if yes clicked', () => {

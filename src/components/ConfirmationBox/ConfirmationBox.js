@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Logo from '../Logo/Logo';
 
 class ConfirmationBox extends React.Component {
 	handleYes = () => {
-		const { setActualItem, name, sendWithPhoto, history } = this.props;
-		setActualItem(name);
+		const {setActualItem, id, sendWithPhoto, history} = this.props;
+		setActualItem(id);
 		const nextPage = sendWithPhoto ? 'snackchat' : 'slackname';
 		history.push('/' + nextPage);
 	};
@@ -16,6 +17,7 @@ class ConfirmationBox extends React.Component {
 	render() {
 		return (
 			<div>
+				<Logo />
 				<div>{`Did you take ${this.props.name}?`}</div>
 				<img src={this.props.img} alt="" />
 				<div>
@@ -33,6 +35,7 @@ class ConfirmationBox extends React.Component {
 
 ConfirmationBox.propTypes = {
 	name: PropTypes.string.isRequired,
+	id: PropTypes.string.isRequired,
 	img: PropTypes.string.isRequired
 };
 

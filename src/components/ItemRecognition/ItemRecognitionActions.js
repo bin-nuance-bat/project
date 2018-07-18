@@ -6,5 +6,6 @@ const predict = prediction => ({
 });
 
 export const setPrediction = (id, img) => dispatch => {
-	dispatch(predict({id, img}));
+	if (id && img) dispatch(predict({id, img}));
+	else dispatch(predict(null));
 };
