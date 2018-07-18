@@ -17,9 +17,9 @@ export default class Viewer extends Component {
 
 	componentDidMount() {
 		firebase.initializeApp({
-			apiKey: 'AIzaSyBVuVNKx-rx2ON0RxbfGfbGPpiymbMrxj8',
-			authDomain: 'honesty-store-kiosk.firebaseapp.com',
-			projectId: 'honesty-store-kiosk'
+			apiKey: 'AIzaSyCil4dbMoESn0Q0LccFg_dpG4gIa-Z1xro',
+			authDomain: 'honesty-store-kiosk-dev.firebaseapp.com',
+			projectId: 'honesty-store-kiosk-dev'
 		});
 		this.db = firebase.firestore();
 		this.db.settings({timestampsInSnapshots: true});
