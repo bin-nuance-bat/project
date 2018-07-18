@@ -1,12 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ButtonList from '../ButtonList/ButtonList';
+import ListSelection from '../Listselection/ListSelection';
+const importImages = require.context('./assets', true, /\.svg$/);
+
+const imgFilesObject = importImages.keys().reduce((images, key) => {
+	images[key] = importImages(key);
+	return images;
+}, {});
 
 const EditSnack = props => {
+	const items = props.items.map(item => {
+		const relativeImagePath = './' + item.image;
+		let actualImagePath;
+
+		if (imgFilesObject[relativeImagePath]) {
+			actualImagePath =
+				'./' + item.image.endsWith('.svg')
+					? './' + item.image
+					: './' + item.image + '.svg';
+		} else {
+			actualImagePath = './misc-bar.svg';
+		}
+
+		const image = importImages(actualImagePath);
+		return {
+			...item,
+			image
+		};
+	});
 	return (
-		<ButtonList
-			items={props.items}
-			onClick={(id, name) => {
+		<ListSelection
+			items={items}
+			onClick={id => {
 				props.setActualItem(id);
 				props.history.push('/slackname');
 			}}
