@@ -75,7 +75,7 @@ export class ControllerDataset {
 				.then(() => {
 					examples[i].activation.dispose();
 					this.setStatus(
-						`Uploading images (${parseInt(i, 10) + 1}/${
+						`Uploading images... (${parseInt(i, 10) + 1}/${
 							examples.length
 						})`
 					);
@@ -104,23 +104,24 @@ export class ControllerDataset {
 			let batch = {};
 
 			while (Object.keys(batch).length < batchSize) {
-				const snapshot = await this.db
+				await this.db
 					.collection('training_data')
 					.orderBy('random')
 					.orderBy('timestamp')
 					.startAt(Math.random(), since)
 					.limit(batchSize * randomness)
-					.get();
+					.get()
+					.then(snapshot => {
+						snapshot.forEach(doc => {
+							batch[doc.id] = doc.data();
+						});
 
-				await snapshot.forEach(doc => {
-					batch[doc.id] = doc.data();
-				});
-
-				this.setStatus(
-					`Fetching data... (${
-						Object.keys(batch).length
-					}/${batchSize})`
-				);
+						this.setStatus(
+							`Fetching data... (${
+								Object.keys(batch).length
+							}/${batchSize})`
+						);
+					});
 			}
 
 			resolve(Object.values(batch).splice(0, batchSize));

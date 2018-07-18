@@ -154,6 +154,7 @@ class Model {
 
 				if (!this.model) {
 					this.setStatus('Generating new model...');
+					console.log(classes);
 					this.model = tf.sequential({
 						layers: [
 							tf.layers.flatten({inputShape: [7, 7, 1024]}),

@@ -125,12 +125,12 @@ class Trainer extends Component {
 		} = this.state;
 
 		this.model.train(
-			hiddenUnits,
-			batchSizeFraction,
-			learningRate,
-			epochs,
-			setSize,
-			randomness,
+			parseInt(hiddenUnits, 10),
+			parseFloat(batchSizeFraction),
+			parseFloat(learningRate),
+			parseInt(epochs, 10),
+			parseInt(setSize, 10),
+			parseFloat(randomness),
 			Date.parse(since)
 		);
 	};
