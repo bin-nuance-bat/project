@@ -1,7 +1,8 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import ListSelection from '../ListSelection/ListSelection';
 import Logo from '../Logo/Logo';
+import './EditSnack.css';
 
 const importImages = require.context('./assets', true, /\.svg$/);
 const imgFilesObject = importImages.keys().reduce((images, key) => {
@@ -32,6 +33,10 @@ const EditSnack = props => {
 	return (
 		<div>
 			<Logo />
+			<div className="textinfo">
+				Sorry, I can’t recognise that snack <br />
+				Please select it below
+			</div>
 			<ListSelection
 				items={items}
 				onClick={id => {
