@@ -8,7 +8,6 @@ import registerServiceWorker from './registerServiceWorker';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import AppContainer from './components/App/container';
 import Trainer from './components/Admin/Trainer/Trainer';
-import Viewer from './components/Admin/Preview/Viewer';
 import SnackChat from './components/SnackChat/SnackChatContainer';
 import ItemRecognition from './components/ItemRecognition/ItemRecognitionContainer';
 import Disclaimer from './components/Disclaimer/Disclaimer';
@@ -35,7 +34,6 @@ ReactDOM.render(
 				<Route exact path="/success" component={SuccessPage} />
 				<Route exact path="/old" component={OldAppContainer} />
 				<Route exact path="/training" component={Trainer} />
-				<Route exact path="/preview" component={Viewer} />
 			</Switch>
 		</Router>
 	</Provider>,
