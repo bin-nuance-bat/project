@@ -8,8 +8,10 @@ import html2canvas from 'html2canvas';
 
 class SnackChat extends Component {
 	initialTime = new Date();
-	svgHeight = 100;
+	svgHeight = 100; // TODO make webcam width and selected item props + retrieve h + w from svg for given item
 	svgWidth = 50;
+	feedWidth = 300;
+	feedRef = React.createRef();
 
 	constructor(props) {
 		super(props);
@@ -59,14 +61,15 @@ class SnackChat extends Component {
 
 			this.setState({
 				overlayX:
-					300 -
+					this.feedWidth -
 					(rightShoulderPosition.x + leftShoulderPosition.x) / 2 -
 					this.svgWidth / 2,
 				overlayY:
 					(leftShoulderPosition.y + rightShoulderPosition.y) / 2 -
 					this.svgHeight / 2,
 				overlayScale:
-					((leftShoulderPosition.x - rightShoulderPosition.x) / 300) *
+					((leftShoulderPosition.x - rightShoulderPosition.x) /
+						this.feedWidth) *
 					4, // there must be a better way of calculating this
 				overlayRotation:
 					(-360 / 2) *
@@ -78,8 +81,6 @@ class SnackChat extends Component {
 			});
 		}
 	};
-
-	feedRef = React.createRef();
 
 	render() {
 		let showOverlay =
