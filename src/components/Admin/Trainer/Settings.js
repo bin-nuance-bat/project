@@ -32,40 +32,40 @@ export default class Settings extends Component {
 					label="Learning Rate"
 					value={this.props.learningRate}
 					hide={!this.state.advanced}
-					setState={this.props.setState}
+					setState={val => this.props.setState('learningRate', val)}
 				/>
 				<Input
 					label="Batch Size Fraction"
 					value={this.props.batchSizeFraction}
 					hide={!this.state.advanced}
-					setState={this.props.setState}
+					setState={val => this.props.setState('learningRate', val)}
 				/>
 				<Input
 					label="Epochs"
 					value={this.props.epochs}
-					setState={this.props.setState}
+					setState={val => this.props.setState('epochs', val)}
 				/>
 				<Input
 					label="Hidden Units"
 					value={this.props.hiddenUnits}
 					hide={!this.state.advanced}
-					setState={this.props.setState}
+					setState={val => this.props.setState('hiddenUnits', val)}
 				/>
 				<Input
 					label="Training Set Size"
 					value={this.props.setSize}
-					setState={this.props.setState}
+					setState={val => this.props.setState('setSize', val)}
 				/>
 				<Input
 					label="Randomness"
 					value={this.props.randomness}
-					setState={this.props.setState}
+					setState={val => this.props.setState('randmoness', val)}
 				/>
 				<Input
 					label="Use Images Since"
 					value={this.props.since}
 					type="datetime-local"
-					setState={this.props.setState}
+					setState={val => this.props.setState('since', val)}
 				/>
 
 				<div className="formGroup">
@@ -109,12 +109,12 @@ export default class Settings extends Component {
 Settings.propTypes = {
 	model: PropTypes.object.isRequired,
 	busy: PropTypes.bool.isRequired,
-	learningRate: PropTypes.number.isRequired,
-	batchSizeFraction: PropTypes.number.isRequired,
-	epochs: PropTypes.number.isRequired,
-	hiddenUnits: PropTypes.number.isRequired,
-	setSize: PropTypes.number.isRequired,
-	randomness: PropTypes.number.isRequired,
+	learningRate: PropTypes.string.isRequired,
+	batchSizeFraction: PropTypes.string.isRequired,
+	epochs: PropTypes.string.isRequired,
+	hiddenUnits: PropTypes.string.isRequired,
+	setSize: PropTypes.string.isRequired,
+	randomness: PropTypes.string.isRequired,
 	since: PropTypes.string.isRequired,
 	train: PropTypes.func.isRequired,
 	predict: PropTypes.func.isRequired,

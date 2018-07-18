@@ -8,16 +8,6 @@ class Model {
 		this.setStatus = status;
 		this.items = {unknown: {name: 'Unknown', id: 'unknown'}};
 
-		this.getName = this.getName.bind(this);
-		this.init = this.init.bind(this);
-		this.loadStore = this.loadStore.bind(this);
-		this.loadModel = this.loadModel.bind(this);
-		this.saveModel = this.saveModel.bind(this);
-		this.exportModel = this.exportModel.bind(this);
-		this.addExample = this.addExample.bind(this);
-		this.train = this.train.bind(this);
-		this.predict = this.predict.bind(this);
-
 		this.init();
 	}
 

@@ -63,16 +63,17 @@ export default class Viewer extends Component {
 				this.getImages();
 			});
 
-		const item = await this.db
-			.collection('item_data')
-			.doc(event.target.dataset.item)
-			.get();
-
 		this.db
 			.collection('item_data')
 			.doc(event.target.dataset.item)
-			.set({
-				count: item.data().count - 1
+			.get()
+			.then(doc => {
+				this.db
+					.collection('item_data')
+					.doc(doc.id)
+					.set({
+						count: doc.data().count - 1
+					});
 			});
 	};
 

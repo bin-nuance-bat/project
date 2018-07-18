@@ -31,6 +31,8 @@ export class ControllerDataset {
 		this.store = firebase.storage();
 		this.db = firebase.firestore();
 		this.db.settings({timestampsInSnapshots: true});
+
+		window.db = this.db;
 	}
 
 	async setItemTrainingCounts(itemObj) {
@@ -40,36 +42,6 @@ export class ControllerDataset {
 			itemObj[item.id].mlCount = count ? count : 0;
 		});
 		return itemObj;
-	}
-
-	async addExample(img, activation, label) {
-		const item = await this.db
-			.collection('item_data')
-			.doc(label)
-			.get();
-
-		this.db
-			.collection('item_data')
-			.doc(label)
-			.set({
-				count: item.exists ? item.data().count + 1 : 1
-			});
-
-		this.db
-			.collection('training_data')
-			.add({
-				img,
-				activation: activation.dataSync().join(','),
-				label,
-				random: Math.random(),
-				trusted: true
-			})
-			.then(ref => {
-				activation.dispose();
-			})
-			.catch(err => {
-				activation.dispose();
-			});
 	}
 
 	async addExamples(examples) {
@@ -97,6 +69,7 @@ export class ControllerDataset {
 					activation: examples[i].activation.dataSync().join(','),
 					label: examples[i].label,
 					random: Math.random(),
+					timestamp: Date.now(),
 					trusted: true
 				})
 				.then(() => {
@@ -133,10 +106,9 @@ export class ControllerDataset {
 			while (Object.keys(batch).length < batchSize) {
 				const snapshot = await this.db
 					.collection('training_data')
-					.orderBy('timestamp')
-					.startAt(since)
 					.orderBy('random')
-					.startAt(Math.random())
+					.orderBy('timestamp')
+					.startAt(Math.random(), since)
 					.limit(batchSize * randomness)
 					.get();
 

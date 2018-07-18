@@ -19,12 +19,12 @@ class Trainer extends Component {
 		this.model = new Model(this.setStatus.bind(this));
 
 		this.state = {
-			learningRate: 0.0001,
-			batchSizeFraction: 0.4,
-			epochs: 200,
-			hiddenUnits: 100,
-			setSize: 200,
-			randomness: 0.1,
+			learningRate: '0.0001',
+			batchSizeFraction: '0.4',
+			epochs: '200',
+			hiddenUnits: '100',
+			setSize: '200',
+			randomness: '0.1',
 			since: '1970-01-01T00:00',
 			burstCount: 1,
 			advanced: false,
