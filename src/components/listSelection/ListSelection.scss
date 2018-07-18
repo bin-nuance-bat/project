@@ -2,7 +2,7 @@
 
 $icon-distance: 56px;
 $icon-width: 48px;
-$item-text-distance: 56px;
+$item-text-distance: 24px;
 
 .itemicon {
 	width: $icon-width;
@@ -11,9 +11,10 @@ $item-text-distance: 56px;
 }
 
 .listselection {
+	padding-top: 32px;
 	background-color: $white;
 	position: relative;
-	bottom: 0;
+	height: 100%;
 }
 
 .listtext {
@@ -24,9 +25,9 @@ $item-text-distance: 56px;
 }
 
 .itemtext {
-	left: $icon-distance + $icon-width + $item-text-distance;
+	padding-left: $icon-distance + $icon-width + $item-text-distance;
 }
 
 .grouptext {
-	left: 32px;
+	padding-left: 32px;
 }

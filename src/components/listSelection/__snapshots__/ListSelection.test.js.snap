@@ -1,0 +1,868 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Gnerates the list correctly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <ListSelection
+    items={
+        Array [
+            Object {
+              "id": "sample-foo",
+              "img": "",
+              "name": "foo",
+            },
+            Object {
+              "id": "sample-bar",
+              "img": "",
+              "name": "bar",
+            },
+            Object {
+              "id": "sample-foobar",
+              "img": "",
+              "name": "foobar",
+            },
+          ]
+    }
+    onClick={[Function]}
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <div
+          className="listgroup"
+>
+          <p
+                    className="listtext grouptext"
+          >
+                    B
+          </p>
+          <img
+                    alt=""
+                    src="line.svg"
+          />
+          <div
+                    className="listitem"
+                    name="sample-bar"
+                    onClick={[Function]}
+          >
+                    <img
+                              alt=""
+                              className="itemicon"
+                              name="sample-bar"
+                              src={undefined}
+                    />
+                    <p
+                              className="listtext itemtext"
+                              name="sample-bar"
+                    >
+                              bar
+                    </p>
+          </div>
+</div>,
+        <div
+          className="listgroup"
+>
+          <p
+                    className="listtext grouptext"
+          >
+                    F
+          </p>
+          <img
+                    alt=""
+                    src="line.svg"
+          />
+          <div
+                    className="listitem"
+                    name="sample-foo"
+                    onClick={[Function]}
+          >
+                    <img
+                              alt=""
+                              className="itemicon"
+                              name="sample-foo"
+                              src={undefined}
+                    />
+                    <p
+                              className="listtext itemtext"
+                              name="sample-foo"
+                    >
+                              foo
+                    </p>
+          </div>
+          <div
+                    className="listitem"
+                    name="sample-foobar"
+                    onClick={[Function]}
+          >
+                    <img
+                              alt=""
+                              className="itemicon"
+                              name="sample-foobar"
+                              src={undefined}
+                    />
+                    <p
+                              className="listtext itemtext"
+                              name="sample-foobar"
+                    >
+                              foobar
+                    </p>
+          </div>
+</div>,
+      ],
+      "className": "listselection",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": "b",
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <p
+              className="listtext grouptext"
+>
+              B
+</p>,
+            <img
+              alt=""
+              src="line.svg"
+/>,
+            Array [
+              <div
+                className="listitem"
+                name="sample-bar"
+                onClick={[Function]}
+>
+                <img
+                                alt=""
+                                className="itemicon"
+                                name="sample-bar"
+                                src={undefined}
+                />
+                <p
+                                className="listtext itemtext"
+                                name="sample-bar"
+                >
+                                bar
+                </p>
+</div>,
+            ],
+          ],
+          "className": "listgroup",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "B",
+              "className": "listtext grouptext",
+            },
+            "ref": null,
+            "rendered": "B",
+            "type": "p",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "alt": "",
+              "src": "line.svg",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "img",
+          },
+          Object {
+            "instance": null,
+            "key": "sample-bar",
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <img
+                  alt=""
+                  className="itemicon"
+                  name="sample-bar"
+                  src={undefined}
+/>,
+                <p
+                  className="listtext itemtext"
+                  name="sample-bar"
+>
+                  bar
+</p>,
+              ],
+              "className": "listitem",
+              "name": "sample-bar",
+              "onClick": [Function],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "alt": "",
+                  "className": "itemicon",
+                  "name": "sample-bar",
+                  "src": undefined,
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "img",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "bar",
+                  "className": "listtext itemtext",
+                  "name": "sample-bar",
+                },
+                "ref": null,
+                "rendered": "bar",
+                "type": "p",
+              },
+            ],
+            "type": "div",
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": "f",
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <p
+              className="listtext grouptext"
+>
+              F
+</p>,
+            <img
+              alt=""
+              src="line.svg"
+/>,
+            Array [
+              <div
+                className="listitem"
+                name="sample-foo"
+                onClick={[Function]}
+>
+                <img
+                                alt=""
+                                className="itemicon"
+                                name="sample-foo"
+                                src={undefined}
+                />
+                <p
+                                className="listtext itemtext"
+                                name="sample-foo"
+                >
+                                foo
+                </p>
+</div>,
+              <div
+                className="listitem"
+                name="sample-foobar"
+                onClick={[Function]}
+>
+                <img
+                                alt=""
+                                className="itemicon"
+                                name="sample-foobar"
+                                src={undefined}
+                />
+                <p
+                                className="listtext itemtext"
+                                name="sample-foobar"
+                >
+                                foobar
+                </p>
+</div>,
+            ],
+          ],
+          "className": "listgroup",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "F",
+              "className": "listtext grouptext",
+            },
+            "ref": null,
+            "rendered": "F",
+            "type": "p",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "alt": "",
+              "src": "line.svg",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "img",
+          },
+          Object {
+            "instance": null,
+            "key": "sample-foo",
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <img
+                  alt=""
+                  className="itemicon"
+                  name="sample-foo"
+                  src={undefined}
+/>,
+                <p
+                  className="listtext itemtext"
+                  name="sample-foo"
+>
+                  foo
+</p>,
+              ],
+              "className": "listitem",
+              "name": "sample-foo",
+              "onClick": [Function],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "alt": "",
+                  "className": "itemicon",
+                  "name": "sample-foo",
+                  "src": undefined,
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "img",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "foo",
+                  "className": "listtext itemtext",
+                  "name": "sample-foo",
+                },
+                "ref": null,
+                "rendered": "foo",
+                "type": "p",
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "sample-foobar",
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <img
+                  alt=""
+                  className="itemicon"
+                  name="sample-foobar"
+                  src={undefined}
+/>,
+                <p
+                  className="listtext itemtext"
+                  name="sample-foobar"
+>
+                  foobar
+</p>,
+              ],
+              "className": "listitem",
+              "name": "sample-foobar",
+              "onClick": [Function],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "alt": "",
+                  "className": "itemicon",
+                  "name": "sample-foobar",
+                  "src": undefined,
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "img",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "foobar",
+                  "className": "listtext itemtext",
+                  "name": "sample-foobar",
+                },
+                "ref": null,
+                "rendered": "foobar",
+                "type": "p",
+              },
+            ],
+            "type": "div",
+          },
+        ],
+        "type": "div",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <div
+            className="listgroup"
+>
+            <p
+                        className="listtext grouptext"
+            >
+                        B
+            </p>
+            <img
+                        alt=""
+                        src="line.svg"
+            />
+            <div
+                        className="listitem"
+                        name="sample-bar"
+                        onClick={[Function]}
+            >
+                        <img
+                                    alt=""
+                                    className="itemicon"
+                                    name="sample-bar"
+                                    src={undefined}
+                        />
+                        <p
+                                    className="listtext itemtext"
+                                    name="sample-bar"
+                        >
+                                    bar
+                        </p>
+            </div>
+</div>,
+          <div
+            className="listgroup"
+>
+            <p
+                        className="listtext grouptext"
+            >
+                        F
+            </p>
+            <img
+                        alt=""
+                        src="line.svg"
+            />
+            <div
+                        className="listitem"
+                        name="sample-foo"
+                        onClick={[Function]}
+            >
+                        <img
+                                    alt=""
+                                    className="itemicon"
+                                    name="sample-foo"
+                                    src={undefined}
+                        />
+                        <p
+                                    className="listtext itemtext"
+                                    name="sample-foo"
+                        >
+                                    foo
+                        </p>
+            </div>
+            <div
+                        className="listitem"
+                        name="sample-foobar"
+                        onClick={[Function]}
+            >
+                        <img
+                                    alt=""
+                                    className="itemicon"
+                                    name="sample-foobar"
+                                    src={undefined}
+                        />
+                        <p
+                                    className="listtext itemtext"
+                                    name="sample-foobar"
+                        >
+                                    foobar
+                        </p>
+            </div>
+</div>,
+        ],
+        "className": "listselection",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": "b",
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <p
+                className="listtext grouptext"
+>
+                B
+</p>,
+              <img
+                alt=""
+                src="line.svg"
+/>,
+              Array [
+                <div
+                  className="listitem"
+                  name="sample-bar"
+                  onClick={[Function]}
+>
+                  <img
+                                    alt=""
+                                    className="itemicon"
+                                    name="sample-bar"
+                                    src={undefined}
+                  />
+                  <p
+                                    className="listtext itemtext"
+                                    name="sample-bar"
+                  >
+                                    bar
+                  </p>
+</div>,
+              ],
+            ],
+            "className": "listgroup",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "B",
+                "className": "listtext grouptext",
+              },
+              "ref": null,
+              "rendered": "B",
+              "type": "p",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "alt": "",
+                "src": "line.svg",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "img",
+            },
+            Object {
+              "instance": null,
+              "key": "sample-bar",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <img
+                    alt=""
+                    className="itemicon"
+                    name="sample-bar"
+                    src={undefined}
+/>,
+                  <p
+                    className="listtext itemtext"
+                    name="sample-bar"
+>
+                    bar
+</p>,
+                ],
+                "className": "listitem",
+                "name": "sample-bar",
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "alt": "",
+                    "className": "itemicon",
+                    "name": "sample-bar",
+                    "src": undefined,
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "img",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "bar",
+                    "className": "listtext itemtext",
+                    "name": "sample-bar",
+                  },
+                  "ref": null,
+                  "rendered": "bar",
+                  "type": "p",
+                },
+              ],
+              "type": "div",
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": "f",
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <p
+                className="listtext grouptext"
+>
+                F
+</p>,
+              <img
+                alt=""
+                src="line.svg"
+/>,
+              Array [
+                <div
+                  className="listitem"
+                  name="sample-foo"
+                  onClick={[Function]}
+>
+                  <img
+                                    alt=""
+                                    className="itemicon"
+                                    name="sample-foo"
+                                    src={undefined}
+                  />
+                  <p
+                                    className="listtext itemtext"
+                                    name="sample-foo"
+                  >
+                                    foo
+                  </p>
+</div>,
+                <div
+                  className="listitem"
+                  name="sample-foobar"
+                  onClick={[Function]}
+>
+                  <img
+                                    alt=""
+                                    className="itemicon"
+                                    name="sample-foobar"
+                                    src={undefined}
+                  />
+                  <p
+                                    className="listtext itemtext"
+                                    name="sample-foobar"
+                  >
+                                    foobar
+                  </p>
+</div>,
+              ],
+            ],
+            "className": "listgroup",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "F",
+                "className": "listtext grouptext",
+              },
+              "ref": null,
+              "rendered": "F",
+              "type": "p",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "alt": "",
+                "src": "line.svg",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "img",
+            },
+            Object {
+              "instance": null,
+              "key": "sample-foo",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <img
+                    alt=""
+                    className="itemicon"
+                    name="sample-foo"
+                    src={undefined}
+/>,
+                  <p
+                    className="listtext itemtext"
+                    name="sample-foo"
+>
+                    foo
+</p>,
+                ],
+                "className": "listitem",
+                "name": "sample-foo",
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "alt": "",
+                    "className": "itemicon",
+                    "name": "sample-foo",
+                    "src": undefined,
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "img",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "foo",
+                    "className": "listtext itemtext",
+                    "name": "sample-foo",
+                  },
+                  "ref": null,
+                  "rendered": "foo",
+                  "type": "p",
+                },
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "sample-foobar",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <img
+                    alt=""
+                    className="itemicon"
+                    name="sample-foobar"
+                    src={undefined}
+/>,
+                  <p
+                    className="listtext itemtext"
+                    name="sample-foobar"
+>
+                    foobar
+</p>,
+                ],
+                "className": "listitem",
+                "name": "sample-foobar",
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "alt": "",
+                    "className": "itemicon",
+                    "name": "sample-foobar",
+                    "src": undefined,
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "img",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "foobar",
+                    "className": "listtext itemtext",
+                    "name": "sample-foobar",
+                  },
+                  "ref": null,
+                  "rendered": "foobar",
+                  "type": "p",
+                },
+              ],
+              "type": "div",
+            },
+          ],
+          "type": "div",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

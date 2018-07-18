@@ -1,5 +1,5 @@
 import React from 'react';
-import ListSelection from './listSelection';
+import ListSelection from './ListSelection';
 const importImages = require.context('./assets', true, /\.svg$/);
 const imgFilesObject = importImages.keys().reduce((images, key) => {
 	images[key] = importImages(key);
