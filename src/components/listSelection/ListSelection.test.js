@@ -27,8 +27,6 @@ it('Calls the required function', () => {
 	];
 
 	const wrapper = mount(<ListSelection items={items} onClick={mockFunc} />);
-	console.log(wrapper);
-	console.log(wrapper.find('div[data-key="sample-foo"]').at(0));
 	wrapper
 		.find('div[data-key="sample-foo"]')
 		.at(0)
