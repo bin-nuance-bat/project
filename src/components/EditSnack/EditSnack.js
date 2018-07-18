@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import ListSelection from '../ListSelection/ListSelection';
 import Logo from '../Logo/Logo';

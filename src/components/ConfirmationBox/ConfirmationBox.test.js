@@ -12,7 +12,8 @@ const getProps = () => {
 		history: {
 			push: jest.fn()
 		},
-		setActualItem: jest.fn()
+		setActualItem: jest.fn(),
+		img: 'barFoo'
 	};
 };
 
