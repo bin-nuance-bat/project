@@ -8,15 +8,15 @@ class App extends React.Component {
 		this.props.loadStoreList();
 	}
 
-	handleSnackChatClick() {
+	handleSnackChatClick = () => {
 		this.props.setSendWithPhoto(true);
 		this.props.history.push('/disclaimer');
-	}
+	};
 
-	handleReminderNoPhotoClick() {
+	handleReminderNoPhotoClick = () => {
 		this.props.setSendWithPhoto(false);
 		this.props.history.push('/disclaimer');
-	}
+	};
 
 	render() {
 		return (
