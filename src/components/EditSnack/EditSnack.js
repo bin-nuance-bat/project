@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ListSelection from '../Listselection/ListSelection';
-const importImages = require.context('./assets', true, /\.svg$/);
+import ListSelection from '../ListSelection/ListSelection';
+import Logo from '../Logo/Logo';
 
+const importImages = require.context('./assets', true, /\.svg$/);
 const imgFilesObject = importImages.keys().reduce((images, key) => {
 	images[key] = importImages(key);
 	return images;
@@ -29,13 +30,16 @@ const EditSnack = props => {
 		};
 	});
 	return (
-		<ListSelection
-			items={items}
-			onClick={id => {
-				props.setActualItem(id);
-				props.history.push('/slackname');
-			}}
-		/>
+		<div>
+			<Logo />
+			<ListSelection
+				items={items}
+				onClick={id => {
+					props.setActualItem(id);
+					props.history.push('/slackname');
+				}}
+			/>
+		</div>
 	);
 };
 

@@ -980,11 +980,6 @@ const test = () => {
 		} else {
 			actualImagePath = './misc-bar.svg';
 		}
-		// const actualImagePath = imgFilesObject[relativeImagePath]
-		// 	? './' + item.image.endsWith('.svg')
-		// 		? './' + item.image
-		// 		: './' + item.image + '.svg'
-		// 	: './misc-bar.svg';
 		const image = importImages(actualImagePath);
 		return {
 			...item,
