@@ -1,6 +1,6 @@
 import React from 'react';
 import {shallow, configure, mount} from 'enzyme';
-import ListSelection from './ListSelection';
+import ListSelection from './ListSelection.js';
 import Adapter from 'enzyme-adapter-react-16';
 
 configure({adapter: new Adapter()});
@@ -27,8 +27,6 @@ it('Calls the required function', () => {
 	];
 
 	const wrapper = mount(<ListSelection items={items} onClick={mockFunc} />);
-	console.log(wrapper);
-	console.log(wrapper.find('div[data-key="sample-foo"]').at(0));
 	wrapper
 		.find('div[data-key="sample-foo"]')
 		.at(0)
