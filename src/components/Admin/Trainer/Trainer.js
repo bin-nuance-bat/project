@@ -191,10 +191,10 @@ class Trainer extends Component {
 					<br />
 					<label>Burst Count:</label>
 					<input
-						type="text"
+						type="number"
 						value={burstCount}
-						size={3}
-						maxLength={3}
+						min={1}
+						max={500}
 						disabled={busy}
 						onChange={e =>
 							this.setState({burstCount: e.target.value})
