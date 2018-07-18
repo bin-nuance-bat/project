@@ -1,22 +1,26 @@
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import ButtonList from '../ButtonList/ButtonList';
 import Logo from '../Logo/Logo';
 
-const EditSnack = props => {
-	return (
-		<div>
-			<Logo />
-			<ButtonList
-				items={props.items}
-				onClick={(id, name) => {
-					props.setActualItem(id);
-					props.history.push('/slackname');
-				}}
-			/>
-		</div>
-	);
-};
+class EditSnack extends Component {
+	handleClick = (id, name) => {
+		this.props.setActualItem(id);
+		this.props.history.push('/slackname');
+	};
+
+	render() {
+		return (
+			<div>
+				<Logo />
+				<ButtonList
+					items={this.props.items}
+					onClick={this.handleClick}
+				/>
+			</div>
+		);
+	}
+}
 
 EditSnack.propTypes = {
 	setActualItem: PropTypes.func.isRequired,

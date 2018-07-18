@@ -9,7 +9,7 @@ class ButtonList extends React.Component {
 					<div key={item.id}>
 						<button
 							onClick={() =>
-								this.props.handleClick(item.id, item.name)
+								this.props.onClick(item.id, item.name)
 							}>
 							{item.name}
 						</button>
@@ -27,7 +27,7 @@ ButtonList.propTypes = {
 			name: PropTypes.string.isRequired
 		}).isRequired
 	).isRequired,
-	handleClick: PropTypes.func.isRequired
+	onClick: PropTypes.func.isRequired
 };
 
 export default ButtonList;
