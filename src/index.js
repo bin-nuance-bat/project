@@ -15,7 +15,7 @@ import ConfirmationBox from './components/ConfirmationBox/container';
 import UsernameEntryContainer from './components/UsernameEntry/container';
 import EditSnack from './components/EditSnack/EditSnackContainer';
 import SuccessPage from './components/SuccessPage/SuccessPage';
-import list from './components/listSelection/test';
+import list from './components/listSelection/tst';
 
 ReactDOM.render(
 	<Provider store={store}>

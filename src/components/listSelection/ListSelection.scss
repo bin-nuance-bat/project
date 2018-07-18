@@ -6,12 +6,14 @@ $item-text-distance: 24px;
 
 .itemicon {
 	width: $icon-width;
+	height: $icon-width;
 	position: absolute;
 	left: $icon-distance;
 }
 
 .listselection {
 	padding-top: 32px;
+	height: $icon-width;
 	background-color: $white;
 	position: relative;
 	height: 100%;
@@ -22,6 +24,12 @@ $item-text-distance: 24px;
 	font-size: 30px;
 	position: relative;
 	text-align: left;
+}
+
+.listitem {
+	padding-bottom: 94px;
+	vertical-align: middle;
+	height: $icon-width;
 }
 
 .itemtext {

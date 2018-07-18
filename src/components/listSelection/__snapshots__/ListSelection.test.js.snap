@@ -9,17 +9,17 @@ ShallowWrapper {
         Array [
             Object {
               "id": "sample-foo",
-              "img": "",
+              "image": "",
               "name": "foo",
             },
             Object {
               "id": "sample-bar",
-              "img": "",
+              "image": "",
               "name": "bar",
             },
             Object {
               "id": "sample-foobar",
-              "img": "",
+              "image": "",
               "name": "foobar",
             },
           ]
@@ -60,7 +60,7 @@ ShallowWrapper {
                               alt=""
                               className="itemicon"
                               name="sample-bar"
-                              src={undefined}
+                              src=""
                     />
                     <p
                               className="listtext itemtext"
@@ -91,7 +91,7 @@ ShallowWrapper {
                               alt=""
                               className="itemicon"
                               name="sample-foo"
-                              src={undefined}
+                              src=""
                     />
                     <p
                               className="listtext itemtext"
@@ -109,7 +109,7 @@ ShallowWrapper {
                               alt=""
                               className="itemicon"
                               name="sample-foobar"
-                              src={undefined}
+                              src=""
                     />
                     <p
                               className="listtext itemtext"
@@ -149,7 +149,7 @@ ShallowWrapper {
                                 alt=""
                                 className="itemicon"
                                 name="sample-bar"
-                                src={undefined}
+                                src=""
                 />
                 <p
                                 className="listtext itemtext"
@@ -198,7 +198,7 @@ ShallowWrapper {
                   alt=""
                   className="itemicon"
                   name="sample-bar"
-                  src={undefined}
+                  src=""
 />,
                 <p
                   className="listtext itemtext"
@@ -221,7 +221,7 @@ ShallowWrapper {
                   "alt": "",
                   "className": "itemicon",
                   "name": "sample-bar",
-                  "src": undefined,
+                  "src": "",
                 },
                 "ref": null,
                 "rendered": null,
@@ -271,7 +271,7 @@ ShallowWrapper {
                                 alt=""
                                 className="itemicon"
                                 name="sample-foo"
-                                src={undefined}
+                                src=""
                 />
                 <p
                                 className="listtext itemtext"
@@ -289,7 +289,7 @@ ShallowWrapper {
                                 alt=""
                                 className="itemicon"
                                 name="sample-foobar"
-                                src={undefined}
+                                src=""
                 />
                 <p
                                 className="listtext itemtext"
@@ -338,7 +338,7 @@ ShallowWrapper {
                   alt=""
                   className="itemicon"
                   name="sample-foo"
-                  src={undefined}
+                  src=""
 />,
                 <p
                   className="listtext itemtext"
@@ -361,7 +361,7 @@ ShallowWrapper {
                   "alt": "",
                   "className": "itemicon",
                   "name": "sample-foo",
-                  "src": undefined,
+                  "src": "",
                 },
                 "ref": null,
                 "rendered": null,
@@ -393,7 +393,7 @@ ShallowWrapper {
                   alt=""
                   className="itemicon"
                   name="sample-foobar"
-                  src={undefined}
+                  src=""
 />,
                 <p
                   className="listtext itemtext"
@@ -416,7 +416,7 @@ ShallowWrapper {
                   "alt": "",
                   "className": "itemicon",
                   "name": "sample-foobar",
-                  "src": undefined,
+                  "src": "",
                 },
                 "ref": null,
                 "rendered": null,
@@ -472,7 +472,7 @@ ShallowWrapper {
                                     alt=""
                                     className="itemicon"
                                     name="sample-bar"
-                                    src={undefined}
+                                    src=""
                         />
                         <p
                                     className="listtext itemtext"
@@ -503,7 +503,7 @@ ShallowWrapper {
                                     alt=""
                                     className="itemicon"
                                     name="sample-foo"
-                                    src={undefined}
+                                    src=""
                         />
                         <p
                                     className="listtext itemtext"
@@ -521,7 +521,7 @@ ShallowWrapper {
                                     alt=""
                                     className="itemicon"
                                     name="sample-foobar"
-                                    src={undefined}
+                                    src=""
                         />
                         <p
                                     className="listtext itemtext"
@@ -561,7 +561,7 @@ ShallowWrapper {
                                     alt=""
                                     className="itemicon"
                                     name="sample-bar"
-                                    src={undefined}
+                                    src=""
                   />
                   <p
                                     className="listtext itemtext"
@@ -610,7 +610,7 @@ ShallowWrapper {
                     alt=""
                     className="itemicon"
                     name="sample-bar"
-                    src={undefined}
+                    src=""
 />,
                   <p
                     className="listtext itemtext"
@@ -633,7 +633,7 @@ ShallowWrapper {
                     "alt": "",
                     "className": "itemicon",
                     "name": "sample-bar",
-                    "src": undefined,
+                    "src": "",
                   },
                   "ref": null,
                   "rendered": null,
@@ -683,7 +683,7 @@ ShallowWrapper {
                                     alt=""
                                     className="itemicon"
                                     name="sample-foo"
-                                    src={undefined}
+                                    src=""
                   />
                   <p
                                     className="listtext itemtext"
@@ -701,7 +701,7 @@ ShallowWrapper {
                                     alt=""
                                     className="itemicon"
                                     name="sample-foobar"
-                                    src={undefined}
+                                    src=""
                   />
                   <p
                                     className="listtext itemtext"
@@ -750,7 +750,7 @@ ShallowWrapper {
                     alt=""
                     className="itemicon"
                     name="sample-foo"
-                    src={undefined}
+                    src=""
 />,
                   <p
                     className="listtext itemtext"
@@ -773,7 +773,7 @@ ShallowWrapper {
                     "alt": "",
                     "className": "itemicon",
                     "name": "sample-foo",
-                    "src": undefined,
+                    "src": "",
                   },
                   "ref": null,
                   "rendered": null,
@@ -805,7 +805,7 @@ ShallowWrapper {
                     alt=""
                     className="itemicon"
                     name="sample-foobar"
-                    src={undefined}
+                    src=""
 />,
                   <p
                     className="listtext itemtext"
@@ -828,7 +828,7 @@ ShallowWrapper {
                     "alt": "",
                     "className": "itemicon",
                     "name": "sample-foobar",
-                    "src": undefined,
+                    "src": "",
                   },
                   "ref": null,
                   "rendered": null,

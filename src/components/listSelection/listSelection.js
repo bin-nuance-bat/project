@@ -1,7 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 import './ListSelection.css';
-import line from './assets/line.svg';
+import line from './line.svg';
 
 const compare = (a, b) => {
 	if (a[0] > b[0]) return 1;

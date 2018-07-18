@@ -9,11 +9,29 @@ it('Gnerates the list correctly', () => {
 	const props = {
 		onClick: jest.fn(),
 		items: [
-			{name: 'foo', id: 'sample-foo', img: ''},
-			{name: 'bar', id: 'sample-bar', img: ''},
-			{name: 'foobar', id: 'sample-foobar', img: ''}
+			{name: 'foo', id: 'sample-foo', image: ''},
+			{name: 'bar', id: 'sample-bar', image: ''},
+			{name: 'foobar', id: 'sample-foobar', image: ''}
 		]
 	};
 	const wrapper = shallow(<ListSelection {...props} />);
 	expect(wrapper).toMatchSnapshot();
+});
+
+it('Calls the required function', () => {
+	const props = {
+		onClick: jest.fn(),
+		items: [
+			{name: 'foo', id: 'sample-foo', image: ''},
+			{name: 'bar', id: 'sample-bar', image: ''},
+			{name: 'foobar', id: 'sample-foobar', image: ''}
+		]
+	};
+
+	const wrapper = shallow(<ListSelection {...props} />);
+	wrapper
+		.find('[name="foo"]')
+		.at(0)
+		.simulate('click');
+	expect(props.onClick).toHaveBeenCalledWith('sample-foo');
 });
