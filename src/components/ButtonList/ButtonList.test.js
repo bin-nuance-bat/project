@@ -8,7 +8,7 @@ configure({adapter: new Adapter()});
 it('renders a list correctly', () => {
 	const items = [{name: 'apple', id: 'xxx'}, {name: 'mars', id: 'yyy'}];
 	const wrapper = shallow(
-		<ButtonList items={items} handleClick={function() {}} />
+		<ButtonList items={items} handlelick={function() {}} />
 	);
 	expect(wrapper.find('button')).toHaveLength(2);
 	expect(

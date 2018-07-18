@@ -9,7 +9,7 @@ class ButtonList extends React.Component {
 					<div key={item.id}>
 						<button
 							onClick={() =>
-								this.props.onClick(item.id, item.name)
+								this.props.handleClick(item.id, item.name)
 							}>
 							{item.name}
 						</button>

@@ -9,7 +9,7 @@ const EditSnack = props => {
 			<Logo />
 			<ButtonList
 				items={props.items}
-				onClick={(id, name) => {
+				handleClick={(id, name) => {
 					props.setActualItem(id);
 					props.history.push('/slackname');
 				}}
