@@ -13,17 +13,13 @@ class SnackChat extends Component {
 	feedWidth = 300;
 	feedRef = React.createRef();
 
-	constructor(props) {
-		super(props);
-
-		this.state = {
-			counter: 5,
-			overlayX: undefined,
-			overlayY: undefined,
-			overlayScale: 1,
-			overlayRotation: 0
-		};
-	}
+	state = {
+		counter: 5,
+		overlayX: undefined,
+		overlayY: undefined,
+		overlayScale: 1,
+		overlayRotation: 0
+	};
 
 	loadPosenet = async () => {
 		this.net = await posenet.load(0.5);
