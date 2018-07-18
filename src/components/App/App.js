@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import Logo from '../Logo/Logo';
-import {Glyphicon} from 'react-bootstrap';
 
 class App extends React.Component {
 	componentDidMount() {

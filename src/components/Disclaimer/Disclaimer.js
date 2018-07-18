@@ -1,6 +1,5 @@
 import React from 'react';
 import Logo from '../Logo/Logo';
-import {Glyphicon} from 'react-bootstrap';
 import './Disclaimer.css';
 
 const Disclaimer = props => {
