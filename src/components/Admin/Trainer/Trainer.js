@@ -5,6 +5,7 @@ import Model from './Model';
 import * as tf from '@tensorflow/tfjs';
 import './Trainer.css';
 import Settings from './Settings';
+import {uriToTensor} from './../AdminUtils';
 
 class Trainer extends Component {
 	state = {
@@ -38,13 +39,7 @@ class Trainer extends Component {
 	}
 
 	capture = src => {
-		return tf.tidy(() => {
-			return this.cropImage(tf.fromPixels(src))
-				.expandDims(0)
-				.toFloat()
-				.div(tf.scalar(127))
-				.sub(tf.scalar(1));
-		});
+		return uriToTensor(src);
 	};
 
 	captureFromFile = async () => {
