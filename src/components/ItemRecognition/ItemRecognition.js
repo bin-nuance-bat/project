@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Model from './../../utils/model';
-import WebcamCapture from '../WebcamCapture/WebcamCaptureContainer';
+import WebcamCapture from '../WebcamCapture/WebcamCapture';
 import Logo from '../Logo/Logo';
 
 const ML_THRESHOLD = 0.06;
@@ -20,11 +20,14 @@ class ItemRecognition extends Component {
 
 	onConnect = () => {
 		this.webcam.current.requestScreenshot()
-			.then(this.handleImg);
+			.then(this.handleImg)
+			.catch(() => {
+				setTimeout(this.onConnect, 100);	
+			});
 	}
 
 	handleImg = img => {
-		this.model.predict(img).then(async item => {
+		this.model.predict(img).then(item => {
 			if (
 				item.value > ML_THRESHOLD &&
 				item.id !== '' &&
@@ -33,7 +36,8 @@ class ItemRecognition extends Component {
 				this.props.setPrediction(item.id, img.src);
 				this.props.history.push('/confirmitem');
 			} else {
-				this.handleImg(await this.webcam.current.requestScreenshot());
+				this.webcam.current.requestScreenshot()
+					.then(this.handleImg);
 			}
 		});
 	};
@@ -43,7 +47,7 @@ class ItemRecognition extends Component {
 			<div>
 				<Logo />
 				<header>Hold up your snack to the camera</header>
-				<WebcamCapture ref={this.webcam} onConnect={this.onConnect} />
+				<WebcamCapture ref={this.webcam} onConnect={this.onConnect} imgSize={224} />
 			</div>
 		);
 	}

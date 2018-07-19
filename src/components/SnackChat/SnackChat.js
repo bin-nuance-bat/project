@@ -1,17 +1,17 @@
 import React, {Component} from 'react';
-import WebcamCapture from '../WebcamCapture/WebcamCaptureContainer';
+import WebcamCapture from '../WebcamCapture/WebcamCapture';
 import PropTypes from 'prop-types';
 import * as posenet from '@tensorflow-models/posenet';
 import './SnackChat.css';
 import Logo from '../Logo/Logo';
-import html2canvas from 'html2canvas';
 
 class SnackChat extends Component {
 	initialTime = new Date();
 	svgHeight = 100; // TODO make webcam width and selected item props + retrieve h + w from svg for given item
 	svgWidth = 50;
-	feedWidth = 300;
+	feedWidth = 400;
 	feedRef = React.createRef();
+	canvas = React.createRef();
 
 	state = {
 		counter: 5,
@@ -31,19 +31,48 @@ class SnackChat extends Component {
 	}
 
 	tick = () => {
-		if (this.state.counter > 0)
+		if (this.state.counter > -1)
 			this.setState(prevState => ({counter: prevState.counter - 1}));
 		else clearInterval(this.timer);
 	};
 
 	handleImg = async img => {
-		if (this.state.counter === 0) {
-			await html2canvas(this.feedRef.current).then(canvas => {
-				let snackchatSrc = canvas.toDataURL('image/png');
-				this.props.setSnackChat(snackchatSrc);
-			});
+		const ctx = this.canvas.current.getContext('2d');
+		ctx.drawImage(img, 0, 0);
 
-			this.props.history.push('/slackName');
+		const pose = await this.net.estimateSinglePose(
+			img,
+			0.5,
+			false,
+			16
+		);
+
+		let leftShoulderPosition = pose.keypoints[5].position;
+		let rightShoulderPosition = pose.keypoints[6].position;
+
+		ctx.beginPath();
+		ctx.moveTo(leftShoulderPosition.x, leftShoulderPosition.y);
+		ctx.lineTo(rightShoulderPosition.x, rightShoulderPosition.y);
+		ctx.strokeStyle = 'red';
+		ctx.stroke();
+
+		/* 		if (this.state.counter === 0) {
+			const canvas = document.createElement('canvas');
+			canvas.width = this.feedWidth;
+			canvas.height = this.feedWidth;
+			const ctx = canvas.getContext('2d');
+			ctx.drawImage(img, 0, 0);
+			console.log(this.feedRef.current);
+			window.test = this.feedRef.current;
+			
+			const overlay = new Image();
+			overlay.onload = () => {
+				console.log(overlay)
+				ctx.drawImage(overlay, 0, 0);
+				document.body.appendChild(canvas);
+			}
+			overlay.src = 'data:image/svg+xml;utf8,' + this.feedRef.current.outerHTML;
+			console.log('data:image/svg+xml;utf8,' + this.feedRef.current.outerHTML);
 		} else {
 			const pose = await this.net.estimateSinglePose(
 				img,
@@ -76,7 +105,7 @@ class SnackChat extends Component {
 							(rightShoulderPosition.x + leftShoulderPosition.x)
 					)
 			});
-		}
+		} */
 	};
 
 	render() {
@@ -91,27 +120,16 @@ class SnackChat extends Component {
 					Smile, you are on snackchat:
 					{this.state.counter}
 				</header>
-				<div ref={this.feedRef} className="feed">
-					{showOverlay && (
-						<div
-							className="overlay"
-							style={{
-								left: this.state.overlayX,
-								top: this.state.overlayY,
-								transform: `rotate(${
-									this.state.overlayRotation
-								}deg) scale(${this.state.overlayScale})`
-							}}>
-							<svg width={this.svgWidth} height={this.svgHeight}>
-								<rect
-									width={this.svgWidth}
-									height={this.svgHeight}
-									fill="yellow"
-								/>
-							</svg>
-						</div>
-					)}
-					<WebcamCapture onImgLoad={this.handleImg} interval={333} />
+				<div className="feed">
+					<canvas
+						width={this.feedWidth}
+						height={this.feedWidth}
+						ref={this.canvas}
+					/>
+					<WebcamCapture
+						style={{display: 'none'}}
+						imgSize={400}
+					/>
 				</div>
 			</div>
 		);
