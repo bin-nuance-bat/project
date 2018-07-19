@@ -74,7 +74,7 @@ export default class Viewer extends Component {
 			});
 	};
 
-	approve = event => {
+	trust = event => {
 		this.db
 			.collection('training_data')
 			.doc(event.target.dataset.id)
@@ -97,7 +97,7 @@ export default class Viewer extends Component {
 					<ImagePreview
 						key={image.id}
 						image={image}
-						handleClick={image.trusted ? this.remove : this.approve}
+						handleClick={image.trusted ? this.remove : this.trust}
 					/>
 				))}
 			</div>

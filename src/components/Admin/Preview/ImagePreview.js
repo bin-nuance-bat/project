@@ -10,7 +10,7 @@ const ImagePreview = props => {
 				onClick={props.handleClick}
 				data-id={props.image.id}
 				data-item={props.image.item}>
-				{props.image.trusted ? 'Remove' : 'Approve'}
+				{props.image.trusted ? 'Remove' : 'Use for training'}
 			</button>
 		</div>
 	);
