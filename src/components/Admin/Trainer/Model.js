@@ -8,10 +8,7 @@ class Model {
 		this.items = {unknown: {name: 'Unknown', id: 'unknown'}};
 		this.setReadyStatus = setReadyStatus;
 		this.setBusyStatus = setBusyStatus;
-		this.controllerDataset = new ControllerDataset(
-			setReadyStatus,
-			setBusyStatus
-		);
+		this.controllerDataset = new ControllerDataset();
 	}
 
 	getName(i) {
