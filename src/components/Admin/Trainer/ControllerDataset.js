@@ -24,11 +24,36 @@ export class ControllerDataset {
 		return itemObj;
 	}
 
-	getItem = label => {
-		this.db
-			.collection('item_data')
-			.doc(label)
-			.get();
+	deleteImage = async id => {
+		await this.db
+			.collection('training_data')
+			.doc(id)
+			.delete();
+	};
+
+	getItemReference = async label => {
+		return await this.db.collection('item_data').doc(label);
+	};
+
+	getItemCount = async itemReference => {
+		return await itemReference
+			.get()
+			.then(snapshot => snapshot.data().count)
+			.catch(() => 0);
+	};
+
+	setItemCount = async (itemReference, count) => {
+		await itemReference.set({
+			count
+		});
+	};
+
+	changeItemCount = (item, delta) => {
+		const item = this.controllerDataset.getItemReference(item);
+		this.controllerDataset.setItemCount(
+			item,
+			this.controllerDataset.getItemCount(item) + delta
+		);
 	};
 
 	async addExamples(examples) {
@@ -36,16 +61,9 @@ export class ControllerDataset {
 			return;
 		}
 
-		const item = this.getItem(examples[0].label);
+		const item = this.getItemReference(examples[0].label);
 
-		this.db
-			.collection('item_data')
-			.doc(examples[0].label)
-			.set({
-				count: item.exists
-					? item.data().count + examples.length
-					: examples.length
-			});
+		this.changeItemCount(item, examples.length);
 
 		for (let i in examples) {
 			this.db

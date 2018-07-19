@@ -4,6 +4,7 @@ import 'firebase/firestore';
 import ItemSelector from '../ItemSelector';
 import ImagePreview from './ImagePreview';
 import getStore from '../../../utils/honestyStore.js';
+import {ControllerDataset} from './../Trainer/ControllerDataset';
 
 export default class Viewer extends Component {
 	state = {
@@ -16,13 +17,7 @@ export default class Viewer extends Component {
 	};
 
 	componentDidMount() {
-		firebase.initializeApp({
-			apiKey: 'AIzaSyCil4dbMoESn0Q0LccFg_dpG4gIa-Z1xro',
-			authDomain: 'honesty-store-kiosk-dev.firebaseapp.com',
-			projectId: 'honesty-store-kiosk-dev'
-		});
-		this.db = firebase.firestore();
-		this.db.settings({timestampsInSnapshots: true});
+		this.controllerDataset = new ControllerDataset();
 
 		getStore().then(store => {
 			this.setState(prevState => ({
@@ -53,39 +48,28 @@ export default class Viewer extends Component {
 		});
 	};
 
-	updateItemCount = (item, delta) => {
-		this.db
-			.collection('item_data')
-			.doc(item)
-			.get()
-			.then(doc => {
-				this.db
-					.collection('item_data')
-					.doc(doc.id)
-					.set({
-						count: doc.data().count + delta
-					});
-			});
+	changeItemCount = (label, delta) => {
+		const item = this.controllerDataset.getItemReference(label);
+		this.controllerDataset.setItemCount(
+			item,
+			this.controllerDataset.getItemCount(item) + delta
+		);
 	};
 
 	remove = event => {
-		this.db
-			.collection('training_data')
-			.doc(event.target.dataset.id)
-			.delete()
+		this.controllerDataset
+			.deleteImage(event.target.dataset.id)
 			.then(() => this.getImages());
 
-		this.updateItemCount(event.target.dataset.item, -1);
+		this.changeItemCount(event.target.dataset.item, -1);
 	};
 
 	trust = event => {
-		this.db
-			.collection('training_data')
-			.doc(event.target.dataset.id)
-			.set({trusted: true})
+		this.controllerDataset
+			.trustImage(event.target.dataset.id)
 			.then(() => this.getImages());
 
-		this.updateItemCount(event.target.dataset.item, 1);
+		this.changeItemCount(event.target.dataset.item, 1);
 	};
 
 	render() {
