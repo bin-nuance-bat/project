@@ -4,10 +4,13 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
-		"@tensorflow/tfjs": "^0.12.0",
+		"@tensorflow-models/mobilenet": "^0.1.1",
+		"@tensorflow/tfjs": "~0.11.6",
+		"ajv": "^6.5.2",
 		"babel-plugin-syntax-class-properties": "^6.13.0",
 		"eslint-plugin-react": "^7.10.0",
 		"lodash": "^4.17.10",
+		"firebase": "^5.2.0",
 		"node-sass-chokidar": "^1.3.0",
 		"npm-run-all": "^4.1.3",
 		"react": "^16.4.1",
@@ -33,6 +36,7 @@
 		"build": "npm-run-all build-css build-js",
 		"test": "react-scripts test --env=jsdom",
 		"eject": "react-scripts eject",
+		"deploy-local": "npm run build && firebase deploy",
 		"deploy": "firebase use default && firebase deploy --token $FIREBASE_TOKEN",
 		"lint": "eslint **/*.js"
 	},

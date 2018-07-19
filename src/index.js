@@ -7,7 +7,7 @@ import store from './utils/reduxStore';
 import registerServiceWorker from './registerServiceWorker';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import AppContainer from './components/App/container';
-import Trainer from './components/Trainer/Trainer';
+import Trainer from './components/Admin/Trainer/Trainer';
 import SnackChat from './components/SnackChat/SnackChatContainer';
 import ItemRecognition from './components/ItemRecognition/ItemRecognitionContainer';
 import Disclaimer from './components/Disclaimer/Disclaimer';
