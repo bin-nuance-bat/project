@@ -4,10 +4,7 @@ import 'firebase/firestore';
 import 'firebase/storage';
 
 export class ControllerDataset {
-	constructor(setReadyStatus, setBusyStatus) {
-		this.setReadyStatus = setReadyStatus;
-		this.setBusyStatus = setBusyStatus;
-
+	constructor() {
 		firebase.initializeApp({
 			apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
 			authDomain: 'honesty-store-kiosk.firebaseapp.com',
@@ -29,7 +26,6 @@ export class ControllerDataset {
 
 	async addExamples(examples) {
 		if (examples.length < 1) {
-			this.setReadyStatus('Please provide at least one image.');
 			return;
 		}
 
@@ -60,14 +56,6 @@ export class ControllerDataset {
 				})
 				.then(() => {
 					examples[i].activation.dispose();
-					this.setBusyStatus(
-						`Uploading images... (${parseInt(i, 10) + 1}/${
-							examples.length
-						})`
-					);
-					if (parseInt(i, 10) + 1 >= examples.length) {
-						this.setReadyStatus('Done');
-					}
 				})
 				.catch(err => {
 					console.error(err);
@@ -101,12 +89,6 @@ export class ControllerDataset {
 						snapshot.forEach(doc => {
 							batch[doc.id] = doc.data();
 						});
-
-						this.setBusyStatus(
-							`Fetching data... (${
-								Object.keys(batch).length
-							}/${batchSize})`
-						);
 					});
 			}
 
