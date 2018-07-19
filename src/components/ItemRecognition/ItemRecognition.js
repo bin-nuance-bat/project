@@ -33,10 +33,6 @@ class ItemRecognition extends Component {
 				<Logo />
 				<header>Hold up your snack to the camera</header>
 				<WebcamCapture onImgLoad={this.handleImg} interval={1000} />
-				<button onClick={() => this.props.history.push('/editsnack')}>
-					{' '}
-					a
-				</button>
 			</div>
 		);
 	}

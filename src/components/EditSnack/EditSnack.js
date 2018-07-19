@@ -41,7 +41,10 @@ const EditSnack = props => {
 				items={items}
 				onClick={id => {
 					props.setActualItem(id);
-					props.history.push('/slackname');
+					const nextPage = props.sendWithPhoto
+						? 'snackchat'
+						: 'slackname';
+					props.history.push('/' + nextPage);
 				}}
 			/>
 		</div>
