@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Logo from '../Logo/Logo';
 
 class ConfirmationBox extends React.Component {
+	insertTrainingImage = () => {};
+
 	handleYes = () => {
 		const {setActualItem, id, sendWithPhoto, history} = this.props;
 		setActualItem(id);

@@ -1,0 +1,10 @@
+.webcam-container {
+    width: 400px;
+    height: 400px;
+    overflow: hidden;
+}
+
+.webcam-container video {
+    object-fit: cover;
+    transform: rotateY(180deg);
+}
