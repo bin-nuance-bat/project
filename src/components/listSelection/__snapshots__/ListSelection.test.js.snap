@@ -45,37 +45,6 @@ ShallowWrapper {
           <p
                     className="listtext grouptext"
           >
-                    B
-          </p>
-          <img
-                    alt=""
-                    src="line.svg"
-          />
-          <div
-                    className="listitem"
-                    data-key="sample-bar"
-                    onClick={[Function]}
-          >
-                    <img
-                              alt=""
-                              className="itemicon"
-                              data-key="sample-bar"
-                              src=""
-                    />
-                    <p
-                              className="listtext itemtext"
-                              data-key="sample-bar"
-                    >
-                              bar
-                    </p>
-          </div>
-</div>,
-        <div
-          className="listgroup"
->
-          <p
-                    className="listtext grouptext"
-          >
                     F
           </p>
           <img
@@ -119,133 +88,42 @@ ShallowWrapper {
                     </p>
           </div>
 </div>,
+        <div
+          className="listgroup"
+>
+          <p
+                    className="listtext grouptext"
+          >
+                    B
+          </p>
+          <img
+                    alt=""
+                    src="line.svg"
+          />
+          <div
+                    className="listitem"
+                    data-key="sample-bar"
+                    onClick={[Function]}
+          >
+                    <img
+                              alt=""
+                              className="itemicon"
+                              data-key="sample-bar"
+                              src=""
+                    />
+                    <p
+                              className="listtext itemtext"
+                              data-key="sample-bar"
+                    >
+                              bar
+                    </p>
+          </div>
+</div>,
       ],
       "className": "listselection",
     },
     "ref": null,
     "rendered": Array [
-      Object {
-        "instance": null,
-        "key": "b",
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            <p
-              className="listtext grouptext"
->
-              B
-</p>,
-            <img
-              alt=""
-              src="line.svg"
-/>,
-            Array [
-              <div
-                className="listitem"
-                data-key="sample-bar"
-                onClick={[Function]}
->
-                <img
-                                alt=""
-                                className="itemicon"
-                                data-key="sample-bar"
-                                src=""
-                />
-                <p
-                                className="listtext itemtext"
-                                data-key="sample-bar"
-                >
-                                bar
-                </p>
-</div>,
-            ],
-          ],
-          "className": "listgroup",
-        },
-        "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": "B",
-              "className": "listtext grouptext",
-            },
-            "ref": null,
-            "rendered": "B",
-            "type": "p",
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "alt": "",
-              "src": "line.svg",
-            },
-            "ref": null,
-            "rendered": null,
-            "type": "img",
-          },
-          Object {
-            "instance": null,
-            "key": "sample-bar",
-            "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                <img
-                  alt=""
-                  className="itemicon"
-                  data-key="sample-bar"
-                  src=""
-/>,
-                <p
-                  className="listtext itemtext"
-                  data-key="sample-bar"
->
-                  bar
-</p>,
-              ],
-              "className": "listitem",
-              "data-key": "sample-bar",
-              "onClick": [Function],
-            },
-            "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "alt": "",
-                  "className": "itemicon",
-                  "data-key": "sample-bar",
-                  "src": "",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "img",
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "bar",
-                  "className": "listtext itemtext",
-                  "data-key": "sample-bar",
-                },
-                "ref": null,
-                "rendered": "bar",
-                "type": "p",
-              },
-            ],
-            "type": "div",
-          },
-        ],
-        "type": "div",
-      },
       Object {
         "instance": null,
         "key": "f",
@@ -441,6 +319,128 @@ ShallowWrapper {
         ],
         "type": "div",
       },
+      Object {
+        "instance": null,
+        "key": "b",
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <p
+              className="listtext grouptext"
+>
+              B
+</p>,
+            <img
+              alt=""
+              src="line.svg"
+/>,
+            Array [
+              <div
+                className="listitem"
+                data-key="sample-bar"
+                onClick={[Function]}
+>
+                <img
+                                alt=""
+                                className="itemicon"
+                                data-key="sample-bar"
+                                src=""
+                />
+                <p
+                                className="listtext itemtext"
+                                data-key="sample-bar"
+                >
+                                bar
+                </p>
+</div>,
+            ],
+          ],
+          "className": "listgroup",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "B",
+              "className": "listtext grouptext",
+            },
+            "ref": null,
+            "rendered": "B",
+            "type": "p",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "alt": "",
+              "src": "line.svg",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "img",
+          },
+          Object {
+            "instance": null,
+            "key": "sample-bar",
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <img
+                  alt=""
+                  className="itemicon"
+                  data-key="sample-bar"
+                  src=""
+/>,
+                <p
+                  className="listtext itemtext"
+                  data-key="sample-bar"
+>
+                  bar
+</p>,
+              ],
+              "className": "listitem",
+              "data-key": "sample-bar",
+              "onClick": [Function],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "alt": "",
+                  "className": "itemicon",
+                  "data-key": "sample-bar",
+                  "src": "",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "img",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "bar",
+                  "className": "listtext itemtext",
+                  "data-key": "sample-bar",
+                },
+                "ref": null,
+                "rendered": "bar",
+                "type": "p",
+              },
+            ],
+            "type": "div",
+          },
+        ],
+        "type": "div",
+      },
     ],
     "type": "div",
   },
@@ -451,37 +451,6 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
-          <div
-            className="listgroup"
->
-            <p
-                        className="listtext grouptext"
-            >
-                        B
-            </p>
-            <img
-                        alt=""
-                        src="line.svg"
-            />
-            <div
-                        className="listitem"
-                        data-key="sample-bar"
-                        onClick={[Function]}
-            >
-                        <img
-                                    alt=""
-                                    className="itemicon"
-                                    data-key="sample-bar"
-                                    src=""
-                        />
-                        <p
-                                    className="listtext itemtext"
-                                    data-key="sample-bar"
-                        >
-                                    bar
-                        </p>
-            </div>
-</div>,
           <div
             className="listgroup"
 >
@@ -531,133 +500,42 @@ ShallowWrapper {
                         </p>
             </div>
 </div>,
+          <div
+            className="listgroup"
+>
+            <p
+                        className="listtext grouptext"
+            >
+                        B
+            </p>
+            <img
+                        alt=""
+                        src="line.svg"
+            />
+            <div
+                        className="listitem"
+                        data-key="sample-bar"
+                        onClick={[Function]}
+            >
+                        <img
+                                    alt=""
+                                    className="itemicon"
+                                    data-key="sample-bar"
+                                    src=""
+                        />
+                        <p
+                                    className="listtext itemtext"
+                                    data-key="sample-bar"
+                        >
+                                    bar
+                        </p>
+            </div>
+</div>,
         ],
         "className": "listselection",
       },
       "ref": null,
       "rendered": Array [
-        Object {
-          "instance": null,
-          "key": "b",
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              <p
-                className="listtext grouptext"
->
-                B
-</p>,
-              <img
-                alt=""
-                src="line.svg"
-/>,
-              Array [
-                <div
-                  className="listitem"
-                  data-key="sample-bar"
-                  onClick={[Function]}
->
-                  <img
-                                    alt=""
-                                    className="itemicon"
-                                    data-key="sample-bar"
-                                    src=""
-                  />
-                  <p
-                                    className="listtext itemtext"
-                                    data-key="sample-bar"
-                  >
-                                    bar
-                  </p>
-</div>,
-              ],
-            ],
-            "className": "listgroup",
-          },
-          "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": "B",
-                "className": "listtext grouptext",
-              },
-              "ref": null,
-              "rendered": "B",
-              "type": "p",
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "alt": "",
-                "src": "line.svg",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": "img",
-            },
-            Object {
-              "instance": null,
-              "key": "sample-bar",
-              "nodeType": "host",
-              "props": Object {
-                "children": Array [
-                  <img
-                    alt=""
-                    className="itemicon"
-                    data-key="sample-bar"
-                    src=""
-/>,
-                  <p
-                    className="listtext itemtext"
-                    data-key="sample-bar"
->
-                    bar
-</p>,
-                ],
-                "className": "listitem",
-                "data-key": "sample-bar",
-                "onClick": [Function],
-              },
-              "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "alt": "",
-                    "className": "itemicon",
-                    "data-key": "sample-bar",
-                    "src": "",
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "img",
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "bar",
-                    "className": "listtext itemtext",
-                    "data-key": "sample-bar",
-                  },
-                  "ref": null,
-                  "rendered": "bar",
-                  "type": "p",
-                },
-              ],
-              "type": "div",
-            },
-          ],
-          "type": "div",
-        },
         Object {
           "instance": null,
           "key": "f",
@@ -845,6 +723,128 @@ ShallowWrapper {
                   },
                   "ref": null,
                   "rendered": "foobar",
+                  "type": "p",
+                },
+              ],
+              "type": "div",
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": "b",
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <p
+                className="listtext grouptext"
+>
+                B
+</p>,
+              <img
+                alt=""
+                src="line.svg"
+/>,
+              Array [
+                <div
+                  className="listitem"
+                  data-key="sample-bar"
+                  onClick={[Function]}
+>
+                  <img
+                                    alt=""
+                                    className="itemicon"
+                                    data-key="sample-bar"
+                                    src=""
+                  />
+                  <p
+                                    className="listtext itemtext"
+                                    data-key="sample-bar"
+                  >
+                                    bar
+                  </p>
+</div>,
+              ],
+            ],
+            "className": "listgroup",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "B",
+                "className": "listtext grouptext",
+              },
+              "ref": null,
+              "rendered": "B",
+              "type": "p",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "alt": "",
+                "src": "line.svg",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "img",
+            },
+            Object {
+              "instance": null,
+              "key": "sample-bar",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <img
+                    alt=""
+                    className="itemicon"
+                    data-key="sample-bar"
+                    src=""
+/>,
+                  <p
+                    className="listtext itemtext"
+                    data-key="sample-bar"
+>
+                    bar
+</p>,
+                ],
+                "className": "listitem",
+                "data-key": "sample-bar",
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "alt": "",
+                    "className": "itemicon",
+                    "data-key": "sample-bar",
+                    "src": "",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "img",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "bar",
+                    "className": "listtext itemtext",
+                    "data-key": "sample-bar",
+                  },
+                  "ref": null,
+                  "rendered": "bar",
                   "type": "p",
                 },
               ],
