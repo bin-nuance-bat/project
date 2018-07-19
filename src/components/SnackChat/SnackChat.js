@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import WebcamCapture from '../WebcamCapture/WebcamCapture';
 import PropTypes from 'prop-types';
 import * as posenet from '@tensorflow-models/posenet';
-import './SnackChat.css';
 import Logo from '../Logo/Logo';
 
 class SnackChat extends Component {
