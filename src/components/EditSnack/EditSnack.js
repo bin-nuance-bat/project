@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ListSelection from '../ListSelection/ListSelection';
+import ListSelection from '../listSelection/ListSelection';
 import Logo from '../Logo/Logo';
 import './EditSnack.css';
 
