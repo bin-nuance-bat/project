@@ -29,7 +29,8 @@ function normalise({x, y}) {
 }
 
 function calcAngles(bodyPart) {
-	bodyPart = normalise(bodyPart);
+	bodyPart.left = normalise(bodyPart.left);
+	bodyPart.right = normalise(bodyPart.right);
 	bodyPart.width = bodyPart.left.x - bodyPart.right.x;
 	bodyPart.height = bodyPart.right.y - bodyPart.left.y;
 	bodyPart.span = Math.sqrt(bodyPart.width ** 2 + bodyPart.height ** 2);
