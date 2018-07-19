@@ -17,10 +17,10 @@ class SnackChat extends Component {
 
 	componentDidMount() {
 		posenet.load(0.5).then(net => this.net = net);
-		requestAnimationFrame(this.update);
 		this.ctx = this.canvas.current.getContext('2d');
 		this.ctx.lineWidth = 5;
 		this.ctx.strokeStyle = 'red';
+		requestAnimationFrame(this.update);
 	}
 
 	componentWillUnmount() {

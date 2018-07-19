@@ -9,9 +9,6 @@ const ML_THRESHOLD = 0.06;
 class ItemRecognition extends Component {
 	model = new Model();
 	webcam = React.createRef();
-	state = {
-		cameraConnected: false
-	}
 
 	componentDidMount() {
 		this.props.setPrediction(null, null);
