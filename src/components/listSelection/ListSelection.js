@@ -4,14 +4,25 @@ import './ListSelection.css';
 import line from './line.svg';
 
 class ListSelection extends Component {
+	isLetter(str) {
+		return str.length === 1 && str.match(/[a-z]/i);
+	}
+
 	formattedItems = (() => {
 		let items = Object.entries(
 			_.groupBy(
 				_.sortBy(this.props.items, 'name'),
-				item => (isNaN(item.name[0]) ? item.name[0] : '#')
+				item =>
+					this.isLetter(item.name[0])
+						? item.name[0].toUpperCase()
+						: '#'
 			)
 		);
-		items.push(items.shift());
+
+		if (items[0][0] === '#') {
+			items.push(items.shift());
+		}
+
 		return items;
 	})();
 
