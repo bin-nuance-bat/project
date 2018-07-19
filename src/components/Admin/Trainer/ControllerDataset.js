@@ -9,9 +9,9 @@ export class ControllerDataset {
 		this.setBusyStatus = setBusyStatus;
 
 		firebase.initializeApp({
-			apiKey: 'AIzaSyCil4dbMoESn0Q0LccFg_dpG4gIa-Z1xro',
-			authDomain: 'honesty-store-kiosk-dev.firebaseapp.com',
-			projectId: 'honesty-store-kiosk-dev'
+			apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+			authDomain: 'honesty-store-kiosk.firebaseapp.com',
+			projectId: 'honesty-store-kiosk'
 		});
 		this.store = firebase.storage();
 		this.db = firebase.firestore();
