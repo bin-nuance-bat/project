@@ -50,6 +50,7 @@ export const sendSlackMessage = username => async (dispatch, getState) => {
 		text=${`Click to purchase your ${itemName}: https://honesty.store/item/${storeCode}`}`);
 		return true;
 	} catch (error) {
+		console.log(error);
 		return false;
 	}
 };
