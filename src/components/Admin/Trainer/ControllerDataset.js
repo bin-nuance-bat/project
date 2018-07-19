@@ -24,15 +24,19 @@ export class ControllerDataset {
 		return itemObj;
 	}
 
+	getItem = label => {
+		this.db
+			.collection('item_data')
+			.doc(label)
+			.get();
+	};
+
 	async addExamples(examples) {
 		if (examples.length < 1) {
 			return;
 		}
 
-		const item = await this.db
-			.collection('item_data')
-			.doc(examples[0].label)
-			.get();
+		const item = this.getItem(examples[0].label);
 
 		this.db
 			.collection('item_data')
