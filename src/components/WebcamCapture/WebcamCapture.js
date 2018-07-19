@@ -15,14 +15,18 @@ class WebcamCapture extends Component {
 
 	webcam = React.createRef();
 
-	setupScreenshotInterval() {
-		this.ticker = setInterval(() => {
+	isConnected = () => {
+		return this.state.cameraConnected;
+	}
+
+	requestScreenshot = () => {
+		return new Promise(resolve => {
 			const img = new Image(224, 224);
-			img.src = this.webcam.current.getScreenshot();
 			img.onload = () => {
-				this.props.onImgLoad(img);
-			};
-		}, this.props.interval);
+				resolve(img);
+			}
+			img.src = this.webcam.current.getScreenshot();
+		});
 	}
 
 	setupWebcam() {
@@ -33,11 +37,13 @@ class WebcamCapture extends Component {
 					cameraConnected: true,
 					isDetecting: false
 				});
-				this.setupScreenshotInterval();
+				if (this.props.onConnect) this.props.onConnect();
+				console.log('Connected');
 			})
-			.catch(() =>
+			.catch((e) => {
+				console.log(e);
 				this.setState({cameraConnected: false, isDetecting: false})
-			);
+			});
 	}
 
 	componentDidMount() {
@@ -72,10 +78,5 @@ class WebcamCapture extends Component {
 		);
 	}
 }
-
-WebcamCapture.propTypes = {
-	onImgLoad: PropTypes.func.isRequired,
-	interval: PropTypes.number.isRequired
-};
 
 export default WebcamCapture;

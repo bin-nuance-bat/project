@@ -8,14 +8,23 @@ const ML_THRESHOLD = 0.06;
 
 class ItemRecognition extends Component {
 	model = new Model();
+	webcam = React.createRef();
+	state = {
+		cameraConnected: false
+	}
 
 	componentDidMount() {
 		this.props.setPrediction(null, null);
 		this.model.load();
 	}
 
+	onConnect = () => {
+		this.webcam.current.requestScreenshot()
+			.then(this.handleImg);
+	}
+
 	handleImg = img => {
-		this.model.predict(img).then(item => {
+		this.model.predict(img).then(async item => {
 			if (
 				item.value > ML_THRESHOLD &&
 				item.id !== '' &&
@@ -23,6 +32,8 @@ class ItemRecognition extends Component {
 			) {
 				this.props.setPrediction(item.id, img.src);
 				this.props.history.push('/confirmitem');
+			} else {
+				this.handleImg(await this.webcam.current.requestScreenshot());
 			}
 		});
 	};
@@ -32,7 +43,7 @@ class ItemRecognition extends Component {
 			<div>
 				<Logo />
 				<header>Hold up your snack to the camera</header>
-				<WebcamCapture onImgLoad={this.handleImg} interval={1000} />
+				<WebcamCapture ref={this.webcam} onConnect={this.onConnect} />
 			</div>
 		);
 	}
