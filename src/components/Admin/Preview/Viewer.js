@@ -53,14 +53,12 @@ export default class Viewer extends Component {
 		});
 	};
 
-	remove = async event => {
+	remove = event => {
 		this.db
 			.collection('training_data')
 			.doc(event.target.dataset.id)
 			.delete()
-			.then(() => {
-				this.getImages();
-			});
+			.then(() => this.getImages());
 
 		this.db
 			.collection('item_data')
@@ -74,6 +72,14 @@ export default class Viewer extends Component {
 						count: doc.data().count - 1
 					});
 			});
+	};
+
+	approve = event => {
+		this.db
+			.collection('training_data')
+			.doc(event.target.dataset.id)
+			.set({trusted: true})
+			.then(() => this.getImages());
 	};
 
 	render() {
@@ -91,7 +97,7 @@ export default class Viewer extends Component {
 					<ImagePreview
 						key={image.id}
 						image={image}
-						remove={this.remove}
+						handleClick={image.trusted ? this.remove : this.approve}
 					/>
 				))}
 			</div>

@@ -7,10 +7,10 @@ const ImagePreview = props => {
 			<img src={props.image.uri} alt={props.image.id} />
 			<br />
 			<button
-				onClick={props.remove}
+				onClick={props.handleClick}
 				data-id={props.image.id}
 				data-item={props.image.item}>
-				Remove
+				{props.image.trusted ? 'Remove' : 'Approve'}
 			</button>
 		</div>
 	);
