@@ -33,7 +33,7 @@ class SnackChat extends Component {
 			return;
 		}
 
-		if (this.state.counter == 0 && !this.state.captured) {
+		if (this.state.counter === 0 && !this.state.captured) {
 			clearInterval(this.timer);
 			this.setState({captured: true});
 			this.props.setSnackChat(this.canvas.current.toDataURL());
