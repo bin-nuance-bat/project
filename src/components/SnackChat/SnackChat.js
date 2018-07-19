@@ -37,6 +37,8 @@ class SnackChat extends Component {
 			clearInterval(this.timer);
 			this.setState({captured: true});
 			this.props.setSnackChat(this.canvas.current.toDataURL());
+			this.props.history.push('/slackname');
+			return;
 		}
 		
 		const video = this.webcam.current.webcam.current.video;
