@@ -18,7 +18,7 @@ describe('<WebcamCapture />', () => {
 	it('Renders webcam with screenshot width of 4/3 * imgSize', () => {
 		const wrapper = shallow(<WebcamCapture imgSize={300} />);
 		wrapper.setState({isDetecting: false, cameraConnected: true});
-		expect(wrapper.find(Webcam).props().screenshotWidth).toEqual(300 * 4/3);
+		expect(wrapper.find(Webcam).props().screenshotWidth).toEqual(400);
 	});
 
 	it('Renders webcam with screenshot format of jpeg', () => {
