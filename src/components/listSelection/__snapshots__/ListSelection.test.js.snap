@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Gnerates the list correctly 1`] = `
+exports[`Generates the list correctly 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
@@ -8,19 +8,64 @@ ShallowWrapper {
     items={
         Array [
             Object {
-              "id": "sample-foo",
-              "image": "",
-              "name": "foo",
+              "count": 979,
+              "id": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
+              "image": "misc-bar.svg",
+              "isMarketplace": true,
+              "name": "Granulated Sugar",
+              "price": Object {
+                "breakdown": Object {
+                  "VAT": 0,
+                  "creditCardFee": 0,
+                  "donation": 0,
+                  "handlingFee": 0,
+                  "serviceFee": 1,
+                  "wholesaleCost": 5,
+                },
+                "total": 6,
+              },
+              "qualifier": "2 Teaspoons",
+              "sellerId": "318ff9ec-4cd3-4eff-8f12-76f1e3ffa835",
             },
             Object {
-              "id": "sample-bar",
-              "image": "",
-              "name": "bar",
+              "count": 0,
+              "id": "f589039e-c93b-45c1-99fc-1ee457ecb570",
+              "image": "misc-crisps.svg",
+              "isMarketplace": false,
+              "name": "Wotsits",
+              "price": Object {
+                "breakdown": Object {
+                  "VAT": 0,
+                  "creditCardFee": 0,
+                  "donation": 0,
+                  "handlingFee": 0,
+                  "serviceFee": 3,
+                  "wholesaleCost": 22,
+                },
+                "total": 25,
+              },
+              "qualifier": null,
+              "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633",
             },
             Object {
-              "id": "sample-foobar",
-              "image": "",
-              "name": "foobar",
+              "count": -8,
+              "id": "e615de4e-ce10-451b-80ad-9717662a904a",
+              "image": "pepsi-max-can.svg",
+              "isMarketplace": false,
+              "name": "Pepsi Max",
+              "price": Object {
+                "breakdown": Object {
+                  "VAT": 0,
+                  "creditCardFee": 0,
+                  "donation": 0,
+                  "handlingFee": 0,
+                  "serviceFee": 4,
+                  "wholesaleCost": 34,
+                },
+                "total": 38,
+              },
+              "qualifier": null,
+              "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633",
             },
           ]
     }
@@ -39,101 +84,108 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": Array [
-        <div
-          className="listgroup"
->
+        <div>
           <p
-                    className="listtext grouptext"
+                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
           >
-                    F
+                    P
           </p>
           <img
                     alt=""
                     src="line.svg"
           />
           <div
-                    className="listitem"
-                    data-key="sample-foo"
+                    className="list-selection list-selection--list-item"
+                    data-key="e615de4e-ce10-451b-80ad-9717662a904a"
                     onClick={[Function]}
           >
                     <img
                               alt=""
-                              className="itemicon"
-                              data-key="sample-foo"
-                              src=""
+                              className="list-selection list-selection--item-icon"
+                              data-key="e615de4e-ce10-451b-80ad-9717662a904a"
+                              src="pepsi-max-can.svg"
                     />
                     <p
-                              className="listtext itemtext"
-                              data-key="sample-foo"
+                              className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                              data-key="e615de4e-ce10-451b-80ad-9717662a904a"
                     >
-                              foo
-                    </p>
-          </div>
-          <div
-                    className="listitem"
-                    data-key="sample-foobar"
-                    onClick={[Function]}
-          >
-                    <img
-                              alt=""
-                              className="itemicon"
-                              data-key="sample-foobar"
-                              src=""
-                    />
-                    <p
-                              className="listtext itemtext"
-                              data-key="sample-foobar"
-                    >
-                              foobar
+                              Pepsi Max
                     </p>
           </div>
 </div>,
-        <div
-          className="listgroup"
->
+        <div>
           <p
-                    className="listtext grouptext"
+                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
           >
-                    B
+                    W
           </p>
           <img
                     alt=""
                     src="line.svg"
           />
           <div
-                    className="listitem"
-                    data-key="sample-bar"
+                    className="list-selection list-selection--list-item"
+                    data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
                     onClick={[Function]}
           >
                     <img
                               alt=""
-                              className="itemicon"
-                              data-key="sample-bar"
-                              src=""
+                              className="list-selection list-selection--item-icon"
+                              data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
+                              src="misc-crisps.svg"
                     />
                     <p
-                              className="listtext itemtext"
-                              data-key="sample-bar"
+                              className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                              data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
                     >
-                              bar
+                              Wotsits
+                    </p>
+          </div>
+</div>,
+        <div>
+          <p
+                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+          >
+                    G
+          </p>
+          <img
+                    alt=""
+                    src="line.svg"
+          />
+          <div
+                    className="list-selection list-selection--list-item"
+                    data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                    onClick={[Function]}
+          >
+                    <img
+                              alt=""
+                              className="list-selection list-selection--item-icon"
+                              data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                              src="misc-bar.svg"
+                    />
+                    <p
+                              className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                              data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                    >
+                              Granulated Sugar
                     </p>
           </div>
 </div>,
       ],
-      "className": "listselection",
+      "className": "list-selection list-selection--body",
     },
     "ref": null,
     "rendered": Array [
       Object {
         "instance": null,
-        "key": "f",
+        "key": "P",
         "nodeType": "host",
         "props": Object {
           "children": Array [
             <p
-              className="listtext grouptext"
+              className="list-selection list-selection--list-text list-selection--list-text--group-header"
 >
-              F
+              P
 </p>,
             <img
               alt=""
@@ -141,44 +193,25 @@ ShallowWrapper {
 />,
             Array [
               <div
-                className="listitem"
-                data-key="sample-foo"
+                className="list-selection list-selection--list-item"
+                data-key="e615de4e-ce10-451b-80ad-9717662a904a"
                 onClick={[Function]}
 >
                 <img
                                 alt=""
-                                className="itemicon"
-                                data-key="sample-foo"
-                                src=""
+                                className="list-selection list-selection--item-icon"
+                                data-key="e615de4e-ce10-451b-80ad-9717662a904a"
+                                src="pepsi-max-can.svg"
                 />
                 <p
-                                className="listtext itemtext"
-                                data-key="sample-foo"
+                                className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                data-key="e615de4e-ce10-451b-80ad-9717662a904a"
                 >
-                                foo
-                </p>
-</div>,
-              <div
-                className="listitem"
-                data-key="sample-foobar"
-                onClick={[Function]}
->
-                <img
-                                alt=""
-                                className="itemicon"
-                                data-key="sample-foobar"
-                                src=""
-                />
-                <p
-                                className="listtext itemtext"
-                                data-key="sample-foobar"
-                >
-                                foobar
+                                Pepsi Max
                 </p>
 </div>,
             ],
           ],
-          "className": "listgroup",
         },
         "ref": null,
         "rendered": Array [
@@ -187,11 +220,11 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "host",
             "props": Object {
-              "children": "F",
-              "className": "listtext grouptext",
+              "children": "P",
+              "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
             },
             "ref": null,
-            "rendered": "F",
+            "rendered": "P",
             "type": "p",
           },
           Object {
@@ -208,25 +241,25 @@ ShallowWrapper {
           },
           Object {
             "instance": null,
-            "key": "sample-foo",
+            "key": "e615de4e-ce10-451b-80ad-9717662a904a",
             "nodeType": "host",
             "props": Object {
               "children": Array [
                 <img
                   alt=""
-                  className="itemicon"
-                  data-key="sample-foo"
-                  src=""
+                  className="list-selection list-selection--item-icon"
+                  data-key="e615de4e-ce10-451b-80ad-9717662a904a"
+                  src="pepsi-max-can.svg"
 />,
                 <p
-                  className="listtext itemtext"
-                  data-key="sample-foo"
+                  className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                  data-key="e615de4e-ce10-451b-80ad-9717662a904a"
 >
-                  foo
+                  Pepsi Max
 </p>,
               ],
-              "className": "listitem",
-              "data-key": "sample-foo",
+              "className": "list-selection list-selection--list-item",
+              "data-key": "e615de4e-ce10-451b-80ad-9717662a904a",
               "onClick": [Function],
             },
             "ref": null,
@@ -237,9 +270,9 @@ ShallowWrapper {
                 "nodeType": "host",
                 "props": Object {
                   "alt": "",
-                  "className": "itemicon",
-                  "data-key": "sample-foo",
-                  "src": "",
+                  "className": "list-selection list-selection--item-icon",
+                  "data-key": "e615de4e-ce10-451b-80ad-9717662a904a",
+                  "src": "pepsi-max-can.svg",
                 },
                 "ref": null,
                 "rendered": null,
@@ -250,67 +283,12 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "host",
                 "props": Object {
-                  "children": "foo",
-                  "className": "listtext itemtext",
-                  "data-key": "sample-foo",
+                  "children": "Pepsi Max",
+                  "className": "list-selection list-selection--list-text list-selection--list-text--item-name",
+                  "data-key": "e615de4e-ce10-451b-80ad-9717662a904a",
                 },
                 "ref": null,
-                "rendered": "foo",
-                "type": "p",
-              },
-            ],
-            "type": "div",
-          },
-          Object {
-            "instance": null,
-            "key": "sample-foobar",
-            "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                <img
-                  alt=""
-                  className="itemicon"
-                  data-key="sample-foobar"
-                  src=""
-/>,
-                <p
-                  className="listtext itemtext"
-                  data-key="sample-foobar"
->
-                  foobar
-</p>,
-              ],
-              "className": "listitem",
-              "data-key": "sample-foobar",
-              "onClick": [Function],
-            },
-            "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "alt": "",
-                  "className": "itemicon",
-                  "data-key": "sample-foobar",
-                  "src": "",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "img",
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "foobar",
-                  "className": "listtext itemtext",
-                  "data-key": "sample-foobar",
-                },
-                "ref": null,
-                "rendered": "foobar",
+                "rendered": "Pepsi Max",
                 "type": "p",
               },
             ],
@@ -321,14 +299,14 @@ ShallowWrapper {
       },
       Object {
         "instance": null,
-        "key": "b",
+        "key": "W",
         "nodeType": "host",
         "props": Object {
           "children": Array [
             <p
-              className="listtext grouptext"
+              className="list-selection list-selection--list-text list-selection--list-text--group-header"
 >
-              B
+              W
 </p>,
             <img
               alt=""
@@ -336,26 +314,25 @@ ShallowWrapper {
 />,
             Array [
               <div
-                className="listitem"
-                data-key="sample-bar"
+                className="list-selection list-selection--list-item"
+                data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
                 onClick={[Function]}
 >
                 <img
                                 alt=""
-                                className="itemicon"
-                                data-key="sample-bar"
-                                src=""
+                                className="list-selection list-selection--item-icon"
+                                data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
+                                src="misc-crisps.svg"
                 />
                 <p
-                                className="listtext itemtext"
-                                data-key="sample-bar"
+                                className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
                 >
-                                bar
+                                Wotsits
                 </p>
 </div>,
             ],
           ],
-          "className": "listgroup",
         },
         "ref": null,
         "rendered": Array [
@@ -364,11 +341,11 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "host",
             "props": Object {
-              "children": "B",
-              "className": "listtext grouptext",
+              "children": "W",
+              "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
             },
             "ref": null,
-            "rendered": "B",
+            "rendered": "W",
             "type": "p",
           },
           Object {
@@ -385,25 +362,25 @@ ShallowWrapper {
           },
           Object {
             "instance": null,
-            "key": "sample-bar",
+            "key": "f589039e-c93b-45c1-99fc-1ee457ecb570",
             "nodeType": "host",
             "props": Object {
               "children": Array [
                 <img
                   alt=""
-                  className="itemicon"
-                  data-key="sample-bar"
-                  src=""
+                  className="list-selection list-selection--item-icon"
+                  data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
+                  src="misc-crisps.svg"
 />,
                 <p
-                  className="listtext itemtext"
-                  data-key="sample-bar"
+                  className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                  data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
 >
-                  bar
+                  Wotsits
 </p>,
               ],
-              "className": "listitem",
-              "data-key": "sample-bar",
+              "className": "list-selection list-selection--list-item",
+              "data-key": "f589039e-c93b-45c1-99fc-1ee457ecb570",
               "onClick": [Function],
             },
             "ref": null,
@@ -414,9 +391,9 @@ ShallowWrapper {
                 "nodeType": "host",
                 "props": Object {
                   "alt": "",
-                  "className": "itemicon",
-                  "data-key": "sample-bar",
-                  "src": "",
+                  "className": "list-selection list-selection--item-icon",
+                  "data-key": "f589039e-c93b-45c1-99fc-1ee457ecb570",
+                  "src": "misc-crisps.svg",
                 },
                 "ref": null,
                 "rendered": null,
@@ -427,12 +404,133 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "host",
                 "props": Object {
-                  "children": "bar",
-                  "className": "listtext itemtext",
-                  "data-key": "sample-bar",
+                  "children": "Wotsits",
+                  "className": "list-selection list-selection--list-text list-selection--list-text--item-name",
+                  "data-key": "f589039e-c93b-45c1-99fc-1ee457ecb570",
                 },
                 "ref": null,
-                "rendered": "bar",
+                "rendered": "Wotsits",
+                "type": "p",
+              },
+            ],
+            "type": "div",
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": "G",
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <p
+              className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+              G
+</p>,
+            <img
+              alt=""
+              src="line.svg"
+/>,
+            Array [
+              <div
+                className="list-selection list-selection--list-item"
+                data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                onClick={[Function]}
+>
+                <img
+                                alt=""
+                                className="list-selection list-selection--item-icon"
+                                data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                                src="misc-bar.svg"
+                />
+                <p
+                                className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                >
+                                Granulated Sugar
+                </p>
+</div>,
+            ],
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "G",
+              "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+            },
+            "ref": null,
+            "rendered": "G",
+            "type": "p",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "alt": "",
+              "src": "line.svg",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "img",
+          },
+          Object {
+            "instance": null,
+            "key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <img
+                  alt=""
+                  className="list-selection list-selection--item-icon"
+                  data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                  src="misc-bar.svg"
+/>,
+                <p
+                  className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                  data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+>
+                  Granulated Sugar
+</p>,
+              ],
+              "className": "list-selection list-selection--list-item",
+              "data-key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
+              "onClick": [Function],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "alt": "",
+                  "className": "list-selection list-selection--item-icon",
+                  "data-key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
+                  "src": "misc-bar.svg",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "img",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "Granulated Sugar",
+                  "className": "list-selection list-selection--list-text list-selection--list-text--item-name",
+                  "data-key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
+                },
+                "ref": null,
+                "rendered": "Granulated Sugar",
                 "type": "p",
               },
             ],
@@ -451,101 +549,108 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
-          <div
-            className="listgroup"
->
+          <div>
             <p
-                        className="listtext grouptext"
+                        className="list-selection list-selection--list-text list-selection--list-text--group-header"
             >
-                        F
+                        P
             </p>
             <img
                         alt=""
                         src="line.svg"
             />
             <div
-                        className="listitem"
-                        data-key="sample-foo"
+                        className="list-selection list-selection--list-item"
+                        data-key="e615de4e-ce10-451b-80ad-9717662a904a"
                         onClick={[Function]}
             >
                         <img
                                     alt=""
-                                    className="itemicon"
-                                    data-key="sample-foo"
-                                    src=""
+                                    className="list-selection list-selection--item-icon"
+                                    data-key="e615de4e-ce10-451b-80ad-9717662a904a"
+                                    src="pepsi-max-can.svg"
                         />
                         <p
-                                    className="listtext itemtext"
-                                    data-key="sample-foo"
+                                    className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                    data-key="e615de4e-ce10-451b-80ad-9717662a904a"
                         >
-                                    foo
-                        </p>
-            </div>
-            <div
-                        className="listitem"
-                        data-key="sample-foobar"
-                        onClick={[Function]}
-            >
-                        <img
-                                    alt=""
-                                    className="itemicon"
-                                    data-key="sample-foobar"
-                                    src=""
-                        />
-                        <p
-                                    className="listtext itemtext"
-                                    data-key="sample-foobar"
-                        >
-                                    foobar
+                                    Pepsi Max
                         </p>
             </div>
 </div>,
-          <div
-            className="listgroup"
->
+          <div>
             <p
-                        className="listtext grouptext"
+                        className="list-selection list-selection--list-text list-selection--list-text--group-header"
             >
-                        B
+                        W
             </p>
             <img
                         alt=""
                         src="line.svg"
             />
             <div
-                        className="listitem"
-                        data-key="sample-bar"
+                        className="list-selection list-selection--list-item"
+                        data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
                         onClick={[Function]}
             >
                         <img
                                     alt=""
-                                    className="itemicon"
-                                    data-key="sample-bar"
-                                    src=""
+                                    className="list-selection list-selection--item-icon"
+                                    data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
+                                    src="misc-crisps.svg"
                         />
                         <p
-                                    className="listtext itemtext"
-                                    data-key="sample-bar"
+                                    className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                    data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
                         >
-                                    bar
+                                    Wotsits
+                        </p>
+            </div>
+</div>,
+          <div>
+            <p
+                        className="list-selection list-selection--list-text list-selection--list-text--group-header"
+            >
+                        G
+            </p>
+            <img
+                        alt=""
+                        src="line.svg"
+            />
+            <div
+                        className="list-selection list-selection--list-item"
+                        data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                        onClick={[Function]}
+            >
+                        <img
+                                    alt=""
+                                    className="list-selection list-selection--item-icon"
+                                    data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                                    src="misc-bar.svg"
+                        />
+                        <p
+                                    className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                    data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                        >
+                                    Granulated Sugar
                         </p>
             </div>
 </div>,
         ],
-        "className": "listselection",
+        "className": "list-selection list-selection--body",
       },
       "ref": null,
       "rendered": Array [
         Object {
           "instance": null,
-          "key": "f",
+          "key": "P",
           "nodeType": "host",
           "props": Object {
             "children": Array [
               <p
-                className="listtext grouptext"
+                className="list-selection list-selection--list-text list-selection--list-text--group-header"
 >
-                F
+                P
 </p>,
               <img
                 alt=""
@@ -553,44 +658,25 @@ ShallowWrapper {
 />,
               Array [
                 <div
-                  className="listitem"
-                  data-key="sample-foo"
+                  className="list-selection list-selection--list-item"
+                  data-key="e615de4e-ce10-451b-80ad-9717662a904a"
                   onClick={[Function]}
 >
                   <img
                                     alt=""
-                                    className="itemicon"
-                                    data-key="sample-foo"
-                                    src=""
+                                    className="list-selection list-selection--item-icon"
+                                    data-key="e615de4e-ce10-451b-80ad-9717662a904a"
+                                    src="pepsi-max-can.svg"
                   />
                   <p
-                                    className="listtext itemtext"
-                                    data-key="sample-foo"
+                                    className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                    data-key="e615de4e-ce10-451b-80ad-9717662a904a"
                   >
-                                    foo
-                  </p>
-</div>,
-                <div
-                  className="listitem"
-                  data-key="sample-foobar"
-                  onClick={[Function]}
->
-                  <img
-                                    alt=""
-                                    className="itemicon"
-                                    data-key="sample-foobar"
-                                    src=""
-                  />
-                  <p
-                                    className="listtext itemtext"
-                                    data-key="sample-foobar"
-                  >
-                                    foobar
+                                    Pepsi Max
                   </p>
 </div>,
               ],
             ],
-            "className": "listgroup",
           },
           "ref": null,
           "rendered": Array [
@@ -599,11 +685,11 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "host",
               "props": Object {
-                "children": "F",
-                "className": "listtext grouptext",
+                "children": "P",
+                "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
               },
               "ref": null,
-              "rendered": "F",
+              "rendered": "P",
               "type": "p",
             },
             Object {
@@ -620,25 +706,25 @@ ShallowWrapper {
             },
             Object {
               "instance": null,
-              "key": "sample-foo",
+              "key": "e615de4e-ce10-451b-80ad-9717662a904a",
               "nodeType": "host",
               "props": Object {
                 "children": Array [
                   <img
                     alt=""
-                    className="itemicon"
-                    data-key="sample-foo"
-                    src=""
+                    className="list-selection list-selection--item-icon"
+                    data-key="e615de4e-ce10-451b-80ad-9717662a904a"
+                    src="pepsi-max-can.svg"
 />,
                   <p
-                    className="listtext itemtext"
-                    data-key="sample-foo"
+                    className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                    data-key="e615de4e-ce10-451b-80ad-9717662a904a"
 >
-                    foo
+                    Pepsi Max
 </p>,
                 ],
-                "className": "listitem",
-                "data-key": "sample-foo",
+                "className": "list-selection list-selection--list-item",
+                "data-key": "e615de4e-ce10-451b-80ad-9717662a904a",
                 "onClick": [Function],
               },
               "ref": null,
@@ -649,9 +735,9 @@ ShallowWrapper {
                   "nodeType": "host",
                   "props": Object {
                     "alt": "",
-                    "className": "itemicon",
-                    "data-key": "sample-foo",
-                    "src": "",
+                    "className": "list-selection list-selection--item-icon",
+                    "data-key": "e615de4e-ce10-451b-80ad-9717662a904a",
+                    "src": "pepsi-max-can.svg",
                   },
                   "ref": null,
                   "rendered": null,
@@ -662,67 +748,12 @@ ShallowWrapper {
                   "key": undefined,
                   "nodeType": "host",
                   "props": Object {
-                    "children": "foo",
-                    "className": "listtext itemtext",
-                    "data-key": "sample-foo",
+                    "children": "Pepsi Max",
+                    "className": "list-selection list-selection--list-text list-selection--list-text--item-name",
+                    "data-key": "e615de4e-ce10-451b-80ad-9717662a904a",
                   },
                   "ref": null,
-                  "rendered": "foo",
-                  "type": "p",
-                },
-              ],
-              "type": "div",
-            },
-            Object {
-              "instance": null,
-              "key": "sample-foobar",
-              "nodeType": "host",
-              "props": Object {
-                "children": Array [
-                  <img
-                    alt=""
-                    className="itemicon"
-                    data-key="sample-foobar"
-                    src=""
-/>,
-                  <p
-                    className="listtext itemtext"
-                    data-key="sample-foobar"
->
-                    foobar
-</p>,
-                ],
-                "className": "listitem",
-                "data-key": "sample-foobar",
-                "onClick": [Function],
-              },
-              "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "alt": "",
-                    "className": "itemicon",
-                    "data-key": "sample-foobar",
-                    "src": "",
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "img",
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "foobar",
-                    "className": "listtext itemtext",
-                    "data-key": "sample-foobar",
-                  },
-                  "ref": null,
-                  "rendered": "foobar",
+                  "rendered": "Pepsi Max",
                   "type": "p",
                 },
               ],
@@ -733,14 +764,14 @@ ShallowWrapper {
         },
         Object {
           "instance": null,
-          "key": "b",
+          "key": "W",
           "nodeType": "host",
           "props": Object {
             "children": Array [
               <p
-                className="listtext grouptext"
+                className="list-selection list-selection--list-text list-selection--list-text--group-header"
 >
-                B
+                W
 </p>,
               <img
                 alt=""
@@ -748,26 +779,25 @@ ShallowWrapper {
 />,
               Array [
                 <div
-                  className="listitem"
-                  data-key="sample-bar"
+                  className="list-selection list-selection--list-item"
+                  data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
                   onClick={[Function]}
 >
                   <img
                                     alt=""
-                                    className="itemicon"
-                                    data-key="sample-bar"
-                                    src=""
+                                    className="list-selection list-selection--item-icon"
+                                    data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
+                                    src="misc-crisps.svg"
                   />
                   <p
-                                    className="listtext itemtext"
-                                    data-key="sample-bar"
+                                    className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                    data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
                   >
-                                    bar
+                                    Wotsits
                   </p>
 </div>,
               ],
             ],
-            "className": "listgroup",
           },
           "ref": null,
           "rendered": Array [
@@ -776,11 +806,11 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "host",
               "props": Object {
-                "children": "B",
-                "className": "listtext grouptext",
+                "children": "W",
+                "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
               },
               "ref": null,
-              "rendered": "B",
+              "rendered": "W",
               "type": "p",
             },
             Object {
@@ -797,25 +827,25 @@ ShallowWrapper {
             },
             Object {
               "instance": null,
-              "key": "sample-bar",
+              "key": "f589039e-c93b-45c1-99fc-1ee457ecb570",
               "nodeType": "host",
               "props": Object {
                 "children": Array [
                   <img
                     alt=""
-                    className="itemicon"
-                    data-key="sample-bar"
-                    src=""
+                    className="list-selection list-selection--item-icon"
+                    data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
+                    src="misc-crisps.svg"
 />,
                   <p
-                    className="listtext itemtext"
-                    data-key="sample-bar"
+                    className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                    data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
 >
-                    bar
+                    Wotsits
 </p>,
                 ],
-                "className": "listitem",
-                "data-key": "sample-bar",
+                "className": "list-selection list-selection--list-item",
+                "data-key": "f589039e-c93b-45c1-99fc-1ee457ecb570",
                 "onClick": [Function],
               },
               "ref": null,
@@ -826,9 +856,9 @@ ShallowWrapper {
                   "nodeType": "host",
                   "props": Object {
                     "alt": "",
-                    "className": "itemicon",
-                    "data-key": "sample-bar",
-                    "src": "",
+                    "className": "list-selection list-selection--item-icon",
+                    "data-key": "f589039e-c93b-45c1-99fc-1ee457ecb570",
+                    "src": "misc-crisps.svg",
                   },
                   "ref": null,
                   "rendered": null,
@@ -839,12 +869,133 @@ ShallowWrapper {
                   "key": undefined,
                   "nodeType": "host",
                   "props": Object {
-                    "children": "bar",
-                    "className": "listtext itemtext",
-                    "data-key": "sample-bar",
+                    "children": "Wotsits",
+                    "className": "list-selection list-selection--list-text list-selection--list-text--item-name",
+                    "data-key": "f589039e-c93b-45c1-99fc-1ee457ecb570",
                   },
                   "ref": null,
-                  "rendered": "bar",
+                  "rendered": "Wotsits",
+                  "type": "p",
+                },
+              ],
+              "type": "div",
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": "G",
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <p
+                className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                G
+</p>,
+              <img
+                alt=""
+                src="line.svg"
+/>,
+              Array [
+                <div
+                  className="list-selection list-selection--list-item"
+                  data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                  onClick={[Function]}
+>
+                  <img
+                                    alt=""
+                                    className="list-selection list-selection--item-icon"
+                                    data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                                    src="misc-bar.svg"
+                  />
+                  <p
+                                    className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                    data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                  >
+                                    Granulated Sugar
+                  </p>
+</div>,
+              ],
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "G",
+                "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+              },
+              "ref": null,
+              "rendered": "G",
+              "type": "p",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "alt": "",
+                "src": "line.svg",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "img",
+            },
+            Object {
+              "instance": null,
+              "key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <img
+                    alt=""
+                    className="list-selection list-selection--item-icon"
+                    data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                    src="misc-bar.svg"
+/>,
+                  <p
+                    className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                    data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+>
+                    Granulated Sugar
+</p>,
+                ],
+                "className": "list-selection list-selection--list-item",
+                "data-key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "alt": "",
+                    "className": "list-selection list-selection--item-icon",
+                    "data-key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
+                    "src": "misc-bar.svg",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "img",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "Granulated Sugar",
+                    "className": "list-selection list-selection--list-text list-selection--list-text--item-name",
+                    "data-key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
+                  },
+                  "ref": null,
+                  "rendered": "Granulated Sugar",
                   "type": "p",
                 },
               ],

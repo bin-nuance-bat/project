@@ -4,14 +4,13 @@ $icon-distance: 56px;
 $icon-width: 48px;
 $item-text-distance: 24px;
 
-.itemicon {
+.list-selection--item-icon {
 	width: $icon-width;
 	height: $icon-width;
 	position: absolute;
 	left: $icon-distance;
 }
-
-.listselection {
+.list-selection--body {
 	padding-top: 32px;
 	height: $icon-width;
 	background-color: $white;
@@ -20,23 +19,23 @@ $item-text-distance: 24px;
 	width: 100%;
 }
 
-.listtext {
+.list-selection--list-text {
 	color: $text-blue;
 	font-size: 30px;
 	position: relative;
 	text-align: left;
+
+	&--group-header {
+		padding-left: 32px;
+	}
+
+	&--item-name {
+		padding-left: $icon-distance + $icon-width + $item-text-distance;
+	}
 }
 
-.listitem {
+.list-selection--list-item {
 	padding-bottom: 94px;
 	vertical-align: middle;
 	height: $icon-width;
-}
-
-.itemtext {
-	padding-left: $icon-distance + $icon-width + $item-text-distance;
-}
-
-.grouptext {
-	padding-left: 32px;
 }
