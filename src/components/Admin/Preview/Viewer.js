@@ -4,7 +4,6 @@ import 'firebase/firestore';
 import ItemSelector from '../ItemSelector';
 import ImagePreview from './ImagePreview';
 import getStore from '../../../utils/honestyStore.js';
-import {update} from '@tensorflow/tfjs-layers/dist/variables';
 
 export default class Viewer extends Component {
 	state = {
