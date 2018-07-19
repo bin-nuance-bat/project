@@ -48,28 +48,16 @@ export default class Viewer extends Component {
 		});
 	};
 
-	changeItemCount = (label, delta) => {
-		const item = this.controllerDataset.getItemReference(label);
-		this.controllerDataset.setItemCount(
-			item,
-			this.controllerDataset.getItemCount(item) + delta
-		);
-	};
-
 	remove = event => {
 		this.controllerDataset
-			.deleteImage(event.target.dataset.id)
+			.deleteImage(event.target.dataset)
 			.then(() => this.getImages());
-
-		this.changeItemCount(event.target.dataset.item, -1);
 	};
 
 	trust = event => {
 		this.controllerDataset
-			.trustImage(event.target.dataset.id)
+			.trustImage(event.target.dataset)
 			.then(() => this.getImages());
-
-		this.changeItemCount(event.target.dataset.item, 1);
 	};
 
 	render() {
