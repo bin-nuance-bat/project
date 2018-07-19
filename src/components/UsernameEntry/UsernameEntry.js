@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './UsernameEntry.css';
 import Logo from '../Logo/Logo';
-import ButtonList from '../ButtonList/ButtonList';
+import ListSelection from '../listSelection/ListSelection';
 
 class UsernameEntry extends React.Component {
 	sendReminder = async name => {
@@ -23,9 +23,9 @@ class UsernameEntry extends React.Component {
 					Please select your slack handle to send a reminder
 				</div>
 				<div>
-					<ButtonList
+					<ListSelection
 						items={this.props.users}
-						handleClick={(id, name) => this.sendReminder(name)}
+						handleClick={id => this.sendReminder(id)}
 					/>
 				</div>
 				<button className="button button-next">Next</button>
