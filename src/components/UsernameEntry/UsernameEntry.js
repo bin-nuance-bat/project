@@ -23,12 +23,17 @@ class UsernameEntry extends React.Component {
 					Please select your slack handle to send a reminder
 				</div>
 				<div>
-					<ListSelection
-						items={this.props.users}
-						handleClick={id => this.sendReminder(id)}
-					/>
+					{this.props.users.length !== 0 && (
+						<ListSelection
+							items={this.props.users.map(user => ({
+								name: user.name,
+								id: user.name,
+								image: user.profile['image_48']
+							}))}
+							onClick={name => this.sendReminder(name)}
+						/>
+					)}
 				</div>
-				<button className="button button-next">Next</button>
 			</div>
 		);
 	}
