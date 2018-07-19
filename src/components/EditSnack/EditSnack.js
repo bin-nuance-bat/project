@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ListSelection from '../ListSelection/ListSelection';
+import ListSelection from '../listSelection/ListSelection';
 import Logo from '../Logo/Logo';
 import './EditSnack.css';
 
@@ -17,9 +17,7 @@ const EditSnack = props => {
 
 		if (imgFilesObject[relativeImagePath]) {
 			actualImagePath =
-				'./' + item.image.endsWith('.svg')
-					? './' + item.image
-					: './' + item.image + '.svg';
+				'./' + item.image + (item.image.endsWith('.svg') ? '' : '.svg');
 		} else {
 			actualImagePath = './misc-bar.svg';
 		}
@@ -34,8 +32,10 @@ const EditSnack = props => {
 		<div>
 			<Logo />
 			<div className="textinfo">
-				Sorry, I can’t recognise that snack <br />
-				Please select it below
+				<nobr>
+					Sorry, I can’t recognise that snack. <br /> Please select it
+					below
+				</nobr>
 			</div>
 			<ListSelection
 				items={items}
