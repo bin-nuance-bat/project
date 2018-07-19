@@ -6,113 +6,69 @@ import './SnackChat.css';
 import Logo from '../Logo/Logo';
 
 class SnackChat extends Component {
-	initialTime = new Date();
-	svgHeight = 100; // TODO make webcam width and selected item props + retrieve h + w from svg for given item
-	svgWidth = 50;
 	feedWidth = 400;
-	feedRef = React.createRef();
+	webcam = React.createRef();
 	canvas = React.createRef();
 
 	state = {
 		counter: 5,
-		overlayX: undefined,
-		overlayY: undefined,
-		overlayScale: 1,
-		overlayRotation: 0
-	};
-
-	loadPosenet = async () => {
-		this.net = await posenet.load(0.5);
+		captured: false
 	};
 
 	componentDidMount() {
-		this.timer = setInterval(this.tick, 1000);
-		this.loadPosenet();
+		posenet.load(0.5).then(net => this.net = net);
+		requestAnimationFrame(this.update);
+		this.ctx = this.canvas.current.getContext('2d');
+		this.ctx.lineWidth = 5;
+		this.ctx.strokeStyle = 'red';
 	}
 
-	tick = () => {
-		if (this.state.counter > -1)
-			this.setState(prevState => ({counter: prevState.counter - 1}));
-		else clearInterval(this.timer);
-	};
+	componentWillUnmount() {
+		clearInterval(this.timer);
+	}
 
-	handleImg = async img => {
-		const ctx = this.canvas.current.getContext('2d');
-		ctx.drawImage(img, 0, 0);
+	update = async () => {
+		if (!this.webcam.current.webcam.current || !this.net) {
+			requestAnimationFrame(this.update);
+			return;
+		}
 
+		if (this.state.counter == 0 && !this.state.captured) {
+			clearInterval(this.timer);
+			this.setState({captured: true});
+			this.props.setSnackChat(this.canvas.current.toDataURL());
+		}
+		
+		const video = this.webcam.current.webcam.current.video;
+
+		this.ctx.save();
+		this.ctx.scale(-1, 1);
+		this.ctx.drawImage(video, (video.videoWidth - video.width) / 2 - video.videoWidth, -(video.videoHeight - video.height) / 2);
+		this.ctx.restore();
+	
 		const pose = await this.net.estimateSinglePose(
-			img,
+			this.webcam.current.webcam.current.video,
 			0.5,
-			false,
+			true,
 			16
 		);
 
 		let leftShoulderPosition = pose.keypoints[5].position;
 		let rightShoulderPosition = pose.keypoints[6].position;
 
-		ctx.beginPath();
-		ctx.moveTo(leftShoulderPosition.x, leftShoulderPosition.y);
-		ctx.lineTo(rightShoulderPosition.x, rightShoulderPosition.y);
-		ctx.strokeStyle = 'red';
-		ctx.stroke();
+		this.ctx.beginPath();
+		this.ctx.moveTo(leftShoulderPosition.x, leftShoulderPosition.y);
+		this.ctx.lineTo(rightShoulderPosition.x, rightShoulderPosition.y);
+		this.ctx.stroke();
 
-		/* 		if (this.state.counter === 0) {
-			const canvas = document.createElement('canvas');
-			canvas.width = this.feedWidth;
-			canvas.height = this.feedWidth;
-			const ctx = canvas.getContext('2d');
-			ctx.drawImage(img, 0, 0);
-			console.log(this.feedRef.current);
-			window.test = this.feedRef.current;
-			
-			const overlay = new Image();
-			overlay.onload = () => {
-				console.log(overlay)
-				ctx.drawImage(overlay, 0, 0);
-				document.body.appendChild(canvas);
-			}
-			overlay.src = 'data:image/svg+xml;utf8,' + this.feedRef.current.outerHTML;
-			console.log('data:image/svg+xml;utf8,' + this.feedRef.current.outerHTML);
-		} else {
-			const pose = await this.net.estimateSinglePose(
-				img,
-				0.5,
-				true,
-				16,
-				5,
-				0.7
-			);
-			let leftShoulderPosition = pose.keypoints[5].position;
-			let rightShoulderPosition = pose.keypoints[6].position;
-
-			this.setState({
-				overlayX:
-					this.feedWidth -
-					(rightShoulderPosition.x + leftShoulderPosition.x) / 2 -
-					this.svgWidth / 2,
-				overlayY:
-					(leftShoulderPosition.y + rightShoulderPosition.y) / 2 -
-					this.svgHeight / 2,
-				overlayScale:
-					((leftShoulderPosition.x - rightShoulderPosition.x) /
-						this.feedWidth) *
-					4, // there must be a better way of calculating this
-				overlayRotation:
-					(-360 / 2) *
-					Math.PI *
-					Math.atan(
-						(leftShoulderPosition.y - rightShoulderPosition.y) /
-							(rightShoulderPosition.x + leftShoulderPosition.x)
-					)
-			});
-		} */
+		requestAnimationFrame(this.update);
 	};
 
-	render() {
-		let showOverlay =
-			this.state.overlayX !== undefined &&
-			this.state.overlayY !== undefined;
+	onConnect = () => {
+		this.timer = setInterval(() => this.setState({counter: this.state.counter - 1}), 1000);
+	}
 
+	render() {
 		return (
 			<div>
 				<header>
@@ -120,15 +76,16 @@ class SnackChat extends Component {
 					Smile, you are on snackchat:
 					{this.state.counter}
 				</header>
-				<div className="feed">
-					<canvas
-						width={this.feedWidth}
-						height={this.feedWidth}
-						ref={this.canvas}
-					/>
+				<canvas
+					width={this.feedWidth}
+					height={this.feedWidth}
+					ref={this.canvas}
+				/>
+				<div style={{display: 'none'}}>
 					<WebcamCapture
-						style={{display: 'none'}}
+						ref={this.webcam}
 						imgSize={400}
+						onConnect={this.onConnect}
 					/>
 				</div>
 			</div>
