@@ -4,6 +4,7 @@ import 'firebase/firestore';
 import ItemSelector from '../ItemSelector';
 import ImagePreview from './ImagePreview';
 import getStore from '../../../utils/honestyStore.js';
+import {update} from '@tensorflow/tfjs-layers/dist/variables';
 
 export default class Viewer extends Component {
 	state = {
@@ -53,6 +54,21 @@ export default class Viewer extends Component {
 		});
 	};
 
+	updateItemCount = (item, delta) => {
+		this.db
+			.collection('item_data')
+			.doc(item)
+			.get()
+			.then(doc => {
+				this.db
+					.collection('item_data')
+					.doc(doc.id)
+					.set({
+						count: doc.data().count + delta
+					});
+			});
+	};
+
 	remove = event => {
 		this.db
 			.collection('training_data')
@@ -60,18 +76,7 @@ export default class Viewer extends Component {
 			.delete()
 			.then(() => this.getImages());
 
-		this.db
-			.collection('item_data')
-			.doc(event.target.dataset.item)
-			.get()
-			.then(doc => {
-				this.db
-					.collection('item_data')
-					.doc(doc.id)
-					.set({
-						count: doc.data().count - 1
-					});
-			});
+		this.updateItemCount(event.target.dataset.item, -1);
 	};
 
 	trust = event => {
@@ -80,6 +85,8 @@ export default class Viewer extends Component {
 			.doc(event.target.dataset.id)
 			.set({trusted: true})
 			.then(() => this.getImages());
+
+		this.updateItemCount(event.target.dataset.item, 1);
 	};
 
 	render() {
