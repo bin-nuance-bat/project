@@ -64,6 +64,25 @@ export class ControllerDataset {
 		await this.changeItemCount(dataset.item, 1);
 	};
 
+	addImage = (image, trusted) => {
+		this.db
+			.collection('training_data')
+			.add({
+				img: image.img,
+				activation: image.activation.dataSync().join(','),
+				label: image.label,
+				random: Math.random(),
+				timestamp: Date.now(),
+				trusted
+			})
+			.then(() => {
+				image.activation.dispose();
+			})
+			.catch(() => {
+				image.activation.dispose();
+			});
+	};
+
 	async addExamples(examples) {
 		if (examples.length < 1) {
 			return;
@@ -71,25 +90,9 @@ export class ControllerDataset {
 
 		this.changeItemCount(examples[0].label, examples.length);
 
-		for (let i in examples) {
-			this.db
-				.collection('training_data')
-				.add({
-					img: examples[i].img,
-					activation: examples[i].activation.dataSync().join(','),
-					label: examples[i].label,
-					random: Math.random(),
-					timestamp: Date.now(),
-					trusted: true
-				})
-				.then(() => {
-					examples[i].activation.dispose();
-				})
-				.catch(err => {
-					console.error(err);
-					examples[i].activation.dispose();
-				});
-		}
+		examples.forEach(image => {
+			this.addImage(image, true);
+		});
 	}
 
 	async getClasses() {

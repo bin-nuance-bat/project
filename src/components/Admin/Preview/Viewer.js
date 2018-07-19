@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import firebase from 'firebase/app';
 import 'firebase/firestore';
 import ItemSelector from '../ItemSelector';
 import ImagePreview from './ImagePreview';
