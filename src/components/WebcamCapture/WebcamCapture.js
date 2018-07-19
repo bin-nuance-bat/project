@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import './WebcamCapture.css';
 import Webcam from 'react-webcam';
 import Notification from './../Notification/Notification';
 import PropTypes from 'prop-types';
+import './WebcamCapture.css';
 
 const height = 400;
 const width = 400;
