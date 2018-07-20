@@ -49,6 +49,10 @@ class ItemRecognition extends Component {
 					onConnect={this.onConnect}
 					imgSize={224}
 				/>
+				<button onClick={() => this.props.history.push('/editsnack')}>
+					{' '}
+					a
+				</button>
 			</div>
 		);
 	}

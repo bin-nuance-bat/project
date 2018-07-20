@@ -26,7 +26,7 @@ class UsernameEntry extends React.Component {
 					{this.props.users.length !== 0 && (
 						<ListSelection
 							items={this.props.users}
-							onClick={name => this.sendReminder(name)}
+							onClick={this.sendReminder}
 						/>
 					)}
 				</div>
