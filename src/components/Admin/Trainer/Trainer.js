@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import Webcam from 'react-webcam';
 import ItemSelector from '../ItemSelector';
 import Model from './Model';
-import * as tf from '@tensorflow/tfjs';
 import './Trainer.css';
 import Settings from './Settings';
 import {uriToTensor} from './../AdminUtils';
