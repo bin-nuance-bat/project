@@ -5,24 +5,3 @@
 		font-size: 45px;
 	}
 }
-
-.hand {
-	display: block;
-	margin: auto;
-	text-align: center;
-	position: relative;
-	margin-top: 96px;
-	width: 66.7%;
-
-	&-fg {
-		position: absolute;
-	}
-
-	&-bg {
-		position: absolute;
-	}
-
-	&-bar {
-		position: absolute;
-	}
-}

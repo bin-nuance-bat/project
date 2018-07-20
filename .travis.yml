@@ -16,5 +16,5 @@ deploy:
   token: $FIREBASE_TOKEN
   on:
     branch: master
-  project: honesty-store-kiosk-dev
+  project: honesty-store-kiosk
   
