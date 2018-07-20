@@ -1,5 +1,13 @@
 @import '../../utils/constants.scss';
 
-.timeout-notification {
-	color: $White;
+.timeout-notification--notification {
+	background-color: $white;
+	color: $text-blue;
+	height: 88px;
+	width: 608px;
+	z-index: 20;
+	position: absolute;
+	bottom: 0;
+	left: 80px;
+	align-self: center;
 }
