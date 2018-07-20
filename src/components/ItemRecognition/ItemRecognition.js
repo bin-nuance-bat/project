@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Model from './../../utils/model';
 import WebcamCapture from '../WebcamCapture/WebcamCaptureContainer';
 import Logo from '../Logo/Logo';
+import './ItemRecognition.css';
 
 const ML_THRESHOLD = 0.06;
 
@@ -31,12 +32,14 @@ class ItemRecognition extends Component {
 		return (
 			<div>
 				<Logo />
-				<header>Hold up your snack to the camera</header>
-				<WebcamCapture onImgLoad={this.handleImg} interval={1000} />
-				<button onClick={() => this.props.history.push('/confirmitem')}>
-					{' '}
-					a
-				</button>
+				<div className="item-recognition item-recognition--instructions">
+					Scan item using the front facing camera
+				</div>
+				<WebcamCapture
+					className="item-recognition item-recognition--display"
+					onImgLoad={this.handleImg}
+					interval={1000}
+				/>
 			</div>
 		);
 	}

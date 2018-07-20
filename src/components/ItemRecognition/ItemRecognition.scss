@@ -1,0 +1,12 @@
+@import '../../utils/constants.scss';
+
+.item-recognition--instructions {
+	font-size: 35px;
+	color: $white;
+	padding-top: 56px;
+}
+
+.item-recognition--display {
+	height: 752px;
+	width: 752px;
+}
