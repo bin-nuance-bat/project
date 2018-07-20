@@ -31,7 +31,7 @@ class TimeoutNotification extends Component {
 
 	showMessage = () => {
 		this.setState({displayWarning: true});
-		clearInterval(this.interval); //WHAT????
+		clearInterval(this.interval); //WHAT????WHY NEEDED???
 		this.interval = setInterval(this.countdown, 1000);
 	};
 
