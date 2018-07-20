@@ -26,9 +26,9 @@ class App extends React.Component {
 					<div className="text text-subheading">
 						Why not send yourself a reminder on Slack?
 					</div>
-					<div class="home-hands">
+					<div className="home-hands">
 						<svg
-							class="home-hands-slot"
+							className="home-hands-slot"
 							xmlns="http://www.w3.org/2000/svg"
 							viewBox="0 0 267.06 241.8">
 							<path
@@ -41,7 +41,7 @@ class App extends React.Component {
 							/>
 						</svg>
 						<svg
-							class="home-hands-right"
+							className="home-hands-right"
 							xmlns="http://www.w3.org/2000/svg"
 							viewBox="0 0 267.06 241.8">
 							<path
@@ -227,7 +227,7 @@ class App extends React.Component {
 							/>
 						</svg>
 						<svg
-							class="home-hands-center"
+							className="home-hands-center"
 							xmlns="http://www.w3.org/2000/svg"
 							viewBox="0 0 267.06 241.8">
 							<path
@@ -329,7 +329,7 @@ class App extends React.Component {
 							/>
 						</svg>
 						<svg
-							class="home-hands-left"
+							className="home-hands-left"
 							xmlns="http://www.w3.org/2000/svg"
 							viewBox="0 0 267.06 241.8">
 							<path
@@ -439,17 +439,17 @@ class App extends React.Component {
 							width="28"
 							height="28"
 							viewBox="0 0 28 28">
-							<g fill="none" fill-rule="evenodd">
+							<g fill="none" fillRule="evenodd">
 								<circle
 									cx="14"
 									cy="14"
 									r="3.6"
 									fill="#FFF"
-									fill-rule="nonzero"
+									fillRule="nonzero"
 								/>
 								<path
 									fill="#FFF"
-									fill-rule="nonzero"
+									fillRule="nonzero"
 									d="M10.5199994,2.39999986 L8.3971995,4.71111083 L4.71999972,4.71111083 C3.44399979,4.71111083 2.39999986,5.75111077 2.39999986,7.0222218 L2.39999986,20.8888876 C2.39999986,22.1599987 3.44399979,23.1999986 4.71999972,23.1999986 L23.2799986,23.1999986 C24.5559985,23.1999986 25.5999985,22.1599987 25.5999985,20.8888876 L25.5999985,7.0222218 C25.5999985,5.75111077 24.5559985,4.71111083 23.2799986,4.71111083 L19.6027988,4.71111083 L17.479999,2.39999986 L10.5199994,2.39999986 Z M13.9999992,19.7333322 C10.7983994,19.7333322 8.19999951,17.1448879 8.19999951,13.9555547 C8.19999951,10.7662216 10.7983994,8.17777729 13.9999992,8.17777729 C17.201599,8.17777729 19.7999988,10.7662216 19.7999988,13.9555547 C19.7999988,17.1448879 17.201599,19.7333322 13.9999992,19.7333322 Z"
 								/>
 								<polygon points="0 0 28 0 28 28 0 28" />
