@@ -1,6 +1,6 @@
 import * as tf from '@tensorflow/tfjs';
 
-cropImage = img => {
+const cropImage = img => {
 	const size = Math.min(img.shape[0], img.shape[1]);
 	const centerHeight = img.shape[0] / 2;
 	const beginHeight = centerHeight - size / 2;
@@ -15,7 +15,7 @@ cropImage = img => {
 
 export const uriToTensor = dataURI => {
 	return tf.tidy(() => {
-		return this.cropImage(tf.fromPixels(dataURI))
+		return cropImage(tf.fromPixels(dataURI))
 			.expandDims(0)
 			.toFloat()
 			.div(tf.scalar(127))
