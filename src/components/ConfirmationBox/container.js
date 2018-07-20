@@ -10,7 +10,8 @@ import {connect} from 'react-redux';
 const mapStateToProps = state => ({
 	name: getPredictionName(state),
 	img: getPredictionImg(state),
-	id: getPredictionId(state)
+	id: getPredictionId(state),
+	sendWithPhoto: state.sendWithPhoto
 });
 
 const mapDispatchToProps = {

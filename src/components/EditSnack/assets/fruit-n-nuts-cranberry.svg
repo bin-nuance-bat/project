@@ -1,0 +1,16 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140">
+  <rect x="38" width="64" height="140" fill="#e0e0e0" />
+  <rect x="38" width="33" height="140" fill="#ececec" />
+  <rect x="48" y="62" width="46" height="66" fill="#dbaa89" />
+  <rect x="48" y="62" width="23" height="66" fill="#e6b38b" />
+  <path d="M102,0H38V56H49.31A19.33,19.33,0,0,0,48,63c0,11.6,10.3,21,23,21s23-9.4,23-21a19.33,19.33,0,0,0-1.31-7H102Z" fill="#a5b512" />
+  <path d="M38,0V56H49.31A19.33,19.33,0,0,0,48,63c0,11.6,10.3,21,23,21V0Z" fill="#abc213" />
+  <rect x="98" width="4" height="140" fill="#c6c6c6" />
+  <rect x="38" width="4" height="140" fill="#d1d1d1" />
+  <rect x="38" width="4" height="56" fill="#a3b214" />
+  <rect x="98" width="4" height="56" fill="#9ca314" />
+  <ellipse cx="71" cy="63" rx="17" ry="15" fill="#bf1d7e" />
+  <path d="M54,63c0,8.28,7.61,15,17,15V48C61.61,48,54,54.72,54,63Z" fill="#d31b76" />
+  <rect x="54" y="12" width="34" height="24" rx="2" ry="2" fill="#1e1e1e" />
+  <path d="M71,12H56a2,2,0,0,0-2,2V34a2,2,0,0,0,2,2H71Z" fill="#282828" />
+</svg>
