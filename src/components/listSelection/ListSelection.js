@@ -5,7 +5,7 @@ import line from './line.svg';
 
 class ListSelection extends Component {
 	isLetter(str) {
-		return str.match(/^[a-z]$/i);;
+		return str.match(/^[a-z]$/i);
 	}
 
 	formattedItems = (() => {
