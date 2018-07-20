@@ -6,17 +6,28 @@ const WAITBEFOREDISPLAY = 1;
 class TimeoutNotification extends Component {
 	state = {
 		displayWarning: false,
-		timer: 10
+		countdown: 10
 	};
 
 	componentDidMount() {
-		this.timer = setTimeout(function() {
-			alert('Hello');
-		}, WAITBEFOREDISPLAY * 1000);
+		this.timer = setTimeout(this.showMessage, WAITBEFOREDISPLAY * 1000);
 	}
 
+	componentWillUnmount() {
+		clearInterval(this.timer);
+	}
+
+	showMessage = () => {};
+
 	render() {
-		return <div> a </div>;
+		return (
+			this.state.displayWarning && (
+				<div className="timeout-notification">
+					{' '}
+					{this.countdown.timer}{' '}
+				</div>
+			)
+		);
 	}
 }
 
