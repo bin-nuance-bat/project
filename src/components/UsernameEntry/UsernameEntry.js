@@ -25,11 +25,7 @@ class UsernameEntry extends React.Component {
 				<div>
 					{this.props.users.length !== 0 && (
 						<ListSelection
-							items={this.props.users.map(user => ({
-								name: user.name,
-								id: user.name,
-								image: user.profile['image_48']
-							}))}
+							items={this.props.users}
 							onClick={name => this.sendReminder(name)}
 						/>
 					)}
