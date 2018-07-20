@@ -8,7 +8,6 @@ import Notification from './../Notification/Notification';
 configure({adapter: new Adapter()});
 
 describe('<WebcamCapture />', () => {
-
 	it("Tells the user that webcam isn't found if not found", () => {
 		const wrapper = shallow(<WebcamCapture imgSize={300} />);
 		wrapper.setState({isDetecting: false});
@@ -24,7 +23,8 @@ describe('<WebcamCapture />', () => {
 	it('Renders webcam with screenshot format of jpeg', () => {
 		const wrapper = shallow(<WebcamCapture imgSize={300} />);
 		wrapper.setState({isDetecting: false, cameraConnected: true});
-		expect(wrapper.find(Webcam).props().screenshotFormat).toEqual('image/jpeg');
+		expect(wrapper.find(Webcam).props().screenshotFormat).toEqual(
+			'image/jpeg'
+		);
 	});
-
 });
