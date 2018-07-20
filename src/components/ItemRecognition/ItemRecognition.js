@@ -16,12 +16,13 @@ class ItemRecognition extends Component {
 	}
 
 	onConnect = () => {
-		this.webcam.current.requestScreenshot()
+		this.webcam.current
+			.requestScreenshot()
 			.then(this.handleImg)
 			.catch(() => {
-				setTimeout(this.onConnect, 100);	
+				setTimeout(this.onConnect, 100);
 			});
-	}
+	};
 
 	handleImg = img => {
 		this.model.predict(img).then(item => {
@@ -33,8 +34,7 @@ class ItemRecognition extends Component {
 				this.props.setPrediction(item.id, img.src);
 				this.props.history.push('/confirmitem');
 			} else {
-				this.webcam.current.requestScreenshot()
-					.then(this.handleImg);
+				this.webcam.current.requestScreenshot().then(this.handleImg);
 			}
 		});
 	};
@@ -44,7 +44,15 @@ class ItemRecognition extends Component {
 			<div>
 				<Logo />
 				<header>Hold up your snack to the camera</header>
-				<WebcamCapture ref={this.webcam} onConnect={this.onConnect} imgSize={224} />
+				<WebcamCapture
+					ref={this.webcam}
+					onConnect={this.onConnect}
+					imgSize={224}
+				/>
+				<button onClick={() => this.props.history.push('/editsnack')}>
+					{' '}
+					a
+				</button>
 			</div>
 		);
 	}
