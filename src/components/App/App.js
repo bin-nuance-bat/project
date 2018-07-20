@@ -14,7 +14,7 @@ class App extends React.Component {
 
 	handleReminderNoPhotoClick = () => {
 		this.props.setSendWithPhoto(false);
-		this.props.history.push('/scanitem');
+		this.props.history.push('/disclaimer');
 	};
 
 	render() {
