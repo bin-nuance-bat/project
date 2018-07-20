@@ -88,6 +88,35 @@ ShallowWrapper {
           <p
                     className="list-selection list-selection--list-text list-selection--list-text--group-header"
           >
+                    G
+          </p>
+          <img
+                    alt=""
+                    src="line.svg"
+          />
+          <div
+                    className="list-selection list-selection--list-item"
+                    data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                    onClick={[Function]}
+          >
+                    <img
+                              alt=""
+                              className="list-selection list-selection--item-icon"
+                              data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                              src="misc-bar.svg"
+                    />
+                    <p
+                              className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                              data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                    >
+                              Granulated Sugar
+                    </p>
+          </div>
+</div>,
+        <div>
+          <p
+                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+          >
                     P
           </p>
           <img
@@ -142,40 +171,132 @@ ShallowWrapper {
                     </p>
           </div>
 </div>,
-        <div>
-          <p
-                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
-          >
-                    G
-          </p>
-          <img
-                    alt=""
-                    src="line.svg"
-          />
-          <div
-                    className="list-selection list-selection--list-item"
-                    data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
-                    onClick={[Function]}
-          >
-                    <img
-                              alt=""
-                              className="list-selection list-selection--item-icon"
-                              data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
-                              src="misc-bar.svg"
-                    />
-                    <p
-                              className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                              data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
-                    >
-                              Granulated Sugar
-                    </p>
-          </div>
-</div>,
       ],
       "className": "list-selection list-selection--body",
     },
     "ref": null,
     "rendered": Array [
+      Object {
+        "instance": null,
+        "key": "G",
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <p
+              className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+              G
+</p>,
+            <img
+              alt=""
+              src="line.svg"
+/>,
+            Array [
+              <div
+                className="list-selection list-selection--list-item"
+                data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                onClick={[Function]}
+>
+                <img
+                                alt=""
+                                className="list-selection list-selection--item-icon"
+                                data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                                src="misc-bar.svg"
+                />
+                <p
+                                className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                >
+                                Granulated Sugar
+                </p>
+</div>,
+            ],
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "G",
+              "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+            },
+            "ref": null,
+            "rendered": "G",
+            "type": "p",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "alt": "",
+              "src": "line.svg",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "img",
+          },
+          Object {
+            "instance": null,
+            "key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <img
+                  alt=""
+                  className="list-selection list-selection--item-icon"
+                  data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                  src="misc-bar.svg"
+/>,
+                <p
+                  className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                  data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+>
+                  Granulated Sugar
+</p>,
+              ],
+              "className": "list-selection list-selection--list-item",
+              "data-key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
+              "onClick": [Function],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "alt": "",
+                  "className": "list-selection list-selection--item-icon",
+                  "data-key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
+                  "src": "misc-bar.svg",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "img",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "Granulated Sugar",
+                  "className": "list-selection list-selection--list-text list-selection--list-text--item-name",
+                  "data-key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
+                },
+                "ref": null,
+                "rendered": "Granulated Sugar",
+                "type": "p",
+              },
+            ],
+            "type": "div",
+          },
+        ],
+        "type": "div",
+      },
       Object {
         "instance": null,
         "key": "P",
@@ -418,127 +539,6 @@ ShallowWrapper {
         ],
         "type": "div",
       },
-      Object {
-        "instance": null,
-        "key": "G",
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            <p
-              className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-              G
-</p>,
-            <img
-              alt=""
-              src="line.svg"
-/>,
-            Array [
-              <div
-                className="list-selection list-selection--list-item"
-                data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
-                onClick={[Function]}
->
-                <img
-                                alt=""
-                                className="list-selection list-selection--item-icon"
-                                data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
-                                src="misc-bar.svg"
-                />
-                <p
-                                className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                                data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
-                >
-                                Granulated Sugar
-                </p>
-</div>,
-            ],
-          ],
-        },
-        "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": "G",
-              "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-            },
-            "ref": null,
-            "rendered": "G",
-            "type": "p",
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "alt": "",
-              "src": "line.svg",
-            },
-            "ref": null,
-            "rendered": null,
-            "type": "img",
-          },
-          Object {
-            "instance": null,
-            "key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
-            "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                <img
-                  alt=""
-                  className="list-selection list-selection--item-icon"
-                  data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
-                  src="misc-bar.svg"
-/>,
-                <p
-                  className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                  data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
->
-                  Granulated Sugar
-</p>,
-              ],
-              "className": "list-selection list-selection--list-item",
-              "data-key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
-              "onClick": [Function],
-            },
-            "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "alt": "",
-                  "className": "list-selection list-selection--item-icon",
-                  "data-key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
-                  "src": "misc-bar.svg",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "img",
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "Granulated Sugar",
-                  "className": "list-selection list-selection--list-text list-selection--list-text--item-name",
-                  "data-key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
-                },
-                "ref": null,
-                "rendered": "Granulated Sugar",
-                "type": "p",
-              },
-            ],
-            "type": "div",
-          },
-        ],
-        "type": "div",
-      },
     ],
     "type": "div",
   },
@@ -549,6 +549,35 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
+          <div>
+            <p
+                        className="list-selection list-selection--list-text list-selection--list-text--group-header"
+            >
+                        G
+            </p>
+            <img
+                        alt=""
+                        src="line.svg"
+            />
+            <div
+                        className="list-selection list-selection--list-item"
+                        data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                        onClick={[Function]}
+            >
+                        <img
+                                    alt=""
+                                    className="list-selection list-selection--item-icon"
+                                    data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                                    src="misc-bar.svg"
+                        />
+                        <p
+                                    className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                    data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                        >
+                                    Granulated Sugar
+                        </p>
+            </div>
+</div>,
           <div>
             <p
                         className="list-selection list-selection--list-text list-selection--list-text--group-header"
@@ -607,40 +636,132 @@ ShallowWrapper {
                         </p>
             </div>
 </div>,
-          <div>
-            <p
-                        className="list-selection list-selection--list-text list-selection--list-text--group-header"
-            >
-                        G
-            </p>
-            <img
-                        alt=""
-                        src="line.svg"
-            />
-            <div
-                        className="list-selection list-selection--list-item"
-                        data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
-                        onClick={[Function]}
-            >
-                        <img
-                                    alt=""
-                                    className="list-selection list-selection--item-icon"
-                                    data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
-                                    src="misc-bar.svg"
-                        />
-                        <p
-                                    className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                                    data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
-                        >
-                                    Granulated Sugar
-                        </p>
-            </div>
-</div>,
         ],
         "className": "list-selection list-selection--body",
       },
       "ref": null,
       "rendered": Array [
+        Object {
+          "instance": null,
+          "key": "G",
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <p
+                className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                G
+</p>,
+              <img
+                alt=""
+                src="line.svg"
+/>,
+              Array [
+                <div
+                  className="list-selection list-selection--list-item"
+                  data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                  onClick={[Function]}
+>
+                  <img
+                                    alt=""
+                                    className="list-selection list-selection--item-icon"
+                                    data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                                    src="misc-bar.svg"
+                  />
+                  <p
+                                    className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                    data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                  >
+                                    Granulated Sugar
+                  </p>
+</div>,
+              ],
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "G",
+                "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+              },
+              "ref": null,
+              "rendered": "G",
+              "type": "p",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "alt": "",
+                "src": "line.svg",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "img",
+            },
+            Object {
+              "instance": null,
+              "key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <img
+                    alt=""
+                    className="list-selection list-selection--item-icon"
+                    data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                    src="misc-bar.svg"
+/>,
+                  <p
+                    className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                    data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+>
+                    Granulated Sugar
+</p>,
+                ],
+                "className": "list-selection list-selection--list-item",
+                "data-key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "alt": "",
+                    "className": "list-selection list-selection--item-icon",
+                    "data-key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
+                    "src": "misc-bar.svg",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "img",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "Granulated Sugar",
+                    "className": "list-selection list-selection--list-text list-selection--list-text--item-name",
+                    "data-key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
+                  },
+                  "ref": null,
+                  "rendered": "Granulated Sugar",
+                  "type": "p",
+                },
+              ],
+              "type": "div",
+            },
+          ],
+          "type": "div",
+        },
         Object {
           "instance": null,
           "key": "P",
@@ -875,127 +996,6 @@ ShallowWrapper {
                   },
                   "ref": null,
                   "rendered": "Wotsits",
-                  "type": "p",
-                },
-              ],
-              "type": "div",
-            },
-          ],
-          "type": "div",
-        },
-        Object {
-          "instance": null,
-          "key": "G",
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              <p
-                className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                G
-</p>,
-              <img
-                alt=""
-                src="line.svg"
-/>,
-              Array [
-                <div
-                  className="list-selection list-selection--list-item"
-                  data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
-                  onClick={[Function]}
->
-                  <img
-                                    alt=""
-                                    className="list-selection list-selection--item-icon"
-                                    data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
-                                    src="misc-bar.svg"
-                  />
-                  <p
-                                    className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                                    data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
-                  >
-                                    Granulated Sugar
-                  </p>
-</div>,
-              ],
-            ],
-          },
-          "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": "G",
-                "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-              },
-              "ref": null,
-              "rendered": "G",
-              "type": "p",
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "alt": "",
-                "src": "line.svg",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": "img",
-            },
-            Object {
-              "instance": null,
-              "key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
-              "nodeType": "host",
-              "props": Object {
-                "children": Array [
-                  <img
-                    alt=""
-                    className="list-selection list-selection--item-icon"
-                    data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
-                    src="misc-bar.svg"
-/>,
-                  <p
-                    className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                    data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
->
-                    Granulated Sugar
-</p>,
-                ],
-                "className": "list-selection list-selection--list-item",
-                "data-key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
-                "onClick": [Function],
-              },
-              "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "alt": "",
-                    "className": "list-selection list-selection--item-icon",
-                    "data-key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
-                    "src": "misc-bar.svg",
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "img",
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "Granulated Sugar",
-                    "className": "list-selection list-selection--list-text list-selection--list-text--item-name",
-                    "data-key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
-                  },
-                  "ref": null,
-                  "rendered": "Granulated Sugar",
                   "type": "p",
                 },
               ],
