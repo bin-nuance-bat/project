@@ -49,19 +49,21 @@ body {
 .button {
 	font-size: 30px;
 	border-radius: 12px;
-	width: 488px;
 	height: 64px;
 	padding: 0px;
 	display: inline-block;
 	border: none;
-	color: $white;
-	background-color: $dark-blue;
 	&-snackchat {
+		width: 488px;
 		margin-top: 120px;
 		background-color: $light-blue;
+		color: $white;
 		margin-bottom: 32px;
 	}
 	&-nophoto {
+		background-color: $dark-blue;
+		width: 488px;
+		color: $white;
 		border: 2px solid white;
 	}
 }
