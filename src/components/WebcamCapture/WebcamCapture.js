@@ -4,8 +4,8 @@ import Notification from './../Notification/Notification';
 import PropTypes from 'prop-types';
 import './WebcamCapture.css';
 
-const height = 400;
-const width = 400;
+const height = 768;
+const width = 768;
 
 class WebcamCapture extends Component {
 	state = {
@@ -63,7 +63,7 @@ class WebcamCapture extends Component {
 						ref={this.webcam}
 						screenshotFormat="image/jpeg"
 						width={width}
-						className="videoStream"
+						className="webcam-capture--video"
 						screenshotWidth={300}
 					/>
 				</div>

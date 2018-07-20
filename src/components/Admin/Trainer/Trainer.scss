@@ -5,12 +5,6 @@
 	padding: 0 20px;
 }
 
-.webcam-container {
-	width: 400px;
-	height: 400px;
-	overflow: hidden;
-}
-
 .webcam-container video {
 	object-fit: cover;
 }

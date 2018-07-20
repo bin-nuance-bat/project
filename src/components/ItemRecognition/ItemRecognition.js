@@ -31,9 +31,11 @@ class ItemRecognition extends Component {
 	render() {
 		return (
 			<div>
-				<Logo />
-				<div className="item-recognition item-recognition--instructions">
-					Scan item using the front facing camera
+				<div className="item-recognition--header">
+					<Logo />
+					<div className="item-recognition item-recognition--instructions">
+						Scan item using the front facing camera
+					</div>
 				</div>
 				<WebcamCapture
 					className="item-recognition item-recognition--display"
