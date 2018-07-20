@@ -4,6 +4,10 @@ import PropTypes from 'prop-types';
 import * as posenet from '@tensorflow-models/posenet';
 import Logo from '../Logo/Logo';
 import can from '../../assets/coca-cola-can.svg';
+import './SnackChat.css';
+
+const FEED_SIZE = 480;
+const CAPTURE_SIZE = 200;
 
 function clipEllipse(ctx, centerX, centerY, width, height) {
 	ctx.beginPath();
@@ -28,9 +32,8 @@ function clipEllipse(ctx, centerX, centerY, width, height) {
 }
 
 function normalise({x, y}) {
-	x -= 200;
-	x *= 4 / 3;
-	x += 200;
+	x *= FEED_SIZE / CAPTURE_SIZE;
+	y *= FEED_SIZE / CAPTURE_SIZE;
 	return {x, y};
 }
 
@@ -46,7 +49,6 @@ function calcAngles(bodyPart) {
 }
 
 class SnackChat extends Component {
-	feedWidth = 400;
 	webcam = React.createRef();
 	canvas = React.createRef();
 
@@ -84,13 +86,16 @@ class SnackChat extends Component {
 		}
 
 		const video = this.webcam.current.webcam.current.video;
+		let frame;
 
-		const pose = await this.net.estimateSinglePose(
-			this.webcam.current.webcam.current.video,
-			0.5,
-			true,
-			16
-		);
+		try {
+			frame = await this.webcam.current.requestScreenshot();
+		} catch (e) {
+			requestAnimationFrame(this.update);
+			return;
+		}
+
+		const pose = await this.net.estimateSinglePose(frame, 0.5, true, 8);
 
 		const body = {
 			ears: calcAngles({
@@ -108,8 +113,9 @@ class SnackChat extends Component {
 		this.ctx.scale(-1, 1);
 		this.ctx.drawImage(
 			video,
-			(video.videoWidth - video.width) / 2 - video.videoWidth,
-			-(video.videoHeight - video.height) / 2
+			(video.videoWidth - this.canvas.current.width) / 2 -
+				video.videoWidth,
+			-(video.videoHeight - this.canvas.current.height) / 2
 		);
 		this.ctx.restore();
 
@@ -134,15 +140,16 @@ class SnackChat extends Component {
 			body.ears.right.y + body.ears.height * body.ears.angle
 		);
 		this.ctx.rotate(body.ears.angle);
-		clipEllipse(this.ctx, 0, 0, body.ears.span * 1.3, body.ears.span * 1.3);
+		clipEllipse(this.ctx, 0, 0, body.ears.span * 1.5, body.ears.span * 1.5);
 		this.ctx.resetTransform();
 
 		// Re-draw face
 		this.ctx.scale(-1, 1);
 		this.ctx.drawImage(
 			video,
-			(video.videoWidth - video.width) / 2 - video.videoWidth,
-			-(video.videoHeight - video.height) / 2
+			(video.videoWidth - this.canvas.current.width) / 2 -
+				video.videoWidth,
+			-(video.videoHeight - this.canvas.current.height) / 2
 		);
 		this.ctx.restore();
 
@@ -164,15 +171,17 @@ class SnackChat extends Component {
 					Smile, you are on snackchat:
 					{this.state.counter}
 				</header>
-				<canvas
-					width={this.feedWidth}
-					height={this.feedWidth}
-					ref={this.canvas}
-				/>
+				<div className="snackchat-body">
+					<canvas
+						ref={this.canvas}
+						width={FEED_SIZE}
+						height={FEED_SIZE}
+					/>
+				</div>
 				<div style={{display: 'none'}}>
 					<WebcamCapture
 						ref={this.webcam}
-						imgSize={400}
+						imgSize={CAPTURE_SIZE}
 						onConnect={this.onConnect}
 					/>
 				</div>

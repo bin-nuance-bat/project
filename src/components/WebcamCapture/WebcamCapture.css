@@ -1,9 +1,13 @@
 .webcam-container {
-  width: 400px;
-  height: 400px;
+  width: 100%;
+  padding-top: 100%;
   overflow: hidden;
-  display: inline-block; }
+  position: relative; }
 
-.webcam-container video {
+.webcam-capture--video {
   object-fit: cover;
-  transform: rotateY(180deg); }
+  transform: rotateY(180deg);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0; }
