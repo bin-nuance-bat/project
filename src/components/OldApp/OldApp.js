@@ -1,5 +1,5 @@
 import React from 'react';
-import WebcamCaptureContainer from '../WebcamCapture/WebcamCaptureContainer';
+import WebcamCaptureContainer from '../WebcamCapture/WebcamCapture';
 import ConfirmationBox from '../ConfirmationBox/ConfirmationBox';
 import StoreListContainer from '../StoreList/StoreListContainer';
 import PropTypes from 'prop-types';

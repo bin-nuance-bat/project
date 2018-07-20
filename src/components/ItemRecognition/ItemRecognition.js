@@ -1,17 +1,26 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Model from './../../utils/model';
-import WebcamCapture from '../WebcamCapture/WebcamCaptureContainer';
+import WebcamCapture from '../WebcamCapture/WebcamCapture';
 import Logo from '../Logo/Logo';
 
 const ML_THRESHOLD = 0.06;
 
 class ItemRecognition extends Component {
 	model = new Model();
+	webcam = React.createRef();
 
 	componentDidMount() {
 		this.props.setPrediction(null, null);
 		this.model.load();
+	}
+
+	onConnect = () => {
+		this.webcam.current.requestScreenshot()
+			.then(this.handleImg)
+			.catch(() => {
+				setTimeout(this.onConnect, 100);	
+			});
 	}
 
 	handleImg = img => {
@@ -23,6 +32,9 @@ class ItemRecognition extends Component {
 			) {
 				this.props.setPrediction(item.id, img.src);
 				this.props.history.push('/confirmitem');
+			} else {
+				this.webcam.current.requestScreenshot()
+					.then(this.handleImg);
 			}
 		});
 	};
@@ -32,7 +44,7 @@ class ItemRecognition extends Component {
 			<div>
 				<Logo />
 				<header>Hold up your snack to the camera</header>
-				<WebcamCapture onImgLoad={this.handleImg} interval={1000} />
+				<WebcamCapture ref={this.webcam} onConnect={this.onConnect} imgSize={224} />
 			</div>
 		);
 	}
