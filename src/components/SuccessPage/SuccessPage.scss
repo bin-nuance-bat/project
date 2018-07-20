@@ -1,5 +1,5 @@
 .text {
-	&-remindersent{
+	&-remindersent {
 		margin-top: 160px;
 		margin-bottom: 48px;
 		font-size: 45px;
@@ -8,6 +8,21 @@
 
 .hand {
 	display: block;
-	transform: translate(-25vw);
-	height: 10vh;
+	margin: auto;
+	text-align: center;
+	position: relative;
+	margin-top: 96px;
+	width: 66.7%;
+
+	&-fg {
+		position: absolute;
+	}
+
+	&-bg {
+		position: absolute;
+	}
+
+	&-bar {
+		position: absolute;
+	}
 }
