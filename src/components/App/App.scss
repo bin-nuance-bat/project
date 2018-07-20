@@ -1,18 +1,10 @@
 @import '../../utils/constants.scss';
 
 body {
-	font-family: apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-		Helvetica Neue, Helvetica, sans-serif;
 	background-color: $dark-blue;
 	color: $white;
 	width: 100%;
 	text-align: center;
-}
-
-.page {
-	&-home {
-		padding-top: 176px;
-	}
 }
 
 .text {
@@ -20,16 +12,40 @@ body {
 
 	&-payinglater {
 		font-size: 53px;
-		margin-top: 0px;
-		margin-bottom: 82px;
+		margin-top: 72px;
 	}
 
 	&-subheading {
+		margin-top: 32px;
 		font-size: 30px;
-		margin-bottom: 160px;
+		margin-bottom: 88px;
 	}
 }
 
+.home-hands {
+	width: 200px;
+	height: 200px;
+	display: block;
+	margin-left: 184px;
+	text-align: center;
+	position: relative;
+
+	&-slot {
+		position: absolute;
+	}
+
+	&-left {
+		position: absolute;
+	}
+
+	&-center {
+		position: absolute;
+	}
+
+	&-right {
+		position: absolute;
+	}
+}
 .button {
 	font-size: 30px;
 	border-radius: 12px;
@@ -40,17 +56,15 @@ body {
 	border: none;
 	color: $white;
 	background-color: $dark-blue;
-
 	&-snackchat {
+		margin-top: 120px;
 		background-color: $light-blue;
-		margin-bottom: 64px;
+		margin-bottom: 32px;
 	}
-
 	&-nophoto {
 		border: 2px solid white;
 	}
 }
-
 .smallcamera {
 	margin-left: 24px;
 	vertical-align: -0.15em;
