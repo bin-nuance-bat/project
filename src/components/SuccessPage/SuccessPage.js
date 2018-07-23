@@ -9,7 +9,13 @@ const SuccessPage = props => {
 			<Logo />
 			<div className="text text-remindersent">Reminder sent!</div>
 			<div className="success-hand">
-				<Hand />
+				<Hand
+					snack={
+						props.storeList.find(
+							item => item.id === props.prediction.id
+						).image
+					}
+				/>
 			</div>
 		</div>
 	);

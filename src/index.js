@@ -14,7 +14,7 @@ import Disclaimer from './components/Disclaimer/Disclaimer';
 import ConfirmationBox from './components/ConfirmationBox/container';
 import UsernameEntryContainer from './components/UsernameEntry/container';
 import EditSnack from './components/EditSnack/EditSnackContainer';
-import SuccessPage from './components/SuccessPage/SuccessPage';
+import SuccessPage from './components/SuccessPage/container';
 
 ReactDOM.render(
 	<Provider store={store}>
