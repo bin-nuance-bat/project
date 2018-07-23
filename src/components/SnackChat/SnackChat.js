@@ -3,7 +3,6 @@ import WebcamCapture from '../WebcamCapture/WebcamCapture';
 import PropTypes from 'prop-types';
 import * as posenet from '@tensorflow-models/posenet';
 import Logo from '../Logo/Logo';
-import can from '../../assets/coca-cola-can.svg';
 import './SnackChat.css';
 
 const FEED_SIZE = 480;
@@ -64,7 +63,9 @@ class SnackChat extends Component {
 		this.ctx.strokeStyle = 'red';
 		requestAnimationFrame(this.update);
 		this.filter = new Image();
-		this.filter.src = can;
+		this.filter.src = this.props.storeList.find(
+			item => item.id === this.props.prediction.id
+		).image;
 	}
 
 	componentWillUnmount() {
