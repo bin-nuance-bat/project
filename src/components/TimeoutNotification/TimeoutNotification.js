@@ -12,14 +12,14 @@ class TimeoutNotification extends Component {
 	};
 
 	componentDidMount() {
-		document.body.addEventListener('touchstart', () => {
-			this.dismissMessage();
-		});
+		document.body.addEventListener('touchstart', this.dismissMessage);
 		this.resetTimer();
 	}
 
 	componentWillUnmount() {
 		clearTimeout(this.timer);
+		clearInterval(this.interval);
+		document.body.removeEventListener('touchstart', this.dismissMessage);
 	}
 
 	resetTimer = () => {
