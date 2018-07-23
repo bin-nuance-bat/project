@@ -36,26 +36,30 @@ const addItemImage = item => {
 	};
 };
 
+const setStatusMock = () => {};
+
 class EditSnack extends Component {
-	handleClick = (id, name) => {
+	constructor(props) {
+		super(props);
+		this.controllerDataset = new ControllerDataset();
+		this.model = new Model(setStatusMock, setStatusMock);
+		this.model.init();
+	}
+
+	handleClick = id => {
 		this.props.setActualItem(id);
 		let trainingImage = new Image(224, 224);
 		trainingImage.src = this.props.prediction.img;
 		let tensor = uriToTensor(trainingImage);
 		let image = {
 			img: this.props.prediction.img,
-			activation: this.model.infer(tensor, 'conv_pw_13_relu'),
-			label: name
+			activation: this.model.mobilenet.infer(tensor, 'conv_pw_13_relu'),
+			label: id
 		};
 		this.controllerDataset.addImage(image, false);
 		const nextPage = this.props.sendWithPhoto ? 'snackchat' : 'slackname';
 		this.props.history.push('/' + nextPage);
 	};
-
-	componentDidMount() {
-		this.controllerDataset = new ControllerDataset();
-		this.model = new Model();
-	}
 
 	render() {
 		const items = this.props.items.map(addItemImage);
