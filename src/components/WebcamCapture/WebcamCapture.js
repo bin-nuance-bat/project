@@ -26,7 +26,7 @@ class WebcamCapture extends Component {
 				});
 			}
 		});
-	}
+	};
 
 	setupWebcam() {
 		navigator.mediaDevices
@@ -39,7 +39,7 @@ class WebcamCapture extends Component {
 				if (this.props.onConnect) this.props.onConnect();
 			})
 			.catch(() => {
-				this.setState({cameraConnected: false, isDetecting: false})
+				this.setState({cameraConnected: false, isDetecting: false});
 			});
 	}
 
@@ -52,7 +52,11 @@ class WebcamCapture extends Component {
 	}
 
 	cropImage(img) {
-		this.ctx.drawImage(img, -(img.width - this.props.imgSize) / 2, -(img.height - this.props.imgSize) / 2);
+		this.ctx.drawImage(
+			img,
+			-(img.width - this.props.imgSize) / 2,
+			-(img.height - this.props.imgSize) / 2
+		);
 		return this.canvas.toDataURL();
 	}
 
@@ -84,7 +88,7 @@ class WebcamCapture extends Component {
 						screenshotFormat="image/jpeg"
 						width={width}
 						className="videoStream"
-						screenshotWidth={this.props.imgSize * (4/3)}
+						screenshotWidth={this.props.imgSize * (4 / 3)}
 					/>
 				</div>
 			);
@@ -98,6 +102,6 @@ class WebcamCapture extends Component {
 WebcamCapture.propTypes = {
 	imgSize: PropTypes.number.isRequired,
 	onConnect: PropTypes.func
-}
+};
 
 export default WebcamCapture;
