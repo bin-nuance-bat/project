@@ -48,14 +48,17 @@ class EditSnack extends Component {
 
 	handleClick = id => {
 		this.props.setActualItem(id);
+
 		let trainingImage = new Image(224, 224);
 		trainingImage.src = this.props.prediction.img;
 		let tensor = uriToTensor(trainingImage);
+
 		let image = {
 			img: this.props.prediction.img,
 			activation: this.model.mobilenet.infer(tensor, 'conv_pw_13_relu'),
-			label: id
+			label: this.props.items.find(item => item.id === id).name
 		};
+
 		this.controllerDataset.addImage(image, false);
 		const nextPage = this.props.sendWithPhoto ? 'snackchat' : 'slackname';
 		this.props.history.push('/' + nextPage);
