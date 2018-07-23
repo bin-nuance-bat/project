@@ -11,7 +11,8 @@ const mapStateToProps = state => ({
 	name: getPredictionName(state),
 	img: getPredictionImg(state),
 	id: getPredictionId(state),
-	sendWithPhoto: state.sendWithPhoto
+	sendWithPhoto: state.sendWithPhoto,
+	storeList: state.storeList
 });
 
 const mapDispatchToProps = {

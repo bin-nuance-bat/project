@@ -4,7 +4,7 @@ import {
 	SET_SHOW_LIST
 } from './actionTypes';
 
-export function storeList(state = {}, action) {
+export function storeList(state = [], action) {
 	if (action.type === SET_STORELIST) return action.storeList;
 	return state;
 }

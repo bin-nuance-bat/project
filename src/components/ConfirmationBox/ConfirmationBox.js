@@ -24,7 +24,13 @@ class ConfirmationBox extends React.Component {
 					this.props.name
 				}?`}</div>
 				<div className="confirmation-hand">
-					<Hand />
+					<Hand
+						snack={
+							this.props.storeList.find(
+								item => item.name === this.props.name
+							).image
+						}
+					/>
 				</div>
 				<div>
 					<button
@@ -47,8 +53,9 @@ class ConfirmationBox extends React.Component {
 
 ConfirmationBox.propTypes = {
 	name: PropTypes.string.isRequired,
-	id: PropTypes.string.isRequired,
-	img: PropTypes.string.isRequired
+	id: PropTypes.string,
+	img: PropTypes.string,
+	storeList: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export default ConfirmationBox;
