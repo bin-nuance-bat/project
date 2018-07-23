@@ -26,7 +26,6 @@ class Auth extends Component {
                         this.props.history.push('/admin');
                     }
                 });
-                this.props.history.push('/admin');
             } else {
                 firebase.auth().signInWithRedirect(new firebase.auth.GoogleAuthProvider());
             }
