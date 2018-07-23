@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Webcam from 'react-webcam';
 import ItemSelector from '../ItemSelector';
 import Model from './Model';
-import './Trainer.css';
+import '../Admin.css';
 import Settings from './Settings';
 import {uriToTensor} from './../AdminUtils';
 
@@ -185,7 +185,7 @@ class Trainer extends Component {
 					/>
 					<br />
 					<button
-						className="button button-trainer"
+						className="button button-admin"
 						onClick={() =>
 							this.addExample(this.webcam.current.video)
 						}
@@ -201,7 +201,7 @@ class Trainer extends Component {
 					/>
 					<br />
 					<button
-						className="button button-trainer"
+						className="button button-admin"
 						onClick={this.addFromFile}
 						disabled={busy}>
 						Add From File

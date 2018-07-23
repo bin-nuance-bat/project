@@ -1,8 +1,8 @@
 import * as tf from '@tensorflow/tfjs';
+import initFirebase from '../../../utils/firebase';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/storage';
-import initFirebase from './../../../utils/firebase';
 
 export class ControllerDataset {
 	constructor() {
