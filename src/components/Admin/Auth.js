@@ -20,6 +20,10 @@ class Auth extends Component {
                             name: result.user.displayName,
                             admin: false
                         });
+                    } else if (!uers.data().admin) {
+                        this.setStatus('You are not an administrator.');
+                    } else {
+                        this.props.history.push('/admin');
                     }
                 });
                 this.props.history.push('/admin');
