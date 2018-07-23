@@ -13,9 +13,14 @@ class Auth extends Component {
         initFirebase();
         firebase.auth().getRedirectResult().then(result => {
             if (result.user) {
-                firebase.firestore().collection('users').doc(result.user.uid).set({
-                    name: result.user.displayName,
-                    admin: false
+                const userRef = firebase.firestore().collection('users').doc(result.user.uid);
+                userRef.get().then(user => {
+                    if (!user.exists) {
+                        userRef.set({
+                            name: result.user.displayName,
+                            admin: false
+                        });
+                    }
                 });
                 this.props.history.push('/admin');
             } else {
