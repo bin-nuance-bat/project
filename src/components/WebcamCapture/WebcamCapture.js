@@ -15,15 +15,18 @@ class WebcamCapture extends Component {
 
 	webcam = React.createRef();
 
-	setupScreenshotInterval() {
-		this.ticker = setInterval(() => {
-			const img = new Image(224, 224);
-			img.src = this.webcam.current.getScreenshot();
-			img.onload = () => {
-				this.props.onImgLoad(img);
-			};
-		}, this.props.interval);
-	}
+	requestScreenshot = () => {
+		return new Promise((resolve, reject) => {
+			const screenshot = this.webcam.current.getScreenshot();
+			if (screenshot === null) {
+				reject('Camera not available.');
+			} else {
+				this.urlToImg(screenshot).then(img => {
+					this.urlToImg(this.cropImage(img)).then(resolve);
+				});
+			}
+		});
+	};
 
 	setupWebcam() {
 		navigator.mediaDevices
@@ -33,16 +36,37 @@ class WebcamCapture extends Component {
 					cameraConnected: true,
 					isDetecting: false
 				});
-				this.setupScreenshotInterval();
+				if (this.props.onConnect) this.props.onConnect();
 			})
-			.catch(() =>
-				this.setState({cameraConnected: false, isDetecting: false})
-			);
+			.catch(() => {
+				this.setState({cameraConnected: false, isDetecting: false});
+			});
+	}
+
+	async urlToImg(url) {
+		return new Promise(resolve => {
+			const img = new Image();
+			img.onload = () => resolve(img);
+			img.src = url;
+		});
+	}
+
+	cropImage(img) {
+		this.ctx.drawImage(
+			img,
+			-(img.width - this.props.imgSize) / 2,
+			-(img.height - this.props.imgSize) / 2
+		);
+		return this.canvas.toDataURL();
 	}
 
 	componentDidMount() {
 		if (!navigator.mediaDevices) return;
 		this.setupWebcam();
+		this.canvas = document.createElement('canvas');
+		this.canvas.width = this.props.imgSize;
+		this.canvas.height = this.props.imgSize;
+		this.ctx = this.canvas.getContext('2d');
 	}
 
 	componentWillUnmount() {
@@ -64,7 +88,7 @@ class WebcamCapture extends Component {
 						screenshotFormat="image/jpeg"
 						width={width}
 						className="videoStream"
-						screenshotWidth={300}
+						screenshotWidth={this.props.imgSize * (4 / 3)}
 					/>
 				</div>
 			);
@@ -76,8 +100,8 @@ class WebcamCapture extends Component {
 }
 
 WebcamCapture.propTypes = {
-	onImgLoad: PropTypes.func.isRequired,
-	interval: PropTypes.number.isRequired
+	imgSize: PropTypes.number.isRequired,
+	onConnect: PropTypes.func
 };
 
 export default WebcamCapture;

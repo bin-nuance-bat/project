@@ -115,8 +115,9 @@ class Model {
 			);
 			await tf.nextFrame();
 		}
-		this.setBusyStatus('Submitting images to database...');
+		this.setBusyStatus('Submitting images to database. Please wait...');
 		this.controllerDataset.addExamples(examples);
+		this.setReadyStatus('Done');
 	}
 
 	async train(
