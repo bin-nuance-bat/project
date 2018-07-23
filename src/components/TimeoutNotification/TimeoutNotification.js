@@ -33,7 +33,12 @@ class TimeoutNotification extends Component {
 	};
 
 	countdownTick = () => {
-		this.setState(prevState => ({countdown: prevState.countdown - 1}));
+		this.setState(prevState => {
+			if (prevState.countdown === 0) {
+				clearInterval(this.interval);
+			}
+			return {countdown: prevState.countdown - 1};
+		});
 	};
 
 	dismissMessage = () => {
@@ -43,10 +48,6 @@ class TimeoutNotification extends Component {
 	};
 
 	render() {
-		if (this.state.countdown === 0) {
-			clearInterval(this.interval);
-		}
-
 		return (
 			<div>
 				<div
