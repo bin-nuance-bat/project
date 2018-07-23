@@ -19,7 +19,10 @@ class EditSnack extends Component {
 					Sorry, I can’t recognise that snack. <br /> Please select it
 					below
 				</div>
-				<ListSelection items={items} onClick={this.handleClick} />
+				<ListSelection
+					items={this.props.items}
+					onClick={this.handleClick}
+				/>
 			</div>
 		);
 	}
