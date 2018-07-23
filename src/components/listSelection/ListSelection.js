@@ -27,6 +27,7 @@ class ListSelection extends Component {
 	};
 
 	render() {
+		const iconSize = this.props.iconSize;
 		return (
 			<div className="list-selection list-selection--body">
 				{this.props.items.length > 0 &&
@@ -39,11 +40,18 @@ class ListSelection extends Component {
 							{groupItems.map(item => (
 								<div
 									className="list-selection list-selection--list-item"
+									style={{
+										height: iconSize
+									}}
 									key={item.id}
 									data-key={item.id}
 									onClick={this.handleClick}>
 									<img
 										className="list-selection list-selection--item-icon"
+										style={{
+											height: iconSize,
+											width: iconSize
+										}}
 										src={item.image}
 										alt=""
 										data-key={item.id}

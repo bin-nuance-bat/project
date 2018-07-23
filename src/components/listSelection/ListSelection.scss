@@ -1,14 +1,10 @@
 @import '../../utils/constants.scss';
 
 $icon-distance: 56px;
-$icon-width: 50px;
 $item-text-distance: 24px;
 
 .list-selection--item-icon {
-	width: $icon-width;
-	height: $icon-width;
-	position: absolute;
-	left: $icon-distance;
+	margin-left: $icon-distance;
 }
 
 .list-selection--body {
@@ -30,12 +26,12 @@ $item-text-distance: 24px;
 	}
 
 	&--item-name {
-		margin-left: $icon-distance + $icon-width + $item-text-distance;
+		padding-left: $item-text-distance;
 	}
 }
 
 .list-selection--list-item {
 	padding-bottom: 94px;
 	vertical-align: middle;
-	height: $icon-width;
+	display: flex;
 }
