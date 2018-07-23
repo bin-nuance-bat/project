@@ -13,7 +13,8 @@ const getProps = () => {
 			push: jest.fn()
 		},
 		setActualItem: jest.fn(),
-		img: 'barFoo'
+		img: 'barFoo',
+		storeList: [{name: 'fooBar', image: 'quuz'}]
 	};
 };
 
