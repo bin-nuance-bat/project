@@ -2,12 +2,41 @@
 
 .timeout-notification--notification {
 	background-color: $white;
-	color: $text-blue;
 	height: 88px;
 	width: 608px;
 	z-index: 20;
 	position: absolute;
 	bottom: 0;
 	left: 80px;
-	align-self: center;
+	display: flex;
+}
+
+.timeout-notification--info {
+	flex: 65%;
+}
+
+.timeout-notification--dismiss {
+	flex: 1;
+	text-align: right;
+	font-size: 30px;
+	padding-top: 24px;
+	padding-right: 24px;
+	color: #47bed8;
+}
+
+.timeout-notification--alert {
+	padding-top: 16px;
+	text-align: left;
+	padding-left: 24px;
+	color: $text-blue;
+	font-size: 30px;
+}
+
+.timeout-notification--timer {
+	opacity: 0.5;
+	text-align: left;
+	padding-bottom: 8px;
+	padding-left: 24px;
+	font-size: 25px;
+	color: $text-blue;
 }

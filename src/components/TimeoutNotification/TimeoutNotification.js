@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import './TimeoutNotification.css';
 import {Redirect} from 'react-router';
 
-const WAIT_BEFORE_DISPLAY = 2;
-const COUNTDOWN = 5;
+const WAIT_BEFORE_DISPLAY = 0.1;
+const COUNTDOWN = 100;
 
 class TimeoutNotification extends Component {
 	state = {
@@ -12,9 +12,9 @@ class TimeoutNotification extends Component {
 	};
 
 	componentDidMount() {
-		console.log(this.props);
 		document.body.addEventListener('touchstart', () => {
-			this.resetTimer(), this.dismissMessage();
+			this.dismissMessage();
+			this.resetTimer();
 		});
 		this.resetTimer(0);
 	}
@@ -24,14 +24,12 @@ class TimeoutNotification extends Component {
 	}
 
 	resetTimer = () => {
-		console.log(22);
 		clearTimeout(this.timer);
 		this.timer = setTimeout(this.showMessage, WAIT_BEFORE_DISPLAY * 1000);
 	};
 
 	showMessage = () => {
 		this.setState({displayWarning: true});
-		clearInterval(this.interval); //WHAT????WHY NEEDED???
 		this.interval = setInterval(this.countdown, 1000);
 	};
 
@@ -54,7 +52,17 @@ class TimeoutNotification extends Component {
 			<div>
 				{this.state.displayWarning && (
 					<div className="timeout-notification--notification">
-						{this.state.countdown}
+						<div className="timeout-notification--info">
+							<div className="timeout-notification--alert">
+								Are you still there?
+							</div>
+							<div className="timeout-notification--timer">
+								{'Timeout in ' + this.state.countdown + 's'}
+							</div>
+						</div>
+						<div className="timeout-notification--dismiss">
+							DISMISS
+						</div>
 					</div>
 				)}
 				{this.state.countdown === 0 && <Redirect to="/" />}
