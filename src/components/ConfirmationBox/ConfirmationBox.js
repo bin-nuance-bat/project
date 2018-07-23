@@ -23,10 +23,10 @@ class ConfirmationBox extends React.Component {
 				<div>{`Did you take ${this.props.name}?`}</div>
 				<img src={this.props.img} alt="" />
 				<div>
-					<button testAttribute="YES" onClick={this.handleYes}>
+					<button testattribute="YES" onClick={this.handleYes}>
 						Yes
 					</button>
-					<button testAttribute="NO" onClick={this.handleNo}>
+					<button testattribute="NO" onClick={this.handleNo}>
 						No
 					</button>
 				</div>
