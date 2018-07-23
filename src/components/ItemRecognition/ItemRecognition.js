@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Model from './../../utils/model';
 import WebcamCapture from '../WebcamCapture/WebcamCapture';
 import Logo from '../Logo/Logo';
-import TimeoutNotification from '../TimeoutNotification/TimeoutNotification';
 
 const ML_THRESHOLD = 0.06;
 
@@ -54,7 +53,6 @@ class ItemRecognition extends Component {
 					{' '}
 					a
 				</button>
-				<TimeoutNotification />
 			</div>
 		);
 	}
