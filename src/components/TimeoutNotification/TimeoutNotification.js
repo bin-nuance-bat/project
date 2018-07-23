@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import {Redirect} from 'react-router';
 import './TimeoutNotification.css';
 
-const WAIT_BEFORE_DISPLAY = 1;
-const COUNTDOWN = 100;
+const WAIT_BEFORE_DISPLAY = 10;
+const COUNTDOWN = 10;
 
 class TimeoutNotification extends Component {
 	state = {
