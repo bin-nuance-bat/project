@@ -3,7 +3,7 @@ import './ImagePreview.css';
 
 const ImagePreview = props => {
 	return (
-		<div>
+		<div className="preview-image">
 			<img src={props.image.uri} alt={props.image.id} />
 			<br />
 			<button
