@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import './UsernameEntry.css';
 import Logo from '../Logo/Logo';
 import ListSelection from '../listSelection/ListSelection';
+import TimeoutNotification from '../TimeoutNotification/TimeoutNotification';
 
 class UsernameEntry extends React.Component {
 	sendReminder = async name => {
@@ -31,6 +32,7 @@ class UsernameEntry extends React.Component {
 						/>
 					)}
 				</div>
+				<TimeoutNotification />
 			</div>
 		);
 	}
