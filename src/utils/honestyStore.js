@@ -47,6 +47,7 @@ const getStore = () => {
 				map[obj.id] = obj;
 				return map;
 			}, {});
+			return items;
 		});
 };
 

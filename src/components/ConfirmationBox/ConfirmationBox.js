@@ -23,17 +23,19 @@ class ConfirmationBox extends React.Component {
 				<div className="text-confirmation">{`Is this a ${
 					this.props.name
 				}?`}</div>
-				<Hand />
+				<div className="confirmation-hand">
+					<Hand />
+				</div>
 				<div>
 					<button
 						className="button button-editsnack"
-						testAttribute="NO"
+						testattribute="NO"
 						onClick={this.handleNo}>
 						Edit Snack
 					</button>
 					<button
 						className="button button-yes"
-						testAttribute="YES"
+						testattribute="YES"
 						onClick={this.handleYes}>
 						Yes
 					</button>
