@@ -1,15 +1,41 @@
 @import '../../utils/constants.scss';
 
 .timeout-notification--notification {
-	background-color: $white;
-	height: 88px;
-	width: 608px;
-	z-index: 20;
-	position: absolute;
-	bottom: 0;
-	left: 80px;
-	display: flex;
+	&--show {
+		background-color: $white;
+		height: 88px;
+		width: 608px;
+		z-index: 20;
+		position: absolute;
+		bottom: 0;
+		left: 80px;
+		display: flex;
+		transition: all 1s;
+		overflow: hidden;
+	}
+
+	&--hide {
+		height: 0;
+		overflow: hidden;
+	}
 }
+// .timeout-notification--notification--true {
+// 	background-color: $white;
+// 	height: 88px;
+// 	width: 608px;
+// 	z-index: 20;
+// 	position: absolute;
+// 	bottom: 0;
+// 	left: 80px;
+// 	display: flex;
+// 	transition: all 1s;
+// 	overflow: hidden;
+// }
+
+// --false {
+// 	height: 0;
+// 	overflow: hidden;
+// }
 
 .timeout-notification--info {
 	flex: 65%;
@@ -25,11 +51,12 @@
 }
 
 .timeout-notification--alert {
-	padding-top: 16px;
+	padding-top: 5px;
 	text-align: left;
 	padding-left: 24px;
 	color: $text-blue;
 	font-size: 30px;
+	white-space: nowrap;
 }
 
 .timeout-notification--timer {

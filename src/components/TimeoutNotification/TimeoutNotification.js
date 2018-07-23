@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import './TimeoutNotification.css';
 import {Redirect} from 'react-router';
+import './TimeoutNotification.css';
 
-const WAIT_BEFORE_DISPLAY = 0.1;
-const COUNTDOWN = 100;
+const WAIT_BEFORE_DISPLAY = 1;
+const COUNTDOWN = 10;
 
 class TimeoutNotification extends Component {
 	state = {
@@ -14,9 +14,8 @@ class TimeoutNotification extends Component {
 	componentDidMount() {
 		document.body.addEventListener('touchstart', () => {
 			this.dismissMessage();
-			this.resetTimer();
 		});
-		this.resetTimer(0);
+		this.resetTimer();
 	}
 
 	componentWillUnmount() {
@@ -30,16 +29,16 @@ class TimeoutNotification extends Component {
 
 	showMessage = () => {
 		this.setState({displayWarning: true});
-		this.interval = setInterval(this.countdown, 1000);
+		this.interval = setInterval(this.countdownTick, 1000);
 	};
 
-	countdown = () => {
+	countdownTick = () => {
 		this.setState(prevState => ({countdown: prevState.countdown - 1}));
 	};
 
 	dismissMessage = () => {
-		this.timer = setTimeout(this.showMessage, WAIT_BEFORE_DISPLAY * 1000);
 		clearInterval(this.interval);
+		this.resetTimer();
 		this.setState({displayWarning: false, countdown: COUNTDOWN});
 	};
 
@@ -50,21 +49,21 @@ class TimeoutNotification extends Component {
 
 		return (
 			<div>
-				{this.state.displayWarning && (
-					<div className="timeout-notification--notification">
-						<div className="timeout-notification--info">
-							<div className="timeout-notification--alert">
-								Are you still there?
-							</div>
-							<div className="timeout-notification--timer">
-								{'Timeout in ' + this.state.countdown + 's'}
-							</div>
+				<div
+					className={
+						'timeout-notification--notification--' +
+						(this.state.displayWarning ? 'show' : 'hide')
+					}>
+					<div className="timeout-notification--info">
+						<div className="timeout-notification--alert">
+							Are you still there?
 						</div>
-						<div className="timeout-notification--dismiss">
-							DISMISS
+						<div className="timeout-notification--timer">
+							{'Timeout in ' + this.state.countdown + 's'}
 						</div>
 					</div>
-				)}
+					<div className="timeout-notification--dismiss">DISMISS</div>
+				</div>
 				{this.state.countdown === 0 && <Redirect to="/" />}
 			</div>
 		);

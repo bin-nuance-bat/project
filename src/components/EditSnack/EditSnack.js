@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ListSelection from '../listSelection/ListSelection';
 import Logo from '../Logo/Logo';
 import './EditSnack.css';
+import TimeoutNotification from '../TimeoutNotification/TimeoutNotification';
 
 const importImages = require.context('./assets', true, /\.svg$/);
 const imgFilesObject = importImages.keys().reduce((images, key) => {
