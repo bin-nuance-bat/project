@@ -1,6 +1,6 @@
 {
 	"name": "honesty-store-kiosk",
-	"description": "Kiosk client for honesty store in scottLogic NCL office",
+	"description": "Kiosk client for honesty.store in scottLogic NCL office",
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
