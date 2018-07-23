@@ -1,5 +1,4 @@
 <svg
-	className="hand-bg"
 	version="1.1"
 	xmlns="http://www.w3.org/2000/svg"
 	viewBox="0 0 242 141">
@@ -29,12 +28,6 @@
 		L97.56,34.79z"
 		/>
 	</g>
-</svg>
-<svg
-	className="hand-fg"
-	version="1.1"
-	xmlns="http://www.w3.org/2000/svg"
-	viewBox="0 0 242 141">
 	<g>
 		<path
 			fill="#F28159"

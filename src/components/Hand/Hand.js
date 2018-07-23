@@ -3,8 +3,8 @@ import hand from './Hand.svg';
 import './Hand.css';
 
 const Hand = () => (
-	<div className="hand">
-		<img src={hand} alt="" />
+	<div>
+		<img className="hand" src={hand} alt="" />
 	</div>
 );
 

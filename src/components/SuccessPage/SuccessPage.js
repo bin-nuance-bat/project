@@ -8,7 +8,9 @@ const SuccessPage = props => {
 		<div onClick={() => props.history.push('/')}>
 			<Logo />
 			<div className="text text-remindersent">Reminder sent!</div>
-			<Hand />
+			<div className="success-hand">
+				<Hand />
+			</div>
 		</div>
 	);
 };
