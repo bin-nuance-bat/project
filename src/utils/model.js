@@ -17,6 +17,8 @@ export default class Model {
 	}
 
 	async predict(element) {
+		if (!this.model) return {value: 0, id: ''};
+
 		const input = tf.fromPixels(element);
 		const preProcessedInput = tf.div(
 			tf.sub(input.asType('float32'), PREPROCESS_DIVISOR),
