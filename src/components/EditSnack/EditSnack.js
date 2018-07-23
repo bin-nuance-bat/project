@@ -4,35 +4,6 @@ import ListSelection from '../listSelection/ListSelection';
 import Logo from '../Logo/Logo';
 import './EditSnack.css';
 
-const importImages = require.context('./assets', true, /\.svg$/);
-const imgFilesObject = importImages.keys().reduce((images, key) => {
-	images[key] = importImages(key);
-	return images;
-}, {});
-
-const getImagePath = item => {
-	const givenPath = './' + item.image;
-	let actualImagePath;
-
-	if (imgFilesObject[givenPath]) {
-		actualImagePath =
-			'./' + item.image + (item.image.endsWith('.svg') ? '' : '.svg');
-	} else {
-		actualImagePath = './misc-bar.svg';
-	}
-
-	return actualImagePath;
-};
-
-const addItemImage = item => {
-	const imagePath = getImagePath(item);
-	const image = importImages(imagePath);
-	return {
-		...item,
-		image
-	};
-};
-
 class EditSnack extends Component {
 	handleClick = id => {
 		this.props.setActualItem(id);
@@ -41,7 +12,6 @@ class EditSnack extends Component {
 	};
 
 	render() {
-		const items = this.props.items.map(addItemImage);
 		return (
 			<div>
 				<Logo />

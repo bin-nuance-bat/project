@@ -27,7 +27,7 @@ export function setShowList(showList) {
 	};
 }
 
-export const loadStoreList = () => (dispatch, props) =>
+export const loadStoreList = () => dispatch =>
 	fetchItems()
 		.then(storeList => dispatch(setStoreList(storeList)))
 		.catch(() => dispatch(setLoadStoreListError(true)));
