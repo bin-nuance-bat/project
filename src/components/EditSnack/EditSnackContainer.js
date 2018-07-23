@@ -4,7 +4,8 @@ import {setActualItem} from '../ConfirmationBox/actions';
 
 const mapStateToProps = state => {
 	return {
-		items: Object.values(state.storeList)
+		items: Object.values(state.storeList),
+		prediction: state.prediction
 	};
 };
 
