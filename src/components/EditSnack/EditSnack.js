@@ -5,6 +5,7 @@ import Logo from '../Logo/Logo';
 import {uriToTensor} from '../Admin/AdminUtils.js';
 import {ControllerDataset} from '../Admin/Trainer/ControllerDataset';
 import './EditSnack.css';
+import Model from '../Admin/Trainer/Model';
 
 const importImages = require.context('./assets', true, /\.svg$/);
 const imgFilesObject = importImages.keys().reduce((images, key) => {
@@ -38,10 +39,12 @@ const addItemImage = item => {
 class EditSnack extends Component {
 	handleClick = (id, name) => {
 		this.props.setActualItem(id);
-		let tensor = uriToTensor(this.props.prediction.img);
+		let trainingImage = new Image(224, 224);
+		trainingImage.src = this.props.prediction.img;
+		let tensor = uriToTensor(trainingImage);
 		let image = {
 			img: this.props.prediction.img,
-			activation: tensor,
+			activation: this.model.infer(tensor, 'conv_pw_13_relu'),
 			label: name
 		};
 		this.controllerDataset.addImage(image, false);
@@ -51,6 +54,7 @@ class EditSnack extends Component {
 
 	componentDidMount() {
 		this.controllerDataset = new ControllerDataset();
+		this.model = new Model();
 	}
 
 	render() {
