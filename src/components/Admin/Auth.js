@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import firebase from 'firebase/app';
 import initFirebase from '../../utils/firebase';
+import firebase from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/firestore';
 
 class Auth extends Component {
     state = {
@@ -12,7 +13,11 @@ class Auth extends Component {
         initFirebase();
         firebase.auth().getRedirectResult().then(result => {
             if (result.user) {
-                this.setState({status: 'User authenticated: ' + result.user.uid});
+                firebase.firestore().collection('users').doc(result.user.uid).set({
+                    name: result.user.displayName,
+                    admin: false
+                });
+                this.props.history.push('/admin');
             } else {
                 firebase.auth().signInWithRedirect(new firebase.auth.GoogleAuthProvider());
             }

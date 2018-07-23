@@ -7,6 +7,7 @@ const initFirebase = () => {
             authDomain: 'honesty-store-kiosk.firebaseapp.com',
             projectId: 'honesty-store-kiosk'
         });
+        firebase.firestore().settings({timestampsInSnapshots: true});
     }
 }
 

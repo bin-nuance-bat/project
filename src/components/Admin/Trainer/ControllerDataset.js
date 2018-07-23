@@ -1,18 +1,16 @@
 import * as tf from '@tensorflow/tfjs';
+import initFirebase from '../../../utils/firebase';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/storage';
+import 'firebase/auth';
 
 export class ControllerDataset {
 	constructor(setReadyStatus, setBusyStatus) {
 		this.setReadyStatus = setReadyStatus;
 		this.setBusyStatus = setBusyStatus;
 
-		firebase.initializeApp({
-			apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-			authDomain: 'honesty-store-kiosk.firebaseapp.com',
-			projectId: 'honesty-store-kiosk'
-		});
+		initFirebase();
 		this.store = firebase.storage();
 		this.db = firebase.firestore();
 		this.db.settings({timestampsInSnapshots: true});

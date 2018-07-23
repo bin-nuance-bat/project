@@ -15,7 +15,8 @@ import ConfirmationBox from './components/ConfirmationBox/container';
 import UsernameEntryContainer from './components/UsernameEntry/container';
 import EditSnack from './components/EditSnack/EditSnackContainer';
 import SuccessPage from './components/SuccessPage/SuccessPage';
-import Auth from './components/Admin/Auth/Auth.js';
+import Admin from './components/Admin/Admin';
+import Auth from './components/Admin/Auth';
 
 ReactDOM.render(
 	<Provider store={store}>
@@ -34,8 +35,9 @@ ReactDOM.render(
 				/>
 				<Route exact path="/success" component={SuccessPage} />
 				<Route exact path="/old" component={OldAppContainer} />
-				<Route exact path="/training" component={Trainer} />
+				<Route exact path="/admin" component={Admin} />
 				<Route exact path="/auth" component={Auth} />
+				<Route exact path="/training" component={Trainer} />
 			</Switch>
 		</Router>
 	</Provider>,
