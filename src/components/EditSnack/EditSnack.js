@@ -36,7 +36,7 @@ const addItemImage = item => {
 };
 
 class EditSnack extends Component {
-	handleClick = id => {
+	handleClick = (id, name) => {
 		this.props.setActualItem(id);
 		let tensor = uriToTensor(this.props.prediction.img);
 		let image = {

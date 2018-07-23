@@ -29,22 +29,25 @@ export default class Viewer extends Component {
 	}
 
 	getImages = () => {
-		let ref = this.db.collection('training_data');
-		if (this.state.item !== 'all')
-			ref = ref.where('label', '==', this.state.item);
-		ref.get().then(rows => {
-			let images = [];
-			rows.forEach(row => {
-				const img = row.data();
-				images.push({
-					id: row.id,
-					uri: img.img,
-					item: img.label,
-					trusted: img.trusted
+		this.controllerDataset
+			.getCollectionReference('training_data')
+			.then(ref => {
+				if (this.state.item !== 'all')
+					ref = ref.where('label', '==', this.state.item);
+				ref.get().then(rows => {
+					let images = [];
+					rows.forEach(row => {
+						const img = row.data();
+						images.push({
+							id: row.id,
+							uri: img.img,
+							item: img.label,
+							trusted: img.trusted
+						});
+					});
+					this.setState({images});
 				});
 			});
-			this.setState({images});
-		});
 	};
 
 	remove = event => {

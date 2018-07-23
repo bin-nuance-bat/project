@@ -24,6 +24,10 @@ export class ControllerDataset {
 		return itemObj;
 	}
 
+	getCollectionReference = async name => {
+		return await this.db.collection(name);
+	};
+
 	getItemReference = async label => {
 		return await this.db.collection('item_data').doc(label);
 	};
@@ -42,8 +46,11 @@ export class ControllerDataset {
 	};
 
 	changeItemCount = (label, delta) => {
-		const item = this.getItemReference(label);
-		this.setItemCount(item, this.getItemCount(item) + delta);
+		this.getItemReference(label).then(item =>
+			this.getItemCount(item).then(count =>
+				this.setItemCount(item, count + delta)
+			)
+		);
 	};
 
 	deleteImage = async dataset => {
