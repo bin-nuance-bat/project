@@ -39,3 +39,12 @@ $item-text-distance: 24px;
 	vertical-align: middle;
 	height: $icon-width;
 }
+
+.list-selection--scroll-select {
+	color: $blue;
+	position: fixed;
+	font-size: 20px;
+	right: 20px;
+	top: 320px;
+	margin: 0px;
+}
