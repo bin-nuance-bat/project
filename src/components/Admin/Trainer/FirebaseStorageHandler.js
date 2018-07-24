@@ -11,16 +11,13 @@ export default class FirebaseStorage {
 
 	constructor(fileNamePrefix, classes) {
 		if (fileNamePrefix.startsWith(FirebaseStorage.URL_SCHEME)) {
-			fileNamePrefix = fileNamePrefix.slice(
-				FirebaseStorage.URL_SCHEME.length
-			);
+			fileNamePrefix = fileNamePrefix.slice(FirebaseStorage.URL_SCHEME.length);
 		}
 		if (fileNamePrefix == null || fileNamePrefix.length === 0) {
 			fileNamePrefix = DEFAULT_FILE_NAME_PREFIX;
 		}
 
-		this.modelTopologyFileName =
-			fileNamePrefix + DEFAULT_JSON_EXTENSION_NAME;
+		this.modelTopologyFileName = fileNamePrefix + DEFAULT_JSON_EXTENSION_NAME;
 		this.weightDataFileName =
 			fileNamePrefix + DEFAULT_WEIGHT_DATA_EXTENSION_NAME;
 		this.classes = classes;
@@ -85,6 +82,7 @@ export default class FirebaseStorage {
 		const modelConfig = await modelConfigRequest.json();
 		const modelTopology = modelConfig['modelTopology'];
 		const weightsManifest = modelConfig['weightsManifest'];
+		const classes = modelConfig['classes'];
 
 		// We do not allow both modelTopology and weightsManifest to be missing.
 		if (modelTopology == null && weightsManifest == null) {
@@ -114,7 +112,7 @@ export default class FirebaseStorage {
 			);
 		}
 
-		return {modelTopology, weightSpecs, weightData};
+		return {modelTopology, weightSpecs, weightData, classes};
 	}
 }
 
@@ -128,9 +126,7 @@ function getModelArtifactsInfoForJSON(modelArtifacts) {
 		modelTopologyBytes:
 			modelArtifacts.modelTopology == null
 				? 0
-				: stringByteLength(
-						JSON.stringify(modelArtifacts.modelTopology)
-				  ),
+				: stringByteLength(JSON.stringify(modelArtifacts.modelTopology)),
 		weightSpecsBytes:
 			modelArtifacts.weightSpecs == null
 				? 0
@@ -166,19 +162,16 @@ function stringByteLength(str) {
 	return new Blob([str]).size;
 }
 
+// Body.arrayBuffer() not working when using fetch.
+// XMLHttpRequest with arraybuffer response type works instead
 function get(url) {
-	return new Promise((accept, reject) => {
-		var req = new XMLHttpRequest();
+	return new Promise(accept => {
+		const req = new XMLHttpRequest();
 		req.open('GET', url, true);
 		req.responseType = 'arraybuffer';
-
-		req.onload = function(event) {
-			var resp = req.response;
-			if (resp) {
-				accept(resp);
-			}
-		};
-
-		req.send(null);
+		req.addEventListener('load', () => {
+			accept(req.response);
+		});
+		req.send();
 	});
 }

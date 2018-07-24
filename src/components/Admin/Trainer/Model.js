@@ -41,24 +41,21 @@ class Model {
 	};
 
 	loadTrainingData = async () => {
-		this.items = await this.controllerDataset.setItemTrainingCounts(
-			this.items
-		);
+		this.items = await this.controllerDataset.setItemTrainingCounts(this.items);
 	};
 
-	loadModel = () => {
+	loadModel = modelName => {
 		if (
 			!this.model ||
 			window.confirm(
 				'Loading the model will overwrite any training you have done. Continue?'
 			)
 		) {
-			tf.loadModel(new FirebaseStorageHandler('model 1'))
+			tf.loadModel(new FirebaseStorageHandler(modelName))
 				.then(model => {
 					this.model = model;
-					this.classes = JSON.parse(
-						window.localStorage.getItem('items')
-					);
+					window.model = model;
+					this.classes = JSON.parse(window.localStorage.getItem('items'));
 					this.setReadyStatus('Loaded model!');
 				})
 				.catch(e => {
@@ -68,14 +65,14 @@ class Model {
 		}
 	};
 
-	saveModel = async () => {
+	saveModel = async modelName => {
 		if (!this.model) {
 			this.setReadyStatus('Please train a model to save.');
 			return;
 		}
 		this.setBusyStatus('Saving...');
 		this.model
-			.save(new FirebaseStorageHandler('model 1', this.classes))
+			.save(new FirebaseStorageHandler(modelName, this.classes))
 			.then(() => this.setReadyStatus('Saved model!'))
 			.catch(err => this.setReadyStatus(err));
 	};
@@ -117,9 +114,7 @@ class Model {
 			.getTensors(setSize, randomness, since)
 			.then(async ({xs, ys, classes}) => {
 				if (!xs) {
-					this.setReadyStatus(
-						'Please collect some training images first!'
-					);
+					this.setReadyStatus('Please collect some training images first!');
 					return;
 				}
 
@@ -170,15 +165,11 @@ class Model {
 					epochs,
 					callbacks: {
 						onBatchEnd: async (batch, logs) => {
-							this.setBusyStatus(
-								'Training... Loss: ' + logs.loss.toFixed(5)
-							);
+							this.setBusyStatus('Training... Loss: ' + logs.loss.toFixed(5));
 							await tf.nextFrame();
 						},
 						onTrainEnd: async () => {
-							this.setReadyStatus(
-								'Finished Training. Try me out!'
-							);
+							this.setReadyStatus('Finished Training. Try me out!');
 							await tf.nextFrame();
 						}
 					}
