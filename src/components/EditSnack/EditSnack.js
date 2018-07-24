@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ListSelection from '../listSelection/ListSelection';
 import Logo from '../Logo/Logo';
 import './EditSnack.css';
+import TimeoutNotification from '../TimeoutNotification/TimeoutNotification';
 
 class EditSnack extends Component {
 	handleClick = id => {
@@ -23,6 +24,7 @@ class EditSnack extends Component {
 					items={this.props.items}
 					onClick={this.handleClick}
 				/>
+				<TimeoutNotification />
 			</div>
 		);
 	}

@@ -1,0 +1,53 @@
+@import '../../utils/constants.scss';
+
+.timeout-notification--notification {
+	&--show {
+		background-color: $white;
+		height: 88px;
+		width: 608px;
+		z-index: 20;
+		position: fixed;
+		bottom: 0;
+		left: 80px;
+		display: flex;
+		transition: all 1s;
+		overflow: hidden;
+		box-shadow: 0px -2px 7px 2px rgba(76, 76, 76, 0.7);
+	}
+
+	&--hide {
+		height: 0;
+		overflow: hidden;
+	}
+}
+
+.timeout-notification--info {
+	flex: 65%;
+}
+
+.timeout-notification--dismiss {
+	flex: 1;
+	text-align: right;
+	font-size: 30px;
+	padding-top: 24px;
+	padding-right: 24px;
+	color: #47bed8;
+}
+
+.timeout-notification--alert {
+	padding-top: 5px;
+	text-align: left;
+	padding-left: 24px;
+	color: $blue;
+	font-size: 30px;
+	white-space: nowrap;
+}
+
+.timeout-notification--timer {
+	opacity: 0.5;
+	text-align: left;
+	padding-bottom: 8px;
+	padding-left: 24px;
+	font-size: 25px;
+	color: $blue;
+}

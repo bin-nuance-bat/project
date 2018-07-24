@@ -1,6 +1,7 @@
 import React from 'react';
 import Logo from '../Logo/Logo';
 import './Disclaimer.css';
+import TimeoutNotification from '../TimeoutNotification/TimeoutNotification';
 
 const Disclaimer = props => {
 	return (
@@ -75,6 +76,7 @@ const Disclaimer = props => {
 				onClick={() => props.history.push('/scanitem')}>
 				Accept and continue
 			</button>
+			<TimeoutNotification />
 		</div>
 	);
 };

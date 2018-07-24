@@ -2,6 +2,7 @@ import React from 'react';
 import './SuccessPage.css';
 import Logo from './../Logo/Logo';
 import Hand from './../Hand/Hand';
+import TimeoutNotification from '../TimeoutNotification/TimeoutNotification';
 
 const SuccessPage = props => {
 	return (
@@ -11,6 +12,7 @@ const SuccessPage = props => {
 			<div className="success-hand">
 				<Hand />
 			</div>
+			<TimeoutNotification />
 		</div>
 	);
 };
