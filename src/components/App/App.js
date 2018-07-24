@@ -5,6 +5,7 @@ import HomeHandsSlot from './HomeHands/Slot.svg';
 import HomeHandsRight from './HomeHands/Right.svg';
 import HomeHandsCenter from './HomeHands/Center.svg';
 import HomeHandsLeft from './HomeHands/Left.svg';
+import PropTypes from 'prop-types';
 
 class App extends React.Component {
 	componentDidMount() {
@@ -88,5 +89,10 @@ class App extends React.Component {
 		);
 	}
 }
+
+App.propTypes = {
+	loadStoreList: PropTypes.func.isRequired,
+	setSendWithPhoto: PropTypes.func.isRequired
+};
 
 export default App;

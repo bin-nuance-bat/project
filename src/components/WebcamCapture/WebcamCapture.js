@@ -13,19 +13,15 @@ class WebcamCapture extends Component {
 	webcam = React.createRef();
 
 	requestScreenshot = () => {
-		return new Promise((resolve, reject) => {
+		return new Promise(() => {
 			const screenshot = this.webcam.current.getScreenshot();
 			if (screenshot === null) {
-				reject('Camera not available.');
-			} else {
-				this.urlToImg(screenshot)
-					.then(img => {
-						this.urlToImg(this.cropImage(img)).then(img => {
-							resolve(img);
-						});
-					})
-					.catch(reject);
+				return Promise.reject(new Error('Camera not available.'));
 			}
+
+			return this.urlToImg(screenshot).then(img =>
+				this.urlToImg(this.cropImage(img))
+			);
 		});
 	};
 
