@@ -14,19 +14,11 @@ $snack-icon-size: 50px;
   width: $snack-icon-size;
 }
 
-.snack-icon-holder {
-  height: $snack-icon-size;
-}
-
 $username-icon-size: 48px;
 
 .username-icon {
   height: $username-icon-size;
   width: $username-icon-size;
-}
-
-.username-icon-holder {
-  height: $username-icon-size;
 }
 
 .list-selection--body {
@@ -42,6 +34,9 @@ $username-icon-size: 48px;
   font-size: 30px;
   position: relative;
   text-align: left;
+  margin: 0;
+  height: 50px;
+  line-height: 50px;
 
   &--group-header {
     margin-left: 32px;
@@ -53,7 +48,7 @@ $username-icon-size: 48px;
 }
 
 .list-selection--list-item {
-  padding-bottom: 94px;
+  padding: 16px 0;
   vertical-align: middle;
   display: flex;
 }
