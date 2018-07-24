@@ -36,18 +36,30 @@ class ListSelection extends Component {
 								<p className="list-selection list-selection--list-text list-selection--list-text--group-header">
 									{group.toUpperCase()}
 								</p>
-								<img src={line} alt="" />
+								<img
+									src={line}
+									className="list-selection list-selection--groupSplitter"
+									alt=""
+								/>
 								{groupItems.map(item => (
 									<div
-										className="list-selection list-selection--list-item"
+										className={
+											'list-selection list-selection--list-item ' +
+											this.props.iconStyle +
+											'-holder'
+										}
 										key={item.id}
 										data-key={item.id}
 										onClick={this.handleClick}>
 										<img
-											className="list-selection list-selection--item-icon"
+											className={
+												'list-selection list-selection--item-icon ' +
+												this.props.iconStyle
+											}
 											src={item.image}
 											alt=""
 											data-key={item.id}
+											onClick={this.handleClick}
 										/>
 										<p
 											data-key={item.id}

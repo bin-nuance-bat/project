@@ -54,6 +54,7 @@ class EditSnack extends Component {
 				</div>
 				<ListSelection
 					className="edit-snack edit-snack--list-selection"
+					iconStyle="snack-icon"
 					items={items}
 					onClick={this.handleClick}
 				/>
