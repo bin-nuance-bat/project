@@ -3,42 +3,42 @@ import PropTypes from 'prop-types';
 import Logo from '../Logo/Logo';
 
 class ConfirmationBox extends React.Component {
-	insertTrainingImage = () => {};
+  insertTrainingImage = () => {};
 
-	handleYes = () => {
-		const {setActualItem, id, sendWithPhoto, history} = this.props;
-		setActualItem(id);
-		const nextPage = sendWithPhoto ? 'snackchat' : 'slackname';
-		history.push('/' + nextPage);
-	};
+  handleYes = () => {
+    const {setActualItem, id, sendWithPhoto, history} = this.props;
+    setActualItem(id);
+    const nextPage = sendWithPhoto ? 'snackchat' : 'slackname';
+    history.push('/' + nextPage);
+  };
 
-	handleNo = () => {
-		this.props.history.push('/editSnack');
-	};
+  handleNo = () => {
+    this.props.history.push('/editSnack');
+  };
 
-	render() {
-		return (
-			<div>
-				<Logo />
-				<div>{`Did you take ${this.props.name}?`}</div>
-				<img src={this.props.img} alt="" />
-				<div>
-					<button testattribute="YES" onClick={this.handleYes}>
-						Yes
-					</button>
-					<button testattribute="NO" onClick={this.handleNo}>
-						No
-					</button>
-				</div>
-			</div>
-		);
-	}
+  render() {
+    return (
+      <div>
+        <Logo />
+        <div>{`Did you take ${this.props.name}?`}</div>
+        <img src={this.props.img} alt="" />
+        <div>
+          <button testattribute="YES" onClick={this.handleYes}>
+            Yes
+          </button>
+          <button testattribute="NO" onClick={this.handleNo}>
+            No
+          </button>
+        </div>
+      </div>
+    );
+  }
 }
 
 ConfirmationBox.propTypes = {
-	name: PropTypes.string.isRequired,
-	id: PropTypes.string.isRequired,
-	img: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  img: PropTypes.string.isRequired
 };
 
 export default ConfirmationBox;
