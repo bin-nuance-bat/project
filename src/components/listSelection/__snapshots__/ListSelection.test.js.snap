@@ -104,12 +104,6 @@ ShallowWrapper {
                               className="list-selection list-selection--item-icon undefined"
                               data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
                               src="misc-bar.svg"
-                              style={
-                                        Object {
-                                                  "height": undefined,
-                                                  "width": undefined,
-                                                }
-                              }
                     />
                     <p
                               className="list-selection list-selection--list-text list-selection--list-text--item-name"
@@ -139,12 +133,6 @@ ShallowWrapper {
                               className="list-selection list-selection--item-icon undefined"
                               data-key="e615de4e-ce10-451b-80ad-9717662a904a"
                               src="pepsi-max-can.svg"
-                              style={
-                                        Object {
-                                                  "height": undefined,
-                                                  "width": undefined,
-                                                }
-                              }
                     />
                     <p
                               className="list-selection list-selection--list-text list-selection--list-text--item-name"
@@ -174,12 +162,6 @@ ShallowWrapper {
                               className="list-selection list-selection--item-icon undefined"
                               data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
                               src="misc-crisps.svg"
-                              style={
-                                        Object {
-                                                  "height": undefined,
-                                                  "width": undefined,
-                                                }
-                              }
                     />
                     <p
                               className="list-selection list-selection--list-text list-selection--list-text--item-name"
@@ -220,12 +202,6 @@ ShallowWrapper {
                                 className="list-selection list-selection--item-icon undefined"
                                 data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
                                 src="misc-bar.svg"
-                                style={
-                                                Object {
-                                                                "height": undefined,
-                                                                "width": undefined,
-                                                              }
-                                }
                 />
                 <p
                                 className="list-selection list-selection--list-text list-selection--list-text--item-name"
@@ -274,12 +250,6 @@ ShallowWrapper {
                   className="list-selection list-selection--item-icon undefined"
                   data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
                   src="misc-bar.svg"
-                  style={
-                                    Object {
-                                                      "height": undefined,
-                                                      "width": undefined,
-                                                    }
-                  }
 />,
                 <p
                   className="list-selection list-selection--list-text list-selection--list-text--item-name"
@@ -303,10 +273,6 @@ ShallowWrapper {
                   "className": "list-selection list-selection--item-icon undefined",
                   "data-key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
                   "src": "misc-bar.svg",
-                  "style": Object {
-                    "height": undefined,
-                    "width": undefined,
-                  },
                 },
                 "ref": null,
                 "rendered": null,
@@ -357,12 +323,6 @@ ShallowWrapper {
                                 className="list-selection list-selection--item-icon undefined"
                                 data-key="e615de4e-ce10-451b-80ad-9717662a904a"
                                 src="pepsi-max-can.svg"
-                                style={
-                                                Object {
-                                                                "height": undefined,
-                                                                "width": undefined,
-                                                              }
-                                }
                 />
                 <p
                                 className="list-selection list-selection--list-text list-selection--list-text--item-name"
@@ -411,12 +371,6 @@ ShallowWrapper {
                   className="list-selection list-selection--item-icon undefined"
                   data-key="e615de4e-ce10-451b-80ad-9717662a904a"
                   src="pepsi-max-can.svg"
-                  style={
-                                    Object {
-                                                      "height": undefined,
-                                                      "width": undefined,
-                                                    }
-                  }
 />,
                 <p
                   className="list-selection list-selection--list-text list-selection--list-text--item-name"
@@ -440,10 +394,6 @@ ShallowWrapper {
                   "className": "list-selection list-selection--item-icon undefined",
                   "data-key": "e615de4e-ce10-451b-80ad-9717662a904a",
                   "src": "pepsi-max-can.svg",
-                  "style": Object {
-                    "height": undefined,
-                    "width": undefined,
-                  },
                 },
                 "ref": null,
                 "rendered": null,
@@ -494,12 +444,6 @@ ShallowWrapper {
                                 className="list-selection list-selection--item-icon undefined"
                                 data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
                                 src="misc-crisps.svg"
-                                style={
-                                                Object {
-                                                                "height": undefined,
-                                                                "width": undefined,
-                                                              }
-                                }
                 />
                 <p
                                 className="list-selection list-selection--list-text list-selection--list-text--item-name"
@@ -548,12 +492,6 @@ ShallowWrapper {
                   className="list-selection list-selection--item-icon undefined"
                   data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
                   src="misc-crisps.svg"
-                  style={
-                                    Object {
-                                                      "height": undefined,
-                                                      "width": undefined,
-                                                    }
-                  }
 />,
                 <p
                   className="list-selection list-selection--list-text list-selection--list-text--item-name"
@@ -577,10 +515,6 @@ ShallowWrapper {
                   "className": "list-selection list-selection--item-icon undefined",
                   "data-key": "f589039e-c93b-45c1-99fc-1ee457ecb570",
                   "src": "misc-crisps.svg",
-                  "style": Object {
-                    "height": undefined,
-                    "width": undefined,
-                  },
                 },
                 "ref": null,
                 "rendered": null,
@@ -635,12 +569,6 @@ ShallowWrapper {
                                     className="list-selection list-selection--item-icon undefined"
                                     data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
                                     src="misc-bar.svg"
-                                    style={
-                                                Object {
-                                                            "height": undefined,
-                                                            "width": undefined,
-                                                          }
-                                    }
                         />
                         <p
                                     className="list-selection list-selection--list-text list-selection--list-text--item-name"
@@ -670,12 +598,6 @@ ShallowWrapper {
                                     className="list-selection list-selection--item-icon undefined"
                                     data-key="e615de4e-ce10-451b-80ad-9717662a904a"
                                     src="pepsi-max-can.svg"
-                                    style={
-                                                Object {
-                                                            "height": undefined,
-                                                            "width": undefined,
-                                                          }
-                                    }
                         />
                         <p
                                     className="list-selection list-selection--list-text list-selection--list-text--item-name"
@@ -705,12 +627,6 @@ ShallowWrapper {
                                     className="list-selection list-selection--item-icon undefined"
                                     data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
                                     src="misc-crisps.svg"
-                                    style={
-                                                Object {
-                                                            "height": undefined,
-                                                            "width": undefined,
-                                                          }
-                                    }
                         />
                         <p
                                     className="list-selection list-selection--list-text list-selection--list-text--item-name"
@@ -751,12 +667,6 @@ ShallowWrapper {
                                     className="list-selection list-selection--item-icon undefined"
                                     data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
                                     src="misc-bar.svg"
-                                    style={
-                                                      Object {
-                                                                        "height": undefined,
-                                                                        "width": undefined,
-                                                                      }
-                                    }
                   />
                   <p
                                     className="list-selection list-selection--list-text list-selection--list-text--item-name"
@@ -805,12 +715,6 @@ ShallowWrapper {
                     className="list-selection list-selection--item-icon undefined"
                     data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
                     src="misc-bar.svg"
-                    style={
-                                        Object {
-                                                            "height": undefined,
-                                                            "width": undefined,
-                                                          }
-                    }
 />,
                   <p
                     className="list-selection list-selection--list-text list-selection--list-text--item-name"
@@ -834,10 +738,6 @@ ShallowWrapper {
                     "className": "list-selection list-selection--item-icon undefined",
                     "data-key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
                     "src": "misc-bar.svg",
-                    "style": Object {
-                      "height": undefined,
-                      "width": undefined,
-                    },
                   },
                   "ref": null,
                   "rendered": null,
@@ -888,12 +788,6 @@ ShallowWrapper {
                                     className="list-selection list-selection--item-icon undefined"
                                     data-key="e615de4e-ce10-451b-80ad-9717662a904a"
                                     src="pepsi-max-can.svg"
-                                    style={
-                                                      Object {
-                                                                        "height": undefined,
-                                                                        "width": undefined,
-                                                                      }
-                                    }
                   />
                   <p
                                     className="list-selection list-selection--list-text list-selection--list-text--item-name"
@@ -942,12 +836,6 @@ ShallowWrapper {
                     className="list-selection list-selection--item-icon undefined"
                     data-key="e615de4e-ce10-451b-80ad-9717662a904a"
                     src="pepsi-max-can.svg"
-                    style={
-                                        Object {
-                                                            "height": undefined,
-                                                            "width": undefined,
-                                                          }
-                    }
 />,
                   <p
                     className="list-selection list-selection--list-text list-selection--list-text--item-name"
@@ -971,10 +859,6 @@ ShallowWrapper {
                     "className": "list-selection list-selection--item-icon undefined",
                     "data-key": "e615de4e-ce10-451b-80ad-9717662a904a",
                     "src": "pepsi-max-can.svg",
-                    "style": Object {
-                      "height": undefined,
-                      "width": undefined,
-                    },
                   },
                   "ref": null,
                   "rendered": null,
@@ -1025,12 +909,6 @@ ShallowWrapper {
                                     className="list-selection list-selection--item-icon undefined"
                                     data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
                                     src="misc-crisps.svg"
-                                    style={
-                                                      Object {
-                                                                        "height": undefined,
-                                                                        "width": undefined,
-                                                                      }
-                                    }
                   />
                   <p
                                     className="list-selection list-selection--list-text list-selection--list-text--item-name"
@@ -1079,12 +957,6 @@ ShallowWrapper {
                     className="list-selection list-selection--item-icon undefined"
                     data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
                     src="misc-crisps.svg"
-                    style={
-                                        Object {
-                                                            "height": undefined,
-                                                            "width": undefined,
-                                                          }
-                    }
 />,
                   <p
                     className="list-selection list-selection--list-text list-selection--list-text--item-name"
@@ -1108,10 +980,6 @@ ShallowWrapper {
                     "className": "list-selection list-selection--item-icon undefined",
                     "data-key": "f589039e-c93b-45c1-99fc-1ee457ecb570",
                     "src": "misc-crisps.svg",
-                    "style": Object {
-                      "height": undefined,
-                      "width": undefined,
-                    },
                   },
                   "ref": null,
                   "rendered": null,
