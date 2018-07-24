@@ -4,23 +4,23 @@ import {setSlackUserFetchError, loadUsers} from './actions';
 import {loadStoreList, setShowList} from './../StoreList/actions';
 
 const mapStateToProps = state => {
-	return {
-		storeList: state.storeList,
-		showList: state.showList,
-		slackUserFetchError: state.slackUserFetchError,
-		users: state.users,
-		prediction: state.prediction
-	};
+  return {
+    storeList: state.storeList,
+    showList: state.showList,
+    slackUserFetchError: state.slackUserFetchError,
+    users: state.users,
+    prediction: state.prediction
+  };
 };
 
 const mapDispatchToProps = {
-	loadUsers,
-	loadStoreList,
-	setShowList,
-	setSlackUserFetchError
+  loadUsers,
+  loadStoreList,
+  setShowList,
+  setSlackUserFetchError
 };
 
 export default connect(
-	mapStateToProps,
-	mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(App);

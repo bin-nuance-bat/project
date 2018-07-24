@@ -6,41 +6,43 @@ import ListSelection from '../listSelection/ListSelection';
 import TimeoutNotification from '../TimeoutNotification/TimeoutNotification';
 
 class UsernameEntry extends React.Component {
-	sendReminder = async name => {
-		let result = await this.props.sendSlackMessage(name);
-		if (result) this.props.history.push('/success');
-		// TODO handle when result is false (i.e. message fails to send - redirect to error page?)
-	};
+  sendReminder = async name => {
+    let result = await this.props.sendSlackMessage(name);
+    if (result) this.props.history.push('/success');
+    // TODO handle when result is false (i.e. message fails to send - redirect to error page?)
+  };
 
-	componentDidMount() {
-		this.props.loadUsers();
-	}
+  componentDidMount() {
+    this.props.loadUsers();
+  }
 
-	render() {
-		return (
-			<div>
-				<Logo />
-				<div className="text-select-slack">
-					Please select your slack handle to send a reminder
-				</div>
-				<div>
-					{this.props.users.length !== 0 && (
-						<ListSelection
-							items={this.props.users}
-							onClick={this.sendReminder}
-							className="username-icon"
-						/>
-					)}
-				</div>
-				<TimeoutNotification />
-			</div>
-		);
-	}
+  render() {
+    return (
+      <div>
+        <div className="username-entry--header">
+          <Logo />
+          <div className="text-select-slack">
+            Please select your slack handle to send a reminder
+          </div>
+        </div>
+        <div>
+          {this.props.users.length !== 0 && (
+            <ListSelection
+              items={this.props.users}
+              onClick={this.sendReminder}
+              iconStyle="username-icon"
+            />
+          )}
+        </div>
+        <TimeoutNotification />
+      </div>
+    );
+  }
 }
 
 UsernameEntry.propTypes = {
-	users: PropTypes.arrayOf(PropTypes.object).isRequired,
-	loadUsers: PropTypes.func.isRequired
+  users: PropTypes.arrayOf(PropTypes.object).isRequired,
+  loadUsers: PropTypes.func.isRequired
 };
 
 export default UsernameEntry;

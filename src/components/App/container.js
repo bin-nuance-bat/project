@@ -4,11 +4,11 @@ import {setSendWithPhoto} from './actions';
 import {loadStoreList} from './../StoreList/actions';
 
 const mapDispatchToProps = {
-	setSendWithPhoto,
-	loadStoreList
+  setSendWithPhoto,
+  loadStoreList
 };
 
 export default connect(
-	null,
-	mapDispatchToProps
+  null,
+  mapDispatchToProps
 )(App);

@@ -1,4 +1,4 @@
-@import '../../../utils/constants.scss';
+@import '../../utils/constants.scss';
 
 .col {
 	float: left;
@@ -7,6 +7,7 @@
 
 .webcam-container video {
 	object-fit: cover;
+	position: relative;
 }
 
 select {
@@ -24,14 +25,14 @@ input[type='checkbox'] {
 	width: auto !important;
 }
 
-.button-trainer {
+.button-admin {
 	width: auto;
 	margin: 20px 5px;
 	padding: 10px;
 	background-color: $light-blue;
 }
 
-.button-trainer:disabled {
+.button-admin:disabled {
 	background-color: $dark-blue;
 }
 
