@@ -7,3 +7,16 @@
 	padding-bottom: 30px;
 	white-space: nowrap;
 }
+
+.edit-snack--header {
+	position: fixed;
+	z-index: 1;
+	background-color: $dark-blue;
+	width: 100%;
+	height: 232px;
+}
+
+.edit-snack--list-selection {
+	position: fixed;
+	margin-top: 400px;
+}

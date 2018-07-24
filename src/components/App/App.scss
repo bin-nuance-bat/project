@@ -1,18 +1,10 @@
 @import '../../utils/constants.scss';
 
 body {
-	font-family: apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-		Helvetica Neue, Helvetica, sans-serif;
 	background-color: $dark-blue;
 	color: $white;
 	width: 100%;
 	text-align: center;
-}
-
-.page {
-	&-home {
-		padding-top: 176px;
-	}
 }
 
 .text {
@@ -20,39 +12,104 @@ body {
 
 	&-payinglater {
 		font-size: 53px;
-		margin-top: 0px;
-		margin-bottom: 82px;
+		margin-top: 72px;
 	}
 
 	&-subheading {
+		margin-top: 32px;
 		font-size: 30px;
-		margin-bottom: 160px;
+		margin-bottom: 88px;
 	}
 }
 
+@-webkit-keyframes home-hands-pop {
+	from {
+		-webkit-transform: translateY(100%) translateZ(1px);
+		transform: translateY(100%) translateZ(1px);
+	}
+	to {
+		-webkit-transform: translateY(5%) translateZ(1px);
+		transform: translateY(5%) translateZ(1px);
+	}
+}
+
+@keyframes home-hands-pop {
+	from {
+		-webkit-transform: translateY(100%) translateZ(1px);
+		transform: translateY(100%) translateZ(1px);
+	}
+	to {
+		-webkit-transform: translateY(5%) translateZ(1px);
+		transform: translateY(5%) translateZ(1px);
+	}
+}
+
+.home-hands {
+	width: 200px;
+	height: 180px;
+	display: inline-block;
+	margin-left: 184px;
+	margin-right: 184px;
+	text-align: center;
+	position: relative;
+	overflow: hidden;
+
+	&-left,
+	&-center,
+	&-right,
+	&-slot {
+		position: absolute;
+		display: block;
+	}
+
+	&-left,
+	&-center,
+	&-right {
+		animation-name: home-hands-pop;
+		animation-duration: 0.3s;
+		animation-iteration-count: 1;
+		animation-timing-function: cubic-bezier(0.47, 0.52, 0.58, 1.19);
+		animation-fill-mode: both;
+		will-change: transform;
+	}
+
+	&-left {
+		-webkit-animation-delay: 1s;
+		animation-delay: 1s;
+	}
+
+	&-center {
+		-webkit-animation-delay: 1.15s;
+		animation-delay: 1.15s;
+	}
+
+	&-right {
+		-webkit-animation-delay: 1.05s;
+		animation-delay: 1.05s;
+	}
+}
 .button {
 	font-size: 30px;
 	border-radius: 12px;
-	width: 488px;
 	height: 64px;
 	padding: 0px;
 	display: inline-block;
 	border: none;
-	background-color: $dark-blue;
-
 	&-snackchat {
+		width: 488px;
+		margin-top: 120px;
 		background-color: $light-blue;
-		margin-bottom: 64px;
+		color: $white;
+		margin-bottom: 32px;
 	}
-
 	&-nophoto {
+		background-color: $dark-blue;
+		width: 488px;
+		color: $white;
 		border: 2px solid white;
 	}
 }
-
-.cameraicon {
-	&-small {
-		margin-left: 24px;
-		transform: translate(0px, 2px);
-	}
+.smallcamera {
+	margin-left: 24px;
+	vertical-align: -0.15em;
 }

@@ -4,9 +4,6 @@ import Notification from './../Notification/Notification';
 import PropTypes from 'prop-types';
 import './WebcamCapture.css';
 
-const height = 400;
-const width = 400;
-
 class WebcamCapture extends Component {
   state = {
     isDetecting: true,
@@ -16,16 +13,14 @@ class WebcamCapture extends Component {
   webcam = React.createRef();
 
   requestScreenshot = () => {
-    return new Promise((resolve, reject) => {
-      const screenshot = this.webcam.current.getScreenshot();
-      if (screenshot === null) {
-        reject('Camera not available.');
-      } else {
-        this.urlToImg(screenshot).then(img => {
-          this.urlToImg(this.cropImage(img)).then(resolve);
-        });
-      }
-    });
+    const screenshot = this.webcam.current.getScreenshot();
+    if (screenshot === null) {
+      return new Error('Camera not available.');
+    }
+
+    return this.urlToImg(screenshot).then(img =>
+      this.urlToImg(this.cropImage(img))
+    );
   };
 
   setupWebcam() {
@@ -83,11 +78,11 @@ class WebcamCapture extends Component {
         <div className="webcam-container">
           <Webcam
             audio={false}
-            height={height}
+            width="100%"
+            height="100%"
             ref={this.webcam}
             screenshotFormat="image/jpeg"
-            width={width}
-            className="videoStream"
+            className="webcam-capture--video"
             screenshotWidth={this.props.imgSize * (4 / 3)}
           />
         </div>

@@ -1,6 +1,6 @@
 export const getPredictionName = state => {
   return state.storeList && state.prediction
-    ? state.storeList[state.prediction.id].name
+    ? state.storeList.find(item => item.id === state.prediction.id).name
     : 'UNKNOWN';
 };
 

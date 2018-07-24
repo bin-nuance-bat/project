@@ -1,15 +1,14 @@
-.webcam-container {
+.snackchat-body {
 	width: 100%;
 	padding-top: 100%;
 	overflow: hidden;
 	position: relative;
 }
 
-.webcam-capture--video {
-	object-fit: cover;
-	transform: rotateY(180deg);
+.snackchat-body canvas {
 	position: absolute;
 	top: 0;
 	left: 0;
-	right: 0;
+    right: 0;
+    margin: 0 auto;
 }

@@ -1,5 +1,4 @@
 import React from 'react';
-import './Notification.css';
 import PropTypes from 'prop-types';
 
 const Notification = props => {
