@@ -20,6 +20,7 @@ export default class FirebaseStorage {
     this.modelTopologyFileName = fileNamePrefix + DEFAULT_JSON_EXTENSION_NAME;
     this.weightDataFileName =
       fileNamePrefix + DEFAULT_WEIGHT_DATA_EXTENSION_NAME;
+    this.modelName = fileNamePrefix;
     this.classes = classes;
   }
 
@@ -57,11 +58,22 @@ export default class FirebaseStorage {
         .ref()
         .child('models/' + this.modelTopologyFileName)
         .put(modelTopologyAndWeightManifestBlob);
+
       if (modelArtifacts.weightData != null) {
         await store
           .ref()
           .child('models/' + this.weightDataFileName)
           .put(weightsBlob);
+      }
+
+      const modelRef = firebase
+        .firestore()
+        .collection('models')
+        .doc(this.modelName);
+
+      const modelRow = await modelRef.get();
+      if (!modelRow.exists) {
+        modelRef.set({deployed: false});
       }
 
       return {
@@ -111,6 +123,8 @@ export default class FirebaseStorage {
         await loadWeightsAsArrayBuffer(fetchURLs)
       );
     }
+
+    this.classes(classes);
 
     return {modelTopology, weightSpecs, weightData, classes};
   }

@@ -51,7 +51,12 @@ class Model {
         'Loading the model will overwrite any training you have done. Continue?'
       )
     ) {
-      tf.loadModel(new FirebaseStorageHandler(modelName))
+      tf.loadModel(
+        new FirebaseStorageHandler(
+          modelName,
+          classes => (this.classes = classes)
+        )
+      )
         .then(model => {
           this.model = model;
           window.model = model;
