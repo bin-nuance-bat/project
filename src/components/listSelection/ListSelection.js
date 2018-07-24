@@ -8,10 +8,6 @@ class ListSelection extends Component {
 		return str.match(/^[a-z]/i);
 	};
 
-	componentDidMount() {
-		document.addEventListener('touchmove', this.handleMove, false);
-	}
-
 	formattedItems = (() => {
 		let items = Object.entries(
 			_.groupBy(
@@ -25,10 +21,6 @@ class ListSelection extends Component {
 
 		return items;
 	})();
-
-	handleMove(e) {
-		console.log(e.changedTouches[0]);
-	}
 
 	handleClick = event => {
 		this.props.onClick(event.target.getAttribute('data-key'));
@@ -71,7 +63,6 @@ class ListSelection extends Component {
 					{this.formattedItems.map(([group, groupHeading]) => (
 						<div
 							key={group}
-							type="scrollSelector"
 							onTouchStart={() =>
 								(window.location.hash = '#' + group)
 							}>
