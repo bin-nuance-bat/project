@@ -28,6 +28,7 @@ class UsernameEntry extends React.Component {
 						<ListSelection
 							items={this.props.users}
 							onClick={this.sendReminder}
+							className="username-icon"
 						/>
 					)}
 				</div>

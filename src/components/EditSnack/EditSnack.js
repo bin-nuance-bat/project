@@ -50,6 +50,12 @@ class EditSnack extends Component {
 					Sorry, I can’t recognise that snack. <br /> Please select it
 					below
 				</div>
+				<ListSelection
+					className="snack-icon"
+					items={items}
+					onClick={this.handleClick}
+				/>
+				<TimeoutNotification />
 				<ListSelection items={items} onClick={this.handleClick} />
 				<TimeoutNotification />
 			</div>
