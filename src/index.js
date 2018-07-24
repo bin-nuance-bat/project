@@ -19,29 +19,25 @@ import Admin from './components/Admin/Admin';
 import Auth from './components/Admin/Auth';
 
 ReactDOM.render(
-	<Provider store={store}>
-		<Router>
-			<Switch>
-				<Route exact path="/" component={AppContainer} />
-				<Route exact path="/snackchat" component={SnackChat} />
-				<Route exact path="/disclaimer" component={Disclaimer} />
-				<Route exact path="/scanitem" component={ItemRecognition} />
-				<Route exact path="/confirmitem" component={ConfirmationBox} />
-				<Route exact path="/editsnack" component={EditSnack} />
-				<Route
-					exact
-					path="/slackname"
-					component={UsernameEntryContainer}
-				/>
-				<Route exact path="/success" component={SuccessPage} />
-				<Route exact path="/old" component={OldAppContainer} />
-				<Route exact path="/admin" component={Admin} />
-				<Route exact path="/auth" component={Auth} />
-				<Route exact path="/training" component={Trainer} />
-			</Switch>
-		</Router>
-	</Provider>,
-	document.getElementById('root')
+  <Provider store={store}>
+    <Router>
+      <Switch>
+        <Route exact path="/" component={AppContainer} />
+        <Route exact path="/snackchat" component={SnackChat} />
+        <Route exact path="/disclaimer" component={Disclaimer} />
+        <Route exact path="/scanitem" component={ItemRecognition} />
+        <Route exact path="/confirmitem" component={ConfirmationBox} />
+        <Route exact path="/editsnack" component={EditSnack} />
+        <Route exact path="/slackname" component={UsernameEntryContainer} />
+        <Route exact path="/success" component={SuccessPage} />
+        <Route exact path="/old" component={OldAppContainer} />
+        <Route exact path="/admin" component={Admin} />
+        <Route exact path="/auth" component={Auth} />
+        <Route exact path="/training" component={Trainer} />
+      </Switch>
+    </Router>
+  </Provider>,
+  document.getElementById('root')
 );
 
 registerServiceWorker();
