@@ -21,6 +21,7 @@ class EditSnack extends Component {
 					below
 				</div>
 				<ListSelection
+          className="snack-icon"
 					items={this.props.items}
 					onClick={this.handleClick}
 				/>
