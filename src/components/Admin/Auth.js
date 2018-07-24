@@ -11,6 +11,10 @@ class Auth extends Component {
 
 	componentDidMount() {
 		initFirebase();
+		authenticate();
+	}
+
+	authenticate = () => {
 		firebase
 			.auth()
 			.getRedirectResult()
@@ -43,7 +47,7 @@ class Auth extends Component {
 			.catch(function(error) {
 				console.error(error);
 			});
-	}
+	};
 
 	render() {
 		return <h1>{this.state.status}</h1>;
