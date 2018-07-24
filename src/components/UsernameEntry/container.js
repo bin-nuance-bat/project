@@ -4,17 +4,17 @@ import {loadUsers, sendSlackMessage} from './actions';
 import {getUsers} from './UsernameEntrySelectors';
 
 const mapStateToProps = state => {
-	return {
-		users: getUsers(state)
-	};
+  return {
+    users: getUsers(state)
+  };
 };
 
 const mapDispatchToProps = {
-	sendSlackMessage,
-	loadUsers
+  sendSlackMessage,
+  loadUsers
 };
 
 export default connect(
-	mapStateToProps,
-	mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(UsernameEntry);

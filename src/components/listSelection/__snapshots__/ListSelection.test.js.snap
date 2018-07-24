@@ -97,7 +97,7 @@ ShallowWrapper {
                     </p>
                     <img
                               alt=""
-                              className="list-selection list-selection--groupSplitter"
+                              className="list-selection list-selection--group-splitter"
                               src="line.svg"
                     />
                     <div
@@ -130,7 +130,7 @@ ShallowWrapper {
                     </p>
                     <img
                               alt=""
-                              className="list-selection list-selection--groupSplitter"
+                              className="list-selection list-selection--group-splitter"
                               src="line.svg"
                     />
                     <div
@@ -163,7 +163,7 @@ ShallowWrapper {
                     </p>
                     <img
                               alt=""
-                              className="list-selection list-selection--groupSplitter"
+                              className="list-selection list-selection--group-splitter"
                               src="line.svg"
                     />
                     <div
@@ -227,7 +227,7 @@ ShallowWrapper {
               </p>
               <img
                             alt=""
-                            className="list-selection list-selection--groupSplitter"
+                            className="list-selection list-selection--group-splitter"
                             src="line.svg"
               />
               <div
@@ -260,7 +260,7 @@ ShallowWrapper {
               </p>
               <img
                             alt=""
-                            className="list-selection list-selection--groupSplitter"
+                            className="list-selection list-selection--group-splitter"
                             src="line.svg"
               />
               <div
@@ -293,7 +293,7 @@ ShallowWrapper {
               </p>
               <img
                             alt=""
-                            className="list-selection list-selection--groupSplitter"
+                            className="list-selection list-selection--group-splitter"
                             src="line.svg"
               />
               <div
@@ -334,7 +334,7 @@ ShallowWrapper {
 </p>,
                 <img
                   alt=""
-                  className="list-selection list-selection--groupSplitter"
+                  className="list-selection list-selection--group-splitter"
                   src="line.svg"
 />,
                 Array [
@@ -381,7 +381,7 @@ ShallowWrapper {
                 "nodeType": "host",
                 "props": Object {
                   "alt": "",
-                  "className": "list-selection list-selection--groupSplitter",
+                  "className": "list-selection list-selection--group-splitter",
                   "src": "line.svg",
                 },
                 "ref": null,
@@ -461,7 +461,7 @@ ShallowWrapper {
 </p>,
                 <img
                   alt=""
-                  className="list-selection list-selection--groupSplitter"
+                  className="list-selection list-selection--group-splitter"
                   src="line.svg"
 />,
                 Array [
@@ -508,7 +508,7 @@ ShallowWrapper {
                 "nodeType": "host",
                 "props": Object {
                   "alt": "",
-                  "className": "list-selection list-selection--groupSplitter",
+                  "className": "list-selection list-selection--group-splitter",
                   "src": "line.svg",
                 },
                 "ref": null,
@@ -588,7 +588,7 @@ ShallowWrapper {
 </p>,
                 <img
                   alt=""
-                  className="list-selection list-selection--groupSplitter"
+                  className="list-selection list-selection--group-splitter"
                   src="line.svg"
 />,
                 Array [
@@ -635,7 +635,7 @@ ShallowWrapper {
                 "nodeType": "host",
                 "props": Object {
                   "alt": "",
-                  "className": "list-selection list-selection--groupSplitter",
+                  "className": "list-selection list-selection--group-splitter",
                   "src": "line.svg",
                 },
                 "ref": null,
@@ -793,7 +793,7 @@ ShallowWrapper {
                         </p>
                         <img
                                     alt=""
-                                    className="list-selection list-selection--groupSplitter"
+                                    className="list-selection list-selection--group-splitter"
                                     src="line.svg"
                         />
                         <div
@@ -826,7 +826,7 @@ ShallowWrapper {
                         </p>
                         <img
                                     alt=""
-                                    className="list-selection list-selection--groupSplitter"
+                                    className="list-selection list-selection--group-splitter"
                                     src="line.svg"
                         />
                         <div
@@ -859,7 +859,7 @@ ShallowWrapper {
                         </p>
                         <img
                                     alt=""
-                                    className="list-selection list-selection--groupSplitter"
+                                    className="list-selection list-selection--group-splitter"
                                     src="line.svg"
                         />
                         <div
@@ -923,7 +923,7 @@ ShallowWrapper {
                 </p>
                 <img
                                 alt=""
-                                className="list-selection list-selection--groupSplitter"
+                                className="list-selection list-selection--group-splitter"
                                 src="line.svg"
                 />
                 <div
@@ -956,7 +956,7 @@ ShallowWrapper {
                 </p>
                 <img
                                 alt=""
-                                className="list-selection list-selection--groupSplitter"
+                                className="list-selection list-selection--group-splitter"
                                 src="line.svg"
                 />
                 <div
@@ -989,7 +989,7 @@ ShallowWrapper {
                 </p>
                 <img
                                 alt=""
-                                className="list-selection list-selection--groupSplitter"
+                                className="list-selection list-selection--group-splitter"
                                 src="line.svg"
                 />
                 <div
@@ -1030,7 +1030,7 @@ ShallowWrapper {
 </p>,
                   <img
                     alt=""
-                    className="list-selection list-selection--groupSplitter"
+                    className="list-selection list-selection--group-splitter"
                     src="line.svg"
 />,
                   Array [
@@ -1077,7 +1077,7 @@ ShallowWrapper {
                   "nodeType": "host",
                   "props": Object {
                     "alt": "",
-                    "className": "list-selection list-selection--groupSplitter",
+                    "className": "list-selection list-selection--group-splitter",
                     "src": "line.svg",
                   },
                   "ref": null,
@@ -1157,7 +1157,7 @@ ShallowWrapper {
 </p>,
                   <img
                     alt=""
-                    className="list-selection list-selection--groupSplitter"
+                    className="list-selection list-selection--group-splitter"
                     src="line.svg"
 />,
                   Array [
@@ -1204,7 +1204,7 @@ ShallowWrapper {
                   "nodeType": "host",
                   "props": Object {
                     "alt": "",
-                    "className": "list-selection list-selection--groupSplitter",
+                    "className": "list-selection list-selection--group-splitter",
                     "src": "line.svg",
                   },
                   "ref": null,
@@ -1284,7 +1284,7 @@ ShallowWrapper {
 </p>,
                   <img
                     alt=""
-                    className="list-selection list-selection--groupSplitter"
+                    className="list-selection list-selection--group-splitter"
                     src="line.svg"
 />,
                   Array [
@@ -1331,7 +1331,7 @@ ShallowWrapper {
                   "nodeType": "host",
                   "props": Object {
                     "alt": "",
-                    "className": "list-selection list-selection--groupSplitter",
+                    "className": "list-selection list-selection--group-splitter",
                     "src": "line.svg",
                   },
                   "ref": null,
