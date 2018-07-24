@@ -3,6 +3,7 @@ import initFirebase from '../../../utils/firebase';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/storage';
+import 'firebase/auth';
 
 export class ControllerDataset {
   constructor() {

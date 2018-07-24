@@ -72,7 +72,12 @@ class EditSnack extends Component {
         <div className="edit-snack edit-snack--text-info">
           Sorry, I can’t recognise that snack. <br /> Please select it below
         </div>
-        <ListSelection items={items} onClick={this.handleClick} />
+        <ListSelection
+          className="edit-snack edit-snack--list-selection"
+          iconStyle="snack-icon"
+          items={items}
+          onClick={this.handleClick}
+        />
       </div>
     );
   }
