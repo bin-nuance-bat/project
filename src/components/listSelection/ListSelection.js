@@ -51,10 +51,6 @@ class ListSelection extends Component {
 											'list-selection list-selection--item-icon ' +
 											this.props.className
 										}
-										style={{
-											height: iconSize,
-											width: iconSize
-										}}
 										src={item.image}
 										alt=""
 										data-key={item.id}
