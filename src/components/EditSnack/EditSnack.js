@@ -45,17 +45,18 @@ class EditSnack extends Component {
     const items = this.props.items.map(addItemImage);
     return (
       <div>
-        <Logo />
-        <div className="edit-snack edit-snack--text-info">
-          Sorry, I can’t recognise that snack. <br /> Please select it below
+        <div className="edit-snack edit-snack--header">
+          <Logo />
+          <div className="edit-snack edit-snack--text-info">
+            Sorry, I can’t recognise that snack. <br /> Please select it below
+          </div>
         </div>
         <ListSelection
-          className="snack-icon"
+          className="edit-snack edit-snack--list-selection"
+          iconStyle="snack-icon"
           items={items}
           onClick={this.handleClick}
         />
-        <TimeoutNotification />
-        <ListSelection items={items} onClick={this.handleClick} />
         <TimeoutNotification />
       </div>
     );
