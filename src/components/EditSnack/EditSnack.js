@@ -56,7 +56,6 @@ class EditSnack extends Component {
         />
         <TimeoutNotification />
         <ListSelection items={items} onClick={this.handleClick} />
-        <TimeoutNotification />
       </div>
     );
   }
