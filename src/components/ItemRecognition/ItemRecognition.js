@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Model from './../../utils/model';
 import WebcamCapture from '../WebcamCapture/WebcamCapture';
 import Logo from '../Logo/Logo';
+import './ItemRecognition.css';
 
 const ML_THRESHOLD = 0.06;
 
@@ -42,17 +43,18 @@ class ItemRecognition extends Component {
   render() {
     return (
       <div>
-        <Logo />
-        <header>Hold up your snack to the camera</header>
+        <header>
+          <Logo />
+          <div className="item-recognition item-recognition--instructions">
+            Scan item using the front facing camera
+          </div>
+        </header>
         <WebcamCapture
+          className="item-recognition item-recognition--display"
           ref={this.webcam}
           onConnect={this.onConnect}
           imgSize={224}
         />
-        <button onClick={() => this.props.history.push('/editsnack')}>
-          {' '}
-          a
-        </button>
       </div>
     );
   }
@@ -63,7 +65,8 @@ ItemRecognition.propTypes = {
   prediction: PropTypes.shape({
     name: PropTypes.string,
     img: PropTypes.string.isRequired
-  })
+  }),
+  history: PropTypes.object.isRequired
 };
 
 export default ItemRecognition;

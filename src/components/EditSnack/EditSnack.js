@@ -5,35 +5,6 @@ import Logo from '../Logo/Logo';
 import './EditSnack.css';
 import TimeoutNotification from '../TimeoutNotification/TimeoutNotification';
 
-const importImages = require.context('./assets', true, /\.svg$/);
-const imgFilesObject = importImages.keys().reduce((images, key) => {
-  images[key] = importImages(key);
-  return images;
-}, {});
-
-const getImagePath = item => {
-  const givenPath = './' + item.image;
-  let actualImagePath;
-
-  if (imgFilesObject[givenPath]) {
-    actualImagePath =
-      './' + item.image + (item.image.endsWith('.svg') ? '' : '.svg');
-  } else {
-    actualImagePath = './misc-bar.svg';
-  }
-
-  return actualImagePath;
-};
-
-const addItemImage = item => {
-  const imagePath = getImagePath(item);
-  const image = importImages(imagePath);
-  return {
-    ...item,
-    image
-  };
-};
-
 class EditSnack extends Component {
   handleClick = id => {
     this.props.setActualItem(id);
@@ -42,19 +13,15 @@ class EditSnack extends Component {
   };
 
   render() {
-    const items = this.props.items.map(addItemImage);
     return (
       <div>
-        <div className="edit-snack edit-snack--header">
-          <Logo />
-          <div className="edit-snack edit-snack--text-info">
-            Sorry, I can’t recognise that snack. <br /> Please select it below
-          </div>
+        <Logo />
+        <div className="edit-snack edit-snack--text-info">
+          Sorry, I can’t recognise that snack. <br /> Please select it below
         </div>
         <ListSelection
-          className="edit-snack edit-snack--list-selection"
-          iconStyle="snack-icon"
-          items={items}
+          className="snack-icon"
+          items={this.props.items}
           onClick={this.handleClick}
         />
         <TimeoutNotification />
@@ -65,6 +32,8 @@ class EditSnack extends Component {
 
 EditSnack.propTypes = {
   setActualItem: PropTypes.func.isRequired,
+  sendWithPhoto: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired,
   items: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 

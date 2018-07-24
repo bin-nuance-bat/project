@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Logo from '../Logo/Logo';
+import './ConfirmationBox.css';
+import Hand from '../Hand/Hand';
 
 class ConfirmationBox extends React.Component {
   handleYes = () => {
@@ -18,14 +20,24 @@ class ConfirmationBox extends React.Component {
     return (
       <div>
         <Logo />
-        <div>{`Did you take ${this.props.name}?`}</div>
-        <img src={this.props.img} alt="" />
+        <div className="text-confirmation">{`Is this a ${
+          this.props.name
+        }?`}</div>
+        <div className="confirmation-hand">
+          <Hand />
+        </div>
         <div>
-          <button testAttribute="YES" onClick={this.handleYes}>
-            Yes
+          <button
+            className="button button-editsnack"
+            testattribute="NO"
+            onClick={this.handleNo}>
+            Edit Snack
           </button>
-          <button testAttribute="NO" onClick={this.handleNo}>
-            No
+          <button
+            className="button button-yes"
+            testattribute="YES"
+            onClick={this.handleYes}>
+            Yes
           </button>
         </div>
       </div>
@@ -34,9 +46,12 @@ class ConfirmationBox extends React.Component {
 }
 
 ConfirmationBox.propTypes = {
+  setActualItem: PropTypes.func.isRequired,
+  sendWithPhoto: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
-  img: PropTypes.string.isRequired
+  img: PropTypes.string.isRequired,
+  history: PropTypes.object.isRequired
 };
 
 export default ConfirmationBox;

@@ -1,43 +1,36 @@
 @import '../../utils/constants.scss';
 
 .button {
-
 	&-back {
-		float: left;
+		color: $white;
 		width: 10vw;
 		height: 10vh;
-		font-size: 400%;
 		position: absolute;
-		transform: translate(-45vw, 1vh);
+		background-color: $dark-blue;
+		transform: translate(-48vw, 1vh);
 		-webkit-text-stroke: 9px $dark-blue;
 	}
 
-	&-accept{
-		transform: translate(-13px);
+	&-accept {
+		color: $white;
+		width: 488px;
 		border-radius: 12px;
 		margin-top: 64px;
 		background-color: $light-blue;
-		margin-bottom: 64px;
+		font-family: 'FaricyNew-Bold';
 	}
 }
 
-.cameraicon {
-	&-big {
-		padding-top: 144px;
-		transform: translate(-20px);
-		font-size: 400%;
-	}
+.bigcamera {
+	margin-top: 144px;
 }
 
-.lockicon {
-	padding-top: 96px;
-	transform: translate(-20px);
-	font-size: 400%;
+.lock {
+	margin-top: 96px;
 }
 
 .text {
 	&-info {
-		transform: translate(-13px);
 		display: inline-block;
 		font-size: 30px;
 		padding-top: 24px;
