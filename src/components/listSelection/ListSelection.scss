@@ -7,11 +7,11 @@ $item-text-distance: 24px;
 .list-selection--item-icon {
 	width: $icon-width;
 	height: $icon-width;
-	position: absolute;
+	//position: absolute;
 	left: $icon-distance;
 }
 .list-selection--body {
-	padding-top: 32px;
+	padding-top: 264px;
 	height: $icon-width;
 	background-color: $white;
 	position: relative;
@@ -43,8 +43,14 @@ $item-text-distance: 24px;
 .list-selection--scroll-select {
 	color: $blue;
 	position: fixed;
-	font-size: 20px;
+	font-size: 19px;
 	right: 20px;
-	top: 320px;
+	top: 340px;
 	margin: 0px;
+}
+
+.list-selection--list {
+	width: 90%;
+	overflow-y: scroll;
+	height: 760px;
 }
