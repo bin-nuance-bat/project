@@ -51,11 +51,11 @@ class EditSnack extends Component {
 					below
 				</div>
 				<ListSelection
-					iconSize={50}
+					className="snack-icon"
 					items={items}
 					onClick={this.handleClick}
 				/>
-      <TimeoutNotification />
+				<TimeoutNotification />
 				<ListSelection items={items} onClick={this.handleClick} />
 				<TimeoutNotification />
 			</div>

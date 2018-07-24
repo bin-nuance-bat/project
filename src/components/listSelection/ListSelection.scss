@@ -7,6 +7,28 @@ $item-text-distance: 24px;
 	margin-left: $icon-distance;
 }
 
+$snack-icon-size: 50px;
+
+.snack-icon {
+	height: $snack-icon-size;
+	width: $snack-icon-size;
+}
+
+.snack-icon-holder {
+	height: $snack-icon-size;
+}
+
+$username-icon-size: 48px;
+
+.username-icon {
+	height: $username-icon-size;
+	width: $username-icon-size;
+}
+
+.username-icon-holder {
+	height: $username-icon-size;
+}
+
 .list-selection--body {
 	padding-top: 32px;
 	background-color: $white;

@@ -39,15 +39,19 @@ class ListSelection extends Component {
 							<img src={line} alt="" />
 							{groupItems.map(item => (
 								<div
-									className="list-selection list-selection--list-item"
-									style={{
-										height: iconSize
-									}}
+									className={
+										'list-selection list-selection--list-item ' +
+										this.props.className +
+										'-holder'
+									}
 									key={item.id}
 									data-key={item.id}
 									onClick={this.handleClick}>
 									<img
-										className="list-selection list-selection--item-icon"
+										className={
+											'list-selection list-selection--item-icon ' +
+											this.props.className
+										}
 										style={{
 											height: iconSize,
 											width: iconSize
