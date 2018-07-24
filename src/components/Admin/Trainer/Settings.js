@@ -7,7 +7,8 @@ export default class Settings extends Component {
 		super(props);
 
 		this.state = {
-			advanced: false
+			advanced: false,
+			modelName: new Date().toLocaleString()
 		};
 	}
 
@@ -88,23 +89,29 @@ export default class Settings extends Component {
 						Predict
 					</button>
 					<br />
+					<Input
+						label="Model Name"
+						value={this.state.modelName}
+						type="text"
+						setState={modelName => {
+							this.setState({modelName});
+						}}
+					/>
 					<button
 						className="button button-admin"
-						onClick={this.props.model.loadModel}
+						onClick={() =>
+							this.props.model.loadModel(this.state.modelName)
+						}
 						disabled={this.props.busy}>
 						Load
 					</button>
 					<button
 						className="button button-admin"
-						onClick={this.props.model.saveModel}
+						onClick={() =>
+							this.props.model.saveModel(this.state.modelName)
+						}
 						disabled={this.props.busy}>
 						Save
-					</button>
-					<button
-						className="button button-admin"
-						onClick={this.props.model.exportModel}
-						disabled={this.props.busy}>
-						Export
 					</button>
 				</div>
 			</div>

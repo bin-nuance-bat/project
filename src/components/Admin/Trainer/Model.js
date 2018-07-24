@@ -2,6 +2,7 @@ import * as tf from '@tensorflow/tfjs';
 import {ControllerDataset} from './ControllerDataset';
 import getStore from '../../../utils/honestyStore.js';
 import * as MobileNet from '@tensorflow-models/mobilenet';
+import FirebaseStorageHandler from './FirebaseStorageHandler';
 
 class Model {
 	constructor(setReadyStatus, setBusyStatus) {
@@ -52,7 +53,7 @@ class Model {
 				'Loading the model will overwrite any training you have done. Continue?'
 			)
 		) {
-			tf.loadModel('indexeddb://store-model')
+			tf.loadModel(new FirebaseStorageHandler('model 1'))
 				.then(model => {
 					this.model = model;
 					this.classes = JSON.parse(
@@ -60,7 +61,8 @@ class Model {
 					);
 					this.setReadyStatus('Loaded model!');
 				})
-				.catch(() => {
+				.catch(e => {
+					console.error(e);
 					this.setReadyStatus('No saved model found');
 				});
 		}
@@ -71,31 +73,11 @@ class Model {
 			this.setReadyStatus('Please train a model to save.');
 			return;
 		}
-		window.localStorage.setItem('items', JSON.stringify(this.classes));
-		await this.model.save('indexeddb://store-model');
-		this.setReadyStatus('Saved model!');
-	};
-
-	exportModel = async () => {
-		if (!this.model) {
-			this.setReadyStatus('Please train a model to export.');
-			return;
-		}
-
-		// Save model and download it
-		this.saveModel();
-		tf.io.copyModel('indexeddb://store-model', 'downloads://store-model');
-
-		// Create JSON file with items in and download it
-		const blob = new Blob([JSON.stringify(this.items)], {
-			type: 'text/json'
-		});
-		const elem = window.document.createElement('a');
-		elem.href = window.URL.createObjectURL(blob);
-		elem.download = 'items.json';
-		document.body.appendChild(elem);
-		elem.click();
-		document.body.removeChild(elem);
+		this.setBusyStatus('Saving...');
+		this.model
+			.save(new FirebaseStorageHandler('model 1', this.classes))
+			.then(() => this.setReadyStatus('Saved model!'))
+			.catch(err => this.setReadyStatus(err));
 	};
 
 	async addExample(getImg, getTensor, label, count) {
