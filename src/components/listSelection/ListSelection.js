@@ -27,7 +27,6 @@ class ListSelection extends Component {
 	};
 
 	render() {
-		const iconSize = this.props.iconSize;
 		return (
 			<div className="list-selection list-selection--body">
 				{this.props.items.length > 0 &&
