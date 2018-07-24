@@ -84,91 +84,126 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": Array [
-        <div>
-          <p
-                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+        <div
+          className="list-selection list-selection--list"
+>
+          <div
+                    id="G"
+          >
+                    <p
+                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                    >
+                              G
+                    </p>
+                    <img
+                              alt=""
+                              className="list-selection list-selection--groupSplitter"
+                              src="line.svg"
+                    />
+                    <div
+                              className="list-selection list-selection--list-item undefined-holder"
+                              data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                              onClick={[Function]}
+                    >
+                              <img
+                                        alt=""
+                                        className="list-selection list-selection--item-icon undefined"
+                                        data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                                        onClick={[Function]}
+                                        src="misc-bar.svg"
+                              />
+                              <p
+                                        className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                        data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                              >
+                                        Granulated Sugar
+                              </p>
+                    </div>
+          </div>
+          <div
+                    id="P"
+          >
+                    <p
+                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                    >
+                              P
+                    </p>
+                    <img
+                              alt=""
+                              className="list-selection list-selection--groupSplitter"
+                              src="line.svg"
+                    />
+                    <div
+                              className="list-selection list-selection--list-item undefined-holder"
+                              data-key="e615de4e-ce10-451b-80ad-9717662a904a"
+                              onClick={[Function]}
+                    >
+                              <img
+                                        alt=""
+                                        className="list-selection list-selection--item-icon undefined"
+                                        data-key="e615de4e-ce10-451b-80ad-9717662a904a"
+                                        onClick={[Function]}
+                                        src="pepsi-max-can.svg"
+                              />
+                              <p
+                                        className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                        data-key="e615de4e-ce10-451b-80ad-9717662a904a"
+                              >
+                                        Pepsi Max
+                              </p>
+                    </div>
+          </div>
+          <div
+                    id="W"
+          >
+                    <p
+                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                    >
+                              W
+                    </p>
+                    <img
+                              alt=""
+                              className="list-selection list-selection--groupSplitter"
+                              src="line.svg"
+                    />
+                    <div
+                              className="list-selection list-selection--list-item undefined-holder"
+                              data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
+                              onClick={[Function]}
+                    >
+                              <img
+                                        alt=""
+                                        className="list-selection list-selection--item-icon undefined"
+                                        data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
+                                        onClick={[Function]}
+                                        src="misc-crisps.svg"
+                              />
+                              <p
+                                        className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                        data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
+                              >
+                                        Wotsits
+                              </p>
+                    </div>
+          </div>
+</div>,
+        <div
+          className="list-selection--scroll-select"
+>
+          <div
+                    onTouchStart={[Function]}
           >
                     G
-          </p>
-          <img
-                    alt=""
-                    src="line.svg"
-          />
-          <div
-                    className="list-selection list-selection--list-item undefined-holder"
-                    data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
-                    onClick={[Function]}
-          >
-                    <img
-                              alt=""
-                              className="list-selection list-selection--item-icon undefined"
-                              data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
-                              src="misc-bar.svg"
-                    />
-                    <p
-                              className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                              data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
-                    >
-                              Granulated Sugar
-                    </p>
           </div>
-</div>,
-        <div>
-          <p
-                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+          <div
+                    onTouchStart={[Function]}
           >
                     P
-          </p>
-          <img
-                    alt=""
-                    src="line.svg"
-          />
-          <div
-                    className="list-selection list-selection--list-item undefined-holder"
-                    data-key="e615de4e-ce10-451b-80ad-9717662a904a"
-                    onClick={[Function]}
-          >
-                    <img
-                              alt=""
-                              className="list-selection list-selection--item-icon undefined"
-                              data-key="e615de4e-ce10-451b-80ad-9717662a904a"
-                              src="pepsi-max-can.svg"
-                    />
-                    <p
-                              className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                              data-key="e615de4e-ce10-451b-80ad-9717662a904a"
-                    >
-                              Pepsi Max
-                    </p>
           </div>
-</div>,
-        <div>
-          <p
-                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+          <div
+                    onTouchStart={[Function]}
           >
                     W
-          </p>
-          <img
-                    alt=""
-                    src="line.svg"
-          />
-          <div
-                    className="list-selection list-selection--list-item undefined-holder"
-                    data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
-                    onClick={[Function]}
-          >
-                    <img
-                              alt=""
-                              className="list-selection list-selection--item-icon undefined"
-                              data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
-                              src="misc-crisps.svg"
-                    />
-                    <p
-                              className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                              data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
-                    >
-                              Wotsits
-                    </p>
           </div>
 </div>,
       ],
@@ -178,362 +213,558 @@ ShallowWrapper {
     "rendered": Array [
       Object {
         "instance": null,
-        "key": "G",
+        "key": undefined,
         "nodeType": "host",
         "props": Object {
           "children": Array [
-            <p
-              className="list-selection list-selection--list-text list-selection--list-text--group-header"
+            <div
+              id="G"
 >
-              G
-</p>,
-            <img
-              alt=""
-              src="line.svg"
-/>,
-            Array [
+              <p
+                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
+              >
+                            G
+              </p>
+              <img
+                            alt=""
+                            className="list-selection list-selection--groupSplitter"
+                            src="line.svg"
+              />
               <div
-                className="list-selection list-selection--list-item undefined-holder"
-                data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
-                onClick={[Function]}
->
-                <img
-                                alt=""
-                                className="list-selection list-selection--item-icon undefined"
-                                data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
-                                src="misc-bar.svg"
-                />
-                <p
-                                className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                                data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
-                >
-                                Granulated Sugar
-                </p>
+                            className="list-selection list-selection--list-item undefined-holder"
+                            data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                            onClick={[Function]}
+              >
+                            <img
+                                          alt=""
+                                          className="list-selection list-selection--item-icon undefined"
+                                          data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                                          onClick={[Function]}
+                                          src="misc-bar.svg"
+                            />
+                            <p
+                                          className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                          data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                            >
+                                          Granulated Sugar
+                            </p>
+              </div>
 </div>,
-            ],
+            <div
+              id="P"
+>
+              <p
+                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
+              >
+                            P
+              </p>
+              <img
+                            alt=""
+                            className="list-selection list-selection--groupSplitter"
+                            src="line.svg"
+              />
+              <div
+                            className="list-selection list-selection--list-item undefined-holder"
+                            data-key="e615de4e-ce10-451b-80ad-9717662a904a"
+                            onClick={[Function]}
+              >
+                            <img
+                                          alt=""
+                                          className="list-selection list-selection--item-icon undefined"
+                                          data-key="e615de4e-ce10-451b-80ad-9717662a904a"
+                                          onClick={[Function]}
+                                          src="pepsi-max-can.svg"
+                            />
+                            <p
+                                          className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                          data-key="e615de4e-ce10-451b-80ad-9717662a904a"
+                            >
+                                          Pepsi Max
+                            </p>
+              </div>
+</div>,
+            <div
+              id="W"
+>
+              <p
+                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
+              >
+                            W
+              </p>
+              <img
+                            alt=""
+                            className="list-selection list-selection--groupSplitter"
+                            src="line.svg"
+              />
+              <div
+                            className="list-selection list-selection--list-item undefined-holder"
+                            data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
+                            onClick={[Function]}
+              >
+                            <img
+                                          alt=""
+                                          className="list-selection list-selection--item-icon undefined"
+                                          data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
+                                          onClick={[Function]}
+                                          src="misc-crisps.svg"
+                            />
+                            <p
+                                          className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                          data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
+                            >
+                                          Wotsits
+                            </p>
+              </div>
+</div>,
           ],
+          "className": "list-selection list-selection--list",
         },
         "ref": null,
         "rendered": Array [
           Object {
             "instance": null,
-            "key": undefined,
+            "key": "G",
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <p
+                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                  G
+</p>,
+                <img
+                  alt=""
+                  className="list-selection list-selection--groupSplitter"
+                  src="line.svg"
+/>,
+                Array [
+                  <div
+                    className="list-selection list-selection--list-item undefined-holder"
+                    data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                    onClick={[Function]}
+>
+                    <img
+                                        alt=""
+                                        className="list-selection list-selection--item-icon undefined"
+                                        data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                                        onClick={[Function]}
+                                        src="misc-bar.svg"
+                    />
+                    <p
+                                        className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                        data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                    >
+                                        Granulated Sugar
+                    </p>
+</div>,
+                ],
+              ],
+              "id": "G",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "G",
+                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                },
+                "ref": null,
+                "rendered": "G",
+                "type": "p",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "alt": "",
+                  "className": "list-selection list-selection--groupSplitter",
+                  "src": "line.svg",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "img",
+              },
+              Object {
+                "instance": null,
+                "key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    <img
+                      alt=""
+                      className="list-selection list-selection--item-icon undefined"
+                      data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                      onClick={[Function]}
+                      src="misc-bar.svg"
+/>,
+                    <p
+                      className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                      data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+>
+                      Granulated Sugar
+</p>,
+                  ],
+                  "className": "list-selection list-selection--list-item undefined-holder",
+                  "data-key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
+                  "onClick": [Function],
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "alt": "",
+                      "className": "list-selection list-selection--item-icon undefined",
+                      "data-key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
+                      "onClick": [Function],
+                      "src": "misc-bar.svg",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": "img",
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": "Granulated Sugar",
+                      "className": "list-selection list-selection--list-text list-selection--list-text--item-name",
+                      "data-key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
+                    },
+                    "ref": null,
+                    "rendered": "Granulated Sugar",
+                    "type": "p",
+                  },
+                ],
+                "type": "div",
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "P",
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <p
+                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                  P
+</p>,
+                <img
+                  alt=""
+                  className="list-selection list-selection--groupSplitter"
+                  src="line.svg"
+/>,
+                Array [
+                  <div
+                    className="list-selection list-selection--list-item undefined-holder"
+                    data-key="e615de4e-ce10-451b-80ad-9717662a904a"
+                    onClick={[Function]}
+>
+                    <img
+                                        alt=""
+                                        className="list-selection list-selection--item-icon undefined"
+                                        data-key="e615de4e-ce10-451b-80ad-9717662a904a"
+                                        onClick={[Function]}
+                                        src="pepsi-max-can.svg"
+                    />
+                    <p
+                                        className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                        data-key="e615de4e-ce10-451b-80ad-9717662a904a"
+                    >
+                                        Pepsi Max
+                    </p>
+</div>,
+                ],
+              ],
+              "id": "P",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "P",
+                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                },
+                "ref": null,
+                "rendered": "P",
+                "type": "p",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "alt": "",
+                  "className": "list-selection list-selection--groupSplitter",
+                  "src": "line.svg",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "img",
+              },
+              Object {
+                "instance": null,
+                "key": "e615de4e-ce10-451b-80ad-9717662a904a",
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    <img
+                      alt=""
+                      className="list-selection list-selection--item-icon undefined"
+                      data-key="e615de4e-ce10-451b-80ad-9717662a904a"
+                      onClick={[Function]}
+                      src="pepsi-max-can.svg"
+/>,
+                    <p
+                      className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                      data-key="e615de4e-ce10-451b-80ad-9717662a904a"
+>
+                      Pepsi Max
+</p>,
+                  ],
+                  "className": "list-selection list-selection--list-item undefined-holder",
+                  "data-key": "e615de4e-ce10-451b-80ad-9717662a904a",
+                  "onClick": [Function],
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "alt": "",
+                      "className": "list-selection list-selection--item-icon undefined",
+                      "data-key": "e615de4e-ce10-451b-80ad-9717662a904a",
+                      "onClick": [Function],
+                      "src": "pepsi-max-can.svg",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": "img",
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": "Pepsi Max",
+                      "className": "list-selection list-selection--list-text list-selection--list-text--item-name",
+                      "data-key": "e615de4e-ce10-451b-80ad-9717662a904a",
+                    },
+                    "ref": null,
+                    "rendered": "Pepsi Max",
+                    "type": "p",
+                  },
+                ],
+                "type": "div",
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "W",
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <p
+                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                  W
+</p>,
+                <img
+                  alt=""
+                  className="list-selection list-selection--groupSplitter"
+                  src="line.svg"
+/>,
+                Array [
+                  <div
+                    className="list-selection list-selection--list-item undefined-holder"
+                    data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
+                    onClick={[Function]}
+>
+                    <img
+                                        alt=""
+                                        className="list-selection list-selection--item-icon undefined"
+                                        data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
+                                        onClick={[Function]}
+                                        src="misc-crisps.svg"
+                    />
+                    <p
+                                        className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                        data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
+                    >
+                                        Wotsits
+                    </p>
+</div>,
+                ],
+              ],
+              "id": "W",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "W",
+                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                },
+                "ref": null,
+                "rendered": "W",
+                "type": "p",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "alt": "",
+                  "className": "list-selection list-selection--groupSplitter",
+                  "src": "line.svg",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "img",
+              },
+              Object {
+                "instance": null,
+                "key": "f589039e-c93b-45c1-99fc-1ee457ecb570",
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    <img
+                      alt=""
+                      className="list-selection list-selection--item-icon undefined"
+                      data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
+                      onClick={[Function]}
+                      src="misc-crisps.svg"
+/>,
+                    <p
+                      className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                      data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
+>
+                      Wotsits
+</p>,
+                  ],
+                  "className": "list-selection list-selection--list-item undefined-holder",
+                  "data-key": "f589039e-c93b-45c1-99fc-1ee457ecb570",
+                  "onClick": [Function],
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "alt": "",
+                      "className": "list-selection list-selection--item-icon undefined",
+                      "data-key": "f589039e-c93b-45c1-99fc-1ee457ecb570",
+                      "onClick": [Function],
+                      "src": "misc-crisps.svg",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": "img",
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": "Wotsits",
+                      "className": "list-selection list-selection--list-text list-selection--list-text--item-name",
+                      "data-key": "f589039e-c93b-45c1-99fc-1ee457ecb570",
+                    },
+                    "ref": null,
+                    "rendered": "Wotsits",
+                    "type": "p",
+                  },
+                ],
+                "type": "div",
+              },
+            ],
+            "type": "div",
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <div
+              onTouchStart={[Function]}
+>
+              G
+</div>,
+            <div
+              onTouchStart={[Function]}
+>
+              P
+</div>,
+            <div
+              onTouchStart={[Function]}
+>
+              W
+</div>,
+          ],
+          "className": "list-selection--scroll-select",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": "G",
             "nodeType": "host",
             "props": Object {
               "children": "G",
-              "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+              "onTouchStart": [Function],
             },
             "ref": null,
             "rendered": "G",
-            "type": "p",
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "alt": "",
-              "src": "line.svg",
-            },
-            "ref": null,
-            "rendered": null,
-            "type": "img",
-          },
-          Object {
-            "instance": null,
-            "key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
-            "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                <img
-                  alt=""
-                  className="list-selection list-selection--item-icon undefined"
-                  data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
-                  src="misc-bar.svg"
-/>,
-                <p
-                  className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                  data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
->
-                  Granulated Sugar
-</p>,
-              ],
-              "className": "list-selection list-selection--list-item undefined-holder",
-              "data-key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
-              "onClick": [Function],
-            },
-            "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "alt": "",
-                  "className": "list-selection list-selection--item-icon undefined",
-                  "data-key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
-                  "src": "misc-bar.svg",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "img",
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "Granulated Sugar",
-                  "className": "list-selection list-selection--list-text list-selection--list-text--item-name",
-                  "data-key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
-                },
-                "ref": null,
-                "rendered": "Granulated Sugar",
-                "type": "p",
-              },
-            ],
             "type": "div",
           },
-        ],
-        "type": "div",
-      },
-      Object {
-        "instance": null,
-        "key": "P",
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            <p
-              className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-              P
-</p>,
-            <img
-              alt=""
-              src="line.svg"
-/>,
-            Array [
-              <div
-                className="list-selection list-selection--list-item undefined-holder"
-                data-key="e615de4e-ce10-451b-80ad-9717662a904a"
-                onClick={[Function]}
->
-                <img
-                                alt=""
-                                className="list-selection list-selection--item-icon undefined"
-                                data-key="e615de4e-ce10-451b-80ad-9717662a904a"
-                                src="pepsi-max-can.svg"
-                />
-                <p
-                                className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                                data-key="e615de4e-ce10-451b-80ad-9717662a904a"
-                >
-                                Pepsi Max
-                </p>
-</div>,
-            ],
-          ],
-        },
-        "ref": null,
-        "rendered": Array [
           Object {
             "instance": null,
-            "key": undefined,
+            "key": "P",
             "nodeType": "host",
             "props": Object {
               "children": "P",
-              "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+              "onTouchStart": [Function],
             },
             "ref": null,
             "rendered": "P",
-            "type": "p",
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "alt": "",
-              "src": "line.svg",
-            },
-            "ref": null,
-            "rendered": null,
-            "type": "img",
-          },
-          Object {
-            "instance": null,
-            "key": "e615de4e-ce10-451b-80ad-9717662a904a",
-            "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                <img
-                  alt=""
-                  className="list-selection list-selection--item-icon undefined"
-                  data-key="e615de4e-ce10-451b-80ad-9717662a904a"
-                  src="pepsi-max-can.svg"
-/>,
-                <p
-                  className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                  data-key="e615de4e-ce10-451b-80ad-9717662a904a"
->
-                  Pepsi Max
-</p>,
-              ],
-              "className": "list-selection list-selection--list-item undefined-holder",
-              "data-key": "e615de4e-ce10-451b-80ad-9717662a904a",
-              "onClick": [Function],
-            },
-            "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "alt": "",
-                  "className": "list-selection list-selection--item-icon undefined",
-                  "data-key": "e615de4e-ce10-451b-80ad-9717662a904a",
-                  "src": "pepsi-max-can.svg",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "img",
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "Pepsi Max",
-                  "className": "list-selection list-selection--list-text list-selection--list-text--item-name",
-                  "data-key": "e615de4e-ce10-451b-80ad-9717662a904a",
-                },
-                "ref": null,
-                "rendered": "Pepsi Max",
-                "type": "p",
-              },
-            ],
             "type": "div",
           },
-        ],
-        "type": "div",
-      },
-      Object {
-        "instance": null,
-        "key": "W",
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            <p
-              className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-              W
-</p>,
-            <img
-              alt=""
-              src="line.svg"
-/>,
-            Array [
-              <div
-                className="list-selection list-selection--list-item undefined-holder"
-                data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
-                onClick={[Function]}
->
-                <img
-                                alt=""
-                                className="list-selection list-selection--item-icon undefined"
-                                data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
-                                src="misc-crisps.svg"
-                />
-                <p
-                                className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                                data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
-                >
-                                Wotsits
-                </p>
-</div>,
-            ],
-          ],
-        },
-        "ref": null,
-        "rendered": Array [
           Object {
             "instance": null,
-            "key": undefined,
+            "key": "W",
             "nodeType": "host",
             "props": Object {
               "children": "W",
-              "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+              "onTouchStart": [Function],
             },
             "ref": null,
             "rendered": "W",
-            "type": "p",
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "alt": "",
-              "src": "line.svg",
-            },
-            "ref": null,
-            "rendered": null,
-            "type": "img",
-          },
-          Object {
-            "instance": null,
-            "key": "f589039e-c93b-45c1-99fc-1ee457ecb570",
-            "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                <img
-                  alt=""
-                  className="list-selection list-selection--item-icon undefined"
-                  data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
-                  src="misc-crisps.svg"
-/>,
-                <p
-                  className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                  data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
->
-                  Wotsits
-</p>,
-              ],
-              "className": "list-selection list-selection--list-item undefined-holder",
-              "data-key": "f589039e-c93b-45c1-99fc-1ee457ecb570",
-              "onClick": [Function],
-            },
-            "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "alt": "",
-                  "className": "list-selection list-selection--item-icon undefined",
-                  "data-key": "f589039e-c93b-45c1-99fc-1ee457ecb570",
-                  "src": "misc-crisps.svg",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "img",
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "Wotsits",
-                  "className": "list-selection list-selection--list-text list-selection--list-text--item-name",
-                  "data-key": "f589039e-c93b-45c1-99fc-1ee457ecb570",
-                },
-                "ref": null,
-                "rendered": "Wotsits",
-                "type": "p",
-              },
-            ],
             "type": "div",
           },
         ],
@@ -549,91 +780,126 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
-          <div>
-            <p
-                        className="list-selection list-selection--list-text list-selection--list-text--group-header"
+          <div
+            className="list-selection list-selection--list"
+>
+            <div
+                        id="G"
+            >
+                        <p
+                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                        >
+                                    G
+                        </p>
+                        <img
+                                    alt=""
+                                    className="list-selection list-selection--groupSplitter"
+                                    src="line.svg"
+                        />
+                        <div
+                                    className="list-selection list-selection--list-item undefined-holder"
+                                    data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                                    onClick={[Function]}
+                        >
+                                    <img
+                                                alt=""
+                                                className="list-selection list-selection--item-icon undefined"
+                                                data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                                                onClick={[Function]}
+                                                src="misc-bar.svg"
+                                    />
+                                    <p
+                                                className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                                data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                                    >
+                                                Granulated Sugar
+                                    </p>
+                        </div>
+            </div>
+            <div
+                        id="P"
+            >
+                        <p
+                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                        >
+                                    P
+                        </p>
+                        <img
+                                    alt=""
+                                    className="list-selection list-selection--groupSplitter"
+                                    src="line.svg"
+                        />
+                        <div
+                                    className="list-selection list-selection--list-item undefined-holder"
+                                    data-key="e615de4e-ce10-451b-80ad-9717662a904a"
+                                    onClick={[Function]}
+                        >
+                                    <img
+                                                alt=""
+                                                className="list-selection list-selection--item-icon undefined"
+                                                data-key="e615de4e-ce10-451b-80ad-9717662a904a"
+                                                onClick={[Function]}
+                                                src="pepsi-max-can.svg"
+                                    />
+                                    <p
+                                                className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                                data-key="e615de4e-ce10-451b-80ad-9717662a904a"
+                                    >
+                                                Pepsi Max
+                                    </p>
+                        </div>
+            </div>
+            <div
+                        id="W"
+            >
+                        <p
+                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                        >
+                                    W
+                        </p>
+                        <img
+                                    alt=""
+                                    className="list-selection list-selection--groupSplitter"
+                                    src="line.svg"
+                        />
+                        <div
+                                    className="list-selection list-selection--list-item undefined-holder"
+                                    data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
+                                    onClick={[Function]}
+                        >
+                                    <img
+                                                alt=""
+                                                className="list-selection list-selection--item-icon undefined"
+                                                data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
+                                                onClick={[Function]}
+                                                src="misc-crisps.svg"
+                                    />
+                                    <p
+                                                className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                                data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
+                                    >
+                                                Wotsits
+                                    </p>
+                        </div>
+            </div>
+</div>,
+          <div
+            className="list-selection--scroll-select"
+>
+            <div
+                        onTouchStart={[Function]}
             >
                         G
-            </p>
-            <img
-                        alt=""
-                        src="line.svg"
-            />
-            <div
-                        className="list-selection list-selection--list-item undefined-holder"
-                        data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
-                        onClick={[Function]}
-            >
-                        <img
-                                    alt=""
-                                    className="list-selection list-selection--item-icon undefined"
-                                    data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
-                                    src="misc-bar.svg"
-                        />
-                        <p
-                                    className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                                    data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
-                        >
-                                    Granulated Sugar
-                        </p>
             </div>
-</div>,
-          <div>
-            <p
-                        className="list-selection list-selection--list-text list-selection--list-text--group-header"
+            <div
+                        onTouchStart={[Function]}
             >
                         P
-            </p>
-            <img
-                        alt=""
-                        src="line.svg"
-            />
-            <div
-                        className="list-selection list-selection--list-item undefined-holder"
-                        data-key="e615de4e-ce10-451b-80ad-9717662a904a"
-                        onClick={[Function]}
-            >
-                        <img
-                                    alt=""
-                                    className="list-selection list-selection--item-icon undefined"
-                                    data-key="e615de4e-ce10-451b-80ad-9717662a904a"
-                                    src="pepsi-max-can.svg"
-                        />
-                        <p
-                                    className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                                    data-key="e615de4e-ce10-451b-80ad-9717662a904a"
-                        >
-                                    Pepsi Max
-                        </p>
             </div>
-</div>,
-          <div>
-            <p
-                        className="list-selection list-selection--list-text list-selection--list-text--group-header"
+            <div
+                        onTouchStart={[Function]}
             >
                         W
-            </p>
-            <img
-                        alt=""
-                        src="line.svg"
-            />
-            <div
-                        className="list-selection list-selection--list-item undefined-holder"
-                        data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
-                        onClick={[Function]}
-            >
-                        <img
-                                    alt=""
-                                    className="list-selection list-selection--item-icon undefined"
-                                    data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
-                                    src="misc-crisps.svg"
-                        />
-                        <p
-                                    className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                                    data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
-                        >
-                                    Wotsits
-                        </p>
             </div>
 </div>,
         ],
@@ -643,362 +909,558 @@ ShallowWrapper {
       "rendered": Array [
         Object {
           "instance": null,
-          "key": "G",
+          "key": undefined,
           "nodeType": "host",
           "props": Object {
             "children": Array [
-              <p
-                className="list-selection list-selection--list-text list-selection--list-text--group-header"
+              <div
+                id="G"
 >
-                G
-</p>,
-              <img
-                alt=""
-                src="line.svg"
-/>,
-              Array [
+                <p
+                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                >
+                                G
+                </p>
+                <img
+                                alt=""
+                                className="list-selection list-selection--groupSplitter"
+                                src="line.svg"
+                />
                 <div
-                  className="list-selection list-selection--list-item undefined-holder"
-                  data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
-                  onClick={[Function]}
->
-                  <img
-                                    alt=""
-                                    className="list-selection list-selection--item-icon undefined"
-                                    data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
-                                    src="misc-bar.svg"
-                  />
-                  <p
-                                    className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                                    data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
-                  >
-                                    Granulated Sugar
-                  </p>
+                                className="list-selection list-selection--list-item undefined-holder"
+                                data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                                onClick={[Function]}
+                >
+                                <img
+                                                alt=""
+                                                className="list-selection list-selection--item-icon undefined"
+                                                data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                                                onClick={[Function]}
+                                                src="misc-bar.svg"
+                                />
+                                <p
+                                                className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                                data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                                >
+                                                Granulated Sugar
+                                </p>
+                </div>
 </div>,
-              ],
+              <div
+                id="P"
+>
+                <p
+                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                >
+                                P
+                </p>
+                <img
+                                alt=""
+                                className="list-selection list-selection--groupSplitter"
+                                src="line.svg"
+                />
+                <div
+                                className="list-selection list-selection--list-item undefined-holder"
+                                data-key="e615de4e-ce10-451b-80ad-9717662a904a"
+                                onClick={[Function]}
+                >
+                                <img
+                                                alt=""
+                                                className="list-selection list-selection--item-icon undefined"
+                                                data-key="e615de4e-ce10-451b-80ad-9717662a904a"
+                                                onClick={[Function]}
+                                                src="pepsi-max-can.svg"
+                                />
+                                <p
+                                                className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                                data-key="e615de4e-ce10-451b-80ad-9717662a904a"
+                                >
+                                                Pepsi Max
+                                </p>
+                </div>
+</div>,
+              <div
+                id="W"
+>
+                <p
+                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                >
+                                W
+                </p>
+                <img
+                                alt=""
+                                className="list-selection list-selection--groupSplitter"
+                                src="line.svg"
+                />
+                <div
+                                className="list-selection list-selection--list-item undefined-holder"
+                                data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
+                                onClick={[Function]}
+                >
+                                <img
+                                                alt=""
+                                                className="list-selection list-selection--item-icon undefined"
+                                                data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
+                                                onClick={[Function]}
+                                                src="misc-crisps.svg"
+                                />
+                                <p
+                                                className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                                data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
+                                >
+                                                Wotsits
+                                </p>
+                </div>
+</div>,
             ],
+            "className": "list-selection list-selection--list",
           },
           "ref": null,
           "rendered": Array [
             Object {
               "instance": null,
-              "key": undefined,
+              "key": "G",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <p
+                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                    G
+</p>,
+                  <img
+                    alt=""
+                    className="list-selection list-selection--groupSplitter"
+                    src="line.svg"
+/>,
+                  Array [
+                    <div
+                      className="list-selection list-selection--list-item undefined-holder"
+                      data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                      onClick={[Function]}
+>
+                      <img
+                                            alt=""
+                                            className="list-selection list-selection--item-icon undefined"
+                                            data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                                            onClick={[Function]}
+                                            src="misc-bar.svg"
+                      />
+                      <p
+                                            className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                            data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                      >
+                                            Granulated Sugar
+                      </p>
+</div>,
+                  ],
+                ],
+                "id": "G",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "G",
+                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                  },
+                  "ref": null,
+                  "rendered": "G",
+                  "type": "p",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "alt": "",
+                    "className": "list-selection list-selection--groupSplitter",
+                    "src": "line.svg",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "img",
+                },
+                Object {
+                  "instance": null,
+                  "key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      <img
+                        alt=""
+                        className="list-selection list-selection--item-icon undefined"
+                        data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                        onClick={[Function]}
+                        src="misc-bar.svg"
+/>,
+                      <p
+                        className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                        data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+>
+                        Granulated Sugar
+</p>,
+                    ],
+                    "className": "list-selection list-selection--list-item undefined-holder",
+                    "data-key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
+                    "onClick": [Function],
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "alt": "",
+                        "className": "list-selection list-selection--item-icon undefined",
+                        "data-key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
+                        "onClick": [Function],
+                        "src": "misc-bar.svg",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": "img",
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "Granulated Sugar",
+                        "className": "list-selection list-selection--list-text list-selection--list-text--item-name",
+                        "data-key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
+                      },
+                      "ref": null,
+                      "rendered": "Granulated Sugar",
+                      "type": "p",
+                    },
+                  ],
+                  "type": "div",
+                },
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "P",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <p
+                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                    P
+</p>,
+                  <img
+                    alt=""
+                    className="list-selection list-selection--groupSplitter"
+                    src="line.svg"
+/>,
+                  Array [
+                    <div
+                      className="list-selection list-selection--list-item undefined-holder"
+                      data-key="e615de4e-ce10-451b-80ad-9717662a904a"
+                      onClick={[Function]}
+>
+                      <img
+                                            alt=""
+                                            className="list-selection list-selection--item-icon undefined"
+                                            data-key="e615de4e-ce10-451b-80ad-9717662a904a"
+                                            onClick={[Function]}
+                                            src="pepsi-max-can.svg"
+                      />
+                      <p
+                                            className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                            data-key="e615de4e-ce10-451b-80ad-9717662a904a"
+                      >
+                                            Pepsi Max
+                      </p>
+</div>,
+                  ],
+                ],
+                "id": "P",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "P",
+                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                  },
+                  "ref": null,
+                  "rendered": "P",
+                  "type": "p",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "alt": "",
+                    "className": "list-selection list-selection--groupSplitter",
+                    "src": "line.svg",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "img",
+                },
+                Object {
+                  "instance": null,
+                  "key": "e615de4e-ce10-451b-80ad-9717662a904a",
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      <img
+                        alt=""
+                        className="list-selection list-selection--item-icon undefined"
+                        data-key="e615de4e-ce10-451b-80ad-9717662a904a"
+                        onClick={[Function]}
+                        src="pepsi-max-can.svg"
+/>,
+                      <p
+                        className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                        data-key="e615de4e-ce10-451b-80ad-9717662a904a"
+>
+                        Pepsi Max
+</p>,
+                    ],
+                    "className": "list-selection list-selection--list-item undefined-holder",
+                    "data-key": "e615de4e-ce10-451b-80ad-9717662a904a",
+                    "onClick": [Function],
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "alt": "",
+                        "className": "list-selection list-selection--item-icon undefined",
+                        "data-key": "e615de4e-ce10-451b-80ad-9717662a904a",
+                        "onClick": [Function],
+                        "src": "pepsi-max-can.svg",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": "img",
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "Pepsi Max",
+                        "className": "list-selection list-selection--list-text list-selection--list-text--item-name",
+                        "data-key": "e615de4e-ce10-451b-80ad-9717662a904a",
+                      },
+                      "ref": null,
+                      "rendered": "Pepsi Max",
+                      "type": "p",
+                    },
+                  ],
+                  "type": "div",
+                },
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "W",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <p
+                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                    W
+</p>,
+                  <img
+                    alt=""
+                    className="list-selection list-selection--groupSplitter"
+                    src="line.svg"
+/>,
+                  Array [
+                    <div
+                      className="list-selection list-selection--list-item undefined-holder"
+                      data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
+                      onClick={[Function]}
+>
+                      <img
+                                            alt=""
+                                            className="list-selection list-selection--item-icon undefined"
+                                            data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
+                                            onClick={[Function]}
+                                            src="misc-crisps.svg"
+                      />
+                      <p
+                                            className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                            data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
+                      >
+                                            Wotsits
+                      </p>
+</div>,
+                  ],
+                ],
+                "id": "W",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "W",
+                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                  },
+                  "ref": null,
+                  "rendered": "W",
+                  "type": "p",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "alt": "",
+                    "className": "list-selection list-selection--groupSplitter",
+                    "src": "line.svg",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "img",
+                },
+                Object {
+                  "instance": null,
+                  "key": "f589039e-c93b-45c1-99fc-1ee457ecb570",
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      <img
+                        alt=""
+                        className="list-selection list-selection--item-icon undefined"
+                        data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
+                        onClick={[Function]}
+                        src="misc-crisps.svg"
+/>,
+                      <p
+                        className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                        data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
+>
+                        Wotsits
+</p>,
+                    ],
+                    "className": "list-selection list-selection--list-item undefined-holder",
+                    "data-key": "f589039e-c93b-45c1-99fc-1ee457ecb570",
+                    "onClick": [Function],
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "alt": "",
+                        "className": "list-selection list-selection--item-icon undefined",
+                        "data-key": "f589039e-c93b-45c1-99fc-1ee457ecb570",
+                        "onClick": [Function],
+                        "src": "misc-crisps.svg",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": "img",
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "Wotsits",
+                        "className": "list-selection list-selection--list-text list-selection--list-text--item-name",
+                        "data-key": "f589039e-c93b-45c1-99fc-1ee457ecb570",
+                      },
+                      "ref": null,
+                      "rendered": "Wotsits",
+                      "type": "p",
+                    },
+                  ],
+                  "type": "div",
+                },
+              ],
+              "type": "div",
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <div
+                onTouchStart={[Function]}
+>
+                G
+</div>,
+              <div
+                onTouchStart={[Function]}
+>
+                P
+</div>,
+              <div
+                onTouchStart={[Function]}
+>
+                W
+</div>,
+            ],
+            "className": "list-selection--scroll-select",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": "G",
               "nodeType": "host",
               "props": Object {
                 "children": "G",
-                "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                "onTouchStart": [Function],
               },
               "ref": null,
               "rendered": "G",
-              "type": "p",
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "alt": "",
-                "src": "line.svg",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": "img",
-            },
-            Object {
-              "instance": null,
-              "key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
-              "nodeType": "host",
-              "props": Object {
-                "children": Array [
-                  <img
-                    alt=""
-                    className="list-selection list-selection--item-icon undefined"
-                    data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
-                    src="misc-bar.svg"
-/>,
-                  <p
-                    className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                    data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
->
-                    Granulated Sugar
-</p>,
-                ],
-                "className": "list-selection list-selection--list-item undefined-holder",
-                "data-key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
-                "onClick": [Function],
-              },
-              "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "alt": "",
-                    "className": "list-selection list-selection--item-icon undefined",
-                    "data-key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
-                    "src": "misc-bar.svg",
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "img",
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "Granulated Sugar",
-                    "className": "list-selection list-selection--list-text list-selection--list-text--item-name",
-                    "data-key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
-                  },
-                  "ref": null,
-                  "rendered": "Granulated Sugar",
-                  "type": "p",
-                },
-              ],
               "type": "div",
             },
-          ],
-          "type": "div",
-        },
-        Object {
-          "instance": null,
-          "key": "P",
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              <p
-                className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                P
-</p>,
-              <img
-                alt=""
-                src="line.svg"
-/>,
-              Array [
-                <div
-                  className="list-selection list-selection--list-item undefined-holder"
-                  data-key="e615de4e-ce10-451b-80ad-9717662a904a"
-                  onClick={[Function]}
->
-                  <img
-                                    alt=""
-                                    className="list-selection list-selection--item-icon undefined"
-                                    data-key="e615de4e-ce10-451b-80ad-9717662a904a"
-                                    src="pepsi-max-can.svg"
-                  />
-                  <p
-                                    className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                                    data-key="e615de4e-ce10-451b-80ad-9717662a904a"
-                  >
-                                    Pepsi Max
-                  </p>
-</div>,
-              ],
-            ],
-          },
-          "ref": null,
-          "rendered": Array [
             Object {
               "instance": null,
-              "key": undefined,
+              "key": "P",
               "nodeType": "host",
               "props": Object {
                 "children": "P",
-                "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                "onTouchStart": [Function],
               },
               "ref": null,
               "rendered": "P",
-              "type": "p",
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "alt": "",
-                "src": "line.svg",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": "img",
-            },
-            Object {
-              "instance": null,
-              "key": "e615de4e-ce10-451b-80ad-9717662a904a",
-              "nodeType": "host",
-              "props": Object {
-                "children": Array [
-                  <img
-                    alt=""
-                    className="list-selection list-selection--item-icon undefined"
-                    data-key="e615de4e-ce10-451b-80ad-9717662a904a"
-                    src="pepsi-max-can.svg"
-/>,
-                  <p
-                    className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                    data-key="e615de4e-ce10-451b-80ad-9717662a904a"
->
-                    Pepsi Max
-</p>,
-                ],
-                "className": "list-selection list-selection--list-item undefined-holder",
-                "data-key": "e615de4e-ce10-451b-80ad-9717662a904a",
-                "onClick": [Function],
-              },
-              "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "alt": "",
-                    "className": "list-selection list-selection--item-icon undefined",
-                    "data-key": "e615de4e-ce10-451b-80ad-9717662a904a",
-                    "src": "pepsi-max-can.svg",
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "img",
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "Pepsi Max",
-                    "className": "list-selection list-selection--list-text list-selection--list-text--item-name",
-                    "data-key": "e615de4e-ce10-451b-80ad-9717662a904a",
-                  },
-                  "ref": null,
-                  "rendered": "Pepsi Max",
-                  "type": "p",
-                },
-              ],
               "type": "div",
             },
-          ],
-          "type": "div",
-        },
-        Object {
-          "instance": null,
-          "key": "W",
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              <p
-                className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                W
-</p>,
-              <img
-                alt=""
-                src="line.svg"
-/>,
-              Array [
-                <div
-                  className="list-selection list-selection--list-item undefined-holder"
-                  data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
-                  onClick={[Function]}
->
-                  <img
-                                    alt=""
-                                    className="list-selection list-selection--item-icon undefined"
-                                    data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
-                                    src="misc-crisps.svg"
-                  />
-                  <p
-                                    className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                                    data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
-                  >
-                                    Wotsits
-                  </p>
-</div>,
-              ],
-            ],
-          },
-          "ref": null,
-          "rendered": Array [
             Object {
               "instance": null,
-              "key": undefined,
+              "key": "W",
               "nodeType": "host",
               "props": Object {
                 "children": "W",
-                "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                "onTouchStart": [Function],
               },
               "ref": null,
               "rendered": "W",
-              "type": "p",
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "alt": "",
-                "src": "line.svg",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": "img",
-            },
-            Object {
-              "instance": null,
-              "key": "f589039e-c93b-45c1-99fc-1ee457ecb570",
-              "nodeType": "host",
-              "props": Object {
-                "children": Array [
-                  <img
-                    alt=""
-                    className="list-selection list-selection--item-icon undefined"
-                    data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
-                    src="misc-crisps.svg"
-/>,
-                  <p
-                    className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                    data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
->
-                    Wotsits
-</p>,
-                ],
-                "className": "list-selection list-selection--list-item undefined-holder",
-                "data-key": "f589039e-c93b-45c1-99fc-1ee457ecb570",
-                "onClick": [Function],
-              },
-              "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "alt": "",
-                    "className": "list-selection list-selection--item-icon undefined",
-                    "data-key": "f589039e-c93b-45c1-99fc-1ee457ecb570",
-                    "src": "misc-crisps.svg",
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "img",
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "Wotsits",
-                    "className": "list-selection list-selection--list-text list-selection--list-text--item-name",
-                    "data-key": "f589039e-c93b-45c1-99fc-1ee457ecb570",
-                  },
-                  "ref": null,
-                  "rendered": "Wotsits",
-                  "type": "p",
-                },
-              ],
               "type": "div",
             },
           ],
