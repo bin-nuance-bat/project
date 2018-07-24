@@ -3,10 +3,10 @@ import {connect} from 'react-redux';
 import {setSnackChat} from './SnackChatActions';
 
 const mapDispatchToProps = {
-	setSnackChat
+  setSnackChat
 };
 
 export default connect(
-	null,
-	mapDispatchToProps
+  null,
+  mapDispatchToProps
 )(SnackChat);

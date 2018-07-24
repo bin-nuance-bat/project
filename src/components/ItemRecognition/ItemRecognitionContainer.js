@@ -5,10 +5,10 @@ import {setPrediction} from './ItemRecognitionActions';
 const mapStateToProps = state => ({prediction: state.prediction});
 
 const mapDispatchToProps = {
-	setPrediction
+  setPrediction
 };
 
 export default connect(
-	mapStateToProps,
-	mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(ItemRecognition);
