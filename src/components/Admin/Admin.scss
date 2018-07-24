@@ -1,45 +1,45 @@
 @import '../../utils/constants.scss';
 
 .col {
-	float: left;
-	padding: 0 20px;
+  float: left;
+  padding: 0 20px;
 }
 
 .webcam-container video {
-	object-fit: cover;
-	position: relative;
+  object-fit: cover;
+  position: absolute;
 }
 
 select {
-	color: $black;
-	margin: 10px 0;
+  color: $black;
+  margin: 10px 0;
 }
 
 select,
 input {
-	padding: 5px;
-	width: 100%;
+  padding: 5px;
+  width: 100%;
 }
 
 input[type='checkbox'] {
-	width: auto !important;
+  width: auto !important;
 }
 
 .button-admin {
-	width: auto;
-	margin: 20px 5px;
-	padding: 10px;
-	background-color: $light-blue;
+  width: auto;
+  margin: 20px 5px;
+  padding: 10px;
+  background-color: $light-blue;
 }
 
 .button-admin:disabled {
-	background-color: $dark-blue;
+  background-color: $dark-blue;
 }
 
 .formGroup {
-	display: block;
+  display: block;
 }
 
 #status-text {
-	font-size: 22px;
+  font-size: 22px;
 }

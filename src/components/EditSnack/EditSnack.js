@@ -15,12 +15,14 @@ class EditSnack extends Component {
   render() {
     return (
       <div>
-        <Logo />
-        <div className="edit-snack edit-snack--text-info">
-          Sorry, I can’t recognise that snack. <br /> Please select it below
+        <div className="edit-snack--header">
+          <Logo />
+          <div className="edit-snack edit-snack--text-info">
+            Sorry, I can’t recognise that snack. <br /> Please select it below
+          </div>
         </div>
         <ListSelection
-          className="snack-icon"
+          iconStyle="snack-icon"
           items={this.props.items}
           onClick={this.handleClick}
         />
