@@ -35,7 +35,8 @@ class ItemRecognition extends Component {
         this.props.setPrediction(item.id, img.src);
         this.props.history.push('/confirmitem');
       } else {
-        this.webcam.current.requestScreenshot().then(this.handleImg);
+        if (this.webcam.current)
+          this.webcam.current.requestScreenshot().then(this.handleImg);
       }
     });
   };
@@ -55,10 +56,6 @@ class ItemRecognition extends Component {
           onConnect={this.onConnect}
           imgSize={224}
         />
-        <button onClick={() => this.props.history.push('/confirmitem')}>
-          {' '}
-          a
-        </button>
       </div>
     );
   }
