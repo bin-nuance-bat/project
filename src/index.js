@@ -17,7 +17,6 @@ import UsernameEntryContainer from './components/UsernameEntry/container';
 import EditSnack from './components/EditSnack/EditSnackContainer';
 import SuccessPage from './components/SuccessPage/SuccessPage';
 import Admin from './components/Admin/Admin';
-import Auth from './components/Admin/Auth';
 
 ReactDOM.render(
 	<Provider store={store}>
@@ -29,16 +28,11 @@ ReactDOM.render(
 				<Route exact path="/scanitem" component={ItemRecognition} />
 				<Route exact path="/confirmitem" component={ConfirmationBox} />
 				<Route exact path="/editsnack" component={EditSnack} />
-				<Route
-					exact
-					path="/slackname"
-					component={UsernameEntryContainer}
-				/>
+				<Route exact path="/slackname" component={UsernameEntryContainer} />
 				<Route exact path="/success" component={SuccessPage} />
 				<Route exact path="/old" component={OldAppContainer} />
 				<Route exact path="/preview" component={Viewer} />
 				<Route exact path="/admin" component={Admin} />
-				<Route exact path="/auth" component={Auth} />
 				<Route exact path="/training" component={Trainer} />
 			</Switch>
 		</Router>
