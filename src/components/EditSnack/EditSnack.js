@@ -7,6 +7,7 @@ import {ControllerDataset} from '../Admin/Trainer/ControllerDataset';
 import './EditSnack.css';
 import Model from '../Admin/Trainer/Model';
 
+
 const importImages = require.context('./assets', true, /\.svg$/);
 const imgFilesObject = importImages.keys().reduce((images, key) => {
   images[key] = importImages(key);
@@ -65,7 +66,6 @@ class EditSnack extends Component {
   };
 
   render() {
-    const items = this.props.items.map(addItemImage);
     return (
       <div>
         <Logo />
@@ -73,9 +73,8 @@ class EditSnack extends Component {
           Sorry, I can’t recognise that snack. <br /> Please select it below
         </div>
         <ListSelection
-          className="edit-snack edit-snack--list-selection"
-          iconStyle="snack-icon"
-          items={items}
+          className="snack-icon"
+          items={this.props.items}
           onClick={this.handleClick}
         />
       </div>
@@ -85,6 +84,8 @@ class EditSnack extends Component {
 
 EditSnack.propTypes = {
   setActualItem: PropTypes.func.isRequired,
+  sendWithPhoto: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired,
   items: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
