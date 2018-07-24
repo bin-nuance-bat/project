@@ -11,7 +11,7 @@ class Auth extends Component {
 
 	componentDidMount() {
 		initFirebase();
-		authenticate();
+		this.authenticate();
 	}
 
 	authenticate = () => {
