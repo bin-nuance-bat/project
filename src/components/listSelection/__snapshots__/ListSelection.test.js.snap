@@ -95,18 +95,13 @@ ShallowWrapper {
                     src="line.svg"
           />
           <div
-                    className="list-selection list-selection--list-item"
+                    className="list-selection list-selection--list-item undefined-holder"
                     data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
                     onClick={[Function]}
-                    style={
-                              Object {
-                                        "height": undefined,
-                                      }
-                    }
           >
                     <img
                               alt=""
-                              className="list-selection list-selection--item-icon"
+                              className="list-selection list-selection--item-icon undefined"
                               data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
                               src="misc-bar.svg"
                               style={
@@ -135,18 +130,13 @@ ShallowWrapper {
                     src="line.svg"
           />
           <div
-                    className="list-selection list-selection--list-item"
+                    className="list-selection list-selection--list-item undefined-holder"
                     data-key="e615de4e-ce10-451b-80ad-9717662a904a"
                     onClick={[Function]}
-                    style={
-                              Object {
-                                        "height": undefined,
-                                      }
-                    }
           >
                     <img
                               alt=""
-                              className="list-selection list-selection--item-icon"
+                              className="list-selection list-selection--item-icon undefined"
                               data-key="e615de4e-ce10-451b-80ad-9717662a904a"
                               src="pepsi-max-can.svg"
                               style={
@@ -175,18 +165,13 @@ ShallowWrapper {
                     src="line.svg"
           />
           <div
-                    className="list-selection list-selection--list-item"
+                    className="list-selection list-selection--list-item undefined-holder"
                     data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
                     onClick={[Function]}
-                    style={
-                              Object {
-                                        "height": undefined,
-                                      }
-                    }
           >
                     <img
                               alt=""
-                              className="list-selection list-selection--item-icon"
+                              className="list-selection list-selection--item-icon undefined"
                               data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
                               src="misc-crisps.svg"
                               style={
@@ -226,18 +211,13 @@ ShallowWrapper {
 />,
             Array [
               <div
-                className="list-selection list-selection--list-item"
+                className="list-selection list-selection--list-item undefined-holder"
                 data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
                 onClick={[Function]}
-                style={
-                                Object {
-                                                "height": undefined,
-                                              }
-                }
 >
                 <img
                                 alt=""
-                                className="list-selection list-selection--item-icon"
+                                className="list-selection list-selection--item-icon undefined"
                                 data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
                                 src="misc-bar.svg"
                                 style={
@@ -291,7 +271,7 @@ ShallowWrapper {
               "children": Array [
                 <img
                   alt=""
-                  className="list-selection list-selection--item-icon"
+                  className="list-selection list-selection--item-icon undefined"
                   data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
                   src="misc-bar.svg"
                   style={
@@ -308,12 +288,9 @@ ShallowWrapper {
                   Granulated Sugar
 </p>,
               ],
-              "className": "list-selection list-selection--list-item",
+              "className": "list-selection list-selection--list-item undefined-holder",
               "data-key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
               "onClick": [Function],
-              "style": Object {
-                "height": undefined,
-              },
             },
             "ref": null,
             "rendered": Array [
@@ -323,7 +300,7 @@ ShallowWrapper {
                 "nodeType": "host",
                 "props": Object {
                   "alt": "",
-                  "className": "list-selection list-selection--item-icon",
+                  "className": "list-selection list-selection--item-icon undefined",
                   "data-key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
                   "src": "misc-bar.svg",
                   "style": Object {
@@ -371,18 +348,13 @@ ShallowWrapper {
 />,
             Array [
               <div
-                className="list-selection list-selection--list-item"
+                className="list-selection list-selection--list-item undefined-holder"
                 data-key="e615de4e-ce10-451b-80ad-9717662a904a"
                 onClick={[Function]}
-                style={
-                                Object {
-                                                "height": undefined,
-                                              }
-                }
 >
                 <img
                                 alt=""
-                                className="list-selection list-selection--item-icon"
+                                className="list-selection list-selection--item-icon undefined"
                                 data-key="e615de4e-ce10-451b-80ad-9717662a904a"
                                 src="pepsi-max-can.svg"
                                 style={
@@ -436,7 +408,7 @@ ShallowWrapper {
               "children": Array [
                 <img
                   alt=""
-                  className="list-selection list-selection--item-icon"
+                  className="list-selection list-selection--item-icon undefined"
                   data-key="e615de4e-ce10-451b-80ad-9717662a904a"
                   src="pepsi-max-can.svg"
                   style={
@@ -453,12 +425,9 @@ ShallowWrapper {
                   Pepsi Max
 </p>,
               ],
-              "className": "list-selection list-selection--list-item",
+              "className": "list-selection list-selection--list-item undefined-holder",
               "data-key": "e615de4e-ce10-451b-80ad-9717662a904a",
               "onClick": [Function],
-              "style": Object {
-                "height": undefined,
-              },
             },
             "ref": null,
             "rendered": Array [
@@ -468,7 +437,7 @@ ShallowWrapper {
                 "nodeType": "host",
                 "props": Object {
                   "alt": "",
-                  "className": "list-selection list-selection--item-icon",
+                  "className": "list-selection list-selection--item-icon undefined",
                   "data-key": "e615de4e-ce10-451b-80ad-9717662a904a",
                   "src": "pepsi-max-can.svg",
                   "style": Object {
@@ -516,18 +485,13 @@ ShallowWrapper {
 />,
             Array [
               <div
-                className="list-selection list-selection--list-item"
+                className="list-selection list-selection--list-item undefined-holder"
                 data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
                 onClick={[Function]}
-                style={
-                                Object {
-                                                "height": undefined,
-                                              }
-                }
 >
                 <img
                                 alt=""
-                                className="list-selection list-selection--item-icon"
+                                className="list-selection list-selection--item-icon undefined"
                                 data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
                                 src="misc-crisps.svg"
                                 style={
@@ -581,7 +545,7 @@ ShallowWrapper {
               "children": Array [
                 <img
                   alt=""
-                  className="list-selection list-selection--item-icon"
+                  className="list-selection list-selection--item-icon undefined"
                   data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
                   src="misc-crisps.svg"
                   style={
@@ -598,12 +562,9 @@ ShallowWrapper {
                   Wotsits
 </p>,
               ],
-              "className": "list-selection list-selection--list-item",
+              "className": "list-selection list-selection--list-item undefined-holder",
               "data-key": "f589039e-c93b-45c1-99fc-1ee457ecb570",
               "onClick": [Function],
-              "style": Object {
-                "height": undefined,
-              },
             },
             "ref": null,
             "rendered": Array [
@@ -613,7 +574,7 @@ ShallowWrapper {
                 "nodeType": "host",
                 "props": Object {
                   "alt": "",
-                  "className": "list-selection list-selection--item-icon",
+                  "className": "list-selection list-selection--item-icon undefined",
                   "data-key": "f589039e-c93b-45c1-99fc-1ee457ecb570",
                   "src": "misc-crisps.svg",
                   "style": Object {
@@ -665,18 +626,13 @@ ShallowWrapper {
                         src="line.svg"
             />
             <div
-                        className="list-selection list-selection--list-item"
+                        className="list-selection list-selection--list-item undefined-holder"
                         data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
                         onClick={[Function]}
-                        style={
-                                    Object {
-                                                "height": undefined,
-                                              }
-                        }
             >
                         <img
                                     alt=""
-                                    className="list-selection list-selection--item-icon"
+                                    className="list-selection list-selection--item-icon undefined"
                                     data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
                                     src="misc-bar.svg"
                                     style={
@@ -705,18 +661,13 @@ ShallowWrapper {
                         src="line.svg"
             />
             <div
-                        className="list-selection list-selection--list-item"
+                        className="list-selection list-selection--list-item undefined-holder"
                         data-key="e615de4e-ce10-451b-80ad-9717662a904a"
                         onClick={[Function]}
-                        style={
-                                    Object {
-                                                "height": undefined,
-                                              }
-                        }
             >
                         <img
                                     alt=""
-                                    className="list-selection list-selection--item-icon"
+                                    className="list-selection list-selection--item-icon undefined"
                                     data-key="e615de4e-ce10-451b-80ad-9717662a904a"
                                     src="pepsi-max-can.svg"
                                     style={
@@ -745,18 +696,13 @@ ShallowWrapper {
                         src="line.svg"
             />
             <div
-                        className="list-selection list-selection--list-item"
+                        className="list-selection list-selection--list-item undefined-holder"
                         data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
                         onClick={[Function]}
-                        style={
-                                    Object {
-                                                "height": undefined,
-                                              }
-                        }
             >
                         <img
                                     alt=""
-                                    className="list-selection list-selection--item-icon"
+                                    className="list-selection list-selection--item-icon undefined"
                                     data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
                                     src="misc-crisps.svg"
                                     style={
@@ -796,18 +742,13 @@ ShallowWrapper {
 />,
               Array [
                 <div
-                  className="list-selection list-selection--list-item"
+                  className="list-selection list-selection--list-item undefined-holder"
                   data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
                   onClick={[Function]}
-                  style={
-                                    Object {
-                                                      "height": undefined,
-                                                    }
-                  }
 >
                   <img
                                     alt=""
-                                    className="list-selection list-selection--item-icon"
+                                    className="list-selection list-selection--item-icon undefined"
                                     data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
                                     src="misc-bar.svg"
                                     style={
@@ -861,7 +802,7 @@ ShallowWrapper {
                 "children": Array [
                   <img
                     alt=""
-                    className="list-selection list-selection--item-icon"
+                    className="list-selection list-selection--item-icon undefined"
                     data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
                     src="misc-bar.svg"
                     style={
@@ -878,12 +819,9 @@ ShallowWrapper {
                     Granulated Sugar
 </p>,
                 ],
-                "className": "list-selection list-selection--list-item",
+                "className": "list-selection list-selection--list-item undefined-holder",
                 "data-key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
                 "onClick": [Function],
-                "style": Object {
-                  "height": undefined,
-                },
               },
               "ref": null,
               "rendered": Array [
@@ -893,7 +831,7 @@ ShallowWrapper {
                   "nodeType": "host",
                   "props": Object {
                     "alt": "",
-                    "className": "list-selection list-selection--item-icon",
+                    "className": "list-selection list-selection--item-icon undefined",
                     "data-key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
                     "src": "misc-bar.svg",
                     "style": Object {
@@ -941,18 +879,13 @@ ShallowWrapper {
 />,
               Array [
                 <div
-                  className="list-selection list-selection--list-item"
+                  className="list-selection list-selection--list-item undefined-holder"
                   data-key="e615de4e-ce10-451b-80ad-9717662a904a"
                   onClick={[Function]}
-                  style={
-                                    Object {
-                                                      "height": undefined,
-                                                    }
-                  }
 >
                   <img
                                     alt=""
-                                    className="list-selection list-selection--item-icon"
+                                    className="list-selection list-selection--item-icon undefined"
                                     data-key="e615de4e-ce10-451b-80ad-9717662a904a"
                                     src="pepsi-max-can.svg"
                                     style={
@@ -1006,7 +939,7 @@ ShallowWrapper {
                 "children": Array [
                   <img
                     alt=""
-                    className="list-selection list-selection--item-icon"
+                    className="list-selection list-selection--item-icon undefined"
                     data-key="e615de4e-ce10-451b-80ad-9717662a904a"
                     src="pepsi-max-can.svg"
                     style={
@@ -1023,12 +956,9 @@ ShallowWrapper {
                     Pepsi Max
 </p>,
                 ],
-                "className": "list-selection list-selection--list-item",
+                "className": "list-selection list-selection--list-item undefined-holder",
                 "data-key": "e615de4e-ce10-451b-80ad-9717662a904a",
                 "onClick": [Function],
-                "style": Object {
-                  "height": undefined,
-                },
               },
               "ref": null,
               "rendered": Array [
@@ -1038,7 +968,7 @@ ShallowWrapper {
                   "nodeType": "host",
                   "props": Object {
                     "alt": "",
-                    "className": "list-selection list-selection--item-icon",
+                    "className": "list-selection list-selection--item-icon undefined",
                     "data-key": "e615de4e-ce10-451b-80ad-9717662a904a",
                     "src": "pepsi-max-can.svg",
                     "style": Object {
@@ -1086,18 +1016,13 @@ ShallowWrapper {
 />,
               Array [
                 <div
-                  className="list-selection list-selection--list-item"
+                  className="list-selection list-selection--list-item undefined-holder"
                   data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
                   onClick={[Function]}
-                  style={
-                                    Object {
-                                                      "height": undefined,
-                                                    }
-                  }
 >
                   <img
                                     alt=""
-                                    className="list-selection list-selection--item-icon"
+                                    className="list-selection list-selection--item-icon undefined"
                                     data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
                                     src="misc-crisps.svg"
                                     style={
@@ -1151,7 +1076,7 @@ ShallowWrapper {
                 "children": Array [
                   <img
                     alt=""
-                    className="list-selection list-selection--item-icon"
+                    className="list-selection list-selection--item-icon undefined"
                     data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
                     src="misc-crisps.svg"
                     style={
@@ -1168,12 +1093,9 @@ ShallowWrapper {
                     Wotsits
 </p>,
                 ],
-                "className": "list-selection list-selection--list-item",
+                "className": "list-selection list-selection--list-item undefined-holder",
                 "data-key": "f589039e-c93b-45c1-99fc-1ee457ecb570",
                 "onClick": [Function],
-                "style": Object {
-                  "height": undefined,
-                },
               },
               "ref": null,
               "rendered": Array [
@@ -1183,7 +1105,7 @@ ShallowWrapper {
                   "nodeType": "host",
                   "props": Object {
                     "alt": "",
-                    "className": "list-selection list-selection--item-icon",
+                    "className": "list-selection list-selection--item-icon undefined",
                     "data-key": "f589039e-c93b-45c1-99fc-1ee457ecb570",
                     "src": "misc-crisps.svg",
                     "style": Object {
