@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import initFirebase from '../../utils/firebase';
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -39,7 +40,7 @@ class Auth extends Component {
 				}
 			})
 			.catch(function(error) {
-				console.error(error);
+				this.setState({status: error});
 			});
 	}
 
@@ -47,5 +48,9 @@ class Auth extends Component {
 		return <h1>{this.state.status}</h1>;
 	}
 }
+
+Auth.propTypes = {
+	history: PropTypes.object.isRequired
+};
 
 export default Auth;
