@@ -5,7 +5,7 @@ import './Hand.css';
 import PropTypes from 'prop-types';
 
 const Hand = props => {
-  let itemsToRotate = [
+  const itemsToRotate = [
     'boost',
     'crunchie',
     'curly-wurly',
@@ -35,14 +35,14 @@ const Hand = props => {
     'wrigleys'
   ];
   let rotate = false;
-  for (let i in itemsToRotate) {
+  for (const i in itemsToRotate) {
     if (props.snack.includes(itemsToRotate[i])) {
       rotate = true;
       break;
     }
   }
 
-  let freddo = props.snack.includes('freddo');
+  const freddo = props.snack.includes('freddo');
 
   return (
     <div className="hand">
