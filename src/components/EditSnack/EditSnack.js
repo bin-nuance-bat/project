@@ -34,7 +34,7 @@ class EditSnack extends Component {
 
 EditSnack.propTypes = {
   setActualItem: PropTypes.func.isRequired,
-  sendWithPhoto: PropTypes.func.isRequired,
+  sendWithPhoto: PropTypes.bool.isRequired,
   history: PropTypes.object.isRequired,
   items: PropTypes.arrayOf(PropTypes.object).isRequired
 };

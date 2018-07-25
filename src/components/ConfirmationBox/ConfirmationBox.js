@@ -49,7 +49,7 @@ class ConfirmationBox extends React.Component {
 
 ConfirmationBox.propTypes = {
   setActualItem: PropTypes.func.isRequired,
-  sendWithPhoto: PropTypes.func.isRequired,
+  sendWithPhoto: PropTypes.bool.isRequired,
   name: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   img: PropTypes.string.isRequired,
