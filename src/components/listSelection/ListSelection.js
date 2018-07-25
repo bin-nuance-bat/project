@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import _ from 'lodash';
 import './ListSelection.css';
 import line from './line.svg';
+import PropTypes from 'prop-types';
 
 class ListSelection extends Component {
   startsWithLetter = str => {
@@ -9,7 +10,7 @@ class ListSelection extends Component {
   };
 
   formattedItems = (() => {
-    let items = Object.entries(
+    const items = Object.entries(
       _.groupBy(
         _.sortBy(this.props.items, 'name'),
         item =>
@@ -82,5 +83,11 @@ class ListSelection extends Component {
     );
   }
 }
+
+ListSelection.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  history: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+  iconStyle: PropTypes.string.isRequired
+};
 
 export default ListSelection;

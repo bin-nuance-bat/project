@@ -17,7 +17,7 @@ class App extends React.Component {
   };
 
   getStoreCode = name => {
-    for (let item in this.props.storeList) {
+    for (const item in this.props.storeList) {
       if (item.name === name) return item.index;
     }
   };
@@ -45,9 +45,9 @@ class App extends React.Component {
   }
 
   handleYes = async () => {
-    let id = getUserSlackID(this.props.currentUser, this.props.users);
+    const id = getUserSlackID(this.props.currentUser, this.props.users);
     const name = this.props.storeList[this.props.prediction.id].name;
-    let result = await sendSlackMessage(id, name, this.props.prediction.id);
+    const result = await sendSlackMessage(id, name, this.props.prediction.id);
     this.props.setPrediction(null);
     if (result) this.showNotification('Reminder sent to Slack', false);
     else this.showNotification('Failed to send reminder to Slack', true);

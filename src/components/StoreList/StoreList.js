@@ -11,8 +11,8 @@ const StoreList = props => {
       <ButtonList
         items={props.storeList}
         onClick={async (storeCode, itemName) => {
-          let id = getUserSlackID(props.currentUser, props.users);
-          let result = await sendSlackMessage(id, itemName, storeCode);
+          const id = getUserSlackID(props.currentUser, props.users);
+          const result = await sendSlackMessage(id, itemName, storeCode);
           props.setShowList(false);
           if (result) props.showNotification('Reminder sent to Slack', false);
           else props.showNotification('Failed to send reminder to Slack', true);

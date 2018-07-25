@@ -25,7 +25,7 @@ it('renders a list correctly', () => {
 
 it('Click functions properly', () => {
   const items = [{name: 'apple', id: 'xxx'}, {name: 'mars', id: 'yyy'}];
-  let testFunc = jest.fn();
+  const testFunc = jest.fn();
   const wrapper = shallow(<ButtonList items={items} onClick={testFunc} />);
   wrapper
     .find('button')
