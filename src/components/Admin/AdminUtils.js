@@ -1,8 +1,7 @@
 import * as tf from '@tensorflow/tfjs';
 
 const cropImage = img => {
-  const height = img.shape[0];
-  const width = img.shape[1];
+  const [height, width] = img.shape;
   const size = Math.min(height, width);
   const centerHeight = height / 2;
   const beginHeight = centerHeight - size / 2;
