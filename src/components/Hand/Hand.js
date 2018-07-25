@@ -34,13 +34,8 @@ const Hand = props => {
     'winegums',
     'wrigleys'
   ];
-  let rotate = false;
-  for (const i in itemsToRotate) {
-    if (props.snack.includes(itemsToRotate[i])) {
-      rotate = true;
-      break;
-    }
-  }
+
+  const rotate = itemsToRotate.some(item => props.snack.includes(item));
 
   const freddo = props.snack.includes('freddo');
 
