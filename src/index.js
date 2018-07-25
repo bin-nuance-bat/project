@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import './index.css';
-import OldAppContainer from './components/OldApp/OldAppContainer';
 import store from './utils/reduxStore';
 import registerServiceWorker from './registerServiceWorker';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
@@ -30,7 +29,6 @@ ReactDOM.render(
         <Route exact path="/editsnack" component={EditSnack} />
         <Route exact path="/slackname" component={UsernameEntryContainer} />
         <Route exact path="/success" component={SuccessPage} />
-        <Route exact path="/old" component={OldAppContainer} />
         <Route exact path="/preview" component={Viewer} />
         <Route exact path="/admin" component={Admin} />
         <Route exact path="/training" component={Trainer} />
