@@ -129,7 +129,7 @@ class Admin extends Component {
               <button
                 className="button button-admin"
                 onClick={() => this.props.history.push('/preview')}>
-                Traing Data Review
+                Training Data Review
               </button>
             </div>
             <div>
