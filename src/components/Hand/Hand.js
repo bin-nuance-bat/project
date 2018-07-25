@@ -65,7 +65,7 @@ const Hand = props => {
 };
 
 Hand.propTypes = {
-  snack: PropTypes.string.isRequired
+  snack: PropTypes.string
 };
 
 export default Hand;

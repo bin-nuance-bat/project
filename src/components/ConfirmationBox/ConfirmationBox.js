@@ -54,7 +54,7 @@ class ConfirmationBox extends React.Component {
 ConfirmationBox.propTypes = {
   name: PropTypes.string.isRequired,
   id: PropTypes.string,
-  storeList: PropTypes.arrayOf(PropTypes.object).isRequired,
+  storeList: PropTypes.object.isRequired,
   setActualItem: PropTypes.func.isRequired,
   sendWithPhoto: PropTypes.bool.isRequired,
   history: PropTypes.object.isRequired
