@@ -3,15 +3,15 @@ import {connect} from 'react-redux';
 import {setSnackChat} from './SnackChatActions';
 
 const mapStateToProps = state => ({
-	storeList: state.storeList,
-	prediction: state.prediction
+  storeList: state.storeList,
+  prediction: state.prediction
 });
 
 const mapDispatchToProps = {
-	setSnackChat
+  setSnackChat
 };
 
 export default connect(
-	mapStateToProps,
-	mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(SnackChat);
