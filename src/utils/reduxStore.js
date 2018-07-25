@@ -5,7 +5,7 @@ import {
   loadStoreListError,
   showList
 } from '../components/StoreList/reducer';
-import {users, slackUserFetchError} from '../components/OldApp/reducer';
+import {users} from '../components/UsernameEntry/reducer';
 import {prediction} from '../components/ItemRecognition/ItemRecognitionReducer';
 import {sendWithPhoto} from '../components/App/reducer';
 import {actualItem} from '../components/ConfirmationBox/reducer';
@@ -15,7 +15,6 @@ const rootReducer = combineReducers({
   storeList,
   loadStoreListError,
   users,
-  slackUserFetchError,
   showList,
   prediction,
   sendWithPhoto,
