@@ -7,12 +7,13 @@ configure({adapter: new Adapter()});
 
 const getProps = () => {
   return {
-    name: 'fooBar',
+    name: 'coke',
     id: 'sample-id',
     history: {
       push: jest.fn()
     },
     setActualItem: jest.fn(),
+    sendWithPhoto: false,
     img:
       'OTgyZDllM2ViOTk2ZjU1OWU2MzNmNGQxOTRkZWYzNzYxZDkwOWY1YTNiNjQ3ZDFhODUxZmVhZDY3YzMyYzlkMQ==',
     storeList: [

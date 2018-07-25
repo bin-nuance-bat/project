@@ -56,7 +56,7 @@ ConfirmationBox.propTypes = {
   id: PropTypes.string,
   storeList: PropTypes.arrayOf(PropTypes.object).isRequired,
   setActualItem: PropTypes.func.isRequired,
-  sendWithPhoto: PropTypes.func.isRequired,
+  sendWithPhoto: PropTypes.bool.isRequired,
   history: PropTypes.object.isRequired
 };
 
