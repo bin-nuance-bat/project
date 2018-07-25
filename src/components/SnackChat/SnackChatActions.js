@@ -1,8 +1,8 @@
 import {SET_SNACK_CHAT} from './SnackChatActionTypes';
 
-const snackChat = snackChat => ({
+const snackChat = snackChatImage => ({
   type: SET_SNACK_CHAT,
-  snackChat
+  snackChatImage
 });
 
 export const setSnackChat = img => dispatch => {

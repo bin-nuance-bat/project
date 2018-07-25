@@ -1,5 +1,6 @@
 import React from 'react';
 import './ImagePreview.css';
+import PropTypes from 'prop-types';
 
 const ImagePreview = props => {
   return (
@@ -17,6 +18,11 @@ const ImagePreview = props => {
       </div>
     </div>
   );
+};
+
+ImagePreview.propTypes = {
+  handleClick: PropTypes.func.isRequired,
+  image: PropTypes.object.isRequired
 };
 
 export default ImagePreview;

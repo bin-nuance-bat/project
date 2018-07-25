@@ -13,7 +13,7 @@ class Model {
   }
 
   getName(i) {
-    let item = this.items[i];
+    const item = this.items[i];
     return item.name + (item.qualifier ? ` (${item.qualifier})` : '');
   }
 
@@ -82,7 +82,7 @@ class Model {
   };
 
   async addExample(getImg, getTensor, label, count) {
-    let examples = [];
+    const examples = [];
     for (let i = 1; i <= count; i++) {
       const tensor = await getTensor();
       examples.push({

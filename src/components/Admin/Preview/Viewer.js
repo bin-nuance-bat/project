@@ -33,7 +33,7 @@ export default class Viewer extends Component {
       if (this.state.item !== 'all')
         ref = ref.where('label', '==', this.state.item);
       ref.get().then(rows => {
-        let images = [];
+        const images = [];
         rows.forEach(row => {
           const img = row.data();
           images.push({
