@@ -13,6 +13,9 @@ class TimeoutNotification extends Component {
 
   componentDidMount() {
     document.body.addEventListener('touchstart', this.dismissMessage);
+    document
+      .getElementById('notificationBar')
+      .addEventListener('touchstart', this.notificationTouch, {passive: false});
     this.resetTimer();
   }
 
@@ -20,6 +23,9 @@ class TimeoutNotification extends Component {
     clearTimeout(this.timer);
     clearInterval(this.interval);
     document.body.removeEventListener('touchstart', this.dismissMessage);
+    document
+      .getElementById('notificationBar')
+      .removeEventListener('touchstart', this.notificationTouch);
   }
 
   resetTimer = () => {
@@ -41,6 +47,11 @@ class TimeoutNotification extends Component {
     });
   };
 
+  notificationTouch = e => {
+    this.dismissMessage();
+    e.preventDefault();
+  };
+
   dismissMessage = () => {
     clearInterval(this.interval);
     this.resetTimer();
@@ -54,7 +65,8 @@ class TimeoutNotification extends Component {
           className={
             'timeout-notification--notification--' +
             (this.state.displayWarning ? 'show' : 'hide')
-          }>
+          }
+          id="notificationBar">
           <div className="timeout-notification--info">
             <div className="timeout-notification--alert">
               Are you still there?
