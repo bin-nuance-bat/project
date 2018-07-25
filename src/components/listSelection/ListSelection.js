@@ -71,7 +71,7 @@ class ListSelection extends Component {
             ))}
         </div>
         <div className="list-selection--scroll-select">
-          {this.formattedItems.map(([group, groupHeading]) => (
+          {this.formattedItems.map(([group]) => (
             <div
               key={group}
               onTouchStart={() => (window.location.hash = '#' + group)}>
@@ -87,7 +87,8 @@ class ListSelection extends Component {
 ListSelection.propTypes = {
   onClick: PropTypes.func.isRequired,
   history: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
-  iconStyle: PropTypes.string.isRequired
+  iconStyle: PropTypes.string.isRequired,
+  items: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired
 };
 
 export default ListSelection;
