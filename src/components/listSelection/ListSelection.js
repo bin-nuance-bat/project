@@ -86,9 +86,13 @@ class ListSelection extends Component {
 
 ListSelection.propTypes = {
   onClick: PropTypes.func.isRequired,
-  history: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
   iconStyle: PropTypes.string.isRequired,
-  items: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired
+    }).isRequired
+  ).isRequired
 };
 
 export default ListSelection;
