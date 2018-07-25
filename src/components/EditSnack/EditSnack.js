@@ -36,7 +36,12 @@ EditSnack.propTypes = {
   setActualItem: PropTypes.func.isRequired,
   sendWithPhoto: PropTypes.bool.isRequired,
   history: PropTypes.object.isRequired,
-  items: PropTypes.arrayOf(PropTypes.object).isRequired
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired
+    }).isRequired
+  ).isRequired
 };
 
 export default EditSnack;

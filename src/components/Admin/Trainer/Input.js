@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Input = props => {
   if (!props.hide) {
-    let inputProps = {};
+    const inputProps = {};
     if (props.range) {
       inputProps.min = props.range[0];
       inputProps.max = props.range[1];

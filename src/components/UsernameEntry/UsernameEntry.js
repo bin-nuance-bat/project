@@ -7,7 +7,7 @@ import TimeoutNotification from '../TimeoutNotification/TimeoutNotification';
 
 class UsernameEntry extends React.Component {
   sendReminder = async name => {
-    let result = await this.props.sendSlackMessage(name);
+    const result = await this.props.sendSlackMessage(name);
     if (result) this.props.history.push('/success');
     // TODO handle when result is false (i.e. message fails to send - redirect to error page?)
   };
@@ -42,7 +42,9 @@ class UsernameEntry extends React.Component {
 
 UsernameEntry.propTypes = {
   users: PropTypes.arrayOf(PropTypes.object).isRequired,
-  loadUsers: PropTypes.func.isRequired
+  history: PropTypes.shape({push: PropTypes.func.isRequired}).isRequired,
+  loadUsers: PropTypes.func.isRequired,
+  sendSlackMessage: PropTypes.func.isRequired
 };
 
 export default UsernameEntry;
