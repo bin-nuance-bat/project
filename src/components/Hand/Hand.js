@@ -3,9 +3,9 @@ import hand from './Hand.svg';
 import './Hand.css';
 
 const Hand = () => (
-	<div>
-		<img className="hand" src={hand} alt="" />
-	</div>
+  <div>
+    <img className="hand" src={hand} alt="" />
+  </div>
 );
 
 export default Hand;

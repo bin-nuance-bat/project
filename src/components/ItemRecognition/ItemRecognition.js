@@ -42,6 +42,7 @@ class ItemRecognition extends Component {
   };
 
   render() {
+    this.props.history.push('/confirmitem');
     return (
       <div>
         <header>
