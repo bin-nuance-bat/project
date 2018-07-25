@@ -73,6 +73,7 @@ class ListSelection extends Component {
           {this.formattedItems.map(([group, groupHeading]) => (
             <div
               key={group}
+              className="list-selection--scroll-select-element"
               onTouchStart={() => (window.location.hash = '#' + group)}>
               {group}
             </div>

@@ -191,16 +191,19 @@ ShallowWrapper {
           className="list-selection--scroll-select"
 >
           <div
+                    className="list-selection--scroll-select-element"
                     onTouchStart={[Function]}
           >
                     G
           </div>
           <div
+                    className="list-selection--scroll-select-element"
                     onTouchStart={[Function]}
           >
                     P
           </div>
           <div
+                    className="list-selection--scroll-select-element"
                     onTouchStart={[Function]}
           >
                     W
@@ -712,16 +715,19 @@ ShallowWrapper {
         "props": Object {
           "children": Array [
             <div
+              className="list-selection--scroll-select-element"
               onTouchStart={[Function]}
 >
               G
 </div>,
             <div
+              className="list-selection--scroll-select-element"
               onTouchStart={[Function]}
 >
               P
 </div>,
             <div
+              className="list-selection--scroll-select-element"
               onTouchStart={[Function]}
 >
               W
@@ -737,6 +743,7 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "children": "G",
+              "className": "list-selection--scroll-select-element",
               "onTouchStart": [Function],
             },
             "ref": null,
@@ -749,6 +756,7 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "children": "P",
+              "className": "list-selection--scroll-select-element",
               "onTouchStart": [Function],
             },
             "ref": null,
@@ -761,6 +769,7 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "children": "W",
+              "className": "list-selection--scroll-select-element",
               "onTouchStart": [Function],
             },
             "ref": null,
@@ -887,16 +896,19 @@ ShallowWrapper {
             className="list-selection--scroll-select"
 >
             <div
+                        className="list-selection--scroll-select-element"
                         onTouchStart={[Function]}
             >
                         G
             </div>
             <div
+                        className="list-selection--scroll-select-element"
                         onTouchStart={[Function]}
             >
                         P
             </div>
             <div
+                        className="list-selection--scroll-select-element"
                         onTouchStart={[Function]}
             >
                         W
@@ -1408,16 +1420,19 @@ ShallowWrapper {
           "props": Object {
             "children": Array [
               <div
+                className="list-selection--scroll-select-element"
                 onTouchStart={[Function]}
 >
                 G
 </div>,
               <div
+                className="list-selection--scroll-select-element"
                 onTouchStart={[Function]}
 >
                 P
 </div>,
               <div
+                className="list-selection--scroll-select-element"
                 onTouchStart={[Function]}
 >
                 W
@@ -1433,6 +1448,7 @@ ShallowWrapper {
               "nodeType": "host",
               "props": Object {
                 "children": "G",
+                "className": "list-selection--scroll-select-element",
                 "onTouchStart": [Function],
               },
               "ref": null,
@@ -1445,6 +1461,7 @@ ShallowWrapper {
               "nodeType": "host",
               "props": Object {
                 "children": "P",
+                "className": "list-selection--scroll-select-element",
                 "onTouchStart": [Function],
               },
               "ref": null,
@@ -1457,6 +1474,7 @@ ShallowWrapper {
               "nodeType": "host",
               "props": Object {
                 "children": "W",
+                "className": "list-selection--scroll-select-element",
                 "onTouchStart": [Function],
               },
               "ref": null,
