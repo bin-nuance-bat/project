@@ -7,6 +7,7 @@ import store from './utils/reduxStore';
 import registerServiceWorker from './registerServiceWorker';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import AppContainer from './components/App/container';
+import Viewer from './components/Admin/Preview/Viewer';
 import Trainer from './components/Admin/Trainer/Trainer';
 import SnackChat from './components/SnackChat/SnackChatContainer';
 import ItemRecognition from './components/ItemRecognition/ItemRecognitionContainer';
@@ -16,7 +17,6 @@ import UsernameEntryContainer from './components/UsernameEntry/container';
 import EditSnack from './components/EditSnack/EditSnackContainer';
 import SuccessPage from './components/SuccessPage/SuccessPage';
 import Admin from './components/Admin/Admin';
-import Auth from './components/Admin/Auth';
 
 ReactDOM.render(
   <Provider store={store}>
@@ -31,8 +31,8 @@ ReactDOM.render(
         <Route exact path="/slackname" component={UsernameEntryContainer} />
         <Route exact path="/success" component={SuccessPage} />
         <Route exact path="/old" component={OldAppContainer} />
+        <Route exact path="/preview" component={Viewer} />
         <Route exact path="/admin" component={Admin} />
-        <Route exact path="/auth" component={Auth} />
         <Route exact path="/training" component={Trainer} />
       </Switch>
     </Router>

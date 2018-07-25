@@ -5,6 +5,7 @@ import {setActualItem} from '../ConfirmationBox/actions';
 const mapStateToProps = state => {
   return {
     items: Object.values(state.storeList),
+    prediction: state.prediction,
     sendWithPhoto: state.sendWithPhoto
   };
 };

@@ -5,6 +5,8 @@ import './ConfirmationBox.css';
 import Hand from '../Hand/Hand';
 
 class ConfirmationBox extends React.Component {
+  insertTrainingImage = () => {};
+
   handleYes = () => {
     const {setActualItem, id, sendWithPhoto, history} = this.props;
     setActualItem(id);

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Input = props => {
   if (!props.hide) {
@@ -9,18 +10,28 @@ const Input = props => {
     }
     return (
       <div className="formGroup">
-        <label>{props.label}:</label>
-        <br />
-        <input
-          type={props.type ? props.type : 'number'}
-          value={props.value}
-          {...inputProps}
-          onChange={e => props.setState(e.target.value)}
-        />
+        <div>{props.label}:</div>
+        <div>
+          <input
+            type={props.type ? props.type : 'number'}
+            value={props.value}
+            {...inputProps}
+            onChange={e => props.setState(e.target.value)}
+          />
+        </div>
       </div>
     );
   }
   return null;
+};
+
+Input.propTypes = {
+  hide: PropTypes.bool,
+  range: PropTypes.arrayOf(PropTypes.number),
+  label: PropTypes.string.isRequired,
+  type: PropTypes.string,
+  value: PropTypes.string,
+  setState: PropTypes.func.isRequired
 };
 
 export default Input;
