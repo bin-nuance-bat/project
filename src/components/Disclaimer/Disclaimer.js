@@ -27,21 +27,14 @@ const Disclaimer = props => {
         <Logo />
       </div>
       <div>
-        {' '}
-        <img
-          src={Camera}
-          className="bigcamera"
-          width="75"
-          height="74"
-          alt=""
-        />{' '}
+        <img src={Camera} className="disclaimer--big-camera" alt="" />{' '}
       </div>
       <div className="text text-info">
         As part of this process we will use the tablet&#39;s front-facing camera
         to attempt to identify your snack.
       </div>
       <div>
-        <img src={Padlock} alt="" className="lock" width="75" height="74" />
+        <img src={Padlock} alt="" className="disclaimer--padlock" />
       </div>
       <div className="text text-info">
         Images may be stored in order to increase the accuracy of the item

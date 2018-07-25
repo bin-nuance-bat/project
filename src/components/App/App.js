@@ -42,13 +42,7 @@ class App extends React.Component {
             className="button button-snackchat"
             onClick={this.handleSnackChatClick}>
             Send a SnackChat
-            <img
-              className="smallcamera"
-              width="28"
-              height="28"
-              src={Camera}
-              alt=""
-            />
+            <img className="homepage--small-camera" src={Camera} alt="" />
           </button>
           <button
             className="button button-nophoto"
