@@ -33,9 +33,7 @@ export const sendSlackMessage = username => async (dispatch, getState) => {
   const id = getIDByUsername(username, state.users);
 
   const storeCode = state.actualItem;
-  const itemName = state.storeList[storeCode]
-    ? state.storeList[storeCode].name
-    : '';
+  const itemName = state.storeList.find(item => item.id === storeCode).name;
 
   // check that the saved store code exists
   let i = 0;
