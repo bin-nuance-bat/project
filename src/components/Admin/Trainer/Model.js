@@ -2,16 +2,14 @@ import * as tf from '@tensorflow/tfjs';
 import {ControllerDataset} from './ControllerDataset';
 import getStore from '../../../utils/honestyStore.js';
 import * as MobileNet from '@tensorflow-models/mobilenet';
+import FirebaseStorageHandler from './FirebaseStorageHandler';
 
 class Model {
   constructor(setReadyStatus, setBusyStatus) {
     this.items = {unknown: {name: 'Unknown', id: 'unknown'}};
     this.setReadyStatus = setReadyStatus;
     this.setBusyStatus = setBusyStatus;
-    this.controllerDataset = new ControllerDataset(
-      setReadyStatus,
-      setBusyStatus
-    );
+    this.controllerDataset = new ControllerDataset();
   }
 
   getName(i) {
@@ -46,16 +44,22 @@ class Model {
     this.items = await this.controllerDataset.setItemTrainingCounts(this.items);
   };
 
-  loadModel = () => {
+  loadModel = modelName => {
     if (
       !this.model ||
       window.confirm(
         'Loading the model will overwrite any training you have done. Continue?'
       )
     ) {
-      tf.loadModel('indexeddb://store-model')
+      tf.loadModel(
+        new FirebaseStorageHandler(
+          modelName,
+          classes => (this.classes = classes)
+        )
+      )
         .then(model => {
           this.model = model;
+          window.model = model;
           this.classes = JSON.parse(window.localStorage.getItem('items'));
           this.setReadyStatus('Loaded model!');
         })
@@ -65,36 +69,16 @@ class Model {
     }
   };
 
-  saveModel = async () => {
+  saveModel = async modelName => {
     if (!this.model) {
       this.setReadyStatus('Please train a model to save.');
       return;
     }
-    window.localStorage.setItem('items', JSON.stringify(this.classes));
-    await this.model.save('indexeddb://store-model');
-    this.setReadyStatus('Saved model!');
-  };
-
-  exportModel = async () => {
-    if (!this.model) {
-      this.setReadyStatus('Please train a model to export.');
-      return;
-    }
-
-    // Save model and download it
-    this.saveModel();
-    tf.io.copyModel('indexeddb://store-model', 'downloads://store-model');
-
-    // Create JSON file with items in and download it
-    const blob = new Blob([JSON.stringify(this.items)], {
-      type: 'text/json'
-    });
-    const elem = window.document.createElement('a');
-    elem.href = window.URL.createObjectURL(blob);
-    elem.download = 'items.json';
-    document.body.appendChild(elem);
-    elem.click();
-    document.body.removeChild(elem);
+    this.setBusyStatus('Saving...');
+    this.model
+      .save(new FirebaseStorageHandler(modelName, this.classes))
+      .then(() => this.setReadyStatus('Saved model!'))
+      .catch(err => this.setReadyStatus(err));
   };
 
   async addExample(getImg, getTensor, label, count) {
@@ -114,8 +98,9 @@ class Model {
       );
       await tf.nextFrame();
     }
-    this.setBusyStatus('Submitting images to database...');
+    this.setBusyStatus('Submitting images to database. Please wait...');
     this.controllerDataset.addExamples(examples);
+    this.setReadyStatus('Done');
   }
 
   async train(
