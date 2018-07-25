@@ -102,7 +102,7 @@ export class ControllerDataset {
 
   async getClasses() {
     const items = await this.db.collection('item_data').get();
-    let idList = [];
+    const idList = [];
     items.forEach(doc => {
       if (doc.data().count > 0) idList.push(doc.id);
     });
@@ -111,7 +111,7 @@ export class ControllerDataset {
 
   async getBatch(batchSize, randomness, since) {
     return new Promise(async resolve => {
-      let batch = {};
+      const batch = {};
 
       while (Object.keys(batch).length < batchSize) {
         await this.db
@@ -134,7 +134,7 @@ export class ControllerDataset {
 
   async getTensors(setSize = 200, randomness = 0.1, since = 0) {
     const batch = await this.getBatch(setSize, randomness, since);
-    let classes = await this.getClasses();
+    const classes = await this.getClasses();
     let xs, ys;
 
     xs = tf.keep(tf.tensor4d(batch[0].activation.split(','), [1, 7, 7, 1024]));
