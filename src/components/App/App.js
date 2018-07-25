@@ -66,7 +66,7 @@ class App extends React.Component {
           <button
             className="button button-nophoto"
             onClick={this.handleReminderNoPhotoClick}>
-            Send a reminder without a photo
+            Send a reminder {/* without a photo */}
           </button>
         </div>
       </div>
