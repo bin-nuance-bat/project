@@ -11,11 +11,7 @@ const SuccessPage = props => {
       <Logo />
       <div className="text text-remindersent">Reminder sent!</div>
       <div className="success-hand">
-        <Hand
-          snack={
-            props.storeList.find(item => item.id === props.prediction.id).image
-          }
-        />
+        <Hand snack={props.storeList[props.prediction.id].image} />
       </div>
       <TimeoutNotification />
     </div>

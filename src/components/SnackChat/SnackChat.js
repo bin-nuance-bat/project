@@ -63,9 +63,7 @@ class SnackChat extends Component {
     this.ctx.strokeStyle = 'red';
     requestAnimationFrame(this.update);
     this.filter = new Image();
-    this.filter.src = this.props.storeList.find(
-      item => item.id === this.props.prediction.id
-    ).image;
+    this.filter.src = this.props.storeList[this.props.prediction.id].image;
   }
 
   componentWillUnmount() {
@@ -188,7 +186,8 @@ class SnackChat extends Component {
 SnackChat.propTypes = {
   setSnackChat: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
-  storeList: PropTypes.arrayOf(PropTypes.object)
+  storeList: PropTypes.arrayOf(PropTypes.object),
+  prediction: PropTypes.object
 };
 
 export default SnackChat;

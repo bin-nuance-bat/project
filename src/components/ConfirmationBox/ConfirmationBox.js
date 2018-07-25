@@ -19,9 +19,7 @@ class ConfirmationBox extends React.Component {
   };
 
   componentDidMount() {
-    this.itemImage = this.props.storeList.find(
-      item => item.name === this.props.name
-    ).image;
+    this.itemImage = this.props.storeList[this.props.id].image;
   }
 
   render() {
