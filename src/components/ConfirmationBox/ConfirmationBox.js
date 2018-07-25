@@ -18,11 +18,8 @@ class ConfirmationBox extends React.Component {
     this.props.history.push('/editSnack');
   };
 
-  componentDidMount() {
-    this.itemImage = this.props.storeList[this.props.id].image;
-  }
-
   render() {
+    const {image} = this.props.storeList[this.props.id]
     return (
       <div>
         <Logo />
@@ -30,7 +27,7 @@ class ConfirmationBox extends React.Component {
           this.props.name
         }?`}</div>
         <div className="confirmation-hand">
-          <Hand snack={this.itemImage} />
+          <Hand snack={image} />
         </div>
         <div>
           <button
