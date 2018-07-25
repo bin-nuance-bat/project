@@ -22,10 +22,10 @@ export const loadUsers = () => dispatch => {
 };
 
 const getIDByUsername = (username, users) => {
-  const user = users.find(
+  const currentUser = users.find(
     user => user.name === username || user.profile.real_name === username
   );
-  return user ? user.id : null;
+  return currentUser ? currentUser.id : null;
 };
 
 export const sendSlackMessage = username => async (dispatch, getState) => {

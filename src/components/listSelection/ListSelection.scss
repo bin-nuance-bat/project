@@ -61,7 +61,7 @@ $username-icon-size: 48px;
   color: $blue;
   position: fixed;
   font-size: 19px;
-  right: 20px;
+  right: 0px;
   top: 340px;
   margin: 0px;
 }
@@ -70,4 +70,8 @@ $username-icon-size: 48px;
   width: 750px;
   overflow-y: scroll;
   height: 792px;
+}
+
+.list-selection--scroll-select-element {
+  padding: 0 20px;
 }

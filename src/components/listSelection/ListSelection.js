@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import _ from 'lodash';
 import './ListSelection.css';
 import line from './line.svg';
+import PropTypes from 'prop-types';
 
 class ListSelection extends Component {
   startsWithLetter = str => {
@@ -9,7 +10,7 @@ class ListSelection extends Component {
   };
 
   formattedItems = (() => {
-    let items = Object.entries(
+    const items = Object.entries(
       _.groupBy(
         _.sortBy(this.props.items, 'name'),
         item =>
@@ -70,9 +71,10 @@ class ListSelection extends Component {
             ))}
         </div>
         <div className="list-selection--scroll-select">
-          {this.formattedItems.map(([group, groupHeading]) => (
+          {this.formattedItems.map(([group]) => (
             <div
               key={group}
+              className="list-selection--scroll-select-element"
               onTouchStart={() => (window.location.hash = '#' + group)}>
               {group}
             </div>
@@ -82,5 +84,16 @@ class ListSelection extends Component {
     );
   }
 }
+
+ListSelection.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  iconStyle: PropTypes.string.isRequired,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired
+    }).isRequired
+  ).isRequired
+};
 
 export default ListSelection;

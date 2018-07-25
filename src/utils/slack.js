@@ -6,6 +6,7 @@ export const getUserSlackID = (username, users) => {
   const user = users.find(
     user => user.name === username || user.profile.real_name === username
   );
+
   return user ? user.id : null;
 };
 

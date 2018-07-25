@@ -34,6 +34,7 @@ const Hand = props => {
     'winegums',
     'wrigleys'
   ];
+  
   let rotate = false;
   for (const i in itemsToRotate) {
     if (props.snack.includes(itemsToRotate[i])) {
