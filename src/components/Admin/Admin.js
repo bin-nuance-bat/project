@@ -120,31 +120,36 @@ class Admin extends Component {
         )}
         {this.state.admin && (
           <div>
-            <button
-              className="button button-admin"
-              onClick={() => this.props.history.push('/training')}>
-              Model Training
-            </button>
-            <button
-              className="button button-admin"
-              onClick={() => this.props.history.push('/preview')}>
-              Traing Data Review
-            </button>
-            <br />
-            <select
-              value={this.state.modelSelect}
-              onChange={e => this.setState({modelSelect: e.target.value})}>
-              {this.state.models.map(model => (
-                <option key={model.id} value={model.id}>
-                  {new Date(model.timestamp).toLocaleString() +
-                    ' - ' +
-                    model.id}
-                </option>
-              ))}
-            </select>
-            <button className="button button-admin" onClick={this.selectModel}>
-              Select Model
-            </button>
+            <div>
+              <button
+                className="button button-admin"
+                onClick={() => this.props.history.push('/training')}>
+                Model Training
+              </button>
+              <button
+                className="button button-admin"
+                onClick={() => this.props.history.push('/preview')}>
+                Traing Data Review
+              </button>
+            </div>
+            <div>
+              <select
+                value={this.state.modelSelect}
+                onChange={e => this.setState({modelSelect: e.target.value})}>
+                {this.state.models.map(model => (
+                  <option key={model.id} value={model.id}>
+                    {new Date(model.timestamp).toLocaleString() +
+                      ' - ' +
+                      model.id}
+                  </option>
+                ))}
+              </select>
+              <button
+                className="button button-admin"
+                onClick={this.selectModel}>
+                Select Model
+              </button>
+            </div>
           </div>
         )}
         {this.state.loggedIn && (

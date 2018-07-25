@@ -1,6 +1,7 @@
 import initFirebase from '../../../utils/firebase';
 import * as firebase from 'firebase/app';
 import 'firebase/storage';
+import _ from 'lodash';
 
 const DEFAULT_FILE_NAME_PREFIX = 'model';
 const DEFAULT_JSON_EXTENSION_NAME = '.json';
@@ -107,11 +108,10 @@ export default class FirebaseStorage {
     let weightSpecs;
     let weightData;
     if (weightsManifest != null) {
-      const weightsManifest = modelConfig['weightsManifest'];
-      weightSpecs = [];
-      for (const entry of weightsManifest) {
-        weightSpecs.push(...entry.weights);
-      }
+      weightSpecs = _.flatMap(
+        modelConfig.weightsManifest,
+        entry => entry.weights
+      );
 
       const fetchURLs = [
         await store

@@ -152,8 +152,7 @@ class Trainer extends Component {
     return (
       <div>
         <div className="col" style={{textAlign: 'center'}}>
-          <span id="status-text">{status}</span>
-          <br />
+          <div id="status-text">{status}</div>
           <div className="webcam-container">
             <Webcam
               audio={false}
@@ -164,39 +163,44 @@ class Trainer extends Component {
               screenshotFormat="image/jpeg"
             />
           </div>
-          <br />
-          <ItemSelector
-            item={item}
-            items={Object.values(items)}
-            setItem={item => this.setState({item})}
-            disabled={busy}
-          />
-          <br />
-          <label>Burst Count:</label>
-          <input
-            type="number"
-            value={burstCount}
-            min={1}
-            max={500}
-            disabled={busy}
-            onChange={e => this.setState({burstCount: e.target.value})}
-          />
-          <br />
-          <button
-            className="button button-admin"
-            onClick={() => this.addExample(this.webcam.current.video)}
-            disabled={busy || !this.webcam.current}>
-            Add From Camera
-          </button>
-          <br />
-          <input type="file" multiple ref={this.files} disabled={busy} />
-          <br />
-          <button
-            className="button button-admin"
-            onClick={this.addFromFile}
-            disabled={busy}>
-            Add From File
-          </button>
+          <div>
+            <ItemSelector
+              item={item}
+              items={Object.values(items)}
+              setItem={item => this.setState({item})}
+              disabled={busy}
+            />
+          </div>
+          <div>
+            <label>Burst Count:</label>
+            <input
+              type="number"
+              value={burstCount}
+              min={1}
+              max={500}
+              disabled={busy}
+              onChange={e => this.setState({burstCount: e.target.value})}
+            />
+          </div>
+          <div>
+            <button
+              className="button button-admin"
+              onClick={() => this.addExample(this.webcam.current.video)}
+              disabled={busy || !this.webcam.current}>
+              Add From Camera
+            </button>
+          </div>
+          <div>
+            <input type="file" multiple ref={this.files} disabled={busy} />
+          </div>
+          <div>
+            <button
+              className="button button-admin"
+              onClick={this.addFromFile}
+              disabled={busy}>
+              Add From File
+            </button>
+          </div>
         </div>
 
         <Settings

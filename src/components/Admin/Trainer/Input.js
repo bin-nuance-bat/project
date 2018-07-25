@@ -10,14 +10,15 @@ const Input = props => {
     }
     return (
       <div className="formGroup">
-        <label>{props.label}:</label>
-        <br />
-        <input
-          type={props.type ? props.type : 'number'}
-          value={props.value}
-          {...inputProps}
-          onChange={e => props.setState(e.target.value)}
-        />
+        <div>{props.label}:</div>
+        <div>
+          <input
+            type={props.type ? props.type : 'number'}
+            value={props.value}
+            {...inputProps}
+            onChange={e => props.setState(e.target.value)}
+          />
+        </div>
       </div>
     );
   }

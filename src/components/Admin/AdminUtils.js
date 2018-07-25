@@ -1,10 +1,12 @@
 import * as tf from '@tensorflow/tfjs';
 
 const cropImage = img => {
-  const size = Math.min(img.shape[0], img.shape[1]);
-  const centerHeight = img.shape[0] / 2;
+  const height = img.shape[0];
+  const width = img.shape[1];
+  const size = Math.min(height, width);
+  const centerHeight = height / 2;
   const beginHeight = centerHeight - size / 2;
-  const centerWidth = img.shape[1] / 2;
+  const centerWidth = width / 2;
   const beginWidth = centerWidth - size / 2;
 
   return tf.image.resizeBilinear(
