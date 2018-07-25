@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
 import Logo from '../Logo/Logo';
-import HomeHandsSlot from './HomeHands/Slot.svg';
-import HomeHandsRight from './HomeHands/Right.svg';
-import HomeHandsCenter from './HomeHands/Center.svg';
-import HomeHandsLeft from './HomeHands/Left.svg';
-import Camera from './Camera.svg';
+import HomeHandsSlot from './assets/HandsSlot.svg';
+import HomeHandsRight from './assets/HandsRight.svg';
+import HomeHandsCenter from './assets/HandsCenter.svg';
+import HomeHandsLeft from './assets/HandsLeft.svg';
+import Camera from './assets/Camera.svg';
 import PropTypes from 'prop-types';
 
 class App extends React.Component {
