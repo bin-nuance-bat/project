@@ -1,17 +1,17 @@
 $hand-width: 90%;
 
 .hand {
-	display: block;
-	text-align: center;
-	position: relative;
+  display: block;
+  text-align: center;
+  position: relative;
 }
 
 .hand-component {
-	position: absolute;
-	width: $hand-width;
+  position: absolute;
+  width: $hand-width;
 }
 
 .hand-snack {
-	position: absolute;
-	width: 0.45 * $hand-width;
+  position: absolute;
+  width: 0.4 * $hand-width;
 }
