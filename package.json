@@ -84,6 +84,13 @@
 			"jest": true,
 			"node": true,
 			"es6": true
+		},
+		"rules": {
+			  "prefer-const": "error",
+			  "semi": "error",
+			  "no-var": "error",
+			  "no-shadow": "error",
+			  "object-shorthand": "error"
 		}
 	},
 	"resolutions": {
