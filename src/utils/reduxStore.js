@@ -1,10 +1,6 @@
 import {createStore, applyMiddleware, combineReducers, compose} from 'redux';
 import thunk from 'redux-thunk';
-import {
-  storeList,
-  loadStoreListError,
-  showList
-} from '../components/StoreList/reducer';
+import {storeList, loadStoreListError} from '../components/StoreList/reducer';
 import {users} from '../components/UsernameEntry/reducer';
 import {prediction} from '../components/ItemRecognition/ItemRecognitionReducer';
 import {sendWithPhoto} from '../components/App/reducer';
@@ -15,7 +11,6 @@ const rootReducer = combineReducers({
   storeList,
   loadStoreListError,
   users,
-  showList,
   prediction,
   sendWithPhoto,
   actualItem,
