@@ -1,2 +1,0 @@
-export const SET_USERS = 'SET_USERS';
-export const SET_SLACK_USER_FETCH_ERROR = 'SET_SLACK_USER_FETCH_ERROR';
