@@ -5,7 +5,8 @@ const initFirebase = () => {
     firebase.initializeApp({
       apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
       authDomain: 'honesty-store-kiosk.firebaseapp.com',
-      projectId: 'honesty-store-kiosk'
+      projectId: 'honesty-store-kiosk',
+      storageBucket: 'honesty-store-kiosk.appspot.com'
     });
     firebase.firestore().settings({timestampsInSnapshots: true});
   }

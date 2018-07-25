@@ -6,10 +6,7 @@ import 'firebase/storage';
 import 'firebase/auth';
 
 export class ControllerDataset {
-  constructor(setReadyStatus, setBusyStatus) {
-    this.setReadyStatus = setReadyStatus;
-    this.setBusyStatus = setBusyStatus;
-
+  constructor() {
     initFirebase();
     this.store = firebase.storage();
     this.db = firebase.firestore();
@@ -25,51 +22,82 @@ export class ControllerDataset {
     return itemObj;
   }
 
+  getCollectionReference = async name => {
+    return await this.db.collection(name);
+  };
+
+  getItemReference = async label => {
+    return await this.db.collection('item_data').doc(label);
+  };
+
+  getItemCount = async itemReference => {
+    return await itemReference
+      .get()
+      .then(snapshot => snapshot.data().count)
+      .catch(() => 0);
+  };
+
+  setItemCount = async (itemReference, count) => {
+    await itemReference.set({
+      count
+    });
+  };
+
+  changeItemCount = (label, delta) => {
+    this.getItemReference(label).then(item =>
+      this.getItemCount(item).then(count =>
+        this.setItemCount(item, count + delta)
+      )
+    );
+  };
+
+  deleteImage = async dataset => {
+    await this.db
+      .collection('training_data')
+      .doc(dataset.id)
+      .delete();
+
+    await this.changeItemCount(dataset.item, -1);
+  };
+
+  trustImage = async dataset => {
+    await this.db
+      .collection('training_data')
+      .doc(dataset.id)
+      .update({trusted: true});
+
+    await this.changeItemCount(dataset.item, 1);
+  };
+
+  addImage = (image, trusted) => {
+    this.db
+      .collection('training_data')
+      .add({
+        img: image.img,
+        activation: image.activation.dataSync().join(','),
+        label: image.label,
+        random: Math.random(),
+        timestamp: Date.now(),
+        trusted
+      })
+      .then(() => {
+        image.activation.dispose();
+      })
+      .catch(() => {
+        image.activation.dispose();
+      });
+  };
+
   async addExamples(examples) {
     if (examples.length < 1) {
-      this.setReadyStatus('Please provide at least one image.');
       return;
     }
 
-    const item = await this.db
-      .collection('item_data')
-      .doc(examples[0].label)
-      .get();
+    this.changeItemCount(examples[0].label, examples.length);
 
-    this.db
-      .collection('item_data')
-      .doc(examples[0].label)
-      .set({
-        count: item.exists
-          ? item.data().count + examples.length
-          : examples.length
-      });
-
-    for (let i in examples) {
-      this.db
-        .collection('training_data')
-        .add({
-          img: examples[i].img,
-          activation: examples[i].activation.dataSync().join(','),
-          label: examples[i].label,
-          random: Math.random(),
-          timestamp: Date.now(),
-          trusted: true
-        })
-        .then(() => {
-          examples[i].activation.dispose();
-          this.setBusyStatus(
-            `Uploading images... (${parseInt(i, 10) + 1}/${examples.length})`
-          );
-          if (parseInt(i, 10) + 1 >= examples.length) {
-            this.setReadyStatus('Done');
-          }
-        })
-        .catch(err => {
-          console.error(err);
-          examples[i].activation.dispose();
-        });
-    }
+    examples.forEach(image => {
+      this.addImage(image, true);
+    });
   }
 
   async getClasses() {
@@ -97,10 +125,6 @@ export class ControllerDataset {
             snapshot.forEach(doc => {
               batch[doc.id] = doc.data();
             });
-
-            this.setBusyStatus(
-              `Fetching data... (${Object.keys(batch).length}/${batchSize})`
-            );
           });
       }
 
