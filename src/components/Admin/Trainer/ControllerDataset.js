@@ -127,7 +127,7 @@ export class ControllerDataset {
             });
           });
       }
-
+      console.log(batch);
       resolve(Object.values(batch).splice(0, batchSize));
     });
   }
@@ -137,36 +137,41 @@ export class ControllerDataset {
     const classes = await this.getClasses();
     let xs, ys;
 
-    xs = tf.keep(tf.tensor4d(batch[0].activation.split(','), [1, 7, 7, 1024]));
-    ys = tf.keep(
-      tf.tidy(() =>
+    return tf.tidy(() => {
+      xs = tf.keep(
+        tf.tensor4d(batch[0].activation.split(','), [1, 7, 7, 1024])
+      );
+      ys = tf.keep(
         tf.oneHot(
           tf.tensor1d([classes.indexOf(batch[0].label)]).toInt(),
           classes.length
         )
-      )
-    );
+      );
 
-    for (let i = 1; i < batch.length; i++) {
-      const y = tf.tidy(() =>
-        tf.oneHot(
-          tf.tensor1d([classes.indexOf(batch[i].label)]).toInt(),
+      while (batch.length > 0) {
+        const data = batch.pop();
+        const y = tf.oneHot(
+          tf.tensor1d([classes.indexOf(data.label)]).toInt(),
           classes.length
-        )
-      );
+        );
 
-      const oldX = xs;
-      xs = tf.keep(
-        oldX.concat(
-          tf.tensor4d(batch[i].activation.split(','), [1, 7, 7, 1024]),
-          0
-        )
-      );
+        const oldX = xs;
+        xs = tf.keep(
+          oldX.concat(
+            tf.tensor4d(data.activation.split(','), [1, 7, 7, 1024]),
+            0
+          )
+        );
 
-      const oldY = ys;
-      ys = tf.keep(oldY.concat(y, 0));
-    }
+        const oldY = ys;
+        ys = tf.keep(oldY.concat(y, 0));
 
-    return {xs, ys, classes};
+        oldX.dispose();
+        oldY.dispose();
+        y.dispose();
+      }
+
+      return {xs, ys, classes};
+    });
   }
 }

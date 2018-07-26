@@ -51,6 +51,7 @@ class Model {
         'Loading the model will overwrite any training you have done. Continue?'
       )
     ) {
+      this.setBusyStatus('Loading model...');
       tf.loadModel(
         new FirebaseStorageHandler(
           modelName,
