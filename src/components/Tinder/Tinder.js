@@ -37,9 +37,9 @@ class Tinder extends Component {
     this.controllerDataset
       .setLabel(
         this.state.image.id,
-        Object.values(this.storeList).find(
-          item => item.name === event.target.value
-        ).id
+        Object.keys(this.storeList).find(
+          key => this.storeList[key].name === event.target.value
+        )
       )
       .then(() =>
         this.setState(

@@ -187,11 +187,10 @@ export class ControllerDataset {
       .where('trusted', '==', false)
       .limit(1)
       .get()
-      .then(snapshot => {
-        const data = snapshot.docs[0].data();
-        data.id = snapshot.docs[0].id;
-        return data;
-      })
+      .then(snapshot => ({
+        ...snapshot.docs[0].data(),
+        id: snapshot.docs[0].id
+      }))
       .catch(() => null);
   }
 }

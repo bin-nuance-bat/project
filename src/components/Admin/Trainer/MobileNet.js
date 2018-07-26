@@ -8,7 +8,7 @@ export default class MobileNet {
   }
 
   isReady() {
-    return !(this.net === undefined);
+    return this.net !== undefined;
   }
 
   async getActivation(img) {
