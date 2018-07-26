@@ -27,25 +27,33 @@ class App extends React.Component {
     return (
       <div>
         <Logo />
-        <div className="page-home">
+        <div className="homepage">
           <h2 className="text text-payinglater">Paying later?</h2>
           <div className="text text-subheading">
             Why not send yourself a reminder on Slack?
           </div>
-          <div className="home-hands">
-            <img className="home-hands-slot" src={HomeHandsSlot} alt="" />
-            <img className="home-hands-right" src={HomeHandsRight} alt="" />
-            <img className="home-hands-center" src={HomeHandsCenter} alt="" />
-            <img className="home-hands-left" src={HomeHandsLeft} alt="" />
+          <div className="homepage--hands">
+            <img className="homepage--hands-slot" src={HomeHandsSlot} alt="" />
+            <img
+              className="homepage--hands-right"
+              src={HomeHandsRight}
+              alt=""
+            />
+            <img
+              className="homepage--hands-center"
+              src={HomeHandsCenter}
+              alt=""
+            />
+            <img className="homepage--hands-left" src={HomeHandsLeft} alt="" />
           </div>
           <button
-            className="button button-snackchat"
+            className="button homepage--button--snackchat"
             onClick={this.handleSnackChatClick}>
             Send a SnackChat
             <img className="homepage--small-camera" src={Camera} alt="" />
           </button>
           <button
-            className="button button-nophoto"
+            className="button homepage--button--nophoto"
             onClick={this.handleReminderNoPhotoClick}>
             Send a reminder {/* without a photo */}
           </button>
