@@ -1,5 +1,4 @@
 import {SET_USERS} from './actionTypes';
-import labels from './../../utils/labels.json';
 
 const token = process.env.REACT_APP_SLACK_TOKEN;
 
@@ -34,14 +33,15 @@ export const sendSlackMessage = username => async (dispatch, getState) => {
 
   const storeCode = state.actualItem;
   const itemName = state.storeList[storeCode].name;
-
+  const names = Object.keys(state.storeList);
   // check that the saved store code exists
-  let i = 0;
-  for (; i < labels.length; i++) {
-    if (labels[i] === storeCode) break;
+  let i;
+
+  for (; i < names.length; i++) {
+    if (names[i] === storeCode) break;
   }
 
-  if (i === labels.length) return false;
+  if (i === names.length) return false;
 
   try {
     await fetch(`https://slack.com/api/chat.postMessage?token=${token}&
