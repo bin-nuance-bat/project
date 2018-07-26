@@ -60,13 +60,20 @@ export class ControllerDataset {
     await this.changeItemCount(dataset.item, -1);
   };
 
-  trustImage = async dataset => {
+  trustImage = async id => {
     await this.db
       .collection('training_data')
-      .doc(dataset.id)
+      .doc(id)
       .update({trusted: true});
+  };
 
-    await this.changeItemCount(dataset.item, 1);
+  setLabel = async (id, label) => {
+    await this.db
+      .collection('training_data')
+      .doc(id)
+      .update({
+        label
+      });
   };
 
   addImage = (image, trusted) => {
@@ -178,7 +185,11 @@ export class ControllerDataset {
       .where('trusted', '==', false)
       .limit(1)
       .get()
-      .then(snapshot => snapshot.docs[0].data())
+      .then(snapshot => {
+        const data = snapshot.docs[0].data();
+        data.id = snapshot.docs[0].id;
+        return data;
+      })
       .catch(() => null);
   }
 }

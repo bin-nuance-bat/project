@@ -14,6 +14,32 @@ class Tinder extends Component {
       .then(image => this.setState({image}));
   };
 
+  trustImage = () => {
+    this.controllerDataset.trustImage(this.state.image.id).then(this.nextImage);
+  };
+
+  showDropdown = () => {
+    this.setState({showDropdown: true});
+  };
+
+  changeCategory = event => {
+    this.controllerDataset
+      .setLabel(
+        this.state.image.id,
+        Object.values(this.storeList).find(
+          item => item.name === event.target.value
+        ).id
+      )
+      .then(() =>
+        this.setState(
+          {
+            showDropdown: false
+          },
+          this.nextImage
+        )
+      );
+  };
+
   componentDidMount() {
     getStore()
       .then(storeList => (this.storeList = storeList))
@@ -30,7 +56,18 @@ class Tinder extends Component {
     return (
       <div>
         <img src={this.state.image.img} alt="" />
-        Guess: {this.storeList[this.state.image.label].name}
+        <button onClick={this.trustImage}>Trust</button>
+        <br />
+        Category
+        <div>
+          <select
+            value={this.storeList[this.state.image.label].name}
+            onChange={this.changeCategory}>
+            {Object.values(this.storeList).map((item, index) => (
+              <option key={index}>{item.name}</option>
+            ))}
+          </select>
+        </div>
       </div>
     );
   }
