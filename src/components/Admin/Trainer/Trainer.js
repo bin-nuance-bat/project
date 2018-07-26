@@ -37,7 +37,7 @@ class Trainer extends Component {
     this.model.init();
   }
 
-  capture =  imageToTensor;
+  capture = imageToTensor;
 
   captureFromFile = async () => {
     return new Promise(resolve => {

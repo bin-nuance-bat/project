@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import getStore from './../../utils/honestyStore';
 import {ControllerDataset} from '../Admin/Trainer/ControllerDataset';
+import './Tinder.css';
 
 class Tinder extends Component {
   state = {
@@ -67,20 +68,27 @@ class Tinder extends Component {
     if (!this.state.image) return <div>No untrusted images available</div>;
 
     return (
-      <div>
+      <div className="preview">
         <img src={this.state.image.img} alt="" />
-        <button onClick={this.trustImage}>Trust</button>
-        <button onClick={this.setAsUnknown}>Unknown</button>
-        <button onClick={this.deleteImage}>Delete</button>
-        <br />
-        Category
+        <div>
+          <button className="button button-admin" onClick={this.trustImage}>
+            Trust
+          </button>
+          <button className="button button-admin" onClick={this.setAsUnknown}>
+            Unknown
+          </button>
+          <button className="button button-admin" onClick={this.deleteImage}>
+            Delete
+          </button>
+        </div>
+        <div>Category</div>
         <div>
           <select
             value={this.storeList[this.state.image.label].name}
             onChange={this.changeCategory}>
-            {Object.values(this.storeList).map((item, index) => (
-              <option key={index}>{item.name}</option>
-            ))}
+            {Object.values(this.storeList)
+              .sort((a, b) => a.name.localeCompare(b.name))
+              .map((item, index) => <option key={index}>{item.name}</option>)}
           </select>
         </div>
       </div>
