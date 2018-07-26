@@ -35,7 +35,7 @@ export const sendSlackMessage = username => async (dispatch, getState) => {
   const itemName = state.storeList[storeCode].name;
   const names = Object.keys(state.storeList);
   // check that the saved store code exists
-  let i;
+  let i = 0;
 
   for (; i < names.length; i++) {
     if (names[i] === storeCode) break;
