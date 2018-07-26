@@ -31,13 +31,13 @@ class ConfirmationBox extends React.Component {
         <div>
           <button
             className="button button-editsnack"
-            testattribute="NO"
+            data-test="NO"
             onClick={this.handleNo}>
             Edit Snack
           </button>
           <button
             className="button button-yes"
-            testattribute="YES"
+            data-test="YES"
             onClick={this.handleYes}>
             Yes
           </button>
