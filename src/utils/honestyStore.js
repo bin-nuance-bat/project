@@ -1,8 +1,4 @@
-const importImages = require.context(
-  '../components/EditSnack/assets',
-  true,
-  /\.svg$/
-);
+const importImages = require.context('./assets', true, /\.svg$/);
 const imgFilesObject = importImages.keys().reduce((images, key) => {
   images[key] = importImages(key);
   return images;
