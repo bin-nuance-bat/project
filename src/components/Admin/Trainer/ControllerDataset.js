@@ -66,7 +66,7 @@ export class ControllerDataset {
       .doc(dataset.id)
       .update({trusted: true});
 
-    await this.changeItemCount(dataset.item, -1);
+    await this.changeItemCount(dataset.item, 1);
   };
 
   setLabel = async (id, label) => {
