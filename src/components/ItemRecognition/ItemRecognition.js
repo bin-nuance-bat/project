@@ -14,9 +14,6 @@ class ItemRecognition extends Component {
   componentDidMount() {
     this.props.setPrediction(null, null);
     this.model.load();
-
-    this.props.setPrediction('c786086f-c183-4a6a-b9a4-72d142982cff', 'img.src');
-    this.props.history.push('/confirmitem');
   }
 
   onConnect = () => {
