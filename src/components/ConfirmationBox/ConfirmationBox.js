@@ -19,6 +19,7 @@ class ConfirmationBox extends React.Component {
   };
 
   render() {
+    const {image} = this.props.storeList[this.props.id]
     return (
       <div>
         <Logo />
@@ -26,7 +27,7 @@ class ConfirmationBox extends React.Component {
           this.props.name
         }?`}</div>
         <div className="confirmation-hand">
-          <Hand />
+          <Hand snack={image} />
         </div>
         <div>
           <button
@@ -48,11 +49,11 @@ class ConfirmationBox extends React.Component {
 }
 
 ConfirmationBox.propTypes = {
+  name: PropTypes.string.isRequired,
+  id: PropTypes.string,
+  storeList: PropTypes.object.isRequired,
   setActualItem: PropTypes.func.isRequired,
   sendWithPhoto: PropTypes.bool.isRequired,
-  name: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-  img: PropTypes.string.isRequired,
   history: PropTypes.object.isRequired
 };
 

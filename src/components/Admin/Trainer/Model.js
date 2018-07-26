@@ -59,8 +59,6 @@ class Model {
       )
         .then(model => {
           this.model = model;
-          window.model = model;
-          this.classes = JSON.parse(window.localStorage.getItem('items'));
           this.setReadyStatus('Loaded model!');
         })
         .catch(() => {
