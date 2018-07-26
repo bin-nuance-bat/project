@@ -60,11 +60,13 @@ export class ControllerDataset {
     await this.changeItemCount(dataset.item, -1);
   };
 
-  trustImage = async id => {
+  trustImage = async dataset => {
     await this.db
       .collection('training_data')
-      .doc(id)
+      .doc(dataset.id)
       .update({trusted: true});
+
+    await this.changeItemCount(dataset.item, -1);
   };
 
   setLabel = async (id, label) => {

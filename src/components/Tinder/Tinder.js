@@ -15,12 +15,20 @@ class Tinder extends Component {
   };
 
   trustImage = () => {
-    this.controllerDataset.trustImage(this.state.image.id).then(this.nextImage);
+    this.controllerDataset
+      .trustImage({id: this.state.image.id, item: this.state.image.label})
+      .then(this.nextImage);
   };
 
   setAsUnknown = () => {
     this.controllerDataset
       .setLabel(this.state.image.id, 'unknown')
+      .then(this.nextImage);
+  };
+
+  deleteImage = () => {
+    this.controllerDataset
+      .deleteImage({id: this.state.image.id, item: this.state.image.label})
       .then(this.nextImage);
   };
 
@@ -63,7 +71,7 @@ class Tinder extends Component {
         <img src={this.state.image.img} alt="" />
         <button onClick={this.trustImage}>Trust</button>
         <button onClick={this.setAsUnknown}>Unknown</button>
-        <button>Delete</button>
+        <button onClick={this.deleteImage}>Delete</button>
         <br />
         Category
         <div>
