@@ -18,8 +18,10 @@ class Tinder extends Component {
     this.controllerDataset.trustImage(this.state.image.id).then(this.nextImage);
   };
 
-  showDropdown = () => {
-    this.setState({showDropdown: true});
+  setAsUnknown = () => {
+    this.controllerDataset
+      .setLabel(this.state.image.id, 'unknown')
+      .then(this.nextImage);
   };
 
   changeCategory = event => {
@@ -42,7 +44,10 @@ class Tinder extends Component {
 
   componentDidMount() {
     getStore()
-      .then(storeList => (this.storeList = storeList))
+      .then(storeList => {
+        storeList['unknown'] = {name: 'unknown'};
+        this.storeList = storeList;
+      })
       .then(() => {
         this.nextImage().then(() => this.setState({loading: false}));
       });
@@ -57,6 +62,8 @@ class Tinder extends Component {
       <div>
         <img src={this.state.image.img} alt="" />
         <button onClick={this.trustImage}>Trust</button>
+        <button onClick={this.setAsUnknown}>Unknown</button>
+        <button>Delete</button>
         <br />
         Category
         <div>
