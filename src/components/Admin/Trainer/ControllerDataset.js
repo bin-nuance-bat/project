@@ -175,8 +175,10 @@ export class ControllerDataset {
       'training_data'
     );
     return await collectionReference
-      .where('trusted', '==', 'false')
+      .where('trusted', '==', false)
+      .limit(1)
       .get()
-      .then(snapshot => snapshot.docs);
+      .then(snapshot => snapshot.docs[0].data())
+      .catch(() => null);
   }
 }
