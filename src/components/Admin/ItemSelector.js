@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const ItemSelector = props => {
   return (
@@ -13,6 +14,13 @@ const ItemSelector = props => {
       ))}
     </select>
   );
+};
+
+ItemSelector.propTypes = {
+  item: PropTypes.object.isRequired,
+  busy: PropTypes.bool.isRequired,
+  items: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+  setItem: PropTypes.func.isRequired
 };
 
 export default ItemSelector;
