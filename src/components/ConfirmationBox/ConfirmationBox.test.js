@@ -30,15 +30,17 @@ it('calls setActualItem when yes is clicked', () => {
   const mockProps = getProps();
 
   const wrapper = shallow(<ConfirmationBox {...mockProps} />);
-  wrapper.find({testattribute: 'YES'}).simulate('click');
+
+  wrapper.find({'data-test': 'YES'}).simulate('click');
   expect(mockProps.setActualItem).toHaveBeenCalledWith(mockProps.id);
+
 });
 
 it('Goes to username entry page if yes clicked', () => {
   const mockProps = getProps();
 
   const wrapper = shallow(<ConfirmationBox {...mockProps} />);
-  wrapper.find({testattribute: 'YES'}).simulate('click');
+  wrapper.find({'data-test': 'YES'}).simulate('click');
   expect(mockProps.history.push).toHaveBeenCalledWith('/slackname');
 });
 
@@ -46,6 +48,6 @@ it('Goes to edit snack page if no clicked', () => {
   const mockProps = getProps();
 
   const wrapper = shallow(<ConfirmationBox {...mockProps} />);
-  wrapper.find({testattribute: 'NO'}).simulate('click');
+  wrapper.find({'data-test': 'NO'}).simulate('click');
   expect(mockProps.history.push).toHaveBeenCalledWith('/editSnack');
 });
