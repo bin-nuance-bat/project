@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Webcam from 'react-webcam';
+import WebcamCapture from '../../WebcamCapture/WebcamCapture';
 import ItemSelector from '../ItemSelector';
 import Model from './Model';
 import '../Admin.css';
@@ -153,21 +153,12 @@ class Trainer extends Component {
       <div>
         <div className="col" style={{textAlign: 'center'}}>
           <div id="status-text">{status}</div>
-          <div className="webcam-container">
-            <Webcam
-              audio={false}
-              height={400}
-              width={400}
-              screenshotWidth={224}
-              ref={this.webcam}
-              screenshotFormat="image/jpeg"
-            />
-          </div>
+          <WebcamCapture imgSize={224} />
           <div>
             <ItemSelector
               item={item}
               items={Object.values(items)}
-              setItem={item => this.setState({item})}
+              setItem={i => this.setState({i})}
               disabled={busy}
             />
           </div>
@@ -227,13 +218,11 @@ class Trainer extends Component {
               </tr>
             </thead>
             <tbody>
-              {Object.values(items).map(item => {
+              {Object.values(items).map(i => {
                 return (
-                  <tr key={item.id}>
-                    <td>{this.getName(item)}</td>
-                    <td id={`${item.id}-count`}>
-                      {item.mlCount ? item.mlCount : 0}
-                    </td>
+                  <tr key={i.id}>
+                    <td>{this.getName(i)}</td>
+                    <td id={`${i.id}-count`}>{i.mlCount ? i.mlCount : 0}</td>
                   </tr>
                 );
               })}
