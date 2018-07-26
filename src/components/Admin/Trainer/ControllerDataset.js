@@ -110,26 +110,32 @@ export class ControllerDataset {
   }
 
   async getBatch(batchSize, randomness, since) {
-    return new Promise(async resolve => {
-      const batch = {};
+    const batch = {};
+    const limit = batchSize * randomness;
+    const ref = this.db
+      .collection('training_data')
+      .orderBy('random')
+      .orderBy('timestamp');
 
-      while (Object.keys(batch).length < batchSize) {
-        await this.db
-          .collection('training_data')
-          .orderBy('random')
-          .orderBy('timestamp')
-          .startAt(Math.random(), since)
-          .limit(batchSize * randomness)
-          .get()
-          .then(snapshot => {
-            snapshot.forEach(doc => {
-              batch[doc.id] = doc.data();
-            });
-          });
-      }
-      console.log(batch);
-      resolve(Object.values(batch).splice(0, batchSize));
-    });
+    let batchCounter = 0;
+    const addData = snapshot => {
+      snapshot.forEach(doc => {
+        if (!batch[doc.id]) {
+          batchCounter++;
+          batch[doc.id] = doc.data();
+        }
+      });
+    };
+
+    while (batchCounter < batchSize) {
+      await ref
+        .startAt(Math.random(), since)
+        .limit(limit)
+        .get()
+        .then(addData);
+    }
+
+    return Object.values(batch).slice(0, batchSize);
   }
 
   async getTensors(setSize = 200, randomness = 0.1, since = 0) {
