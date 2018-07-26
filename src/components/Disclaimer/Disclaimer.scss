@@ -1,39 +1,43 @@
 @import '../../utils/constants.scss';
 
 .button {
-	&-back {
-		color: $white;
-		width: 10vw;
-		height: 10vh;
-		position: absolute;
-		background-color: $dark-blue;
-		transform: translate(-48vw, 1vh);
-		-webkit-text-stroke: 9px $dark-blue;
-	}
+  &-back {
+    color: $white;
+    width: 10vw;
+    height: 10vh;
+    position: absolute;
+    background-color: $dark-blue;
+    transform: translate(-48vw, 1vh);
+    -webkit-text-stroke: 9px $dark-blue;
+  }
 
-	&-accept {
-		color: $white;
-		width: 488px;
-		border-radius: 12px;
-		margin-top: 64px;
-		background-color: $light-blue;
-		font-family: 'FaricyNew-Bold';
-	}
+  &-accept {
+    color: $white;
+    width: 488px;
+    border-radius: 12px;
+    margin-top: 64px;
+    background-color: $light-blue;
+    font-family: 'FaricyNew-Bold';
+  }
 }
 
-.bigcamera {
-	margin-top: 144px;
+.disclaimer--big-camera {
+  margin-top: 144px;
+  width: 75px;
+  height: 74px;
 }
 
-.lock {
-	margin-top: 96px;
+.disclaimer--padlock {
+  margin-top: 96px;
+  width: 75px;
+  height: 74px;
 }
 
 .text {
-	&-info {
-		display: inline-block;
-		font-size: 30px;
-		padding-top: 24px;
-		width: 544px;
-	}
+  &-info {
+    display: inline-block;
+    font-size: 30px;
+    padding-top: 24px;
+    width: 544px;
+  }
 }
