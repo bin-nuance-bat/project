@@ -52,14 +52,13 @@ class Tinder extends Component {
   };
 
   componentDidMount() {
-    getStore()
-      .then(storeList => {
-        storeList['unknown'] = {name: 'unknown'};
-        this.storeList = storeList;
-      })
-      .then(() => {
-        this.nextImage().then(() => this.setState({loading: false}));
-      });
+    getStore().then(storeList => {
+      this.storeList = {
+        ...storeList,
+        unknown: {name: 'unknown'}
+      };
+      this.nextImage().then(() => this.setState({loading: false}));
+    });
     this.controllerDataset = new ControllerDataset();
   }
 
