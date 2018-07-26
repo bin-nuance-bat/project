@@ -4,6 +4,8 @@ import Model from './../../utils/model';
 import WebcamCapture from '../WebcamCapture/WebcamCapture';
 import Logo from '../Logo/Logo';
 import './ItemRecognition.css';
+import {ControllerDataset} from '../Admin/Trainer/ControllerDataset';
+import MobileNet from '../Admin/Trainer/MobileNet';
 
 const ML_THRESHOLD = 0.06;
 
@@ -11,9 +13,15 @@ class ItemRecognition extends Component {
   model = new Model();
   webcam = React.createRef();
 
+  constructor(props) {
+    super(props);
+    this.mobilenet = new MobileNet();
+  }
+
   componentDidMount() {
     this.props.setPrediction(null, null);
     this.model.load();
+    this.controllerDataset = new ControllerDataset();
   }
 
   onConnect = () => {
@@ -25,13 +33,29 @@ class ItemRecognition extends Component {
       });
   };
 
+  addTrainingImage = (img, label) => {
+    this.mobilenet.init().then(() =>
+      this.mobilenet.getActivation(img).then(activation =>
+        this.controllerDataset.addImage(
+          {
+            img,
+            label,
+            activation
+          },
+          false
+        )
+      )
+    );
+  };
+
   handleImg = img => {
-    this.model.predict(img).then(item => {
+    this.model.predict(img).then(async item => {
       if (
         item.value > ML_THRESHOLD &&
         item.id !== '' &&
         !this.props.prediction
       ) {
+        await this.addTrainingImage(img.src, item.id);
         this.props.setPrediction(item.id, img.src);
         this.props.history.push('/confirmitem');
       } else {

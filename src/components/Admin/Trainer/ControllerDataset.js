@@ -169,4 +169,14 @@ export class ControllerDataset {
 
     return {xs, ys, classes};
   }
+
+  async getUntrustedImage() {
+    const collectionReference = await this.getCollectionReference(
+      'training_data'
+    );
+    return await collectionReference
+      .where('trusted', '==', 'false')
+      .get()
+      .then(snapshot => snapshot.docs);
+  }
 }

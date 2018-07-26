@@ -19,12 +19,8 @@ class Model {
 
   init() {
     this.setBusyStatus('Loading data...');
-    return Promise.all([
-      MobileNet.load().then(res => {
-        this.mobilenet = res;
-      }),
-      this.loadStore()
-    ])
+    this.mobilenet = new MobileNet();
+    return Promise.all([this.mobilenet.init(), this.loadStore()])
       .then(this.loadTrainingData)
       .then(() => this.setReadyStatus('Done'));
   }

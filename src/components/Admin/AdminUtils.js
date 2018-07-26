@@ -14,7 +14,7 @@ const cropImage = img => {
   );
 };
 
-export const uriToTensor = dataURI => {
+export const imageToTensor = dataURI => {
   return tf.tidy(() => {
     return cropImage(tf.fromPixels(dataURI))
       .expandDims(0)
