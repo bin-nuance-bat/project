@@ -70,6 +70,7 @@ $username-icon-size: 48px;
   width: 750px;
   overflow-y: scroll;
   height: 792px;
+  -webkit-overflow-scrolling: touch;
 }
 
 .list-selection--scroll-select-element {
