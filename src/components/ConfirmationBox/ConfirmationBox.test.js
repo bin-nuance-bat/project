@@ -7,13 +7,22 @@ configure({adapter: new Adapter()});
 
 const getProps = () => {
   return {
-    name: 'fooBar',
-    id: 'sample-id',
+    name: 'coke',
+    id: 'sampleid',
     history: {
       push: jest.fn()
     },
     setActualItem: jest.fn(),
-    img: 'barFoo'
+    sendWithPhoto: false,
+    img:
+      'OTgyZDllM2ViOTk2ZjU1OWU2MzNmNGQxOTRkZWYzNzYxZDkwOWY1YTNiNjQ3ZDFhODUxZmVhZDY3YzMyYzlkMQ==',
+    storeList: {
+      sampleid: {
+        name: 'coke',
+        image:
+          'OTgyZDllM2ViOTk2ZjU1OWU2MzNmNGQxOTRkZWYzNzYxZDkwOWY1YTNiNjQ3ZDFhODUxZmVhZDY3YzMyYzlkMQ=='
+      }
+    }
   };
 };
 
@@ -22,7 +31,7 @@ it('calls setActualItem when yes is clicked', () => {
 
   const wrapper = shallow(<ConfirmationBox {...mockProps} />);
   wrapper.find({testattribute: 'YES'}).simulate('click');
-  expect(mockProps.setActualItem).toHaveBeenCalledWith('sample-id');
+  expect(mockProps.setActualItem).toHaveBeenCalledWith(mockProps.id);
 });
 
 it('Goes to username entry page if yes clicked', () => {

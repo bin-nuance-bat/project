@@ -11,7 +11,7 @@ const SuccessPage = props => {
       <Logo />
       <div className="text text-remindersent">Reminder sent!</div>
       <div className="success-hand">
-        <Hand />
+        <Hand snack={props.storeList[props.prediction.id].image} />
       </div>
       <TimeoutNotification />
     </div>
@@ -19,7 +19,9 @@ const SuccessPage = props => {
 };
 
 SuccessPage.propTypes = {
-  history: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired,
+  prediction: PropTypes.object.isRequired,
+  storeList: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export default SuccessPage;
