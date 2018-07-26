@@ -40,6 +40,7 @@ export const sendSlackMessage = username => async (dispatch, getState) => {
   for (; i < labels.length; i++) {
     if (labels[i] === storeCode) break;
   }
+
   if (i === labels.length) return false;
 
   try {
