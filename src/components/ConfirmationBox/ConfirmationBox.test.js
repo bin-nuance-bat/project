@@ -10,7 +10,7 @@ const getProps = () => {
     name: 'coke',
     id: 'sampleid',
     history: {
-      push: jest.fn()
+      replace: jest.fn()
     },
     setActualItem: jest.fn(),
     sendWithPhoto: false,
