@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import getStore from './../../utils/honestyStore';
 import {ControllerDataset} from '../Admin/Trainer/ControllerDataset';
-import './Tinder.css';
+import './ImageApproval.css';
 
-class Tinder extends Component {
+class ImageApproval extends Component {
   state = {
     loading: true,
     image: null
@@ -95,4 +95,4 @@ class Tinder extends Component {
   }
 }
 
-export default Tinder;
+export default ImageApproval;
