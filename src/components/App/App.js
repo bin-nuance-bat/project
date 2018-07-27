@@ -1,72 +1,41 @@
-import React from 'react';
-import './App.css';
-import Logo from '../Logo/Logo';
-import HomeHandsSlot from './assets/HandsSlot.svg';
-import HomeHandsRight from './assets/HandsRight.svg';
-import HomeHandsCenter from './assets/HandsCenter.svg';
-import HomeHandsLeft from './assets/HandsLeft.svg';
-import Camera from './assets/Camera.svg';
-import PropTypes from 'prop-types';
+import React, {Component} from 'react';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import Home from '../Home/container';
+import Viewer from '../Admin/Preview/Viewer';
+import Trainer from '../Admin/Trainer/Trainer';
+import SnackChat from '../SnackChat/SnackChatContainer';
+import ItemRecognition from '../ItemRecognition/ItemRecognitionContainer';
+import Disclaimer from '../Disclaimer/Disclaimer';
+import ConfirmationBox from '../ConfirmationBox/container';
+import UsernameEntry from '../UsernameEntry/container';
+import EditSnack from '../EditSnack/EditSnackContainer';
+import SuccessPage from '../SuccessPage/container';
+import Admin from '../Admin/Admin';
+import ImageApproval from '../ImageApproval/ImageApproval';
 
-class App extends React.Component {
-  componentDidMount() {
-    this.props.loadStoreList();
-  }
-
-  handleSnackChatClick = () => {
-    this.props.setSendWithPhoto(true);
-    this.props.history.push('/disclaimer');
-  };
-
-  handleReminderNoPhotoClick = () => {
-    this.props.setSendWithPhoto(false);
-    this.props.history.push('/disclaimer');
-  };
-
+class App extends Component {
   render() {
     return (
       <div>
-        <Logo />
-        <div className="homepage">
-          <h2 className="text text-payinglater">Paying later?</h2>
-          <div className="text text-subheading">
-            Why not send yourself a reminder on Slack?
-          </div>
-          <div className="homepage--hands">
-            <img className="homepage--hands-slot" src={HomeHandsSlot} alt="" />
-            <img
-              className="homepage--hands-right"
-              src={HomeHandsRight}
-              alt=""
-            />
-            <img
-              className="homepage--hands-center"
-              src={HomeHandsCenter}
-              alt=""
-            />
-            <img className="homepage--hands-left" src={HomeHandsLeft} alt="" />
-          </div>
-          <button
-            className="button homepage--button--snackchat"
-            onClick={this.handleSnackChatClick}>
-            Send a SnackChat
-            <img className="homepage--small-camera" src={Camera} alt="" />
-          </button>
-          <button
-            className="button homepage--button--nophoto"
-            onClick={this.handleReminderNoPhotoClick}>
-            Send a reminder {/* without a photo */}
-          </button>
-        </div>
+        <Router>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/snackchat" component={SnackChat} />
+            <Route exact path="/disclaimer" component={Disclaimer} />
+            <Route exact path="/scanitem" component={ItemRecognition} />
+            <Route exact path="/confirmitem" component={ConfirmationBox} />
+            <Route exact path="/editsnack" component={EditSnack} />
+            <Route exact path="/slackname" component={UsernameEntry} />
+            <Route exact path="/success" component={SuccessPage} />
+            <Route exact path="/preview" component={Viewer} />
+            <Route exact path="/admin" component={Admin} />
+            <Route exact path="/training" component={Trainer} />
+            <Route exact path="/imageapproval" component={ImageApproval} />
+          </Switch>
+        </Router>
       </div>
     );
   }
 }
-
-App.propTypes = {
-  loadStoreList: PropTypes.func.isRequired,
-  setSendWithPhoto: PropTypes.func.isRequired,
-  history: PropTypes.object.isRequired
-};
 
 export default App;
