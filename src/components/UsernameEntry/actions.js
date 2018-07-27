@@ -17,6 +17,7 @@ export const loadUsers = () => dispatch => {
       if (!data.ok) throw Error('failed to fetch users');
       else return data.members;
     })
+    .then(users => users.filter(user => !user.is_bot))
     .then(users => dispatch(setUsers(users)))
     .catch(() => dispatch(setUsers([])));
 };
