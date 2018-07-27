@@ -5,10 +5,11 @@ import * as MobileNet from '@tensorflow-models/mobilenet';
 import FirebaseStorageHandler from './FirebaseStorageHandler';
 
 class Model {
-  constructor(setReadyStatus, setBusyStatus) {
+  constructor(setReadyStatus, setBusyStatus, setCompletion) {
     this.items = {unknown: {name: 'Unknown', id: 'unknown'}};
     this.setReadyStatus = setReadyStatus;
     this.setBusyStatus = setBusyStatus;
+    this.setCompletion = setCompletion;
     this.controllerDataset = new ControllerDataset();
   }
 
@@ -95,10 +96,12 @@ class Model {
       this.setBusyStatus(
         `Processing images... (${((i / count) * 100).toFixed(0)}%)`
       );
+      this.setCompletion(i / count);
       await tf.nextFrame();
     }
     this.setBusyStatus('Uploading images... (0%)');
     this.controllerDataset.addExamples(examples, completion => {
+      this.setCompletion(completion);
       if (completion === 1) {
         this.setReadyStatus('Done');
         return;

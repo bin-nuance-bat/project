@@ -20,7 +20,8 @@ class Trainer extends Component {
     advanced: false,
     status: 'Loading...',
     item: 'unknown',
-    busy: true
+    busy: true,
+    completion: 1
   };
 
   webcam = React.createRef();
@@ -31,8 +32,13 @@ class Trainer extends Component {
 
   setReadyStatus = status => this.setState({status, busy: false});
   setBusyStatus = status => this.setState({status, busy: true});
+  setCompletion = completion => this.setState({completion});
 
-  model = new Model(this.setReadyStatus, this.setBusyStatus);
+  model = new Model(
+    this.setReadyStatus,
+    this.setBusyStatus,
+    this.setCompletion
+  );
 
   componentDidMount() {
     this.model.init();

@@ -38,3 +38,18 @@ input[type='checkbox'] {
 #status-text {
   font-size: 22px;
 }
+
+.loading-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.loading-bar .progress {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 30px;
+  background-color: $light-blue;
+}
