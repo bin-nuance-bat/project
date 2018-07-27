@@ -35,7 +35,6 @@ it('calls setActualItem when yes is clicked', () => {
   expect(mockProps.setActualItem).toHaveBeenCalledWith(mockProps.id);
 });
 
-
 it('Goes to username entry page if yes clicked', () => {
   const mockProps = getProps();
 

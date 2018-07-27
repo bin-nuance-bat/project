@@ -20,33 +20,26 @@ export const loadUsers = () => dispatch => {
     .catch(() => dispatch(setUsers([])));
 };
 
-const getIDByUsername = (username, users) => {
-  const currentUser = users.find(
-    user => user.name === username || user.profile.real_name === username
-  );
-  return currentUser ? currentUser.id : null;
-};
+// const getIDByUsername = (username, users) => {
+//   const currentUser = users.find(
+//     user => user.name === username || user.profile.real_name === username
+//   );
+//   return currentUser ? currentUser.id : null;
+// };
 
-export const sendSlackMessage = username => async (dispatch, getState) => {
+export const sendSlackMessage = userid => async (dispatch, getState) => {
   const state = getState();
-  const id = getIDByUsername(username, state.users);
+  //const id = getIDByUsername(username, state.users);
 
-  const storeCode = state.actualItem;
-  const itemName = state.storeList[storeCode].name;
-  const names = Object.keys(state.storeList);
-  // check that the saved store code exists
-  let i;
-
-  for (; i < names.length; i++) {
-    if (names[i] === storeCode) break;
-  }
-
-  if (i === names.length) return false;
+  const actualItemID = state.actualItem;
+  const itemName = state.storeList[actualItemID].name;
 
   try {
     await fetch(`https://slack.com/api/chat.postMessage?token=${token}&
-		channel=${id}&
-		text=${`Click to purchase your ${itemName}: https://honesty.store/item/${storeCode}`}`);
+		channel=${userid}&
+		text=${`Click to purchase your ${itemName}: https://honesty.store/item/${actualItemID}`}`)
+      .then(result => result.json())
+      .then(json => console.log(json));
     return true;
   } catch (error) {
     return false;

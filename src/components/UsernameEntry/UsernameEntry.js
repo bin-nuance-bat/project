@@ -6,8 +6,8 @@ import ListSelection from '../listSelection/ListSelection';
 import TimeoutNotification from '../TimeoutNotification/TimeoutNotification';
 
 class UsernameEntry extends React.Component {
-  sendReminder = async name => {
-    const result = await this.props.sendSlackMessage(name);
+  sendReminder = async user => {
+    const result = await this.props.sendSlackMessage(user.id);
     if (result) this.props.history.push('/success');
     // TODO handle when result is false (i.e. message fails to send - redirect to error page?)
   };
