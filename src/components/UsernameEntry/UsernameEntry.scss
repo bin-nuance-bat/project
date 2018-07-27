@@ -14,6 +14,10 @@ input {
   }
 }
 
+.username-entry--page {
+  background-color: $white;
+}
+
 .username-entry--header {
   position: fixed;
   z-index: 1;
