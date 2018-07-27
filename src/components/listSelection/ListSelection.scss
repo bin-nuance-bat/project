@@ -35,15 +35,16 @@ $username-icon-size: 48px;
   position: relative;
   text-align: left;
   margin: 0;
-  height: 50px;
-  line-height: 50px;
 
   &--group-header {
     margin-left: 32px;
+    margin-top: 32px;
   }
 
   &--item-name {
     padding-left: $item-text-distance;
+    height: 50px;
+    line-height: 50px;
   }
 }
 
