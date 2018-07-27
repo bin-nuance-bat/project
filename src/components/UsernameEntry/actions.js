@@ -1,5 +1,4 @@
 import {SET_USERS} from './actionTypes';
-import labels from './../../utils/labels.json';
 
 const token = process.env.REACT_APP_SLACK_TOKEN;
 
@@ -21,33 +20,18 @@ export const loadUsers = () => dispatch => {
     .catch(() => dispatch(setUsers([])));
 };
 
-const getIDByUsername = (username, users) => {
-  const currentUser = users.find(
-    user => user.name === username || user.profile.real_name === username
-  );
-  return currentUser ? currentUser.id : null;
-};
-
-export const sendSlackMessage = username => async (dispatch, getState) => {
+export const sendSlackMessage = userid => async (dispatch, getState) => {
   const state = getState();
-  const id = getIDByUsername(username, state.users);
-
-  const storeCode = state.actualItem;
-  const itemName = state.storeList[storeCode].name;
-
-  // check that the saved store code exists
-  let i = 0;
-  for (; i < labels.length; i++) {
-    if (labels[i] === storeCode) break;
-  }
-
-  if (i === labels.length) return false;
+  const actualItemID = state.actualItem;
+  const itemName = state.storeList[actualItemID].name;
 
   try {
-    await fetch(`https://slack.com/api/chat.postMessage?token=${token}&
-		channel=${id}&
-		text=${`Click to purchase your ${itemName}: https://honesty.store/item/${storeCode}`}`);
-    return true;
+    const result = await fetch(`https://slack.com/api/chat.postMessage?token=${token}&
+		channel=${userid}&
+		text=${`Click to purchase your ${itemName}: https://honesty.store/item/${actualItemID}`}`).then(
+      response => response.json()
+    );
+    return result.ok;
   } catch (error) {
     return false;
   }

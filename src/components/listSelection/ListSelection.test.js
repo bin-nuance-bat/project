@@ -83,8 +83,27 @@ it('Calls the required function', () => {
 
   const wrapper = mount(<ListSelection items={items} onClick={mockFunc} />);
   wrapper
-    .find('div[data-key="e615de4e-ce10-451b-80ad-9717662a904a"]')
+    .find('div[data-test="e615de4e-ce10-451b-80ad-9717662a904a"]')
     .at(0)
     .simulate('click');
-  expect(mockFunc).toHaveBeenCalledWith('e615de4e-ce10-451b-80ad-9717662a904a');
+  expect(mockFunc).toHaveBeenCalledWith({
+    id: 'e615de4e-ce10-451b-80ad-9717662a904a',
+    name: 'Pepsi Max',
+    qualifier: null,
+    image: 'pepsi-max-can.svg',
+    isMarketplace: false,
+    count: -8,
+    price: {
+      total: 38,
+      breakdown: {
+        wholesaleCost: 34,
+        serviceFee: 4,
+        donation: 0,
+        handlingFee: 0,
+        creditCardFee: 0,
+        VAT: 0
+      }
+    },
+    sellerId: '9127e1db-2a2c-41c5-908f-781ac816b633'
+  });
 });
