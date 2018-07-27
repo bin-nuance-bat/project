@@ -21,10 +21,6 @@ class ListSelection extends Component {
     return items;
   })();
 
-  handleClick = event => {
-    this.props.onClick(event.target.getAttribute('data-key'));
-  };
-
   render() {
     return (
       <div className="list-selection list-selection--body">
@@ -48,8 +44,7 @@ class ListSelection extends Component {
                       '-holder'
                     }
                     key={item.id}
-                    data-key={item.id}
-                    onClick={this.handleClick}>
+                    onClick={() => this.props.onClick(item)}>
                     <img
                       className={
                         'list-selection list-selection--item-icon ' +
@@ -57,12 +52,8 @@ class ListSelection extends Component {
                       }
                       src={item.image}
                       alt=""
-                      data-key={item.id}
-                      onClick={this.handleClick}
                     />
-                    <p
-                      data-key={item.id}
-                      className="list-selection list-selection--list-text list-selection--list-text--item-name">
+                    <p className="list-selection list-selection--list-text list-selection--list-text--item-name">
                       {item.name}
                     </p>
                   </div>
