@@ -150,7 +150,7 @@ class Trainer extends Component {
     const items = this.model ? this.model.items : {};
 
     return (
-      <div>
+      <div className="page">
         <div className="col" style={{textAlign: 'center'}}>
           <div id="status-text">{status}</div>
           <WebcamCapture imgSize={224} />

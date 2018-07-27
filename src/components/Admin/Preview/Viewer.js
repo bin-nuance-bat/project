@@ -4,6 +4,7 @@ import ItemSelector from '../ItemSelector';
 import ImagePreview from './ImagePreview';
 import getStore from '../../../utils/honestyStore.js';
 import {ControllerDataset} from './../Trainer/ControllerDataset';
+import './Viewer.css';
 
 export default class Viewer extends Component {
   state = {
@@ -62,7 +63,7 @@ export default class Viewer extends Component {
 
   render() {
     return (
-      <div>
+      <div className="page">
         <ItemSelector
           item={this.state.item}
           items={Object.values(this.state.items)}

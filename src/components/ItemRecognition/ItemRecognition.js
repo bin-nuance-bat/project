@@ -43,7 +43,7 @@ class ItemRecognition extends Component {
 
   render() {
     return (
-      <div>
+      <div className="page">
         <header>
           <Logo />
           <div className="item-recognition item-recognition--instructions">
