@@ -44,6 +44,7 @@ class ListSelection extends Component {
                       '-holder'
                     }
                     key={item.id}
+                    data-test={item.id}
                     onClick={() => this.props.onClick(item)}>
                     <img
                       className={
