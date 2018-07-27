@@ -158,7 +158,7 @@ class Trainer extends Component {
             <ItemSelector
               item={item}
               items={Object.values(items)}
-              setItem={i => this.setState({i})}
+              setItem={i => this.setState({item: i})}
               disabled={busy}
             />
           </div>

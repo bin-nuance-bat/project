@@ -98,7 +98,11 @@ class Model {
       await tf.nextFrame();
     }
     this.setBusyStatus('Submitting images to database. Please wait...');
-    this.controllerDataset.addExamples(examples);
+    this.controllerDataset.addExamples(examples, completion => {
+      this.setBusyStatus(
+        `Uploading images... (${(completion * 100).toFixed(0)}%)`
+      );
+    });
     this.setReadyStatus('Done');
   }
 

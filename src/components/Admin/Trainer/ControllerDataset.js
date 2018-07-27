@@ -88,15 +88,18 @@ export class ControllerDataset {
       });
   };
 
-  async addExamples(examples) {
+  async addExamples(examples, callback) {
     if (examples.length < 1) {
       return;
     }
 
     this.changeItemCount(examples[0].label, examples.length);
+    let count = 1;
 
     examples.forEach(image => {
       this.addImage(image, true);
+      callback(count / examples.length);
+      count++;
     });
   }
 
