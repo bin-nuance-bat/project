@@ -13,6 +13,8 @@ class EditSnack extends Component {
   };
 
   render() {
+    if (this.props.items.length === 0) this.props.history.push('/');
+
     return (
       <div className="edit-snack--page">
         <div className="edit-snack--header">
