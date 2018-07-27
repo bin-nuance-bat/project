@@ -9,7 +9,7 @@ class EditSnack extends Component {
   handleClick = item => {
     this.props.setActualItem(item.id);
     const nextPage = this.props.sendWithPhoto ? 'snackchat' : 'slackname';
-    this.props.history.push('/' + nextPage);
+    this.props.history.replace('/' + nextPage);
   };
 
   render() {
