@@ -115,7 +115,7 @@ export class ControllerDataset {
   }
 
   async getBatch(batchSize, randomness, since) {
-    const batch = [];
+    const batch = {};
     const limit = batchSize * randomness;
     const ref = this.db
       .collection('training_data')
@@ -134,14 +134,14 @@ export class ControllerDataset {
     };
 
     while (batchCounter < batchSize) {
-      ref
+      await ref
         .startAt(Math.random(), since)
         .limit(Math.min(limit, batchSize - batchCounter))
         .get()
         .then(addData);
     }
 
-    return batch;
+    return Object.values(batch);
   }
 
   async getTensors(setSize = 200, randomness = 0.1, since = 0) {

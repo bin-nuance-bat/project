@@ -10,12 +10,14 @@ const LoadingBar = props => {
           style={{width: props.completion * 100 + '%'}}
         />
       )}
+      <div id="status-text">{props.status}</div>
     </div>
   );
 };
 
 LoadingBar.propTypes = {
-  completion: PropTypes.number.isRequired
+  completion: PropTypes.number.isRequired,
+  status: PropTypes.string
 };
 
 export default LoadingBar;

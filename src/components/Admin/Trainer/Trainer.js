@@ -151,7 +151,8 @@ class Trainer extends Component {
       busy,
       status,
       item,
-      burstCount
+      burstCount,
+      completion
     } = this.state;
 
     const items = this.model ? this.model.items : {};
@@ -159,7 +160,6 @@ class Trainer extends Component {
     return (
       <div className="trainer">
         <div className="col" style={{textAlign: 'center'}}>
-          <div id="status-text">{status}</div>
           <WebcamCapture imgSize={224} />
           <div>
             <ItemSelector
@@ -237,7 +237,7 @@ class Trainer extends Component {
           </table>
         </div>
 
-        <LoadingBar completion={this.state.completion} />
+        <LoadingBar completion={completion} status={status} />
       </div>
     );
   }
