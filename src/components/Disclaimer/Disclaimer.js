@@ -12,7 +12,7 @@ const Disclaimer = props => {
       <div>
         <button
           className="button button-back"
-          onClick={() => props.history.push('/')}>
+          onClick={() => props.history.replace('/')}>
           <svg width="59" height="61" viewBox="0 0 59 61">
             <g fill="none" fillRule="evenodd">
               <polygon points="0 0 59 0 59 59 0 59" />
@@ -43,7 +43,7 @@ const Disclaimer = props => {
       </div>
       <button
         className="button button-accept"
-        onClick={() => props.history.push('/scanitem')}>
+        onClick={() => props.history.replace('/scanitem')}>
         Accept and continue
       </button>
       <TimeoutNotification />

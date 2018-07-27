@@ -53,7 +53,7 @@ class ItemRecognition extends Component {
       ) {
         await this.addTrainingImage(img.src, item.id);
         this.props.setPrediction(item.id, img.src);
-        this.props.history.push('/confirmitem');
+        this.props.history.replace('/confirmitem');
       } else {
         if (this.webcam.current)
           this.webcam.current.requestScreenshot().then(this.handleImg);

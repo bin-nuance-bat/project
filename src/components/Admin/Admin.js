@@ -123,12 +123,12 @@ class Admin extends Component {
             <div>
               <button
                 className="button button-admin"
-                onClick={() => this.props.history.push('/training')}>
+                onClick={() => this.props.history.replace('/training')}>
                 Model Training
               </button>
               <button
                 className="button button-admin"
-                onClick={() => this.props.history.push('/preview')}>
+                onClick={() => this.props.history.replace('/preview')}>
                 Training Data Review
               </button>
             </div>
