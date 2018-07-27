@@ -20,27 +20,18 @@ export const loadUsers = () => dispatch => {
     .catch(() => dispatch(setUsers([])));
 };
 
-// const getIDByUsername = (username, users) => {
-//   const currentUser = users.find(
-//     user => user.name === username || user.profile.real_name === username
-//   );
-//   return currentUser ? currentUser.id : null;
-// };
-
 export const sendSlackMessage = userid => async (dispatch, getState) => {
   const state = getState();
-  //const id = getIDByUsername(username, state.users);
-
   const actualItemID = state.actualItem;
   const itemName = state.storeList[actualItemID].name;
 
   try {
-    await fetch(`https://slack.com/api/chat.postMessage?token=${token}&
+    const result = await fetch(`https://slack.com/api/chat.postMessage?token=${token}&
 		channel=${userid}&
-		text=${`Click to purchase your ${itemName}: https://honesty.store/item/${actualItemID}`}`)
-      .then(result => result.json())
-      .then(json => console.log(json));
-    return true;
+		text=${`Click to purchase your ${itemName}: https://honesty.store/item/${actualItemID}`}`).then(
+      response => response.json()
+    );
+    return result.ok;
   } catch (error) {
     return false;
   }

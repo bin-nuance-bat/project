@@ -44,10 +44,7 @@ class ListSelection extends Component {
                       '-holder'
                     }
                     key={item.id}
-                    onClick={() => {
-                      console.log(item);
-                      this.props.onClick(item);
-                    }}>
+                    onClick={() => this.props.onClick(item)}>
                     <img
                       className={
                         'list-selection list-selection--item-icon ' +
