@@ -87,7 +87,7 @@ class ImageApproval extends Component {
             onChange={this.changeCategory}>
             {Object.values(this.storeList)
               .sort((a, b) => a.name.localeCompare(b.name))
-              .map((item, index) => <option key={index}>{item.name}</option>)}
+              .map(item => <option key={item.id}>{item.name}</option>)}
           </select>
         </div>
       </div>
