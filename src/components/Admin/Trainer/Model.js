@@ -91,8 +91,6 @@ class Model {
         activation: this.mobilenet.infer(tensor, 'conv_pw_13_relu')
       });
 
-      document.getElementById(`${label}-count`).innerHTML++;
-      this.items[label].mlCount++;
       this.setBusyStatus(
         `Processing images... (${((i / count) * 100).toFixed(0)}%)`
       );
@@ -102,6 +100,8 @@ class Model {
     this.setBusyStatus('Uploading images... (0%)');
     this.controllerDataset.addExamples(examples, completion => {
       this.setCompletion(completion);
+      document.getElementById(`${label}-count`).innerHTML++;
+      this.items[label].mlCount++;
       if (completion === 1) {
         this.setReadyStatus('Done');
         return;

@@ -1,8 +1,19 @@
 @import '../../utils/constants.scss';
 
+.trainer {
+  display: flex;
+  margin-bottom: 30px;
+}
+
 .col {
-  float: left;
   padding: 0 20px;
+  flex: 1;
+}
+
+.item-table {
+  max-height: calc(100vh - 30px);
+  padding-bottom: 30px;
+  overflow-y: scroll;
 }
 
 select {

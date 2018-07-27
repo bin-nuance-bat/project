@@ -157,7 +157,7 @@ class Trainer extends Component {
     const items = this.model ? this.model.items : {};
 
     return (
-      <div>
+      <div className="trainer">
         <div className="col" style={{textAlign: 'center'}}>
           <div id="status-text">{status}</div>
           <WebcamCapture imgSize={224} />
@@ -216,7 +216,7 @@ class Trainer extends Component {
           setState={(key, val) => this.setState({[key]: val})}
         />
 
-        <div className="col" style={{maxHeight: 800, overflowY: 'scroll'}}>
+        <div className="col item-table">
           <table>
             <thead>
               <tr>
