@@ -1,5 +1,4 @@
 import React from 'react';
-import Logo from '../Logo/Logo';
 import './Disclaimer.css';
 import PropTypes from 'prop-types';
 import TimeoutNotification from '../TimeoutNotification/TimeoutNotification';
@@ -24,7 +23,6 @@ const Disclaimer = props => {
             </g>
           </svg>
         </button>
-        <Logo />
       </div>
       <div>
         <img src={Camera} className="disclaimer--big-camera" alt="" />{' '}
