@@ -114,7 +114,7 @@ export class ControllerDataset {
     return idList;
   }
 
-  async getBatch(batchSize, randomness, since) {
+  async getBatch(batchSize, randomness, since, dataType) {
     const batch = {};
     const limit = batchSize * randomness;
     const ref = this.db
@@ -134,8 +134,12 @@ export class ControllerDataset {
     };
 
     while (batchCounter < batchSize) {
+      const location =
+        dataType === 'validation'
+          ? (Math.random() * 1) / 5
+          : (Math.random() * 4) / 5 + 0.2;
       await ref
-        .startAt(Math.random(), since)
+        .startAt(location, since)
         .limit(Math.min(limit, batchSize - batchCounter))
         .get()
         .then(addData);
