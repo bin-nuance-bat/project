@@ -8,7 +8,7 @@ import Camera from './assets/Camera.svg';
 
 const Disclaimer = props => {
   return (
-    <div>
+    <div className="page">
       <div>
         <button
           className="button button-back"

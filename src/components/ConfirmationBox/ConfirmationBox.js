@@ -19,7 +19,7 @@ class ConfirmationBox extends React.Component {
   render() {
     const {image} = this.props.storeList[this.props.id];
     return (
-      <div>
+      <div className="page">
         <Logo />
         <div className="text-confirmation">{`Is this a ${
           this.props.name

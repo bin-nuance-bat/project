@@ -1,3 +1,5 @@
+@import './utils/constants.scss';
+
 body {
   margin: 0;
   padding: 0;
@@ -14,4 +16,9 @@ body {
   padding: 0px;
   display: inline-block;
   border: none;
+}
+
+.page {
+  background-color: $dark-blue;
+  height: 100vh;
 }

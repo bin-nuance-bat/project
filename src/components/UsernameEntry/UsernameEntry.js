@@ -18,7 +18,7 @@ class UsernameEntry extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="username-entry--page">
         <div className="username-entry--header">
           <Logo />
           <div className="text-select-slack">

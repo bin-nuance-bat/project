@@ -25,7 +25,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="page">
         <Logo />
         <div className="homepage">
           <h2 className="text text-payinglater">Paying later?</h2>

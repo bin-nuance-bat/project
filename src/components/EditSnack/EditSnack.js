@@ -14,7 +14,7 @@ class EditSnack extends Component {
 
   render() {
     return (
-      <div>
+      <div className="edit-snack--page">
         <div className="edit-snack--header">
           <Logo />
           <div className="edit-snack edit-snack--text-info">
