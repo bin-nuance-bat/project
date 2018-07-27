@@ -110,7 +110,7 @@ export class ControllerDataset {
   }
 
   async getBatch(batchSize, randomness, since) {
-    const batch = {};
+    const batch = [];
     const limit = batchSize * randomness;
     const ref = this.db
       .collection('training_data')
@@ -122,31 +122,31 @@ export class ControllerDataset {
       snapshot.forEach(doc => {
         if (!batch[doc.id]) {
           batchCounter++;
-          batch[doc.id] = doc.data();
+          const {activation, label} = doc.data();
+          batch[doc.id] = {activation, label};
         }
       });
     };
 
     while (batchCounter < batchSize) {
-      await ref
+      ref
         .startAt(Math.random(), since)
-        .limit(limit)
+        .limit(Math.min(limit, batchSize - batchCounter))
         .get()
         .then(addData);
     }
 
-    return Object.values(batch).slice(0, batchSize);
+    return batch;
   }
 
   async getTensors(setSize = 200, randomness = 0.1, since = 0) {
     const batch = await this.getBatch(setSize, randomness, since);
     const classes = await this.getClasses();
+    firebase.apps[0].delete();
     let xs, ys;
 
     return tf.tidy(() => {
-      xs = tf.keep(
-        tf.tensor4d(batch[0].activation.split(','), [1, 7, 7, 1024])
-      );
+      xs = tf.keep(tf.tensor4d(batch[0].activation.split(','), [1, 7, 7, 256]));
       ys = tf.keep(
         tf.oneHot(
           tf.tensor1d([classes.indexOf(batch[0].label)]).toInt(),
@@ -154,7 +154,11 @@ export class ControllerDataset {
         )
       );
 
+      const initLen = batch.length;
       while (batch.length > 0) {
+        // TODO: remove this, needed while we debug training process
+        // eslint-disable-next-line no-console
+        console.log(`Converting tensor ${initLen - batch.length}/${initLen}`);
         const data = batch.pop();
         const y = tf.oneHot(
           tf.tensor1d([classes.indexOf(data.label)]).toInt(),
@@ -164,7 +168,7 @@ export class ControllerDataset {
         const oldX = xs;
         xs = tf.keep(
           oldX.concat(
-            tf.tensor4d(data.activation.split(','), [1, 7, 7, 1024]),
+            tf.tensor4d(data.activation.split(','), [1, 7, 7, 256]),
             0
           )
         );

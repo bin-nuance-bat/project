@@ -20,7 +20,7 @@ class Model {
   init() {
     this.setBusyStatus('Loading data...');
     return Promise.all([
-      MobileNet.load().then(res => {
+      MobileNet.load(1, 0.25).then(res => {
         this.mobilenet = res;
       }),
       this.loadStore()
@@ -173,6 +173,8 @@ class Model {
             },
             onTrainEnd: async () => {
               this.setReadyStatus('Finished Training. Try me out!');
+              xs.dispose();
+              ys.dispose();
               await tf.nextFrame();
             }
           }
