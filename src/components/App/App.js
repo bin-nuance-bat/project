@@ -14,6 +14,26 @@ import Admin from '../Admin/Admin';
 import ImageApproval from '../ImageApproval/ImageApproval';
 
 class App extends Component {
+  state = {isOnline: navigator.onLine};
+
+  componentDidMount() {
+    window.addEventListener('online', this.handleOnline);
+    window.addEventListener('offline', this.handleOffline);
+  }
+
+  handleOnline = () => {
+    this.setState({isOnline: true});
+  };
+
+  handleOffline = () => {
+    this.setState({isOnline: false});
+  };
+
+  componentWillUnmount() {
+    window.removeEventListener('online', this.handleOnline);
+    window.removeEventListener('offline', this.handleOffline);
+  }
+
   render() {
     return (
       <div>
@@ -33,6 +53,7 @@ class App extends Component {
             <Route exact path="/imageapproval" component={ImageApproval} />
           </Switch>
         </Router>
+        {!this.state.isOnline && 'NOT online'}
       </div>
     );
   }
