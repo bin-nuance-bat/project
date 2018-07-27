@@ -1,8 +1,10 @@
 body {
-	margin: 0;
-	padding: 0;
+  margin: 0;
+  padding: 0;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
 }
 
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
