@@ -16,6 +16,7 @@ import UsernameEntryContainer from './components/UsernameEntry/container';
 import EditSnack from './components/EditSnack/EditSnackContainer';
 import SuccessPage from './components/SuccessPage/container';
 import Admin from './components/Admin/Admin';
+import ImageApproval from './components/ImageApproval/ImageApproval';
 
 ReactDOM.render(
   <Provider store={store}>
@@ -32,6 +33,7 @@ ReactDOM.render(
         <Route exact path="/preview" component={Viewer} />
         <Route exact path="/admin" component={Admin} />
         <Route exact path="/training" component={Trainer} />
+        <Route exact path="/imageapproval" component={ImageApproval} />
       </Switch>
     </Router>
   </Provider>,

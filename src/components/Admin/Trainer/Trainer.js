@@ -4,7 +4,7 @@ import ItemSelector from '../ItemSelector';
 import Model from './Model';
 import '../Admin.css';
 import Settings from './Settings';
-import {uriToTensor} from './../AdminUtils';
+import {imageToTensor} from './../AdminUtils';
 
 class Trainer extends Component {
   state = {
@@ -37,9 +37,7 @@ class Trainer extends Component {
     this.model.init();
   }
 
-  capture = src => {
-    return uriToTensor(src);
-  };
+  capture = imageToTensor;
 
   captureFromFile = async () => {
     return new Promise(resolve => {
