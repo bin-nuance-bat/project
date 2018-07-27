@@ -93,17 +93,20 @@ class Model {
       document.getElementById(`${label}-count`).innerHTML++;
       this.items[label].mlCount++;
       this.setBusyStatus(
-        `Processing images of ${this.getName(label)} (${i}/${count})`
+        `Processing images... (${((i / count) * 100).toFixed(0)}%)`
       );
       await tf.nextFrame();
     }
-    this.setBusyStatus('Submitting images to database. Please wait...');
+    this.setBusyStatus('Uploading images... (0%)');
     this.controllerDataset.addExamples(examples, completion => {
+      if (completion === 1) {
+        this.setReadyStatus('Done');
+        return;
+      }
       this.setBusyStatus(
         `Uploading images... (${(completion * 100).toFixed(0)}%)`
       );
     });
-    this.setReadyStatus('Done');
   }
 
   async train(

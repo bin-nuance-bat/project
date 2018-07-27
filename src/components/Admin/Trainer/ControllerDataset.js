@@ -69,7 +69,7 @@ export class ControllerDataset {
     await this.changeItemCount(dataset.item, 1);
   };
 
-  addImage = (image, trusted) => {
+  addImage = (image, trusted, callback) => {
     this.db
       .collection('training_data')
       .add({
@@ -81,6 +81,7 @@ export class ControllerDataset {
         trusted
       })
       .then(() => {
+        callback();
         image.activation.dispose();
       })
       .catch(() => {
@@ -97,9 +98,10 @@ export class ControllerDataset {
     let count = 1;
 
     examples.forEach(image => {
-      this.addImage(image, true);
-      callback(count / examples.length);
-      count++;
+      this.addImage(image, true, () => {
+        callback(count / examples.length);
+        count++;
+      });
     });
   }
 

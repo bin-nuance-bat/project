@@ -4,6 +4,7 @@ import ItemSelector from '../ItemSelector';
 import Model from './Model';
 import '../Admin.css';
 import Settings from './Settings';
+import LoadingBar from './LoadingBar';
 import {uriToTensor} from './../AdminUtils';
 
 class Trainer extends Component {
@@ -229,6 +230,8 @@ class Trainer extends Component {
             </tbody>
           </table>
         </div>
+
+        <LoadingBar completion={this.state.completion} />
       </div>
     );
   }
