@@ -67,9 +67,10 @@ $username-icon-size: 48px;
 }
 
 .list-selection--list {
-  width: 750px;
+  width: 725px;
   overflow-y: scroll;
   height: 792px;
+  -webkit-overflow-scrolling: touch;
 }
 
 .list-selection--scroll-select-element {

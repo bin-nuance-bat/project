@@ -1,3 +1,5 @@
+@import './utils/constants.scss';
+
 body {
   margin: 0;
   padding: 0;
@@ -7,4 +9,18 @@ body {
 
 * {
   box-sizing: border-box;
+}
+
+.button {
+  font-size: 30px;
+  border-radius: 12px;
+  height: 64px;
+  padding: 0px;
+  display: inline-block;
+  border: none;
+}
+
+.page {
+  background-color: $dark-blue;
+  height: 100vh;
 }

@@ -7,11 +7,11 @@ import PropTypes from 'prop-types';
 
 const SuccessPage = props => {
   return (
-    <div onClick={() => props.history.push('/')}>
+    <div className="page" onClick={() => props.history.push('/')}>
       <Logo />
       <div className="text text-remindersent">Reminder sent!</div>
       <div className="success-hand">
-        <Hand snack={props.storeList[props.prediction.id].image} />
+        <Hand snack={props.storeList[props.actualItem].image} />
       </div>
       <TimeoutNotification />
     </div>
@@ -20,7 +20,7 @@ const SuccessPage = props => {
 
 SuccessPage.propTypes = {
   history: PropTypes.object.isRequired,
-  prediction: PropTypes.object.isRequired,
+  actualItem: PropTypes.string.isRequired,
   storeList: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 

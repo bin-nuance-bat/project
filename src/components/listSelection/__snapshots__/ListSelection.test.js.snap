@@ -102,19 +102,16 @@ ShallowWrapper {
                     />
                     <div
                               className="list-selection list-selection--list-item undefined-holder"
-                              data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                              data-test="fbe05463-a538-47aa-b4f1-654faa0a5b82"
                               onClick={[Function]}
                     >
                               <img
                                         alt=""
                                         className="list-selection list-selection--item-icon undefined"
-                                        data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
-                                        onClick={[Function]}
                                         src="misc-bar.svg"
                               />
                               <p
                                         className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                                        data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
                               >
                                         Granulated Sugar
                               </p>
@@ -135,19 +132,16 @@ ShallowWrapper {
                     />
                     <div
                               className="list-selection list-selection--list-item undefined-holder"
-                              data-key="e615de4e-ce10-451b-80ad-9717662a904a"
+                              data-test="e615de4e-ce10-451b-80ad-9717662a904a"
                               onClick={[Function]}
                     >
                               <img
                                         alt=""
                                         className="list-selection list-selection--item-icon undefined"
-                                        data-key="e615de4e-ce10-451b-80ad-9717662a904a"
-                                        onClick={[Function]}
                                         src="pepsi-max-can.svg"
                               />
                               <p
                                         className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                                        data-key="e615de4e-ce10-451b-80ad-9717662a904a"
                               >
                                         Pepsi Max
                               </p>
@@ -168,19 +162,16 @@ ShallowWrapper {
                     />
                     <div
                               className="list-selection list-selection--list-item undefined-holder"
-                              data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
+                              data-test="f589039e-c93b-45c1-99fc-1ee457ecb570"
                               onClick={[Function]}
                     >
                               <img
                                         alt=""
                                         className="list-selection list-selection--item-icon undefined"
-                                        data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
-                                        onClick={[Function]}
                                         src="misc-crisps.svg"
                               />
                               <p
                                         className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                                        data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
                               >
                                         Wotsits
                               </p>
@@ -235,19 +226,16 @@ ShallowWrapper {
               />
               <div
                             className="list-selection list-selection--list-item undefined-holder"
-                            data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                            data-test="fbe05463-a538-47aa-b4f1-654faa0a5b82"
                             onClick={[Function]}
               >
                             <img
                                           alt=""
                                           className="list-selection list-selection--item-icon undefined"
-                                          data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
-                                          onClick={[Function]}
                                           src="misc-bar.svg"
                             />
                             <p
                                           className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                                          data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
                             >
                                           Granulated Sugar
                             </p>
@@ -268,19 +256,16 @@ ShallowWrapper {
               />
               <div
                             className="list-selection list-selection--list-item undefined-holder"
-                            data-key="e615de4e-ce10-451b-80ad-9717662a904a"
+                            data-test="e615de4e-ce10-451b-80ad-9717662a904a"
                             onClick={[Function]}
               >
                             <img
                                           alt=""
                                           className="list-selection list-selection--item-icon undefined"
-                                          data-key="e615de4e-ce10-451b-80ad-9717662a904a"
-                                          onClick={[Function]}
                                           src="pepsi-max-can.svg"
                             />
                             <p
                                           className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                                          data-key="e615de4e-ce10-451b-80ad-9717662a904a"
                             >
                                           Pepsi Max
                             </p>
@@ -301,19 +286,16 @@ ShallowWrapper {
               />
               <div
                             className="list-selection list-selection--list-item undefined-holder"
-                            data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
+                            data-test="f589039e-c93b-45c1-99fc-1ee457ecb570"
                             onClick={[Function]}
               >
                             <img
                                           alt=""
                                           className="list-selection list-selection--item-icon undefined"
-                                          data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
-                                          onClick={[Function]}
                                           src="misc-crisps.svg"
                             />
                             <p
                                           className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                                          data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
                             >
                                           Wotsits
                             </p>
@@ -343,19 +325,16 @@ ShallowWrapper {
                 Array [
                   <div
                     className="list-selection list-selection--list-item undefined-holder"
-                    data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                    data-test="fbe05463-a538-47aa-b4f1-654faa0a5b82"
                     onClick={[Function]}
 >
                     <img
                                         alt=""
                                         className="list-selection list-selection--item-icon undefined"
-                                        data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
-                                        onClick={[Function]}
                                         src="misc-bar.svg"
                     />
                     <p
                                         className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                                        data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
                     >
                                         Granulated Sugar
                     </p>
@@ -400,19 +379,16 @@ ShallowWrapper {
                     <img
                       alt=""
                       className="list-selection list-selection--item-icon undefined"
-                      data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
-                      onClick={[Function]}
                       src="misc-bar.svg"
 />,
                     <p
                       className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                      data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
 >
                       Granulated Sugar
 </p>,
                   ],
                   "className": "list-selection list-selection--list-item undefined-holder",
-                  "data-key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
+                  "data-test": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
                   "onClick": [Function],
                 },
                 "ref": null,
@@ -424,8 +400,6 @@ ShallowWrapper {
                     "props": Object {
                       "alt": "",
                       "className": "list-selection list-selection--item-icon undefined",
-                      "data-key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
-                      "onClick": [Function],
                       "src": "misc-bar.svg",
                     },
                     "ref": null,
@@ -439,7 +413,6 @@ ShallowWrapper {
                     "props": Object {
                       "children": "Granulated Sugar",
                       "className": "list-selection list-selection--list-text list-selection--list-text--item-name",
-                      "data-key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
                     },
                     "ref": null,
                     "rendered": "Granulated Sugar",
@@ -470,19 +443,16 @@ ShallowWrapper {
                 Array [
                   <div
                     className="list-selection list-selection--list-item undefined-holder"
-                    data-key="e615de4e-ce10-451b-80ad-9717662a904a"
+                    data-test="e615de4e-ce10-451b-80ad-9717662a904a"
                     onClick={[Function]}
 >
                     <img
                                         alt=""
                                         className="list-selection list-selection--item-icon undefined"
-                                        data-key="e615de4e-ce10-451b-80ad-9717662a904a"
-                                        onClick={[Function]}
                                         src="pepsi-max-can.svg"
                     />
                     <p
                                         className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                                        data-key="e615de4e-ce10-451b-80ad-9717662a904a"
                     >
                                         Pepsi Max
                     </p>
@@ -527,19 +497,16 @@ ShallowWrapper {
                     <img
                       alt=""
                       className="list-selection list-selection--item-icon undefined"
-                      data-key="e615de4e-ce10-451b-80ad-9717662a904a"
-                      onClick={[Function]}
                       src="pepsi-max-can.svg"
 />,
                     <p
                       className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                      data-key="e615de4e-ce10-451b-80ad-9717662a904a"
 >
                       Pepsi Max
 </p>,
                   ],
                   "className": "list-selection list-selection--list-item undefined-holder",
-                  "data-key": "e615de4e-ce10-451b-80ad-9717662a904a",
+                  "data-test": "e615de4e-ce10-451b-80ad-9717662a904a",
                   "onClick": [Function],
                 },
                 "ref": null,
@@ -551,8 +518,6 @@ ShallowWrapper {
                     "props": Object {
                       "alt": "",
                       "className": "list-selection list-selection--item-icon undefined",
-                      "data-key": "e615de4e-ce10-451b-80ad-9717662a904a",
-                      "onClick": [Function],
                       "src": "pepsi-max-can.svg",
                     },
                     "ref": null,
@@ -566,7 +531,6 @@ ShallowWrapper {
                     "props": Object {
                       "children": "Pepsi Max",
                       "className": "list-selection list-selection--list-text list-selection--list-text--item-name",
-                      "data-key": "e615de4e-ce10-451b-80ad-9717662a904a",
                     },
                     "ref": null,
                     "rendered": "Pepsi Max",
@@ -597,19 +561,16 @@ ShallowWrapper {
                 Array [
                   <div
                     className="list-selection list-selection--list-item undefined-holder"
-                    data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
+                    data-test="f589039e-c93b-45c1-99fc-1ee457ecb570"
                     onClick={[Function]}
 >
                     <img
                                         alt=""
                                         className="list-selection list-selection--item-icon undefined"
-                                        data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
-                                        onClick={[Function]}
                                         src="misc-crisps.svg"
                     />
                     <p
                                         className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                                        data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
                     >
                                         Wotsits
                     </p>
@@ -654,19 +615,16 @@ ShallowWrapper {
                     <img
                       alt=""
                       className="list-selection list-selection--item-icon undefined"
-                      data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
-                      onClick={[Function]}
                       src="misc-crisps.svg"
 />,
                     <p
                       className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                      data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
 >
                       Wotsits
 </p>,
                   ],
                   "className": "list-selection list-selection--list-item undefined-holder",
-                  "data-key": "f589039e-c93b-45c1-99fc-1ee457ecb570",
+                  "data-test": "f589039e-c93b-45c1-99fc-1ee457ecb570",
                   "onClick": [Function],
                 },
                 "ref": null,
@@ -678,8 +636,6 @@ ShallowWrapper {
                     "props": Object {
                       "alt": "",
                       "className": "list-selection list-selection--item-icon undefined",
-                      "data-key": "f589039e-c93b-45c1-99fc-1ee457ecb570",
-                      "onClick": [Function],
                       "src": "misc-crisps.svg",
                     },
                     "ref": null,
@@ -693,7 +649,6 @@ ShallowWrapper {
                     "props": Object {
                       "children": "Wotsits",
                       "className": "list-selection list-selection--list-text list-selection--list-text--item-name",
-                      "data-key": "f589039e-c93b-45c1-99fc-1ee457ecb570",
                     },
                     "ref": null,
                     "rendered": "Wotsits",
@@ -807,19 +762,16 @@ ShallowWrapper {
                         />
                         <div
                                     className="list-selection list-selection--list-item undefined-holder"
-                                    data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                                    data-test="fbe05463-a538-47aa-b4f1-654faa0a5b82"
                                     onClick={[Function]}
                         >
                                     <img
                                                 alt=""
                                                 className="list-selection list-selection--item-icon undefined"
-                                                data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
-                                                onClick={[Function]}
                                                 src="misc-bar.svg"
                                     />
                                     <p
                                                 className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                                                data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
                                     >
                                                 Granulated Sugar
                                     </p>
@@ -840,19 +792,16 @@ ShallowWrapper {
                         />
                         <div
                                     className="list-selection list-selection--list-item undefined-holder"
-                                    data-key="e615de4e-ce10-451b-80ad-9717662a904a"
+                                    data-test="e615de4e-ce10-451b-80ad-9717662a904a"
                                     onClick={[Function]}
                         >
                                     <img
                                                 alt=""
                                                 className="list-selection list-selection--item-icon undefined"
-                                                data-key="e615de4e-ce10-451b-80ad-9717662a904a"
-                                                onClick={[Function]}
                                                 src="pepsi-max-can.svg"
                                     />
                                     <p
                                                 className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                                                data-key="e615de4e-ce10-451b-80ad-9717662a904a"
                                     >
                                                 Pepsi Max
                                     </p>
@@ -873,19 +822,16 @@ ShallowWrapper {
                         />
                         <div
                                     className="list-selection list-selection--list-item undefined-holder"
-                                    data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
+                                    data-test="f589039e-c93b-45c1-99fc-1ee457ecb570"
                                     onClick={[Function]}
                         >
                                     <img
                                                 alt=""
                                                 className="list-selection list-selection--item-icon undefined"
-                                                data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
-                                                onClick={[Function]}
                                                 src="misc-crisps.svg"
                                     />
                                     <p
                                                 className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                                                data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
                                     >
                                                 Wotsits
                                     </p>
@@ -940,19 +886,16 @@ ShallowWrapper {
                 />
                 <div
                                 className="list-selection list-selection--list-item undefined-holder"
-                                data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                                data-test="fbe05463-a538-47aa-b4f1-654faa0a5b82"
                                 onClick={[Function]}
                 >
                                 <img
                                                 alt=""
                                                 className="list-selection list-selection--item-icon undefined"
-                                                data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
-                                                onClick={[Function]}
                                                 src="misc-bar.svg"
                                 />
                                 <p
                                                 className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                                                data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
                                 >
                                                 Granulated Sugar
                                 </p>
@@ -973,19 +916,16 @@ ShallowWrapper {
                 />
                 <div
                                 className="list-selection list-selection--list-item undefined-holder"
-                                data-key="e615de4e-ce10-451b-80ad-9717662a904a"
+                                data-test="e615de4e-ce10-451b-80ad-9717662a904a"
                                 onClick={[Function]}
                 >
                                 <img
                                                 alt=""
                                                 className="list-selection list-selection--item-icon undefined"
-                                                data-key="e615de4e-ce10-451b-80ad-9717662a904a"
-                                                onClick={[Function]}
                                                 src="pepsi-max-can.svg"
                                 />
                                 <p
                                                 className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                                                data-key="e615de4e-ce10-451b-80ad-9717662a904a"
                                 >
                                                 Pepsi Max
                                 </p>
@@ -1006,19 +946,16 @@ ShallowWrapper {
                 />
                 <div
                                 className="list-selection list-selection--list-item undefined-holder"
-                                data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
+                                data-test="f589039e-c93b-45c1-99fc-1ee457ecb570"
                                 onClick={[Function]}
                 >
                                 <img
                                                 alt=""
                                                 className="list-selection list-selection--item-icon undefined"
-                                                data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
-                                                onClick={[Function]}
                                                 src="misc-crisps.svg"
                                 />
                                 <p
                                                 className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                                                data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
                                 >
                                                 Wotsits
                                 </p>
@@ -1048,19 +985,16 @@ ShallowWrapper {
                   Array [
                     <div
                       className="list-selection list-selection--list-item undefined-holder"
-                      data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
+                      data-test="fbe05463-a538-47aa-b4f1-654faa0a5b82"
                       onClick={[Function]}
 >
                       <img
                                             alt=""
                                             className="list-selection list-selection--item-icon undefined"
-                                            data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
-                                            onClick={[Function]}
                                             src="misc-bar.svg"
                       />
                       <p
                                             className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                                            data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
                       >
                                             Granulated Sugar
                       </p>
@@ -1105,19 +1039,16 @@ ShallowWrapper {
                       <img
                         alt=""
                         className="list-selection list-selection--item-icon undefined"
-                        data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
-                        onClick={[Function]}
                         src="misc-bar.svg"
 />,
                       <p
                         className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                        data-key="fbe05463-a538-47aa-b4f1-654faa0a5b82"
 >
                         Granulated Sugar
 </p>,
                     ],
                     "className": "list-selection list-selection--list-item undefined-holder",
-                    "data-key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
+                    "data-test": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
                     "onClick": [Function],
                   },
                   "ref": null,
@@ -1129,8 +1060,6 @@ ShallowWrapper {
                       "props": Object {
                         "alt": "",
                         "className": "list-selection list-selection--item-icon undefined",
-                        "data-key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
-                        "onClick": [Function],
                         "src": "misc-bar.svg",
                       },
                       "ref": null,
@@ -1144,7 +1073,6 @@ ShallowWrapper {
                       "props": Object {
                         "children": "Granulated Sugar",
                         "className": "list-selection list-selection--list-text list-selection--list-text--item-name",
-                        "data-key": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
                       },
                       "ref": null,
                       "rendered": "Granulated Sugar",
@@ -1175,19 +1103,16 @@ ShallowWrapper {
                   Array [
                     <div
                       className="list-selection list-selection--list-item undefined-holder"
-                      data-key="e615de4e-ce10-451b-80ad-9717662a904a"
+                      data-test="e615de4e-ce10-451b-80ad-9717662a904a"
                       onClick={[Function]}
 >
                       <img
                                             alt=""
                                             className="list-selection list-selection--item-icon undefined"
-                                            data-key="e615de4e-ce10-451b-80ad-9717662a904a"
-                                            onClick={[Function]}
                                             src="pepsi-max-can.svg"
                       />
                       <p
                                             className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                                            data-key="e615de4e-ce10-451b-80ad-9717662a904a"
                       >
                                             Pepsi Max
                       </p>
@@ -1232,19 +1157,16 @@ ShallowWrapper {
                       <img
                         alt=""
                         className="list-selection list-selection--item-icon undefined"
-                        data-key="e615de4e-ce10-451b-80ad-9717662a904a"
-                        onClick={[Function]}
                         src="pepsi-max-can.svg"
 />,
                       <p
                         className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                        data-key="e615de4e-ce10-451b-80ad-9717662a904a"
 >
                         Pepsi Max
 </p>,
                     ],
                     "className": "list-selection list-selection--list-item undefined-holder",
-                    "data-key": "e615de4e-ce10-451b-80ad-9717662a904a",
+                    "data-test": "e615de4e-ce10-451b-80ad-9717662a904a",
                     "onClick": [Function],
                   },
                   "ref": null,
@@ -1256,8 +1178,6 @@ ShallowWrapper {
                       "props": Object {
                         "alt": "",
                         "className": "list-selection list-selection--item-icon undefined",
-                        "data-key": "e615de4e-ce10-451b-80ad-9717662a904a",
-                        "onClick": [Function],
                         "src": "pepsi-max-can.svg",
                       },
                       "ref": null,
@@ -1271,7 +1191,6 @@ ShallowWrapper {
                       "props": Object {
                         "children": "Pepsi Max",
                         "className": "list-selection list-selection--list-text list-selection--list-text--item-name",
-                        "data-key": "e615de4e-ce10-451b-80ad-9717662a904a",
                       },
                       "ref": null,
                       "rendered": "Pepsi Max",
@@ -1302,19 +1221,16 @@ ShallowWrapper {
                   Array [
                     <div
                       className="list-selection list-selection--list-item undefined-holder"
-                      data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
+                      data-test="f589039e-c93b-45c1-99fc-1ee457ecb570"
                       onClick={[Function]}
 >
                       <img
                                             alt=""
                                             className="list-selection list-selection--item-icon undefined"
-                                            data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
-                                            onClick={[Function]}
                                             src="misc-crisps.svg"
                       />
                       <p
                                             className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                                            data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
                       >
                                             Wotsits
                       </p>
@@ -1359,19 +1275,16 @@ ShallowWrapper {
                       <img
                         alt=""
                         className="list-selection list-selection--item-icon undefined"
-                        data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
-                        onClick={[Function]}
                         src="misc-crisps.svg"
 />,
                       <p
                         className="list-selection list-selection--list-text list-selection--list-text--item-name"
-                        data-key="f589039e-c93b-45c1-99fc-1ee457ecb570"
 >
                         Wotsits
 </p>,
                     ],
                     "className": "list-selection list-selection--list-item undefined-holder",
-                    "data-key": "f589039e-c93b-45c1-99fc-1ee457ecb570",
+                    "data-test": "f589039e-c93b-45c1-99fc-1ee457ecb570",
                     "onClick": [Function],
                   },
                   "ref": null,
@@ -1383,8 +1296,6 @@ ShallowWrapper {
                       "props": Object {
                         "alt": "",
                         "className": "list-selection list-selection--item-icon undefined",
-                        "data-key": "f589039e-c93b-45c1-99fc-1ee457ecb570",
-                        "onClick": [Function],
                         "src": "misc-crisps.svg",
                       },
                       "ref": null,
@@ -1398,7 +1309,6 @@ ShallowWrapper {
                       "props": Object {
                         "children": "Wotsits",
                         "className": "list-selection list-selection--list-text list-selection--list-text--item-name",
-                        "data-key": "f589039e-c93b-45c1-99fc-1ee457ecb570",
                       },
                       "ref": null,
                       "rendered": "Wotsits",

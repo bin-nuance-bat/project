@@ -5,8 +5,6 @@ import './ConfirmationBox.css';
 import Hand from '../Hand/Hand';
 
 class ConfirmationBox extends React.Component {
-  insertTrainingImage = () => {};
-
   handleYes = () => {
     const {setActualItem, id, sendWithPhoto, history} = this.props;
     setActualItem(id);
@@ -19,9 +17,9 @@ class ConfirmationBox extends React.Component {
   };
 
   render() {
-    const {image} = this.props.storeList[this.props.id]
+    const {image} = this.props.storeList[this.props.id];
     return (
-      <div>
+      <div className="page">
         <Logo />
         <div className="text-confirmation">{`Is this a ${
           this.props.name
@@ -32,13 +30,13 @@ class ConfirmationBox extends React.Component {
         <div>
           <button
             className="button button-editsnack"
-            testattribute="NO"
+            data-test="NO"
             onClick={this.handleNo}>
             Edit Snack
           </button>
           <button
             className="button button-yes"
-            testattribute="YES"
+            data-test="YES"
             onClick={this.handleYes}>
             Yes
           </button>

@@ -162,7 +162,7 @@ class SnackChat extends Component {
 
   render() {
     return (
-      <div>
+      <div className="page">
         <header>
           <Logo />
           Smile, you are on snackchat:
