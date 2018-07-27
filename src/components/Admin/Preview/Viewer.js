@@ -4,7 +4,6 @@ import ItemSelector from '../ItemSelector';
 import ImagePreview from './ImagePreview';
 import getStore from '../../../utils/honestyStore.js';
 import {ControllerDataset} from './../Trainer/ControllerDataset';
-import './Viewer.css';
 
 export default class Viewer extends Component {
   state = {
