@@ -23,16 +23,10 @@ const PAGES_TO_SHOW_TIMEOUT = [
 ];
 
 class App extends Component {
-  state = {isOnline: navigator.onLine, showTimer: false};
+  state = {showTimer: false};
 
   componentDidMount() {
-    window.addEventListener('online', this.handleOnline);
-    window.addEventListener('offline', this.handleOffline);
     document.body.addEventListener('touchstart', this.resetTimeoutTimer);
-    // document
-    //   .getElementById('timeoutNotificationBar')
-    //   .addEventListener('touchstart', this.notificationTouch, {passive: false});
-    // this.resetTimeoutTimer();
   }
 
   resetTimeoutTimer = () => {
@@ -66,11 +60,6 @@ class App extends Component {
     clearTimeout(this.timer);
     clearInterval(this.interval);
     document.body.removeEventListener('touchstart', this.resetTimeoutTimer);
-    window.removeEventListener('online', this.handleOnline);
-    window.removeEventListener('offline', this.handleOffline);
-    // document
-    //   .getElementById('timeoutNotificationBar')
-    //   .removeEventListener('touchstart', this.notificationTouch);
   }
 
   render() {
@@ -96,9 +85,9 @@ class App extends Component {
           <NotificationBar
             mainText="Are you still there?"
             autoActionWord="Timeout"
-            userTouchActionText="dismiss"
+            handleTouch="dismiss"
             userTouchAction={this.resetTimeoutTimer}
-            timeoutAction={this.timeout}
+            handleTimeout={this.timeout}
           />
         )}
       </div>

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {Redirect} from 'react-router';
 import './NotificationBar.css';
+import PropTypes from 'prop-types';
 
 class NotificationBar extends Component {
   state = {countdown: 9};
@@ -15,14 +15,14 @@ class NotificationBar extends Component {
   tick = () => {
     this.setState(prevState => {
       if (prevState.countdown === 1) {
-        this.props.timeoutAction();
+        this.props.handleTimeout();
       }
       return {countdown: prevState.countdown - 1};
     });
   };
 
   notificationTouch = e => {
-    this.props.userTouchAction();
+    this.props.handleTouch();
     e.preventDefault();
   };
 
@@ -49,5 +49,13 @@ class NotificationBar extends Component {
     );
   }
 }
+
+NotificationBar.propTypes = {
+  userTouchActionText: PropTypes.string.isRequired,
+  autoActionWord: PropTypes.string.isRequired,
+  mainText: PropTypes.string.isRequired,
+  handleTouch: PropTypes.func.isRequired,
+  handleTimeout: PropTypes.finc.isRequired
+};
 
 export default NotificationBar;

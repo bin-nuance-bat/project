@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import ListSelection from '../listSelection/ListSelection';
 import Logo from '../Logo/Logo';
 import './EditSnack.css';
-import TimeoutNotification from '../TimeoutNotification/TimeoutNotification';
 
 class EditSnack extends Component {
   handleClick = item => {
