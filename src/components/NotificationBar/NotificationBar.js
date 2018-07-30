@@ -3,9 +3,10 @@ import './NotificationBar.css';
 import PropTypes from 'prop-types';
 
 class NotificationBar extends Component {
-  state = {countdown: 9};
+  state = {countdown: 9, show: false};
 
   componentDidMount() {
+    setTimeout(() => this.setState({show: true}), 50);
     this.timer = setInterval(this.tick, 1000);
     document
       .getElementById('notificationBar')
@@ -35,7 +36,12 @@ class NotificationBar extends Component {
 
   render() {
     return (
-      <div className="notification-bar--notification" id="notificationBar">
+      <div
+        className={
+          'notification-bar--notification--' +
+          (this.state.show ? 'show' : 'hide')
+        }
+        id="notificationBar">
         <div className="notification-bar--info">
           <div className="notification-bar--alert">{this.props.mainText}</div>
           <div className="notification-bar--timer">
@@ -55,7 +61,7 @@ NotificationBar.propTypes = {
   autoActionWord: PropTypes.string.isRequired,
   mainText: PropTypes.string.isRequired,
   handleTouch: PropTypes.func.isRequired,
-  handleTimeout: PropTypes.finc.isRequired
+  handleTimeout: PropTypes.func.isRequired
 };
 
 export default NotificationBar;

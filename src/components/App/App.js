@@ -14,7 +14,7 @@ import Admin from '../Admin/Admin';
 import ImageApproval from '../ImageApproval/ImageApproval';
 import NotificationBar from '../NotificationBar/NotificationBar';
 
-const WAIT_BEFORE_DISPLAY = 5;
+const WAIT_BEFORE_DISPLAY = 45;
 const PAGES_TO_SHOW_TIMEOUT = [
   '/disclaimer',
   '/confirmitem',
@@ -85,8 +85,8 @@ class App extends Component {
           <NotificationBar
             mainText="Are you still there?"
             autoActionWord="Timeout"
-            handleTouch="dismiss"
-            userTouchAction={this.resetTimeoutTimer}
+            userTouchActionText="dismiss"
+            handleTouch={this.resetTimeoutTimer}
             handleTimeout={this.timeout}
           />
         )}
