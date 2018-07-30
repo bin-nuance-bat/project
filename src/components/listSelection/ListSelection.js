@@ -13,7 +13,9 @@ class ListSelection extends Component {
 
   componentDidMount() {
     const scrollSelect = document.getElementById('scroll-select');
+    const header = document.getElementById('header');
     scrollSelect.addEventListener('touchmove', this.preventDefault, false);
+    header.addEventListener('touchmove', this.preventDefault, false);
     this.scrollSelectTop = document
       .getElementById('scroll-select')
       .getBoundingClientRect().top;
@@ -44,7 +46,9 @@ class ListSelection extends Component {
 
   componentWillUnmount() {
     const scrollSelect = document.getElementById('scroll-select');
+    const header = document.getElementById('header');
     scrollSelect.removeEventListener('touchmove', this.preventDefault, false);
+    header.removeEventListener('touchmove', this.preventDefault, false);
   }
 
   render() {
