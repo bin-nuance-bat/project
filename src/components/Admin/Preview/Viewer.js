@@ -62,7 +62,7 @@ export default class Viewer extends Component {
 
   render() {
     return (
-      <div>
+      <div className="page">
         <ItemSelector
           item={this.state.item}
           items={Object.values(this.state.items)}

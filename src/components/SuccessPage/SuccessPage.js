@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 
 const SuccessPage = props => {
   return (
-    <div onClick={() => props.history.push('/')}>
+    <div className="page" onClick={() => props.history.replace('/')}>
       <Logo />
       <div className="text text-remindersent">Reminder sent!</div>
       <div className="success-hand">

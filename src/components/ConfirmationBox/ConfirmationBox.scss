@@ -1,47 +1,47 @@
 @import '../../utils/constants.scss';
 
 .text {
-	&-confirmation {
-		font-size: 45px;
-		margin-top: 140px;
-	}
+  &-confirmation {
+    font-size: 45px;
+    margin-top: 140px;
+  }
 }
 
 .placeholder {
-	margin-top: 96px;
-	position: relative;
-	display: block;
-	text-align: center;
-	width: 66.7%;
+  margin-top: 96px;
+  position: relative;
+  display: block;
+  text-align: center;
+  width: 66.7%;
 
-	&-bg {
-		position: absolute;
-	}
+  &-bg {
+    position: absolute;
+  }
 
-	&-fg {
-		position: absolute;
-	}
+  &-fg {
+    position: absolute;
+  }
 }
 
 .button {
-	&-editsnack {
-		width: 248px;
-		margin-right: 20px;
-		margin-top: 400px;
-		background-color: $white;
-		color: $dark-blue;
-		font-family: 'FaricyNew-Bold';
-	}
+  &-editsnack {
+    width: 248px;
+    margin-right: 20px;
+    margin-top: 400px;
+    background-color: $white;
+    color: $dark-blue;
+    font-family: 'FaricyNew-Bold';
+  }
 
-	&-yes {
-		color: $white;
-		width: 248px;
-		background-color: $light-blue;
-		font-family: 'FaricyNew-Bold';
-	}
+  &-yes {
+    color: $white;
+    width: 248px;
+    background-color: $light-blue;
+    font-family: 'FaricyNew-Bold';
+  }
 }
 
 .confirmation-hand {
-	margin-top: 96px;
-	padding-right: 220px;
+  margin-top: 96px;
+  padding-right: 220px;
 }

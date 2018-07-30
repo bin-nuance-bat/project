@@ -15,17 +15,17 @@ class Home extends React.Component {
 
   handleSnackChatClick = () => {
     this.props.setSendWithPhoto(true);
-    this.props.history.push('/disclaimer');
+    this.props.history.replace('/disclaimer');
   };
 
   handleReminderNoPhotoClick = () => {
     this.props.setSendWithPhoto(false);
-    this.props.history.push('/disclaimer');
+    this.props.history.replace('/disclaimer');
   };
 
   render() {
     return (
-      <div>
+      <div className="page">
         <Logo />
         <div className="homepage">
           <h2 className="text text-payinglater">Paying later?</h2>

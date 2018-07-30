@@ -110,8 +110,8 @@ class Admin extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Admin Panel</h1>
+      <div className="page">
+        <h1 className="admin-title">Admin Panel</h1>
         <p>{this.state.status}</p>
         {!this.state.loggedIn && (
           <button className="button button-admin" onClick={this.login}>
@@ -123,12 +123,12 @@ class Admin extends Component {
             <div>
               <button
                 className="button button-admin"
-                onClick={() => this.props.history.push('/training')}>
+                onClick={() => this.props.history.replace('/training')}>
                 Model Training
               </button>
               <button
                 className="button button-admin"
-                onClick={() => this.props.history.push('/preview')}>
+                onClick={() => this.props.history.replace('/preview')}>
                 Training Data Review
               </button>
             </div>

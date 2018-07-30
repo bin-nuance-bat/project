@@ -8,7 +8,7 @@ import TimeoutNotification from '../TimeoutNotification/TimeoutNotification';
 class UsernameEntry extends React.Component {
   sendReminder = async user => {
     const result = await this.props.sendSlackMessage(user.id);
-    if (result) this.props.history.push('/success');
+    if (result) this.props.history.replace('/success');
     // TODO handle when result is false (i.e. message fails to send - redirect to error page?)
   };
 
@@ -18,7 +18,7 @@ class UsernameEntry extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="username-entry--page">
         <div className="username-entry--header">
           <Logo />
           <div className="text-select-slack">

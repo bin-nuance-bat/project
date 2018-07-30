@@ -9,17 +9,17 @@ class ConfirmationBox extends React.Component {
     const {setActualItem, id, sendWithPhoto, history} = this.props;
     setActualItem(id);
     const nextPage = sendWithPhoto ? 'snackchat' : 'slackname';
-    history.push('/' + nextPage);
+    history.replace('/' + nextPage);
   };
 
   handleNo = () => {
-    this.props.history.push('/editSnack');
+    this.props.history.replace('/editSnack');
   };
 
   render() {
     const {image} = this.props.storeList[this.props.id];
     return (
-      <div>
+      <div className="page">
         <Logo />
         <div className="text-confirmation">{`Is this a ${
           this.props.name
