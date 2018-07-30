@@ -24,9 +24,8 @@ $username-icon-size: 48px;
 .list-selection--body {
   padding-top: 232px;
   background-color: $white;
-  position: relative;
   height: 100%;
-  width: 100%;
+  width: 95%;
 }
 
 .list-selection--list-text {
@@ -64,10 +63,12 @@ $username-icon-size: 48px;
   right: 0px;
   top: 340px;
   margin: 0px;
+  width: 10%;
+  text-align: right;
 }
 
 .list-selection--list {
-  width: 725px;
+  width: 100%;
   overflow-y: scroll;
   height: 792px;
   -webkit-overflow-scrolling: touch;
@@ -75,4 +76,11 @@ $username-icon-size: 48px;
 
 .list-selection--scroll-select-element {
   padding: 0 20px;
+  position: relative;
+}
+
+.list-selection--bubble {
+  position: absolute;
+  top: -80px;
+  left: -80px;
 }

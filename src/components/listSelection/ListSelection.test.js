@@ -71,7 +71,8 @@ const getItems = () => [
 it('Generates the list correctly', () => {
   const props = {
     onClick: jest.fn(),
-    items: getItems()
+    items: getItems(),
+    iconStyle: ''
   };
   const wrapper = shallow(<ListSelection {...props} />);
   expect(wrapper).toMatchSnapshot();
@@ -81,7 +82,9 @@ it('Calls the required function', () => {
   const mockFunc = jest.fn();
   const items = getItems();
 
-  const wrapper = mount(<ListSelection items={items} onClick={mockFunc} />);
+  const wrapper = mount(
+    <ListSelection items={items} onClick={mockFunc} iconStyle="" />
+  );
   wrapper
     .find('div[data-test="e615de4e-ce10-451b-80ad-9717662a904a"]')
     .at(0)

@@ -5,6 +5,7 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <ListSelection
+    iconStyle=""
     items={
         Array [
             Object {
@@ -85,33 +86,33 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <div
-          className="list-selection list-selection--list"
+          className="list-selection--list"
 >
           <div
                     id="G"
           >
                     <p
-                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                              className="list-selection--list-text list-selection--list-text--group-header"
                     >
                               G
                     </p>
                     <img
                               alt=""
-                              className="list-selection list-selection--group-splitter"
+                              className="list-selection--group-splitter"
                               src="line.svg"
                     />
                     <div
-                              className="list-selection list-selection--list-item undefined-holder"
+                              className="list-selection--list-item -holder"
                               data-test="fbe05463-a538-47aa-b4f1-654faa0a5b82"
                               onClick={[Function]}
                     >
                               <img
                                         alt=""
-                                        className="list-selection list-selection--item-icon undefined"
+                                        className="list-selection--item-icon "
                                         src="misc-bar.svg"
                               />
                               <p
-                                        className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                        className="list-selection--list-text list-selection--list-text--item-name"
                               >
                                         Granulated Sugar
                               </p>
@@ -121,27 +122,27 @@ ShallowWrapper {
                     id="P"
           >
                     <p
-                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                              className="list-selection--list-text list-selection--list-text--group-header"
                     >
                               P
                     </p>
                     <img
                               alt=""
-                              className="list-selection list-selection--group-splitter"
+                              className="list-selection--group-splitter"
                               src="line.svg"
                     />
                     <div
-                              className="list-selection list-selection--list-item undefined-holder"
+                              className="list-selection--list-item -holder"
                               data-test="e615de4e-ce10-451b-80ad-9717662a904a"
                               onClick={[Function]}
                     >
                               <img
                                         alt=""
-                                        className="list-selection list-selection--item-icon undefined"
+                                        className="list-selection--item-icon "
                                         src="pepsi-max-can.svg"
                               />
                               <p
-                                        className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                        className="list-selection--list-text list-selection--list-text--item-name"
                               >
                                         Pepsi Max
                               </p>
@@ -151,27 +152,27 @@ ShallowWrapper {
                     id="W"
           >
                     <p
-                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                              className="list-selection--list-text list-selection--list-text--group-header"
                     >
                               W
                     </p>
                     <img
                               alt=""
-                              className="list-selection list-selection--group-splitter"
+                              className="list-selection--group-splitter"
                               src="line.svg"
                     />
                     <div
-                              className="list-selection list-selection--list-item undefined-holder"
+                              className="list-selection--list-item -holder"
                               data-test="f589039e-c93b-45c1-99fc-1ee457ecb570"
                               onClick={[Function]}
                     >
                               <img
                                         alt=""
-                                        className="list-selection list-selection--item-icon undefined"
+                                        className="list-selection--item-icon "
                                         src="misc-crisps.svg"
                               />
                               <p
-                                        className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                        className="list-selection--list-text list-selection--list-text--item-name"
                               >
                                         Wotsits
                               </p>
@@ -181,27 +182,39 @@ ShallowWrapper {
         <div
           className="list-selection--scroll-select"
 >
-          <div
-                    className="list-selection--scroll-select-element"
-                    onTouchStart={[Function]}
-          >
-                    G
+          <div>
+                    <div
+                              className="list-selection--scroll-select-element"
+                              onTouchEnd={[Function]}
+                              onTouchMove={[Function]}
+                              onTouchStart={[Function]}
+                    >
+                              G
+                    </div>
           </div>
-          <div
-                    className="list-selection--scroll-select-element"
-                    onTouchStart={[Function]}
-          >
-                    P
+          <div>
+                    <div
+                              className="list-selection--scroll-select-element"
+                              onTouchEnd={[Function]}
+                              onTouchMove={[Function]}
+                              onTouchStart={[Function]}
+                    >
+                              P
+                    </div>
           </div>
-          <div
-                    className="list-selection--scroll-select-element"
-                    onTouchStart={[Function]}
-          >
-                    W
+          <div>
+                    <div
+                              className="list-selection--scroll-select-element"
+                              onTouchEnd={[Function]}
+                              onTouchMove={[Function]}
+                              onTouchStart={[Function]}
+                    >
+                              W
+                    </div>
           </div>
 </div>,
       ],
-      "className": "list-selection list-selection--body",
+      "className": "list-selection--body",
     },
     "ref": null,
     "rendered": Array [
@@ -215,27 +228,27 @@ ShallowWrapper {
               id="G"
 >
               <p
-                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                            className="list-selection--list-text list-selection--list-text--group-header"
               >
                             G
               </p>
               <img
                             alt=""
-                            className="list-selection list-selection--group-splitter"
+                            className="list-selection--group-splitter"
                             src="line.svg"
               />
               <div
-                            className="list-selection list-selection--list-item undefined-holder"
+                            className="list-selection--list-item -holder"
                             data-test="fbe05463-a538-47aa-b4f1-654faa0a5b82"
                             onClick={[Function]}
               >
                             <img
                                           alt=""
-                                          className="list-selection list-selection--item-icon undefined"
+                                          className="list-selection--item-icon "
                                           src="misc-bar.svg"
                             />
                             <p
-                                          className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                          className="list-selection--list-text list-selection--list-text--item-name"
                             >
                                           Granulated Sugar
                             </p>
@@ -245,27 +258,27 @@ ShallowWrapper {
               id="P"
 >
               <p
-                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                            className="list-selection--list-text list-selection--list-text--group-header"
               >
                             P
               </p>
               <img
                             alt=""
-                            className="list-selection list-selection--group-splitter"
+                            className="list-selection--group-splitter"
                             src="line.svg"
               />
               <div
-                            className="list-selection list-selection--list-item undefined-holder"
+                            className="list-selection--list-item -holder"
                             data-test="e615de4e-ce10-451b-80ad-9717662a904a"
                             onClick={[Function]}
               >
                             <img
                                           alt=""
-                                          className="list-selection list-selection--item-icon undefined"
+                                          className="list-selection--item-icon "
                                           src="pepsi-max-can.svg"
                             />
                             <p
-                                          className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                          className="list-selection--list-text list-selection--list-text--item-name"
                             >
                                           Pepsi Max
                             </p>
@@ -275,34 +288,34 @@ ShallowWrapper {
               id="W"
 >
               <p
-                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                            className="list-selection--list-text list-selection--list-text--group-header"
               >
                             W
               </p>
               <img
                             alt=""
-                            className="list-selection list-selection--group-splitter"
+                            className="list-selection--group-splitter"
                             src="line.svg"
               />
               <div
-                            className="list-selection list-selection--list-item undefined-holder"
+                            className="list-selection--list-item -holder"
                             data-test="f589039e-c93b-45c1-99fc-1ee457ecb570"
                             onClick={[Function]}
               >
                             <img
                                           alt=""
-                                          className="list-selection list-selection--item-icon undefined"
+                                          className="list-selection--item-icon "
                                           src="misc-crisps.svg"
                             />
                             <p
-                                          className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                          className="list-selection--list-text list-selection--list-text--item-name"
                             >
                                           Wotsits
                             </p>
               </div>
 </div>,
           ],
-          "className": "list-selection list-selection--list",
+          "className": "list-selection--list",
         },
         "ref": null,
         "rendered": Array [
@@ -313,28 +326,28 @@ ShallowWrapper {
             "props": Object {
               "children": Array [
                 <p
-                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                  className="list-selection--list-text list-selection--list-text--group-header"
 >
                   G
 </p>,
                 <img
                   alt=""
-                  className="list-selection list-selection--group-splitter"
+                  className="list-selection--group-splitter"
                   src="line.svg"
 />,
                 Array [
                   <div
-                    className="list-selection list-selection--list-item undefined-holder"
+                    className="list-selection--list-item -holder"
                     data-test="fbe05463-a538-47aa-b4f1-654faa0a5b82"
                     onClick={[Function]}
 >
                     <img
                                         alt=""
-                                        className="list-selection list-selection--item-icon undefined"
+                                        className="list-selection--item-icon "
                                         src="misc-bar.svg"
                     />
                     <p
-                                        className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                        className="list-selection--list-text list-selection--list-text--item-name"
                     >
                                         Granulated Sugar
                     </p>
@@ -351,7 +364,7 @@ ShallowWrapper {
                 "nodeType": "host",
                 "props": Object {
                   "children": "G",
-                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                  "className": "list-selection--list-text list-selection--list-text--group-header",
                 },
                 "ref": null,
                 "rendered": "G",
@@ -363,7 +376,7 @@ ShallowWrapper {
                 "nodeType": "host",
                 "props": Object {
                   "alt": "",
-                  "className": "list-selection list-selection--group-splitter",
+                  "className": "list-selection--group-splitter",
                   "src": "line.svg",
                 },
                 "ref": null,
@@ -378,16 +391,16 @@ ShallowWrapper {
                   "children": Array [
                     <img
                       alt=""
-                      className="list-selection list-selection--item-icon undefined"
+                      className="list-selection--item-icon "
                       src="misc-bar.svg"
 />,
                     <p
-                      className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                      className="list-selection--list-text list-selection--list-text--item-name"
 >
                       Granulated Sugar
 </p>,
                   ],
-                  "className": "list-selection list-selection--list-item undefined-holder",
+                  "className": "list-selection--list-item -holder",
                   "data-test": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
                   "onClick": [Function],
                 },
@@ -399,7 +412,7 @@ ShallowWrapper {
                     "nodeType": "host",
                     "props": Object {
                       "alt": "",
-                      "className": "list-selection list-selection--item-icon undefined",
+                      "className": "list-selection--item-icon ",
                       "src": "misc-bar.svg",
                     },
                     "ref": null,
@@ -412,7 +425,7 @@ ShallowWrapper {
                     "nodeType": "host",
                     "props": Object {
                       "children": "Granulated Sugar",
-                      "className": "list-selection list-selection--list-text list-selection--list-text--item-name",
+                      "className": "list-selection--list-text list-selection--list-text--item-name",
                     },
                     "ref": null,
                     "rendered": "Granulated Sugar",
@@ -431,28 +444,28 @@ ShallowWrapper {
             "props": Object {
               "children": Array [
                 <p
-                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                  className="list-selection--list-text list-selection--list-text--group-header"
 >
                   P
 </p>,
                 <img
                   alt=""
-                  className="list-selection list-selection--group-splitter"
+                  className="list-selection--group-splitter"
                   src="line.svg"
 />,
                 Array [
                   <div
-                    className="list-selection list-selection--list-item undefined-holder"
+                    className="list-selection--list-item -holder"
                     data-test="e615de4e-ce10-451b-80ad-9717662a904a"
                     onClick={[Function]}
 >
                     <img
                                         alt=""
-                                        className="list-selection list-selection--item-icon undefined"
+                                        className="list-selection--item-icon "
                                         src="pepsi-max-can.svg"
                     />
                     <p
-                                        className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                        className="list-selection--list-text list-selection--list-text--item-name"
                     >
                                         Pepsi Max
                     </p>
@@ -469,7 +482,7 @@ ShallowWrapper {
                 "nodeType": "host",
                 "props": Object {
                   "children": "P",
-                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                  "className": "list-selection--list-text list-selection--list-text--group-header",
                 },
                 "ref": null,
                 "rendered": "P",
@@ -481,7 +494,7 @@ ShallowWrapper {
                 "nodeType": "host",
                 "props": Object {
                   "alt": "",
-                  "className": "list-selection list-selection--group-splitter",
+                  "className": "list-selection--group-splitter",
                   "src": "line.svg",
                 },
                 "ref": null,
@@ -496,16 +509,16 @@ ShallowWrapper {
                   "children": Array [
                     <img
                       alt=""
-                      className="list-selection list-selection--item-icon undefined"
+                      className="list-selection--item-icon "
                       src="pepsi-max-can.svg"
 />,
                     <p
-                      className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                      className="list-selection--list-text list-selection--list-text--item-name"
 >
                       Pepsi Max
 </p>,
                   ],
-                  "className": "list-selection list-selection--list-item undefined-holder",
+                  "className": "list-selection--list-item -holder",
                   "data-test": "e615de4e-ce10-451b-80ad-9717662a904a",
                   "onClick": [Function],
                 },
@@ -517,7 +530,7 @@ ShallowWrapper {
                     "nodeType": "host",
                     "props": Object {
                       "alt": "",
-                      "className": "list-selection list-selection--item-icon undefined",
+                      "className": "list-selection--item-icon ",
                       "src": "pepsi-max-can.svg",
                     },
                     "ref": null,
@@ -530,7 +543,7 @@ ShallowWrapper {
                     "nodeType": "host",
                     "props": Object {
                       "children": "Pepsi Max",
-                      "className": "list-selection list-selection--list-text list-selection--list-text--item-name",
+                      "className": "list-selection--list-text list-selection--list-text--item-name",
                     },
                     "ref": null,
                     "rendered": "Pepsi Max",
@@ -549,28 +562,28 @@ ShallowWrapper {
             "props": Object {
               "children": Array [
                 <p
-                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                  className="list-selection--list-text list-selection--list-text--group-header"
 >
                   W
 </p>,
                 <img
                   alt=""
-                  className="list-selection list-selection--group-splitter"
+                  className="list-selection--group-splitter"
                   src="line.svg"
 />,
                 Array [
                   <div
-                    className="list-selection list-selection--list-item undefined-holder"
+                    className="list-selection--list-item -holder"
                     data-test="f589039e-c93b-45c1-99fc-1ee457ecb570"
                     onClick={[Function]}
 >
                     <img
                                         alt=""
-                                        className="list-selection list-selection--item-icon undefined"
+                                        className="list-selection--item-icon "
                                         src="misc-crisps.svg"
                     />
                     <p
-                                        className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                        className="list-selection--list-text list-selection--list-text--item-name"
                     >
                                         Wotsits
                     </p>
@@ -587,7 +600,7 @@ ShallowWrapper {
                 "nodeType": "host",
                 "props": Object {
                   "children": "W",
-                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                  "className": "list-selection--list-text list-selection--list-text--group-header",
                 },
                 "ref": null,
                 "rendered": "W",
@@ -599,7 +612,7 @@ ShallowWrapper {
                 "nodeType": "host",
                 "props": Object {
                   "alt": "",
-                  "className": "list-selection list-selection--group-splitter",
+                  "className": "list-selection--group-splitter",
                   "src": "line.svg",
                 },
                 "ref": null,
@@ -614,16 +627,16 @@ ShallowWrapper {
                   "children": Array [
                     <img
                       alt=""
-                      className="list-selection list-selection--item-icon undefined"
+                      className="list-selection--item-icon "
                       src="misc-crisps.svg"
 />,
                     <p
-                      className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                      className="list-selection--list-text list-selection--list-text--item-name"
 >
                       Wotsits
 </p>,
                   ],
-                  "className": "list-selection list-selection--list-item undefined-holder",
+                  "className": "list-selection--list-item -holder",
                   "data-test": "f589039e-c93b-45c1-99fc-1ee457ecb570",
                   "onClick": [Function],
                 },
@@ -635,7 +648,7 @@ ShallowWrapper {
                     "nodeType": "host",
                     "props": Object {
                       "alt": "",
-                      "className": "list-selection list-selection--item-icon undefined",
+                      "className": "list-selection--item-icon ",
                       "src": "misc-crisps.svg",
                     },
                     "ref": null,
@@ -648,7 +661,7 @@ ShallowWrapper {
                     "nodeType": "host",
                     "props": Object {
                       "children": "Wotsits",
-                      "className": "list-selection list-selection--list-text list-selection--list-text--item-name",
+                      "className": "list-selection--list-text list-selection--list-text--item-name",
                     },
                     "ref": null,
                     "rendered": "Wotsits",
@@ -669,23 +682,35 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": Array [
-            <div
-              className="list-selection--scroll-select-element"
-              onTouchStart={[Function]}
->
-              G
+            <div>
+              <div
+                            className="list-selection--scroll-select-element"
+                            onTouchEnd={[Function]}
+                            onTouchMove={[Function]}
+                            onTouchStart={[Function]}
+              >
+                            G
+              </div>
 </div>,
-            <div
-              className="list-selection--scroll-select-element"
-              onTouchStart={[Function]}
->
-              P
+            <div>
+              <div
+                            className="list-selection--scroll-select-element"
+                            onTouchEnd={[Function]}
+                            onTouchMove={[Function]}
+                            onTouchStart={[Function]}
+              >
+                            P
+              </div>
 </div>,
-            <div
-              className="list-selection--scroll-select-element"
-              onTouchStart={[Function]}
->
-              W
+            <div>
+              <div
+                            className="list-selection--scroll-select-element"
+                            onTouchEnd={[Function]}
+                            onTouchMove={[Function]}
+                            onTouchStart={[Function]}
+              >
+                            W
+              </div>
 </div>,
           ],
           "className": "list-selection--scroll-select",
@@ -697,12 +722,37 @@ ShallowWrapper {
             "key": "G",
             "nodeType": "host",
             "props": Object {
-              "children": "G",
-              "className": "list-selection--scroll-select-element",
-              "onTouchStart": [Function],
+              "children": <div
+                className="list-selection--scroll-select-element"
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+>
+                G
+</div>,
             },
             "ref": null,
-            "rendered": "G",
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  false,
+                  "G",
+                ],
+                "className": "list-selection--scroll-select-element",
+                "onTouchEnd": [Function],
+                "onTouchMove": [Function],
+                "onTouchStart": [Function],
+              },
+              "ref": null,
+              "rendered": Array [
+                false,
+                "G",
+              ],
+              "type": "div",
+            },
             "type": "div",
           },
           Object {
@@ -710,12 +760,37 @@ ShallowWrapper {
             "key": "P",
             "nodeType": "host",
             "props": Object {
-              "children": "P",
-              "className": "list-selection--scroll-select-element",
-              "onTouchStart": [Function],
+              "children": <div
+                className="list-selection--scroll-select-element"
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+>
+                P
+</div>,
             },
             "ref": null,
-            "rendered": "P",
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  false,
+                  "P",
+                ],
+                "className": "list-selection--scroll-select-element",
+                "onTouchEnd": [Function],
+                "onTouchMove": [Function],
+                "onTouchStart": [Function],
+              },
+              "ref": null,
+              "rendered": Array [
+                false,
+                "P",
+              ],
+              "type": "div",
+            },
             "type": "div",
           },
           Object {
@@ -723,12 +798,37 @@ ShallowWrapper {
             "key": "W",
             "nodeType": "host",
             "props": Object {
-              "children": "W",
-              "className": "list-selection--scroll-select-element",
-              "onTouchStart": [Function],
+              "children": <div
+                className="list-selection--scroll-select-element"
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+>
+                W
+</div>,
             },
             "ref": null,
-            "rendered": "W",
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  false,
+                  "W",
+                ],
+                "className": "list-selection--scroll-select-element",
+                "onTouchEnd": [Function],
+                "onTouchMove": [Function],
+                "onTouchStart": [Function],
+              },
+              "ref": null,
+              "rendered": Array [
+                false,
+                "W",
+              ],
+              "type": "div",
+            },
             "type": "div",
           },
         ],
@@ -745,33 +845,33 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <div
-            className="list-selection list-selection--list"
+            className="list-selection--list"
 >
             <div
                         id="G"
             >
                         <p
-                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                                    className="list-selection--list-text list-selection--list-text--group-header"
                         >
                                     G
                         </p>
                         <img
                                     alt=""
-                                    className="list-selection list-selection--group-splitter"
+                                    className="list-selection--group-splitter"
                                     src="line.svg"
                         />
                         <div
-                                    className="list-selection list-selection--list-item undefined-holder"
+                                    className="list-selection--list-item -holder"
                                     data-test="fbe05463-a538-47aa-b4f1-654faa0a5b82"
                                     onClick={[Function]}
                         >
                                     <img
                                                 alt=""
-                                                className="list-selection list-selection--item-icon undefined"
+                                                className="list-selection--item-icon "
                                                 src="misc-bar.svg"
                                     />
                                     <p
-                                                className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                                className="list-selection--list-text list-selection--list-text--item-name"
                                     >
                                                 Granulated Sugar
                                     </p>
@@ -781,27 +881,27 @@ ShallowWrapper {
                         id="P"
             >
                         <p
-                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                                    className="list-selection--list-text list-selection--list-text--group-header"
                         >
                                     P
                         </p>
                         <img
                                     alt=""
-                                    className="list-selection list-selection--group-splitter"
+                                    className="list-selection--group-splitter"
                                     src="line.svg"
                         />
                         <div
-                                    className="list-selection list-selection--list-item undefined-holder"
+                                    className="list-selection--list-item -holder"
                                     data-test="e615de4e-ce10-451b-80ad-9717662a904a"
                                     onClick={[Function]}
                         >
                                     <img
                                                 alt=""
-                                                className="list-selection list-selection--item-icon undefined"
+                                                className="list-selection--item-icon "
                                                 src="pepsi-max-can.svg"
                                     />
                                     <p
-                                                className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                                className="list-selection--list-text list-selection--list-text--item-name"
                                     >
                                                 Pepsi Max
                                     </p>
@@ -811,27 +911,27 @@ ShallowWrapper {
                         id="W"
             >
                         <p
-                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                                    className="list-selection--list-text list-selection--list-text--group-header"
                         >
                                     W
                         </p>
                         <img
                                     alt=""
-                                    className="list-selection list-selection--group-splitter"
+                                    className="list-selection--group-splitter"
                                     src="line.svg"
                         />
                         <div
-                                    className="list-selection list-selection--list-item undefined-holder"
+                                    className="list-selection--list-item -holder"
                                     data-test="f589039e-c93b-45c1-99fc-1ee457ecb570"
                                     onClick={[Function]}
                         >
                                     <img
                                                 alt=""
-                                                className="list-selection list-selection--item-icon undefined"
+                                                className="list-selection--item-icon "
                                                 src="misc-crisps.svg"
                                     />
                                     <p
-                                                className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                                className="list-selection--list-text list-selection--list-text--item-name"
                                     >
                                                 Wotsits
                                     </p>
@@ -841,27 +941,39 @@ ShallowWrapper {
           <div
             className="list-selection--scroll-select"
 >
-            <div
-                        className="list-selection--scroll-select-element"
-                        onTouchStart={[Function]}
-            >
-                        G
+            <div>
+                        <div
+                                    className="list-selection--scroll-select-element"
+                                    onTouchEnd={[Function]}
+                                    onTouchMove={[Function]}
+                                    onTouchStart={[Function]}
+                        >
+                                    G
+                        </div>
             </div>
-            <div
-                        className="list-selection--scroll-select-element"
-                        onTouchStart={[Function]}
-            >
-                        P
+            <div>
+                        <div
+                                    className="list-selection--scroll-select-element"
+                                    onTouchEnd={[Function]}
+                                    onTouchMove={[Function]}
+                                    onTouchStart={[Function]}
+                        >
+                                    P
+                        </div>
             </div>
-            <div
-                        className="list-selection--scroll-select-element"
-                        onTouchStart={[Function]}
-            >
-                        W
+            <div>
+                        <div
+                                    className="list-selection--scroll-select-element"
+                                    onTouchEnd={[Function]}
+                                    onTouchMove={[Function]}
+                                    onTouchStart={[Function]}
+                        >
+                                    W
+                        </div>
             </div>
 </div>,
         ],
-        "className": "list-selection list-selection--body",
+        "className": "list-selection--body",
       },
       "ref": null,
       "rendered": Array [
@@ -875,27 +987,27 @@ ShallowWrapper {
                 id="G"
 >
                 <p
-                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                                className="list-selection--list-text list-selection--list-text--group-header"
                 >
                                 G
                 </p>
                 <img
                                 alt=""
-                                className="list-selection list-selection--group-splitter"
+                                className="list-selection--group-splitter"
                                 src="line.svg"
                 />
                 <div
-                                className="list-selection list-selection--list-item undefined-holder"
+                                className="list-selection--list-item -holder"
                                 data-test="fbe05463-a538-47aa-b4f1-654faa0a5b82"
                                 onClick={[Function]}
                 >
                                 <img
                                                 alt=""
-                                                className="list-selection list-selection--item-icon undefined"
+                                                className="list-selection--item-icon "
                                                 src="misc-bar.svg"
                                 />
                                 <p
-                                                className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                                className="list-selection--list-text list-selection--list-text--item-name"
                                 >
                                                 Granulated Sugar
                                 </p>
@@ -905,27 +1017,27 @@ ShallowWrapper {
                 id="P"
 >
                 <p
-                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                                className="list-selection--list-text list-selection--list-text--group-header"
                 >
                                 P
                 </p>
                 <img
                                 alt=""
-                                className="list-selection list-selection--group-splitter"
+                                className="list-selection--group-splitter"
                                 src="line.svg"
                 />
                 <div
-                                className="list-selection list-selection--list-item undefined-holder"
+                                className="list-selection--list-item -holder"
                                 data-test="e615de4e-ce10-451b-80ad-9717662a904a"
                                 onClick={[Function]}
                 >
                                 <img
                                                 alt=""
-                                                className="list-selection list-selection--item-icon undefined"
+                                                className="list-selection--item-icon "
                                                 src="pepsi-max-can.svg"
                                 />
                                 <p
-                                                className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                                className="list-selection--list-text list-selection--list-text--item-name"
                                 >
                                                 Pepsi Max
                                 </p>
@@ -935,34 +1047,34 @@ ShallowWrapper {
                 id="W"
 >
                 <p
-                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                                className="list-selection--list-text list-selection--list-text--group-header"
                 >
                                 W
                 </p>
                 <img
                                 alt=""
-                                className="list-selection list-selection--group-splitter"
+                                className="list-selection--group-splitter"
                                 src="line.svg"
                 />
                 <div
-                                className="list-selection list-selection--list-item undefined-holder"
+                                className="list-selection--list-item -holder"
                                 data-test="f589039e-c93b-45c1-99fc-1ee457ecb570"
                                 onClick={[Function]}
                 >
                                 <img
                                                 alt=""
-                                                className="list-selection list-selection--item-icon undefined"
+                                                className="list-selection--item-icon "
                                                 src="misc-crisps.svg"
                                 />
                                 <p
-                                                className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                                className="list-selection--list-text list-selection--list-text--item-name"
                                 >
                                                 Wotsits
                                 </p>
                 </div>
 </div>,
             ],
-            "className": "list-selection list-selection--list",
+            "className": "list-selection--list",
           },
           "ref": null,
           "rendered": Array [
@@ -973,28 +1085,28 @@ ShallowWrapper {
               "props": Object {
                 "children": Array [
                   <p
-                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                    className="list-selection--list-text list-selection--list-text--group-header"
 >
                     G
 </p>,
                   <img
                     alt=""
-                    className="list-selection list-selection--group-splitter"
+                    className="list-selection--group-splitter"
                     src="line.svg"
 />,
                   Array [
                     <div
-                      className="list-selection list-selection--list-item undefined-holder"
+                      className="list-selection--list-item -holder"
                       data-test="fbe05463-a538-47aa-b4f1-654faa0a5b82"
                       onClick={[Function]}
 >
                       <img
                                             alt=""
-                                            className="list-selection list-selection--item-icon undefined"
+                                            className="list-selection--item-icon "
                                             src="misc-bar.svg"
                       />
                       <p
-                                            className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                            className="list-selection--list-text list-selection--list-text--item-name"
                       >
                                             Granulated Sugar
                       </p>
@@ -1011,7 +1123,7 @@ ShallowWrapper {
                   "nodeType": "host",
                   "props": Object {
                     "children": "G",
-                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                    "className": "list-selection--list-text list-selection--list-text--group-header",
                   },
                   "ref": null,
                   "rendered": "G",
@@ -1023,7 +1135,7 @@ ShallowWrapper {
                   "nodeType": "host",
                   "props": Object {
                     "alt": "",
-                    "className": "list-selection list-selection--group-splitter",
+                    "className": "list-selection--group-splitter",
                     "src": "line.svg",
                   },
                   "ref": null,
@@ -1038,16 +1150,16 @@ ShallowWrapper {
                     "children": Array [
                       <img
                         alt=""
-                        className="list-selection list-selection--item-icon undefined"
+                        className="list-selection--item-icon "
                         src="misc-bar.svg"
 />,
                       <p
-                        className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                        className="list-selection--list-text list-selection--list-text--item-name"
 >
                         Granulated Sugar
 </p>,
                     ],
-                    "className": "list-selection list-selection--list-item undefined-holder",
+                    "className": "list-selection--list-item -holder",
                     "data-test": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
                     "onClick": [Function],
                   },
@@ -1059,7 +1171,7 @@ ShallowWrapper {
                       "nodeType": "host",
                       "props": Object {
                         "alt": "",
-                        "className": "list-selection list-selection--item-icon undefined",
+                        "className": "list-selection--item-icon ",
                         "src": "misc-bar.svg",
                       },
                       "ref": null,
@@ -1072,7 +1184,7 @@ ShallowWrapper {
                       "nodeType": "host",
                       "props": Object {
                         "children": "Granulated Sugar",
-                        "className": "list-selection list-selection--list-text list-selection--list-text--item-name",
+                        "className": "list-selection--list-text list-selection--list-text--item-name",
                       },
                       "ref": null,
                       "rendered": "Granulated Sugar",
@@ -1091,28 +1203,28 @@ ShallowWrapper {
               "props": Object {
                 "children": Array [
                   <p
-                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                    className="list-selection--list-text list-selection--list-text--group-header"
 >
                     P
 </p>,
                   <img
                     alt=""
-                    className="list-selection list-selection--group-splitter"
+                    className="list-selection--group-splitter"
                     src="line.svg"
 />,
                   Array [
                     <div
-                      className="list-selection list-selection--list-item undefined-holder"
+                      className="list-selection--list-item -holder"
                       data-test="e615de4e-ce10-451b-80ad-9717662a904a"
                       onClick={[Function]}
 >
                       <img
                                             alt=""
-                                            className="list-selection list-selection--item-icon undefined"
+                                            className="list-selection--item-icon "
                                             src="pepsi-max-can.svg"
                       />
                       <p
-                                            className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                            className="list-selection--list-text list-selection--list-text--item-name"
                       >
                                             Pepsi Max
                       </p>
@@ -1129,7 +1241,7 @@ ShallowWrapper {
                   "nodeType": "host",
                   "props": Object {
                     "children": "P",
-                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                    "className": "list-selection--list-text list-selection--list-text--group-header",
                   },
                   "ref": null,
                   "rendered": "P",
@@ -1141,7 +1253,7 @@ ShallowWrapper {
                   "nodeType": "host",
                   "props": Object {
                     "alt": "",
-                    "className": "list-selection list-selection--group-splitter",
+                    "className": "list-selection--group-splitter",
                     "src": "line.svg",
                   },
                   "ref": null,
@@ -1156,16 +1268,16 @@ ShallowWrapper {
                     "children": Array [
                       <img
                         alt=""
-                        className="list-selection list-selection--item-icon undefined"
+                        className="list-selection--item-icon "
                         src="pepsi-max-can.svg"
 />,
                       <p
-                        className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                        className="list-selection--list-text list-selection--list-text--item-name"
 >
                         Pepsi Max
 </p>,
                     ],
-                    "className": "list-selection list-selection--list-item undefined-holder",
+                    "className": "list-selection--list-item -holder",
                     "data-test": "e615de4e-ce10-451b-80ad-9717662a904a",
                     "onClick": [Function],
                   },
@@ -1177,7 +1289,7 @@ ShallowWrapper {
                       "nodeType": "host",
                       "props": Object {
                         "alt": "",
-                        "className": "list-selection list-selection--item-icon undefined",
+                        "className": "list-selection--item-icon ",
                         "src": "pepsi-max-can.svg",
                       },
                       "ref": null,
@@ -1190,7 +1302,7 @@ ShallowWrapper {
                       "nodeType": "host",
                       "props": Object {
                         "children": "Pepsi Max",
-                        "className": "list-selection list-selection--list-text list-selection--list-text--item-name",
+                        "className": "list-selection--list-text list-selection--list-text--item-name",
                       },
                       "ref": null,
                       "rendered": "Pepsi Max",
@@ -1209,28 +1321,28 @@ ShallowWrapper {
               "props": Object {
                 "children": Array [
                   <p
-                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                    className="list-selection--list-text list-selection--list-text--group-header"
 >
                     W
 </p>,
                   <img
                     alt=""
-                    className="list-selection list-selection--group-splitter"
+                    className="list-selection--group-splitter"
                     src="line.svg"
 />,
                   Array [
                     <div
-                      className="list-selection list-selection--list-item undefined-holder"
+                      className="list-selection--list-item -holder"
                       data-test="f589039e-c93b-45c1-99fc-1ee457ecb570"
                       onClick={[Function]}
 >
                       <img
                                             alt=""
-                                            className="list-selection list-selection--item-icon undefined"
+                                            className="list-selection--item-icon "
                                             src="misc-crisps.svg"
                       />
                       <p
-                                            className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                                            className="list-selection--list-text list-selection--list-text--item-name"
                       >
                                             Wotsits
                       </p>
@@ -1247,7 +1359,7 @@ ShallowWrapper {
                   "nodeType": "host",
                   "props": Object {
                     "children": "W",
-                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                    "className": "list-selection--list-text list-selection--list-text--group-header",
                   },
                   "ref": null,
                   "rendered": "W",
@@ -1259,7 +1371,7 @@ ShallowWrapper {
                   "nodeType": "host",
                   "props": Object {
                     "alt": "",
-                    "className": "list-selection list-selection--group-splitter",
+                    "className": "list-selection--group-splitter",
                     "src": "line.svg",
                   },
                   "ref": null,
@@ -1274,16 +1386,16 @@ ShallowWrapper {
                     "children": Array [
                       <img
                         alt=""
-                        className="list-selection list-selection--item-icon undefined"
+                        className="list-selection--item-icon "
                         src="misc-crisps.svg"
 />,
                       <p
-                        className="list-selection list-selection--list-text list-selection--list-text--item-name"
+                        className="list-selection--list-text list-selection--list-text--item-name"
 >
                         Wotsits
 </p>,
                     ],
-                    "className": "list-selection list-selection--list-item undefined-holder",
+                    "className": "list-selection--list-item -holder",
                     "data-test": "f589039e-c93b-45c1-99fc-1ee457ecb570",
                     "onClick": [Function],
                   },
@@ -1295,7 +1407,7 @@ ShallowWrapper {
                       "nodeType": "host",
                       "props": Object {
                         "alt": "",
-                        "className": "list-selection list-selection--item-icon undefined",
+                        "className": "list-selection--item-icon ",
                         "src": "misc-crisps.svg",
                       },
                       "ref": null,
@@ -1308,7 +1420,7 @@ ShallowWrapper {
                       "nodeType": "host",
                       "props": Object {
                         "children": "Wotsits",
-                        "className": "list-selection list-selection--list-text list-selection--list-text--item-name",
+                        "className": "list-selection--list-text list-selection--list-text--item-name",
                       },
                       "ref": null,
                       "rendered": "Wotsits",
@@ -1329,23 +1441,35 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": Array [
-              <div
-                className="list-selection--scroll-select-element"
-                onTouchStart={[Function]}
->
-                G
+              <div>
+                <div
+                                className="list-selection--scroll-select-element"
+                                onTouchEnd={[Function]}
+                                onTouchMove={[Function]}
+                                onTouchStart={[Function]}
+                >
+                                G
+                </div>
 </div>,
-              <div
-                className="list-selection--scroll-select-element"
-                onTouchStart={[Function]}
->
-                P
+              <div>
+                <div
+                                className="list-selection--scroll-select-element"
+                                onTouchEnd={[Function]}
+                                onTouchMove={[Function]}
+                                onTouchStart={[Function]}
+                >
+                                P
+                </div>
 </div>,
-              <div
-                className="list-selection--scroll-select-element"
-                onTouchStart={[Function]}
->
-                W
+              <div>
+                <div
+                                className="list-selection--scroll-select-element"
+                                onTouchEnd={[Function]}
+                                onTouchMove={[Function]}
+                                onTouchStart={[Function]}
+                >
+                                W
+                </div>
 </div>,
             ],
             "className": "list-selection--scroll-select",
@@ -1357,12 +1481,37 @@ ShallowWrapper {
               "key": "G",
               "nodeType": "host",
               "props": Object {
-                "children": "G",
-                "className": "list-selection--scroll-select-element",
-                "onTouchStart": [Function],
+                "children": <div
+                  className="list-selection--scroll-select-element"
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+>
+                  G
+</div>,
               },
               "ref": null,
-              "rendered": "G",
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    false,
+                    "G",
+                  ],
+                  "className": "list-selection--scroll-select-element",
+                  "onTouchEnd": [Function],
+                  "onTouchMove": [Function],
+                  "onTouchStart": [Function],
+                },
+                "ref": null,
+                "rendered": Array [
+                  false,
+                  "G",
+                ],
+                "type": "div",
+              },
               "type": "div",
             },
             Object {
@@ -1370,12 +1519,37 @@ ShallowWrapper {
               "key": "P",
               "nodeType": "host",
               "props": Object {
-                "children": "P",
-                "className": "list-selection--scroll-select-element",
-                "onTouchStart": [Function],
+                "children": <div
+                  className="list-selection--scroll-select-element"
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+>
+                  P
+</div>,
               },
               "ref": null,
-              "rendered": "P",
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    false,
+                    "P",
+                  ],
+                  "className": "list-selection--scroll-select-element",
+                  "onTouchEnd": [Function],
+                  "onTouchMove": [Function],
+                  "onTouchStart": [Function],
+                },
+                "ref": null,
+                "rendered": Array [
+                  false,
+                  "P",
+                ],
+                "type": "div",
+              },
               "type": "div",
             },
             Object {
@@ -1383,12 +1557,37 @@ ShallowWrapper {
               "key": "W",
               "nodeType": "host",
               "props": Object {
-                "children": "W",
-                "className": "list-selection--scroll-select-element",
-                "onTouchStart": [Function],
+                "children": <div
+                  className="list-selection--scroll-select-element"
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+>
+                  W
+</div>,
               },
               "ref": null,
-              "rendered": "W",
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    false,
+                    "W",
+                  ],
+                  "className": "list-selection--scroll-select-element",
+                  "onTouchEnd": [Function],
+                  "onTouchMove": [Function],
+                  "onTouchStart": [Function],
+                },
+                "ref": null,
+                "rendered": Array [
+                  false,
+                  "W",
+                ],
+                "type": "div",
+              },
               "type": "div",
             },
           ],
