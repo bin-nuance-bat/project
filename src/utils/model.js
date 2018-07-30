@@ -8,7 +8,7 @@ import FirebaseStorageHandler from '../components/Admin/Trainer/FirebaseStorageH
 
 export default class Model {
   async load() {
-    MobileNet.load().then(res => {
+    MobileNet.load(1, 0.25).then(res => {
       this.mobilenet = res;
     });
 
