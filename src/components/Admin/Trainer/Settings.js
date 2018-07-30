@@ -66,7 +66,7 @@ export default class Settings extends Component {
           label="Randomness"
           range={[0.1, 1]}
           value={this.props.randomness}
-          setState={val => this.props.setState('randmoness', val)}
+          setState={val => this.props.setState('randomness', val)}
         />
         <Input
           label="Use Images Since"
