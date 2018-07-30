@@ -48,5 +48,5 @@ it('Goes to edit snack page if no clicked', () => {
 
   const wrapper = shallow(<ConfirmationBox {...mockProps} />);
   wrapper.find({'data-test': 'NO'}).simulate('click');
-  expect(mockProps.history.replace).toHaveBeenCalledWith('/editSnack');
+  expect(mockProps.history.replace).toHaveBeenCalledWith('/editsnack');
 });
