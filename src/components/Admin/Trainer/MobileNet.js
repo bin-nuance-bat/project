@@ -2,7 +2,7 @@ import * as net from '@tensorflow-models/mobilenet';
 
 export default class MobileNet {
   async init() {
-    return net.load().then(res => {
+    return net.load(1, 0.25).then(res => {
       this.net = res;
     });
   }
