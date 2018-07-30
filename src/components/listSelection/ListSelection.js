@@ -7,12 +7,19 @@ import Bubble from './Bubble';
 
 class ListSelection extends Component {
   state = {
+    prevLetter: null,
     bubbleAt: null
   };
 
   componentDidMount() {
     const scrollSelect = document.getElementById('scroll-select');
     scrollSelect.addEventListener('touchmove', this.preventDefault, false);
+    this.scrollSelectTop = document
+      .getElementById('scroll-select')
+      .getBoundingClientRect().top;
+    this.selectElementHeight = document
+      .getElementById('select-element')
+      .getBoundingClientRect().height;
   }
 
   startsWithLetter = str => {
@@ -91,25 +98,22 @@ class ListSelection extends Component {
                   this.setState({bubbleAt: group});
                 }}
                 onTouchMove={event => {
-                  //console.log(event.touchtargets[0]);
                   let index = parseInt(
-                    (event.touches[0].pageY -
-                      document
-                        .getElementById('scroll-select')
-                        .getBoundingClientRect().top) /
-                      document
-                        .getElementById('select-element')
-                        .getBoundingClientRect().height,
+                    (event.touches[0].pageY - this.scrollSelectTop) /
+                      this.selectElementHeight,
                     10
                   );
                   if (index < 0 || Object.is(index, -0)) index = 0;
                   if (index >= this.formattedItems.length)
                     index = this.formattedItems.length - 1;
                   const letter = this.formattedItems[index][0];
-                  this.setState({
-                    bubbleAt: letter
-                  });
-                  window.location.hash = '#' + letter;
+                  if (letter !== this.state.bubbleAt) {
+                    this.setState(prevState => ({
+                      bubbleAt: letter,
+                      prevLetter: prevState.bubbleAt
+                    }));
+                    window.location.hash = '#' + letter;
+                  }
                 }}
                 onTouchEnd={() => {
                   this.setState({bubbleAt: null});
