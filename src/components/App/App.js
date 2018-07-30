@@ -12,14 +12,36 @@ import EditSnack from '../EditSnack/EditSnackContainer';
 import SuccessPage from '../SuccessPage/container';
 import Admin from '../Admin/Admin';
 import ImageApproval from '../ImageApproval/ImageApproval';
+//import {Redirect} from 'react-router';
+
+const WAIT_BEFORE_DISPLAY = 45;
+const COUNTDOWN = 9;
 
 class App extends Component {
-  state = {isOnline: navigator.onLine};
+  state = {isOnline: navigator.onLine, countdown: COUNTDOWN, showTimer: false};
 
   componentDidMount() {
     window.addEventListener('online', this.handleOnline);
     window.addEventListener('offline', this.handleOffline);
+    document.body.addEventListener('touchstart', this.dismissMessage);
+    // document
+    //   .getElementById('timeoutNotificationBar')
+    //   .addEventListener('touchstart', this.notificationTouch, {passive: false});
+    this.resetTimeoutTimer();
   }
+
+  resetTimeoutTimer = () => {
+    this.setState({showTimer: false});
+    clearTimeout(this.timer);
+    this.timer = setTimeout(
+      this.showTimeoutMessage,
+      WAIT_BEFORE_DISPLAY * 1000
+    );
+  };
+
+  showTimeoutMessage = () => {
+    this.setState({showTimer: true});
+  };
 
   handleOnline = () => {
     this.setState({isOnline: true});
@@ -30,8 +52,14 @@ class App extends Component {
   };
 
   componentWillUnmount() {
+    clearTimeout(this.timer);
+    clearInterval(this.interval);
+    document.body.removeEventListener('touchstart', this.dismissMessage);
     window.removeEventListener('online', this.handleOnline);
     window.removeEventListener('offline', this.handleOffline);
+    // document
+    //   .getElementById('timeoutNotificationBar')
+    //   .removeEventListener('touchstart', this.notificationTouch);
   }
 
   render() {
