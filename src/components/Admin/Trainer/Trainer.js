@@ -129,7 +129,9 @@ class Trainer extends Component {
   predict = () => {
     if (this.webcam.current) {
       this.setState({busy: true});
-      this.model.predict(this.capture(this.webcam.current.video));
+      this.model.predict(
+        this.capture(this.webcam.current.webcam.current.video)
+      );
     } else {
       this.setReadyStatus('Please connect a camera.');
     }
@@ -155,16 +157,19 @@ class Trainer extends Component {
       completion
     } = this.state;
 
-    const items = this.model ? this.model.items : {};
+    const items = Object.values(this.model ? this.model.items : {});
+    items.sort((a, b) => {
+      return a.name.localeCompare(b.name);
+    });
 
     return (
       <div className="trainer">
         <div className="col" style={{textAlign: 'center'}}>
-          <WebcamCapture imgSize={224} />
+          <WebcamCapture imgSize={224} ref={this.webcam} />
           <div>
             <ItemSelector
               item={item}
-              items={Object.values(items)}
+              items={items}
               setItem={i => this.setState({item: i})}
               disabled={busy}
             />
@@ -184,7 +189,7 @@ class Trainer extends Component {
             <button
               className="button button-admin"
               onClick={() => this.addExample(this.webcam.current.video)}
-              disabled={busy || !this.webcam.current}>
+              disabled={busy || !this.webcam.current.webcam.current}>
               Add From Camera
             </button>
           </div>
@@ -225,7 +230,7 @@ class Trainer extends Component {
               </tr>
             </thead>
             <tbody>
-              {Object.values(items).map(i => {
+              {items.map(i => {
                 return (
                   <tr key={i.id}>
                     <td>{this.getName(i)}</td>

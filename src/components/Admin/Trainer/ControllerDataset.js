@@ -114,11 +114,12 @@ export class ControllerDataset {
     return idList;
   }
 
-  async getBatch(batchSize, randomness, since, dataType) {
+  async getBatch(batchSize, randomness, since, dataType, completion) {
     const batch = {};
     const limit = batchSize * randomness;
     const ref = this.db
       .collection('training_data')
+      .where('trusted', '==', true)
       .orderBy('random')
       .orderBy('timestamp');
 
@@ -127,8 +128,8 @@ export class ControllerDataset {
       snapshot.forEach(doc => {
         if (!batch[doc.id]) {
           batchCounter++;
-          const {activation, label} = doc.data();
-          batch[doc.id] = {activation, label};
+          const {activation, label, id} = {...doc.data(), id: doc.id};
+          batch[doc.id] = {activation, label, id};
         }
       });
     };
@@ -143,15 +144,27 @@ export class ControllerDataset {
         .limit(Math.min(limit, batchSize - batchCounter))
         .get()
         .then(addData);
+      completion(batchCounter / batchSize);
     }
 
     return Object.values(batch);
   }
 
-  async getTensors(setSize = 200, randomness = 0.1, since = 0) {
-    const batch = await this.getBatch(setSize, randomness, since);
+  async getTensors(
+    setSize = 200,
+    randomness = 0.1,
+    since = 0,
+    dataType = 'training',
+    completion
+  ) {
+    const batch = await this.getBatch(
+      setSize * (dataType === 'validation' ? 0.2 : 0.8),
+      randomness,
+      since,
+      dataType,
+      completion
+    );
     const classes = await this.getClasses();
-    firebase.apps[0].delete();
     let xs, ys;
 
     return tf.tidy(() => {

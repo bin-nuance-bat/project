@@ -1,20 +1,39 @@
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-const ItemSelector = props => {
-  return (
-    <select
-      value={props.item}
-      disabled={props.disabled}
-      onChange={e => props.setItem(e.target.value)}>
-      {props.items.map(item => (
-        <option key={item.id} value={item.id}>
-          {item.name + (item.qualifier ? ` (${item.qualifier})` : '')}
-        </option>
-      ))}
-    </select>
-  );
-};
+class ItemSelector extends Component {
+  state = {
+    items: []
+  };
+
+  componentDidUpdate() {
+    const sortedItems = this.props.items.sort((a, b) => {
+      return a.name.localeCompare(b.name);
+    });
+    if (
+      this.state.items.every((value, index) => value !== sortedItems[index])
+    ) {
+      this.setState({
+        items: sortedItems
+      });
+    }
+  }
+
+  render() {
+    return (
+      <select
+        value={this.props.item}
+        disabled={this.props.disabled}
+        onChange={e => this.props.setItem(e.target.value)}>
+        {this.state.items.map(item => (
+          <option key={item.id} value={item.id}>
+            {item.name + (item.qualifier ? ` (${item.qualifier})` : '')}
+          </option>
+        ))}
+      </select>
+    );
+  }
+}
 
 ItemSelector.propTypes = {
   item: PropTypes.string.isRequired,

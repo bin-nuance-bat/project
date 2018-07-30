@@ -53,18 +53,18 @@ export default class Settings extends Component {
           label="Hidden Units"
           value={this.props.hiddenUnits}
           hide={!this.state.advanced}
-          range={[10, 500]}
+          range={[50, 500]}
           setState={val => this.props.setState('hiddenUnits', val)}
         />
         <Input
           label="Training Set Size"
           value={this.props.setSize}
-          range={[50, 500]}
+          range={[100, 1000]}
           setState={val => this.props.setState('setSize', val)}
         />
         <Input
           label="Randomness"
-          range={[0.1, 1]}
+          range={[0.05, 1]}
           value={this.props.randomness}
           setState={val => this.props.setState('randomness', val)}
         />
