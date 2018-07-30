@@ -10,8 +10,17 @@ class ListSelection extends Component {
     bubbleAt: null
   };
 
+  componentDidMount() {
+    const scrollSelect = document.getElementById('scroll-select');
+    scrollSelect.addEventListener('touchmove', this.preventDefault, false);
+  }
+
   startsWithLetter = str => {
     return str.match(/^[a-z]/i);
+  };
+
+  preventDefault = e => {
+    e.preventDefault();
   };
 
   formattedItems = (() => {
@@ -25,6 +34,11 @@ class ListSelection extends Component {
 
     return items;
   })();
+
+  componentWillUnmount() {
+    const scrollSelect = document.getElementById('scroll-select');
+    scrollSelect.removeEventListener('touchmove', this.preventDefault, false);
+  }
 
   render() {
     return (
@@ -77,6 +91,7 @@ class ListSelection extends Component {
                   this.setState({bubbleAt: group});
                 }}
                 onTouchMove={event => {
+                  //console.log(event.touchtargets[0]);
                   let index = parseInt(
                     (event.touches[0].screenY -
                       document
