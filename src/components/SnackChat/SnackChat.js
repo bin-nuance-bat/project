@@ -80,7 +80,7 @@ class SnackChat extends Component {
       clearInterval(this.timer);
       this.setState({captured: true});
       this.props.setSnackChat(this.canvas.current.toDataURL());
-      this.props.history.push('/slackname');
+      this.props.history.replace('/slackname');
       return;
     }
 

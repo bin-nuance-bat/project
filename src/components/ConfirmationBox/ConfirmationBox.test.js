@@ -10,7 +10,7 @@ const getProps = () => {
     name: 'coke',
     id: 'sampleid',
     history: {
-      push: jest.fn()
+      replace: jest.fn()
     },
     setActualItem: jest.fn(),
     sendWithPhoto: false,
@@ -40,7 +40,7 @@ it('Goes to username entry page if yes clicked', () => {
 
   const wrapper = shallow(<ConfirmationBox {...mockProps} />);
   wrapper.find({'data-test': 'YES'}).simulate('click');
-  expect(mockProps.history.push).toHaveBeenCalledWith('/slackname');
+  expect(mockProps.history.replace).toHaveBeenCalledWith('/slackname');
 });
 
 it('Goes to edit snack page if no clicked', () => {
@@ -48,5 +48,5 @@ it('Goes to edit snack page if no clicked', () => {
 
   const wrapper = shallow(<ConfirmationBox {...mockProps} />);
   wrapper.find({'data-test': 'NO'}).simulate('click');
-  expect(mockProps.history.push).toHaveBeenCalledWith('/editSnack');
+  expect(mockProps.history.replace).toHaveBeenCalledWith('/editSnack');
 });

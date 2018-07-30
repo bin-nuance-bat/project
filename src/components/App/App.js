@@ -15,12 +15,12 @@ class App extends React.Component {
 
   handleSnackChatClick = () => {
     this.props.setSendWithPhoto(true);
-    this.props.history.push('/disclaimer');
+    this.props.history.replace('/disclaimer');
   };
 
   handleReminderNoPhotoClick = () => {
     this.props.setSendWithPhoto(false);
-    this.props.history.push('/disclaimer');
+    this.props.history.replace('/disclaimer');
   };
 
   render() {

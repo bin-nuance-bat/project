@@ -9,11 +9,11 @@ class ConfirmationBox extends React.Component {
     const {setActualItem, id, sendWithPhoto, history} = this.props;
     setActualItem(id);
     const nextPage = sendWithPhoto ? 'snackchat' : 'slackname';
-    history.push('/' + nextPage);
+    history.replace('/' + nextPage);
   };
 
   handleNo = () => {
-    this.props.history.push('/editSnack');
+    this.props.history.replace('/editSnack');
   };
 
   render() {
