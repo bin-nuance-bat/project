@@ -23,10 +23,16 @@ const PAGES_TO_SHOW_TIMEOUT = [
 ];
 
 class App extends Component {
-  state = {showTimer: false};
+  state = {
+    showTimer: false,
+    showConnectionLost: false,
+    isOnline: true
+  };
 
   componentDidMount() {
     document.body.addEventListener('touchstart', this.resetTimeoutTimer);
+    window.addEventListener('online', this.handleOnline);
+    window.addEventListener('offline', this.handleOffline);
   }
 
   resetTimeoutTimer = () => {
@@ -48,15 +54,25 @@ class App extends Component {
     }
   };
 
+  handleOnline = () => {
+    this.setState({isOnline: true});
+  };
+
+  handleOffline = () => {
+    this.setState({isOnline: false});
+  };
+
   componentWillUnmount() {
     clearTimeout(this.timer);
     clearInterval(this.interval);
     document.body.removeEventListener('touchstart', this.resetTimeoutTimer);
+    window.removeEventListener('online', this.handleOnline);
+    window.removeEventListener('offline', this.handleOffline);
   }
 
   render() {
     return (
-      <div>
+      <div key={this.state.isOnline}>
         <Router>
           <Switch>
             <Route exact path="/" component={Home} />
@@ -73,13 +89,23 @@ class App extends Component {
             <Route exact path="/imageapproval" component={ImageApproval} />
           </Switch>
         </Router>
-        {this.state.showTimer && (
+        {this.state.showTimer &&
+          this.isOnline && (
+            <NotificationBar
+              mainText="Are you still there?"
+              autoActionWord="Timeout"
+              userTouchActionText="dismiss"
+              handleTouch={this.resetTimeoutTimer}
+              handleTimeout={this.timeout}
+            />
+          )}
+        {!this.state.isOnline && (
           <NotificationBar
-            mainText="Are you still there?"
-            autoActionWord="Timeout"
-            userTouchActionText="dismiss"
-            handleTouch={this.resetTimeoutTimer}
-            handleTimeout={this.timeout}
+            mainText="Connection Lost"
+            autoActionWord="Retrying in"
+            userTouchActionText="retry"
+            handleTouch={this.refresh}
+            handleTimeout={this.refresh}
           />
         )}
       </div>
