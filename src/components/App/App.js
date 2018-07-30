@@ -48,14 +48,6 @@ class App extends Component {
     }
   };
 
-  handleOnline = () => {
-    this.setState({isOnline: true});
-  };
-
-  handleOffline = () => {
-    this.setState({isOnline: false});
-  };
-
   componentWillUnmount() {
     clearTimeout(this.timer);
     clearInterval(this.interval);
