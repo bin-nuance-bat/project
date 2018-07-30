@@ -7,6 +7,9 @@ class NotificationBar extends Component {
 
   componentDidMount() {
     this.timer = setInterval(this.tick, 1000);
+    document
+      .getElementById('notificationBar')
+      .addEventListener('touchstart', this.notificationTouch, {passive: false});
   }
 
   tick = () => {
@@ -18,8 +21,16 @@ class NotificationBar extends Component {
     });
   };
 
+  notificationTouch = e => {
+    this.props.userTouchAction();
+    e.preventDefault();
+  };
+
   componentWillUnmount() {
     clearInterval(this.timer);
+    document
+      .getElementById('notificationBar')
+      .removeEventListener('touchstart', this.notificationTouch);
   }
 
   render() {
@@ -32,7 +43,7 @@ class NotificationBar extends Component {
           </div>
         </div>
         <div className="notification-bar--dismiss">
-          {this.props.userActionText.toUpperCase()}
+          {this.props.userTouchActionText.toUpperCase()}
         </div>
       </div>
     );

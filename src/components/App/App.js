@@ -32,7 +32,7 @@ class App extends Component {
     // document
     //   .getElementById('timeoutNotificationBar')
     //   .addEventListener('touchstart', this.notificationTouch, {passive: false});
-    this.resetTimeoutTimer();
+    // this.resetTimeoutTimer();
   }
 
   resetTimeoutTimer = () => {
@@ -96,7 +96,8 @@ class App extends Component {
           <NotificationBar
             mainText="Are you still there?"
             autoActionWord="Timeout"
-            userActionText="dismiss"
+            userTouchActionText="dismiss"
+            userTouchAction={this.resetTimeoutTimer}
             timeoutAction={this.timeout}
           />
         )}
