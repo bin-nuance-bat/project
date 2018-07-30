@@ -64,8 +64,8 @@ $username-icon-size: 48px;
   right: 0px;
   top: 340px;
   margin: 0px;
-  width: 10%;
-  text-align: right;
+  width: 5%;
+  text-align: center;
   font-family: FaricyNew-Bold;
 }
 
@@ -77,12 +77,12 @@ $username-icon-size: 48px;
 }
 
 .list-selection--scroll-select-element {
-  padding: 0 20px;
+  padding: 0 0px;
   position: relative;
 }
 
 .list-selection--bubble {
   position: absolute;
   top: -80px;
-  left: -80px;
+  left: -115px;
 }

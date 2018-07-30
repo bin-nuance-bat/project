@@ -66,18 +66,25 @@ class ListSelection extends Component {
               </div>
             ))}
         </div>
-        <div className="list-selection--scroll-select">
+        <div className="list-selection--scroll-select" id="scroll-select">
           {this.formattedItems.map(([group]) => (
             <div key={group}>
               <div
                 className="list-selection--scroll-select-element"
+                id="select-element"
                 onTouchStart={() => {
                   window.location.hash = '#' + group;
                   this.setState({bubbleAt: group});
                 }}
                 onTouchMove={event => {
                   let index = parseInt(
-                    (event.touches[0].screenY - 370) / 20,
+                    (event.touches[0].screenY -
+                      document
+                        .getElementById('scroll-select')
+                        .getBoundingClientRect().top) /
+                      document
+                        .getElementById('select-element')
+                        .getBoundingClientRect().height,
                     10
                   );
                   if (index < 0 || Object.is(index, -0)) index = 0;
