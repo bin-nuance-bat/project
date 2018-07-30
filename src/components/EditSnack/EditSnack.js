@@ -26,7 +26,6 @@ class EditSnack extends Component {
           items={this.props.items}
           onClick={this.handleClick}
         />
-        <TimeoutNotification />
       </div>
     );
   }

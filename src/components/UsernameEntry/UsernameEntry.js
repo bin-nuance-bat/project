@@ -34,7 +34,6 @@ class UsernameEntry extends React.Component {
             />
           )}
         </div>
-        <TimeoutNotification />
       </div>
     );
   }

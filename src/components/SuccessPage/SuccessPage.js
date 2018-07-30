@@ -13,7 +13,6 @@ const SuccessPage = props => {
       <div className="success-hand">
         <Hand snack={props.storeList[props.actualItem].image} />
       </div>
-      <TimeoutNotification />
     </div>
   );
 };
