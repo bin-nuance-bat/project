@@ -15,6 +15,12 @@ import ImageApproval from '../ImageApproval/ImageApproval';
 import NotificationBar from '../NotificationBar/NotificationBar';
 
 const WAIT_BEFORE_DISPLAY = 5;
+const PAGES_TO_SHOW_TIMEOUT = [
+  '/disclaimer',
+  '/confirmitem',
+  '/editsnack',
+  '/slackname'
+];
 
 class App extends Component {
   state = {isOnline: navigator.onLine, showTimer: false};
@@ -43,7 +49,9 @@ class App extends Component {
   };
 
   showTimeoutMessage = () => {
-    this.setState({showTimer: true});
+    if (PAGES_TO_SHOW_TIMEOUT.indexOf(window.location.pathname) !== -1) {
+      this.setState({showTimer: true});
+    }
   };
 
   handleOnline = () => {
