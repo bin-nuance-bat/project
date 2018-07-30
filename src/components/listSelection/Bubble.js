@@ -30,7 +30,10 @@ const Bubble = props => {
             </g>
           </g>
         </g>
-        <text fill="#FFFFFF" transform="translate(20, 85) scale(5)">
+        <text
+          fill="#FFFFFF"
+          transform="translate(56, 85) scale(4.8)"
+          textAnchor="middle">
           {props.letter}
         </text>
       </svg>
