@@ -78,7 +78,7 @@ class ListSelection extends Component {
                 }}
                 onTouchMove={event => {
                   let index = parseInt(
-                    (event.touches[0].screenY -
+                    (event.touches[0].pageY -
                       document
                         .getElementById('scroll-select')
                         .getBoundingClientRect().top) /
