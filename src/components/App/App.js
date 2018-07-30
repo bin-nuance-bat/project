@@ -12,18 +12,17 @@ import EditSnack from '../EditSnack/EditSnackContainer';
 import SuccessPage from '../SuccessPage/container';
 import Admin from '../Admin/Admin';
 import ImageApproval from '../ImageApproval/ImageApproval';
-//import {Redirect} from 'react-router';
+import NotificationBar from '../NotificationBar/NotificationBar';
 
-const WAIT_BEFORE_DISPLAY = 45;
-const COUNTDOWN = 9;
+const WAIT_BEFORE_DISPLAY = 5;
 
 class App extends Component {
-  state = {isOnline: navigator.onLine, countdown: COUNTDOWN, showTimer: false};
+  state = {isOnline: navigator.onLine, showTimer: false};
 
   componentDidMount() {
     window.addEventListener('online', this.handleOnline);
     window.addEventListener('offline', this.handleOffline);
-    document.body.addEventListener('touchstart', this.dismissMessage);
+    document.body.addEventListener('touchstart', this.resetTimeoutTimer);
     // document
     //   .getElementById('timeoutNotificationBar')
     //   .addEventListener('touchstart', this.notificationTouch, {passive: false});
@@ -37,6 +36,10 @@ class App extends Component {
       this.showTimeoutMessage,
       WAIT_BEFORE_DISPLAY * 1000
     );
+  };
+
+  timeout = () => {
+    window.location.href = '/';
   };
 
   showTimeoutMessage = () => {
@@ -54,7 +57,7 @@ class App extends Component {
   componentWillUnmount() {
     clearTimeout(this.timer);
     clearInterval(this.interval);
-    document.body.removeEventListener('touchstart', this.dismissMessage);
+    document.body.removeEventListener('touchstart', this.resetTimeoutTimer);
     window.removeEventListener('online', this.handleOnline);
     window.removeEventListener('offline', this.handleOffline);
     // document
@@ -81,7 +84,14 @@ class App extends Component {
             <Route exact path="/imageapproval" component={ImageApproval} />
           </Switch>
         </Router>
-        {!this.state.isOnline && 'NOT online'}
+        {this.state.showTimer && (
+          <NotificationBar
+            mainText="Are you still there?"
+            autoActionWord="Timeout"
+            userActionText="dismiss"
+            timeoutAction={this.timeout}
+          />
+        )}
       </div>
     );
   }

@@ -46,7 +46,6 @@ const Disclaimer = props => {
         onClick={() => props.history.push('/scanitem')}>
         Accept and continue
       </button>
-      <TimeoutNotification />
     </div>
   );
 };
