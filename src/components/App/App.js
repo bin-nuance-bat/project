@@ -26,7 +26,8 @@ class App extends Component {
   state = {
     showTimer: false,
     showConnectionLost: false,
-    isOnline: true
+    isOnline: true,
+    refresh: 0
   };
 
   componentDidMount() {
@@ -55,7 +56,11 @@ class App extends Component {
   };
 
   handleOnline = () => {
-    this.setState({isOnline: true});
+    this.setState(prevState => ({
+      isOnline: true,
+      refresh: prevState.refresh + 1
+    }));
+    // this isnt the nicest way of doing it but Im uysing this to reload the route, I only want to do this on the online event though, hence im not using the isOnline as a key (to router)
   };
 
   handleOffline = () => {
@@ -72,7 +77,7 @@ class App extends Component {
 
   render() {
     return (
-      <div key={this.state.isOnline}>
+      <div key={this.state.refresh}>
         <Router>
           <Switch>
             <Route exact path="/" component={Home} />
@@ -94,18 +99,15 @@ class App extends Component {
             <NotificationBar
               mainText="Are you still there?"
               autoActionWord="Timeout"
-              userTouchActionText="dismiss"
+              userTouchActionText="DISMISS"
               handleTouch={this.resetTimeoutTimer}
               handleTimeout={this.timeout}
             />
           )}
         {!this.state.isOnline && (
           <NotificationBar
-            mainText="Connection Lost"
-            autoActionWord="Retrying in"
-            userTouchActionText="retry"
-            handleTouch={this.refresh}
-            handleTimeout={this.refresh}
+            mainText="Connection lost"
+            autoActionWord="Retrying"
           />
         )}
       </div>

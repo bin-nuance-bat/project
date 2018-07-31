@@ -7,7 +7,9 @@ class NotificationBar extends Component {
 
   componentDidMount() {
     setTimeout(() => this.setState({show: true}), 50);
-    this.timer = setInterval(this.tick, 1000);
+    if (this.props.handleTimeout) {
+      this.timer = setInterval(this.tick, 1000);
+    }
     document
       .getElementById('notificationBar')
       .addEventListener('touchstart', this.notificationTouch, {passive: false});
@@ -22,8 +24,15 @@ class NotificationBar extends Component {
     });
   };
 
+  getSubtext = () => {
+    return (
+      this.props.autoActionWord +
+      (this.props.handleTimeout ? ' in ' + this.state.countdown + 's' : '...')
+    );
+  };
+
   notificationTouch = e => {
-    this.props.handleTouch();
+    this.props.handleTouch ? this.props.handleTouch() : null;
     e.preventDefault();
   };
 
@@ -44,12 +53,10 @@ class NotificationBar extends Component {
         id="notificationBar">
         <div className="notification-bar--info">
           <div className="notification-bar--alert">{this.props.mainText}</div>
-          <div className="notification-bar--timer">
-            {this.props.autoActionWord} in{' ' + this.state.countdown}s
-          </div>
+          <div className="notification-bar--sub-text">{this.getSubtext()}</div>
         </div>
         <div className="notification-bar--dismiss">
-          {this.props.userTouchActionText.toUpperCase()}
+          {this.props.userTouchActionText}
         </div>
       </div>
     );
@@ -58,10 +65,10 @@ class NotificationBar extends Component {
 
 NotificationBar.propTypes = {
   userTouchActionText: PropTypes.string.isRequired,
-  autoActionWord: PropTypes.string.isRequired,
+  autoActionWord: PropTypes.string,
   mainText: PropTypes.string.isRequired,
-  handleTouch: PropTypes.func.isRequired,
-  handleTimeout: PropTypes.func.isRequired
+  handleTouch: PropTypes.func,
+  handleTimeout: PropTypes.func
 };
 
 export default NotificationBar;
