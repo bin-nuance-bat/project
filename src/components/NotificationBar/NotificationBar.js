@@ -7,9 +7,15 @@ class NotificationBar extends Component {
 
   componentDidMount() {
     setTimeout(() => this.setState({show: true}), 50);
+
     if (this.props.handleTimeout) {
       this.timer = setInterval(this.tick, 1000);
     }
+
+    if (this.props.preventInteraction) {
+      document.addEventListener('click', this.preventInteraction, true);
+    }
+
     document
       .getElementById('notificationBar')
       .addEventListener('touchstart', this.notificationTouch, {passive: false});
@@ -36,11 +42,17 @@ class NotificationBar extends Component {
     e.preventDefault();
   };
 
+  preventInteraction = e => {
+    e.stopPropagation();
+    e.preventDefault();
+  };
+
   componentWillUnmount() {
     clearInterval(this.timer);
     document
       .getElementById('notificationBar')
       .removeEventListener('touchstart', this.notificationTouch);
+    document.removeEventListener('click', this.preventInteraction, true);
   }
 
   render() {
@@ -68,7 +80,8 @@ NotificationBar.propTypes = {
   autoActionWord: PropTypes.string,
   mainText: PropTypes.string.isRequired,
   handleTouch: PropTypes.func,
-  handleTimeout: PropTypes.func
+  handleTimeout: PropTypes.func,
+  preventInteraction: PropTypes.bool
 };
 
 export default NotificationBar;

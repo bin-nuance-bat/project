@@ -108,6 +108,7 @@ class App extends Component {
           <NotificationBar
             mainText="Connection lost"
             autoActionWord="Retrying"
+            preventInteraction
           />
         )}
       </div>
