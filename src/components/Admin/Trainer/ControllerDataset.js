@@ -72,7 +72,16 @@ export class ControllerDataset {
     await this.changeItemCount(dataset.item, 1);
   };
 
-  addImage = (image, trusted, callback) => {
+  setLabel = async (id, label) => {
+    await this.db
+      .collection('training_data')
+      .doc(id)
+      .update({
+        label
+      });
+  };
+
+  addImage = (image, trusted, callback = null) => {
     this.db
       .collection('training_data')
       .add({
@@ -84,7 +93,7 @@ export class ControllerDataset {
         trusted
       })
       .then(() => {
-        callback();
+        if (callback) callback();
         image.activation.dispose();
       })
       .catch(() => {
@@ -222,5 +231,20 @@ export class ControllerDataset {
 
       return {xs, ys, classes};
     });
+  }
+
+  async getUntrustedImage() {
+    const collectionReference = await this.getCollectionReference(
+      'training_data'
+    );
+    return await collectionReference
+      .where('trusted', '==', false)
+      .limit(1)
+      .get()
+      .then(snapshot => ({
+        ...snapshot.docs[0].data(),
+        id: snapshot.docs[0].id
+      }))
+      .catch(() => null);
   }
 }

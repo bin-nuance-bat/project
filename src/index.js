@@ -18,7 +18,7 @@ import SuccessPage from './components/SuccessPage/SuccessPage';
 import Admin from './components/Admin/Admin';
 import Trainer from './components/Admin/Trainer/Trainer';
 import Viewer from './components/Admin/Preview/Viewer';
-//import ItemApproval from './components/Admin/ImageApproval/ImageApproval';
+import ImageApproval from './components/Admin/ImageApproval/ImageApproval';
 
 import './index.css';
 
@@ -37,7 +37,7 @@ ReactDOM.render(
         <Route exact path="/admin" component={Admin} />
         <Route exact path="/admin/preview" component={Viewer} />
         <Route exact path="/admin/training" component={Trainer} />
-        {/* <Route exact path="/admin/itemapproval" component={ItemApproval} /> */}
+        <Route exact path="/admin/imageapproval" component={ImageApproval} />
       </Switch>
     </Router>
   </Provider>,

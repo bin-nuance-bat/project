@@ -6,19 +6,19 @@ import './EditSnack.css';
 import TimeoutNotification from '../TimeoutNotification/TimeoutNotification';
 
 class EditSnack extends Component {
-  handleClick = id => {
-    this.props.setActualItem(id);
+  handleClick = item => {
+    this.props.setActualItem(item.id);
     const nextPage = this.props.sendWithPhoto ? 'snackchat' : 'slackname';
-    this.props.history.push('/' + nextPage);
+    this.props.history.replace('/' + nextPage);
   };
 
   render() {
     return (
-      <div>
+      <div className="edit-snack--page">
         <div className="edit-snack--header">
           <Logo />
           <div className="edit-snack edit-snack--text-info">
-            Sorry, I can’t recognise that snack. <br /> Please select it below
+            Sorry, I can’t recognise that snack <br /> Please select it below
           </div>
         </div>
         <ListSelection

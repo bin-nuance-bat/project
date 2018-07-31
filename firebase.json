@@ -6,6 +6,13 @@
       "**/.*",
       "**/node_modules/**"
     ],
+    "redirects": [
+      {
+        "source": "/!(admin|training|preview|itemapproval)",
+        "destination": "/",
+        "type": 301
+      }
+    ],
     "rewrites" :[
       {
         "source": "**",

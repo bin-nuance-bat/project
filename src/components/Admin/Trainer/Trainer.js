@@ -5,7 +5,7 @@ import Model from './Model';
 import '../Admin.css';
 import Settings from './Settings';
 import LoadingBar from './LoadingBar';
-import {uriToTensor} from './../AdminUtils';
+import {imageToTensor} from './../AdminUtils';
 
 class Trainer extends Component {
   state = {
@@ -43,9 +43,7 @@ class Trainer extends Component {
     this.model.init();
   }
 
-  capture = src => {
-    return uriToTensor(src);
-  };
+  capture = imageToTensor;
 
   captureFromFile = async () => {
     return new Promise(resolve => {
@@ -159,7 +157,7 @@ class Trainer extends Component {
     });
 
     return (
-      <div className="trainer">
+      <div className="page trainer">
         <div className="col" style={{textAlign: 'center'}}>
           <WebcamCapture imgSize={224} ref={this.webcam} />
           <div>

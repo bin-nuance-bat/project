@@ -4,16 +4,20 @@ import Model from './../../utils/model';
 import WebcamCapture from '../WebcamCapture/WebcamCapture';
 import Logo from '../Logo/Logo';
 import './ItemRecognition.css';
+import {ControllerDataset} from '../Admin/Trainer/ControllerDataset';
+import MobileNet from '../Admin/Trainer/MobileNet';
 
 const ML_THRESHOLD = 0.06;
 
 class ItemRecognition extends Component {
   model = new Model();
   webcam = React.createRef();
+  mobileNet = new MobileNet();
 
   componentDidMount() {
     this.props.setPrediction(null, null);
     this.model.load();
+    this.controllerDataset = new ControllerDataset();
   }
 
   onConnect = () => {
@@ -25,15 +29,31 @@ class ItemRecognition extends Component {
       });
   };
 
+  addTrainingImage = (img, label) => {
+    this.mobileNet.init().then(() =>
+      this.mobileNet.getActivation(img).then(activation =>
+        this.controllerDataset.addImage(
+          {
+            img,
+            label,
+            activation
+          },
+          false
+        )
+      )
+    );
+  };
+
   handleImg = img => {
-    this.model.predict(img).then(item => {
+    this.model.predict(img).then(async item => {
       if (
         item.value > ML_THRESHOLD &&
         item.id !== '' &&
         !this.props.prediction
       ) {
+        await this.addTrainingImage(img.src, item.id);
         this.props.setPrediction(item.id, img.src);
-        this.props.history.push('/confirmitem');
+        this.props.history.replace('/confirmitem');
       } else {
         if (this.webcam.current)
           this.webcam.current.requestScreenshot().then(this.handleImg);
@@ -43,7 +63,7 @@ class ItemRecognition extends Component {
 
   render() {
     return (
-      <div>
+      <div className="page">
         <header>
           <Logo />
           <div className="item-recognition item-recognition--instructions">

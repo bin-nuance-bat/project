@@ -1,5 +1,4 @@
 import React from 'react';
-import Logo from '../Logo/Logo';
 import './Disclaimer.css';
 import PropTypes from 'prop-types';
 import TimeoutNotification from '../TimeoutNotification/TimeoutNotification';
@@ -8,11 +7,11 @@ import Camera from './assets/Camera.svg';
 
 const Disclaimer = props => {
   return (
-    <div>
+    <div className="page">
       <div>
         <button
           className="button button-back"
-          onClick={() => props.history.push('/')}>
+          onClick={() => props.history.replace('/')}>
           <svg width="59" height="61" viewBox="0 0 59 61">
             <g fill="none" fillRule="evenodd">
               <polygon points="0 0 59 0 59 59 0 59" />
@@ -24,7 +23,6 @@ const Disclaimer = props => {
             </g>
           </svg>
         </button>
-        <Logo />
       </div>
       <div>
         <img src={Camera} className="disclaimer--big-camera" alt="" />{' '}
@@ -43,7 +41,7 @@ const Disclaimer = props => {
       </div>
       <button
         className="button button-accept"
-        onClick={() => props.history.push('/scanitem')}>
+        onClick={() => props.history.replace('/scanitem')}>
         Accept and continue
       </button>
       <TimeoutNotification />
