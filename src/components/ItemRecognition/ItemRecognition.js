@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Model from './../../utils/model';
 import WebcamCapture from '../WebcamCapture/WebcamCapture';
-import Logo from '../Logo/Logo';
 import './ItemRecognition.css';
 import {ControllerDataset} from '../Admin/Trainer/ControllerDataset';
 import MobileNet from '../Admin/Trainer/MobileNet';
@@ -65,7 +64,6 @@ class ItemRecognition extends Component {
     return (
       <div className="page">
         <header>
-          <Logo />
           <div className="item-recognition item-recognition--instructions">
             Scan item using the front facing camera
           </div>

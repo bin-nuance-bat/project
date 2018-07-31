@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import ListSelection from '../listSelection/ListSelection';
-import Logo from '../Logo/Logo';
 import './EditSnack.css';
 
 class EditSnack extends Component {
@@ -15,7 +14,6 @@ class EditSnack extends Component {
     return (
       <div className="edit-snack--page">
         <div className="edit-snack--header">
-          <Logo />
           <div className="edit-snack edit-snack--text-info">
             Sorry, I can’t recognise that snack <br /> Please select it below
           </div>
