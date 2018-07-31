@@ -12,9 +12,21 @@ script:
 
 deploy:
   skip_cleanup: true
-  provider: firebase
-  token: $FIREBASE_TOKEN
-  on:
-    branch: master
-  project: honesty-store-kiosk
   
+  - provider: firebase
+    token: $FIREBASE_TOKEN
+    on:
+      branch: master
+    project: honesty-store-kiosk-dev
+
+  - provider: firebase
+    token: $FIREBASE_TOKEN
+    on:
+      branch: env-QA
+    project: honesty-store-kiosk-qa
+
+  - provider: firebase
+    token: $FIREBASE_TOKEN
+    on:
+      branch: env-Prod
+    project: honesty-store-kiosk
