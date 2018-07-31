@@ -3,7 +3,12 @@
 .item-recognition--instructions {
   font-size: 35px;
   color: $white;
-  padding-top: 56px;
+  padding-top: 32px;
+}
+
+.item-recognition--instructions-small {
+  padding-top: 16px;
+  font-size: 30px;
 }
 
 .item-recognition--display {

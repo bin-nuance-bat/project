@@ -8,11 +8,16 @@ import {ControllerDataset} from '../Admin/Trainer/ControllerDataset';
 import MobileNet from '../Admin/Trainer/MobileNet';
 
 const ML_THRESHOLD = 0.06;
+const TIMEOUT_IN_SECONDS = 10;
 
 class ItemRecognition extends Component {
   model = new Model();
   webcam = React.createRef();
   mobileNet = new MobileNet();
+
+  state = {
+    showRetryMessage: false
+  };
 
   componentDidMount() {
     this.props.setPrediction(null, null);
@@ -23,7 +28,10 @@ class ItemRecognition extends Component {
   onConnect = () => {
     this.webcam.current
       .requestScreenshot()
-      .then(this.handleImg)
+      .then(img => {
+        this.scanningStartTime = Date.now();
+        this.handleImg(img);
+      })
       .catch(() => {
         setTimeout(this.onConnect, 100);
       });
@@ -47,14 +55,20 @@ class ItemRecognition extends Component {
   handleImg = img => {
     this.model.predict(img).then(async item => {
       if (
-        item.value > ML_THRESHOLD &&
-        item.id !== '' &&
-        !this.props.prediction
+        (item.value > ML_THRESHOLD &&
+          item.id !== '' &&
+          !this.props.prediction) ||
+        (Date.now() - this.scanningStartTime) / 1000 > TIMEOUT_IN_SECONDS
       ) {
         await this.addTrainingImage(img.src, item.id);
         this.props.setPrediction(item.id, img.src);
         this.props.history.replace('/confirmitem');
       } else {
+        if (
+          !this.state.showRetryMessage &&
+          (Date.now() - this.scanningStartTime) / 1000 > TIMEOUT_IN_SECONDS - 5
+        )
+          this.setState({showRetryMessage: true});
         if (this.webcam.current)
           this.webcam.current.requestScreenshot().then(this.handleImg);
       }
@@ -66,9 +80,20 @@ class ItemRecognition extends Component {
       <div className="page">
         <header>
           <Logo />
-          <div className="item-recognition item-recognition--instructions">
-            Scan item using the front facing camera
-          </div>
+          {this.state.showRetryMessage ? (
+            <div>
+              <div className="item-recognition item-recognition--instructions">
+                We can&#39;t recognise the snack
+              </div>
+              <div className="item-recognition--instructions-small">
+                Try turning the snack so the logo is seen by the camera
+              </div>
+            </div>
+          ) : (
+            <div className="item-recognition item-recognition--instructions">
+              Scan item using the front facing camera
+            </div>
+          )}
         </header>
         <WebcamCapture
           className="item-recognition item-recognition--display"
