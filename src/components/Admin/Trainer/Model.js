@@ -118,14 +118,12 @@ class Model {
     learningRate,
     epochs,
     setSize,
-    randomness,
-    since
+    randomness
   ) {
     this.setBusyStatus('Loading training data from DB...');
     const {xs, ys, classes} = await this.controllerDataset.getTensors(
       setSize,
       randomness,
-      since,
       'training',
       this.setCompletion
     );
@@ -134,7 +132,6 @@ class Model {
     const validation = await this.controllerDataset.getTensors(
       setSize,
       randomness,
-      since,
       'validation',
       this.setCompletion
     );

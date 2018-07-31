@@ -64,15 +64,9 @@ export default class Settings extends Component {
         />
         <Input
           label="Randomness"
-          range={[0.05, 1]}
+          range={[1, 100]}
           value={this.props.randomness}
           setState={val => this.props.setState('randomness', val)}
-        />
-        <Input
-          label="Use Images Since"
-          value={this.props.since}
-          type="datetime-local"
-          setState={val => this.props.setState('since', val)}
         />
 
         <div className="formGroup">
@@ -127,7 +121,6 @@ Settings.propTypes = {
   hiddenUnits: PropTypes.string.isRequired,
   setSize: PropTypes.string.isRequired,
   randomness: PropTypes.string.isRequired,
-  since: PropTypes.string.isRequired,
   train: PropTypes.func.isRequired,
   predict: PropTypes.func.isRequired,
   setState: PropTypes.func.isRequired

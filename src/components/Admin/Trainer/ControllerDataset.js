@@ -5,6 +5,9 @@ import 'firebase/firestore';
 import 'firebase/storage';
 import 'firebase/auth';
 
+const VALIDATION_PERCENTAGE = 0.2;
+const VALIDATION_COUNT = 3;
+
 export class ControllerDataset {
   constructor() {
     initFirebase();
@@ -114,58 +117,72 @@ export class ControllerDataset {
     return idList;
   }
 
-  async getBatch(batchSize, randomness, since, dataType, completion) {
-    const batch = {};
-    const limit = batchSize * randomness;
-    const ref = this.db
+  async fetchData(count, type, onlyLabel) {
+    let ref = this.db
       .collection('training_data')
       .where('trusted', '==', true)
-      .orderBy('random')
-      .orderBy('timestamp');
+      .orderBy('random');
+    if (onlyLabel) ref = ref.where('label', '==', onlyLabel);
 
-    let batchCounter = 0;
-    const addData = snapshot => {
-      snapshot.forEach(doc => {
-        if (!batch[doc.id]) {
-          batchCounter++;
-          const {activation, label, id} = {...doc.data(), id: doc.id};
-          batch[doc.id] = {activation, label, id};
-        }
-      });
-    };
+    let random = Math.random();
+    random *=
+      type === 'validation' ? VALIDATION_PERCENTAGE : 1 - VALIDATION_PERCENTAGE;
+    random += type === 'validation' ? 0 : VALIDATION_PERCENTAGE;
 
-    while (batchCounter < batchSize) {
-      const location =
-        dataType === 'validation'
-          ? (Math.random() * 1) / 5
-          : (Math.random() * 4) / 5 + 0.2;
-      await ref
-        .startAt(location, since)
-        .limit(Math.min(limit, batchSize - batchCounter))
-        .get()
-        .then(addData);
-      completion(batchCounter / batchSize);
+    const data = {};
+    const snapshot = await ref
+      .startAt(random)
+      .limit(count)
+      .get();
+    snapshot.forEach(doc => {
+      const {activation, label} = doc.data();
+      data[doc.id] = {activation, label};
+    });
+
+    const dataCount = Object.keys(data).length;
+    if (dataCount >= count) {
+      return data;
+    } else {
+      return {
+        ...data,
+        ...(await this.fetchData(count - dataCount, type, onlyLabel))
+      };
     }
-
-    return Object.values(batch);
   }
 
   async getTensors(
     setSize = 200,
-    randomness = 0.1,
-    since = 0,
+    randomness = 1,
     dataType = 'training',
     completion
   ) {
-    const batch = await this.getBatch(
-      setSize * (dataType === 'validation' ? 0.2 : 0.8),
-      randomness,
-      since,
-      dataType,
-      completion
-    );
+    let batch = {};
     const classes = await this.getClasses();
+
+    if (dataType === 'validation') {
+      for (const c in classes) {
+        batch = {
+          ...batch,
+          ...(await this.fetchData(VALIDATION_COUNT, dataType, classes[c]))
+        };
+        completion((c + 1) / classes.length);
+      }
+    } else {
+      while (Object.keys(batch).length < setSize) {
+        const batchSize = Object.keys(batch).length;
+        batch = {
+          ...batch,
+          ...(await this.fetchData(
+            Math.min(Math.floor(setSize / randomness), setSize - batchSize),
+            dataType
+          ))
+        };
+        completion(batchSize / setSize);
+      }
+    }
+
     let xs, ys;
+    batch = Object.values(batch);
 
     return tf.tidy(() => {
       xs = tf.keep(tf.tensor4d(batch[0].activation.split(','), [1, 7, 7, 256]));

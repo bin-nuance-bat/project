@@ -14,8 +14,7 @@ class Trainer extends Component {
     epochs: '200',
     hiddenUnits: '100',
     setSize: '100',
-    randomness: '0.1',
-    since: '1970-01-01T00:00',
+    randomness: '10',
     burstCount: 1,
     advanced: false,
     status: 'Loading...',
@@ -111,8 +110,7 @@ class Trainer extends Component {
       learningRate,
       epochs,
       setSize,
-      randomness,
-      since
+      randomness
     } = this.state;
 
     this.model.train(
@@ -121,8 +119,7 @@ class Trainer extends Component {
       parseFloat(learningRate),
       parseInt(epochs, 10),
       parseInt(setSize, 10),
-      parseFloat(randomness),
-      Date.parse(since)
+      parseFloat(randomness)
     );
   };
 
@@ -149,7 +146,6 @@ class Trainer extends Component {
       hiddenUnits,
       setSize,
       randomness,
-      since,
       busy,
       status,
       item,
@@ -215,7 +211,6 @@ class Trainer extends Component {
           hiddenUnits={hiddenUnits}
           setSize={setSize}
           randomness={randomness}
-          since={since}
           train={this.train}
           predict={this.predict}
           setState={(key, val) => this.setState({[key]: val})}
