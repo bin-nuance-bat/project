@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import WebcamCapture from '../../WebcamCapture/WebcamCapture';
 import ItemSelector from '../ItemSelector';
 import Model from './Model';
@@ -42,6 +43,10 @@ class Trainer extends Component {
   componentDidMount() {
     this.model.init();
   }
+
+  back = () => {
+    this.props.history.replace('/admin');
+  };
 
   capture = imageToTensor;
 
@@ -157,8 +162,13 @@ class Trainer extends Component {
     });
 
     return (
-      <div className="page trainer">
+      <div className="trainer page">
         <div className="col" style={{textAlign: 'center'}}>
+          <div>
+            <button className="button button-admin" onClick={this.back}>
+              &laquo; Back
+            </button>
+          </div>
           <WebcamCapture imgSize={224} ref={this.webcam} />
           <div>
             <ItemSelector
@@ -240,5 +250,9 @@ class Trainer extends Component {
     );
   }
 }
+
+Trainer.propTypes = {
+  history: PropTypes.object.isRequired
+};
 
 export default Trainer;

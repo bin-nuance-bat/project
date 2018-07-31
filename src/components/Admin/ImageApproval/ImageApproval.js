@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import getStore from '../../../utils/honestyStore';
 import {ControllerDataset} from '../Trainer/ControllerDataset';
 import './ImageApproval.css';
@@ -51,6 +52,10 @@ class ImageApproval extends Component {
       );
   };
 
+  back = () => {
+    this.props.history.replace('/admin');
+  };
+
   componentDidMount() {
     getStore().then(storeList => {
       this.storeList = {
@@ -68,6 +73,11 @@ class ImageApproval extends Component {
 
     return (
       <div className="preview">
+        <div>
+          <button className="button button-admin" onClick={this.back}>
+            &laquo; Back
+          </button>
+        </div>
         <img src={this.state.image.img} alt="" />
         <div>
           <button className="button button-admin" onClick={this.trustImage}>
@@ -94,5 +104,9 @@ class ImageApproval extends Component {
     );
   }
 }
+
+ImageApproval.propTypes = {
+  history: PropTypes.object.isRequired
+};
 
 export default ImageApproval;
