@@ -45,7 +45,7 @@ class App extends Component {
     );
   };
 
-  timeout = () => {
+  onTimeout = () => {
     window.location.href = '/';
   };
 
