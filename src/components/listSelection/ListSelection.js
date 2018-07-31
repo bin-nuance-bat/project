@@ -30,41 +30,46 @@ class ListSelection extends Component {
       <div className="list-selection list-selection--body">
         <div className="list-selection list-selection--list">
           {this.props.items.length > 0 &&
-            this.formattedItems.map(([group, groupItems]) => (
-              <div key={group} id={group}>
-                <p className="list-selection list-selection--list-text list-selection--list-text--group-header">
-                  {group.toUpperCase()}
-                </p>
-                <img
-                  src={line}
-                  className="list-selection list-selection--group-splitter"
-                  alt=""
-                />
-                {groupItems.map(item => (
-                  <div
-                    className={
-                      'list-selection list-selection--list-item ' +
-                      this.props.iconStyle +
-                      '-holder'
-                    }
-                    key={item.id}
-                    data-test={item.id}
-                    onClick={() => this.props.onClick(item)}>
+            this.formattedItems.map(
+              ([group, groupItems]) =>
+                groupItems.length > 0 ? (
+                  <div key={group} id={group}>
+                    <p className="list-selection list-selection--list-text list-selection--list-text--group-header">
+                      {group.toUpperCase()}
+                    </p>
                     <img
-                      className={
-                        'list-selection list-selection--item-icon ' +
-                        this.props.iconStyle
-                      }
-                      src={item.image}
+                      src={line}
+                      className="list-selection list-selection--group-splitter"
                       alt=""
                     />
-                    <p className="list-selection list-selection--list-text list-selection--list-text--item-name">
-                      {item.name}
-                    </p>
+                    {groupItems.map(item => (
+                      <div
+                        className={
+                          'list-selection list-selection--list-item ' +
+                          this.props.iconStyle +
+                          '-holder'
+                        }
+                        key={item.id}
+                        data-test={item.id}
+                        onClick={() => this.props.onClick(item)}>
+                        <img
+                          className={
+                            'list-selection list-selection--item-icon ' +
+                            this.props.iconStyle
+                          }
+                          src={item.image}
+                          alt=""
+                        />
+                        <p className="list-selection list-selection--list-text list-selection--list-text--item-name">
+                          {item.name}
+                        </p>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-            ))}
+                ) : (
+                  <div key={group} />
+                )
+            )}
         </div>
         <div className="list-selection--scroll-select">
           {this.formattedItems.map(([group]) => (
@@ -83,6 +88,7 @@ class ListSelection extends Component {
 
 ListSelection.propTypes = {
   onClick: PropTypes.func.isRequired,
+  iconStyle: PropTypes.string,
   items: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
