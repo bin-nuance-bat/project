@@ -13,7 +13,7 @@ class ConfirmationBox extends React.Component {
   };
 
   handleNo = () => {
-    this.props.history.replace('/editSnack');
+    this.props.history.replace('/editsnack');
   };
 
   render() {

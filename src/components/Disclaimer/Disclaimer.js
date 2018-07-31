@@ -1,7 +1,6 @@
 import React from 'react';
 import './Disclaimer.css';
 import PropTypes from 'prop-types';
-import TimeoutNotification from '../TimeoutNotification/TimeoutNotification';
 import Padlock from './assets/Padlock.svg';
 import Camera from './assets/Camera.svg';
 
@@ -44,7 +43,6 @@ const Disclaimer = props => {
         onClick={() => props.history.replace('/scanitem')}>
         Accept and continue
       </button>
-      <TimeoutNotification />
     </div>
   );
 };
