@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+
+import {ControllerDataset} from '../Admin/ControllerDataset';
 import Model from './../../utils/model';
+
 import WebcamCapture from '../WebcamCapture/WebcamCapture';
+import MobileNet from '../Admin/Trainer/MobileNet';
+
 import Logo from '../Logo/Logo';
 import './ItemRecognition.css';
-import {ControllerDataset} from '../Admin/Trainer/ControllerDataset';
-import MobileNet from '../Admin/Trainer/MobileNet';
 
 const ML_THRESHOLD = 0.06;
 

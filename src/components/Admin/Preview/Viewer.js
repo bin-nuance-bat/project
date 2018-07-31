@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
 import 'firebase/firestore';
+
+import getStore from '../../../utils/honestyStore.js';
+import {ControllerDataset} from '../ControllerDataset';
+
 import ItemSelector from '../ItemSelector';
 import ImagePreview from './ImagePreview';
-import getStore from '../../../utils/honestyStore.js';
-import {ControllerDataset} from './../Trainer/ControllerDataset';
 
 export default class Viewer extends Component {
   state = {
