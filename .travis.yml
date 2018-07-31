@@ -12,7 +12,7 @@ script:
 
 deploy:
   skip_cleanup: true
-  
+
   - provider: firebase
     token: $FIREBASE_TOKEN
     on:
