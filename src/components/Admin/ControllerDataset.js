@@ -1,9 +1,10 @@
 import * as tf from '@tensorflow/tfjs';
-import initFirebase from '../../../utils/firebase';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/storage';
 import 'firebase/auth';
+
+import initFirebase from '../../utils/firebase';
 
 const VALIDATION_PERCENTAGE = 0.2;
 const VALIDATION_COUNT = 3;
@@ -24,10 +25,6 @@ export class ControllerDataset {
     });
     return itemObj;
   }
-
-  getCollectionReference = async name => {
-    return await this.db.collection(name);
-  };
 
   getItemReference = async label => {
     return await this.db.collection('item_data').doc(label);
@@ -234,10 +231,8 @@ export class ControllerDataset {
   }
 
   async getUntrustedImage() {
-    const collectionReference = await this.getCollectionReference(
-      'training_data'
-    );
-    return await collectionReference
+    return await this.db
+      .collection('training_data')
       .where('trusted', '==', false)
       .limit(1)
       .get()

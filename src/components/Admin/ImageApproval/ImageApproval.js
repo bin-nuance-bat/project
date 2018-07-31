@@ -1,7 +1,11 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+
+import ItemSelector from '../ItemSelector';
+
 import getStore from '../../../utils/honestyStore';
-import {ControllerDataset} from '../Trainer/ControllerDataset';
+import {ControllerDataset} from '../ControllerDataset';
+
 import './ImageApproval.css';
 
 class ImageApproval extends Component {
@@ -34,22 +38,15 @@ class ImageApproval extends Component {
       .then(this.nextImage);
   };
 
-  changeCategory = event => {
-    this.controllerDataset
-      .setLabel(
-        this.state.image.id,
-        Object.keys(this.storeList).find(
-          key => this.storeList[key].name === event.target.value
-        )
+  changeCategory = newCategory => {
+    this.controllerDataset.setLabel(this.state.image.id, newCategory).then(() =>
+      this.setState(
+        {
+          showDropdown: false
+        },
+        this.nextImage
       )
-      .then(() =>
-        this.setState(
-          {
-            showDropdown: false
-          },
-          this.nextImage
-        )
-      );
+    );
   };
 
   back = () => {
@@ -91,15 +88,12 @@ class ImageApproval extends Component {
           </button>
         </div>
         <div>Category</div>
-        <div>
-          <select
-            value={this.storeList[this.state.image.label].name}
-            onChange={this.changeCategory}>
-            {Object.values(this.storeList)
-              .sort((a, b) => a.name.localeCompare(b.name))
-              .map(item => <option key={item.id}>{item.name}</option>)}
-          </select>
-        </div>
+
+        <ItemSelector
+          item={this.state.image.label}
+          items={Object.values(this.storeList)}
+          setItem={cat => this.changeCategory(cat)}
+        />
       </div>
     );
   }

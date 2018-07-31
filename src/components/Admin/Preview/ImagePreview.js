@@ -1,6 +1,7 @@
 import React from 'react';
-import './ImagePreview.css';
 import PropTypes from 'prop-types';
+
+import './ImagePreview.css';
 
 const ImagePreview = props => {
   return (

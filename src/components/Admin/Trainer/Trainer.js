@@ -1,12 +1,15 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+
+import Model from './Model';
+import {imageToTensor} from './../AdminUtils';
+
 import WebcamCapture from '../../WebcamCapture/WebcamCapture';
 import ItemSelector from '../ItemSelector';
-import Model from './Model';
-import '../Admin.css';
 import Settings from './Settings';
 import LoadingBar from './LoadingBar';
-import {imageToTensor} from './../AdminUtils';
+
+import '../Admin.css';
 
 class Trainer extends Component {
   state = {
@@ -24,7 +27,7 @@ class Trainer extends Component {
     completion: 1
   };
 
-  webcam = React.createRef();
+  webcamCapture = React.createRef();
   item = React.createRef();
   traner = React.createRef();
   files = React.createRef();
@@ -61,14 +64,14 @@ class Trainer extends Component {
   };
 
   screenshot = () => {
-    return this.webcam.current.getScreenshot();
+    return this.webcamCapture.current.getScreenshot();
   };
 
   addExample = () => {
     this.setState({busy: true});
     this.model.addExample(
       this.screenshot,
-      () => this.capture(this.webcam.current.video),
+      () => this.capture(this.webcamCapture.current.video),
       this.state.item,
       this.state.burstCount
     );
@@ -127,10 +130,10 @@ class Trainer extends Component {
   };
 
   predict = () => {
-    if (this.webcam.current) {
+    if (this.webcamCapture.current) {
       this.setState({busy: true});
       this.model.predict(
-        this.capture(this.webcam.current.webcam.current.video)
+        this.capture(this.webcamCapture.current.webcam.current.video)
       );
     } else {
       this.setReadyStatus('Please connect a camera.');
@@ -169,7 +172,7 @@ class Trainer extends Component {
               &laquo; Back
             </button>
           </div>
-          <WebcamCapture imgSize={224} ref={this.webcam} />
+          <WebcamCapture imgSize={224} ref={this.webcamCapture} />
           <div>
             <ItemSelector
               item={item}
@@ -192,8 +195,8 @@ class Trainer extends Component {
           <div>
             <button
               className="button button-admin"
-              onClick={() => this.addExample(this.webcam.current.video)}
-              disabled={busy || !this.webcam.current.webcam.current}>
+              onClick={() => this.addExample(this.webcamCapture.current.video)}
+              disabled={busy || !this.webcamCapture.current.webcam.current}>
               Add From Camera
             </button>
           </div>

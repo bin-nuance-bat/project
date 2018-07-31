@@ -1,8 +1,9 @@
 import * as tf from '@tensorflow/tfjs';
-import {ControllerDataset} from './ControllerDataset';
-import getStore from '../../../utils/honestyStore.js';
 import * as MobileNet from '@tensorflow-models/mobilenet';
+
 import FirebaseStorageHandler from './FirebaseStorageHandler';
+import {ControllerDataset} from '../ControllerDataset';
+import getStore from '../../../utils/honestyStore.js';
 
 class Model {
   constructor(setReadyStatus, setBusyStatus, setCompletion) {
