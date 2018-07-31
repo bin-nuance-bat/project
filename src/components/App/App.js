@@ -38,7 +38,7 @@ class App extends Component {
     );
   };
 
-  timeout = () => {
+  onTimeout = () => {
     window.location.href = '/';
   };
 
@@ -79,7 +79,7 @@ class App extends Component {
             autoActionWord="Timeout"
             userTouchActionText="dismiss"
             handleTouch={this.resetTimeoutTimer}
-            handleTimeout={this.timeout}
+            handleTimeout={this.onTimeout}
           />
         )}
       </div>
