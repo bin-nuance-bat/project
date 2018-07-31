@@ -8,6 +8,7 @@ import {ControllerDataset} from '../Admin/Trainer/ControllerDataset';
 import MobileNet from '../Admin/Trainer/MobileNet';
 
 const ML_THRESHOLD = 0.06;
+const TIMEOUT_IN_SECONDS = 10;
 
 class ItemRecognition extends Component {
   model = new Model();
@@ -23,7 +24,10 @@ class ItemRecognition extends Component {
   onConnect = () => {
     this.webcam.current
       .requestScreenshot()
-      .then(this.handleImg)
+      .then(img => {
+        this.scanningStartTime = Date.now();
+        this.handleImg(img);
+      })
       .catch(() => {
         setTimeout(this.onConnect, 100);
       });
@@ -47,9 +51,10 @@ class ItemRecognition extends Component {
   handleImg = img => {
     this.model.predict(img).then(async item => {
       if (
-        item.value > ML_THRESHOLD &&
-        item.id !== '' &&
-        !this.props.prediction
+        (item.value > ML_THRESHOLD &&
+          item.id !== '' &&
+          !this.props.prediction) ||
+        (Date.now() - this.scanningStartTime) / 1000 > TIMEOUT_IN_SECONDS
       ) {
         await this.addTrainingImage(img.src, item.id);
         this.props.setPrediction(item.id, img.src);
