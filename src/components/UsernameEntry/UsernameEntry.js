@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import './UsernameEntry.css';
 import Logo from '../Logo/Logo';
 import ListSelection from '../listSelection/ListSelection';
-import TimeoutNotification from '../TimeoutNotification/TimeoutNotification';
 
 class UsernameEntry extends React.Component {
   sendReminder = async user => {
@@ -34,7 +33,6 @@ class UsernameEntry extends React.Component {
             />
           )}
         </div>
-        <TimeoutNotification />
       </div>
     );
   }
@@ -42,7 +40,7 @@ class UsernameEntry extends React.Component {
 
 UsernameEntry.propTypes = {
   users: PropTypes.arrayOf(PropTypes.object).isRequired,
-  history: PropTypes.shape({push: PropTypes.func.isRequired}).isRequired,
+  history: PropTypes.shape({replace: PropTypes.func.isRequired}).isRequired,
   loadUsers: PropTypes.func.isRequired,
   sendSlackMessage: PropTypes.func.isRequired
 };

@@ -1,72 +1,90 @@
-import React from 'react';
-import './App.css';
-import Logo from '../Logo/Logo';
-import HomeHandsSlot from './assets/HandsSlot.svg';
-import HomeHandsRight from './assets/HandsRight.svg';
-import HomeHandsCenter from './assets/HandsCenter.svg';
-import HomeHandsLeft from './assets/HandsLeft.svg';
-import Camera from './assets/Camera.svg';
-import PropTypes from 'prop-types';
+import React, {Component} from 'react';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import Home from '../Home/container';
+import Viewer from '../Admin/Preview/Viewer';
+import Trainer from '../Admin/Trainer/Trainer';
+import SnackChat from '../SnackChat/SnackChatContainer';
+import ItemRecognition from '../ItemRecognition/ItemRecognitionContainer';
+import Disclaimer from '../Disclaimer/Disclaimer';
+import ConfirmationBox from '../ConfirmationBox/container';
+import UsernameEntry from '../UsernameEntry/container';
+import EditSnack from '../EditSnack/EditSnackContainer';
+import SuccessPage from '../SuccessPage/container';
+import Admin from '../Admin/Admin';
+import ImageApproval from '../ImageApproval/ImageApproval';
+import NotificationBar from '../NotificationBar/NotificationBar';
 
-class App extends React.Component {
+const WAIT_BEFORE_DISPLAY = 45;
+const PAGES_TO_SHOW_TIMEOUT = [
+  '/disclaimer',
+  '/confirmitem',
+  '/editsnack',
+  '/slackname'
+];
+
+class App extends Component {
+  state = {showTimer: false};
+
   componentDidMount() {
-    this.props.loadStoreList();
+    document.body.addEventListener('touchstart', this.resetTimeoutTimer);
   }
 
-  handleSnackChatClick = () => {
-    this.props.setSendWithPhoto(true);
-    this.props.history.replace('/disclaimer');
+  resetTimeoutTimer = () => {
+    this.setState({showTimer: false});
+    clearTimeout(this.timer);
+    this.timer = setTimeout(
+      this.showTimeoutMessage,
+      WAIT_BEFORE_DISPLAY * 1000
+    );
   };
 
-  handleReminderNoPhotoClick = () => {
-    this.props.setSendWithPhoto(false);
-    this.props.history.replace('/disclaimer');
+  onTimeout = () => {
+    window.location.href = '/';
   };
+
+  showTimeoutMessage = () => {
+    if (PAGES_TO_SHOW_TIMEOUT.indexOf(window.location.pathname) !== -1) {
+      this.setState({showTimer: true});
+    }
+  };
+
+  componentWillUnmount() {
+    clearTimeout(this.timer);
+    clearInterval(this.interval);
+    document.body.removeEventListener('touchstart', this.resetTimeoutTimer);
+  }
 
   render() {
     return (
-      <div className="page">
-        <Logo />
-        <div className="homepage">
-          <h2 className="text text-payinglater">Paying later?</h2>
-          <div className="text text-subheading">
-            Why not send yourself a reminder on Slack?
-          </div>
-          <div className="homepage--hands">
-            <img className="homepage--hands-slot" src={HomeHandsSlot} alt="" />
-            <img
-              className="homepage--hands-right"
-              src={HomeHandsRight}
-              alt=""
-            />
-            <img
-              className="homepage--hands-center"
-              src={HomeHandsCenter}
-              alt=""
-            />
-            <img className="homepage--hands-left" src={HomeHandsLeft} alt="" />
-          </div>
-          <button
-            className="button homepage--button--snackchat"
-            onClick={this.handleSnackChatClick}>
-            Send a SnackChat
-            <img className="homepage--small-camera" src={Camera} alt="" />
-          </button>
-          <button
-            className="button homepage--button--nophoto"
-            onClick={this.handleReminderNoPhotoClick}>
-            Send a reminder {/* without a photo */}
-          </button>
-        </div>
+      <div>
+        <Router>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/snackchat" component={SnackChat} />
+            <Route exact path="/disclaimer" component={Disclaimer} />
+            <Route exact path="/scanitem" component={ItemRecognition} />
+            <Route exact path="/confirmitem" component={ConfirmationBox} />
+            <Route exact path="/editsnack" component={EditSnack} />
+            <Route exact path="/slackname" component={UsernameEntry} />
+            <Route exact path="/success" component={SuccessPage} />
+            <Route exact path="/preview" component={Viewer} />
+            <Route exact path="/admin" component={Admin} />
+            <Route exact path="/training" component={Trainer} />
+            <Route exact path="/imageapproval" component={ImageApproval} />
+          </Switch>
+        </Router>
+        {this.state.showTimer && (
+          <NotificationBar
+            mainText="Are you still there?"
+            autoActionWord="Timeout"
+            userTouchActionText="dismiss"
+            handleTouch={this.resetTimeoutTimer}
+            handleTimeout={this.onTimeout}
+          />
+        )}
       </div>
     );
   }
 }
-
-App.propTypes = {
-  loadStoreList: PropTypes.func.isRequired,
-  setSendWithPhoto: PropTypes.func.isRequired,
-  history: PropTypes.object.isRequired
-};
 
 export default App;

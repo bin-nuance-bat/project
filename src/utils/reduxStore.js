@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import {storeList, loadStoreListError} from '../components/StoreList/reducer';
 import {users} from '../components/UsernameEntry/reducer';
 import {prediction} from '../components/ItemRecognition/ItemRecognitionReducer';
-import {sendWithPhoto} from '../components/App/reducer';
+import {sendWithPhoto} from '../components/Home/reducer';
 import {actualItem} from '../components/ConfirmationBox/reducer';
 import {snackChat} from '../components/SnackChat/SnackChatReducer';
 
