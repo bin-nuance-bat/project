@@ -45,7 +45,7 @@ class NotificationBar extends Component {
         <div className="notification-bar--info">
           <div className="notification-bar--alert">{this.props.mainText}</div>
           <div className="notification-bar--timer">
-            {this.props.autoActionWord + ' in ' + this.state.countdown}s
+            {this.props.autoActionWord} in {this.state.countdown}s
           </div>
         </div>
         <div className="notification-bar--dismiss">
