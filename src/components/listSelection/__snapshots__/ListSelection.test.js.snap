@@ -88,6 +88,90 @@ ShallowWrapper {
           className="list-selection list-selection--list"
 >
           <div
+                    id="A"
+          >
+                    <p
+                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                    >
+                              A
+                    </p>
+                    <img
+                              alt=""
+                              className="list-selection list-selection--group-splitter"
+                              src="line.svg"
+                    />
+          </div>
+          <div
+                    id="B"
+          >
+                    <p
+                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                    >
+                              B
+                    </p>
+                    <img
+                              alt=""
+                              className="list-selection list-selection--group-splitter"
+                              src="line.svg"
+                    />
+          </div>
+          <div
+                    id="C"
+          >
+                    <p
+                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                    >
+                              C
+                    </p>
+                    <img
+                              alt=""
+                              className="list-selection list-selection--group-splitter"
+                              src="line.svg"
+                    />
+          </div>
+          <div
+                    id="D"
+          >
+                    <p
+                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                    >
+                              D
+                    </p>
+                    <img
+                              alt=""
+                              className="list-selection list-selection--group-splitter"
+                              src="line.svg"
+                    />
+          </div>
+          <div
+                    id="E"
+          >
+                    <p
+                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                    >
+                              E
+                    </p>
+                    <img
+                              alt=""
+                              className="list-selection list-selection--group-splitter"
+                              src="line.svg"
+                    />
+          </div>
+          <div
+                    id="F"
+          >
+                    <p
+                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                    >
+                              F
+                    </p>
+                    <img
+                              alt=""
+                              className="list-selection list-selection--group-splitter"
+                              src="line.svg"
+                    />
+          </div>
+          <div
                     id="G"
           >
                     <p
@@ -116,6 +200,118 @@ ShallowWrapper {
                                         Granulated Sugar
                               </p>
                     </div>
+          </div>
+          <div
+                    id="H"
+          >
+                    <p
+                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                    >
+                              H
+                    </p>
+                    <img
+                              alt=""
+                              className="list-selection list-selection--group-splitter"
+                              src="line.svg"
+                    />
+          </div>
+          <div
+                    id="I"
+          >
+                    <p
+                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                    >
+                              I
+                    </p>
+                    <img
+                              alt=""
+                              className="list-selection list-selection--group-splitter"
+                              src="line.svg"
+                    />
+          </div>
+          <div
+                    id="J"
+          >
+                    <p
+                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                    >
+                              J
+                    </p>
+                    <img
+                              alt=""
+                              className="list-selection list-selection--group-splitter"
+                              src="line.svg"
+                    />
+          </div>
+          <div
+                    id="K"
+          >
+                    <p
+                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                    >
+                              K
+                    </p>
+                    <img
+                              alt=""
+                              className="list-selection list-selection--group-splitter"
+                              src="line.svg"
+                    />
+          </div>
+          <div
+                    id="L"
+          >
+                    <p
+                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                    >
+                              L
+                    </p>
+                    <img
+                              alt=""
+                              className="list-selection list-selection--group-splitter"
+                              src="line.svg"
+                    />
+          </div>
+          <div
+                    id="M"
+          >
+                    <p
+                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                    >
+                              M
+                    </p>
+                    <img
+                              alt=""
+                              className="list-selection list-selection--group-splitter"
+                              src="line.svg"
+                    />
+          </div>
+          <div
+                    id="N"
+          >
+                    <p
+                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                    >
+                              N
+                    </p>
+                    <img
+                              alt=""
+                              className="list-selection list-selection--group-splitter"
+                              src="line.svg"
+                    />
+          </div>
+          <div
+                    id="O"
+          >
+                    <p
+                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                    >
+                              O
+                    </p>
+                    <img
+                              alt=""
+                              className="list-selection list-selection--group-splitter"
+                              src="line.svg"
+                    />
           </div>
           <div
                     id="P"
@@ -148,6 +344,90 @@ ShallowWrapper {
                     </div>
           </div>
           <div
+                    id="Q"
+          >
+                    <p
+                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                    >
+                              Q
+                    </p>
+                    <img
+                              alt=""
+                              className="list-selection list-selection--group-splitter"
+                              src="line.svg"
+                    />
+          </div>
+          <div
+                    id="R"
+          >
+                    <p
+                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                    >
+                              R
+                    </p>
+                    <img
+                              alt=""
+                              className="list-selection list-selection--group-splitter"
+                              src="line.svg"
+                    />
+          </div>
+          <div
+                    id="S"
+          >
+                    <p
+                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                    >
+                              S
+                    </p>
+                    <img
+                              alt=""
+                              className="list-selection list-selection--group-splitter"
+                              src="line.svg"
+                    />
+          </div>
+          <div
+                    id="T"
+          >
+                    <p
+                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                    >
+                              T
+                    </p>
+                    <img
+                              alt=""
+                              className="list-selection list-selection--group-splitter"
+                              src="line.svg"
+                    />
+          </div>
+          <div
+                    id="U"
+          >
+                    <p
+                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                    >
+                              U
+                    </p>
+                    <img
+                              alt=""
+                              className="list-selection list-selection--group-splitter"
+                              src="line.svg"
+                    />
+          </div>
+          <div
+                    id="V"
+          >
+                    <p
+                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                    >
+                              V
+                    </p>
+                    <img
+                              alt=""
+                              className="list-selection list-selection--group-splitter"
+                              src="line.svg"
+                    />
+          </div>
+          <div
                     id="W"
           >
                     <p
@@ -177,6 +457,48 @@ ShallowWrapper {
                               </p>
                     </div>
           </div>
+          <div
+                    id="X"
+          >
+                    <p
+                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                    >
+                              X
+                    </p>
+                    <img
+                              alt=""
+                              className="list-selection list-selection--group-splitter"
+                              src="line.svg"
+                    />
+          </div>
+          <div
+                    id="Y"
+          >
+                    <p
+                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                    >
+                              Y
+                    </p>
+                    <img
+                              alt=""
+                              className="list-selection list-selection--group-splitter"
+                              src="line.svg"
+                    />
+          </div>
+          <div
+                    id="Z"
+          >
+                    <p
+                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                    >
+                              Z
+                    </p>
+                    <img
+                              alt=""
+                              className="list-selection list-selection--group-splitter"
+                              src="line.svg"
+                    />
+          </div>
 </div>,
         <div
           className="list-selection--scroll-select"
@@ -185,7 +507,91 @@ ShallowWrapper {
                     className="list-selection--scroll-select-element"
                     onTouchStart={[Function]}
           >
+                    A
+          </div>
+          <div
+                    className="list-selection--scroll-select-element"
+                    onTouchStart={[Function]}
+          >
+                    B
+          </div>
+          <div
+                    className="list-selection--scroll-select-element"
+                    onTouchStart={[Function]}
+          >
+                    C
+          </div>
+          <div
+                    className="list-selection--scroll-select-element"
+                    onTouchStart={[Function]}
+          >
+                    D
+          </div>
+          <div
+                    className="list-selection--scroll-select-element"
+                    onTouchStart={[Function]}
+          >
+                    E
+          </div>
+          <div
+                    className="list-selection--scroll-select-element"
+                    onTouchStart={[Function]}
+          >
+                    F
+          </div>
+          <div
+                    className="list-selection--scroll-select-element"
+                    onTouchStart={[Function]}
+          >
                     G
+          </div>
+          <div
+                    className="list-selection--scroll-select-element"
+                    onTouchStart={[Function]}
+          >
+                    H
+          </div>
+          <div
+                    className="list-selection--scroll-select-element"
+                    onTouchStart={[Function]}
+          >
+                    I
+          </div>
+          <div
+                    className="list-selection--scroll-select-element"
+                    onTouchStart={[Function]}
+          >
+                    J
+          </div>
+          <div
+                    className="list-selection--scroll-select-element"
+                    onTouchStart={[Function]}
+          >
+                    K
+          </div>
+          <div
+                    className="list-selection--scroll-select-element"
+                    onTouchStart={[Function]}
+          >
+                    L
+          </div>
+          <div
+                    className="list-selection--scroll-select-element"
+                    onTouchStart={[Function]}
+          >
+                    M
+          </div>
+          <div
+                    className="list-selection--scroll-select-element"
+                    onTouchStart={[Function]}
+          >
+                    N
+          </div>
+          <div
+                    className="list-selection--scroll-select-element"
+                    onTouchStart={[Function]}
+          >
+                    O
           </div>
           <div
                     className="list-selection--scroll-select-element"
@@ -197,7 +603,61 @@ ShallowWrapper {
                     className="list-selection--scroll-select-element"
                     onTouchStart={[Function]}
           >
+                    Q
+          </div>
+          <div
+                    className="list-selection--scroll-select-element"
+                    onTouchStart={[Function]}
+          >
+                    R
+          </div>
+          <div
+                    className="list-selection--scroll-select-element"
+                    onTouchStart={[Function]}
+          >
+                    S
+          </div>
+          <div
+                    className="list-selection--scroll-select-element"
+                    onTouchStart={[Function]}
+          >
+                    T
+          </div>
+          <div
+                    className="list-selection--scroll-select-element"
+                    onTouchStart={[Function]}
+          >
+                    U
+          </div>
+          <div
+                    className="list-selection--scroll-select-element"
+                    onTouchStart={[Function]}
+          >
+                    V
+          </div>
+          <div
+                    className="list-selection--scroll-select-element"
+                    onTouchStart={[Function]}
+          >
                     W
+          </div>
+          <div
+                    className="list-selection--scroll-select-element"
+                    onTouchStart={[Function]}
+          >
+                    X
+          </div>
+          <div
+                    className="list-selection--scroll-select-element"
+                    onTouchStart={[Function]}
+          >
+                    Y
+          </div>
+          <div
+                    className="list-selection--scroll-select-element"
+                    onTouchStart={[Function]}
+          >
+                    Z
           </div>
 </div>,
       ],
@@ -211,6 +671,90 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": Array [
+            <div
+              id="A"
+>
+              <p
+                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
+              >
+                            A
+              </p>
+              <img
+                            alt=""
+                            className="list-selection list-selection--group-splitter"
+                            src="line.svg"
+              />
+</div>,
+            <div
+              id="B"
+>
+              <p
+                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
+              >
+                            B
+              </p>
+              <img
+                            alt=""
+                            className="list-selection list-selection--group-splitter"
+                            src="line.svg"
+              />
+</div>,
+            <div
+              id="C"
+>
+              <p
+                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
+              >
+                            C
+              </p>
+              <img
+                            alt=""
+                            className="list-selection list-selection--group-splitter"
+                            src="line.svg"
+              />
+</div>,
+            <div
+              id="D"
+>
+              <p
+                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
+              >
+                            D
+              </p>
+              <img
+                            alt=""
+                            className="list-selection list-selection--group-splitter"
+                            src="line.svg"
+              />
+</div>,
+            <div
+              id="E"
+>
+              <p
+                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
+              >
+                            E
+              </p>
+              <img
+                            alt=""
+                            className="list-selection list-selection--group-splitter"
+                            src="line.svg"
+              />
+</div>,
+            <div
+              id="F"
+>
+              <p
+                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
+              >
+                            F
+              </p>
+              <img
+                            alt=""
+                            className="list-selection list-selection--group-splitter"
+                            src="line.svg"
+              />
+</div>,
             <div
               id="G"
 >
@@ -240,6 +784,118 @@ ShallowWrapper {
                                           Granulated Sugar
                             </p>
               </div>
+</div>,
+            <div
+              id="H"
+>
+              <p
+                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
+              >
+                            H
+              </p>
+              <img
+                            alt=""
+                            className="list-selection list-selection--group-splitter"
+                            src="line.svg"
+              />
+</div>,
+            <div
+              id="I"
+>
+              <p
+                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
+              >
+                            I
+              </p>
+              <img
+                            alt=""
+                            className="list-selection list-selection--group-splitter"
+                            src="line.svg"
+              />
+</div>,
+            <div
+              id="J"
+>
+              <p
+                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
+              >
+                            J
+              </p>
+              <img
+                            alt=""
+                            className="list-selection list-selection--group-splitter"
+                            src="line.svg"
+              />
+</div>,
+            <div
+              id="K"
+>
+              <p
+                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
+              >
+                            K
+              </p>
+              <img
+                            alt=""
+                            className="list-selection list-selection--group-splitter"
+                            src="line.svg"
+              />
+</div>,
+            <div
+              id="L"
+>
+              <p
+                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
+              >
+                            L
+              </p>
+              <img
+                            alt=""
+                            className="list-selection list-selection--group-splitter"
+                            src="line.svg"
+              />
+</div>,
+            <div
+              id="M"
+>
+              <p
+                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
+              >
+                            M
+              </p>
+              <img
+                            alt=""
+                            className="list-selection list-selection--group-splitter"
+                            src="line.svg"
+              />
+</div>,
+            <div
+              id="N"
+>
+              <p
+                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
+              >
+                            N
+              </p>
+              <img
+                            alt=""
+                            className="list-selection list-selection--group-splitter"
+                            src="line.svg"
+              />
+</div>,
+            <div
+              id="O"
+>
+              <p
+                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
+              >
+                            O
+              </p>
+              <img
+                            alt=""
+                            className="list-selection list-selection--group-splitter"
+                            src="line.svg"
+              />
 </div>,
             <div
               id="P"
@@ -272,6 +928,90 @@ ShallowWrapper {
               </div>
 </div>,
             <div
+              id="Q"
+>
+              <p
+                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
+              >
+                            Q
+              </p>
+              <img
+                            alt=""
+                            className="list-selection list-selection--group-splitter"
+                            src="line.svg"
+              />
+</div>,
+            <div
+              id="R"
+>
+              <p
+                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
+              >
+                            R
+              </p>
+              <img
+                            alt=""
+                            className="list-selection list-selection--group-splitter"
+                            src="line.svg"
+              />
+</div>,
+            <div
+              id="S"
+>
+              <p
+                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
+              >
+                            S
+              </p>
+              <img
+                            alt=""
+                            className="list-selection list-selection--group-splitter"
+                            src="line.svg"
+              />
+</div>,
+            <div
+              id="T"
+>
+              <p
+                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
+              >
+                            T
+              </p>
+              <img
+                            alt=""
+                            className="list-selection list-selection--group-splitter"
+                            src="line.svg"
+              />
+</div>,
+            <div
+              id="U"
+>
+              <p
+                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
+              >
+                            U
+              </p>
+              <img
+                            alt=""
+                            className="list-selection list-selection--group-splitter"
+                            src="line.svg"
+              />
+</div>,
+            <div
+              id="V"
+>
+              <p
+                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
+              >
+                            V
+              </p>
+              <img
+                            alt=""
+                            className="list-selection list-selection--group-splitter"
+                            src="line.svg"
+              />
+</div>,
+            <div
               id="W"
 >
               <p
@@ -301,11 +1041,353 @@ ShallowWrapper {
                             </p>
               </div>
 </div>,
+            <div
+              id="X"
+>
+              <p
+                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
+              >
+                            X
+              </p>
+              <img
+                            alt=""
+                            className="list-selection list-selection--group-splitter"
+                            src="line.svg"
+              />
+</div>,
+            <div
+              id="Y"
+>
+              <p
+                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
+              >
+                            Y
+              </p>
+              <img
+                            alt=""
+                            className="list-selection list-selection--group-splitter"
+                            src="line.svg"
+              />
+</div>,
+            <div
+              id="Z"
+>
+              <p
+                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
+              >
+                            Z
+              </p>
+              <img
+                            alt=""
+                            className="list-selection list-selection--group-splitter"
+                            src="line.svg"
+              />
+</div>,
           ],
           "className": "list-selection list-selection--list",
         },
         "ref": null,
         "rendered": Array [
+          Object {
+            "instance": null,
+            "key": "A",
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <p
+                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                  A
+</p>,
+                <img
+                  alt=""
+                  className="list-selection list-selection--group-splitter"
+                  src="line.svg"
+/>,
+                Array [],
+              ],
+              "id": "A",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "A",
+                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                },
+                "ref": null,
+                "rendered": "A",
+                "type": "p",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "alt": "",
+                  "className": "list-selection list-selection--group-splitter",
+                  "src": "line.svg",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "img",
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "B",
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <p
+                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                  B
+</p>,
+                <img
+                  alt=""
+                  className="list-selection list-selection--group-splitter"
+                  src="line.svg"
+/>,
+                Array [],
+              ],
+              "id": "B",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "B",
+                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                },
+                "ref": null,
+                "rendered": "B",
+                "type": "p",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "alt": "",
+                  "className": "list-selection list-selection--group-splitter",
+                  "src": "line.svg",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "img",
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "C",
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <p
+                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                  C
+</p>,
+                <img
+                  alt=""
+                  className="list-selection list-selection--group-splitter"
+                  src="line.svg"
+/>,
+                Array [],
+              ],
+              "id": "C",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "C",
+                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                },
+                "ref": null,
+                "rendered": "C",
+                "type": "p",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "alt": "",
+                  "className": "list-selection list-selection--group-splitter",
+                  "src": "line.svg",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "img",
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "D",
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <p
+                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                  D
+</p>,
+                <img
+                  alt=""
+                  className="list-selection list-selection--group-splitter"
+                  src="line.svg"
+/>,
+                Array [],
+              ],
+              "id": "D",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "D",
+                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                },
+                "ref": null,
+                "rendered": "D",
+                "type": "p",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "alt": "",
+                  "className": "list-selection list-selection--group-splitter",
+                  "src": "line.svg",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "img",
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "E",
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <p
+                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                  E
+</p>,
+                <img
+                  alt=""
+                  className="list-selection list-selection--group-splitter"
+                  src="line.svg"
+/>,
+                Array [],
+              ],
+              "id": "E",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "E",
+                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                },
+                "ref": null,
+                "rendered": "E",
+                "type": "p",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "alt": "",
+                  "className": "list-selection list-selection--group-splitter",
+                  "src": "line.svg",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "img",
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "F",
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <p
+                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                  F
+</p>,
+                <img
+                  alt=""
+                  className="list-selection list-selection--group-splitter"
+                  src="line.svg"
+/>,
+                Array [],
+              ],
+              "id": "F",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "F",
+                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                },
+                "ref": null,
+                "rendered": "F",
+                "type": "p",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "alt": "",
+                  "className": "list-selection list-selection--group-splitter",
+                  "src": "line.svg",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "img",
+              },
+            ],
+            "type": "div",
+          },
           Object {
             "instance": null,
             "key": "G",
@@ -420,6 +1502,406 @@ ShallowWrapper {
                   },
                 ],
                 "type": "div",
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "H",
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <p
+                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                  H
+</p>,
+                <img
+                  alt=""
+                  className="list-selection list-selection--group-splitter"
+                  src="line.svg"
+/>,
+                Array [],
+              ],
+              "id": "H",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "H",
+                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                },
+                "ref": null,
+                "rendered": "H",
+                "type": "p",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "alt": "",
+                  "className": "list-selection list-selection--group-splitter",
+                  "src": "line.svg",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "img",
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "I",
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <p
+                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                  I
+</p>,
+                <img
+                  alt=""
+                  className="list-selection list-selection--group-splitter"
+                  src="line.svg"
+/>,
+                Array [],
+              ],
+              "id": "I",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "I",
+                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                },
+                "ref": null,
+                "rendered": "I",
+                "type": "p",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "alt": "",
+                  "className": "list-selection list-selection--group-splitter",
+                  "src": "line.svg",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "img",
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "J",
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <p
+                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                  J
+</p>,
+                <img
+                  alt=""
+                  className="list-selection list-selection--group-splitter"
+                  src="line.svg"
+/>,
+                Array [],
+              ],
+              "id": "J",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "J",
+                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                },
+                "ref": null,
+                "rendered": "J",
+                "type": "p",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "alt": "",
+                  "className": "list-selection list-selection--group-splitter",
+                  "src": "line.svg",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "img",
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "K",
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <p
+                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                  K
+</p>,
+                <img
+                  alt=""
+                  className="list-selection list-selection--group-splitter"
+                  src="line.svg"
+/>,
+                Array [],
+              ],
+              "id": "K",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "K",
+                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                },
+                "ref": null,
+                "rendered": "K",
+                "type": "p",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "alt": "",
+                  "className": "list-selection list-selection--group-splitter",
+                  "src": "line.svg",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "img",
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "L",
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <p
+                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                  L
+</p>,
+                <img
+                  alt=""
+                  className="list-selection list-selection--group-splitter"
+                  src="line.svg"
+/>,
+                Array [],
+              ],
+              "id": "L",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "L",
+                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                },
+                "ref": null,
+                "rendered": "L",
+                "type": "p",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "alt": "",
+                  "className": "list-selection list-selection--group-splitter",
+                  "src": "line.svg",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "img",
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "M",
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <p
+                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                  M
+</p>,
+                <img
+                  alt=""
+                  className="list-selection list-selection--group-splitter"
+                  src="line.svg"
+/>,
+                Array [],
+              ],
+              "id": "M",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "M",
+                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                },
+                "ref": null,
+                "rendered": "M",
+                "type": "p",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "alt": "",
+                  "className": "list-selection list-selection--group-splitter",
+                  "src": "line.svg",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "img",
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "N",
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <p
+                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                  N
+</p>,
+                <img
+                  alt=""
+                  className="list-selection list-selection--group-splitter"
+                  src="line.svg"
+/>,
+                Array [],
+              ],
+              "id": "N",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "N",
+                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                },
+                "ref": null,
+                "rendered": "N",
+                "type": "p",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "alt": "",
+                  "className": "list-selection list-selection--group-splitter",
+                  "src": "line.svg",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "img",
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "O",
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <p
+                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                  O
+</p>,
+                <img
+                  alt=""
+                  className="list-selection list-selection--group-splitter"
+                  src="line.svg"
+/>,
+                Array [],
+              ],
+              "id": "O",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "O",
+                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                },
+                "ref": null,
+                "rendered": "O",
+                "type": "p",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "alt": "",
+                  "className": "list-selection list-selection--group-splitter",
+                  "src": "line.svg",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "img",
               },
             ],
             "type": "div",
@@ -544,6 +2026,306 @@ ShallowWrapper {
           },
           Object {
             "instance": null,
+            "key": "Q",
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <p
+                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                  Q
+</p>,
+                <img
+                  alt=""
+                  className="list-selection list-selection--group-splitter"
+                  src="line.svg"
+/>,
+                Array [],
+              ],
+              "id": "Q",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "Q",
+                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                },
+                "ref": null,
+                "rendered": "Q",
+                "type": "p",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "alt": "",
+                  "className": "list-selection list-selection--group-splitter",
+                  "src": "line.svg",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "img",
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "R",
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <p
+                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                  R
+</p>,
+                <img
+                  alt=""
+                  className="list-selection list-selection--group-splitter"
+                  src="line.svg"
+/>,
+                Array [],
+              ],
+              "id": "R",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "R",
+                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                },
+                "ref": null,
+                "rendered": "R",
+                "type": "p",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "alt": "",
+                  "className": "list-selection list-selection--group-splitter",
+                  "src": "line.svg",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "img",
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "S",
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <p
+                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                  S
+</p>,
+                <img
+                  alt=""
+                  className="list-selection list-selection--group-splitter"
+                  src="line.svg"
+/>,
+                Array [],
+              ],
+              "id": "S",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "S",
+                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                },
+                "ref": null,
+                "rendered": "S",
+                "type": "p",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "alt": "",
+                  "className": "list-selection list-selection--group-splitter",
+                  "src": "line.svg",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "img",
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "T",
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <p
+                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                  T
+</p>,
+                <img
+                  alt=""
+                  className="list-selection list-selection--group-splitter"
+                  src="line.svg"
+/>,
+                Array [],
+              ],
+              "id": "T",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "T",
+                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                },
+                "ref": null,
+                "rendered": "T",
+                "type": "p",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "alt": "",
+                  "className": "list-selection list-selection--group-splitter",
+                  "src": "line.svg",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "img",
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "U",
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <p
+                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                  U
+</p>,
+                <img
+                  alt=""
+                  className="list-selection list-selection--group-splitter"
+                  src="line.svg"
+/>,
+                Array [],
+              ],
+              "id": "U",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "U",
+                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                },
+                "ref": null,
+                "rendered": "U",
+                "type": "p",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "alt": "",
+                  "className": "list-selection list-selection--group-splitter",
+                  "src": "line.svg",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "img",
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "V",
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <p
+                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                  V
+</p>,
+                <img
+                  alt=""
+                  className="list-selection list-selection--group-splitter"
+                  src="line.svg"
+/>,
+                Array [],
+              ],
+              "id": "V",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "V",
+                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                },
+                "ref": null,
+                "rendered": "V",
+                "type": "p",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "alt": "",
+                  "className": "list-selection list-selection--group-splitter",
+                  "src": "line.svg",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "img",
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
             "key": "W",
             "nodeType": "host",
             "props": Object {
@@ -660,6 +2442,156 @@ ShallowWrapper {
             ],
             "type": "div",
           },
+          Object {
+            "instance": null,
+            "key": "X",
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <p
+                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                  X
+</p>,
+                <img
+                  alt=""
+                  className="list-selection list-selection--group-splitter"
+                  src="line.svg"
+/>,
+                Array [],
+              ],
+              "id": "X",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "X",
+                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                },
+                "ref": null,
+                "rendered": "X",
+                "type": "p",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "alt": "",
+                  "className": "list-selection list-selection--group-splitter",
+                  "src": "line.svg",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "img",
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "Y",
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <p
+                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                  Y
+</p>,
+                <img
+                  alt=""
+                  className="list-selection list-selection--group-splitter"
+                  src="line.svg"
+/>,
+                Array [],
+              ],
+              "id": "Y",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "Y",
+                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                },
+                "ref": null,
+                "rendered": "Y",
+                "type": "p",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "alt": "",
+                  "className": "list-selection list-selection--group-splitter",
+                  "src": "line.svg",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "img",
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "Z",
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <p
+                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                  Z
+</p>,
+                <img
+                  alt=""
+                  className="list-selection list-selection--group-splitter"
+                  src="line.svg"
+/>,
+                Array [],
+              ],
+              "id": "Z",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "Z",
+                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                },
+                "ref": null,
+                "rendered": "Z",
+                "type": "p",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "alt": "",
+                  "className": "list-selection list-selection--group-splitter",
+                  "src": "line.svg",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "img",
+              },
+            ],
+            "type": "div",
+          },
         ],
         "type": "div",
       },
@@ -673,7 +2605,91 @@ ShallowWrapper {
               className="list-selection--scroll-select-element"
               onTouchStart={[Function]}
 >
+              A
+</div>,
+            <div
+              className="list-selection--scroll-select-element"
+              onTouchStart={[Function]}
+>
+              B
+</div>,
+            <div
+              className="list-selection--scroll-select-element"
+              onTouchStart={[Function]}
+>
+              C
+</div>,
+            <div
+              className="list-selection--scroll-select-element"
+              onTouchStart={[Function]}
+>
+              D
+</div>,
+            <div
+              className="list-selection--scroll-select-element"
+              onTouchStart={[Function]}
+>
+              E
+</div>,
+            <div
+              className="list-selection--scroll-select-element"
+              onTouchStart={[Function]}
+>
+              F
+</div>,
+            <div
+              className="list-selection--scroll-select-element"
+              onTouchStart={[Function]}
+>
               G
+</div>,
+            <div
+              className="list-selection--scroll-select-element"
+              onTouchStart={[Function]}
+>
+              H
+</div>,
+            <div
+              className="list-selection--scroll-select-element"
+              onTouchStart={[Function]}
+>
+              I
+</div>,
+            <div
+              className="list-selection--scroll-select-element"
+              onTouchStart={[Function]}
+>
+              J
+</div>,
+            <div
+              className="list-selection--scroll-select-element"
+              onTouchStart={[Function]}
+>
+              K
+</div>,
+            <div
+              className="list-selection--scroll-select-element"
+              onTouchStart={[Function]}
+>
+              L
+</div>,
+            <div
+              className="list-selection--scroll-select-element"
+              onTouchStart={[Function]}
+>
+              M
+</div>,
+            <div
+              className="list-selection--scroll-select-element"
+              onTouchStart={[Function]}
+>
+              N
+</div>,
+            <div
+              className="list-selection--scroll-select-element"
+              onTouchStart={[Function]}
+>
+              O
 </div>,
             <div
               className="list-selection--scroll-select-element"
@@ -685,13 +2701,145 @@ ShallowWrapper {
               className="list-selection--scroll-select-element"
               onTouchStart={[Function]}
 >
+              Q
+</div>,
+            <div
+              className="list-selection--scroll-select-element"
+              onTouchStart={[Function]}
+>
+              R
+</div>,
+            <div
+              className="list-selection--scroll-select-element"
+              onTouchStart={[Function]}
+>
+              S
+</div>,
+            <div
+              className="list-selection--scroll-select-element"
+              onTouchStart={[Function]}
+>
+              T
+</div>,
+            <div
+              className="list-selection--scroll-select-element"
+              onTouchStart={[Function]}
+>
+              U
+</div>,
+            <div
+              className="list-selection--scroll-select-element"
+              onTouchStart={[Function]}
+>
+              V
+</div>,
+            <div
+              className="list-selection--scroll-select-element"
+              onTouchStart={[Function]}
+>
               W
+</div>,
+            <div
+              className="list-selection--scroll-select-element"
+              onTouchStart={[Function]}
+>
+              X
+</div>,
+            <div
+              className="list-selection--scroll-select-element"
+              onTouchStart={[Function]}
+>
+              Y
+</div>,
+            <div
+              className="list-selection--scroll-select-element"
+              onTouchStart={[Function]}
+>
+              Z
 </div>,
           ],
           "className": "list-selection--scroll-select",
         },
         "ref": null,
         "rendered": Array [
+          Object {
+            "instance": null,
+            "key": "A",
+            "nodeType": "host",
+            "props": Object {
+              "children": "A",
+              "className": "list-selection--scroll-select-element",
+              "onTouchStart": [Function],
+            },
+            "ref": null,
+            "rendered": "A",
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "B",
+            "nodeType": "host",
+            "props": Object {
+              "children": "B",
+              "className": "list-selection--scroll-select-element",
+              "onTouchStart": [Function],
+            },
+            "ref": null,
+            "rendered": "B",
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "C",
+            "nodeType": "host",
+            "props": Object {
+              "children": "C",
+              "className": "list-selection--scroll-select-element",
+              "onTouchStart": [Function],
+            },
+            "ref": null,
+            "rendered": "C",
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "D",
+            "nodeType": "host",
+            "props": Object {
+              "children": "D",
+              "className": "list-selection--scroll-select-element",
+              "onTouchStart": [Function],
+            },
+            "ref": null,
+            "rendered": "D",
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "E",
+            "nodeType": "host",
+            "props": Object {
+              "children": "E",
+              "className": "list-selection--scroll-select-element",
+              "onTouchStart": [Function],
+            },
+            "ref": null,
+            "rendered": "E",
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "F",
+            "nodeType": "host",
+            "props": Object {
+              "children": "F",
+              "className": "list-selection--scroll-select-element",
+              "onTouchStart": [Function],
+            },
+            "ref": null,
+            "rendered": "F",
+            "type": "div",
+          },
           Object {
             "instance": null,
             "key": "G",
@@ -703,6 +2851,110 @@ ShallowWrapper {
             },
             "ref": null,
             "rendered": "G",
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "H",
+            "nodeType": "host",
+            "props": Object {
+              "children": "H",
+              "className": "list-selection--scroll-select-element",
+              "onTouchStart": [Function],
+            },
+            "ref": null,
+            "rendered": "H",
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "I",
+            "nodeType": "host",
+            "props": Object {
+              "children": "I",
+              "className": "list-selection--scroll-select-element",
+              "onTouchStart": [Function],
+            },
+            "ref": null,
+            "rendered": "I",
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "J",
+            "nodeType": "host",
+            "props": Object {
+              "children": "J",
+              "className": "list-selection--scroll-select-element",
+              "onTouchStart": [Function],
+            },
+            "ref": null,
+            "rendered": "J",
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "K",
+            "nodeType": "host",
+            "props": Object {
+              "children": "K",
+              "className": "list-selection--scroll-select-element",
+              "onTouchStart": [Function],
+            },
+            "ref": null,
+            "rendered": "K",
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "L",
+            "nodeType": "host",
+            "props": Object {
+              "children": "L",
+              "className": "list-selection--scroll-select-element",
+              "onTouchStart": [Function],
+            },
+            "ref": null,
+            "rendered": "L",
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "M",
+            "nodeType": "host",
+            "props": Object {
+              "children": "M",
+              "className": "list-selection--scroll-select-element",
+              "onTouchStart": [Function],
+            },
+            "ref": null,
+            "rendered": "M",
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "N",
+            "nodeType": "host",
+            "props": Object {
+              "children": "N",
+              "className": "list-selection--scroll-select-element",
+              "onTouchStart": [Function],
+            },
+            "ref": null,
+            "rendered": "N",
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "O",
+            "nodeType": "host",
+            "props": Object {
+              "children": "O",
+              "className": "list-selection--scroll-select-element",
+              "onTouchStart": [Function],
+            },
+            "ref": null,
+            "rendered": "O",
             "type": "div",
           },
           Object {
@@ -720,6 +2972,84 @@ ShallowWrapper {
           },
           Object {
             "instance": null,
+            "key": "Q",
+            "nodeType": "host",
+            "props": Object {
+              "children": "Q",
+              "className": "list-selection--scroll-select-element",
+              "onTouchStart": [Function],
+            },
+            "ref": null,
+            "rendered": "Q",
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "R",
+            "nodeType": "host",
+            "props": Object {
+              "children": "R",
+              "className": "list-selection--scroll-select-element",
+              "onTouchStart": [Function],
+            },
+            "ref": null,
+            "rendered": "R",
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "S",
+            "nodeType": "host",
+            "props": Object {
+              "children": "S",
+              "className": "list-selection--scroll-select-element",
+              "onTouchStart": [Function],
+            },
+            "ref": null,
+            "rendered": "S",
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "T",
+            "nodeType": "host",
+            "props": Object {
+              "children": "T",
+              "className": "list-selection--scroll-select-element",
+              "onTouchStart": [Function],
+            },
+            "ref": null,
+            "rendered": "T",
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "U",
+            "nodeType": "host",
+            "props": Object {
+              "children": "U",
+              "className": "list-selection--scroll-select-element",
+              "onTouchStart": [Function],
+            },
+            "ref": null,
+            "rendered": "U",
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "V",
+            "nodeType": "host",
+            "props": Object {
+              "children": "V",
+              "className": "list-selection--scroll-select-element",
+              "onTouchStart": [Function],
+            },
+            "ref": null,
+            "rendered": "V",
+            "type": "div",
+          },
+          Object {
+            "instance": null,
             "key": "W",
             "nodeType": "host",
             "props": Object {
@@ -729,6 +3059,45 @@ ShallowWrapper {
             },
             "ref": null,
             "rendered": "W",
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "X",
+            "nodeType": "host",
+            "props": Object {
+              "children": "X",
+              "className": "list-selection--scroll-select-element",
+              "onTouchStart": [Function],
+            },
+            "ref": null,
+            "rendered": "X",
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "Y",
+            "nodeType": "host",
+            "props": Object {
+              "children": "Y",
+              "className": "list-selection--scroll-select-element",
+              "onTouchStart": [Function],
+            },
+            "ref": null,
+            "rendered": "Y",
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "Z",
+            "nodeType": "host",
+            "props": Object {
+              "children": "Z",
+              "className": "list-selection--scroll-select-element",
+              "onTouchStart": [Function],
+            },
+            "ref": null,
+            "rendered": "Z",
             "type": "div",
           },
         ],
@@ -747,6 +3116,90 @@ ShallowWrapper {
           <div
             className="list-selection list-selection--list"
 >
+            <div
+                        id="A"
+            >
+                        <p
+                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                        >
+                                    A
+                        </p>
+                        <img
+                                    alt=""
+                                    className="list-selection list-selection--group-splitter"
+                                    src="line.svg"
+                        />
+            </div>
+            <div
+                        id="B"
+            >
+                        <p
+                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                        >
+                                    B
+                        </p>
+                        <img
+                                    alt=""
+                                    className="list-selection list-selection--group-splitter"
+                                    src="line.svg"
+                        />
+            </div>
+            <div
+                        id="C"
+            >
+                        <p
+                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                        >
+                                    C
+                        </p>
+                        <img
+                                    alt=""
+                                    className="list-selection list-selection--group-splitter"
+                                    src="line.svg"
+                        />
+            </div>
+            <div
+                        id="D"
+            >
+                        <p
+                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                        >
+                                    D
+                        </p>
+                        <img
+                                    alt=""
+                                    className="list-selection list-selection--group-splitter"
+                                    src="line.svg"
+                        />
+            </div>
+            <div
+                        id="E"
+            >
+                        <p
+                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                        >
+                                    E
+                        </p>
+                        <img
+                                    alt=""
+                                    className="list-selection list-selection--group-splitter"
+                                    src="line.svg"
+                        />
+            </div>
+            <div
+                        id="F"
+            >
+                        <p
+                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                        >
+                                    F
+                        </p>
+                        <img
+                                    alt=""
+                                    className="list-selection list-selection--group-splitter"
+                                    src="line.svg"
+                        />
+            </div>
             <div
                         id="G"
             >
@@ -776,6 +3229,118 @@ ShallowWrapper {
                                                 Granulated Sugar
                                     </p>
                         </div>
+            </div>
+            <div
+                        id="H"
+            >
+                        <p
+                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                        >
+                                    H
+                        </p>
+                        <img
+                                    alt=""
+                                    className="list-selection list-selection--group-splitter"
+                                    src="line.svg"
+                        />
+            </div>
+            <div
+                        id="I"
+            >
+                        <p
+                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                        >
+                                    I
+                        </p>
+                        <img
+                                    alt=""
+                                    className="list-selection list-selection--group-splitter"
+                                    src="line.svg"
+                        />
+            </div>
+            <div
+                        id="J"
+            >
+                        <p
+                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                        >
+                                    J
+                        </p>
+                        <img
+                                    alt=""
+                                    className="list-selection list-selection--group-splitter"
+                                    src="line.svg"
+                        />
+            </div>
+            <div
+                        id="K"
+            >
+                        <p
+                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                        >
+                                    K
+                        </p>
+                        <img
+                                    alt=""
+                                    className="list-selection list-selection--group-splitter"
+                                    src="line.svg"
+                        />
+            </div>
+            <div
+                        id="L"
+            >
+                        <p
+                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                        >
+                                    L
+                        </p>
+                        <img
+                                    alt=""
+                                    className="list-selection list-selection--group-splitter"
+                                    src="line.svg"
+                        />
+            </div>
+            <div
+                        id="M"
+            >
+                        <p
+                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                        >
+                                    M
+                        </p>
+                        <img
+                                    alt=""
+                                    className="list-selection list-selection--group-splitter"
+                                    src="line.svg"
+                        />
+            </div>
+            <div
+                        id="N"
+            >
+                        <p
+                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                        >
+                                    N
+                        </p>
+                        <img
+                                    alt=""
+                                    className="list-selection list-selection--group-splitter"
+                                    src="line.svg"
+                        />
+            </div>
+            <div
+                        id="O"
+            >
+                        <p
+                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                        >
+                                    O
+                        </p>
+                        <img
+                                    alt=""
+                                    className="list-selection list-selection--group-splitter"
+                                    src="line.svg"
+                        />
             </div>
             <div
                         id="P"
@@ -808,6 +3373,90 @@ ShallowWrapper {
                         </div>
             </div>
             <div
+                        id="Q"
+            >
+                        <p
+                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                        >
+                                    Q
+                        </p>
+                        <img
+                                    alt=""
+                                    className="list-selection list-selection--group-splitter"
+                                    src="line.svg"
+                        />
+            </div>
+            <div
+                        id="R"
+            >
+                        <p
+                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                        >
+                                    R
+                        </p>
+                        <img
+                                    alt=""
+                                    className="list-selection list-selection--group-splitter"
+                                    src="line.svg"
+                        />
+            </div>
+            <div
+                        id="S"
+            >
+                        <p
+                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                        >
+                                    S
+                        </p>
+                        <img
+                                    alt=""
+                                    className="list-selection list-selection--group-splitter"
+                                    src="line.svg"
+                        />
+            </div>
+            <div
+                        id="T"
+            >
+                        <p
+                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                        >
+                                    T
+                        </p>
+                        <img
+                                    alt=""
+                                    className="list-selection list-selection--group-splitter"
+                                    src="line.svg"
+                        />
+            </div>
+            <div
+                        id="U"
+            >
+                        <p
+                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                        >
+                                    U
+                        </p>
+                        <img
+                                    alt=""
+                                    className="list-selection list-selection--group-splitter"
+                                    src="line.svg"
+                        />
+            </div>
+            <div
+                        id="V"
+            >
+                        <p
+                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                        >
+                                    V
+                        </p>
+                        <img
+                                    alt=""
+                                    className="list-selection list-selection--group-splitter"
+                                    src="line.svg"
+                        />
+            </div>
+            <div
                         id="W"
             >
                         <p
@@ -837,6 +3486,48 @@ ShallowWrapper {
                                     </p>
                         </div>
             </div>
+            <div
+                        id="X"
+            >
+                        <p
+                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                        >
+                                    X
+                        </p>
+                        <img
+                                    alt=""
+                                    className="list-selection list-selection--group-splitter"
+                                    src="line.svg"
+                        />
+            </div>
+            <div
+                        id="Y"
+            >
+                        <p
+                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                        >
+                                    Y
+                        </p>
+                        <img
+                                    alt=""
+                                    className="list-selection list-selection--group-splitter"
+                                    src="line.svg"
+                        />
+            </div>
+            <div
+                        id="Z"
+            >
+                        <p
+                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                        >
+                                    Z
+                        </p>
+                        <img
+                                    alt=""
+                                    className="list-selection list-selection--group-splitter"
+                                    src="line.svg"
+                        />
+            </div>
 </div>,
           <div
             className="list-selection--scroll-select"
@@ -845,7 +3536,91 @@ ShallowWrapper {
                         className="list-selection--scroll-select-element"
                         onTouchStart={[Function]}
             >
+                        A
+            </div>
+            <div
+                        className="list-selection--scroll-select-element"
+                        onTouchStart={[Function]}
+            >
+                        B
+            </div>
+            <div
+                        className="list-selection--scroll-select-element"
+                        onTouchStart={[Function]}
+            >
+                        C
+            </div>
+            <div
+                        className="list-selection--scroll-select-element"
+                        onTouchStart={[Function]}
+            >
+                        D
+            </div>
+            <div
+                        className="list-selection--scroll-select-element"
+                        onTouchStart={[Function]}
+            >
+                        E
+            </div>
+            <div
+                        className="list-selection--scroll-select-element"
+                        onTouchStart={[Function]}
+            >
+                        F
+            </div>
+            <div
+                        className="list-selection--scroll-select-element"
+                        onTouchStart={[Function]}
+            >
                         G
+            </div>
+            <div
+                        className="list-selection--scroll-select-element"
+                        onTouchStart={[Function]}
+            >
+                        H
+            </div>
+            <div
+                        className="list-selection--scroll-select-element"
+                        onTouchStart={[Function]}
+            >
+                        I
+            </div>
+            <div
+                        className="list-selection--scroll-select-element"
+                        onTouchStart={[Function]}
+            >
+                        J
+            </div>
+            <div
+                        className="list-selection--scroll-select-element"
+                        onTouchStart={[Function]}
+            >
+                        K
+            </div>
+            <div
+                        className="list-selection--scroll-select-element"
+                        onTouchStart={[Function]}
+            >
+                        L
+            </div>
+            <div
+                        className="list-selection--scroll-select-element"
+                        onTouchStart={[Function]}
+            >
+                        M
+            </div>
+            <div
+                        className="list-selection--scroll-select-element"
+                        onTouchStart={[Function]}
+            >
+                        N
+            </div>
+            <div
+                        className="list-selection--scroll-select-element"
+                        onTouchStart={[Function]}
+            >
+                        O
             </div>
             <div
                         className="list-selection--scroll-select-element"
@@ -857,7 +3632,61 @@ ShallowWrapper {
                         className="list-selection--scroll-select-element"
                         onTouchStart={[Function]}
             >
+                        Q
+            </div>
+            <div
+                        className="list-selection--scroll-select-element"
+                        onTouchStart={[Function]}
+            >
+                        R
+            </div>
+            <div
+                        className="list-selection--scroll-select-element"
+                        onTouchStart={[Function]}
+            >
+                        S
+            </div>
+            <div
+                        className="list-selection--scroll-select-element"
+                        onTouchStart={[Function]}
+            >
+                        T
+            </div>
+            <div
+                        className="list-selection--scroll-select-element"
+                        onTouchStart={[Function]}
+            >
+                        U
+            </div>
+            <div
+                        className="list-selection--scroll-select-element"
+                        onTouchStart={[Function]}
+            >
+                        V
+            </div>
+            <div
+                        className="list-selection--scroll-select-element"
+                        onTouchStart={[Function]}
+            >
                         W
+            </div>
+            <div
+                        className="list-selection--scroll-select-element"
+                        onTouchStart={[Function]}
+            >
+                        X
+            </div>
+            <div
+                        className="list-selection--scroll-select-element"
+                        onTouchStart={[Function]}
+            >
+                        Y
+            </div>
+            <div
+                        className="list-selection--scroll-select-element"
+                        onTouchStart={[Function]}
+            >
+                        Z
             </div>
 </div>,
         ],
@@ -871,6 +3700,90 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": Array [
+              <div
+                id="A"
+>
+                <p
+                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                >
+                                A
+                </p>
+                <img
+                                alt=""
+                                className="list-selection list-selection--group-splitter"
+                                src="line.svg"
+                />
+</div>,
+              <div
+                id="B"
+>
+                <p
+                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                >
+                                B
+                </p>
+                <img
+                                alt=""
+                                className="list-selection list-selection--group-splitter"
+                                src="line.svg"
+                />
+</div>,
+              <div
+                id="C"
+>
+                <p
+                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                >
+                                C
+                </p>
+                <img
+                                alt=""
+                                className="list-selection list-selection--group-splitter"
+                                src="line.svg"
+                />
+</div>,
+              <div
+                id="D"
+>
+                <p
+                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                >
+                                D
+                </p>
+                <img
+                                alt=""
+                                className="list-selection list-selection--group-splitter"
+                                src="line.svg"
+                />
+</div>,
+              <div
+                id="E"
+>
+                <p
+                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                >
+                                E
+                </p>
+                <img
+                                alt=""
+                                className="list-selection list-selection--group-splitter"
+                                src="line.svg"
+                />
+</div>,
+              <div
+                id="F"
+>
+                <p
+                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                >
+                                F
+                </p>
+                <img
+                                alt=""
+                                className="list-selection list-selection--group-splitter"
+                                src="line.svg"
+                />
+</div>,
               <div
                 id="G"
 >
@@ -900,6 +3813,118 @@ ShallowWrapper {
                                                 Granulated Sugar
                                 </p>
                 </div>
+</div>,
+              <div
+                id="H"
+>
+                <p
+                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                >
+                                H
+                </p>
+                <img
+                                alt=""
+                                className="list-selection list-selection--group-splitter"
+                                src="line.svg"
+                />
+</div>,
+              <div
+                id="I"
+>
+                <p
+                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                >
+                                I
+                </p>
+                <img
+                                alt=""
+                                className="list-selection list-selection--group-splitter"
+                                src="line.svg"
+                />
+</div>,
+              <div
+                id="J"
+>
+                <p
+                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                >
+                                J
+                </p>
+                <img
+                                alt=""
+                                className="list-selection list-selection--group-splitter"
+                                src="line.svg"
+                />
+</div>,
+              <div
+                id="K"
+>
+                <p
+                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                >
+                                K
+                </p>
+                <img
+                                alt=""
+                                className="list-selection list-selection--group-splitter"
+                                src="line.svg"
+                />
+</div>,
+              <div
+                id="L"
+>
+                <p
+                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                >
+                                L
+                </p>
+                <img
+                                alt=""
+                                className="list-selection list-selection--group-splitter"
+                                src="line.svg"
+                />
+</div>,
+              <div
+                id="M"
+>
+                <p
+                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                >
+                                M
+                </p>
+                <img
+                                alt=""
+                                className="list-selection list-selection--group-splitter"
+                                src="line.svg"
+                />
+</div>,
+              <div
+                id="N"
+>
+                <p
+                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                >
+                                N
+                </p>
+                <img
+                                alt=""
+                                className="list-selection list-selection--group-splitter"
+                                src="line.svg"
+                />
+</div>,
+              <div
+                id="O"
+>
+                <p
+                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                >
+                                O
+                </p>
+                <img
+                                alt=""
+                                className="list-selection list-selection--group-splitter"
+                                src="line.svg"
+                />
 </div>,
               <div
                 id="P"
@@ -932,6 +3957,90 @@ ShallowWrapper {
                 </div>
 </div>,
               <div
+                id="Q"
+>
+                <p
+                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                >
+                                Q
+                </p>
+                <img
+                                alt=""
+                                className="list-selection list-selection--group-splitter"
+                                src="line.svg"
+                />
+</div>,
+              <div
+                id="R"
+>
+                <p
+                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                >
+                                R
+                </p>
+                <img
+                                alt=""
+                                className="list-selection list-selection--group-splitter"
+                                src="line.svg"
+                />
+</div>,
+              <div
+                id="S"
+>
+                <p
+                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                >
+                                S
+                </p>
+                <img
+                                alt=""
+                                className="list-selection list-selection--group-splitter"
+                                src="line.svg"
+                />
+</div>,
+              <div
+                id="T"
+>
+                <p
+                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                >
+                                T
+                </p>
+                <img
+                                alt=""
+                                className="list-selection list-selection--group-splitter"
+                                src="line.svg"
+                />
+</div>,
+              <div
+                id="U"
+>
+                <p
+                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                >
+                                U
+                </p>
+                <img
+                                alt=""
+                                className="list-selection list-selection--group-splitter"
+                                src="line.svg"
+                />
+</div>,
+              <div
+                id="V"
+>
+                <p
+                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                >
+                                V
+                </p>
+                <img
+                                alt=""
+                                className="list-selection list-selection--group-splitter"
+                                src="line.svg"
+                />
+</div>,
+              <div
                 id="W"
 >
                 <p
@@ -961,11 +4070,353 @@ ShallowWrapper {
                                 </p>
                 </div>
 </div>,
+              <div
+                id="X"
+>
+                <p
+                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                >
+                                X
+                </p>
+                <img
+                                alt=""
+                                className="list-selection list-selection--group-splitter"
+                                src="line.svg"
+                />
+</div>,
+              <div
+                id="Y"
+>
+                <p
+                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                >
+                                Y
+                </p>
+                <img
+                                alt=""
+                                className="list-selection list-selection--group-splitter"
+                                src="line.svg"
+                />
+</div>,
+              <div
+                id="Z"
+>
+                <p
+                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
+                >
+                                Z
+                </p>
+                <img
+                                alt=""
+                                className="list-selection list-selection--group-splitter"
+                                src="line.svg"
+                />
+</div>,
             ],
             "className": "list-selection list-selection--list",
           },
           "ref": null,
           "rendered": Array [
+            Object {
+              "instance": null,
+              "key": "A",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <p
+                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                    A
+</p>,
+                  <img
+                    alt=""
+                    className="list-selection list-selection--group-splitter"
+                    src="line.svg"
+/>,
+                  Array [],
+                ],
+                "id": "A",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "A",
+                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                  },
+                  "ref": null,
+                  "rendered": "A",
+                  "type": "p",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "alt": "",
+                    "className": "list-selection list-selection--group-splitter",
+                    "src": "line.svg",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "img",
+                },
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "B",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <p
+                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                    B
+</p>,
+                  <img
+                    alt=""
+                    className="list-selection list-selection--group-splitter"
+                    src="line.svg"
+/>,
+                  Array [],
+                ],
+                "id": "B",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "B",
+                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                  },
+                  "ref": null,
+                  "rendered": "B",
+                  "type": "p",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "alt": "",
+                    "className": "list-selection list-selection--group-splitter",
+                    "src": "line.svg",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "img",
+                },
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "C",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <p
+                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                    C
+</p>,
+                  <img
+                    alt=""
+                    className="list-selection list-selection--group-splitter"
+                    src="line.svg"
+/>,
+                  Array [],
+                ],
+                "id": "C",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "C",
+                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                  },
+                  "ref": null,
+                  "rendered": "C",
+                  "type": "p",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "alt": "",
+                    "className": "list-selection list-selection--group-splitter",
+                    "src": "line.svg",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "img",
+                },
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "D",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <p
+                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                    D
+</p>,
+                  <img
+                    alt=""
+                    className="list-selection list-selection--group-splitter"
+                    src="line.svg"
+/>,
+                  Array [],
+                ],
+                "id": "D",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "D",
+                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                  },
+                  "ref": null,
+                  "rendered": "D",
+                  "type": "p",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "alt": "",
+                    "className": "list-selection list-selection--group-splitter",
+                    "src": "line.svg",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "img",
+                },
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "E",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <p
+                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                    E
+</p>,
+                  <img
+                    alt=""
+                    className="list-selection list-selection--group-splitter"
+                    src="line.svg"
+/>,
+                  Array [],
+                ],
+                "id": "E",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "E",
+                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                  },
+                  "ref": null,
+                  "rendered": "E",
+                  "type": "p",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "alt": "",
+                    "className": "list-selection list-selection--group-splitter",
+                    "src": "line.svg",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "img",
+                },
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "F",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <p
+                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                    F
+</p>,
+                  <img
+                    alt=""
+                    className="list-selection list-selection--group-splitter"
+                    src="line.svg"
+/>,
+                  Array [],
+                ],
+                "id": "F",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "F",
+                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                  },
+                  "ref": null,
+                  "rendered": "F",
+                  "type": "p",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "alt": "",
+                    "className": "list-selection list-selection--group-splitter",
+                    "src": "line.svg",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "img",
+                },
+              ],
+              "type": "div",
+            },
             Object {
               "instance": null,
               "key": "G",
@@ -1080,6 +4531,406 @@ ShallowWrapper {
                     },
                   ],
                   "type": "div",
+                },
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "H",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <p
+                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                    H
+</p>,
+                  <img
+                    alt=""
+                    className="list-selection list-selection--group-splitter"
+                    src="line.svg"
+/>,
+                  Array [],
+                ],
+                "id": "H",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "H",
+                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                  },
+                  "ref": null,
+                  "rendered": "H",
+                  "type": "p",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "alt": "",
+                    "className": "list-selection list-selection--group-splitter",
+                    "src": "line.svg",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "img",
+                },
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "I",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <p
+                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                    I
+</p>,
+                  <img
+                    alt=""
+                    className="list-selection list-selection--group-splitter"
+                    src="line.svg"
+/>,
+                  Array [],
+                ],
+                "id": "I",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "I",
+                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                  },
+                  "ref": null,
+                  "rendered": "I",
+                  "type": "p",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "alt": "",
+                    "className": "list-selection list-selection--group-splitter",
+                    "src": "line.svg",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "img",
+                },
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "J",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <p
+                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                    J
+</p>,
+                  <img
+                    alt=""
+                    className="list-selection list-selection--group-splitter"
+                    src="line.svg"
+/>,
+                  Array [],
+                ],
+                "id": "J",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "J",
+                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                  },
+                  "ref": null,
+                  "rendered": "J",
+                  "type": "p",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "alt": "",
+                    "className": "list-selection list-selection--group-splitter",
+                    "src": "line.svg",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "img",
+                },
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "K",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <p
+                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                    K
+</p>,
+                  <img
+                    alt=""
+                    className="list-selection list-selection--group-splitter"
+                    src="line.svg"
+/>,
+                  Array [],
+                ],
+                "id": "K",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "K",
+                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                  },
+                  "ref": null,
+                  "rendered": "K",
+                  "type": "p",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "alt": "",
+                    "className": "list-selection list-selection--group-splitter",
+                    "src": "line.svg",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "img",
+                },
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "L",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <p
+                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                    L
+</p>,
+                  <img
+                    alt=""
+                    className="list-selection list-selection--group-splitter"
+                    src="line.svg"
+/>,
+                  Array [],
+                ],
+                "id": "L",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "L",
+                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                  },
+                  "ref": null,
+                  "rendered": "L",
+                  "type": "p",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "alt": "",
+                    "className": "list-selection list-selection--group-splitter",
+                    "src": "line.svg",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "img",
+                },
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "M",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <p
+                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                    M
+</p>,
+                  <img
+                    alt=""
+                    className="list-selection list-selection--group-splitter"
+                    src="line.svg"
+/>,
+                  Array [],
+                ],
+                "id": "M",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "M",
+                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                  },
+                  "ref": null,
+                  "rendered": "M",
+                  "type": "p",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "alt": "",
+                    "className": "list-selection list-selection--group-splitter",
+                    "src": "line.svg",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "img",
+                },
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "N",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <p
+                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                    N
+</p>,
+                  <img
+                    alt=""
+                    className="list-selection list-selection--group-splitter"
+                    src="line.svg"
+/>,
+                  Array [],
+                ],
+                "id": "N",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "N",
+                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                  },
+                  "ref": null,
+                  "rendered": "N",
+                  "type": "p",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "alt": "",
+                    "className": "list-selection list-selection--group-splitter",
+                    "src": "line.svg",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "img",
+                },
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "O",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <p
+                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                    O
+</p>,
+                  <img
+                    alt=""
+                    className="list-selection list-selection--group-splitter"
+                    src="line.svg"
+/>,
+                  Array [],
+                ],
+                "id": "O",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "O",
+                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                  },
+                  "ref": null,
+                  "rendered": "O",
+                  "type": "p",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "alt": "",
+                    "className": "list-selection list-selection--group-splitter",
+                    "src": "line.svg",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "img",
                 },
               ],
               "type": "div",
@@ -1204,6 +5055,306 @@ ShallowWrapper {
             },
             Object {
               "instance": null,
+              "key": "Q",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <p
+                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                    Q
+</p>,
+                  <img
+                    alt=""
+                    className="list-selection list-selection--group-splitter"
+                    src="line.svg"
+/>,
+                  Array [],
+                ],
+                "id": "Q",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "Q",
+                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                  },
+                  "ref": null,
+                  "rendered": "Q",
+                  "type": "p",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "alt": "",
+                    "className": "list-selection list-selection--group-splitter",
+                    "src": "line.svg",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "img",
+                },
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "R",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <p
+                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                    R
+</p>,
+                  <img
+                    alt=""
+                    className="list-selection list-selection--group-splitter"
+                    src="line.svg"
+/>,
+                  Array [],
+                ],
+                "id": "R",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "R",
+                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                  },
+                  "ref": null,
+                  "rendered": "R",
+                  "type": "p",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "alt": "",
+                    "className": "list-selection list-selection--group-splitter",
+                    "src": "line.svg",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "img",
+                },
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "S",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <p
+                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                    S
+</p>,
+                  <img
+                    alt=""
+                    className="list-selection list-selection--group-splitter"
+                    src="line.svg"
+/>,
+                  Array [],
+                ],
+                "id": "S",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "S",
+                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                  },
+                  "ref": null,
+                  "rendered": "S",
+                  "type": "p",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "alt": "",
+                    "className": "list-selection list-selection--group-splitter",
+                    "src": "line.svg",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "img",
+                },
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "T",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <p
+                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                    T
+</p>,
+                  <img
+                    alt=""
+                    className="list-selection list-selection--group-splitter"
+                    src="line.svg"
+/>,
+                  Array [],
+                ],
+                "id": "T",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "T",
+                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                  },
+                  "ref": null,
+                  "rendered": "T",
+                  "type": "p",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "alt": "",
+                    "className": "list-selection list-selection--group-splitter",
+                    "src": "line.svg",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "img",
+                },
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "U",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <p
+                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                    U
+</p>,
+                  <img
+                    alt=""
+                    className="list-selection list-selection--group-splitter"
+                    src="line.svg"
+/>,
+                  Array [],
+                ],
+                "id": "U",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "U",
+                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                  },
+                  "ref": null,
+                  "rendered": "U",
+                  "type": "p",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "alt": "",
+                    "className": "list-selection list-selection--group-splitter",
+                    "src": "line.svg",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "img",
+                },
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "V",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <p
+                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                    V
+</p>,
+                  <img
+                    alt=""
+                    className="list-selection list-selection--group-splitter"
+                    src="line.svg"
+/>,
+                  Array [],
+                ],
+                "id": "V",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "V",
+                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                  },
+                  "ref": null,
+                  "rendered": "V",
+                  "type": "p",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "alt": "",
+                    "className": "list-selection list-selection--group-splitter",
+                    "src": "line.svg",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "img",
+                },
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
               "key": "W",
               "nodeType": "host",
               "props": Object {
@@ -1320,6 +5471,156 @@ ShallowWrapper {
               ],
               "type": "div",
             },
+            Object {
+              "instance": null,
+              "key": "X",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <p
+                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                    X
+</p>,
+                  <img
+                    alt=""
+                    className="list-selection list-selection--group-splitter"
+                    src="line.svg"
+/>,
+                  Array [],
+                ],
+                "id": "X",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "X",
+                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                  },
+                  "ref": null,
+                  "rendered": "X",
+                  "type": "p",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "alt": "",
+                    "className": "list-selection list-selection--group-splitter",
+                    "src": "line.svg",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "img",
+                },
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "Y",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <p
+                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                    Y
+</p>,
+                  <img
+                    alt=""
+                    className="list-selection list-selection--group-splitter"
+                    src="line.svg"
+/>,
+                  Array [],
+                ],
+                "id": "Y",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "Y",
+                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                  },
+                  "ref": null,
+                  "rendered": "Y",
+                  "type": "p",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "alt": "",
+                    "className": "list-selection list-selection--group-splitter",
+                    "src": "line.svg",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "img",
+                },
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "Z",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <p
+                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
+>
+                    Z
+</p>,
+                  <img
+                    alt=""
+                    className="list-selection list-selection--group-splitter"
+                    src="line.svg"
+/>,
+                  Array [],
+                ],
+                "id": "Z",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "Z",
+                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
+                  },
+                  "ref": null,
+                  "rendered": "Z",
+                  "type": "p",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "alt": "",
+                    "className": "list-selection list-selection--group-splitter",
+                    "src": "line.svg",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "img",
+                },
+              ],
+              "type": "div",
+            },
           ],
           "type": "div",
         },
@@ -1333,7 +5634,91 @@ ShallowWrapper {
                 className="list-selection--scroll-select-element"
                 onTouchStart={[Function]}
 >
+                A
+</div>,
+              <div
+                className="list-selection--scroll-select-element"
+                onTouchStart={[Function]}
+>
+                B
+</div>,
+              <div
+                className="list-selection--scroll-select-element"
+                onTouchStart={[Function]}
+>
+                C
+</div>,
+              <div
+                className="list-selection--scroll-select-element"
+                onTouchStart={[Function]}
+>
+                D
+</div>,
+              <div
+                className="list-selection--scroll-select-element"
+                onTouchStart={[Function]}
+>
+                E
+</div>,
+              <div
+                className="list-selection--scroll-select-element"
+                onTouchStart={[Function]}
+>
+                F
+</div>,
+              <div
+                className="list-selection--scroll-select-element"
+                onTouchStart={[Function]}
+>
                 G
+</div>,
+              <div
+                className="list-selection--scroll-select-element"
+                onTouchStart={[Function]}
+>
+                H
+</div>,
+              <div
+                className="list-selection--scroll-select-element"
+                onTouchStart={[Function]}
+>
+                I
+</div>,
+              <div
+                className="list-selection--scroll-select-element"
+                onTouchStart={[Function]}
+>
+                J
+</div>,
+              <div
+                className="list-selection--scroll-select-element"
+                onTouchStart={[Function]}
+>
+                K
+</div>,
+              <div
+                className="list-selection--scroll-select-element"
+                onTouchStart={[Function]}
+>
+                L
+</div>,
+              <div
+                className="list-selection--scroll-select-element"
+                onTouchStart={[Function]}
+>
+                M
+</div>,
+              <div
+                className="list-selection--scroll-select-element"
+                onTouchStart={[Function]}
+>
+                N
+</div>,
+              <div
+                className="list-selection--scroll-select-element"
+                onTouchStart={[Function]}
+>
+                O
 </div>,
               <div
                 className="list-selection--scroll-select-element"
@@ -1345,13 +5730,145 @@ ShallowWrapper {
                 className="list-selection--scroll-select-element"
                 onTouchStart={[Function]}
 >
+                Q
+</div>,
+              <div
+                className="list-selection--scroll-select-element"
+                onTouchStart={[Function]}
+>
+                R
+</div>,
+              <div
+                className="list-selection--scroll-select-element"
+                onTouchStart={[Function]}
+>
+                S
+</div>,
+              <div
+                className="list-selection--scroll-select-element"
+                onTouchStart={[Function]}
+>
+                T
+</div>,
+              <div
+                className="list-selection--scroll-select-element"
+                onTouchStart={[Function]}
+>
+                U
+</div>,
+              <div
+                className="list-selection--scroll-select-element"
+                onTouchStart={[Function]}
+>
+                V
+</div>,
+              <div
+                className="list-selection--scroll-select-element"
+                onTouchStart={[Function]}
+>
                 W
+</div>,
+              <div
+                className="list-selection--scroll-select-element"
+                onTouchStart={[Function]}
+>
+                X
+</div>,
+              <div
+                className="list-selection--scroll-select-element"
+                onTouchStart={[Function]}
+>
+                Y
+</div>,
+              <div
+                className="list-selection--scroll-select-element"
+                onTouchStart={[Function]}
+>
+                Z
 </div>,
             ],
             "className": "list-selection--scroll-select",
           },
           "ref": null,
           "rendered": Array [
+            Object {
+              "instance": null,
+              "key": "A",
+              "nodeType": "host",
+              "props": Object {
+                "children": "A",
+                "className": "list-selection--scroll-select-element",
+                "onTouchStart": [Function],
+              },
+              "ref": null,
+              "rendered": "A",
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "B",
+              "nodeType": "host",
+              "props": Object {
+                "children": "B",
+                "className": "list-selection--scroll-select-element",
+                "onTouchStart": [Function],
+              },
+              "ref": null,
+              "rendered": "B",
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "C",
+              "nodeType": "host",
+              "props": Object {
+                "children": "C",
+                "className": "list-selection--scroll-select-element",
+                "onTouchStart": [Function],
+              },
+              "ref": null,
+              "rendered": "C",
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "D",
+              "nodeType": "host",
+              "props": Object {
+                "children": "D",
+                "className": "list-selection--scroll-select-element",
+                "onTouchStart": [Function],
+              },
+              "ref": null,
+              "rendered": "D",
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "E",
+              "nodeType": "host",
+              "props": Object {
+                "children": "E",
+                "className": "list-selection--scroll-select-element",
+                "onTouchStart": [Function],
+              },
+              "ref": null,
+              "rendered": "E",
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "F",
+              "nodeType": "host",
+              "props": Object {
+                "children": "F",
+                "className": "list-selection--scroll-select-element",
+                "onTouchStart": [Function],
+              },
+              "ref": null,
+              "rendered": "F",
+              "type": "div",
+            },
             Object {
               "instance": null,
               "key": "G",
@@ -1363,6 +5880,110 @@ ShallowWrapper {
               },
               "ref": null,
               "rendered": "G",
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "H",
+              "nodeType": "host",
+              "props": Object {
+                "children": "H",
+                "className": "list-selection--scroll-select-element",
+                "onTouchStart": [Function],
+              },
+              "ref": null,
+              "rendered": "H",
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "I",
+              "nodeType": "host",
+              "props": Object {
+                "children": "I",
+                "className": "list-selection--scroll-select-element",
+                "onTouchStart": [Function],
+              },
+              "ref": null,
+              "rendered": "I",
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "J",
+              "nodeType": "host",
+              "props": Object {
+                "children": "J",
+                "className": "list-selection--scroll-select-element",
+                "onTouchStart": [Function],
+              },
+              "ref": null,
+              "rendered": "J",
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "K",
+              "nodeType": "host",
+              "props": Object {
+                "children": "K",
+                "className": "list-selection--scroll-select-element",
+                "onTouchStart": [Function],
+              },
+              "ref": null,
+              "rendered": "K",
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "L",
+              "nodeType": "host",
+              "props": Object {
+                "children": "L",
+                "className": "list-selection--scroll-select-element",
+                "onTouchStart": [Function],
+              },
+              "ref": null,
+              "rendered": "L",
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "M",
+              "nodeType": "host",
+              "props": Object {
+                "children": "M",
+                "className": "list-selection--scroll-select-element",
+                "onTouchStart": [Function],
+              },
+              "ref": null,
+              "rendered": "M",
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "N",
+              "nodeType": "host",
+              "props": Object {
+                "children": "N",
+                "className": "list-selection--scroll-select-element",
+                "onTouchStart": [Function],
+              },
+              "ref": null,
+              "rendered": "N",
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "O",
+              "nodeType": "host",
+              "props": Object {
+                "children": "O",
+                "className": "list-selection--scroll-select-element",
+                "onTouchStart": [Function],
+              },
+              "ref": null,
+              "rendered": "O",
               "type": "div",
             },
             Object {
@@ -1380,6 +6001,84 @@ ShallowWrapper {
             },
             Object {
               "instance": null,
+              "key": "Q",
+              "nodeType": "host",
+              "props": Object {
+                "children": "Q",
+                "className": "list-selection--scroll-select-element",
+                "onTouchStart": [Function],
+              },
+              "ref": null,
+              "rendered": "Q",
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "R",
+              "nodeType": "host",
+              "props": Object {
+                "children": "R",
+                "className": "list-selection--scroll-select-element",
+                "onTouchStart": [Function],
+              },
+              "ref": null,
+              "rendered": "R",
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "S",
+              "nodeType": "host",
+              "props": Object {
+                "children": "S",
+                "className": "list-selection--scroll-select-element",
+                "onTouchStart": [Function],
+              },
+              "ref": null,
+              "rendered": "S",
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "T",
+              "nodeType": "host",
+              "props": Object {
+                "children": "T",
+                "className": "list-selection--scroll-select-element",
+                "onTouchStart": [Function],
+              },
+              "ref": null,
+              "rendered": "T",
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "U",
+              "nodeType": "host",
+              "props": Object {
+                "children": "U",
+                "className": "list-selection--scroll-select-element",
+                "onTouchStart": [Function],
+              },
+              "ref": null,
+              "rendered": "U",
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "V",
+              "nodeType": "host",
+              "props": Object {
+                "children": "V",
+                "className": "list-selection--scroll-select-element",
+                "onTouchStart": [Function],
+              },
+              "ref": null,
+              "rendered": "V",
+              "type": "div",
+            },
+            Object {
+              "instance": null,
               "key": "W",
               "nodeType": "host",
               "props": Object {
@@ -1389,6 +6088,45 @@ ShallowWrapper {
               },
               "ref": null,
               "rendered": "W",
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "X",
+              "nodeType": "host",
+              "props": Object {
+                "children": "X",
+                "className": "list-selection--scroll-select-element",
+                "onTouchStart": [Function],
+              },
+              "ref": null,
+              "rendered": "X",
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "Y",
+              "nodeType": "host",
+              "props": Object {
+                "children": "Y",
+                "className": "list-selection--scroll-select-element",
+                "onTouchStart": [Function],
+              },
+              "ref": null,
+              "rendered": "Y",
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "Z",
+              "nodeType": "host",
+              "props": Object {
+                "children": "Z",
+                "className": "list-selection--scroll-select-element",
+                "onTouchStart": [Function],
+              },
+              "ref": null,
+              "rendered": "Z",
               "type": "div",
             },
           ],

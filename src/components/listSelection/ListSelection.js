@@ -17,7 +17,11 @@ class ListSelection extends Component {
           this.startsWithLetter(item.name) ? item.name[0].toUpperCase() : '#'
       )
     );
-
+    for (let i = 0; i < 26; i++) {
+      const expectedCharacter = String.fromCharCode(i + 65);
+      if (!items[i] || items[i][0] !== expectedCharacter)
+        items.splice(i, 0, [expectedCharacter, []]);
+    }
     return items;
   })();
 
@@ -79,7 +83,6 @@ class ListSelection extends Component {
 
 ListSelection.propTypes = {
   onClick: PropTypes.func.isRequired,
-  iconStyle: PropTypes.string.isRequired,
   items: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
