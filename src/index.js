@@ -1,13 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
-import './index.css';
-import store from './utils/reduxStore';
-import registerServiceWorker from './registerServiceWorker';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+
+import registerServiceWorker from './registerServiceWorker';
+import store from './utils/reduxStore';
+
 import AppContainer from './components/App/container';
-import Viewer from './components/Admin/Preview/Viewer';
-import Trainer from './components/Admin/Trainer/Trainer';
 import SnackChat from './components/SnackChat/SnackChatContainer';
 import ItemRecognition from './components/ItemRecognition/ItemRecognitionContainer';
 import Disclaimer from './components/Disclaimer/Disclaimer';
@@ -15,7 +14,13 @@ import ConfirmationBox from './components/ConfirmationBox/container';
 import UsernameEntryContainer from './components/UsernameEntry/container';
 import EditSnack from './components/EditSnack/EditSnackContainer';
 import SuccessPage from './components/SuccessPage/SuccessPage';
+
 import Admin from './components/Admin/Admin';
+import Trainer from './components/Admin/Trainer/Trainer';
+import Viewer from './components/Admin/Preview/Viewer';
+//import ItemApproval from './components/Admin/ImageApproval/ImageApproval';
+
+import './index.css';
 
 ReactDOM.render(
   <Provider store={store}>
@@ -29,9 +34,10 @@ ReactDOM.render(
         <Route exact path="/editsnack" component={EditSnack} />
         <Route exact path="/slackname" component={UsernameEntryContainer} />
         <Route exact path="/success" component={SuccessPage} />
-        <Route exact path="/preview" component={Viewer} />
         <Route exact path="/admin" component={Admin} />
-        <Route exact path="/training" component={Trainer} />
+        <Route exact path="/admin/preview" component={Viewer} />
+        <Route exact path="/admin/training" component={Trainer} />
+        {/* <Route exact path="/admin/itemapproval" component={ItemApproval} /> */}
       </Switch>
     </Router>
   </Provider>,
