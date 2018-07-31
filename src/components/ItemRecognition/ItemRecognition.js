@@ -14,10 +14,24 @@ class ItemRecognition extends Component {
   webcam = React.createRef();
   mobileNet = new MobileNet();
 
+  constructor(props) {
+    super(props);
+
+    if (navigator.online) {
+      this.model = new Model();
+      this.webcam = React.createRef();
+      this.mobileNet = new MobileNet();
+    }
+  }
+
   componentDidMount() {
     this.props.setPrediction(null, null);
-    this.model.load();
-    this.controllerDataset = new ControllerDataset();
+
+    if (navigator.onLine) {
+      this.model = new Model();
+      this.model.load();
+      this.controllerDataset = new ControllerDataset();
+    }
   }
 
   onConnect = () => {
@@ -45,20 +59,22 @@ class ItemRecognition extends Component {
   };
 
   handleImg = img => {
-    this.model.predict(img).then(async item => {
-      if (
-        item.value > ML_THRESHOLD &&
-        item.id !== '' &&
-        !this.props.prediction
-      ) {
-        await this.addTrainingImage(img.src, item.id);
-        this.props.setPrediction(item.id, img.src);
-        this.props.history.replace('/confirmitem');
-      } else {
-        if (this.webcam.current)
-          this.webcam.current.requestScreenshot().then(this.handleImg);
-      }
-    });
+    if (this.model) {
+      this.model.predict(img).then(async item => {
+        if (
+          item.value > ML_THRESHOLD &&
+          item.id !== '' &&
+          !this.props.prediction
+        ) {
+          await this.addTrainingImage(img.src, item.id);
+          this.props.setPrediction(item.id, img.src);
+          this.props.history.replace('/confirmitem');
+        } else {
+          if (this.webcam.current)
+            this.webcam.current.requestScreenshot().then(this.handleImg);
+        }
+      });
+    }
   };
 
   render() {

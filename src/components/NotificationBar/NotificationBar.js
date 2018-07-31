@@ -64,7 +64,7 @@ class NotificationBar extends Component {
 }
 
 NotificationBar.propTypes = {
-  userTouchActionText: PropTypes.string.isRequired,
+  userTouchActionText: PropTypes.string,
   autoActionWord: PropTypes.string,
   mainText: PropTypes.string.isRequired,
   handleTouch: PropTypes.func,
