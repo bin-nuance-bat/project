@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-
 import {ControllerDataset} from '../Admin/ControllerDataset';
 import Model from './../../utils/model';
 import WebcamCapture from '../WebcamCapture/WebcamCapture';
@@ -11,6 +10,7 @@ import './ItemRecognition.css';
 
 const TIMEOUT_IN_SECONDS = 10;
 const ML_THRESHOLD = 0.35;
+const SHOW_RETRY_FOR = 5;
 
 class ItemRecognition extends Component {
   model = new Model();
@@ -84,7 +84,8 @@ class ItemRecognition extends Component {
       } else {
         if (
           !this.state.showRetryMessage &&
-          (Date.now() - this.scanningStartTime) / 1000 > TIMEOUT_IN_SECONDS - 5
+          (Date.now() - this.scanningStartTime) / 1000 >
+            TIMEOUT_IN_SECONDS - SHOW_RETRY_FOR
         )
           this.setState({showRetryMessage: true});
         if (this.webcam.current)
@@ -96,6 +97,7 @@ class ItemRecognition extends Component {
   render() {
     return (
       <div className="page">
+        <BackButton history={this.props.history} />
         <header>
           {this.state.showRetryMessage ? (
             <div>
