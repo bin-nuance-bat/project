@@ -4,8 +4,8 @@ import Logo from './../Logo/Logo';
 import Hand from './../Hand/Hand';
 import PropTypes from 'prop-types';
 
-const handleClick = () =>  {
-         props.history.replace('/');
+const goHomeAndClearTimeout = (timeOut) =>  {
+        props.history.replace('/');
         clearTimeout(timeOut);
 }
 
@@ -14,7 +14,7 @@ const SuccessPage = props => {
   return (
     <div
       className="page"
-      onClick={handleClick}>
+      onClick={goHomeAndClearTimeout}>
       <Logo />
       <div className="text text-remindersent">Reminder sent!</div>
       <div className="success-hand">
