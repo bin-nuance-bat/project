@@ -5,7 +5,9 @@ import Hand from './../Hand/Hand';
 import PropTypes from 'prop-types';
 
 class SuccessPage extends Component {
-  timeout = setTimeout(() => this.props.history.replace('/'), 10000);
+  componentDidMount() {
+    this.timeout = setTimeout(() => this.props.history.replace('/'), 10000);
+  }
 
   goHomeAndClearTimeout = () => {
     clearTimeout(this.timeout);
