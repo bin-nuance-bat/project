@@ -51,7 +51,7 @@ class ItemRecognition extends Component {
         item.id !== 'unknown' &&
         !this.props.prediction
       ) {
-        await this.addTrainingImage(img.src, item.id);
+        this.addTrainingImage(img.src, item.id);
         await this.props.setPrediction(item.id, img.src);
         this.props.history.replace('/confirmitem');
       } else {
