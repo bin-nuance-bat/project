@@ -29,7 +29,6 @@ class App extends Component {
   state = {
     showTimer: false,
     isOnline: true,
-    refresh: 0
   };
 
   componentDidMount() {
@@ -58,10 +57,9 @@ class App extends Component {
   };
 
   handleOnline = () => {
-    this.setState(prevState => ({
-      isOnline: true,
-      refresh: prevState.refresh + 1
-    }));
+    this.setState({
+      isOnline: true
+    });
     // this isnt the nicest way of doing it but Im uysing this to reload the route, I only want to do this on the online event though, hence im not using the isOnline as a key (to router)
   };
 
@@ -88,7 +86,7 @@ class App extends Component {
 
   render() {
     return (
-      <div key={this.state.refresh}>
+      <div key={this.state.isOnline}>
         <Router>
           <Switch>
             <Route exact path="/" component={Home} />
