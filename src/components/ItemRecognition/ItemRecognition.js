@@ -10,6 +10,7 @@ import MobileNet from '../Admin/Trainer/MobileNet';
 import Logo from '../Logo/Logo';
 import './ItemRecognition.css';
 
+const TIMEOUT_IN_SECONDS = 10;
 const ML_THRESHOLD = 0.35;
 
 class ItemRecognition extends Component {
@@ -29,7 +30,10 @@ class ItemRecognition extends Component {
   onConnect = () => {
     this.webcam.current
       .requestScreenshot()
-      .then(this.handleImg)
+      .then(img => {
+        this.scanningStartTime = Date.now();
+        this.handleImg(img);
+      })
       .catch(() => {
         setTimeout(this.onConnect, 100);
       });
@@ -64,13 +68,16 @@ class ItemRecognition extends Component {
           )
       });
       if (
-        item.value > ML_THRESHOLD &&
-        item.id !== 'unknown' &&
-        !this.props.prediction
+        (item.value > ML_THRESHOLD &&
+          item.id !== 'unknown' &&
+          !this.props.prediction) ||
+        (Date.now() - this.scanningStartTime) / 1000 > TIMEOUT_IN_SECONDS
       ) {
         await this.addTrainingImage(img.src, item.id);
         this.props.setPrediction(item.id, img.src);
-        this.props.history.replace('/confirmitem');
+        this.props.history.replace(
+          item.id === 'unknown' ? '/editsnack' : '/confirmitem'
+        );
       } else {
         if (this.webcam.current)
           this.webcam.current.requestScreenshot().then(this.handleImg);
