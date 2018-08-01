@@ -14,7 +14,7 @@ const retry = async (
       if (attempts === 0) {
         onInitialError();
       }
-      lastError = error;
+      latestError = error;
       attempts++;
       await new Promise(resolve => setTimeout(resolve, sleepTime));
     }
