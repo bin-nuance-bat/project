@@ -76,6 +76,7 @@ export default class FirebaseStorage {
       if (!modelRow.exists) {
         modelRef.set({deployed: false});
       }
+      modelRef.update({timestamp: Date.now()});
 
       return {
         modelArtifactsInfo: getModelArtifactsInfoForJSON(modelArtifacts)

@@ -1,9 +1,13 @@
 import React, {Component} from 'react';
+import firebase from 'firebase/app';
 import 'firebase/firestore';
+
+import getStore from '../../../utils/honestyStore';
+import {ControllerDataset} from '../ControllerDataset';
+import initFirebase from '../../../utils/firebase';
+
 import ItemSelector from '../ItemSelector';
 import ImagePreview from './ImagePreview';
-import getStore from '../../../utils/honestyStore.js';
-import {ControllerDataset} from './../Trainer/ControllerDataset';
 
 export default class Viewer extends Component {
   state = {
@@ -17,6 +21,8 @@ export default class Viewer extends Component {
 
   componentDidMount() {
     this.controllerDataset = new ControllerDataset();
+    initFirebase();
+    this.db = firebase.firestore();
 
     getStore().then(store => {
       this.setState(prevState => ({
@@ -29,10 +35,13 @@ export default class Viewer extends Component {
   }
 
   getImages = () => {
-    this.controllerDataset.getCollectionReference('training_data').then(ref => {
-      if (this.state.item !== 'all')
-        ref = ref.where('label', '==', this.state.item);
-      ref.get().then(rows => {
+    let ref = this.db.collection('training_data');
+    if (this.state.item !== 'all')
+      ref = ref.where('label', '==', this.state.item);
+    ref
+      .orderBy('timestamp')
+      .get()
+      .then(async rows => {
         const images = [];
         rows.forEach(row => {
           const img = row.data();
@@ -44,8 +53,11 @@ export default class Viewer extends Component {
           });
         });
         this.setState({images});
+        const reff = await this.controllerDataset.getItemReference(
+          this.state.item
+        );
+        this.controllerDataset.setItemCount(reff, images.length);
       });
-    });
   };
 
   remove = event => {
@@ -55,6 +67,15 @@ export default class Viewer extends Component {
   };
 
   trust = event => {
+    this.controllerDataset
+      .trustImage(event.target.dataset)
+      .then(() => this.getImages());
+  };
+
+  trustUnknown = event => {
+    this.controllerDataset
+      .setLabel(event.target.dataset.id, 'unknown')
+      .then(() => this.getImages());
     this.controllerDataset
       .trustImage(event.target.dataset)
       .then(() => this.getImages());
@@ -75,7 +96,9 @@ export default class Viewer extends Component {
           <ImagePreview
             key={image.id}
             image={image}
-            handleClick={image.trusted ? this.remove : this.trust}
+            approve={this.trust}
+            remove={this.remove}
+            trustUnknown={this.trustUnknown}
           />
         ))}
       </div>

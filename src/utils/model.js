@@ -1,33 +1,15 @@
 import * as tf from '@tensorflow/tfjs';
-import firebase from 'firebase/app';
-import initFirebase from './firebase';
-import * as MobileNet from '@tensorflow-models/mobilenet';
-import FirebaseStorageHandler from '../components/Admin/Trainer/FirebaseStorageHandler';
+import {loadFrozenModel} from '@tensorflow/tfjs-converter';
+import labels from './labels';
 
-//const PREPROCESS_DIVISOR = tf.scalar(255 / 2);
+const PREPROCESS_DIVISOR = tf.scalar(255 / 2);
 
 export default class Model {
   async load() {
-    MobileNet.load(1, 0.25).then(res => {
-      this.mobilenet = res;
-    });
-
-    initFirebase();
-
-    firebase
-      .firestore()
-      .collection('models')
-      .where('deployed', '==', true)
-      .get()
-      .then(async snapshot => {
-        const modelName = snapshot.docs[0].id;
-        this.model = await tf.loadModel(
-          new FirebaseStorageHandler(
-            modelName,
-            classes => (this.classes = classes)
-          )
-        );
-      });
+    this.model = await loadFrozenModel(
+      '/model/web_model.pb',
+      '/model/weights_manifest.json'
+    );
   }
 
   dispose() {
@@ -35,11 +17,24 @@ export default class Model {
   }
 
   async predict(element) {
-    if (!this.model || !this.mobilenet) return {value: 0, id: 'unknown'};
+    if (!this.model) return {value: 0, id: ''};
+
+    const input = tf.fromPixels(element);
+    const preProcessedInput = tf.div(
+      tf.sub(input.asType('float32'), PREPROCESS_DIVISOR),
+      PREPROCESS_DIVISOR
+    );
+    const reshapedInput = preProcessedInput.reshape([
+      1,
+      ...preProcessedInput.shape
+    ]);
+    const logits = this.model.execute(
+      {Placeholder: reshapedInput},
+      'final_result'
+    );
 
     const predictions = tf.tidy(() => {
-      const activation = this.mobilenet.infer(element, 'conv_pw_13_relu');
-      return tf.softmax(this.model.predict(activation));
+      return tf.softmax(logits);
     });
 
     const values = predictions.dataSync();
@@ -47,12 +42,12 @@ export default class Model {
 
     let predictionList = [];
     for (let i = 0; i < values.length; i++) {
-      predictionList.push({value: values[i], id: this.classes[i]});
+      predictionList.push({value: values[i], id: labels[i]});
     }
     predictionList = predictionList.sort((a, b) => {
       return b.value - a.value;
     });
 
-    return predictionList[0];
+    return predictionList;
   }
 }
