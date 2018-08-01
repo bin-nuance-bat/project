@@ -103,6 +103,10 @@ class Admin extends Component {
     });
   };
 
+  navigate = event => {
+    this.props.history.replace(event.target.dataset.url);
+  };
+
   componentDidMount() {
     initFirebase();
     this.authenticate();
@@ -123,13 +127,21 @@ class Admin extends Component {
             <div>
               <button
                 className="button button-admin"
-                onClick={() => this.props.history.replace('/training')}>
+                data-url="/admin/training"
+                onClick={this.navigate}>
                 Model Training
               </button>
               <button
                 className="button button-admin"
-                onClick={() => this.props.history.replace('/preview')}>
+                data-url="/admin/imageapproval"
+                onClick={this.navigate}>
                 Training Data Review
+              </button>
+              <button
+                className="button button-admin"
+                data-url="/admin/preview"
+                onClick={this.navigate}>
+                Image Preview
               </button>
             </div>
             <div>
