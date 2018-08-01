@@ -48,11 +48,11 @@ class ItemRecognition extends Component {
     this.model.predict(img).then(async item => {
       if (
         item.value > ML_THRESHOLD &&
-        item.id !== '' &&
+        item.id !== 'unknown' &&
         !this.props.prediction
       ) {
         await this.addTrainingImage(img.src, item.id);
-        this.props.setPrediction(item.id, img.src);
+        await this.props.setPrediction(item.id, img.src);
         this.props.history.replace('/confirmitem');
       } else {
         if (this.webcam.current)
