@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import WebcamCapture from '../WebcamCapture/WebcamCapture';
 import PropTypes from 'prop-types';
 import * as posenet from '@tensorflow-models/posenet';
-import Logo from '../Logo/Logo';
 import './SnackChat.css';
 
 const FEED_SIZE = 480;
@@ -164,7 +163,6 @@ class SnackChat extends Component {
     return (
       <div className="page">
         <header>
-          <Logo />
           Smile, you are on snackchat:
           {this.state.counter}
         </header>
