@@ -53,12 +53,14 @@ class ItemRecognition extends Component {
   handleImg = img => {
     this.model.predict(img).then(async items => {
       this.setState({
-        status: items.map(
-          item =>
-            `${this.props.storeList[item.id].name} ${(item.value * 100).toFixed(
-              0
-            )}%<br />`
-        )
+        status: items
+          .sort((a, b) => a.id.localeCompare(b.id))
+          .map(
+            item =>
+              `${this.props.storeList[item.id].name} ${(
+                item.value * 100
+              ).toFixed(0)}% `
+          )
       });
       const item = items[0];
       if (
@@ -103,7 +105,7 @@ ItemRecognition.propTypes = {
     img: PropTypes.string.isRequired
   }),
   history: PropTypes.object.isRequired,
-  storeList: PropTypes.array.isRequired
+  storeList: PropTypes.object.isRequired
 };
 
 export default ItemRecognition;
