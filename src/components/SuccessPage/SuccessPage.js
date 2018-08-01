@@ -4,8 +4,7 @@ import Logo from './../Logo/Logo';
 import Hand from './../Hand/Hand';
 import PropTypes from 'prop-types';
 
-const handleClick =( () => 
-                    {
+const handleClick = () =>  {
          props.history.replace('/');
         clearTimeout(timeOut);
 }
