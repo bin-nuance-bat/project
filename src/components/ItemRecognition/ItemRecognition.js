@@ -3,11 +3,10 @@ import PropTypes from 'prop-types';
 
 import {ControllerDataset} from '../Admin/ControllerDataset';
 import Model from './../../utils/model';
-
 import WebcamCapture from '../WebcamCapture/WebcamCapture';
+import './ItemRecognition.css';
+import BackButton from '../BackButton/BackButton';
 import MobileNet from '../Admin/Trainer/MobileNet';
-
-import Logo from '../Logo/Logo';
 import './ItemRecognition.css';
 
 const TIMEOUT_IN_SECONDS = 10;
@@ -89,7 +88,7 @@ class ItemRecognition extends Component {
     return (
       <div className="page">
         <header>
-          <Logo />
+          <BackButton history={this.props.history} />
           <div className="item-recognition item-recognition--instructions">
             {this.state.status}
           </div>
