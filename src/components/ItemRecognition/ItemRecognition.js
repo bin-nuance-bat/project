@@ -10,28 +10,21 @@ import MobileNet from '../Admin/Trainer/MobileNet';
 const ML_THRESHOLD = 0.06;
 
 class ItemRecognition extends Component {
-  model = new Model();
-  webcam = React.createRef();
-  mobileNet = new MobileNet();
 
   constructor(props) {
     super(props);
 
     if (navigator.onLine) {
       this.model = new Model();
+      this.model.load();
       this.webcam = React.createRef();
       this.mobileNet = new MobileNet();
+      this.controllerDataset = new ControllerDataset();
     }
   }
 
   componentDidMount() {
     this.props.setPrediction(null, null);
-
-    if (navigator.onLine) {
-      this.model = new Model();
-      this.model.load();
-      this.controllerDataset = new ControllerDataset();
-    }
   }
 
   onConnect = () => {
@@ -63,7 +56,7 @@ class ItemRecognition extends Component {
       this.model.predict(img).then(async item => {
         if (
           item.value > ML_THRESHOLD &&
-          item.id !== '' &&
+          item.id !== 'unknown' &&
           !this.props.prediction
         ) {
           await this.addTrainingImage(img.src, item.id);
