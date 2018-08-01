@@ -73,11 +73,24 @@ class ListSelection extends Component {
             )}
         </div>
         <div className="list-selection--scroll-select">
-          {this.formattedItems.map(([group]) => (
+          {this.formattedItems.map(([group], index) => (
             <div
               key={group}
               className="list-selection--scroll-select-element"
-              onTouchStart={() => (window.location.hash = '#' + group)}>
+              onTouchStart={() => {
+                let i = index;
+
+                while (this.formattedItems[i][1].length === 0) {
+                  ++i;
+                }
+                if (i > this.formattedItems.length) {
+                  i = index;
+                  while (this.formattedItems[i][1].length === 0) {
+                    --i;
+                  }
+                }
+                window.location.hash = '#' + this.formattedItems[i][0];
+              }}>
               {group}
             </div>
           ))}
