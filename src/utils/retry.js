@@ -7,7 +7,7 @@ const retry = async (
   let latestError;
   let attempts = 0;
 
-  while (attemptstotal <Attempts) {
+  while (attempts < totalAttempts) {
     try {
       return asyncRequest();
     } catch (error) {
