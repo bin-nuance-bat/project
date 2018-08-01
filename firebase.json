@@ -8,7 +8,7 @@
     ],
     "redirects": [
       {
-        "source": "/!(admin|training|preview|itemapproval)",
+        "source": "/!(admin*|*.js*)",
         "destination": "/",
         "type": 301
       }
