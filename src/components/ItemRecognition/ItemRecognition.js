@@ -52,17 +52,17 @@ class ItemRecognition extends Component {
 
   handleImg = img => {
     this.model.predict(img).then(async items => {
+      const item = items[0];
       this.setState({
         status: items
           .sort((a, b) => a.id.localeCompare(b.id))
           .map(
-            item =>
-              `${this.props.storeList[item.id].name} ${(
-                item.value * 100
-              ).toFixed(0)}% `
+            i =>
+              `${this.props.storeList[i.id].name} ${(i.value * 100).toFixed(
+                0
+              )}% `
           )
       });
-      const item = items[0];
       if (
         item.value > ML_THRESHOLD &&
         item.id !== 'unknown' &&
