@@ -16,6 +16,9 @@ class ItemRecognition extends Component {
   model = new Model();
   webcam = React.createRef();
   mobileNet = new MobileNet();
+  state = {
+    status: 'Scan item'
+  };
 
   componentDidMount() {
     this.props.setPrediction(null, null);
@@ -48,7 +51,16 @@ class ItemRecognition extends Component {
   };
 
   handleImg = img => {
-    this.model.predict(img).then(async item => {
+    this.model.predict(img).then(async items => {
+      this.setState({
+        status: items.map(
+          item =>
+            `${this.props.storeList[item.id].name} ${(item.value * 100).toFixed(
+              0
+            )}%<br />`
+        )
+      });
+      const item = items[0];
       if (
         item.value > ML_THRESHOLD &&
         item.id !== 'unknown' &&
@@ -70,7 +82,7 @@ class ItemRecognition extends Component {
         <header>
           <Logo />
           <div className="item-recognition item-recognition--instructions">
-            Scan item using the front facing camera
+            {this.state.status}
           </div>
         </header>
         <WebcamCapture
@@ -90,7 +102,8 @@ ItemRecognition.propTypes = {
     name: PropTypes.string,
     img: PropTypes.string.isRequired
   }),
-  history: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired,
+  storeList: PropTypes.array.isRequired
 };
 
 export default ItemRecognition;
