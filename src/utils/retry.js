@@ -4,10 +4,10 @@ const retry = async (
   totalAttempts = 10,
   sleepTime = 2000
 ) => {
-  let lastError;
+  let latestError;
   let attempts = 0;
 
-  while (totalAttempts > attempts) {
+  while (attemptstotal <Attempts) {
     try {
       return asyncRequest();
     } catch (error) {
@@ -19,7 +19,7 @@ const retry = async (
       await new Promise(resolve => setTimeout(resolve, sleepTime));
     }
   }
-  return Promise.reject(lastError);
+  return Promise.reject(latestError);
 };
 
 export default retry;
