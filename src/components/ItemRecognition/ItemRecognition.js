@@ -17,7 +17,7 @@ class ItemRecognition extends Component {
   constructor(props) {
     super(props);
 
-    if (navigator.online) {
+    if (navigator.onLine) {
       this.model = new Model();
       this.webcam = React.createRef();
       this.mobileNet = new MobileNet();
