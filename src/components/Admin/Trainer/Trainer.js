@@ -1,10 +1,15 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
+
+import Model from './Model';
+import {imageToTensor} from './../AdminUtils';
+
 import WebcamCapture from '../../WebcamCapture/WebcamCapture';
 import ItemSelector from '../ItemSelector';
-import Model from './Model';
-import '../Admin.css';
 import Settings from './Settings';
-import {imageToTensor} from './../AdminUtils';
+import LoadingBar from './LoadingBar';
+
+import '../Admin.css';
 
 class Trainer extends Component {
   state = {
@@ -13,16 +18,16 @@ class Trainer extends Component {
     epochs: '200',
     hiddenUnits: '100',
     setSize: '100',
-    randomness: '0.1',
-    since: '1970-01-01T00:00',
+    randomness: '10',
     burstCount: 1,
     advanced: false,
     status: 'Loading...',
     item: 'unknown',
-    busy: true
+    busy: true,
+    completion: 1
   };
 
-  webcam = React.createRef();
+  webcamCapture = React.createRef();
   item = React.createRef();
   traner = React.createRef();
   files = React.createRef();
@@ -30,14 +35,21 @@ class Trainer extends Component {
 
   setReadyStatus = status => this.setState({status, busy: false});
   setBusyStatus = status => this.setState({status, busy: true});
+  setCompletion = completion => this.setState({completion});
 
-  model = new Model(this.setReadyStatus, this.setBusyStatus);
+  model = new Model(
+    this.setReadyStatus,
+    this.setBusyStatus,
+    this.setCompletion
+  );
 
   componentDidMount() {
     this.model.init();
   }
 
-  capture = imageToTensor;
+  back = () => {
+    this.props.history.replace('/admin');
+  };
 
   captureFromFile = async () => {
     return new Promise(resolve => {
@@ -49,18 +61,22 @@ class Trainer extends Component {
     });
   };
 
-  screenshot = () => {
-    return this.webcam.current.getScreenshot();
-  };
-
-  addExample = () => {
-    this.setState({busy: true});
-    this.model.addExample(
-      this.screenshot,
-      () => this.capture(this.webcam.current.video),
-      this.state.item,
-      this.state.burstCount
-    );
+  burstShot = () => {
+    let counter = this.state.burstCount;
+    const ticker = setInterval(() => {
+      this.model.addExample(
+        () => this.webcamCapture.current.webcam.current.getScreenshot(),
+        () => imageToTensor(this.webcamCapture.current.webcam.current.video),
+        this.state.item,
+        1,
+        false
+      );
+      counter--;
+      if (counter <= 0) clearInterval(ticker);
+      this.setCompletion(
+        (this.state.burstCount - counter) / this.state.burstCount
+      );
+    }, 500);
   };
 
   addFromFile = () => {
@@ -102,8 +118,7 @@ class Trainer extends Component {
       learningRate,
       epochs,
       setSize,
-      randomness,
-      since
+      randomness
     } = this.state;
 
     this.model.train(
@@ -112,23 +127,22 @@ class Trainer extends Component {
       parseFloat(learningRate),
       parseInt(epochs, 10),
       parseInt(setSize, 10),
-      parseFloat(randomness),
-      Date.parse(since)
+      parseFloat(randomness)
     );
   };
 
   predict = () => {
-    if (this.webcam.current) {
+    if (this.webcamCapture.current) {
       this.setState({busy: true});
-      this.model.predict(this.capture(this.webcam.current.video));
+      this.model.predict(
+        imageToTensor(this.webcamCapture.current.webcam.current.video)
+      );
     } else {
       this.setReadyStatus('Please connect a camera.');
     }
   };
 
-  getName = item => {
-    return item.name + (item.qualifier ? ` (${item.qualifier})` : '');
-  };
+  getName = item => item.name + (item.qualifier ? ` (${item.qualifier})` : '');
 
   render() {
     const {
@@ -138,25 +152,32 @@ class Trainer extends Component {
       hiddenUnits,
       setSize,
       randomness,
-      since,
       busy,
       status,
       item,
-      burstCount
+      burstCount,
+      completion
     } = this.state;
 
-    const items = this.model ? this.model.items : {};
+    const items = Object.values(this.model ? this.model.items : {});
+    items.sort((a, b) => {
+      return a.name.localeCompare(b.name);
+    });
 
     return (
-      <div className="page">
+      <div className="trainer page">
         <div className="col" style={{textAlign: 'center'}}>
-          <div id="status-text">{status}</div>
-          <WebcamCapture imgSize={224} />
+          <div>
+            <button className="button button-admin" onClick={this.back}>
+              &laquo; Back
+            </button>
+          </div>
+          <WebcamCapture imgSize={224} ref={this.webcamCapture} />
           <div>
             <ItemSelector
               item={item}
-              items={Object.values(items)}
-              setItem={i => this.setState({i})}
+              items={items}
+              setItem={i => this.setState({item: i})}
               disabled={busy}
             />
           </div>
@@ -174,8 +195,8 @@ class Trainer extends Component {
           <div>
             <button
               className="button button-admin"
-              onClick={() => this.addExample(this.webcam.current.video)}
-              disabled={busy || !this.webcam.current}>
+              onClick={this.burstShot}
+              disabled={busy || !this.webcamCapture.current.webcam.current}>
               Add From Camera
             </button>
           </div>
@@ -201,13 +222,12 @@ class Trainer extends Component {
           hiddenUnits={hiddenUnits}
           setSize={setSize}
           randomness={randomness}
-          since={since}
           train={this.train}
           predict={this.predict}
           setState={(key, val) => this.setState({[key]: val})}
         />
 
-        <div className="col" style={{maxHeight: 800, overflowY: 'scroll'}}>
+        <div className="col item-table">
           <table>
             <thead>
               <tr>
@@ -216,7 +236,7 @@ class Trainer extends Component {
               </tr>
             </thead>
             <tbody>
-              {Object.values(items).map(i => {
+              {items.map(i => {
                 return (
                   <tr key={i.id}>
                     <td>{this.getName(i)}</td>
@@ -227,9 +247,15 @@ class Trainer extends Component {
             </tbody>
           </table>
         </div>
+
+        <LoadingBar completion={completion} status={status} />
       </div>
     );
   }
 }
+
+Trainer.propTypes = {
+  history: PropTypes.object.isRequired
+};
 
 export default Trainer;

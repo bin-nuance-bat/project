@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+
 import Home from '../Home/container';
-import Viewer from '../Admin/Preview/Viewer';
-import Trainer from '../Admin/Trainer/Trainer';
 import SnackChat from '../SnackChat/SnackChatContainer';
 import ItemRecognition from '../ItemRecognition/ItemRecognitionContainer';
 import Disclaimer from '../Disclaimer/Disclaimer';
@@ -10,9 +9,12 @@ import ConfirmationBox from '../ConfirmationBox/container';
 import UsernameEntry from '../UsernameEntry/container';
 import EditSnack from '../EditSnack/EditSnackContainer';
 import SuccessPage from '../SuccessPage/container';
-import Admin from '../Admin/Admin';
-import ImageApproval from '../ImageApproval/ImageApproval';
 import NotificationBar from '../NotificationBar/NotificationBar';
+
+import Admin from '../Admin/Admin';
+import Trainer from '../Admin/Trainer/Trainer';
+import ImageApproval from '../Admin/ImageApproval/ImageApproval';
+import Viewer from '../Admin/Preview/Viewer';
 
 const WAIT_BEFORE_DISPLAY = 45;
 const PAGES_TO_SHOW_TIMEOUT = [
@@ -67,10 +69,14 @@ class App extends Component {
             <Route exact path="/editsnack" component={EditSnack} />
             <Route exact path="/slackname" component={UsernameEntry} />
             <Route exact path="/success" component={SuccessPage} />
-            <Route exact path="/preview" component={Viewer} />
             <Route exact path="/admin" component={Admin} />
-            <Route exact path="/training" component={Trainer} />
-            <Route exact path="/imageapproval" component={ImageApproval} />
+            <Route exact path="/admin/preview" component={Viewer} />
+            <Route exact path="/admin/training" component={Trainer} />
+            <Route
+              exact
+              path="/admin/imageapproval"
+              component={ImageApproval}
+            />
           </Switch>
         </Router>
         {this.state.showTimer && (
