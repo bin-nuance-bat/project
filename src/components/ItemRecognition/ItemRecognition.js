@@ -21,7 +21,7 @@ class ItemRecognition extends Component {
   };
 
   componentDidMount() {
-    // this.props.setPrediction(null, null);
+    this.props.setPrediction(null, null);
     this.model.load();
     this.controllerDataset = new ControllerDataset();
   }
@@ -79,8 +79,6 @@ class ItemRecognition extends Component {
   };
 
   render() {
-    this.props.setPrediction('fbe05463-a538-47aa-b4f1-654faa0a5b82', 'a');
-    this.props.history.replace('/confirmitem');
     return (
       <div className="page">
         <header>
