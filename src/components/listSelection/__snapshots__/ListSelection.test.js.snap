@@ -101,7 +101,7 @@ ShallowWrapper {
                               src="line.svg"
                     />
                     <div
-                              className="list-selection list-selection--list-item undefined-holder"
+                              className="list-selection list-selection--list-item"
                               data-test="fbe05463-a538-47aa-b4f1-654faa0a5b82"
                               onClick={[Function]}
                     >
@@ -131,7 +131,7 @@ ShallowWrapper {
                               src="line.svg"
                     />
                     <div
-                              className="list-selection list-selection--list-item undefined-holder"
+                              className="list-selection list-selection--list-item"
                               data-test="e615de4e-ce10-451b-80ad-9717662a904a"
                               onClick={[Function]}
                     >
@@ -161,7 +161,7 @@ ShallowWrapper {
                               src="line.svg"
                     />
                     <div
-                              className="list-selection list-selection--list-item undefined-holder"
+                              className="list-selection list-selection--list-item"
                               data-test="f589039e-c93b-45c1-99fc-1ee457ecb570"
                               onClick={[Function]}
                     >
@@ -225,7 +225,7 @@ ShallowWrapper {
                             src="line.svg"
               />
               <div
-                            className="list-selection list-selection--list-item undefined-holder"
+                            className="list-selection list-selection--list-item"
                             data-test="fbe05463-a538-47aa-b4f1-654faa0a5b82"
                             onClick={[Function]}
               >
@@ -255,7 +255,7 @@ ShallowWrapper {
                             src="line.svg"
               />
               <div
-                            className="list-selection list-selection--list-item undefined-holder"
+                            className="list-selection list-selection--list-item"
                             data-test="e615de4e-ce10-451b-80ad-9717662a904a"
                             onClick={[Function]}
               >
@@ -285,7 +285,7 @@ ShallowWrapper {
                             src="line.svg"
               />
               <div
-                            className="list-selection list-selection--list-item undefined-holder"
+                            className="list-selection list-selection--list-item"
                             data-test="f589039e-c93b-45c1-99fc-1ee457ecb570"
                             onClick={[Function]}
               >
@@ -324,7 +324,7 @@ ShallowWrapper {
 />,
                 Array [
                   <div
-                    className="list-selection list-selection--list-item undefined-holder"
+                    className="list-selection list-selection--list-item"
                     data-test="fbe05463-a538-47aa-b4f1-654faa0a5b82"
                     onClick={[Function]}
 >
@@ -387,7 +387,7 @@ ShallowWrapper {
                       Granulated Sugar
 </p>,
                   ],
-                  "className": "list-selection list-selection--list-item undefined-holder",
+                  "className": "list-selection list-selection--list-item",
                   "data-test": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
                   "onClick": [Function],
                 },
@@ -442,7 +442,7 @@ ShallowWrapper {
 />,
                 Array [
                   <div
-                    className="list-selection list-selection--list-item undefined-holder"
+                    className="list-selection list-selection--list-item"
                     data-test="e615de4e-ce10-451b-80ad-9717662a904a"
                     onClick={[Function]}
 >
@@ -505,7 +505,7 @@ ShallowWrapper {
                       Pepsi Max
 </p>,
                   ],
-                  "className": "list-selection list-selection--list-item undefined-holder",
+                  "className": "list-selection list-selection--list-item",
                   "data-test": "e615de4e-ce10-451b-80ad-9717662a904a",
                   "onClick": [Function],
                 },
@@ -560,7 +560,7 @@ ShallowWrapper {
 />,
                 Array [
                   <div
-                    className="list-selection list-selection--list-item undefined-holder"
+                    className="list-selection list-selection--list-item"
                     data-test="f589039e-c93b-45c1-99fc-1ee457ecb570"
                     onClick={[Function]}
 >
@@ -623,7 +623,7 @@ ShallowWrapper {
                       Wotsits
 </p>,
                   ],
-                  "className": "list-selection list-selection--list-item undefined-holder",
+                  "className": "list-selection list-selection--list-item",
                   "data-test": "f589039e-c93b-45c1-99fc-1ee457ecb570",
                   "onClick": [Function],
                 },
@@ -761,7 +761,7 @@ ShallowWrapper {
                                     src="line.svg"
                         />
                         <div
-                                    className="list-selection list-selection--list-item undefined-holder"
+                                    className="list-selection list-selection--list-item"
                                     data-test="fbe05463-a538-47aa-b4f1-654faa0a5b82"
                                     onClick={[Function]}
                         >
@@ -791,7 +791,7 @@ ShallowWrapper {
                                     src="line.svg"
                         />
                         <div
-                                    className="list-selection list-selection--list-item undefined-holder"
+                                    className="list-selection list-selection--list-item"
                                     data-test="e615de4e-ce10-451b-80ad-9717662a904a"
                                     onClick={[Function]}
                         >
@@ -821,7 +821,7 @@ ShallowWrapper {
                                     src="line.svg"
                         />
                         <div
-                                    className="list-selection list-selection--list-item undefined-holder"
+                                    className="list-selection list-selection--list-item"
                                     data-test="f589039e-c93b-45c1-99fc-1ee457ecb570"
                                     onClick={[Function]}
                         >
@@ -885,7 +885,7 @@ ShallowWrapper {
                                 src="line.svg"
                 />
                 <div
-                                className="list-selection list-selection--list-item undefined-holder"
+                                className="list-selection list-selection--list-item"
                                 data-test="fbe05463-a538-47aa-b4f1-654faa0a5b82"
                                 onClick={[Function]}
                 >
@@ -915,7 +915,7 @@ ShallowWrapper {
                                 src="line.svg"
                 />
                 <div
-                                className="list-selection list-selection--list-item undefined-holder"
+                                className="list-selection list-selection--list-item"
                                 data-test="e615de4e-ce10-451b-80ad-9717662a904a"
                                 onClick={[Function]}
                 >
@@ -945,7 +945,7 @@ ShallowWrapper {
                                 src="line.svg"
                 />
                 <div
-                                className="list-selection list-selection--list-item undefined-holder"
+                                className="list-selection list-selection--list-item"
                                 data-test="f589039e-c93b-45c1-99fc-1ee457ecb570"
                                 onClick={[Function]}
                 >
@@ -984,7 +984,7 @@ ShallowWrapper {
 />,
                   Array [
                     <div
-                      className="list-selection list-selection--list-item undefined-holder"
+                      className="list-selection list-selection--list-item"
                       data-test="fbe05463-a538-47aa-b4f1-654faa0a5b82"
                       onClick={[Function]}
 >
@@ -1047,7 +1047,7 @@ ShallowWrapper {
                         Granulated Sugar
 </p>,
                     ],
-                    "className": "list-selection list-selection--list-item undefined-holder",
+                    "className": "list-selection list-selection--list-item",
                     "data-test": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
                     "onClick": [Function],
                   },
@@ -1102,7 +1102,7 @@ ShallowWrapper {
 />,
                   Array [
                     <div
-                      className="list-selection list-selection--list-item undefined-holder"
+                      className="list-selection list-selection--list-item"
                       data-test="e615de4e-ce10-451b-80ad-9717662a904a"
                       onClick={[Function]}
 >
@@ -1165,7 +1165,7 @@ ShallowWrapper {
                         Pepsi Max
 </p>,
                     ],
-                    "className": "list-selection list-selection--list-item undefined-holder",
+                    "className": "list-selection list-selection--list-item",
                     "data-test": "e615de4e-ce10-451b-80ad-9717662a904a",
                     "onClick": [Function],
                   },
@@ -1220,7 +1220,7 @@ ShallowWrapper {
 />,
                   Array [
                     <div
-                      className="list-selection list-selection--list-item undefined-holder"
+                      className="list-selection list-selection--list-item"
                       data-test="f589039e-c93b-45c1-99fc-1ee457ecb570"
                       onClick={[Function]}
 >
@@ -1283,7 +1283,7 @@ ShallowWrapper {
                         Wotsits
 </p>,
                     ],
-                    "className": "list-selection list-selection--list-item undefined-holder",
+                    "className": "list-selection list-selection--list-item",
                     "data-test": "f589039e-c93b-45c1-99fc-1ee457ecb570",
                     "onClick": [Function],
                   },

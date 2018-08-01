@@ -1,6 +1,5 @@
 import React from 'react';
 import './Home.css';
-import Logo from '../Logo/Logo';
 import HomeHandsSlot from './assets/HandsSlot.svg';
 import HomeHandsRight from './assets/HandsRight.svg';
 import HomeHandsCenter from './assets/HandsCenter.svg';
@@ -26,9 +25,8 @@ class Home extends React.Component {
   render() {
     return (
       <div className="page">
-        <Logo />
         <div className="homepage">
-          <h2 className="text text-payinglater">Paying later?</h2>
+          <div className="text text-payinglater">Paying later?</div>
           <div className="text text-subheading">
             Why not send yourself a reminder on Slack?
           </div>
