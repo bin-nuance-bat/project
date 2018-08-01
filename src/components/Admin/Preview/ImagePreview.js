@@ -1,6 +1,7 @@
 import React from 'react';
-import './ImagePreview.css';
 import PropTypes from 'prop-types';
+
+import './ImagePreview.css';
 
 const ImagePreview = props => {
   return (
@@ -9,11 +10,25 @@ const ImagePreview = props => {
         <img src={props.image.uri} alt={props.image.id} />
       </div>
       <div>
+        {!props.image.trusted && (
+          <button
+            onClick={props.approve}
+            data-id={props.image.id}
+            data-item={props.image.item}>
+            Approve
+          </button>
+        )}
         <button
-          onClick={props.handleClick}
+          onClick={props.remove}
           data-id={props.image.id}
           data-item={props.image.item}>
-          {props.image.trusted ? 'Remove' : 'Use for training'}
+          Delete
+        </button>
+        <button
+          onClick={props.trustUnknown}
+          data-id={props.image.id}
+          data-item={props.image.item}>
+          Unknown
         </button>
       </div>
     </div>
@@ -21,7 +36,9 @@ const ImagePreview = props => {
 };
 
 ImagePreview.propTypes = {
-  handleClick: PropTypes.func.isRequired,
+  approve: PropTypes.func.isRequired,
+  remove: PropTypes.func.isRequired,
+  trustUnknown: PropTypes.func.isRequired,
   image: PropTypes.object.isRequired
 };
 
