@@ -17,10 +17,11 @@ class ListSelection extends Component {
           this.startsWithLetter(item.name) ? item.name[0].toUpperCase() : '#'
       )
     );
-    for (let i = 0; i < 26; i++) {
-      const expectedCharacter = String.fromCharCode(i + 65);
-      if (!items[i] || items[i][0] !== expectedCharacter)
-        items.splice(i, 0, [expectedCharacter, []]);
+    const offset = items[0][0] === '#' ? 64 : 65;
+    for (let i = 65; i < 91; i++) {
+      const expectedCharacter = String.fromCharCode(i);
+      if (!items[i - offset] || items[i - offset][0] !== expectedCharacter)
+        items.splice(i - offset, 0, [expectedCharacter, []]);
     }
     return items;
   })();
