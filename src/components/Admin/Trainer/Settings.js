@@ -23,6 +23,7 @@ export default class Settings extends Component {
           <label>
             <input
               type="checkbox"
+              className="admin-checkbox"
               onChange={this.toggleAdvanced}
               checked={this.state.advanced}
             />Show advanced settings
@@ -53,26 +54,20 @@ export default class Settings extends Component {
           label="Hidden Units"
           value={this.props.hiddenUnits}
           hide={!this.state.advanced}
-          range={[10, 500]}
+          range={[50, 500]}
           setState={val => this.props.setState('hiddenUnits', val)}
         />
         <Input
           label="Training Set Size"
           value={this.props.setSize}
-          range={[50, 500]}
+          range={[100, 1000]}
           setState={val => this.props.setState('setSize', val)}
         />
         <Input
           label="Randomness"
-          range={[0.1, 1]}
+          range={[1, 100]}
           value={this.props.randomness}
-          setState={val => this.props.setState('randmoness', val)}
-        />
-        <Input
-          label="Use Images Since"
-          value={this.props.since}
-          type="datetime-local"
-          setState={val => this.props.setState('since', val)}
+          setState={val => this.props.setState('randomness', val)}
         />
 
         <div className="formGroup">
@@ -127,7 +122,6 @@ Settings.propTypes = {
   hiddenUnits: PropTypes.string.isRequired,
   setSize: PropTypes.string.isRequired,
   randomness: PropTypes.string.isRequired,
-  since: PropTypes.string.isRequired,
   train: PropTypes.func.isRequired,
   predict: PropTypes.func.isRequired,
   setState: PropTypes.func.isRequired

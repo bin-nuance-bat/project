@@ -19,6 +19,7 @@ $username-icon-size: 48px;
 .username-icon {
   height: $username-icon-size;
   width: $username-icon-size;
+  border-radius: 4px;
 }
 
 .list-selection--body {

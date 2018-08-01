@@ -1,0 +1,114 @@
+@import '../../utils/constants.scss';
+
+body {
+  color: $white;
+  width: 100%;
+  text-align: center;
+}
+
+.text {
+  color: $white;
+
+  &-payinglater {
+    font-size: 53px;
+    padding-top: 172px;
+    font-weight: bold;
+  }
+
+  &-subheading {
+    margin-top: 32px;
+    font-size: 30px;
+    margin-bottom: 88px;
+  }
+}
+
+@-webkit-keyframes home-hands-pop {
+  from {
+    -webkit-transform: translateY(100%) translateZ(1px);
+    transform: translateY(100%) translateZ(1px);
+  }
+  to {
+    -webkit-transform: translateY(5%) translateZ(1px);
+    transform: translateY(5%) translateZ(1px);
+  }
+}
+
+@keyframes home-hands-pop {
+  from {
+    -webkit-transform: translateY(100%) translateZ(1px);
+    transform: translateY(100%) translateZ(1px);
+  }
+  to {
+    -webkit-transform: translateY(5%) translateZ(1px);
+    transform: translateY(5%) translateZ(1px);
+  }
+}
+
+.homepage--hands {
+  width: 300px;
+  height: 270px;
+  display: inline-block;
+  margin-left: 184px;
+  margin-right: 184px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  &-left,
+  &-center,
+  &-right,
+  &-slot {
+    position: absolute;
+    display: block;
+  }
+
+  &-left,
+  &-center,
+  &-right {
+    animation-name: home-hands-pop;
+    animation-duration: 0.3s;
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier(0.47, 0.52, 0.58, 1.19);
+    animation-fill-mode: both;
+    will-change: transform;
+  }
+
+  &-left {
+    -webkit-animation-delay: 1s;
+    animation-delay: 1s;
+  }
+
+  &-center {
+    -webkit-animation-delay: 1.15s;
+    animation-delay: 1.15s;
+  }
+
+  &-right {
+    -webkit-animation-delay: 1.05s;
+    animation-delay: 1.05s;
+  }
+}
+.homepage--button {
+  &--snackchat {
+    width: 488px;
+    margin-top: 21px;
+    background-color: $light-blue;
+    color: $white;
+    margin-bottom: 32px;
+    visibility: hidden; // Hidden for 1.0 release
+  }
+  &--nophoto {
+    background-color: $light-blue; // Colour changed for 1.0 release
+    width: 488px;
+    color: $white;
+    font-family: 'FaricyNew-Bold';
+    //border: 2px solid white; // Hidden for 1.0 release
+  }
+}
+
+.homepage--small-camera {
+  margin-left: 24px;
+  vertical-align: -0.15em;
+  width: 28px;
+  height: 28px;
+}

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Logo from '../Logo/Logo';
 import './ConfirmationBox.css';
 import Hand from '../Hand/Hand';
 
@@ -13,14 +12,13 @@ class ConfirmationBox extends React.Component {
   };
 
   handleNo = () => {
-    this.props.history.replace('/editSnack');
+    this.props.history.replace('/editsnack');
   };
 
   render() {
     const {image} = this.props.storeList[this.props.id];
     return (
       <div className="page">
-        <Logo />
         <div className="text-confirmation">{`Is this a ${
           this.props.name
         }?`}</div>
