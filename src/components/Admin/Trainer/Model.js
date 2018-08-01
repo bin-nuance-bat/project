@@ -1,14 +1,16 @@
 import * as tf from '@tensorflow/tfjs';
-import {ControllerDataset} from './ControllerDataset';
-import getStore from '../../../utils/honestyStore.js';
 import * as MobileNet from '@tensorflow-models/mobilenet';
+
 import FirebaseStorageHandler from './FirebaseStorageHandler';
+import {ControllerDataset} from '../ControllerDataset';
+import getStore from '../../../utils/honestyStore.js';
 
 class Model {
-  constructor(setReadyStatus, setBusyStatus) {
+  constructor(setReadyStatus, setBusyStatus, setCompletion) {
     this.items = {unknown: {name: 'Unknown', id: 'unknown'}};
     this.setReadyStatus = setReadyStatus;
     this.setBusyStatus = setBusyStatus;
+    this.setCompletion = setCompletion;
     this.controllerDataset = new ControllerDataset();
   }
 
@@ -19,8 +21,12 @@ class Model {
 
   init() {
     this.setBusyStatus('Loading data...');
-    this.mobilenet = new MobileNet();
-    return Promise.all([this.mobilenet.init(), this.loadStore()])
+    return Promise.all([
+      MobileNet.load(1, 0.25).then(res => {
+        this.mobilenet = res;
+      }),
+      this.loadStore()
+    ])
       .then(this.loadTrainingData)
       .then(() => this.setReadyStatus('Done'));
   }
@@ -47,6 +53,7 @@ class Model {
         'Loading the model will overwrite any training you have done. Continue?'
       )
     ) {
+      this.setBusyStatus('Loading model...');
       tf.loadModel(
         new FirebaseStorageHandler(
           modelName,
@@ -75,7 +82,7 @@ class Model {
       .catch(err => this.setReadyStatus(err));
   };
 
-  async addExample(getImg, getTensor, label, count) {
+  async addExample(getImg, getTensor, label, count, trusted = true) {
     const examples = [];
     for (let i = 1; i <= count; i++) {
       const tensor = await getTensor();
@@ -85,16 +92,30 @@ class Model {
         activation: this.mobilenet.infer(tensor, 'conv_pw_13_relu')
       });
 
-      document.getElementById(`${label}-count`).innerHTML++;
-      this.items[label].mlCount++;
       this.setBusyStatus(
-        `Processing images of ${this.getName(label)} (${i}/${count})`
+        `Processing images... (${((i / count) * 100).toFixed(0)}%)`
       );
+      this.setCompletion(i / count);
       await tf.nextFrame();
     }
-    this.setBusyStatus('Submitting images to database. Please wait...');
-    this.controllerDataset.addExamples(examples);
-    this.setReadyStatus('Done');
+
+    this.setBusyStatus('Uploading images... (0%)');
+    this.controllerDataset.addExamples(
+      examples,
+      completion => {
+        this.setCompletion(completion);
+        document.getElementById(`${label}-count`).innerHTML++;
+        this.items[label].mlCount++;
+        if (completion === 1) {
+          this.setReadyStatus('Done');
+          return;
+        }
+        this.setBusyStatus(
+          `Uploading images... (${(completion * 100).toFixed(0)}%)`
+        );
+      },
+      trusted
+    );
   }
 
   async train(
@@ -103,76 +124,89 @@ class Model {
     learningRate,
     epochs,
     setSize,
-    randomness,
-    since
+    randomness
   ) {
     this.setBusyStatus('Loading training data from DB...');
+    const {xs, ys, classes} = await this.controllerDataset.getTensors(
+      setSize,
+      randomness,
+      'training',
+      this.setCompletion
+    );
 
-    this.controllerDataset
-      .getTensors(setSize, randomness, since)
-      .then(async ({xs, ys, classes}) => {
-        if (!xs) {
-          this.setReadyStatus('Please collect some training images first!');
-          return;
-        }
+    this.setBusyStatus('Loading validation data from DB...');
+    const validation = await this.controllerDataset.getTensors(
+      setSize,
+      randomness,
+      'validation',
+      this.setCompletion
+    );
 
-        const batchSize = Math.floor(xs.shape[0] * batchSizeFraction);
+    if (!xs) {
+      this.setReadyStatus('Please collect some training images first!');
+      return;
+    }
 
-        if (!(batchSize > 0)) {
-          this.setReadyStatus(
-            'Batch size invalid, please choose a number 0 < x < 1'
-          );
-          return;
-        }
+    const batchSize = Math.floor(xs.shape[0] * batchSizeFraction);
 
-        this.classes = classes;
+    if (!(batchSize > 0)) {
+      this.setReadyStatus(
+        'Batch size invalid, please choose a number 0 < x < 1'
+      );
+      return;
+    }
 
-        this.setBusyStatus('Training model, please wait...');
-        await tf.nextFrame();
+    this.classes = classes;
 
-        if (!this.model) {
-          this.setBusyStatus('Generating new model...');
+    this.setBusyStatus('Training model, please wait...');
+    await tf.nextFrame();
 
-          this.model = tf.sequential({
-            layers: [
-              tf.layers.flatten({inputShape: [7, 7, 1024]}),
-              tf.layers.dense({
-                units: hiddenUnits,
-                activation: 'relu',
-                kernelInitializer: 'varianceScaling',
-                useBias: true
-              }),
-              tf.layers.dense({
-                units: classes.length,
-                kernelInitializer: 'varianceScaling',
-                useBias: false,
-                activation: 'softmax'
-              })
-            ]
-          });
-        }
+    if (!this.model) {
+      this.setBusyStatus('Generating new model...');
 
-        const optimizer = tf.train.adam(learningRate);
-        this.model.compile({
-          optimizer,
-          loss: 'categoricalCrossentropy'
-        });
-
-        this.model.fit(xs, ys, {
-          batchSize,
-          epochs,
-          callbacks: {
-            onBatchEnd: async (batch, logs) => {
-              this.setBusyStatus('Training... Loss: ' + logs.loss.toFixed(5));
-              await tf.nextFrame();
-            },
-            onTrainEnd: async () => {
-              this.setReadyStatus('Finished Training. Try me out!');
-              await tf.nextFrame();
-            }
-          }
-        });
+      this.model = tf.sequential({
+        layers: [
+          tf.layers.flatten({inputShape: [7, 7, 256]}),
+          tf.layers.dense({
+            units: hiddenUnits,
+            activation: 'relu',
+            kernelInitializer: 'varianceScaling',
+            useBias: true
+          }),
+          tf.layers.dense({
+            units: classes.length,
+            kernelInitializer: 'varianceScaling',
+            useBias: false,
+            activation: 'softmax'
+          })
+        ]
       });
+    }
+
+    const optimizer = tf.train.adam(learningRate);
+    this.model.compile({
+      optimizer,
+      loss: 'categoricalCrossentropy'
+    });
+
+    this.model.fit(xs, ys, {
+      batchSize,
+      epochs,
+      validationData: [validation.xs, validation.ys],
+      callbacks: {
+        onEpochEnd: async (epoch, logs) => {
+          this.setCompletion(++epoch / epochs);
+          this.setBusyStatus(`Training... Loss: ${logs.val_loss.toFixed(5)}`);
+          await tf.nextFrame();
+        },
+        onTrainEnd: async () => {
+          this.setReadyStatus('Finished Training. Try me out!');
+          xs.dispose();
+          ys.dispose();
+          await tf.nextFrame();
+        }
+      }
+    });
   }
 
   async predict(image) {
@@ -181,17 +215,26 @@ class Model {
       return;
     }
     this.setBusyStatus('Predicting...');
-    const predictedClass = tf.tidy(() => {
+    const predictions = tf.tidy(() => {
       const activation = this.mobilenet.infer(image, 'conv_pw_13_relu');
-      const predictions = this.model.predict(activation);
-      return predictions.as1D().argMax();
+      return tf.softmax(this.model.predict(activation));
     });
 
-    const classId = (await predictedClass.data())[0];
-    predictedClass.dispose();
-    this.setReadyStatus(
-      'I think this is a ' + this.getName(this.classes[classId])
-    );
+    const values = predictions.dataSync();
+    predictions.dispose();
+
+    let predictionList = [];
+    for (let i = 0; i < values.length; i++) {
+      predictionList.push({value: values[i], id: this.classes[i]});
+    }
+    predictionList = predictionList.sort((a, b) => b.value - a.value);
+
+    for (const p of predictionList) {
+      document.getElementById(p.id + '-count').innerHTML =
+        (p.value * 100).toFixed(2) + '%';
+    }
+
+    this.setReadyStatus(this.getName(predictionList[0].id));
   }
 }
 
