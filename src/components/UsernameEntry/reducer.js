@@ -1,4 +1,8 @@
-import {SET_USERS, SET_USERS_FETCH_ERROR} from './actionTypes';
+import {
+  SET_USERS,
+  SET_USERS_FETCH_ERROR,
+  SET_SEND_MESSAGE_ERROR
+} from './actionTypes';
 
 export function users(state = [], action) {
   if (action.type === SET_USERS) return action.users;
@@ -7,5 +11,10 @@ export function users(state = [], action) {
 
 export function loadUserListError(state = false, action) {
   if (action.type === SET_USERS_FETCH_ERROR) return action.usersFetchError;
+  return state;
+}
+
+export function sendMessageError(state = false, action) {
+  if (action.type === SET_SEND_MESSAGE_ERROR) return action.sendMessageError;
   return state;
 }

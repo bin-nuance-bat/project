@@ -1,4 +1,8 @@
-import {SET_USERS, SET_USERS_FETCH_ERROR} from './actionTypes';
+import {
+  SET_USERS,
+  SET_USERS_FETCH_ERROR,
+  SET_SEND_MESSAGE_ERROR
+} from './actionTypes';
 
 import retry from '../../utils/retry';
 
@@ -15,6 +19,13 @@ function setUsersFetchError(usersFetchError) {
   return {
     type: SET_USERS_FETCH_ERROR,
     usersFetchError
+  };
+}
+
+function setSendMessageError(sendMessageError) {
+  return {
+    type: SET_SEND_MESSAGE_ERROR,
+    sendMessageError
   };
 }
 
@@ -42,11 +53,16 @@ export const sendSlackMessage = userid => async (dispatch, getState) => {
   const itemName = state.storeList[actualItemID].name;
 
   try {
-    const result = await fetch(`https://slack.com/api/chat.postMessage?token=${token}&
+    const result = await retry(
+      () =>
+        fetch(`https://slack.com/api/chat.postMessage?token=${token}&
 		channel=${userid}&
-		text=${`Click to purchase your ${itemName}: https://honesty.store/item/${actualItemID}`}`).then(
-      response => response.json()
-    );
+		text=${`Click to purchase your ${itemName}: https://honesty.store/item/${actualItemID}`}`),
+      () => dispatch(setSendMessageError(true))
+    ).then(response => {
+      dispatch(setSendMessageError(false));
+      return response.json();
+    });
     return result.ok;
   } catch (error) {
     return false;

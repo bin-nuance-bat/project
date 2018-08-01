@@ -73,7 +73,8 @@ class App extends Component {
     return (
       !this.state.isOnline ||
       this.props.loadStoreListError ||
-      this.props.loadUserListError
+      this.props.loadUserListError ||
+      this.props.sendMessageError
     );
   }
 
@@ -128,7 +129,8 @@ class App extends Component {
 
 App.propTypes = {
   loadStoreListError: PropTypes.bool,
-  loadUserListError: PropTypes.bool
+  loadUserListError: PropTypes.bool,
+  sendMessageError: PropTypes.bool
 };
 
 export default App;
