@@ -87,90 +87,12 @@ ShallowWrapper {
         <div
           className="list-selection list-selection--list"
 >
-          <div
-                    id="A"
-          >
-                    <p
-                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                    >
-                              A
-                    </p>
-                    <img
-                              alt=""
-                              className="list-selection list-selection--group-splitter"
-                              src="line.svg"
-                    />
-          </div>
-          <div
-                    id="B"
-          >
-                    <p
-                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                    >
-                              B
-                    </p>
-                    <img
-                              alt=""
-                              className="list-selection list-selection--group-splitter"
-                              src="line.svg"
-                    />
-          </div>
-          <div
-                    id="C"
-          >
-                    <p
-                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                    >
-                              C
-                    </p>
-                    <img
-                              alt=""
-                              className="list-selection list-selection--group-splitter"
-                              src="line.svg"
-                    />
-          </div>
-          <div
-                    id="D"
-          >
-                    <p
-                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                    >
-                              D
-                    </p>
-                    <img
-                              alt=""
-                              className="list-selection list-selection--group-splitter"
-                              src="line.svg"
-                    />
-          </div>
-          <div
-                    id="E"
-          >
-                    <p
-                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                    >
-                              E
-                    </p>
-                    <img
-                              alt=""
-                              className="list-selection list-selection--group-splitter"
-                              src="line.svg"
-                    />
-          </div>
-          <div
-                    id="F"
-          >
-                    <p
-                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                    >
-                              F
-                    </p>
-                    <img
-                              alt=""
-                              className="list-selection list-selection--group-splitter"
-                              src="line.svg"
-                    />
-          </div>
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
           <div
                     id="G"
           >
@@ -201,118 +123,14 @@ ShallowWrapper {
                               </p>
                     </div>
           </div>
-          <div
-                    id="H"
-          >
-                    <p
-                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                    >
-                              H
-                    </p>
-                    <img
-                              alt=""
-                              className="list-selection list-selection--group-splitter"
-                              src="line.svg"
-                    />
-          </div>
-          <div
-                    id="I"
-          >
-                    <p
-                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                    >
-                              I
-                    </p>
-                    <img
-                              alt=""
-                              className="list-selection list-selection--group-splitter"
-                              src="line.svg"
-                    />
-          </div>
-          <div
-                    id="J"
-          >
-                    <p
-                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                    >
-                              J
-                    </p>
-                    <img
-                              alt=""
-                              className="list-selection list-selection--group-splitter"
-                              src="line.svg"
-                    />
-          </div>
-          <div
-                    id="K"
-          >
-                    <p
-                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                    >
-                              K
-                    </p>
-                    <img
-                              alt=""
-                              className="list-selection list-selection--group-splitter"
-                              src="line.svg"
-                    />
-          </div>
-          <div
-                    id="L"
-          >
-                    <p
-                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                    >
-                              L
-                    </p>
-                    <img
-                              alt=""
-                              className="list-selection list-selection--group-splitter"
-                              src="line.svg"
-                    />
-          </div>
-          <div
-                    id="M"
-          >
-                    <p
-                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                    >
-                              M
-                    </p>
-                    <img
-                              alt=""
-                              className="list-selection list-selection--group-splitter"
-                              src="line.svg"
-                    />
-          </div>
-          <div
-                    id="N"
-          >
-                    <p
-                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                    >
-                              N
-                    </p>
-                    <img
-                              alt=""
-                              className="list-selection list-selection--group-splitter"
-                              src="line.svg"
-                    />
-          </div>
-          <div
-                    id="O"
-          >
-                    <p
-                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                    >
-                              O
-                    </p>
-                    <img
-                              alt=""
-                              className="list-selection list-selection--group-splitter"
-                              src="line.svg"
-                    />
-          </div>
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
           <div
                     id="P"
           >
@@ -343,90 +161,12 @@ ShallowWrapper {
                               </p>
                     </div>
           </div>
-          <div
-                    id="Q"
-          >
-                    <p
-                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                    >
-                              Q
-                    </p>
-                    <img
-                              alt=""
-                              className="list-selection list-selection--group-splitter"
-                              src="line.svg"
-                    />
-          </div>
-          <div
-                    id="R"
-          >
-                    <p
-                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                    >
-                              R
-                    </p>
-                    <img
-                              alt=""
-                              className="list-selection list-selection--group-splitter"
-                              src="line.svg"
-                    />
-          </div>
-          <div
-                    id="S"
-          >
-                    <p
-                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                    >
-                              S
-                    </p>
-                    <img
-                              alt=""
-                              className="list-selection list-selection--group-splitter"
-                              src="line.svg"
-                    />
-          </div>
-          <div
-                    id="T"
-          >
-                    <p
-                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                    >
-                              T
-                    </p>
-                    <img
-                              alt=""
-                              className="list-selection list-selection--group-splitter"
-                              src="line.svg"
-                    />
-          </div>
-          <div
-                    id="U"
-          >
-                    <p
-                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                    >
-                              U
-                    </p>
-                    <img
-                              alt=""
-                              className="list-selection list-selection--group-splitter"
-                              src="line.svg"
-                    />
-          </div>
-          <div
-                    id="V"
-          >
-                    <p
-                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                    >
-                              V
-                    </p>
-                    <img
-                              alt=""
-                              className="list-selection list-selection--group-splitter"
-                              src="line.svg"
-                    />
-          </div>
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
           <div
                     id="W"
           >
@@ -457,48 +197,9 @@ ShallowWrapper {
                               </p>
                     </div>
           </div>
-          <div
-                    id="X"
-          >
-                    <p
-                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                    >
-                              X
-                    </p>
-                    <img
-                              alt=""
-                              className="list-selection list-selection--group-splitter"
-                              src="line.svg"
-                    />
-          </div>
-          <div
-                    id="Y"
-          >
-                    <p
-                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                    >
-                              Y
-                    </p>
-                    <img
-                              alt=""
-                              className="list-selection list-selection--group-splitter"
-                              src="line.svg"
-                    />
-          </div>
-          <div
-                    id="Z"
-          >
-                    <p
-                              className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                    >
-                              Z
-                    </p>
-                    <img
-                              alt=""
-                              className="list-selection list-selection--group-splitter"
-                              src="line.svg"
-                    />
-          </div>
+          <div />
+          <div />
+          <div />
 </div>,
         <div
           className="list-selection--scroll-select"
@@ -671,90 +372,12 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": Array [
-            <div
-              id="A"
->
-              <p
-                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
-              >
-                            A
-              </p>
-              <img
-                            alt=""
-                            className="list-selection list-selection--group-splitter"
-                            src="line.svg"
-              />
-</div>,
-            <div
-              id="B"
->
-              <p
-                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
-              >
-                            B
-              </p>
-              <img
-                            alt=""
-                            className="list-selection list-selection--group-splitter"
-                            src="line.svg"
-              />
-</div>,
-            <div
-              id="C"
->
-              <p
-                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
-              >
-                            C
-              </p>
-              <img
-                            alt=""
-                            className="list-selection list-selection--group-splitter"
-                            src="line.svg"
-              />
-</div>,
-            <div
-              id="D"
->
-              <p
-                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
-              >
-                            D
-              </p>
-              <img
-                            alt=""
-                            className="list-selection list-selection--group-splitter"
-                            src="line.svg"
-              />
-</div>,
-            <div
-              id="E"
->
-              <p
-                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
-              >
-                            E
-              </p>
-              <img
-                            alt=""
-                            className="list-selection list-selection--group-splitter"
-                            src="line.svg"
-              />
-</div>,
-            <div
-              id="F"
->
-              <p
-                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
-              >
-                            F
-              </p>
-              <img
-                            alt=""
-                            className="list-selection list-selection--group-splitter"
-                            src="line.svg"
-              />
-</div>,
+            <div />,
+            <div />,
+            <div />,
+            <div />,
+            <div />,
+            <div />,
             <div
               id="G"
 >
@@ -785,118 +408,14 @@ ShallowWrapper {
                             </p>
               </div>
 </div>,
-            <div
-              id="H"
->
-              <p
-                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
-              >
-                            H
-              </p>
-              <img
-                            alt=""
-                            className="list-selection list-selection--group-splitter"
-                            src="line.svg"
-              />
-</div>,
-            <div
-              id="I"
->
-              <p
-                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
-              >
-                            I
-              </p>
-              <img
-                            alt=""
-                            className="list-selection list-selection--group-splitter"
-                            src="line.svg"
-              />
-</div>,
-            <div
-              id="J"
->
-              <p
-                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
-              >
-                            J
-              </p>
-              <img
-                            alt=""
-                            className="list-selection list-selection--group-splitter"
-                            src="line.svg"
-              />
-</div>,
-            <div
-              id="K"
->
-              <p
-                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
-              >
-                            K
-              </p>
-              <img
-                            alt=""
-                            className="list-selection list-selection--group-splitter"
-                            src="line.svg"
-              />
-</div>,
-            <div
-              id="L"
->
-              <p
-                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
-              >
-                            L
-              </p>
-              <img
-                            alt=""
-                            className="list-selection list-selection--group-splitter"
-                            src="line.svg"
-              />
-</div>,
-            <div
-              id="M"
->
-              <p
-                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
-              >
-                            M
-              </p>
-              <img
-                            alt=""
-                            className="list-selection list-selection--group-splitter"
-                            src="line.svg"
-              />
-</div>,
-            <div
-              id="N"
->
-              <p
-                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
-              >
-                            N
-              </p>
-              <img
-                            alt=""
-                            className="list-selection list-selection--group-splitter"
-                            src="line.svg"
-              />
-</div>,
-            <div
-              id="O"
->
-              <p
-                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
-              >
-                            O
-              </p>
-              <img
-                            alt=""
-                            className="list-selection list-selection--group-splitter"
-                            src="line.svg"
-              />
-</div>,
+            <div />,
+            <div />,
+            <div />,
+            <div />,
+            <div />,
+            <div />,
+            <div />,
+            <div />,
             <div
               id="P"
 >
@@ -927,90 +446,12 @@ ShallowWrapper {
                             </p>
               </div>
 </div>,
-            <div
-              id="Q"
->
-              <p
-                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
-              >
-                            Q
-              </p>
-              <img
-                            alt=""
-                            className="list-selection list-selection--group-splitter"
-                            src="line.svg"
-              />
-</div>,
-            <div
-              id="R"
->
-              <p
-                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
-              >
-                            R
-              </p>
-              <img
-                            alt=""
-                            className="list-selection list-selection--group-splitter"
-                            src="line.svg"
-              />
-</div>,
-            <div
-              id="S"
->
-              <p
-                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
-              >
-                            S
-              </p>
-              <img
-                            alt=""
-                            className="list-selection list-selection--group-splitter"
-                            src="line.svg"
-              />
-</div>,
-            <div
-              id="T"
->
-              <p
-                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
-              >
-                            T
-              </p>
-              <img
-                            alt=""
-                            className="list-selection list-selection--group-splitter"
-                            src="line.svg"
-              />
-</div>,
-            <div
-              id="U"
->
-              <p
-                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
-              >
-                            U
-              </p>
-              <img
-                            alt=""
-                            className="list-selection list-selection--group-splitter"
-                            src="line.svg"
-              />
-</div>,
-            <div
-              id="V"
->
-              <p
-                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
-              >
-                            V
-              </p>
-              <img
-                            alt=""
-                            className="list-selection list-selection--group-splitter"
-                            src="line.svg"
-              />
-</div>,
+            <div />,
+            <div />,
+            <div />,
+            <div />,
+            <div />,
+            <div />,
             <div
               id="W"
 >
@@ -1041,48 +482,9 @@ ShallowWrapper {
                             </p>
               </div>
 </div>,
-            <div
-              id="X"
->
-              <p
-                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
-              >
-                            X
-              </p>
-              <img
-                            alt=""
-                            className="list-selection list-selection--group-splitter"
-                            src="line.svg"
-              />
-</div>,
-            <div
-              id="Y"
->
-              <p
-                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
-              >
-                            Y
-              </p>
-              <img
-                            alt=""
-                            className="list-selection list-selection--group-splitter"
-                            src="line.svg"
-              />
-</div>,
-            <div
-              id="Z"
->
-              <p
-                            className="list-selection list-selection--list-text list-selection--list-text--group-header"
-              >
-                            Z
-              </p>
-              <img
-                            alt=""
-                            className="list-selection list-selection--group-splitter"
-                            src="line.svg"
-              />
-</div>,
+            <div />,
+            <div />,
+            <div />,
           ],
           "className": "list-selection list-selection--list",
         },
@@ -1092,300 +494,54 @@ ShallowWrapper {
             "instance": null,
             "key": "A",
             "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                <p
-                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                  A
-</p>,
-                <img
-                  alt=""
-                  className="list-selection list-selection--group-splitter"
-                  src="line.svg"
-/>,
-                Array [],
-              ],
-              "id": "A",
-            },
+            "props": Object {},
             "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "A",
-                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-                },
-                "ref": null,
-                "rendered": "A",
-                "type": "p",
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "alt": "",
-                  "className": "list-selection list-selection--group-splitter",
-                  "src": "line.svg",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "img",
-              },
-            ],
+            "rendered": null,
             "type": "div",
           },
           Object {
             "instance": null,
             "key": "B",
             "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                <p
-                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                  B
-</p>,
-                <img
-                  alt=""
-                  className="list-selection list-selection--group-splitter"
-                  src="line.svg"
-/>,
-                Array [],
-              ],
-              "id": "B",
-            },
+            "props": Object {},
             "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "B",
-                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-                },
-                "ref": null,
-                "rendered": "B",
-                "type": "p",
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "alt": "",
-                  "className": "list-selection list-selection--group-splitter",
-                  "src": "line.svg",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "img",
-              },
-            ],
+            "rendered": null,
             "type": "div",
           },
           Object {
             "instance": null,
             "key": "C",
             "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                <p
-                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                  C
-</p>,
-                <img
-                  alt=""
-                  className="list-selection list-selection--group-splitter"
-                  src="line.svg"
-/>,
-                Array [],
-              ],
-              "id": "C",
-            },
+            "props": Object {},
             "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "C",
-                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-                },
-                "ref": null,
-                "rendered": "C",
-                "type": "p",
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "alt": "",
-                  "className": "list-selection list-selection--group-splitter",
-                  "src": "line.svg",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "img",
-              },
-            ],
+            "rendered": null,
             "type": "div",
           },
           Object {
             "instance": null,
             "key": "D",
             "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                <p
-                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                  D
-</p>,
-                <img
-                  alt=""
-                  className="list-selection list-selection--group-splitter"
-                  src="line.svg"
-/>,
-                Array [],
-              ],
-              "id": "D",
-            },
+            "props": Object {},
             "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "D",
-                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-                },
-                "ref": null,
-                "rendered": "D",
-                "type": "p",
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "alt": "",
-                  "className": "list-selection list-selection--group-splitter",
-                  "src": "line.svg",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "img",
-              },
-            ],
+            "rendered": null,
             "type": "div",
           },
           Object {
             "instance": null,
             "key": "E",
             "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                <p
-                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                  E
-</p>,
-                <img
-                  alt=""
-                  className="list-selection list-selection--group-splitter"
-                  src="line.svg"
-/>,
-                Array [],
-              ],
-              "id": "E",
-            },
+            "props": Object {},
             "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "E",
-                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-                },
-                "ref": null,
-                "rendered": "E",
-                "type": "p",
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "alt": "",
-                  "className": "list-selection list-selection--group-splitter",
-                  "src": "line.svg",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "img",
-              },
-            ],
+            "rendered": null,
             "type": "div",
           },
           Object {
             "instance": null,
             "key": "F",
             "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                <p
-                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                  F
-</p>,
-                <img
-                  alt=""
-                  className="list-selection list-selection--group-splitter"
-                  src="line.svg"
-/>,
-                Array [],
-              ],
-              "id": "F",
-            },
+            "props": Object {},
             "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "F",
-                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-                },
-                "ref": null,
-                "rendered": "F",
-                "type": "p",
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "alt": "",
-                  "className": "list-selection list-selection--group-splitter",
-                  "src": "line.svg",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "img",
-              },
-            ],
+            "rendered": null,
             "type": "div",
           },
           Object {
@@ -1510,400 +666,72 @@ ShallowWrapper {
             "instance": null,
             "key": "H",
             "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                <p
-                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                  H
-</p>,
-                <img
-                  alt=""
-                  className="list-selection list-selection--group-splitter"
-                  src="line.svg"
-/>,
-                Array [],
-              ],
-              "id": "H",
-            },
+            "props": Object {},
             "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "H",
-                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-                },
-                "ref": null,
-                "rendered": "H",
-                "type": "p",
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "alt": "",
-                  "className": "list-selection list-selection--group-splitter",
-                  "src": "line.svg",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "img",
-              },
-            ],
+            "rendered": null,
             "type": "div",
           },
           Object {
             "instance": null,
             "key": "I",
             "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                <p
-                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                  I
-</p>,
-                <img
-                  alt=""
-                  className="list-selection list-selection--group-splitter"
-                  src="line.svg"
-/>,
-                Array [],
-              ],
-              "id": "I",
-            },
+            "props": Object {},
             "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "I",
-                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-                },
-                "ref": null,
-                "rendered": "I",
-                "type": "p",
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "alt": "",
-                  "className": "list-selection list-selection--group-splitter",
-                  "src": "line.svg",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "img",
-              },
-            ],
+            "rendered": null,
             "type": "div",
           },
           Object {
             "instance": null,
             "key": "J",
             "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                <p
-                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                  J
-</p>,
-                <img
-                  alt=""
-                  className="list-selection list-selection--group-splitter"
-                  src="line.svg"
-/>,
-                Array [],
-              ],
-              "id": "J",
-            },
+            "props": Object {},
             "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "J",
-                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-                },
-                "ref": null,
-                "rendered": "J",
-                "type": "p",
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "alt": "",
-                  "className": "list-selection list-selection--group-splitter",
-                  "src": "line.svg",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "img",
-              },
-            ],
+            "rendered": null,
             "type": "div",
           },
           Object {
             "instance": null,
             "key": "K",
             "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                <p
-                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                  K
-</p>,
-                <img
-                  alt=""
-                  className="list-selection list-selection--group-splitter"
-                  src="line.svg"
-/>,
-                Array [],
-              ],
-              "id": "K",
-            },
+            "props": Object {},
             "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "K",
-                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-                },
-                "ref": null,
-                "rendered": "K",
-                "type": "p",
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "alt": "",
-                  "className": "list-selection list-selection--group-splitter",
-                  "src": "line.svg",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "img",
-              },
-            ],
+            "rendered": null,
             "type": "div",
           },
           Object {
             "instance": null,
             "key": "L",
             "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                <p
-                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                  L
-</p>,
-                <img
-                  alt=""
-                  className="list-selection list-selection--group-splitter"
-                  src="line.svg"
-/>,
-                Array [],
-              ],
-              "id": "L",
-            },
+            "props": Object {},
             "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "L",
-                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-                },
-                "ref": null,
-                "rendered": "L",
-                "type": "p",
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "alt": "",
-                  "className": "list-selection list-selection--group-splitter",
-                  "src": "line.svg",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "img",
-              },
-            ],
+            "rendered": null,
             "type": "div",
           },
           Object {
             "instance": null,
             "key": "M",
             "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                <p
-                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                  M
-</p>,
-                <img
-                  alt=""
-                  className="list-selection list-selection--group-splitter"
-                  src="line.svg"
-/>,
-                Array [],
-              ],
-              "id": "M",
-            },
+            "props": Object {},
             "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "M",
-                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-                },
-                "ref": null,
-                "rendered": "M",
-                "type": "p",
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "alt": "",
-                  "className": "list-selection list-selection--group-splitter",
-                  "src": "line.svg",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "img",
-              },
-            ],
+            "rendered": null,
             "type": "div",
           },
           Object {
             "instance": null,
             "key": "N",
             "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                <p
-                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                  N
-</p>,
-                <img
-                  alt=""
-                  className="list-selection list-selection--group-splitter"
-                  src="line.svg"
-/>,
-                Array [],
-              ],
-              "id": "N",
-            },
+            "props": Object {},
             "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "N",
-                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-                },
-                "ref": null,
-                "rendered": "N",
-                "type": "p",
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "alt": "",
-                  "className": "list-selection list-selection--group-splitter",
-                  "src": "line.svg",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "img",
-              },
-            ],
+            "rendered": null,
             "type": "div",
           },
           Object {
             "instance": null,
             "key": "O",
             "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                <p
-                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                  O
-</p>,
-                <img
-                  alt=""
-                  className="list-selection list-selection--group-splitter"
-                  src="line.svg"
-/>,
-                Array [],
-              ],
-              "id": "O",
-            },
+            "props": Object {},
             "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "O",
-                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-                },
-                "ref": null,
-                "rendered": "O",
-                "type": "p",
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "alt": "",
-                  "className": "list-selection list-selection--group-splitter",
-                  "src": "line.svg",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "img",
-              },
-            ],
+            "rendered": null,
             "type": "div",
           },
           Object {
@@ -2028,300 +856,54 @@ ShallowWrapper {
             "instance": null,
             "key": "Q",
             "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                <p
-                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                  Q
-</p>,
-                <img
-                  alt=""
-                  className="list-selection list-selection--group-splitter"
-                  src="line.svg"
-/>,
-                Array [],
-              ],
-              "id": "Q",
-            },
+            "props": Object {},
             "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "Q",
-                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-                },
-                "ref": null,
-                "rendered": "Q",
-                "type": "p",
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "alt": "",
-                  "className": "list-selection list-selection--group-splitter",
-                  "src": "line.svg",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "img",
-              },
-            ],
+            "rendered": null,
             "type": "div",
           },
           Object {
             "instance": null,
             "key": "R",
             "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                <p
-                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                  R
-</p>,
-                <img
-                  alt=""
-                  className="list-selection list-selection--group-splitter"
-                  src="line.svg"
-/>,
-                Array [],
-              ],
-              "id": "R",
-            },
+            "props": Object {},
             "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "R",
-                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-                },
-                "ref": null,
-                "rendered": "R",
-                "type": "p",
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "alt": "",
-                  "className": "list-selection list-selection--group-splitter",
-                  "src": "line.svg",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "img",
-              },
-            ],
+            "rendered": null,
             "type": "div",
           },
           Object {
             "instance": null,
             "key": "S",
             "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                <p
-                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                  S
-</p>,
-                <img
-                  alt=""
-                  className="list-selection list-selection--group-splitter"
-                  src="line.svg"
-/>,
-                Array [],
-              ],
-              "id": "S",
-            },
+            "props": Object {},
             "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "S",
-                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-                },
-                "ref": null,
-                "rendered": "S",
-                "type": "p",
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "alt": "",
-                  "className": "list-selection list-selection--group-splitter",
-                  "src": "line.svg",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "img",
-              },
-            ],
+            "rendered": null,
             "type": "div",
           },
           Object {
             "instance": null,
             "key": "T",
             "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                <p
-                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                  T
-</p>,
-                <img
-                  alt=""
-                  className="list-selection list-selection--group-splitter"
-                  src="line.svg"
-/>,
-                Array [],
-              ],
-              "id": "T",
-            },
+            "props": Object {},
             "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "T",
-                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-                },
-                "ref": null,
-                "rendered": "T",
-                "type": "p",
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "alt": "",
-                  "className": "list-selection list-selection--group-splitter",
-                  "src": "line.svg",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "img",
-              },
-            ],
+            "rendered": null,
             "type": "div",
           },
           Object {
             "instance": null,
             "key": "U",
             "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                <p
-                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                  U
-</p>,
-                <img
-                  alt=""
-                  className="list-selection list-selection--group-splitter"
-                  src="line.svg"
-/>,
-                Array [],
-              ],
-              "id": "U",
-            },
+            "props": Object {},
             "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "U",
-                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-                },
-                "ref": null,
-                "rendered": "U",
-                "type": "p",
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "alt": "",
-                  "className": "list-selection list-selection--group-splitter",
-                  "src": "line.svg",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "img",
-              },
-            ],
+            "rendered": null,
             "type": "div",
           },
           Object {
             "instance": null,
             "key": "V",
             "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                <p
-                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                  V
-</p>,
-                <img
-                  alt=""
-                  className="list-selection list-selection--group-splitter"
-                  src="line.svg"
-/>,
-                Array [],
-              ],
-              "id": "V",
-            },
+            "props": Object {},
             "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "V",
-                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-                },
-                "ref": null,
-                "rendered": "V",
-                "type": "p",
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "alt": "",
-                  "className": "list-selection list-selection--group-splitter",
-                  "src": "line.svg",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "img",
-              },
-            ],
+            "rendered": null,
             "type": "div",
           },
           Object {
@@ -2446,150 +1028,27 @@ ShallowWrapper {
             "instance": null,
             "key": "X",
             "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                <p
-                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                  X
-</p>,
-                <img
-                  alt=""
-                  className="list-selection list-selection--group-splitter"
-                  src="line.svg"
-/>,
-                Array [],
-              ],
-              "id": "X",
-            },
+            "props": Object {},
             "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "X",
-                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-                },
-                "ref": null,
-                "rendered": "X",
-                "type": "p",
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "alt": "",
-                  "className": "list-selection list-selection--group-splitter",
-                  "src": "line.svg",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "img",
-              },
-            ],
+            "rendered": null,
             "type": "div",
           },
           Object {
             "instance": null,
             "key": "Y",
             "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                <p
-                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                  Y
-</p>,
-                <img
-                  alt=""
-                  className="list-selection list-selection--group-splitter"
-                  src="line.svg"
-/>,
-                Array [],
-              ],
-              "id": "Y",
-            },
+            "props": Object {},
             "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "Y",
-                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-                },
-                "ref": null,
-                "rendered": "Y",
-                "type": "p",
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "alt": "",
-                  "className": "list-selection list-selection--group-splitter",
-                  "src": "line.svg",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "img",
-              },
-            ],
+            "rendered": null,
             "type": "div",
           },
           Object {
             "instance": null,
             "key": "Z",
             "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                <p
-                  className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                  Z
-</p>,
-                <img
-                  alt=""
-                  className="list-selection list-selection--group-splitter"
-                  src="line.svg"
-/>,
-                Array [],
-              ],
-              "id": "Z",
-            },
+            "props": Object {},
             "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "Z",
-                  "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-                },
-                "ref": null,
-                "rendered": "Z",
-                "type": "p",
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "alt": "",
-                  "className": "list-selection list-selection--group-splitter",
-                  "src": "line.svg",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "img",
-              },
-            ],
+            "rendered": null,
             "type": "div",
           },
         ],
@@ -3116,90 +1575,12 @@ ShallowWrapper {
           <div
             className="list-selection list-selection--list"
 >
-            <div
-                        id="A"
-            >
-                        <p
-                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                        >
-                                    A
-                        </p>
-                        <img
-                                    alt=""
-                                    className="list-selection list-selection--group-splitter"
-                                    src="line.svg"
-                        />
-            </div>
-            <div
-                        id="B"
-            >
-                        <p
-                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                        >
-                                    B
-                        </p>
-                        <img
-                                    alt=""
-                                    className="list-selection list-selection--group-splitter"
-                                    src="line.svg"
-                        />
-            </div>
-            <div
-                        id="C"
-            >
-                        <p
-                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                        >
-                                    C
-                        </p>
-                        <img
-                                    alt=""
-                                    className="list-selection list-selection--group-splitter"
-                                    src="line.svg"
-                        />
-            </div>
-            <div
-                        id="D"
-            >
-                        <p
-                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                        >
-                                    D
-                        </p>
-                        <img
-                                    alt=""
-                                    className="list-selection list-selection--group-splitter"
-                                    src="line.svg"
-                        />
-            </div>
-            <div
-                        id="E"
-            >
-                        <p
-                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                        >
-                                    E
-                        </p>
-                        <img
-                                    alt=""
-                                    className="list-selection list-selection--group-splitter"
-                                    src="line.svg"
-                        />
-            </div>
-            <div
-                        id="F"
-            >
-                        <p
-                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                        >
-                                    F
-                        </p>
-                        <img
-                                    alt=""
-                                    className="list-selection list-selection--group-splitter"
-                                    src="line.svg"
-                        />
-            </div>
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
             <div
                         id="G"
             >
@@ -3230,118 +1611,14 @@ ShallowWrapper {
                                     </p>
                         </div>
             </div>
-            <div
-                        id="H"
-            >
-                        <p
-                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                        >
-                                    H
-                        </p>
-                        <img
-                                    alt=""
-                                    className="list-selection list-selection--group-splitter"
-                                    src="line.svg"
-                        />
-            </div>
-            <div
-                        id="I"
-            >
-                        <p
-                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                        >
-                                    I
-                        </p>
-                        <img
-                                    alt=""
-                                    className="list-selection list-selection--group-splitter"
-                                    src="line.svg"
-                        />
-            </div>
-            <div
-                        id="J"
-            >
-                        <p
-                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                        >
-                                    J
-                        </p>
-                        <img
-                                    alt=""
-                                    className="list-selection list-selection--group-splitter"
-                                    src="line.svg"
-                        />
-            </div>
-            <div
-                        id="K"
-            >
-                        <p
-                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                        >
-                                    K
-                        </p>
-                        <img
-                                    alt=""
-                                    className="list-selection list-selection--group-splitter"
-                                    src="line.svg"
-                        />
-            </div>
-            <div
-                        id="L"
-            >
-                        <p
-                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                        >
-                                    L
-                        </p>
-                        <img
-                                    alt=""
-                                    className="list-selection list-selection--group-splitter"
-                                    src="line.svg"
-                        />
-            </div>
-            <div
-                        id="M"
-            >
-                        <p
-                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                        >
-                                    M
-                        </p>
-                        <img
-                                    alt=""
-                                    className="list-selection list-selection--group-splitter"
-                                    src="line.svg"
-                        />
-            </div>
-            <div
-                        id="N"
-            >
-                        <p
-                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                        >
-                                    N
-                        </p>
-                        <img
-                                    alt=""
-                                    className="list-selection list-selection--group-splitter"
-                                    src="line.svg"
-                        />
-            </div>
-            <div
-                        id="O"
-            >
-                        <p
-                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                        >
-                                    O
-                        </p>
-                        <img
-                                    alt=""
-                                    className="list-selection list-selection--group-splitter"
-                                    src="line.svg"
-                        />
-            </div>
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
             <div
                         id="P"
             >
@@ -3372,90 +1649,12 @@ ShallowWrapper {
                                     </p>
                         </div>
             </div>
-            <div
-                        id="Q"
-            >
-                        <p
-                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                        >
-                                    Q
-                        </p>
-                        <img
-                                    alt=""
-                                    className="list-selection list-selection--group-splitter"
-                                    src="line.svg"
-                        />
-            </div>
-            <div
-                        id="R"
-            >
-                        <p
-                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                        >
-                                    R
-                        </p>
-                        <img
-                                    alt=""
-                                    className="list-selection list-selection--group-splitter"
-                                    src="line.svg"
-                        />
-            </div>
-            <div
-                        id="S"
-            >
-                        <p
-                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                        >
-                                    S
-                        </p>
-                        <img
-                                    alt=""
-                                    className="list-selection list-selection--group-splitter"
-                                    src="line.svg"
-                        />
-            </div>
-            <div
-                        id="T"
-            >
-                        <p
-                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                        >
-                                    T
-                        </p>
-                        <img
-                                    alt=""
-                                    className="list-selection list-selection--group-splitter"
-                                    src="line.svg"
-                        />
-            </div>
-            <div
-                        id="U"
-            >
-                        <p
-                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                        >
-                                    U
-                        </p>
-                        <img
-                                    alt=""
-                                    className="list-selection list-selection--group-splitter"
-                                    src="line.svg"
-                        />
-            </div>
-            <div
-                        id="V"
-            >
-                        <p
-                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                        >
-                                    V
-                        </p>
-                        <img
-                                    alt=""
-                                    className="list-selection list-selection--group-splitter"
-                                    src="line.svg"
-                        />
-            </div>
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
             <div
                         id="W"
             >
@@ -3486,48 +1685,9 @@ ShallowWrapper {
                                     </p>
                         </div>
             </div>
-            <div
-                        id="X"
-            >
-                        <p
-                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                        >
-                                    X
-                        </p>
-                        <img
-                                    alt=""
-                                    className="list-selection list-selection--group-splitter"
-                                    src="line.svg"
-                        />
-            </div>
-            <div
-                        id="Y"
-            >
-                        <p
-                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                        >
-                                    Y
-                        </p>
-                        <img
-                                    alt=""
-                                    className="list-selection list-selection--group-splitter"
-                                    src="line.svg"
-                        />
-            </div>
-            <div
-                        id="Z"
-            >
-                        <p
-                                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                        >
-                                    Z
-                        </p>
-                        <img
-                                    alt=""
-                                    className="list-selection list-selection--group-splitter"
-                                    src="line.svg"
-                        />
-            </div>
+            <div />
+            <div />
+            <div />
 </div>,
           <div
             className="list-selection--scroll-select"
@@ -3700,90 +1860,12 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": Array [
-              <div
-                id="A"
->
-                <p
-                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                >
-                                A
-                </p>
-                <img
-                                alt=""
-                                className="list-selection list-selection--group-splitter"
-                                src="line.svg"
-                />
-</div>,
-              <div
-                id="B"
->
-                <p
-                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                >
-                                B
-                </p>
-                <img
-                                alt=""
-                                className="list-selection list-selection--group-splitter"
-                                src="line.svg"
-                />
-</div>,
-              <div
-                id="C"
->
-                <p
-                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                >
-                                C
-                </p>
-                <img
-                                alt=""
-                                className="list-selection list-selection--group-splitter"
-                                src="line.svg"
-                />
-</div>,
-              <div
-                id="D"
->
-                <p
-                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                >
-                                D
-                </p>
-                <img
-                                alt=""
-                                className="list-selection list-selection--group-splitter"
-                                src="line.svg"
-                />
-</div>,
-              <div
-                id="E"
->
-                <p
-                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                >
-                                E
-                </p>
-                <img
-                                alt=""
-                                className="list-selection list-selection--group-splitter"
-                                src="line.svg"
-                />
-</div>,
-              <div
-                id="F"
->
-                <p
-                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                >
-                                F
-                </p>
-                <img
-                                alt=""
-                                className="list-selection list-selection--group-splitter"
-                                src="line.svg"
-                />
-</div>,
+              <div />,
+              <div />,
+              <div />,
+              <div />,
+              <div />,
+              <div />,
               <div
                 id="G"
 >
@@ -3814,118 +1896,14 @@ ShallowWrapper {
                                 </p>
                 </div>
 </div>,
-              <div
-                id="H"
->
-                <p
-                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                >
-                                H
-                </p>
-                <img
-                                alt=""
-                                className="list-selection list-selection--group-splitter"
-                                src="line.svg"
-                />
-</div>,
-              <div
-                id="I"
->
-                <p
-                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                >
-                                I
-                </p>
-                <img
-                                alt=""
-                                className="list-selection list-selection--group-splitter"
-                                src="line.svg"
-                />
-</div>,
-              <div
-                id="J"
->
-                <p
-                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                >
-                                J
-                </p>
-                <img
-                                alt=""
-                                className="list-selection list-selection--group-splitter"
-                                src="line.svg"
-                />
-</div>,
-              <div
-                id="K"
->
-                <p
-                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                >
-                                K
-                </p>
-                <img
-                                alt=""
-                                className="list-selection list-selection--group-splitter"
-                                src="line.svg"
-                />
-</div>,
-              <div
-                id="L"
->
-                <p
-                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                >
-                                L
-                </p>
-                <img
-                                alt=""
-                                className="list-selection list-selection--group-splitter"
-                                src="line.svg"
-                />
-</div>,
-              <div
-                id="M"
->
-                <p
-                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                >
-                                M
-                </p>
-                <img
-                                alt=""
-                                className="list-selection list-selection--group-splitter"
-                                src="line.svg"
-                />
-</div>,
-              <div
-                id="N"
->
-                <p
-                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                >
-                                N
-                </p>
-                <img
-                                alt=""
-                                className="list-selection list-selection--group-splitter"
-                                src="line.svg"
-                />
-</div>,
-              <div
-                id="O"
->
-                <p
-                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                >
-                                O
-                </p>
-                <img
-                                alt=""
-                                className="list-selection list-selection--group-splitter"
-                                src="line.svg"
-                />
-</div>,
+              <div />,
+              <div />,
+              <div />,
+              <div />,
+              <div />,
+              <div />,
+              <div />,
+              <div />,
               <div
                 id="P"
 >
@@ -3956,90 +1934,12 @@ ShallowWrapper {
                                 </p>
                 </div>
 </div>,
-              <div
-                id="Q"
->
-                <p
-                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                >
-                                Q
-                </p>
-                <img
-                                alt=""
-                                className="list-selection list-selection--group-splitter"
-                                src="line.svg"
-                />
-</div>,
-              <div
-                id="R"
->
-                <p
-                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                >
-                                R
-                </p>
-                <img
-                                alt=""
-                                className="list-selection list-selection--group-splitter"
-                                src="line.svg"
-                />
-</div>,
-              <div
-                id="S"
->
-                <p
-                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                >
-                                S
-                </p>
-                <img
-                                alt=""
-                                className="list-selection list-selection--group-splitter"
-                                src="line.svg"
-                />
-</div>,
-              <div
-                id="T"
->
-                <p
-                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                >
-                                T
-                </p>
-                <img
-                                alt=""
-                                className="list-selection list-selection--group-splitter"
-                                src="line.svg"
-                />
-</div>,
-              <div
-                id="U"
->
-                <p
-                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                >
-                                U
-                </p>
-                <img
-                                alt=""
-                                className="list-selection list-selection--group-splitter"
-                                src="line.svg"
-                />
-</div>,
-              <div
-                id="V"
->
-                <p
-                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                >
-                                V
-                </p>
-                <img
-                                alt=""
-                                className="list-selection list-selection--group-splitter"
-                                src="line.svg"
-                />
-</div>,
+              <div />,
+              <div />,
+              <div />,
+              <div />,
+              <div />,
+              <div />,
               <div
                 id="W"
 >
@@ -4070,48 +1970,9 @@ ShallowWrapper {
                                 </p>
                 </div>
 </div>,
-              <div
-                id="X"
->
-                <p
-                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                >
-                                X
-                </p>
-                <img
-                                alt=""
-                                className="list-selection list-selection--group-splitter"
-                                src="line.svg"
-                />
-</div>,
-              <div
-                id="Y"
->
-                <p
-                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                >
-                                Y
-                </p>
-                <img
-                                alt=""
-                                className="list-selection list-selection--group-splitter"
-                                src="line.svg"
-                />
-</div>,
-              <div
-                id="Z"
->
-                <p
-                                className="list-selection list-selection--list-text list-selection--list-text--group-header"
-                >
-                                Z
-                </p>
-                <img
-                                alt=""
-                                className="list-selection list-selection--group-splitter"
-                                src="line.svg"
-                />
-</div>,
+              <div />,
+              <div />,
+              <div />,
             ],
             "className": "list-selection list-selection--list",
           },
@@ -4121,300 +1982,54 @@ ShallowWrapper {
               "instance": null,
               "key": "A",
               "nodeType": "host",
-              "props": Object {
-                "children": Array [
-                  <p
-                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                    A
-</p>,
-                  <img
-                    alt=""
-                    className="list-selection list-selection--group-splitter"
-                    src="line.svg"
-/>,
-                  Array [],
-                ],
-                "id": "A",
-              },
+              "props": Object {},
               "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "A",
-                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-                  },
-                  "ref": null,
-                  "rendered": "A",
-                  "type": "p",
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "alt": "",
-                    "className": "list-selection list-selection--group-splitter",
-                    "src": "line.svg",
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "img",
-                },
-              ],
+              "rendered": null,
               "type": "div",
             },
             Object {
               "instance": null,
               "key": "B",
               "nodeType": "host",
-              "props": Object {
-                "children": Array [
-                  <p
-                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                    B
-</p>,
-                  <img
-                    alt=""
-                    className="list-selection list-selection--group-splitter"
-                    src="line.svg"
-/>,
-                  Array [],
-                ],
-                "id": "B",
-              },
+              "props": Object {},
               "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "B",
-                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-                  },
-                  "ref": null,
-                  "rendered": "B",
-                  "type": "p",
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "alt": "",
-                    "className": "list-selection list-selection--group-splitter",
-                    "src": "line.svg",
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "img",
-                },
-              ],
+              "rendered": null,
               "type": "div",
             },
             Object {
               "instance": null,
               "key": "C",
               "nodeType": "host",
-              "props": Object {
-                "children": Array [
-                  <p
-                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                    C
-</p>,
-                  <img
-                    alt=""
-                    className="list-selection list-selection--group-splitter"
-                    src="line.svg"
-/>,
-                  Array [],
-                ],
-                "id": "C",
-              },
+              "props": Object {},
               "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "C",
-                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-                  },
-                  "ref": null,
-                  "rendered": "C",
-                  "type": "p",
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "alt": "",
-                    "className": "list-selection list-selection--group-splitter",
-                    "src": "line.svg",
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "img",
-                },
-              ],
+              "rendered": null,
               "type": "div",
             },
             Object {
               "instance": null,
               "key": "D",
               "nodeType": "host",
-              "props": Object {
-                "children": Array [
-                  <p
-                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                    D
-</p>,
-                  <img
-                    alt=""
-                    className="list-selection list-selection--group-splitter"
-                    src="line.svg"
-/>,
-                  Array [],
-                ],
-                "id": "D",
-              },
+              "props": Object {},
               "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "D",
-                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-                  },
-                  "ref": null,
-                  "rendered": "D",
-                  "type": "p",
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "alt": "",
-                    "className": "list-selection list-selection--group-splitter",
-                    "src": "line.svg",
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "img",
-                },
-              ],
+              "rendered": null,
               "type": "div",
             },
             Object {
               "instance": null,
               "key": "E",
               "nodeType": "host",
-              "props": Object {
-                "children": Array [
-                  <p
-                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                    E
-</p>,
-                  <img
-                    alt=""
-                    className="list-selection list-selection--group-splitter"
-                    src="line.svg"
-/>,
-                  Array [],
-                ],
-                "id": "E",
-              },
+              "props": Object {},
               "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "E",
-                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-                  },
-                  "ref": null,
-                  "rendered": "E",
-                  "type": "p",
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "alt": "",
-                    "className": "list-selection list-selection--group-splitter",
-                    "src": "line.svg",
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "img",
-                },
-              ],
+              "rendered": null,
               "type": "div",
             },
             Object {
               "instance": null,
               "key": "F",
               "nodeType": "host",
-              "props": Object {
-                "children": Array [
-                  <p
-                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                    F
-</p>,
-                  <img
-                    alt=""
-                    className="list-selection list-selection--group-splitter"
-                    src="line.svg"
-/>,
-                  Array [],
-                ],
-                "id": "F",
-              },
+              "props": Object {},
               "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "F",
-                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-                  },
-                  "ref": null,
-                  "rendered": "F",
-                  "type": "p",
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "alt": "",
-                    "className": "list-selection list-selection--group-splitter",
-                    "src": "line.svg",
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "img",
-                },
-              ],
+              "rendered": null,
               "type": "div",
             },
             Object {
@@ -4539,400 +2154,72 @@ ShallowWrapper {
               "instance": null,
               "key": "H",
               "nodeType": "host",
-              "props": Object {
-                "children": Array [
-                  <p
-                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                    H
-</p>,
-                  <img
-                    alt=""
-                    className="list-selection list-selection--group-splitter"
-                    src="line.svg"
-/>,
-                  Array [],
-                ],
-                "id": "H",
-              },
+              "props": Object {},
               "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "H",
-                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-                  },
-                  "ref": null,
-                  "rendered": "H",
-                  "type": "p",
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "alt": "",
-                    "className": "list-selection list-selection--group-splitter",
-                    "src": "line.svg",
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "img",
-                },
-              ],
+              "rendered": null,
               "type": "div",
             },
             Object {
               "instance": null,
               "key": "I",
               "nodeType": "host",
-              "props": Object {
-                "children": Array [
-                  <p
-                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                    I
-</p>,
-                  <img
-                    alt=""
-                    className="list-selection list-selection--group-splitter"
-                    src="line.svg"
-/>,
-                  Array [],
-                ],
-                "id": "I",
-              },
+              "props": Object {},
               "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "I",
-                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-                  },
-                  "ref": null,
-                  "rendered": "I",
-                  "type": "p",
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "alt": "",
-                    "className": "list-selection list-selection--group-splitter",
-                    "src": "line.svg",
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "img",
-                },
-              ],
+              "rendered": null,
               "type": "div",
             },
             Object {
               "instance": null,
               "key": "J",
               "nodeType": "host",
-              "props": Object {
-                "children": Array [
-                  <p
-                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                    J
-</p>,
-                  <img
-                    alt=""
-                    className="list-selection list-selection--group-splitter"
-                    src="line.svg"
-/>,
-                  Array [],
-                ],
-                "id": "J",
-              },
+              "props": Object {},
               "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "J",
-                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-                  },
-                  "ref": null,
-                  "rendered": "J",
-                  "type": "p",
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "alt": "",
-                    "className": "list-selection list-selection--group-splitter",
-                    "src": "line.svg",
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "img",
-                },
-              ],
+              "rendered": null,
               "type": "div",
             },
             Object {
               "instance": null,
               "key": "K",
               "nodeType": "host",
-              "props": Object {
-                "children": Array [
-                  <p
-                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                    K
-</p>,
-                  <img
-                    alt=""
-                    className="list-selection list-selection--group-splitter"
-                    src="line.svg"
-/>,
-                  Array [],
-                ],
-                "id": "K",
-              },
+              "props": Object {},
               "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "K",
-                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-                  },
-                  "ref": null,
-                  "rendered": "K",
-                  "type": "p",
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "alt": "",
-                    "className": "list-selection list-selection--group-splitter",
-                    "src": "line.svg",
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "img",
-                },
-              ],
+              "rendered": null,
               "type": "div",
             },
             Object {
               "instance": null,
               "key": "L",
               "nodeType": "host",
-              "props": Object {
-                "children": Array [
-                  <p
-                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                    L
-</p>,
-                  <img
-                    alt=""
-                    className="list-selection list-selection--group-splitter"
-                    src="line.svg"
-/>,
-                  Array [],
-                ],
-                "id": "L",
-              },
+              "props": Object {},
               "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "L",
-                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-                  },
-                  "ref": null,
-                  "rendered": "L",
-                  "type": "p",
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "alt": "",
-                    "className": "list-selection list-selection--group-splitter",
-                    "src": "line.svg",
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "img",
-                },
-              ],
+              "rendered": null,
               "type": "div",
             },
             Object {
               "instance": null,
               "key": "M",
               "nodeType": "host",
-              "props": Object {
-                "children": Array [
-                  <p
-                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                    M
-</p>,
-                  <img
-                    alt=""
-                    className="list-selection list-selection--group-splitter"
-                    src="line.svg"
-/>,
-                  Array [],
-                ],
-                "id": "M",
-              },
+              "props": Object {},
               "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "M",
-                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-                  },
-                  "ref": null,
-                  "rendered": "M",
-                  "type": "p",
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "alt": "",
-                    "className": "list-selection list-selection--group-splitter",
-                    "src": "line.svg",
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "img",
-                },
-              ],
+              "rendered": null,
               "type": "div",
             },
             Object {
               "instance": null,
               "key": "N",
               "nodeType": "host",
-              "props": Object {
-                "children": Array [
-                  <p
-                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                    N
-</p>,
-                  <img
-                    alt=""
-                    className="list-selection list-selection--group-splitter"
-                    src="line.svg"
-/>,
-                  Array [],
-                ],
-                "id": "N",
-              },
+              "props": Object {},
               "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "N",
-                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-                  },
-                  "ref": null,
-                  "rendered": "N",
-                  "type": "p",
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "alt": "",
-                    "className": "list-selection list-selection--group-splitter",
-                    "src": "line.svg",
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "img",
-                },
-              ],
+              "rendered": null,
               "type": "div",
             },
             Object {
               "instance": null,
               "key": "O",
               "nodeType": "host",
-              "props": Object {
-                "children": Array [
-                  <p
-                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                    O
-</p>,
-                  <img
-                    alt=""
-                    className="list-selection list-selection--group-splitter"
-                    src="line.svg"
-/>,
-                  Array [],
-                ],
-                "id": "O",
-              },
+              "props": Object {},
               "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "O",
-                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-                  },
-                  "ref": null,
-                  "rendered": "O",
-                  "type": "p",
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "alt": "",
-                    "className": "list-selection list-selection--group-splitter",
-                    "src": "line.svg",
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "img",
-                },
-              ],
+              "rendered": null,
               "type": "div",
             },
             Object {
@@ -5057,300 +2344,54 @@ ShallowWrapper {
               "instance": null,
               "key": "Q",
               "nodeType": "host",
-              "props": Object {
-                "children": Array [
-                  <p
-                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                    Q
-</p>,
-                  <img
-                    alt=""
-                    className="list-selection list-selection--group-splitter"
-                    src="line.svg"
-/>,
-                  Array [],
-                ],
-                "id": "Q",
-              },
+              "props": Object {},
               "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "Q",
-                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-                  },
-                  "ref": null,
-                  "rendered": "Q",
-                  "type": "p",
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "alt": "",
-                    "className": "list-selection list-selection--group-splitter",
-                    "src": "line.svg",
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "img",
-                },
-              ],
+              "rendered": null,
               "type": "div",
             },
             Object {
               "instance": null,
               "key": "R",
               "nodeType": "host",
-              "props": Object {
-                "children": Array [
-                  <p
-                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                    R
-</p>,
-                  <img
-                    alt=""
-                    className="list-selection list-selection--group-splitter"
-                    src="line.svg"
-/>,
-                  Array [],
-                ],
-                "id": "R",
-              },
+              "props": Object {},
               "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "R",
-                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-                  },
-                  "ref": null,
-                  "rendered": "R",
-                  "type": "p",
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "alt": "",
-                    "className": "list-selection list-selection--group-splitter",
-                    "src": "line.svg",
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "img",
-                },
-              ],
+              "rendered": null,
               "type": "div",
             },
             Object {
               "instance": null,
               "key": "S",
               "nodeType": "host",
-              "props": Object {
-                "children": Array [
-                  <p
-                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                    S
-</p>,
-                  <img
-                    alt=""
-                    className="list-selection list-selection--group-splitter"
-                    src="line.svg"
-/>,
-                  Array [],
-                ],
-                "id": "S",
-              },
+              "props": Object {},
               "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "S",
-                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-                  },
-                  "ref": null,
-                  "rendered": "S",
-                  "type": "p",
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "alt": "",
-                    "className": "list-selection list-selection--group-splitter",
-                    "src": "line.svg",
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "img",
-                },
-              ],
+              "rendered": null,
               "type": "div",
             },
             Object {
               "instance": null,
               "key": "T",
               "nodeType": "host",
-              "props": Object {
-                "children": Array [
-                  <p
-                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                    T
-</p>,
-                  <img
-                    alt=""
-                    className="list-selection list-selection--group-splitter"
-                    src="line.svg"
-/>,
-                  Array [],
-                ],
-                "id": "T",
-              },
+              "props": Object {},
               "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "T",
-                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-                  },
-                  "ref": null,
-                  "rendered": "T",
-                  "type": "p",
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "alt": "",
-                    "className": "list-selection list-selection--group-splitter",
-                    "src": "line.svg",
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "img",
-                },
-              ],
+              "rendered": null,
               "type": "div",
             },
             Object {
               "instance": null,
               "key": "U",
               "nodeType": "host",
-              "props": Object {
-                "children": Array [
-                  <p
-                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                    U
-</p>,
-                  <img
-                    alt=""
-                    className="list-selection list-selection--group-splitter"
-                    src="line.svg"
-/>,
-                  Array [],
-                ],
-                "id": "U",
-              },
+              "props": Object {},
               "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "U",
-                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-                  },
-                  "ref": null,
-                  "rendered": "U",
-                  "type": "p",
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "alt": "",
-                    "className": "list-selection list-selection--group-splitter",
-                    "src": "line.svg",
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "img",
-                },
-              ],
+              "rendered": null,
               "type": "div",
             },
             Object {
               "instance": null,
               "key": "V",
               "nodeType": "host",
-              "props": Object {
-                "children": Array [
-                  <p
-                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                    V
-</p>,
-                  <img
-                    alt=""
-                    className="list-selection list-selection--group-splitter"
-                    src="line.svg"
-/>,
-                  Array [],
-                ],
-                "id": "V",
-              },
+              "props": Object {},
               "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "V",
-                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-                  },
-                  "ref": null,
-                  "rendered": "V",
-                  "type": "p",
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "alt": "",
-                    "className": "list-selection list-selection--group-splitter",
-                    "src": "line.svg",
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "img",
-                },
-              ],
+              "rendered": null,
               "type": "div",
             },
             Object {
@@ -5475,150 +2516,27 @@ ShallowWrapper {
               "instance": null,
               "key": "X",
               "nodeType": "host",
-              "props": Object {
-                "children": Array [
-                  <p
-                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                    X
-</p>,
-                  <img
-                    alt=""
-                    className="list-selection list-selection--group-splitter"
-                    src="line.svg"
-/>,
-                  Array [],
-                ],
-                "id": "X",
-              },
+              "props": Object {},
               "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "X",
-                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-                  },
-                  "ref": null,
-                  "rendered": "X",
-                  "type": "p",
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "alt": "",
-                    "className": "list-selection list-selection--group-splitter",
-                    "src": "line.svg",
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "img",
-                },
-              ],
+              "rendered": null,
               "type": "div",
             },
             Object {
               "instance": null,
               "key": "Y",
               "nodeType": "host",
-              "props": Object {
-                "children": Array [
-                  <p
-                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                    Y
-</p>,
-                  <img
-                    alt=""
-                    className="list-selection list-selection--group-splitter"
-                    src="line.svg"
-/>,
-                  Array [],
-                ],
-                "id": "Y",
-              },
+              "props": Object {},
               "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "Y",
-                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-                  },
-                  "ref": null,
-                  "rendered": "Y",
-                  "type": "p",
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "alt": "",
-                    "className": "list-selection list-selection--group-splitter",
-                    "src": "line.svg",
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "img",
-                },
-              ],
+              "rendered": null,
               "type": "div",
             },
             Object {
               "instance": null,
               "key": "Z",
               "nodeType": "host",
-              "props": Object {
-                "children": Array [
-                  <p
-                    className="list-selection list-selection--list-text list-selection--list-text--group-header"
->
-                    Z
-</p>,
-                  <img
-                    alt=""
-                    className="list-selection list-selection--group-splitter"
-                    src="line.svg"
-/>,
-                  Array [],
-                ],
-                "id": "Z",
-              },
+              "props": Object {},
               "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "Z",
-                    "className": "list-selection list-selection--list-text list-selection--list-text--group-header",
-                  },
-                  "ref": null,
-                  "rendered": "Z",
-                  "type": "p",
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "alt": "",
-                    "className": "list-selection list-selection--group-splitter",
-                    "src": "line.svg",
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "img",
-                },
-              ],
+              "rendered": null,
               "type": "div",
             },
           ],
