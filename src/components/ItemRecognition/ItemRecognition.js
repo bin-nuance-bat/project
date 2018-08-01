@@ -10,7 +10,7 @@ import MobileNet from '../Admin/Trainer/MobileNet';
 import Logo from '../Logo/Logo';
 import './ItemRecognition.css';
 
-const ML_THRESHOLD = 0.06;
+const ML_THRESHOLD = 0.35;
 
 class ItemRecognition extends Component {
   model = new Model();
@@ -51,7 +51,7 @@ class ItemRecognition extends Component {
     this.model.predict(img).then(async item => {
       if (
         item.value > ML_THRESHOLD &&
-        item.id !== '' &&
+        item.id !== 'unknown' &&
         !this.props.prediction
       ) {
         await this.addTrainingImage(img.src, item.id);

@@ -133,6 +133,11 @@ class Admin extends Component {
                 }>
                 Training Data Review
               </button>
+              <button
+                className="button button-admin"
+                onClick={() => this.props.history.replace('/admin/preview')}>
+                Image Preview
+              </button>
             </div>
             <div>
               <select

@@ -51,8 +51,6 @@ class Trainer extends Component {
     this.props.history.replace('/admin');
   };
 
-  capture = imageToTensor;
-
   captureFromFile = async () => {
     return new Promise(resolve => {
       const img = new Image();
@@ -63,18 +61,22 @@ class Trainer extends Component {
     });
   };
 
-  screenshot = () => {
-    return this.webcamCapture.current.getScreenshot();
-  };
-
-  addExample = () => {
-    this.setState({busy: true});
-    this.model.addExample(
-      this.screenshot,
-      () => this.capture(this.webcamCapture.current.video),
-      this.state.item,
-      this.state.burstCount
-    );
+  burstShot = () => {
+    let counter = this.state.burstCount;
+    const ticker = setInterval(() => {
+      this.model.addExample(
+        () => this.webcamCapture.current.webcam.current.getScreenshot(),
+        () => imageToTensor(this.webcamCapture.current.webcam.current.video),
+        this.state.item,
+        1,
+        false
+      );
+      counter--;
+      if (counter <= 0) clearInterval(ticker);
+      this.setCompletion(
+        (this.state.burstCount - counter) / this.state.burstCount
+      );
+    }, 500);
   };
 
   addFromFile = () => {
@@ -133,7 +135,7 @@ class Trainer extends Component {
     if (this.webcamCapture.current) {
       this.setState({busy: true});
       this.model.predict(
-        this.capture(this.webcamCapture.current.webcam.current.video)
+        imageToTensor(this.webcamCapture.current.webcam.current.video)
       );
     } else {
       this.setReadyStatus('Please connect a camera.');
@@ -195,7 +197,7 @@ class Trainer extends Component {
           <div>
             <button
               className="button button-admin"
-              onClick={() => this.addExample(this.webcamCapture.current.video)}
+              onClick={this.burstShot}
               disabled={busy || !this.webcamCapture.current.webcam.current}>
               Add From Camera
             </button>

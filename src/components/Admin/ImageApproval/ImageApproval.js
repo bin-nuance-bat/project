@@ -11,7 +11,8 @@ import './ImageApproval.css';
 class ImageApproval extends Component {
   state = {
     loading: true,
-    image: null
+    image: null,
+    storeList: {}
   };
 
   nextImage = async () => {
@@ -55,10 +56,12 @@ class ImageApproval extends Component {
 
   componentDidMount() {
     getStore().then(storeList => {
-      this.storeList = {
-        ...storeList,
-        unknown: {name: 'unknown', id: 'unknown'}
-      };
+      this.setState({
+        storeList: {
+          ...storeList,
+          unknown: {name: 'unknown', id: 'unknown'}
+        }
+      });
       this.nextImage().then(() => this.setState({loading: false}));
     });
     this.controllerDataset = new ControllerDataset();

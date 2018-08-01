@@ -7,7 +7,6 @@ import 'firebase/auth';
 import initFirebase from '../../utils/firebase';
 
 const VALIDATION_PERCENTAGE = 0.2;
-const VALIDATION_COUNT = 3;
 
 export class ControllerDataset {
   constructor() {
@@ -98,7 +97,7 @@ export class ControllerDataset {
       });
   };
 
-  async addExamples(examples, callback) {
+  async addExamples(examples, callback, trusted = true) {
     if (examples.length < 1) {
       return;
     }
@@ -107,7 +106,7 @@ export class ControllerDataset {
     let count = 1;
 
     examples.forEach(image => {
-      this.addImage(image, true, () => {
+      this.addImage(image, trusted, () => {
         callback(count / examples.length);
         count++;
       });
@@ -141,8 +140,8 @@ export class ControllerDataset {
       .limit(count)
       .get();
     snapshot.forEach(doc => {
-      const {activation, label} = doc.data();
-      data[doc.id] = {activation, label};
+      const {activation, label, img} = doc.data();
+      data[doc.id] = {activation, label, img};
     });
 
     const dataCount = Object.keys(data).length;
@@ -169,7 +168,11 @@ export class ControllerDataset {
       for (const c in classes) {
         batch = {
           ...batch,
-          ...(await this.fetchData(VALIDATION_COUNT, dataType, classes[c]))
+          ...(await this.fetchData(
+            (setSize * VALIDATION_PERCENTAGE) / classes.length,
+            dataType,
+            classes[c]
+          ))
         };
         completion((c + 1) / classes.length);
       }

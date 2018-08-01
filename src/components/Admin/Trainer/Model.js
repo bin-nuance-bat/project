@@ -82,7 +82,7 @@ class Model {
       .catch(err => this.setReadyStatus(err));
   };
 
-  async addExample(getImg, getTensor, label, count) {
+  async addExample(getImg, getTensor, label, count, trusted = true) {
     const examples = [];
     for (let i = 1; i <= count; i++) {
       const tensor = await getTensor();
@@ -98,19 +98,24 @@ class Model {
       this.setCompletion(i / count);
       await tf.nextFrame();
     }
+
     this.setBusyStatus('Uploading images... (0%)');
-    this.controllerDataset.addExamples(examples, completion => {
-      this.setCompletion(completion);
-      document.getElementById(`${label}-count`).innerHTML++;
-      this.items[label].mlCount++;
-      if (completion === 1) {
-        this.setReadyStatus('Done');
-        return;
-      }
-      this.setBusyStatus(
-        `Uploading images... (${(completion * 100).toFixed(0)}%)`
-      );
-    });
+    this.controllerDataset.addExamples(
+      examples,
+      completion => {
+        this.setCompletion(completion);
+        document.getElementById(`${label}-count`).innerHTML++;
+        this.items[label].mlCount++;
+        if (completion === 1) {
+          this.setReadyStatus('Done');
+          return;
+        }
+        this.setBusyStatus(
+          `Uploading images... (${(completion * 100).toFixed(0)}%)`
+        );
+      },
+      trusted
+    );
   }
 
   async train(
