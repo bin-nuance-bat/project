@@ -1,18 +1,25 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+
+import {ControllerDataset} from '../Admin/ControllerDataset';
 import Model from './../../utils/model';
+
 import WebcamCapture from '../WebcamCapture/WebcamCapture';
-import Logo from '../Logo/Logo';
-import './ItemRecognition.css';
-import {ControllerDataset} from '../Admin/Trainer/ControllerDataset';
 import MobileNet from '../Admin/Trainer/MobileNet';
 
-const ML_THRESHOLD = 0.06;
+import Logo from '../Logo/Logo';
+import './ItemRecognition.css';
+
+const TIMEOUT_IN_SECONDS = 10;
+const ML_THRESHOLD = 0.35;
 
 class ItemRecognition extends Component {
   model = new Model();
   webcam = React.createRef();
   mobileNet = new MobileNet();
+  state = {
+    status: 'Scan item'
+  };
 
   componentDidMount() {
     this.props.setPrediction(null, null);
@@ -23,7 +30,10 @@ class ItemRecognition extends Component {
   onConnect = () => {
     this.webcam.current
       .requestScreenshot()
-      .then(this.handleImg)
+      .then(img => {
+        this.scanningStartTime = Date.now();
+        this.handleImg(img);
+      })
       .catch(() => {
         setTimeout(this.onConnect, 100);
       });
@@ -45,15 +55,29 @@ class ItemRecognition extends Component {
   };
 
   handleImg = img => {
-    this.model.predict(img).then(async item => {
+    this.model.predict(img).then(async items => {
+      const item = items[0];
+      this.setState({
+        status: items
+          .sort((a, b) => a.id.localeCompare(b.id))
+          .map(
+            i =>
+              `${this.props.storeList[i.id].name} ${(i.value * 100).toFixed(
+                0
+              )}% `
+          )
+      });
       if (
-        item.value > ML_THRESHOLD &&
-        item.id !== 'unknown' &&
-        !this.props.prediction
+        (item.value > ML_THRESHOLD &&
+          item.id !== 'unknown' &&
+          !this.props.prediction) ||
+        (Date.now() - this.scanningStartTime) / 1000 > TIMEOUT_IN_SECONDS
       ) {
-        this.addTrainingImage(img.src, item.id);
-        await this.props.setPrediction(item.id, img.src);
-        this.props.history.replace('/confirmitem');
+        await this.addTrainingImage(img.src, item.id);
+        this.props.setPrediction(item.id, img.src);
+        this.props.history.replace(
+          item.id === 'unknown' ? '/editsnack' : '/confirmitem'
+        );
       } else {
         if (this.webcam.current)
           this.webcam.current.requestScreenshot().then(this.handleImg);
@@ -67,7 +91,7 @@ class ItemRecognition extends Component {
         <header>
           <Logo />
           <div className="item-recognition item-recognition--instructions">
-            Scan item using the front facing camera
+            {this.state.status}
           </div>
         </header>
         <WebcamCapture
@@ -87,7 +111,8 @@ ItemRecognition.propTypes = {
     name: PropTypes.string,
     img: PropTypes.string.isRequired
   }),
-  history: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired,
+  storeList: PropTypes.object.isRequired
 };
 
 export default ItemRecognition;

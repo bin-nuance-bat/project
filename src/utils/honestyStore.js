@@ -39,10 +39,13 @@ const getStore = () => {
     .then(res => {
       let items = res.response.store.items;
       items = items.map(addItemImage);
-      items = items.reduce((map, obj) => {
-        map[obj.id] = obj;
-        return map;
-      }, {});
+      items = items.reduce(
+        (map, obj) => {
+          map[obj.id] = obj;
+          return map;
+        },
+        {unknown: {id: 'unknown', name: 'Unknown'}}
+      );
       return items;
     });
 };

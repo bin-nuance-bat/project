@@ -22,12 +22,12 @@ deploy:
     token: $FIREBASE_TOKEN
     skip_cleanup: true
     on:
-      branch: env-QA
+      branch: env-qa
     project: honesty-store-kiosk-qa
 
   - provider: firebase
     token: $FIREBASE_TOKEN
     skip_cleanup: true
     on:
-      branch: env-Prod
+      branch: env-prod
     project: honesty-store-kiosk
