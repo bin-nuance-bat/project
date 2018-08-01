@@ -28,7 +28,7 @@ export const sendSlackMessage = userid => async (dispatch, getState) => {
 
   try {
     const result = await fetch(`https://slack.com/api/chat.postMessage?token=${token}&
-		channel=${userid}&
+		channel=${userid}&icon_url=https://honesty.store/assets/android/icon@MDPI.png&username=honesty.store&
 		text=${`Click to purchase your ${itemName}: https://honesty.store/item/${actualItemID}`}`).then(
       response => response.json()
     );
