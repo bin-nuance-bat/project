@@ -12,7 +12,7 @@ class ImageApproval extends Component {
   state = {
     loading: true,
     image: null,
-    storeList: {}
+    storeList: [{name: 'unknown', id: 'unknown'}]
   };
 
   nextImage = async () => {
@@ -57,10 +57,10 @@ class ImageApproval extends Component {
   componentDidMount() {
     getStore().then(storeList => {
       this.setState({
-        storeList: {
+        storeList: Object.values({
           ...storeList,
           unknown: {name: 'unknown', id: 'unknown'}
-        }
+        })
       });
       this.nextImage().then(() => this.setState({loading: false}));
     });
@@ -94,7 +94,7 @@ class ImageApproval extends Component {
 
         <ItemSelector
           item={this.state.image.label}
-          items={Object.values(this.storeList)}
+          items={this.state.storeList}
           setItem={cat => this.changeCategory(cat)}
         />
       </div>

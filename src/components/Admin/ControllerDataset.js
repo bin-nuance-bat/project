@@ -7,6 +7,7 @@ import 'firebase/auth';
 import initFirebase from '../../utils/firebase';
 
 const VALIDATION_PERCENTAGE = 0.2;
+const ACTIVATION_SHAPE = [1, 7, 7, 256];
 
 export class ControllerDataset {
   constructor() {
@@ -129,10 +130,10 @@ export class ControllerDataset {
       .orderBy('random');
     if (onlyLabel) ref = ref.where('label', '==', onlyLabel);
 
-    let random = Math.random();
-    random *=
-      type === 'validation' ? VALIDATION_PERCENTAGE : 1 - VALIDATION_PERCENTAGE;
-    random += type === 'validation' ? 0 : VALIDATION_PERCENTAGE;
+    const random =
+      type === 'validation'
+        ? Math.random() * VALIDATION_PERCENTAGE
+        : Math.random() * (1 - VALIDATION_PERCENTAGE) + VALIDATION_PERCENTAGE;
 
     const data = {};
     const snapshot = await ref
@@ -177,16 +178,17 @@ export class ControllerDataset {
         completion((c + 1) / classes.length);
       }
     } else {
-      while (Object.keys(batch).length < setSize) {
-        const batchSize = Object.keys(batch).length;
+      let batchLength = Object.keys(batch).length;
+      while (batchLength < setSize) {
         batch = {
           ...batch,
           ...(await this.fetchData(
-            Math.min(Math.floor(setSize / randomness), setSize - batchSize),
+            Math.min(Math.floor(setSize / randomness), setSize - batchLength),
             dataType
           ))
         };
-        completion(batchSize / setSize);
+        batchLength = Object.keys(batch).length;
+        completion(batchLength / setSize);
       }
     }
 
@@ -194,7 +196,9 @@ export class ControllerDataset {
     batch = Object.values(batch);
 
     return tf.tidy(() => {
-      xs = tf.keep(tf.tensor4d(batch[0].activation.split(','), [1, 7, 7, 256]));
+      xs = tf.keep(
+        tf.tensor4d(batch[0].activation.split(','), ACTIVATION_SHAPE)
+      );
       ys = tf.keep(
         tf.oneHot(
           tf.tensor1d([classes.indexOf(batch[0].label)]).toInt(),
@@ -204,9 +208,7 @@ export class ControllerDataset {
 
       const initLen = batch.length;
       while (batch.length > 0) {
-        // TODO: remove this, needed while we debug training process
-        // eslint-disable-next-line no-console
-        console.log(`Converting tensor ${initLen - batch.length}/${initLen}`);
+        completion((initLen - batch.length) / initLen);
         const data = batch.pop();
         const y = tf.oneHot(
           tf.tensor1d([classes.indexOf(data.label)]).toInt(),
@@ -216,7 +218,7 @@ export class ControllerDataset {
         const oldX = xs;
         xs = tf.keep(
           oldX.concat(
-            tf.tensor4d(data.activation.split(','), [1, 7, 7, 256]),
+            tf.tensor4d(data.activation.split(','), ACTIVATION_SHAPE),
             0
           )
         );

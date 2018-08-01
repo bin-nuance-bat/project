@@ -142,9 +142,7 @@ class Trainer extends Component {
     }
   };
 
-  getName = item => {
-    return item.name + (item.qualifier ? ` (${item.qualifier})` : '');
-  };
+  getName = item => item.name + (item.qualifier ? ` (${item.qualifier})` : '');
 
   render() {
     const {

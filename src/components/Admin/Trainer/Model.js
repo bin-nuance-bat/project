@@ -227,9 +227,7 @@ class Model {
     for (let i = 0; i < values.length; i++) {
       predictionList.push({value: values[i], id: this.classes[i]});
     }
-    predictionList = predictionList.sort((a, b) => {
-      return b.value - a.value;
-    });
+    predictionList = predictionList.sort((a, b) => b.value - a.value);
 
     for (const p of predictionList) {
       document.getElementById(p.id + '-count').innerHTML =

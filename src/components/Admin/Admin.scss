@@ -27,17 +27,17 @@ input {
   width: 100%;
 }
 
-input[type='checkbox'] {
-  width: auto !important;
+input[type='checkbox'].admin-checkbox {
+  width: auto;
 }
 
-.button-admin {
+.button.button-admin {
   width: auto;
-  height: auto !important;
+  height: auto;
   margin: 20px 5px;
-  padding: 10px !important;
+  padding: 10px;
   background-color: $light-blue;
-  font-size: 18px !important;
+  font-size: 18px;
 }
 
 .button-admin:disabled {

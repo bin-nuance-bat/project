@@ -6,6 +6,8 @@ class ItemSelector extends Component {
     items: []
   };
 
+  componentDidMount = this.componentDidUpdate;
+
   componentDidUpdate() {
     const sortedItems = this.props.items.sort((a, b) => {
       return a.name.localeCompare(b.name);
@@ -27,7 +29,7 @@ class ItemSelector extends Component {
         onChange={e => this.props.setItem(e.target.value)}>
         {this.state.items.map(item => (
           <option key={item.id} value={item.id}>
-            {item.name + (item.qualifier ? ` (${item.qualifier})` : '')}
+            {item.name} {item.qualifier && `(${item.qualifier})`}
           </option>
         ))}
       </select>
