@@ -7,10 +7,22 @@ import HomeHandsCenter from './assets/HandsCenter.svg';
 import HomeHandsLeft from './assets/HandsLeft.svg';
 import Camera from './assets/Camera.svg';
 import PropTypes from 'prop-types';
+import retry from '../../utils/retry';
 
 class Home extends React.Component {
   componentDidMount() {
     this.props.loadStoreList();
+    const b = retry(
+      function(a) {
+        console.log(a);
+        throw {name: 'oo', message: 'PANADA'};
+      },
+      [22],
+      5,
+      function() {
+        console.log(5000);
+      }
+    );
   }
 
   handleSnackChatClick = () => {
