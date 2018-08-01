@@ -52,13 +52,15 @@ class ItemRecognition extends Component {
     this.model.predict(img).then(async item => {
       if (
         (item.value > ML_THRESHOLD &&
-          item.id !== '' &&
+          item.id !== 'unknown' &&
           !this.props.prediction) ||
         (Date.now() - this.scanningStartTime) / 1000 > TIMEOUT_IN_SECONDS
       ) {
         await this.addTrainingImage(img.src, item.id);
         this.props.setPrediction(item.id, img.src);
-        this.props.history.replace('/confirmitem');
+        this.props.history.replace(
+          item.id === 'unknown' ? '/editsnack' : '/confirmitem'
+        );
       } else {
         if (this.webcam.current)
           this.webcam.current.requestScreenshot().then(this.handleImg);
