@@ -38,7 +38,7 @@ class NotificationBar extends Component {
   };
 
   notificationTouch = e => {
-    this.props.handleTouch ? this.props.handleTouch() : null;
+    this.props.handleTouch && this.props.handleTouch();
     e.preventDefault();
   };
 

@@ -1,45 +1,25 @@
-async function retr(func, args, tries, onError) {
-  try {
-    return func.apply(null, args);
-  } catch (error) {
-    onError && onError();
+const retry = async (
+  asyncRequest,
+  onInitialError,
+  totalAttempts = 10,
+  sleepTime = 2000
+) => {
+  let lastError;
+  let attempts = 0;
 
-    console.log('debug', tries);
-
-    if (tries === 1) {
-      throw error;
+  while (totalAttempts > attempts) {
+    try {
+      return await asyncRequest();
+    } catch (error) {
+      if (attempts === 0) {
+        onInitialError();
+      }
+      lastError = error;
+      attempts++;
+      await new Promise(resolve => setTimeout(resolve, sleepTime));
     }
-    setTimeout(() => retr(func, args, tries - 1), 3000);
   }
-}
+  return Promise.reject(lastError);
+};
 
-// async function retr(func, args, onError) {
-//   try {
-//     return func.apply(null, args);
-//   } catch (error) {
-//     onError();
-//     const interval = setInterval( () => func.apply(null, args) ,3000)
-//   }
-// }
-
-// class retry {
-//   constructor(func, args, onError, maxTries) {
-//     this.func = func;
-//     this.args = args;
-//     this.onError = onError;
-//     this.maxTries = maxTries;
-//   }
-
-//   start = () => {
-//     return
-//   }
-
-//   try = () => {
-//     try {
-
-//     }
-//   }
-// }
-
-// export default retry;
-export default retr;
+export default retry;

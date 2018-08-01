@@ -25,7 +25,7 @@ class ItemRecognition extends Component {
   }
 
   componentDidMount() {
-    this.props.setPrediction(null, null);
+    //this.props.setPrediction(null, null);
 
     if (navigator.onLine) {
       this.model = new Model();
@@ -78,6 +78,8 @@ class ItemRecognition extends Component {
   };
 
   render() {
+    this.props.setPrediction('fbe05463-a538-47aa-b4f1-654faa0a5b82', 'a');
+    this.props.history.replace('/editsnack');
     return (
       <div className="page">
         <header>

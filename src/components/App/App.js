@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+
 import Home from '../Home/container';
 import Viewer from '../Admin/Preview/Viewer';
 import Trainer from '../Admin/Trainer/Trainer';
@@ -14,6 +15,8 @@ import Admin from '../Admin/Admin';
 import ImageApproval from '../ImageApproval/ImageApproval';
 import NotificationBar from '../NotificationBar/NotificationBar';
 
+import PropTypes from 'prop-types';
+
 const WAIT_BEFORE_DISPLAY = 45;
 const PAGES_TO_SHOW_TIMEOUT = [
   '/disclaimer',
@@ -25,7 +28,6 @@ const PAGES_TO_SHOW_TIMEOUT = [
 class App extends Component {
   state = {
     showTimer: false,
-    showConnectionLost: false,
     isOnline: true,
     refresh: 0
   };
@@ -67,6 +69,14 @@ class App extends Component {
     this.setState({isOnline: false});
   };
 
+  connectionError() {
+    return (
+      !this.state.isOnline ||
+      this.props.loadStoreListError ||
+      this.props.loadUserListError
+    );
+  }
+
   componentWillUnmount() {
     clearTimeout(this.timer);
     clearInterval(this.interval);
@@ -95,16 +105,16 @@ class App extends Component {
           </Switch>
         </Router>
         {this.state.showTimer &&
-          this.isOnline && (
+          !this.connectionError() && (
             <NotificationBar
               mainText="Are you still there?"
               autoActionWord="Timeout"
               userTouchActionText="DISMISS"
               handleTouch={this.resetTimeoutTimer}
-              handleTimeout={this.timeout}
+              handleTimeout={this.onTimeout}
             />
           )}
-        {!this.state.isOnline && (
+        {this.connectionError() && (
           <NotificationBar
             mainText="Connection lost"
             autoActionWord="Retrying"
@@ -115,5 +125,10 @@ class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  loadStoreListError: PropTypes.bool,
+  loadUserListError: PropTypes.bool
+};
 
 export default App;
