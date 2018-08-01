@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import ListSelection from '../listSelection/ListSelection';
 import './EditSnack.css';
+import BackButton from '../BackButton/BackButton';
 
 class EditSnack extends Component {
   handleClick = item => {
@@ -14,6 +15,7 @@ class EditSnack extends Component {
     return (
       <div className="edit-snack--page">
         <div className="edit-snack--header">
+          <BackButton history={this.props.history} />
           <div className="edit-snack edit-snack--text-info">
             Sorry, I can’t recognise that snack <br /> Please select it below
           </div>

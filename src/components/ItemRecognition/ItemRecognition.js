@@ -5,6 +5,7 @@ import WebcamCapture from '../WebcamCapture/WebcamCapture';
 import './ItemRecognition.css';
 import {ControllerDataset} from '../Admin/Trainer/ControllerDataset';
 import MobileNet from '../Admin/Trainer/MobileNet';
+import BackButton from '../BackButton/BackButton';
 
 const ML_THRESHOLD = 0.06;
 
@@ -64,6 +65,7 @@ class ItemRecognition extends Component {
     return (
       <div className="page">
         <header>
+          <BackButton history={this.props.history} />
           <div className="item-recognition item-recognition--instructions">
             Scan item using the front facing camera
           </div>
