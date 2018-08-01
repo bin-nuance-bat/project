@@ -4,17 +4,17 @@ import Logo from './../Logo/Logo';
 import Hand from './../Hand/Hand';
 import PropTypes from 'prop-types';
 
-const goHomeAndClearTimeout = timeOut =>  {
-        props.history.replace('/');
-        clearTimeout(timeOut);
-}
+const goHomeAndClearTimeout = (props, timeout) => {
+  console.log('aaaa');
+  props.history.replace('/');
+  clearTimeout(timeout);
+};
 
 const SuccessPage = props => {
-  const timeOut = setTimeout(props.history.replace('/'), 10000);
+  console.log(77);
+  const timeout = setTimeout(props.history.replace('/'), 10000);
   return (
-    <div
-      className="page"
-      onClick={goHomeAndClearTimeout}>
+    <div className="page" onClick={() => goHomeAndClearTimeout(props, timeout)}>
       <Logo />
       <div className="text text-remindersent">Reminder sent!</div>
       <div className="success-hand">
