@@ -38,11 +38,7 @@ class ListSelection extends Component {
                 />
                 {groupItems.map(item => (
                   <div
-                    className={
-                      'list-selection list-selection--list-item ' +
-                      this.props.iconStyle +
-                      '-holder'
-                    }
+                    className="list-selection list-selection--list-item"
                     key={item.id}
                     data-test={item.id}
                     onClick={() => this.props.onClick(item)}>

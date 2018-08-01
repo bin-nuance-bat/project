@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import './SuccessPage.css';
-import Logo from './../Logo/Logo';
 import Hand from './../Hand/Hand';
 import PropTypes from 'prop-types';
 
@@ -17,7 +16,6 @@ class SuccessPage extends Component {
   render() {
     return (
       <div className="page" onClick={this.goHomeAndClearTimeout}>
-        <Logo />
         <div className="text text-remindersent">Reminder sent!</div>
         <div className="success-hand">
           <Hand snack={this.props.storeList[this.props.actualItem].image} />
