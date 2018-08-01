@@ -18,7 +18,7 @@ class ConfirmationBox extends React.Component {
 
   render() {
     const image =
-      this.props.id && this.props.id !== 'unknown'
+      this.props.id && this.props.storeList[this.props.id]
         ? this.props.storeList[this.props.id].image
         : null;
     return (
