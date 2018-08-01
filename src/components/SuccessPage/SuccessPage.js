@@ -4,7 +4,7 @@ import Logo from './../Logo/Logo';
 import Hand from './../Hand/Hand';
 import PropTypes from 'prop-types';
 
-const goHomeAndClearTimeout = (timeOut) =>  {
+const goHomeAndClearTimeout = timeOut =>  {
         props.history.replace('/');
         clearTimeout(timeOut);
 }
