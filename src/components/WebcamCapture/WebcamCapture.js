@@ -110,6 +110,7 @@ class WebcamCapture extends Component {
     if (this.state.cameraConnected) {
       return this.state.fakeWebcam ? (
         <input
+          id="fileUploadBrowse"
           type="file"
           accept="image/*"
           ref={fileInput => (this.fileInput = fileInput)}
