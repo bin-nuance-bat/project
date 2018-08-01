@@ -8,6 +8,11 @@ class SuccessPage extends Component {
     this.timeout = setTimeout(() => this.props.history.replace('/'), 10000);
   }
 
+
+  componentDidUnmount() {
+    clearTimeout(this.timeout);
+  }
+
   goHomeAndClearTimeout = () => {
     clearTimeout(this.timeout);
     this.props.history.replace('/');
