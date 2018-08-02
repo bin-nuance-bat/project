@@ -78,46 +78,39 @@ it('Generates the list correctly', () => {
   expect(wrapper).toMatchSnapshot();
 });
 
-it('should order the list alphabetically and add missing letters', () => {
+it('should put suggestions before the rest of the items if provided', () => {
   const props = {
     onClick: jest.fn(),
     items: getItems(),
+    suggestions: [
+      {
+        id: 'e615de4e-ce10-451b-80ad-9717662a904a',
+        name: 'Pepsi Max',
+        qualifier: null,
+        image: 'pepsi-max-can.svg',
+        isMarketplace: false,
+        count: -8,
+        price: {
+          total: 38,
+          breakdown: {
+            wholesaleCost: 34,
+            serviceFee: 4,
+            donation: 0,
+            handlingFee: 0,
+            creditCardFee: 0,
+            VAT: 0
+          }
+        }
+      }
+    ],
     iconStyle: ''
   };
-  const alphabet = [
-    'A',
-    'B',
-    'C',
-    'D',
-    'E',
-    'F',
-    'G',
-    'H',
-    'I',
-    'J',
-    'K',
-    'L',
-    'M',
-    'N',
-    'O',
-    'P',
-    'Q',
-    'R',
-    'S',
-    'T',
-    'U',
-    'V',
-    'W',
-    'X',
-    'Y',
-    'Z'
-  ];
+
   const component = render(<ListSelection {...props} />);
-  for (let i = 0; i < 26; i++) {
-    expect(
-      component[0].children.find(
-        child => child.attribs.class === 'list-selection--scroll-select'
-      ).children[i].children[0].data
-    ).toEqual(alphabet[i]);
-  }
+
+  expect(
+    component[0].children.find(
+      child => child.attribs.class === 'list-selection--scroll-select'
+    ).children[0].children[0].data
+  ).toEqual('\u00A0');
 });

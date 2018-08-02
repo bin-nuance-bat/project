@@ -50,7 +50,8 @@ class ListSelection extends Component {
           items.splice(j, 0, [expectedCharacter, []]);
       }
     }
-    if (items[0][0] === '#') items.unshift(['\u00A0', this.props.suggestions]);
+    if (this.props.suggestions && this.props.suggestions !== [])
+      items.unshift(['\u00A0', this.props.suggestions]);
     return items;
   })();
 
