@@ -10,7 +10,7 @@ import MobileNet from '../Admin/Trainer/MobileNet';
 
 import './ItemRecognition.css';
 
-const TIMEOUT_IN_SECONDS = 1000;
+const TIMEOUT_IN_SECONDS = 10;
 const ML_THRESHOLD = 0.35;
 
 class ItemRecognition extends Component {
