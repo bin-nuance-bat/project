@@ -27,11 +27,7 @@ class ItemRecognition extends Component {
   }
 
   state = {
-    status: 'Scan item using the front facing camera'
-  };
-
-  state = {
-    showRetryMessage: false
+    text: 'Scan item using the front facing camera'
   };
 
   componentDidMount() {
@@ -79,7 +75,7 @@ class ItemRecognition extends Component {
         this.addTrainingImage(img.src, item.id);
         await this.props.setPrediction(item.id, img.src);
         this.webcam.current.success(() => {
-          this.setState({status: 'Snack recognised!'});
+          this.setState({text: 'Snack recognised!', subText: null});
           setTimeout(() => {
             this.props.history.replace(
               item.id === 'unknown' ? '/editsnack' : '/confirmitem'
@@ -88,11 +84,14 @@ class ItemRecognition extends Component {
         });
       } else {
         if (
-          !this.state.showRetryMessage &&
+          !this.state.subText &&
           (Date.now() - this.scanningStartTime) / 1000 >
             TIMEOUT_IN_SECONDS - SHOW_RETRY_FOR
         )
-          this.setState({showRetryMessage: true});
+          this.setState({
+            text: 'We can&#39;t recognise the snack',
+            subText: 'Try turning the snack so the logo is seen by the camera'
+          });
         if (this.webcam.current)
           this.webcam.current.requestScreenshot().then(this.handleImg);
       }
@@ -104,20 +103,16 @@ class ItemRecognition extends Component {
       <div className="page">
         <BackButton history={this.props.history} />
         <header>
-          {this.state.showRetryMessage ? (
-            <div>
-              <div className="item-recognition item-recognition--instructions">
-                We can&#39;t recognise the snack
-              </div>
-              <div className="item-recognition--instructions-small">
-                Try turning the snack so the logo is seen by the camera
-              </div>
-            </div>
-          ) : (
+          <div>
             <div className="item-recognition item-recognition--instructions">
-              Scan item using the front facing camera
+              {this.state.text}
             </div>
-          )}
+            {this.state.subText && (
+              <div className="item-recognition--instructions-small">
+                {this.state.subText}
+              </div>
+            )}
+          </div>
         </header>
         <WebcamCapture
           className="item-recognition item-recognition--display"
