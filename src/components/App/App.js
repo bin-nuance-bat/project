@@ -17,7 +17,6 @@ import Trainer from '../Admin/Trainer/Trainer';
 import ImageApproval from '../Admin/ImageApproval/ImageApproval';
 import Viewer from '../Admin/Preview/Viewer';
 
-
 const WAIT_BEFORE_DISPLAY = 45;
 const PAGES_TO_SHOW_TIMEOUT = [
   '/disclaimer',
@@ -29,7 +28,7 @@ const PAGES_TO_SHOW_TIMEOUT = [
 class App extends Component {
   state = {
     showTimer: false,
-    isOnline: true,
+    isOnline: true
   };
 
   componentDidMount() {
@@ -61,7 +60,6 @@ class App extends Component {
     this.setState({
       isOnline: true
     });
-    // this isnt the nicest way of doing it but Im uysing this to reload the route, I only want to do this on the online event though, hence im not using the isOnline as a key (to router)
   };
 
   handleOffline = () => {

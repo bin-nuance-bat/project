@@ -19,7 +19,7 @@ export function setLoadStoreListError(loadStoreListError) {
 }
 
 export const loadStoreList = () => dispatch =>
-  retry(() => fetchItems(), () => dispatch(setLoadStoreListError(true)))
+  retry(fetchItems, () => dispatch(setLoadStoreListError(true)))
     .then(storeList => {
       dispatch(setStoreList(storeList));
       dispatch(setLoadStoreListError(false));
