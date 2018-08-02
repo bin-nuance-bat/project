@@ -3,7 +3,15 @@
 .item-recognition--instructions {
   font-size: 35px;
   color: $white;
-  width: 70%;
+  padding-top: 70px;
+  width: 80%;
+  margin: auto;
+}
+
+.item-recognition--instructions-small {
+  padding-top: 16px;
+  font-size: 30px;
+  padding-top: 32px;
   margin: auto;
 }
 
@@ -18,5 +26,4 @@ header {
   height: 256px;
   position: relative;
   text-align: center;
-  line-height: 256px;
 }
