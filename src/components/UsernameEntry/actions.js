@@ -37,3 +37,11 @@ export const sendSlackMessage = userid => async (dispatch, getState) => {
     return false;
   }
 };
+
+// import initFirebase from '../../utils/firebase';
+// import firebase from 'firebase/app';
+// import functions from 'firebase/functions';
+//     initFirebase();
+//     const text = firebase.functions().httpsCallable('text');
+//     text({text: 'a'}).then(function(result) {
+//       console.log(result);
