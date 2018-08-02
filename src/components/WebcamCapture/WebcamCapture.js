@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 import Webcam from 'react-webcam';
+import Notification from '../Notification/Notification';
 import ViewFinder from './ViewFinder';
 
 import './WebcamCapture.css';
@@ -100,9 +101,8 @@ class WebcamCapture extends Component {
           <ViewFinder animation={this.state.animation} />
         </div>
       );
-    } else {
-      return <p>Failed to load webcam feed.</p>;
     }
+    return <Notification message="failed to load video feed" isError={true} />;
   }
 }
 
