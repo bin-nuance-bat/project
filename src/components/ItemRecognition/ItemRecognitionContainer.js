@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import ItemRecognition from './ItemRecognition';
-import {setPrediction} from './ItemRecognitionActions';
+import {setPrediction, setSuggestions} from './ItemRecognitionActions';
 
 const mapStateToProps = state => ({
   prediction: state.prediction,
@@ -8,7 +8,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  setPrediction
+  setPrediction,
+  setSuggestions
 };
 
 export default connect(

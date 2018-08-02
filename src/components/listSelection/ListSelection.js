@@ -16,12 +16,13 @@ class ListSelection extends Component {
     const header = document.getElementById('header');
     scrollSelect.addEventListener('touchmove', this.preventDefault, false);
     header.addEventListener('touchmove', this.preventDefault, false);
-    this.scrollSelectTop = document
-      .getElementById('scroll-select')
-      .getBoundingClientRect().top;
-    this.selectElementHeight = document
-      .getElementById('select-element')
-      .getBoundingClientRect().height;
+
+    if (scrollSelect)
+      this.scrollSelectTop = scrollSelect.getBoundingClientRect().top;
+
+    const selectElement = document.getElementById('select-element');
+    if (selectElement)
+      this.selectElementHeight = selectElement.getBoundingClientRect().height;
   }
 
   startsWithLetter = str => {

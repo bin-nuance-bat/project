@@ -74,6 +74,12 @@ class ItemRecognition extends Component {
       ) {
         await this.addTrainingImage(img.src, item.id);
         this.props.setPrediction(item.id, img.src);
+
+        const suggestions = [];
+        for (let i = 1; i < 4; i++) {
+          suggestions.push(this.props.storeList[items[i].id]);
+        }
+        this.props.setSuggestions(suggestions);
         this.props.history.replace(
           item.id === 'unknown' ? '/editsnack' : '/confirmitem'
         );
@@ -111,7 +117,8 @@ ItemRecognition.propTypes = {
     img: PropTypes.string.isRequired
   }),
   history: PropTypes.object.isRequired,
-  storeList: PropTypes.object.isRequired
+  storeList: PropTypes.object.isRequired,
+  setSuggestions: PropTypes.func.isRequired
 };
 
 export default ItemRecognition;
