@@ -1,103 +1,103 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+const SIZE = 768;
+const BORDER_WIDTH = 72;
+const HUD_INITIAL_LENGTH = 64;
+const HUD_STROKE_WIDTH = 8;
+
 const ViewFinder = props => {
-  const sw = 72; // Stroke width (grey border)
-  const w = 768; // Width (of display)
-  const vfw = 8; // View finder width (white bits)
-  const vfl = Math.min(64 + props.animation * (w / 2 - sw - 64), w / 2 - sw); // View finder length (white bits)
-  const color = vfl === w / 2 - sw ? '#47BED8' : '#ffffff';
+  const bw = BORDER_WIDTH;
+  const bc = BORDER_WIDTH / 2;
+  const s = SIZE;
+  const hw = HUD_STROKE_WIDTH;
+  const hl = Math.min(
+    HUD_INITIAL_LENGTH + props.animation * (s / 2 - bw - HUD_INITIAL_LENGTH),
+    s / 2 - bw
+  );
+
+  const color = hl === s / 2 - bw ? '#47BED8' : '#ffffff';
+
   return (
-    <svg viewBox={[0, 0, w, w]} id="view-finder">
+    <svg viewBox={[0, 0, s, s]} id="view-finder">
       <polyline
         fill="none"
         stroke="#000000"
         opacity="0.5"
-        strokeWidth={sw}
-        points={[
-          sw / 2,
-          sw / 2,
-          w - sw / 2,
-          sw / 2,
-          w - sw / 2,
-          w - sw / 2,
-          sw / 2,
-          w - sw / 2,
-          sw / 2,
-          sw / 2
-        ]}
+        strokeWidth={bw}
+        points={[bc, bc, s - bc, bc, s - bc, s - bc, bc, s - bc, bc, bc]}
       />
 
-      <circle cx={sw} cy={sw} r={vfw / 2} fill={color} />
+      <circle cx={bw} cy={bw} r={hw / 2} fill={color} />
       <line
-        x1={sw}
-        y1={sw}
-        x2={sw}
-        y2={sw + vfl}
+        x1={bw}
+        y1={bw}
+        x2={bw}
+        y2={bw + hl}
         stroke={color}
-        strokeWidth={vfw}
+        strokeWidth={hw}
       />
       <line
-        x1={sw}
-        y1={sw}
-        x2={sw + vfl}
-        y2={sw}
+        x1={bw}
+        y1={bw}
+        x2={bw + hl}
+        y2={bw}
         stroke={color}
-        strokeWidth={vfw}
-      />
-
-      <circle cx={sw} cy={w - sw} r={vfw / 2} fill={color} />
-      <line
-        x1={sw}
-        y1={w - sw - vfl}
-        x2={sw}
-        y2={w - sw}
-        stroke={color}
-        strokeWidth={vfw}
-      />
-      <line
-        x1={sw}
-        y1={w - sw}
-        x2={sw + vfl}
-        y2={w - sw}
-        stroke={color}
-        strokeWidth={vfw}
+        strokeWidth={hw}
       />
 
-      <circle cx={w - sw} cy={sw} r={vfw / 2} fill={color} />
+      <circle cx={bw} cy={s - bw} r={hw / 2} fill={color} />
       <line
-        x1={w - sw - vfl}
-        y1={sw}
-        x2={w - sw}
-        y2={sw}
+        x1={bw}
+        y1={s - bw - hl}
+        x2={bw}
+        y2={s - bw}
         stroke={color}
-        strokeWidth={vfw}
+        strokeWidth={hw}
       />
       <line
-        x1={w - sw}
-        y1={sw}
-        x2={w - sw}
-        y2={sw + vfl}
+        x1={bw}
+        y1={s - bw}
+        x2={bw + hl}
+        y2={s - bw}
         stroke={color}
-        strokeWidth={vfw}
+        strokeWidth={hw}
       />
 
-      <circle cx={w - sw} cy={w - sw} r={vfw / 2} fill={color} />
+      <circle cx={s - bw} cy={bw} r={hw / 2} fill={color} />
       <line
-        x1={w - sw - vfl}
-        y1={w - sw}
-        x2={w - sw}
-        y2={w - sw}
+        x1={s - bw - hl}
+        y1={bw}
+        x2={s - bw}
+        y2={bw}
         stroke={color}
-        strokeWidth={vfw}
+        strokeWidth={hw}
       />
       <line
-        x1={w - sw}
-        y1={w - sw}
-        x2={w - sw}
-        y2={w - sw - vfl}
+        x1={s - bw}
+        y1={bw}
+        x2={s - bw}
+        y2={bw + hl}
         stroke={color}
-        strokeWidth={vfw}
+        strokeWidth={hw}
+      />
+
+      <circle cx={s - bw} cy={s - bw} r={hw / 2} fill={color} />
+      <line
+        x1={s - bw - hl}
+        y1={s - bw}
+        x2={s - bw}
+        y2={s - bw}
+        stroke={color}
+        strokeWidth={hw}
+      />
+      <line
+        x1={s - bw}
+        y1={s - bw}
+        x2={s - bw}
+        y2={s - bw - hl}
+        stroke={color}
+        strokeWidth={hw}
       />
     </svg>
   );

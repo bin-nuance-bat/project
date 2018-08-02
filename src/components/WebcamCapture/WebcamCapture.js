@@ -59,12 +59,16 @@ class WebcamCapture extends Component {
   }
 
   success = callback => {
-    if (typeof callback === 'function') this.callback = callback;
+    this.callback = callback;
+    this.render();
+  };
+
+  render = () => {
     if (this.state.animation >= 1) return this.callback();
     this.setState(prevState => {
       return {animation: prevState.animation + 0.05};
     });
-    requestAnimationFrame(this.success);
+    requestAnimationFrame(this.render);
   };
 
   componentDidMount() {
