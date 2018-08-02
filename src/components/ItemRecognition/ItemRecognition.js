@@ -89,7 +89,7 @@ class ItemRecognition extends Component {
             TIMEOUT_IN_SECONDS - SHOW_RETRY_FOR
         )
           this.setState({
-            text: 'We can&#39;t recognise the snack',
+            text: "We can't recognise the snack",
             subText: 'Try turning the snack so the logo is seen by the camera'
           });
         if (this.webcam.current)

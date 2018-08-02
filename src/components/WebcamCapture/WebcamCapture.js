@@ -15,6 +15,7 @@ class WebcamCapture extends Component {
   };
 
   webcam = React.createRef();
+  viewFinder = React.createRef();
 
   requestScreenshot = () => {
     if (!this.webcam.current) return Promise.reject('Failed to load webcam.');
@@ -58,18 +59,7 @@ class WebcamCapture extends Component {
     return this.canvas.toDataURL();
   }
 
-  update = () => {
-    if (this.state.animation >= 1) return this.callback();
-    this.setState(prevState => {
-      return {animation: prevState.animation + 0.05};
-    });
-    requestAnimationFrame(this.update);
-  };
-
-  success = callback => {
-    this.callback = callback;
-    this.update();
-  };
+  success = callback => this.viewFinder.current.success(callback);
 
   componentDidMount() {
     if (!navigator.mediaDevices) return;
@@ -101,7 +91,7 @@ class WebcamCapture extends Component {
             className="webcam-capture--video"
             screenshotWidth={this.props.imgSize * (4 / 3)}
           />
-          <ViewFinder animation={this.state.animation} />
+          <ViewFinder ref={this.viewFinder} />
         </div>
       );
     }
