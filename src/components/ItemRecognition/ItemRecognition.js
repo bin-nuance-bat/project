@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 
 import {ControllerDataset} from '../Admin/ControllerDataset';
 import Model from './../../utils/model';
+
 import WebcamCapture from '../WebcamCapture/WebcamCapture';
-import './ItemRecognition.css';
 import BackButton from '../BackButton/BackButton';
 import MobileNet from '../Admin/Trainer/MobileNet';
+
 import './ItemRecognition.css';
 
-const TIMEOUT_IN_SECONDS = 10;
+const TIMEOUT_IN_SECONDS = 1000;
 const ML_THRESHOLD = 0.35;
 
 class ItemRecognition extends Component {
@@ -54,6 +55,7 @@ class ItemRecognition extends Component {
   };
 
   handleImg = img => {
+    if (this.success) return;
     this.model.predict(img).then(async items => {
       const item = items[0];
       this.setState({
@@ -72,11 +74,14 @@ class ItemRecognition extends Component {
           !this.props.prediction) ||
         (Date.now() - this.scanningStartTime) / 1000 > TIMEOUT_IN_SECONDS
       ) {
-        await this.addTrainingImage(img.src, item.id);
-        this.props.setPrediction(item.id, img.src);
-        this.props.history.replace(
-          item.id === 'unknown' ? '/editsnack' : '/confirmitem'
-        );
+        this.success = true;
+        this.addTrainingImage(img.src, item.id);
+        await this.props.setPrediction(item.id, img.src);
+        this.webcam.current.success(() => {
+          this.props.history.replace(
+            item.id === 'unknown' ? '/editsnack' : '/confirmitem'
+          );
+        });
       } else {
         if (this.webcam.current)
           this.webcam.current.requestScreenshot().then(this.handleImg);

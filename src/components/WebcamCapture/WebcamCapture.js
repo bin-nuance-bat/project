@@ -1,13 +1,17 @@
 import React, {Component} from 'react';
-import Webcam from 'react-webcam';
-import Notification from './../Notification/Notification';
 import PropTypes from 'prop-types';
+
+import Webcam from 'react-webcam';
+import ViewFinder from './ViewFinder';
+
 import './WebcamCapture.css';
 
 class WebcamCapture extends Component {
   state = {
     isDetecting: true,
-    cameraConnected: false
+    cameraConnected: false,
+    successTime: null,
+    animation: 0
   };
 
   webcam = React.createRef();
@@ -54,6 +58,15 @@ class WebcamCapture extends Component {
     return this.canvas.toDataURL();
   }
 
+  success = callback => {
+    if (typeof callback === 'function') this.callback = callback;
+    if (this.state.animation >= 1) return this.callback();
+    this.setState(prevState => {
+      return {animation: prevState.animation + 0.05};
+    });
+    requestAnimationFrame(this.success);
+  };
+
   componentDidMount() {
     if (!navigator.mediaDevices) return;
     this.setupWebcam();
@@ -84,10 +97,12 @@ class WebcamCapture extends Component {
             className="webcam-capture--video"
             screenshotWidth={this.props.imgSize * (4 / 3)}
           />
+          <ViewFinder animation={this.state.animation} />
         </div>
       );
+    } else {
+      return <p>Failed to load webcam feed.</p>;
     }
-    return <Notification message="failed to load video feed" isError={true} />;
   }
 }
 
