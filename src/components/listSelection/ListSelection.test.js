@@ -78,6 +78,50 @@ it('Generates the list correctly', () => {
   expect(wrapper).toMatchSnapshot();
 });
 
+it('should order the list alphabetically and add missing letters', () => {
+  const props = {
+    onClick: jest.fn(),
+    items: getItems(),
+    iconStyle: ''
+  };
+  const alphabet = [
+    'A',
+    'B',
+    'C',
+    'D',
+    'E',
+    'F',
+    'G',
+    'H',
+    'I',
+    'J',
+    'K',
+    'L',
+    'M',
+    'N',
+    'O',
+    'P',
+    'Q',
+    'R',
+    'S',
+    'T',
+    'U',
+    'V',
+    'W',
+    'X',
+    'Y',
+    'Z'
+  ];
+  const component = render(<ListSelection {...props} />);
+  for (let i = 0; i < 26; i++) {
+    expect(
+      component[0].children.find(
+        child => child.attribs.class === 'list-selection--scroll-select'
+      ).children[i].children[0].data
+    ).toEqual(alphabet[i]);
+  }
+});
+
 it('should put suggestions before the rest of the items if provided', () => {
   const props = {
     onClick: jest.fn(),
