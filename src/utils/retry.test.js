@@ -21,14 +21,7 @@ test('Retries if initial is an error', () => {
 
 test('Calls the on Initial errorFunc', () => {
   let previousCalls = false;
-  const testFunction = () => {
-    if (previousCalls) {
-      return 'bar';
-    } else {
-      previousCalls = true;
-      throw 'fooBar';
-    }
-  };
+  const testFunction = jest.fn();
 
   const trialFunc = jest.fn();
   retry(testFunction, trialFunc);
