@@ -13,17 +13,24 @@ const TIMEOUT_IN_SECONDS = 10;
 const ML_THRESHOLD = 0.35;
 
 class ItemRecognition extends Component {
-  model = new Model();
-  webcam = React.createRef();
-  mobileNet = new MobileNet();
+  constructor(props) {
+    super(props);
+
+    if (navigator.onLine) {
+      this.model = new Model();
+      this.model.load();
+      this.webcam = React.createRef();
+      this.mobileNet = new MobileNet();
+      this.controllerDataset = new ControllerDataset();
+    }
+  }
+
   state = {
     status: 'Scan item'
   };
 
   componentDidMount() {
     this.props.setPrediction(null, null);
-    this.model.load();
-    this.controllerDataset = new ControllerDataset();
   }
 
   onConnect = () => {
@@ -54,40 +61,42 @@ class ItemRecognition extends Component {
   };
 
   handleImg = img => {
-    this.model.predict(img).then(async items => {
-      const item = items[0];
-      this.setState({
-        status: items
-          .sort((a, b) => a.id.localeCompare(b.id))
-          .map(
-            i =>
-              `${this.props.storeList[i.id].name} ${(i.value * 100).toFixed(
-                0
-              )}% `
-          )
-      });
-      if (
-        (item.value > ML_THRESHOLD &&
-          item.id !== 'unknown' &&
-          !this.props.prediction) ||
-        (Date.now() - this.scanningStartTime) / 1000 > TIMEOUT_IN_SECONDS
-      ) {
-        await this.addTrainingImage(img.src, item.id);
-        this.props.setPrediction(item.id, img.src);
+    if (this.model) {
+      this.model.predict(img).then(async items => {
+        const item = items[0];
+        this.setState({
+          status: items
+            .sort((a, b) => a.id.localeCompare(b.id))
+            .map(
+              i =>
+                `${this.props.storeList[i.id].name} ${(i.value * 100).toFixed(
+                  0
+                )}% `
+            )
+        });
+        if (
+          (item.value > ML_THRESHOLD &&
+            item.id !== 'unknown' &&
+            !this.props.prediction) ||
+          (Date.now() - this.scanningStartTime) / 1000 > TIMEOUT_IN_SECONDS
+        ) {
+          await this.addTrainingImage(img.src, item.id);
+          this.props.setPrediction(item.id, img.src);
 
-        const suggestions = [];
-        for (let i = 1; i < 4; i++) {
-          suggestions.push(this.props.storeList[items[i].id]);
+          const suggestions = [];
+          for (let i = 1; i < 4; i++) {
+            suggestions.push(this.props.storeList[items[i].id]);
+          }
+          this.props.setSuggestions(suggestions);
+          this.props.history.replace(
+            item.id === 'unknown' ? '/editsnack' : '/confirmitem'
+          );
+        } else {
+          if (this.webcam.current)
+            this.webcam.current.requestScreenshot().then(this.handleImg);
         }
-        this.props.setSuggestions(suggestions);
-        this.props.history.replace(
-          item.id === 'unknown' ? '/editsnack' : '/confirmitem'
-        );
-      } else {
-        if (this.webcam.current)
-          this.webcam.current.requestScreenshot().then(this.handleImg);
-      }
-    });
+      });
+    }
   };
 
   render() {

@@ -1,11 +1,15 @@
 import {createStore, applyMiddleware, combineReducers, compose} from 'redux';
 import thunk from 'redux-thunk';
 import {storeList, loadStoreListError} from '../components/StoreList/reducer';
-import {users} from '../components/UsernameEntry/reducer';
 import {
   prediction,
   suggestions
 } from '../components/ItemRecognition/ItemRecognitionReducer';
+import {
+  users,
+  loadUserListError,
+  sendMessageError
+} from '../components/UsernameEntry/reducer';
 import {sendWithPhoto} from '../components/Home/reducer';
 import {actualItem} from '../components/ConfirmationBox/reducer';
 import {snackChat} from '../components/SnackChat/SnackChatReducer';
@@ -18,7 +22,9 @@ const rootReducer = combineReducers({
   suggestions,
   sendWithPhoto,
   actualItem,
-  snackChat
+  snackChat,
+  loadUserListError,
+  sendMessageError
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
