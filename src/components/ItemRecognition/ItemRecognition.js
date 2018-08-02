@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-
 import {ControllerDataset} from '../Admin/ControllerDataset';
 import Model from './../../utils/model';
 import WebcamCapture from '../WebcamCapture/WebcamCapture';
@@ -11,6 +10,7 @@ import './ItemRecognition.css';
 
 const TIMEOUT_IN_SECONDS = 10;
 const ML_THRESHOLD = 0.35;
+const SHOW_RETRY_FOR = 5;
 
 class ItemRecognition extends Component {
   constructor(props) {
@@ -27,6 +27,10 @@ class ItemRecognition extends Component {
 
   state = {
     status: 'Scan item'
+  };
+
+  state = {
+    showRetryMessage: false
   };
 
   componentDidMount() {
@@ -92,6 +96,12 @@ class ItemRecognition extends Component {
             item.id === 'unknown' ? '/editsnack' : '/confirmitem'
           );
         } else {
+          if (
+            !this.state.showRetryMessage &&
+            (Date.now() - this.scanningStartTime) / 1000 >
+              TIMEOUT_IN_SECONDS - SHOW_RETRY_FOR
+          )
+            this.setState({showRetryMessage: true});
           if (this.webcam.current)
             this.webcam.current.requestScreenshot().then(this.handleImg);
         }
@@ -102,11 +112,22 @@ class ItemRecognition extends Component {
   render() {
     return (
       <div className="page">
+        <BackButton history={this.props.history} />
         <header>
-          <BackButton history={this.props.history} />
-          <div className="item-recognition item-recognition--instructions">
-            {this.state.status}
-          </div>
+          {this.state.showRetryMessage ? (
+            <div>
+              <div className="item-recognition item-recognition--instructions">
+                We can&#39;t recognise the snack
+              </div>
+              <div className="item-recognition--instructions-small">
+                Try turning the snack so the logo is seen by the camera
+              </div>
+            </div>
+          ) : (
+            <div className="item-recognition item-recognition--instructions">
+              Scan item using the front facing camera
+            </div>
+          )}
         </header>
         <WebcamCapture
           className="item-recognition item-recognition--display"
