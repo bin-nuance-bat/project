@@ -19,14 +19,14 @@ $username-icon-size: 48px;
 .username-icon {
   height: $username-icon-size;
   width: $username-icon-size;
+  border-radius: 4px;
 }
 
 .list-selection--body {
   padding-top: 232px;
   background-color: $white;
-  position: relative;
   height: 100%;
-  width: 100%;
+  width: 95%;
 }
 
 .list-selection--list-text {
@@ -65,16 +65,25 @@ $username-icon-size: 48px;
   right: 0px;
   top: 340px;
   margin: 0px;
+  width: 5%;
+  text-align: center;
   font-family: FaricyNew-Bold;
 }
 
 .list-selection--list {
-  width: 725px;
+  width: 100%;
   overflow-y: scroll;
   height: 792px;
   -webkit-overflow-scrolling: touch;
 }
 
 .list-selection--scroll-select-element {
-  padding: 0 20px;
+  padding: 0 0px;
+  position: relative;
+}
+
+.list-selection--bubble {
+  position: absolute;
+  top: -80px;
+  left: -115px;
 }

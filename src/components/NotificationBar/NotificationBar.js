@@ -3,7 +3,7 @@ import './NotificationBar.css';
 import PropTypes from 'prop-types';
 
 class NotificationBar extends Component {
-  state = {countdown: 9, show: false};
+  state = {countdown: 20, show: false};
 
   componentDidMount() {
     setTimeout(() => this.setState({show: true}), 50);
