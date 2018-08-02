@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 const ViewFinder = props => {
   const sw = 72;
   const w = 768;
-  const vfl = Math.min(64 + props.animation * (w / 2 - sw), w / 2 - sw);
+  const vfw = 8;
+  const vfl = Math.min(64 + props.animation * (w / 2 - sw - 64), w / 2 - sw);
   const color = vfl === w / 2 - sw ? '#47BED8' : '#ffffff';
   return (
     <svg viewBox={[0, 0, w, w]} id="view-finder">
@@ -26,29 +27,77 @@ const ViewFinder = props => {
           sw / 2
         ]}
       />
-      <polyline
-        fill="none"
+
+      <circle cx={sw} cy={sw} r={vfw / 2} fill={color} />
+      <line
+        x1={sw}
+        y1={sw}
+        x2={sw}
+        y2={sw + vfl}
         stroke={color}
-        strokeWidth="8"
-        points={[sw, sw + vfl, sw, sw, sw + vfl, sw]}
+        strokeWidth={vfw}
       />
-      <polyline
-        fill="none"
+      <line
+        x1={sw}
+        y1={sw}
+        x2={sw + vfl}
+        y2={sw}
         stroke={color}
-        strokeWidth="8"
-        points={[sw, w - sw - vfl, sw, w - sw, sw + vfl, w - sw]}
+        strokeWidth={vfw}
       />
-      <polyline
-        fill="none"
+
+      <circle cx={sw} cy={w - sw} r={vfw / 2} fill={color} />
+      <line
+        x1={sw}
+        y1={w - sw - vfl}
+        x2={sw}
+        y2={w - sw}
         stroke={color}
-        strokeWidth="8"
-        points={[w - sw - vfl, sw, w - sw, sw, w - sw, sw + vfl]}
+        strokeWidth={vfw}
       />
-      <polyline
-        fill="none"
+      <line
+        x1={sw}
+        y1={w - sw}
+        x2={sw + vfl}
+        y2={w - sw}
         stroke={color}
-        strokeWidth="8"
-        points={[w - sw - vfl, w - sw, w - sw, w - sw, w - sw, w - sw - vfl]}
+        strokeWidth={vfw}
+      />
+
+      <circle cx={w - sw} cy={sw} r={vfw / 2} fill={color} />
+      <line
+        x1={w - sw - vfl}
+        y1={sw}
+        x2={w - sw}
+        y2={sw}
+        stroke={color}
+        strokeWidth={vfw}
+      />
+      <line
+        x1={w - sw}
+        y1={sw}
+        x2={w - sw}
+        y2={sw + vfl}
+        stroke={color}
+        strokeWidth={vfw}
+      />
+
+      <circle cx={w - sw} cy={w - sw} r={vfw / 2} fill={color} />
+      <line
+        x1={w - sw - vfl}
+        y1={w - sw}
+        x2={w - sw}
+        y2={w - sw}
+        stroke={color}
+        strokeWidth={vfw}
+      />
+      <line
+        x1={w - sw}
+        y1={w - sw}
+        x2={w - sw}
+        y2={w - sw - vfl}
+        stroke={color}
+        strokeWidth={vfw}
       />
     </svg>
   );

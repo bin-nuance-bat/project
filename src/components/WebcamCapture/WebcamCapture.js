@@ -11,7 +11,6 @@ class WebcamCapture extends Component {
   state = {
     isDetecting: true,
     cameraConnected: false,
-    successTime: null,
     animation: 0
   };
 
