@@ -54,9 +54,10 @@ export const sendSlackMessage = userid => async (dispatch, getState) => {
 
   try {
     const result = await retry(
-      () => `https://slack.com/api/chat.postMessage?token=${token}&
+      () =>
+        fetch(`https://slack.com/api/chat.postMessage?token=${token}&
       channel=${userid}&icon_url=https://honesty.store/assets/android/icon@MDPI.png&username=honesty.store&
-      text=${`Click to purchase your ${itemName}: https://honesty.store/item/${actualItemID}`}`,
+      text=${`Click to purchase your ${itemName}: https://honesty.store/item/${actualItemID}`}`),
       () => dispatch(setSendMessageError(true))
     ).then(response => {
       dispatch(setSendMessageError(false));
