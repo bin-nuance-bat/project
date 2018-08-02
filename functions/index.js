@@ -26,6 +26,6 @@ const functions = require('firebase-functions');
 //     });
 // });
 
-exports.helloWorld = functions.https.onRequest((request, response) => {
+exports.sendSlackMessage = functions.https.onCall((data, context) => {
   response.send('Hello from Firebase!');
 });
