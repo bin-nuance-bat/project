@@ -75,25 +75,26 @@ const Hand = props => {
   ];
 
   let transformationMatrix;
-  if (horizontalWideLong.some(item => props.snack.includes(item)))
-    transformationMatrix = 'matrix(0, 1.4, -1.4, 0, -35, 90)';
-  else if (horizontalWideShort.some(item => props.snack.includes(item)))
-    transformationMatrix = 'matrix(0, 1.2, -1.2, 0, -35, -10)';
-  else if (horizontalVeryWide.some(item => props.snack.includes(item)))
-    transformationMatrix = 'matrix(0, 1, -1, 0, -30, -10)';
-  else if (horizontalNarrow.some(item => props.snack.includes(item)))
-    transformationMatrix = 'matrix(0, 1.4, -1.4, 0, -35, 10)';
-  else if (verticalRightAligned.some(item => props.snack.includes(item)))
-    transformationMatrix = 'matrix(1.05, 0, 0, 1.05, -30, -20)';
-  else if (verticalLeftAligned.some(item => props.snack.includes(item)))
-    transformationMatrix = 'matrix(1.05, 0, 0, 1.05, 40, -20)';
-  else if (verticalTall.some(item => props.snack.includes(item)))
-    transformationMatrix = 'matrix(1.4, 0, 0, 1.4, -35, -30)';
-  else if (smallSquare.some(item => props.snack.includes(item)))
-    transformationMatrix = 'matrix(0.7, 0, 0, 0.7, -25, 10)';
-  else if (largeSquare.some(item => props.snack.includes(item)))
-    transformationMatrix = 'matrix(0.7, 0, 0, 0.7, -22, -30)';
-
+  if (props.snack) {
+    if (horizontalWideLong.some(item => props.snack.includes(item)))
+      transformationMatrix = 'matrix(0, 1.4, -1.4, 0, -35, 90)';
+    else if (horizontalWideShort.some(item => props.snack.includes(item)))
+      transformationMatrix = 'matrix(0, 1.2, -1.2, 0, -35, -10)';
+    else if (horizontalVeryWide.some(item => props.snack.includes(item)))
+      transformationMatrix = 'matrix(0, 1, -1, 0, -30, -10)';
+    else if (horizontalNarrow.some(item => props.snack.includes(item)))
+      transformationMatrix = 'matrix(0, 1.4, -1.4, 0, -35, 10)';
+    else if (verticalRightAligned.some(item => props.snack.includes(item)))
+      transformationMatrix = 'matrix(1.05, 0, 0, 1.05, -30, -20)';
+    else if (verticalLeftAligned.some(item => props.snack.includes(item)))
+      transformationMatrix = 'matrix(1.05, 0, 0, 1.05, 40, -20)';
+    else if (verticalTall.some(item => props.snack.includes(item)))
+      transformationMatrix = 'matrix(1.4, 0, 0, 1.4, -35, -30)';
+    else if (smallSquare.some(item => props.snack.includes(item)))
+      transformationMatrix = 'matrix(0.7, 0, 0, 0.7, -25, 10)';
+    else if (largeSquare.some(item => props.snack.includes(item)))
+      transformationMatrix = 'matrix(0.7, 0, 0, 0.7, -22, -30)';
+  }
   return (
     <div className="hand">
       <img className="hand-component" src={handBg} alt="" />

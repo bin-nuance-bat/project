@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const ViewFinder = props => {
-  const sw = 72;
-  const w = 768;
-  const vfw = 8;
-  const vfl = Math.min(64 + props.animation * (w / 2 - sw - 64), w / 2 - sw);
+  const sw = 72; // Stroke width (grey border)
+  const w = 768; // Width (of display)
+  const vfw = 8; // View finder width (white bits)
+  const vfl = Math.min(64 + props.animation * (w / 2 - sw - 64), w / 2 - sw); // View finder length (white bits)
   const color = vfl === w / 2 - sw ? '#47BED8' : '#ffffff';
   return (
     <svg viewBox={[0, 0, w, w]} id="view-finder">

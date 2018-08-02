@@ -14,17 +14,24 @@ const TIMEOUT_IN_SECONDS = 10;
 const ML_THRESHOLD = 0.35;
 
 class ItemRecognition extends Component {
-  model = new Model();
-  webcam = React.createRef();
-  mobileNet = new MobileNet();
+  constructor(props) {
+    super(props);
+
+    if (navigator.onLine) {
+      this.model = new Model();
+      this.model.load();
+      this.webcam = React.createRef();
+      this.mobileNet = new MobileNet();
+      this.controllerDataset = new ControllerDataset();
+    }
+  }
+
   state = {
     status: 'Scan item'
   };
 
   componentDidMount() {
     this.props.setPrediction(null, null);
-    this.model.load();
-    this.controllerDataset = new ControllerDataset();
   }
 
   onConnect = () => {

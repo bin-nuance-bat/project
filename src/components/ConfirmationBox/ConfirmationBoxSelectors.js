@@ -1,5 +1,7 @@
 export const getPredictionName = state => {
-  return state.storeList && state.prediction
+  return state.storeList &&
+    state.prediction &&
+    state.storeList[state.prediction.id]
     ? state.storeList[state.prediction.id].name
     : 'UNKNOWN';
 };

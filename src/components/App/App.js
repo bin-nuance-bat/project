@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import Home from '../Home/container';
 import SnackChat from '../SnackChat/SnackChatContainer';
@@ -25,10 +26,15 @@ const PAGES_TO_SHOW_TIMEOUT = [
 ];
 
 class App extends Component {
-  state = {showTimer: false};
+  state = {
+    showTimer: false,
+    isOnline: true
+  };
 
   componentDidMount() {
     document.body.addEventListener('touchstart', this.resetTimeoutTimer);
+    window.addEventListener('online', this.handleOnline);
+    window.addEventListener('offline', this.handleOffline);
   }
 
   resetTimeoutTimer = () => {
@@ -50,15 +56,36 @@ class App extends Component {
     }
   };
 
+  handleOnline = () => {
+    this.setState({
+      isOnline: true
+    });
+  };
+
+  handleOffline = () => {
+    this.setState({isOnline: false});
+  };
+
+  connectionError() {
+    return (
+      !this.state.isOnline ||
+      this.props.loadStoreListError ||
+      this.props.loadUserListError ||
+      this.props.sendMessageError
+    );
+  }
+
   componentWillUnmount() {
     clearTimeout(this.timer);
     clearInterval(this.interval);
     document.body.removeEventListener('touchstart', this.resetTimeoutTimer);
+    window.removeEventListener('online', this.handleOnline);
+    window.removeEventListener('offline', this.handleOffline);
   }
 
   render() {
     return (
-      <div>
+      <div key={this.state.isOnline}>
         <Router>
           <Switch>
             <Route exact path="/" component={Home} />
@@ -79,18 +106,32 @@ class App extends Component {
             />
           </Switch>
         </Router>
-        {this.state.showTimer && (
+        {this.state.showTimer &&
+          !this.connectionError() && (
+            <NotificationBar
+              mainText="Are you still there?"
+              autoActionWord="Timeout"
+              userTouchActionText="DISMISS"
+              handleTouch={this.resetTimeoutTimer}
+              handleTimeout={this.onTimeout}
+            />
+          )}
+        {this.connectionError() && (
           <NotificationBar
-            mainText="Are you still there?"
-            autoActionWord="Timeout"
-            userTouchActionText="dismiss"
-            handleTouch={this.resetTimeoutTimer}
-            handleTimeout={this.onTimeout}
+            mainText="Connection lost"
+            autoActionWord="Retrying"
+            preventInteraction
           />
         )}
       </div>
     );
   }
 }
+
+App.propTypes = {
+  loadStoreListError: PropTypes.bool,
+  loadUserListError: PropTypes.bool,
+  sendMessageError: PropTypes.bool
+};
 
 export default App;
