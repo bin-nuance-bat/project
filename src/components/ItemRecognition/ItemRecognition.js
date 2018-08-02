@@ -27,7 +27,7 @@ class ItemRecognition extends Component {
   }
 
   state = {
-    status: 'Scan item'
+    status: 'Scan item using the front facing camera'
   };
 
   componentDidMount() {
@@ -65,16 +65,6 @@ class ItemRecognition extends Component {
     if (this.success) return;
     this.model.predict(img).then(async items => {
       const item = items[0];
-      this.setState({
-        status: items
-          .sort((a, b) => a.id.localeCompare(b.id))
-          .map(
-            i =>
-              `${this.props.storeList[i.id].name} ${(i.value * 100).toFixed(
-                0
-              )}% `
-          )
-      });
       if (
         (item.value > ML_THRESHOLD &&
           item.id !== 'unknown' &&
@@ -85,9 +75,12 @@ class ItemRecognition extends Component {
         this.addTrainingImage(img.src, item.id);
         await this.props.setPrediction(item.id, img.src);
         this.webcam.current.success(() => {
-          this.props.history.replace(
-            item.id === 'unknown' ? '/editsnack' : '/confirmitem'
-          );
+          this.setState({status: 'Snack recognised!'});
+          setTimeout(() => {
+            this.props.history.replace(
+              item.id === 'unknown' ? '/editsnack' : '/confirmitem'
+            );
+          }, 500);
         });
       } else {
         if (this.webcam.current)
