@@ -6,6 +6,7 @@ import './SnackChat.css';
 
 const FEED_SIZE = 480;
 const CAPTURE_SIZE = 200;
+const POSITION_BUFFER_SIZE = 3;
 
 function clipEllipse(ctx, centerX, centerY, width, height) {
   ctx.beginPath();
@@ -69,6 +70,9 @@ class SnackChat extends Component {
     clearInterval(this.timer);
   }
 
+  positionBuffer = new Array(POSITION_BUFFER_SIZE);
+  averageBodyPosition;
+  i = -1;
   update = async () => {
     if (!this.webcam.current.webcam.current || !this.net) {
       requestAnimationFrame(this.update);
@@ -105,6 +109,49 @@ class SnackChat extends Component {
         right: pose.keypoints[6].position
       })
     };
+
+    this.i = ++this.i % POSITION_BUFFER_SIZE;
+    const forEachAttribute = callback => {
+      for (const bodyPart in ['ears', 'shoulders']) {
+        for (const attribute in [
+          'left',
+          'right',
+          'width',
+          'height',
+          'span',
+          'angle'
+        ]) {
+          callback(bodyPart, attribute);
+        }
+      }
+    };
+
+    // position buffer will contain undefined during first iteration
+    if (this.positionBuffer.includes(undefined)) {
+      this.positionBuffer[this.i] = body;
+      if (!this.i) this.averageBodyPosition = body;
+      else {
+        forEachAttribute(
+          (bodyPart, attribute) =>
+            (this.averageBodyPosition[bodyPart][attribute] =
+              this.averageBodyPosition[bodyPart][attribute] * this.i +
+              body[bodyPart][attribute])
+        ) /
+          (this.i + 1);
+      }
+    } else {
+      const oldestPosition = this.positionBuffer[this.i];
+      forEachAttribute(
+        (bodyPart, attribute) =>
+          (this.averageBodyPosition[bodyPart][attribute] =
+            (this.averageBodyPosition[bodyPart][attribute] *
+              POSITION_BUFFER_SIZE -
+              oldestPosition[bodyPart][attribute] +
+              body[bodyPart][attribute]) /
+            POSITION_BUFFER_SIZE)
+      );
+      this.positionBuffer[this.i] = body;
+    }
 
     // Video background
     this.ctx.save();
