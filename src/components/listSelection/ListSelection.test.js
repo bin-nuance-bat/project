@@ -1,5 +1,5 @@
 import React from 'react';
-import {shallow, configure, mount} from 'enzyme';
+import {render, configure} from 'enzyme';
 import ListSelection from './ListSelection.js';
 import Adapter from 'enzyme-adapter-react-16';
 
@@ -71,39 +71,53 @@ const getItems = () => [
 it('Generates the list correctly', () => {
   const props = {
     onClick: jest.fn(),
-    items: getItems()
+    items: getItems(),
+    iconStyle: ''
   };
-  const wrapper = shallow(<ListSelection {...props} />);
+  const wrapper = render(<ListSelection {...props} />);
   expect(wrapper).toMatchSnapshot();
 });
 
-it('Calls the required function', () => {
-  const mockFunc = jest.fn();
-  const items = getItems();
-
-  const wrapper = mount(<ListSelection items={items} onClick={mockFunc} />);
-  wrapper
-    .find('div[data-test="e615de4e-ce10-451b-80ad-9717662a904a"]')
-    .at(0)
-    .simulate('click');
-  expect(mockFunc).toHaveBeenCalledWith({
-    id: 'e615de4e-ce10-451b-80ad-9717662a904a',
-    name: 'Pepsi Max',
-    qualifier: null,
-    image: 'pepsi-max-can.svg',
-    isMarketplace: false,
-    count: -8,
-    price: {
-      total: 38,
-      breakdown: {
-        wholesaleCost: 34,
-        serviceFee: 4,
-        donation: 0,
-        handlingFee: 0,
-        creditCardFee: 0,
-        VAT: 0
-      }
-    },
-    sellerId: '9127e1db-2a2c-41c5-908f-781ac816b633'
-  });
+it('should order the list alphabetically and add missing letters', () => {
+  const props = {
+    onClick: jest.fn(),
+    items: getItems(),
+    iconStyle: ''
+  };
+  const alphabet = [
+    'A',
+    'B',
+    'C',
+    'D',
+    'E',
+    'F',
+    'G',
+    'H',
+    'I',
+    'J',
+    'K',
+    'L',
+    'M',
+    'N',
+    'O',
+    'P',
+    'Q',
+    'R',
+    'S',
+    'T',
+    'U',
+    'V',
+    'W',
+    'X',
+    'Y',
+    'Z'
+  ];
+  const component = render(<ListSelection {...props} />);
+  for (let i = 0; i < 26; i++) {
+    expect(
+      component[0].children.find(
+        child => child.attribs.class === 'list-selection--scroll-select'
+      ).children[i].children[0].data
+    ).toEqual(alphabet[i]);
+  }
 });
