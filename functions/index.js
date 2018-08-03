@@ -18,10 +18,6 @@ exports.sendSlackMessage = functions.https.onCall(data => {
   });
 
   return fetch(`https://slack.com/api/chat.postMessage?${options}`)
-    .then(response => {
-      return response.json();
-    })
-    .catch(() => {
-      return {ok: false};
-    });
+    .then(response => response.json())
+    .catch(() => ({ok: false}));
 });
