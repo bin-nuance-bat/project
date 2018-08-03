@@ -24,6 +24,7 @@ class EditSnack extends Component {
           iconStyle="snack-icon"
           items={this.props.items}
           onClick={this.handleClick}
+          suggestions={this.props.suggestions}
         />
       </div>
     );
@@ -39,7 +40,8 @@ EditSnack.propTypes = {
       name: PropTypes.string.isRequired,
       id: PropTypes.string.isRequired
     }).isRequired
-  ).isRequired
+  ).isRequired,
+  suggestions: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export default EditSnack;
