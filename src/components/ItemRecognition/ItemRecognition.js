@@ -110,6 +110,8 @@ class ItemRecognition extends Component {
   };
 
   render() {
+    this.props.setPrediction('fbe05463-a538-47aa-b4f1-654faa0a5b82', 'img.src');
+    this.props.history.replace('/confirmitem');
     return (
       <div className="page">
         <BackButton history={this.props.history} />
