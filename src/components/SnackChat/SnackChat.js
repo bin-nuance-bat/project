@@ -111,20 +111,12 @@ class SnackChat extends Component {
     };
 
     this.i = ++this.i % POSITION_BUFFER_SIZE;
-    const forEachAttribute = callback => {
-      for (const bodyPart in ['ears', 'shoulders']) {
-        for (const attribute in [
-          'left',
-          'right',
-          'width',
-          'height',
-          'span',
-          'angle'
-        ]) {
-          callback(bodyPart, attribute);
-        }
-      }
-    };
+    const forEachAttribute = callback =>
+      ['ears', 'shoulders'].forEach(bodyPart =>
+        ['left', 'right', 'width', 'height', 'span', 'angle'].forEach(
+          attribute => callback(bodyPart, attribute)
+        )
+      );
 
     // position buffer will contain undefined during first iteration
     if (this.positionBuffer.includes(undefined)) {
@@ -242,7 +234,7 @@ class SnackChat extends Component {
 SnackChat.propTypes = {
   setSnackChat: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
-  storeList: PropTypes.arrayOf(PropTypes.object),
+  storeList: PropTypes.object.isRequired,
   prediction: PropTypes.object
 };
 
