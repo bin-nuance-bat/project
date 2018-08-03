@@ -121,35 +121,3 @@ it('should order the list alphabetically and add missing letters', () => {
     ).toEqual(alphabet[i]);
   }
 });
-
-it('should put suggestions before the rest of the items if provided', () => {
-  const props = {
-    onClick: jest.fn(),
-    items: getItems(),
-    suggestions: [
-      {
-        id: 'e615de4e-ce10-451b-80ad-9717662a904a',
-        name: 'Pepsi Max',
-        qualifier: null,
-        image: 'pepsi-max-can.svg',
-        isMarketplace: false,
-        count: -8,
-        price: {
-          total: 38,
-          breakdown: {
-            wholesaleCost: 34,
-            serviceFee: 4,
-            donation: 0,
-            handlingFee: 0,
-            creditCardFee: 0,
-            VAT: 0
-          }
-        }
-      }
-    ],
-    iconStyle: ''
-  };
-
-  const component = render(<ListSelection {...props} />);
-  expect(component).toMatchSnapshot();
-});
