@@ -41,7 +41,7 @@ class App extends Component {
   state = {
     showTimer: false,
     isOnline: true,
-    loggedIn: true
+    loggedIn: null
   };
 
   firebaseUiConfig = {
@@ -119,6 +119,7 @@ class App extends Component {
   }
 
   render() {
+    if (this.state.loggedIn === null) return null;
     return (
       <div key={this.state.isOnline}>
         <Router>
