@@ -3,7 +3,6 @@ import {shallow, configure} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import WebcamCapture from './WebcamCapture';
 import Webcam from 'react-webcam';
-import Notification from './../Notification/Notification';
 
 configure({adapter: new Adapter()});
 
