@@ -13,8 +13,9 @@ import NotificationBar from '../NotificationBar/NotificationBar';
 
 import Admin from '../Admin/Admin';
 import Trainer from '../Admin/Trainer/Trainer';
-import ImageApproval from '../Admin/ImageApproval/ImageApproval';
+import Approval from '../Admin/Approval/Approval';
 import Viewer from '../Admin/Preview/Viewer';
+import Collection from '../Admin/Collection/Collection';
 
 const WAIT_BEFORE_DISPLAY = 45;
 const PAGES_TO_SHOW_TIMEOUT = [
@@ -72,11 +73,8 @@ class App extends Component {
             <Route exact path="/admin" component={Admin} />
             <Route exact path="/admin/preview" component={Viewer} />
             <Route exact path="/admin/training" component={Trainer} />
-            <Route
-              exact
-              path="/admin/imageapproval"
-              component={ImageApproval}
-            />
+            <Route exact path="/admin/approval" component={Approval} />
+            <Route exact path="/admin/collection" component={Collection} />
           </Switch>
         </Router>
         {this.state.showTimer && (
