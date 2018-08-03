@@ -24,16 +24,17 @@ class WebcamCapture extends Component {
   };
 
   webcam = React.createRef();
+  fileInput = React.createRef();
 
   requestFakeScreenshot = () =>
     new Promise((resolve, reject) => {
-      const input = this.fileInput;
+      const input = this.fileInput.current;
       if (input.files == null || input.files[0] == null) {
         return reject(new Error('No files present'));
       }
       const reader = new FileReader();
-      reader.onload = ({target: {result}}) => {
-        resolve(result);
+      reader.onload = event => {
+        resolve(event.target.result);
       };
       reader.readAsDataURL(input.files[0]);
     });
@@ -110,10 +111,10 @@ class WebcamCapture extends Component {
     if (this.state.cameraConnected) {
       return this.state.fakeWebcam ? (
         <input
-          id="fileUploadBrowse"
+          id="fileUpload"
           type="file"
           accept="image/*"
-          ref={fileInput => (this.fileInput = fileInput)}
+          ref={this.fileInput}
         />
       ) : (
         <div className="webcam-container">
