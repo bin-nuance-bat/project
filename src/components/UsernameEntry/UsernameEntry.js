@@ -10,10 +10,6 @@ class UsernameEntry extends React.Component {
     // TODO handle when result is false (i.e. message fails to send - redirect to error page?)
   };
 
-  componentDidMount() {
-    this.props.loadUsers();
-  }
-
   render() {
     return (
       <div className="username-entry--page">
@@ -39,7 +35,6 @@ class UsernameEntry extends React.Component {
 UsernameEntry.propTypes = {
   users: PropTypes.arrayOf(PropTypes.object).isRequired,
   history: PropTypes.shape({replace: PropTypes.func.isRequired}).isRequired,
-  loadUsers: PropTypes.func.isRequired,
   sendSlackMessage: PropTypes.func.isRequired
 };
 

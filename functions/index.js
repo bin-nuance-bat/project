@@ -21,3 +21,11 @@ exports.sendSlackMessage = functions.https.onCall(data => {
     .then(response => response.json())
     .catch(() => ({ok: false}));
 });
+
+exports.loadSlackUsers = functions.https.onCall(() => {
+  const token = functions.config().slack.token;
+
+  return fetch(`https://slack.com/api/users.list?token=${token}`)
+    .then(response => response.json())
+    .catch(() => ({ok: false}));
+});

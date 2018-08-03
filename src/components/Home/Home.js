@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 class Home extends React.Component {
   componentDidMount() {
     this.props.loadStoreList();
+    this.props.loadUsers();
   }
 
   handleSnackChatClick = () => {
@@ -64,7 +65,8 @@ class Home extends React.Component {
 Home.propTypes = {
   loadStoreList: PropTypes.func.isRequired,
   setSendWithPhoto: PropTypes.func.isRequired,
-  history: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired,
+  loadUsers: PropTypes.func.isRequired
 };
 
 export default Home;
