@@ -16,12 +16,13 @@ class ListSelection extends Component {
     const header = document.getElementById('header');
     scrollSelect.addEventListener('touchmove', this.preventDefault, false);
     header.addEventListener('touchmove', this.preventDefault, false);
-    this.scrollSelectTop = document
-      .getElementById('scroll-select')
-      .getBoundingClientRect().top;
-    this.selectElementHeight = document
-      .getElementById('select-element')
-      .getBoundingClientRect().height;
+
+    if (scrollSelect)
+      this.scrollSelectTop = scrollSelect.getBoundingClientRect().top;
+
+    const selectElement = document.getElementById('select-element');
+    if (selectElement)
+      this.selectElementHeight = selectElement.getBoundingClientRect().height;
   }
 
   startsWithLetter = str => {
@@ -49,6 +50,8 @@ class ListSelection extends Component {
           items.splice(j, 0, [expectedCharacter, []]);
       }
     }
+    if (this.props.suggestions && this.props.suggestions !== [])
+      items.unshift(['\u00A0', this.props.suggestions]);
     return items;
   })();
 
@@ -81,7 +84,8 @@ class ListSelection extends Component {
     if (index < 0 || Object.is(index, -0)) index = 0;
     if (index >= this.formattedItems.length)
       index = this.formattedItems.length - 1;
-    const letter = this.formattedItems[index][0];
+    let letter = this.formattedItems[index][0];
+    if (letter === '\u00A0') letter = this.formattedItems[1][0];
     if (letter !== this.state.bubbleAt) {
       this.setState(prevState => ({
         bubbleAt: letter,
@@ -112,7 +116,7 @@ class ListSelection extends Component {
                 groupItems.length > 0 ? (
                   <div key={group} id={group}>
                     <p className="list-selection--list-text list-selection--list-text--group-header">
-                      {group.toUpperCase()}
+                      {group !== '\u00A0' ? group.toUpperCase() : 'Suggestions'}
                     </p>
                     <img
                       src={line}
@@ -179,7 +183,8 @@ ListSelection.propTypes = {
       name: PropTypes.string.isRequired,
       id: PropTypes.string.isRequired
     }).isRequired
-  ).isRequired
+  ).isRequired,
+  suggestions: PropTypes.arrayOf(PropTypes.object)
 };
 
 export default ListSelection;
