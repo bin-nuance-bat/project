@@ -30,10 +30,6 @@ exports.loadSlackUsers = functions.https.onCall(() => {
   const token = functions.config().slack.token;
 
   return fetch(`https://slack.com/api/users.list?token=${token}`)
-    .then(response => {
-      return response.json();
-    })
-    .catch(() => {
-      return {ok: false};
-    });
+    .then(response => response.json())
+    .catch(() => ({ok: false}));
 });
