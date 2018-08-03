@@ -1,15 +1,23 @@
 .webcam-container {
-	width: 100%;
-	padding-top: 100%;
-	overflow: hidden;
-	position: relative;
+  width: 100%;
+  padding-top: 100%;
+  overflow: hidden;
+  position: relative;
 }
 
 .webcam-capture--video {
-	object-fit: cover;
-	transform: rotateY(180deg);
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
+  object-fit: cover;
+  transform: rotateY(180deg);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+#view-finder {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
 }

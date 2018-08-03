@@ -2,10 +2,11 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {ControllerDataset} from '../Admin/ControllerDataset';
 import Model from './../../utils/model';
+
 import WebcamCapture from '../WebcamCapture/WebcamCapture';
-import './ItemRecognition.css';
 import BackButton from '../BackButton/BackButton';
 import MobileNet from '../Admin/Trainer/MobileNet';
+
 import './ItemRecognition.css';
 
 const TIMEOUT_IN_SECONDS = 10;
@@ -26,11 +27,7 @@ class ItemRecognition extends Component {
   }
 
   state = {
-    status: 'Scan item'
-  };
-
-  state = {
-    showRetryMessage: false
+    text: 'Scan item using the front facing camera'
   };
 
   componentDidMount() {
@@ -65,48 +62,45 @@ class ItemRecognition extends Component {
   };
 
   handleImg = img => {
-    if (this.model) {
-      this.model.predict(img).then(async items => {
-        const item = items[0];
-        this.setState({
-          status: items
-            .sort((a, b) => a.id.localeCompare(b.id))
-            .map(
-              i =>
-                `${this.props.storeList[i.id].name} ${(i.value * 100).toFixed(
-                  0
-                )}% `
-            )
-        });
-        if (
-          (item.value > ML_THRESHOLD &&
-            item.id !== 'unknown' &&
-            !this.props.prediction) ||
-          (Date.now() - this.scanningStartTime) / 1000 > TIMEOUT_IN_SECONDS
-        ) {
-          await this.addTrainingImage(img.src, item.id);
-          this.props.setPrediction(item.id, img.src);
-
-          const suggestions = [];
-          for (let i = 1; i < 4; i++) {
-            suggestions.push(this.props.storeList[items[i].id]);
-          }
-          this.props.setSuggestions(suggestions);
-          this.props.history.replace(
-            item.id === 'unknown' ? '/editsnack' : '/confirmitem'
-          );
-        } else {
-          if (
-            !this.state.showRetryMessage &&
-            (Date.now() - this.scanningStartTime) / 1000 >
-              TIMEOUT_IN_SECONDS - SHOW_RETRY_FOR
-          )
-            this.setState({showRetryMessage: true});
-          if (this.webcam.current)
-            this.webcam.current.requestScreenshot().then(this.handleImg);
+    if (this.success) return;
+    this.model.predict(img).then(async items => {
+      const item = items[0];
+      if (
+        (item.value > ML_THRESHOLD &&
+          item.id !== 'unknown' &&
+          !this.props.prediction) ||
+        (Date.now() - this.scanningStartTime) / 1000 > TIMEOUT_IN_SECONDS
+      ) {
+        this.success = true;
+        this.addTrainingImage(img.src, item.id);
+        await this.props.setPrediction(item.id, img.src);
+        const suggestions = [];
+        for (let i = 1; i < 4; i++) {
+          suggestions.push(this.props.storeList[items[i].id]);
         }
-      });
-    }
+        this.props.setSuggestions(suggestions);
+        this.webcam.current.success(() => {
+          this.setState({text: 'Snack recognised!', subText: null});
+          setTimeout(() => {
+            this.props.history.replace(
+              item.id === 'unknown' ? '/editsnack' : '/confirmitem'
+            );
+          }, 500);
+        });
+      } else {
+        if (
+          !this.state.subText &&
+          (Date.now() - this.scanningStartTime) / 1000 >
+            TIMEOUT_IN_SECONDS - SHOW_RETRY_FOR
+        )
+          this.setState({
+            text: "We can't recognise the snack",
+            subText: 'Try turning the snack so the logo is seen by the camera'
+          });
+        if (this.webcam.current)
+          this.webcam.current.requestScreenshot().then(this.handleImg);
+      }
+    });
   };
 
   render() {
@@ -114,20 +108,16 @@ class ItemRecognition extends Component {
       <div className="page">
         <BackButton history={this.props.history} />
         <header>
-          {this.state.showRetryMessage ? (
-            <div>
-              <div className="item-recognition item-recognition--instructions">
-                We can&#39;t recognise the snack
-              </div>
-              <div className="item-recognition--instructions-small">
-                Try turning the snack so the logo is seen by the camera
-              </div>
-            </div>
-          ) : (
+          <div>
             <div className="item-recognition item-recognition--instructions">
-              Scan item using the front facing camera
+              {this.state.text}
             </div>
-          )}
+            {this.state.subText && (
+              <div className="item-recognition--instructions-small">
+                {this.state.subText}
+              </div>
+            )}
+          </div>
         </header>
         <WebcamCapture
           className="item-recognition item-recognition--display"
