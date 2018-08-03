@@ -35,12 +35,13 @@ class App extends Component {
     super(props);
     initFirebase();
     this.firebaseAuth = firebase.auth();
+    window.auth = this.firebaseAuth;
   }
 
   state = {
     showTimer: false,
     isOnline: true,
-    loggedIn: false
+    loggedIn: true
   };
 
   firebaseUiConfig = {
@@ -52,15 +53,15 @@ class App extends Component {
       }
     ],
     callbacks: {
-      signInSuccessWithAuthResult: res => {
-        if (res.user) {
-          this.setState({loggedIn: true});
-        }
-      }
+      signInSuccessWithAuthResult: res => this.setState({loggedIn: !!res.user})
     }
   };
 
   componentDidMount() {
+    this.firebaseAuth.onAuthStateChanged(user =>
+      this.setState({loggedIn: !!user})
+    );
+
     document.body.addEventListener('touchstart', this.resetTimeoutTimer);
     window.addEventListener('online', this.handleOnline);
     window.addEventListener('offline', this.handleOffline);
