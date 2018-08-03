@@ -5,6 +5,8 @@ import {
 } from './actionTypes';
 
 import retry from '../../utils/retry';
+import firebase from 'firebase/app';
+import functions from 'firebase/functions';
 
 const token = process.env.REACT_APP_SLACK_TOKEN;
 
@@ -54,25 +56,24 @@ export const sendSlackMessage = userid => async (dispatch, getState) => {
 
   try {
     const result = await retry(
-      () =>
-        fetch(`https://slack.com/api/chat.postMessage?token=${token}&
-      channel=${userid}&icon_url=https://honesty.store/assets/android/icon@MDPI.png&username=honesty.store&
-      text=${`Click to purchase your ${itemName}: https://honesty.store/item/${actualItemID}`}`),
+      () => attemptSendSlackMessage(userid, itemName, actualItemID),
       () => dispatch(setSendMessageError(true))
-    ).then(response => {
-      dispatch(setSendMessageError(false));
-      return response.json();
-    });
+    );
+    dispatch(setSendMessageError(false));
+
     return result.ok;
   } catch (error) {
     return false;
   }
 };
 
-// import initFirebase from '../../utils/firebase';
-// import firebase from 'firebase/app';
-// import functions from 'firebase/functions';
-//     initFirebase();
-//     const text = firebase.functions().httpsCallable('text');
-//     text({text: 'a'}).then(function(result) {
-//       console.log(result);
+const attemptSendSlackMessage = async (userid, itemName, actualItemID) => {
+  const send = firebase.functions().httpsCallable('sendSlackMessage');
+  const result = await send({userid, itemName, actualItemID}).then(response => {
+    return response.data;
+  });
+  if (!result.ok) {
+    throw 'Error';
+  }
+  return result;
+};
