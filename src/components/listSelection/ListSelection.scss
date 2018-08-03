@@ -54,6 +54,11 @@ $username-icon-size: 48px;
   display: flex;
 }
 
+.list-selection--selected {
+  font-weight: bold;
+  color: $light-blue;
+}
+
 .list-selection--group-splitter {
   width: 685px;
 }
@@ -68,6 +73,7 @@ $username-icon-size: 48px;
   width: 5%;
   text-align: center;
   font-family: FaricyNew-Bold;
+  z-index: 2;
 }
 
 .list-selection--list {
