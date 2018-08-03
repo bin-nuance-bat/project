@@ -239,15 +239,14 @@ export class ControllerDataset {
     return await this.db
       .collection('training_data')
       .where('trusted', '==', false)
-      .orderBy('timestamp')
-      .startAfter(timestamp)
+      .orderBy('timestamp', 'desc')
+      //      .startAfter(timestamp)
       .limit(1)
       .get()
       .then(snapshot => ({
         ...snapshot.docs[0].data(),
         id: snapshot.docs[0].id
-      }))
-      .catch(() => null);
+      }));
   }
 
   async getUntrustedImages() {

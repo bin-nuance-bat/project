@@ -127,21 +127,21 @@ class Admin extends Component {
             <div>
               <button
                 className="button button-admin"
-                data-url="/admin/training"
+                data-url="/admin/collection"
                 onClick={this.navigate}>
-                Model Training
+                Data Collection
               </button>
               <button
                 className="button button-admin"
-                data-url="/admin/imageapproval"
+                data-url="/admin/approval"
                 onClick={this.navigate}>
-                Training Data Review
+                Data Review
               </button>
               <button
                 className="button button-admin"
                 data-url="/admin/preview"
                 onClick={this.navigate}>
-                Image Preview
+                Data Preview
               </button>
             </div>
             <div>

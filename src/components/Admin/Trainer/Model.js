@@ -104,7 +104,6 @@ class Model {
       examples,
       completion => {
         this.setCompletion(completion);
-        document.getElementById(`${label}-count`).innerHTML++;
         this.items[label].mlCount++;
         if (completion === 1) {
           this.setReadyStatus('Done');
