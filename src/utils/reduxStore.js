@@ -5,12 +5,12 @@ import {
   prediction,
   suggestions
 } from '../components/ItemRecognition/ItemRecognitionReducer';
+import {sendMessageError} from '../components/UsernameEntry/reducer';
 import {
+  sendWithPhoto,
   users,
-  loadUserListError,
-  sendMessageError
-} from '../components/UsernameEntry/reducer';
-import {sendWithPhoto} from '../components/Home/reducer';
+  loadUserListError
+} from '../components/Home/reducer';
 import {actualItem} from '../components/ConfirmationBox/reducer';
 import {snackChat} from '../components/SnackChat/SnackChatReducer';
 
