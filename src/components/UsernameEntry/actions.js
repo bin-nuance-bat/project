@@ -1,6 +1,8 @@
 import {SET_SEND_MESSAGE_ERROR} from './actionTypes';
 
 import retry from '../../utils/retry';
+import firebase from 'firebase/app';
+import 'firebase/functions';
 
 import firebase from 'firebase/app';
 import 'firebase/functions';
@@ -31,7 +33,8 @@ export const sendSlackMessage = userid => async (dispatch, getState) => {
 };
 
 const attemptSendSlackMessage = async (userid, itemName, actualItemID) => {
-  const send = firebase.functions().httpsCallable('loadSlackUsers');
+  const send = firebase.functions().httpsCallable('sendSlackMessage');
+
   const result = await send({userid, itemName, actualItemID}).then(response => {
     return response.data;
   });
