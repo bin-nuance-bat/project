@@ -15,4 +15,5 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-registerServiceWorker();
+if (window.location.host === 'honesty-store-kiosk.firebaseapp.com')
+  registerServiceWorker();
