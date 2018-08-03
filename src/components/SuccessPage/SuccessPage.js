@@ -8,7 +8,7 @@ class SuccessPage extends Component {
     this.timeout = setTimeout(() => this.props.history.replace('/'), 10000);
   }
 
-  componentDidUnmount() {
+  componentWillUnmount() {
     clearTimeout(this.timeout);
   }
 
@@ -31,7 +31,7 @@ class SuccessPage extends Component {
 SuccessPage.propTypes = {
   history: PropTypes.object.isRequired,
   actualItem: PropTypes.string.isRequired,
-  storeList: PropTypes.arrayOf(PropTypes.object).isRequired
+  storeList: PropTypes.object.isRequired
 };
 
 export default SuccessPage;

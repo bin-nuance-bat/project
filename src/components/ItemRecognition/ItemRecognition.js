@@ -63,14 +63,15 @@ class ItemRecognition extends Component {
 
   handleImg = img => {
     if (this.success) return;
+
     this.model.predict(img).then(async items => {
       const item = items[0];
       if (
-        (item.value > ML_THRESHOLD &&
-          item.id !== 'unknown' &&
-          !this.props.prediction) ||
-        (Date.now() - this.scanningStartTime) / 1000 > TIMEOUT_IN_SECONDS
+        item.value > ML_THRESHOLD &&
+        item.id !== 'unknown' &&
+        !this.props.prediction
       ) {
+        // Item recognised
         this.success = true;
         this.addTrainingImage(img.src, item.id);
         await this.props.setPrediction(item.id, img.src);
@@ -82,24 +83,35 @@ class ItemRecognition extends Component {
         this.webcam.current.success(() => {
           this.setState({text: 'Snack recognised!', subText: null});
           setTimeout(() => {
-            this.props.history.replace(
-              item.id === 'unknown' ? '/editsnack' : '/confirmitem'
-            );
+            this.props.history.replace('/confirmitem');
           }, 500);
         });
-      } else {
-        if (
-          !this.state.subText &&
-          (Date.now() - this.scanningStartTime) / 1000 >
-            TIMEOUT_IN_SECONDS - SHOW_RETRY_FOR
-        )
-          this.setState({
-            text: "We can't recognise the snack",
-            subText: 'Try turning the snack so the logo is seen by the camera'
-          });
-        if (this.webcam.current)
-          this.webcam.current.requestScreenshot().then(this.handleImg);
+      } else if (
+        (Date.now() - this.scanningStartTime) / 1000 >
+        TIMEOUT_IN_SECONDS
+      ) {
+        // Timed out
+        const suggestions = [];
+        for (let i = 1; i < 4; i++) {
+          suggestions.push(this.props.storeList[items[i].id]);
+        }
+        this.props.setSuggestions(suggestions);
+        this.props.history.replace('/editsnack');
+      } else if (
+        !this.state.subText &&
+        (Date.now() - this.scanningStartTime) / 1000 >
+          TIMEOUT_IN_SECONDS - SHOW_RETRY_FOR
+      ) {
+        // Nearly timed out
+        this.setState({
+          text: "We can't recognise the snack",
+          subText: 'Try turning the snack so the logo is seen by the camera'
+        });
       }
+
+      // Get the next frame
+      if (this.webcam.current)
+        this.webcam.current.requestScreenshot().then(this.handleImg);
     });
   };
 
