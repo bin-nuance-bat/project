@@ -151,9 +151,5 @@ it('should put suggestions before the rest of the items if provided', () => {
   };
 
   const component = render(<ListSelection {...props} />);
-  expect(
-    component[0].children.find(
-      child => child.attribs.class === 'list-selection--list'
-    ).children[0].children[0].children[0].data
-  ).toEqual('Suggestions');
+  expect(component).toMatchSnapshot();
 });
