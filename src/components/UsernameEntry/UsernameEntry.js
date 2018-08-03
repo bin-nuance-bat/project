@@ -5,17 +5,16 @@ import ListSelection from '../listSelection/ListSelection';
 
 class UsernameEntry extends React.Component {
   state = {
-    showConfirmButton: false,
     selectedName: null
   };
 
   promptToConfirm = user => {
-    this.setState({showConfirmButton: true, selectedName: user.name});
+    this.setState({selectedName: user.name});
   };
 
   deselect = () => {
-    if (this.state.showConfirmButton) {
-      this.setState({showConfirmButton: false, selectedName: null});
+    if (this.state.selectedName) {
+      this.setState({selectedName: null});
     }
   };
 
@@ -36,7 +35,7 @@ class UsernameEntry extends React.Component {
           <div className="text-select-slack">
             Please select your slack handle to send a reminder
           </div>
-          {this.state.showConfirmButton && (
+          {this.state.selectedName && (
             <div className="username-entry--confirm-div">
               <button
                 className="button username-entry--confirm-button"
