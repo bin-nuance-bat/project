@@ -35,6 +35,11 @@ class App extends Component {
     document.body.addEventListener('touchstart', this.resetTimeoutTimer);
     window.addEventListener('online', this.handleOnline);
     window.addEventListener('offline', this.handleOffline);
+
+    const isValidRoute =
+      window.location.pathname === '/' ||
+      window.location.pathname.startsWith('/admin');
+    if (!isValidRoute) window.location.href = '/';
   }
 
   resetTimeoutTimer = () => {
