@@ -6,7 +6,7 @@ import {
 
 import retry from '../../utils/retry';
 import firebase from 'firebase/app';
-import functions from 'firebase/functions';
+import 'firebase/functions';
 
 const token = process.env.REACT_APP_SLACK_TOKEN;
 
@@ -73,7 +73,7 @@ const attemptSendSlackMessage = async (userid, itemName, actualItemID) => {
     return response.data;
   });
   if (!result.ok) {
-    throw 'Error';
+    throw Error('Unknown Error');
   }
   return result;
 };
