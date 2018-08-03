@@ -9,8 +9,8 @@ class UsernameEntry extends React.Component {
     selectedName: null
   };
 
-  promptToConfirm = e => {
-    this.setState({showConfirmButton: true, selectedName: e.name});
+  promptToConfirm = user => {
+    this.setState({showConfirmButton: true, selectedName: user.name});
   };
 
   deselect = () => {
