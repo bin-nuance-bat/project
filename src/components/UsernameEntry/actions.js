@@ -73,7 +73,7 @@ const attemptSendSlackMessage = async (userid, itemName, actualItemID) => {
     return response.data;
   });
   if (!result.ok) {
-    throw Error('Unknown Error');
+    throw Error('A network error occured');
   }
   return result;
 };
