@@ -118,6 +118,7 @@ class WebcamCapture extends Component {
     if (this.state.cameraConnected) {
       return (
         <div className="webcam-container">
+          <ViewFinder ref={this.viewFinder} />
           {this.state.fakeWebcam ? (
             <input
               id="fileUpload"
@@ -136,7 +137,6 @@ class WebcamCapture extends Component {
               screenshotWidth={this.props.imgSize * (4 / 3)}
             />
           )}
-          <ViewFinder ref={this.viewFinder} />
         </div>
       );
     }
