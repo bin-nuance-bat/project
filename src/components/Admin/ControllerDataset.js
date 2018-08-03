@@ -239,8 +239,8 @@ export class ControllerDataset {
     return await this.db
       .collection('training_data')
       .where('trusted', '==', false)
-      .orderBy('timestamp', 'desc')
-      //      .startAfter(timestamp)
+      .orderBy('timestamp')
+      .startAfter(timestamp)
       .limit(1)
       .get()
       .then(snapshot => ({
