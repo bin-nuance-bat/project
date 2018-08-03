@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './UsernameEntry.css';
-import Logo from '../Logo/Logo';
 import ListSelection from '../listSelection/ListSelection';
 
 class UsernameEntry extends React.Component {
@@ -18,8 +17,7 @@ class UsernameEntry extends React.Component {
   render() {
     return (
       <div className="username-entry--page">
-        <div className="username-entry--header">
-          <Logo />
+        <div className="username-entry--header" id="header">
           <div className="text-select-slack">
             Please select your slack handle to send a reminder
           </div>

@@ -1,16 +1,21 @@
 import React, {Component} from 'react';
-import Webcam from 'react-webcam';
-import Notification from './../Notification/Notification';
 import PropTypes from 'prop-types';
+
+import Webcam from 'react-webcam';
+import Notification from '../Notification/Notification';
+import ViewFinder from './ViewFinder';
+
 import './WebcamCapture.css';
 
 class WebcamCapture extends Component {
   state = {
     isDetecting: true,
-    cameraConnected: false
+    cameraConnected: false,
+    animation: 0
   };
 
   webcam = React.createRef();
+  viewFinder = React.createRef();
 
   requestScreenshot = () => {
     if (!this.webcam.current) return Promise.reject('Failed to load webcam.');
@@ -54,6 +59,8 @@ class WebcamCapture extends Component {
     return this.canvas.toDataURL();
   }
 
+  success = callback => this.viewFinder.current.success(callback);
+
   componentDidMount() {
     if (!navigator.mediaDevices) return;
     this.setupWebcam();
@@ -84,6 +91,7 @@ class WebcamCapture extends Component {
             className="webcam-capture--video"
             screenshotWidth={this.props.imgSize * (4 / 3)}
           />
+          <ViewFinder ref={this.viewFinder} />
         </div>
       );
     }

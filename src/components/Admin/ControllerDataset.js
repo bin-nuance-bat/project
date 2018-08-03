@@ -70,12 +70,12 @@ export class ControllerDataset {
   };
 
   setLabel = async (id, label) => {
-    await this.db
-      .collection('training_data')
-      .doc(id)
-      .update({
-        label
-      });
+    const ref = this.db.collection('training_data').doc(id);
+    this.changeItemCount((await ref.get()).data().label, -1);
+    ref.update({
+      label
+    });
+    this.changeItemCount(label, 1);
   };
 
   addImage = (image, trusted, callback = null) => {
@@ -103,7 +103,7 @@ export class ControllerDataset {
       return;
     }
 
-    this.changeItemCount(examples[0].label, examples.length);
+    if (trusted) this.changeItemCount(examples[0].label, examples.length);
     let count = 1;
 
     examples.forEach(image => {
@@ -235,10 +235,12 @@ export class ControllerDataset {
     });
   }
 
-  async getUntrustedImage() {
+  async getUntrustedImage(timestamp) {
     return await this.db
       .collection('training_data')
       .where('trusted', '==', false)
+      .orderBy('timestamp')
+      .startAfter(timestamp)
       .limit(1)
       .get()
       .then(snapshot => ({
@@ -246,5 +248,21 @@ export class ControllerDataset {
         id: snapshot.docs[0].id
       }))
       .catch(() => null);
+  }
+
+  async getUntrustedImages() {
+    const images = [];
+    await this.db
+      .collection('training_data')
+      .where('trusted', '==', false)
+      .orderBy('timestamp')
+      .limit(20)
+      .get()
+      .then(snapshot => {
+        snapshot.forEach(doc => {
+          images.push({...doc.data(), id: doc.id});
+        });
+      });
+    return images;
   }
 }

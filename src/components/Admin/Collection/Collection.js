@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 //import {ControllerDataset} from '../ControllerDataset';
 
-import WebcamCapture from '../WebcamCapture/WebcamCapture';
+import WebcamCapture from '../../WebcamCapture/WebcamCapture';
 
 class Collection extends Component {
   render() {
