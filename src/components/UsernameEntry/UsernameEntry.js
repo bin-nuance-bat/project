@@ -5,21 +5,23 @@ import ListSelection from '../listSelection/ListSelection';
 
 class UsernameEntry extends React.Component {
   state = {
-    selectedName: null
+    selectedUser: null
   };
 
   promptToConfirm = user => {
-    this.setState({selectedName: user.name});
+    this.setState({selectedUser: user});
   };
 
   deselect = () => {
-    if (this.state.selectedName) {
-      this.setState({selectedName: null});
+    if (this.state.selectedUser) {
+      this.setState({selectedUser: null});
     }
   };
 
-  sendReminder = async user => {
-    const result = await this.props.sendSlackMessage(user.id);
+  sendReminder = async () => {
+    const result = await this.props.sendSlackMessage(
+      this.state.selectedUser.id
+    );
     if (result) this.props.history.replace('/success');
     // TODO handle when result is false (i.e. message fails to send - redirect to error page?)
   };
@@ -35,7 +37,7 @@ class UsernameEntry extends React.Component {
           <div className="text-select-slack">
             Please select your slack handle to send a reminder
           </div>
-          {this.state.selectedName && (
+          {this.state.selectedUser && (
             <div className="username-entry--confirm-div">
               <button
                 className="button username-entry--confirm-button"
@@ -51,7 +53,9 @@ class UsernameEntry extends React.Component {
               items={this.props.users}
               onClick={this.promptToConfirm}
               iconStyle="username-icon"
-              selected={this.state.selectedName}
+              selected={
+                this.state.selectedUser ? this.state.selectedUser.name : null
+              }
             />
           )}
         </div>
