@@ -27,15 +27,13 @@ exports.sendSlackMessage = functions.https.onCall(data => {
 });
 
 exports.loadSlackUsers = functions.https.onCall(() => {
-  const token = functions.config().react_app.slack_token;
+  const token = functions.config().slack.token;
 
-  const result = fetch(`https://slack.com/api/users.list?token=${token}`)
+  return fetch(`https://slack.com/api/users.list?token=${token}`)
     .then(response => {
       return response.json();
     })
     .catch(() => {
       return {ok: false};
     });
-
-  return result;
 });
