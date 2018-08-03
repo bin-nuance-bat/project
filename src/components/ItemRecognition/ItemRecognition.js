@@ -74,6 +74,11 @@ class ItemRecognition extends Component {
         this.success = true;
         this.addTrainingImage(img.src, item.id);
         await this.props.setPrediction(item.id, img.src);
+        const suggestions = [];
+        for (let i = 1; i < 4; i++) {
+          suggestions.push(this.props.storeList[items[i].id]);
+        }
+        this.props.setSuggestions(suggestions);
         this.webcam.current.success(() => {
           this.setState({text: 'Snack recognised!', subText: null});
           setTimeout(() => {
@@ -132,7 +137,8 @@ ItemRecognition.propTypes = {
     img: PropTypes.string.isRequired
   }),
   history: PropTypes.object.isRequired,
-  storeList: PropTypes.object.isRequired
+  storeList: PropTypes.object.isRequired,
+  setSuggestions: PropTypes.func.isRequired
 };
 
 export default ItemRecognition;

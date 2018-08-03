@@ -25,4 +25,14 @@ describe('<WebcamCapture />', () => {
     wrapper.setState({isDetecting: false, cameraConnected: true});
     expect(wrapper.find(Webcam).props().screenshotFormat).toEqual('image/jpeg');
   });
+
+  it('Renders file input when fakeWebcam state is set', () => {
+    const wrapper = shallow(<WebcamCapture imgSize={300} />);
+    wrapper.setState({
+      isDetecting: false,
+      cameraConnected: true,
+      fakeWebcam: true
+    });
+    expect(wrapper.find('input')).toHaveLength(1);
+  });
 });
