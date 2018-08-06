@@ -53,13 +53,14 @@ class App extends Component {
       }
     ],
     callbacks: {
-      signInSuccessWithAuthResult: res => this.setState({loggedIn: !!res.user})
+      signInSuccessWithAuthResult: res =>
+        this.setState({loggedIn: res.user !== null})
     }
   };
 
   componentDidMount() {
     this.firebaseAuth.onAuthStateChanged(user =>
-      this.setState({loggedIn: !!user})
+      this.setState({loggedIn: user !== null})
     );
 
     document.body.addEventListener('touchstart', this.resetTimeoutTimer);

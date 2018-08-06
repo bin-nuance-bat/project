@@ -25,8 +25,8 @@ class Admin extends Component {
     firebase.auth().signInWithRedirect(new firebase.auth.GoogleAuthProvider());
   };
 
-  loggedIn = user => {
-    if (!user) {
+  loggedIn = userEntry => {
+    if (!userEntry) {
       this.setState({status: 'You are not authenticated'});
       return;
     }
@@ -34,7 +34,7 @@ class Admin extends Component {
     const userRef = firebase
       .firestore()
       .collection('users')
-      .doc(user.uid);
+      .doc(userEntry.uid);
 
     userRef.get().then(userDoc => {
       this.setState({loggedIn: true});
@@ -47,7 +47,7 @@ class Admin extends Component {
       } else {
         this.setState({status: 'You are not an administrator.'});
         userRef.set({
-          name: user.displayName,
+          name: userEntry.displayName,
           admin: false
         });
       }
