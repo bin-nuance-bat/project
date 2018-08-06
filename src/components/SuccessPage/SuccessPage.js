@@ -31,7 +31,7 @@ class SuccessPage extends Component {
 SuccessPage.propTypes = {
   history: PropTypes.object.isRequired,
   actualItem: PropTypes.string.isRequired,
-  storeList: PropTypes.arrayOf(PropTypes.object).isRequired
+  storeList: PropTypes.object.isRequired
 };
 
 export default SuccessPage;

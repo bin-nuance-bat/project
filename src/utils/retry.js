@@ -9,7 +9,7 @@ const retry = async (
 
   while (attempts < totalAttempts) {
     try {
-      return asyncRequest();
+      return await asyncRequest();
     } catch (error) {
       if (attempts === 0) {
         onInitialError();

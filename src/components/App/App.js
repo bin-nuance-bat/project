@@ -90,7 +90,7 @@ class App extends Component {
 
   render() {
     return (
-      <div key={this.state.isOnline}>
+      <div key={this.connectionError()}>
         <Router>
           <Switch>
             <Route exact path="/" component={Home} />

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import _ from 'lodash';
 import './ListSelection.css';
 import line from './line.svg';
+import tick from './tick.svg';
 import PropTypes from 'prop-types';
 import Bubble from './Bubble';
 
@@ -137,10 +138,19 @@ class ListSelection extends Component {
                           className={
                             'list-selection--item-icon ' + this.props.iconStyle
                           }
-                          src={item.image}
+                          src={
+                            item.name === this.props.selected
+                              ? tick
+                              : item.image
+                          }
                           alt=""
                         />
-                        <p className="list-selection--list-text list-selection--list-text--item-name">
+                        <p
+                          className={`list-selection--list-text list-selection--list-text--item-name ${
+                            item.name === this.props.selected
+                              ? 'list-selection--selected'
+                              : ''
+                          }`}>
                           {item.name}
                         </p>
                       </div>
@@ -184,7 +194,8 @@ ListSelection.propTypes = {
       id: PropTypes.string.isRequired
     }).isRequired
   ).isRequired,
-  suggestions: PropTypes.arrayOf(PropTypes.object)
+  suggestions: PropTypes.arrayOf(PropTypes.object),
+  selected: PropTypes.string
 };
 
 export default ListSelection;
