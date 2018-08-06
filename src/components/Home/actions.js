@@ -36,7 +36,6 @@ export const attemptLoadUsers = async () => {
   const load = firebase.functions().httpsCallable('loadSlackUsers');
   const result = await load();
   const data = result.data;
-
   if (!data.ok) throw Error('Failed to fetch users');
   else return data;
 };
