@@ -36,11 +36,11 @@ class Admin extends Component {
       .collection('users')
       .doc(user.uid);
 
-    userRef.get().then(u => {
+    userRef.get().then(userDoc => {
       this.setState({loggedIn: true});
-      if (u.exists) {
-        if (u.data().admin) {
-          this.initAdmin(u.data().name);
+      if (userDoc.exists) {
+        if (userDoc.data().admin) {
+          this.initAdmin(userDoc.data().name);
         } else {
           this.setState({status: 'You are not an administrator.'});
         }
