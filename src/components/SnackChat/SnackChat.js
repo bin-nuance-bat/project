@@ -6,10 +6,8 @@ import './SnackChat.css';
 
 const FEED_SIZE = 480;
 const CAPTURE_SIZE = 200;
-
-// takes a bit of time for the camera to load -> these values give about 5 ACTUAL seconds of prep and countdown each
-const COUNTDOWN_TIME = 7;
-const PREPARATION_TIME = 3;
+const COUNTDOWN_TIME = 3;
+const LOADING_ANIMATION_TIME = 3;
 
 function clipEllipse(ctx, centerX, centerY, width, height) {
   ctx.beginPath();
@@ -55,21 +53,63 @@ class SnackChat extends Component {
   canvas = React.createRef();
 
   state = {
-    counter: PREPARATION_TIME + COUNTDOWN_TIME,
+    loading: true,
+    counter: COUNTDOWN_TIME + LOADING_ANIMATION_TIME,
     captured: false
   };
 
   componentDidMount() {
     posenet.load(0.5).then(net => (this.net = net));
-    this.timer = setInterval(
-      () => this.setState({counter: this.state.counter - 1}),
-      1000
-    );
   }
 
   componentWillUnmount() {
     clearInterval(this.timer);
   }
+
+  countdown = async () => {
+    this.timer = setInterval(
+      () => this.setState(prevState => ({counter: prevState.counter - 1})),
+      1000
+    );
+  };
+
+  playLoadingAnimation = () => {
+    const itemPositions = [];
+
+    const loadingAnimation = () => {
+      if (this.state.counter < COUNTDOWN_TIME) return;
+
+      // Video background
+      const video = this.webcam.current.webcam.current.video;
+      this.ctx.save();
+      this.ctx.scale(-1, 1);
+      this.ctx.drawImage(
+        video,
+        (video.videoWidth - this.canvas.current.width) / 2 - video.videoWidth,
+        -(video.videoHeight - this.canvas.current.height) / 2
+      );
+      this.ctx.restore();
+
+      // draw items
+      itemPositions.forEach(item => {
+        this.ctx.save();
+        this.ctx.rotate(item.rotation);
+        this.ctx.drawImage(
+          this.filter,
+          item.x,
+          item.y,
+          item.width,
+          item.height
+        );
+        this.ctx.restore();
+      });
+
+      // update positions
+
+      requestAnimationFrame(loadingAnimation);
+    };
+    requestAnimationFrame(loadingAnimation);
+  };
 
   update = async () => {
     if (!this.webcam.current.webcam.current || !this.net) {
@@ -160,35 +200,35 @@ class SnackChat extends Component {
     this.ctx.strokeStyle = 'red';
     this.filter = new Image();
     this.filter.src = this.props.storeList[this.props.actualItem].image;
+    this.countdown();
+    this.playLoadingAnimation();
     requestAnimationFrame(this.update);
   };
 
   render() {
     return (
       <div className="page">
-        {this.state.counter < COUNTDOWN_TIME ? (
-          <div>
-            <header>
-              Smile, you are on snackchat:
-              {this.state.counter}
-            </header>
-            <div className="snackchat-body">
-              <canvas ref={this.canvas} width={FEED_SIZE} height={FEED_SIZE} />
-            </div>
-            <div style={{display: 'none'}}>
-              <WebcamCapture
-                ref={this.webcam}
-                imgSize={CAPTURE_SIZE}
-                onConnect={this.onConnect}
-              />
-            </div>
-          </div>
-        ) : (
-          <header>
-            Get ready to take your snackchat!
+        {!this.state.loading ? (
+          <header className="snackchat--header">
+            Taking photo in
             {this.state.counter}
           </header>
+        ) : (
+          <header className="snackchat--header">Get ready!</header>
         )}
+        <div className="snackchat-body">
+          <canvas ref={this.canvas} width={FEED_SIZE} height={FEED_SIZE} />
+        </div>
+        <div
+          style={{
+            display: 'none'
+          }}>
+          <WebcamCapture
+            ref={this.webcam}
+            imgSize={CAPTURE_SIZE}
+            onConnect={this.onConnect}
+          />
+        </div>
       </div>
     );
   }
