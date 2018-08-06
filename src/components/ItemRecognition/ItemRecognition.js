@@ -61,6 +61,16 @@ class ItemRecognition extends Component {
     );
   };
 
+  setSuggestions = (items, index) => {
+    const suggestions = [];
+    while (suggestions.length < 3) {
+      if (items[index].id === 'unknown') continue;
+      suggestions.push(this.props.storeList[items[index].id]);
+      index++;
+    }
+    this.props.setSuggestions(suggestions);
+  };
+
   handleImg = img => {
     if (this.success) return;
 
@@ -74,12 +84,9 @@ class ItemRecognition extends Component {
         // Item recognised
         this.success = true;
         this.addTrainingImage(img.src, item.id);
+        this.setSuggestions(items, 1);
         await this.props.setPrediction(item.id, img.src);
-        const suggestions = [];
-        for (let i = 1; i < 4; i++) {
-          suggestions.push(this.props.storeList[items[i].id]);
-        }
-        this.props.setSuggestions(suggestions);
+
         this.webcam.current.success(() => {
           this.setState({text: 'Snack recognised!', subText: null});
           setTimeout(() => {
@@ -91,11 +98,7 @@ class ItemRecognition extends Component {
         TIMEOUT_IN_SECONDS
       ) {
         // Timed out
-        const suggestions = [];
-        for (let i = 1; i < 4; i++) {
-          suggestions.push(this.props.storeList[items[i].id]);
-        }
-        this.props.setSuggestions(suggestions);
+        this.setSuggestions(items, 0);
         this.props.history.replace('/editsnack');
       } else if (
         !this.state.subText &&
