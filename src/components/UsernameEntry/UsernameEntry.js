@@ -13,9 +13,9 @@ class UsernameEntry extends React.Component {
   };
 
   deselect = () => {
-    if (this.state.selectedUser) {
-      this.setState({selectedUser: null});
-    }
+    this.setState(
+      prevState => (prevState.selectedUser ? {selectedUser: null} : null)
+    );
   };
 
   sendReminder = async () => {
