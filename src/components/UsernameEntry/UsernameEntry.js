@@ -8,8 +8,8 @@ class UsernameEntry extends React.Component {
     selectedUser: null
   };
 
-  promptToConfirm = user => {
-    this.setState({selectedUser: user});
+  promptToConfirm = selectedUser => {
+    this.setState({selectedUser});
   };
 
   deselect = () => {
