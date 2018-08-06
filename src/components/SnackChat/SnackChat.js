@@ -7,6 +7,10 @@ import './SnackChat.css';
 const FEED_SIZE = 480;
 const CAPTURE_SIZE = 200;
 
+// takes a bit of time for the camera to load -> these values give about 5 ACTUAL seconds of prep and countdown each
+const COUNTDOWN_TIME = 7;
+const PREPARATION_TIME = 3;
+
 function clipEllipse(ctx, centerX, centerY, width, height) {
   ctx.beginPath();
   ctx.moveTo(centerX, centerY - height / 2);
@@ -51,18 +55,16 @@ class SnackChat extends Component {
   canvas = React.createRef();
 
   state = {
-    counter: 5,
+    counter: PREPARATION_TIME + COUNTDOWN_TIME,
     captured: false
   };
 
   componentDidMount() {
     posenet.load(0.5).then(net => (this.net = net));
-    this.ctx = this.canvas.current.getContext('2d');
-    this.ctx.lineWidth = 5;
-    this.ctx.strokeStyle = 'red';
-    requestAnimationFrame(this.update);
-    this.filter = new Image();
-    this.filter.src = this.props.storeList[this.props.prediction.id].image;
+    this.timer = setInterval(
+      () => this.setState({counter: this.state.counter - 1}),
+      1000
+    );
   }
 
   componentWillUnmount() {
@@ -153,29 +155,40 @@ class SnackChat extends Component {
   };
 
   onConnect = () => {
-    this.timer = setInterval(
-      () => this.setState({counter: this.state.counter - 1}),
-      1000
-    );
+    this.ctx = this.canvas.current.getContext('2d');
+    this.ctx.lineWidth = 5;
+    this.ctx.strokeStyle = 'red';
+    this.filter = new Image();
+    this.filter.src = this.props.storeList[this.props.actualItem].image;
+    requestAnimationFrame(this.update);
   };
 
   render() {
     return (
       <div className="page">
-        <header>
-          Smile, you are on snackchat:
-          {this.state.counter}
-        </header>
-        <div className="snackchat-body">
-          <canvas ref={this.canvas} width={FEED_SIZE} height={FEED_SIZE} />
-        </div>
-        <div style={{display: 'none'}}>
-          <WebcamCapture
-            ref={this.webcam}
-            imgSize={CAPTURE_SIZE}
-            onConnect={this.onConnect}
-          />
-        </div>
+        {this.state.counter < COUNTDOWN_TIME ? (
+          <div>
+            <header>
+              Smile, you are on snackchat:
+              {this.state.counter}
+            </header>
+            <div className="snackchat-body">
+              <canvas ref={this.canvas} width={FEED_SIZE} height={FEED_SIZE} />
+            </div>
+            <div style={{display: 'none'}}>
+              <WebcamCapture
+                ref={this.webcam}
+                imgSize={CAPTURE_SIZE}
+                onConnect={this.onConnect}
+              />
+            </div>
+          </div>
+        ) : (
+          <header>
+            Get ready to take your snackchat!
+            {this.state.counter}
+          </header>
+        )}
       </div>
     );
   }
@@ -184,8 +197,8 @@ class SnackChat extends Component {
 SnackChat.propTypes = {
   setSnackChat: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
-  storeList: PropTypes.arrayOf(PropTypes.object),
-  prediction: PropTypes.object
+  storeList: PropTypes.object.isRequired,
+  actualItem: PropTypes.string.isRequired
 };
 
 export default SnackChat;
