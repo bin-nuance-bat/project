@@ -6,6 +6,7 @@ import './SnackChat.css';
 
 const FEED_SIZE = 480;
 const CAPTURE_SIZE = 200;
+const POSITION_BUFFER_SIZE = 10;
 
 function clipEllipse(ctx, centerX, centerY, width, height) {
   ctx.beginPath();
@@ -29,17 +30,13 @@ function clipEllipse(ctx, centerX, centerY, width, height) {
   ctx.clip();
 }
 
-function normalise({x, y}) {
-  x *= FEED_SIZE / CAPTURE_SIZE;
-  y *= FEED_SIZE / CAPTURE_SIZE;
-  return {x, y};
+function normalise(n) {
+  return (n *= FEED_SIZE / CAPTURE_SIZE);
 }
 
 function calcAngles(bodyPart) {
-  bodyPart.left = normalise(bodyPart.left);
-  bodyPart.right = normalise(bodyPart.right);
-  bodyPart.width = bodyPart.left.x - bodyPart.right.x;
-  bodyPart.height = bodyPart.right.y - bodyPart.left.y;
+  bodyPart.width = bodyPart.leftX - bodyPart.rightX;
+  bodyPart.height = bodyPart.rightY - bodyPart.leftY;
   bodyPart.span = Math.sqrt(bodyPart.width ** 2 + bodyPart.height ** 2);
   bodyPart.angle = Math.atan(bodyPart.width / bodyPart.height);
   bodyPart.angle += ((bodyPart.height > 0 ? -1 : 1) * Math.PI) / 2;
@@ -69,6 +66,9 @@ class SnackChat extends Component {
     clearInterval(this.timer);
   }
 
+  positionBuffer = new Array(POSITION_BUFFER_SIZE);
+  averageBodyPosition;
+  i = -1;
   update = async () => {
     if (!this.webcam.current.webcam.current || !this.net) {
       requestAnimationFrame(this.update);
@@ -97,14 +97,62 @@ class SnackChat extends Component {
 
     const body = {
       ears: calcAngles({
-        left: pose.keypoints[3].position,
-        right: pose.keypoints[4].position
+        leftX: normalise(pose.keypoints[3].position.x),
+        leftY: normalise(pose.keypoints[3].position.y),
+        rightX: normalise(pose.keypoints[4].position.x),
+        rightY: normalise(pose.keypoints[4].position.y)
       }),
       shoulders: calcAngles({
-        left: pose.keypoints[5].position,
-        right: pose.keypoints[6].position
+        leftX: normalise(pose.keypoints[5].position.x),
+        leftY: normalise(pose.keypoints[5].position.y),
+        rightX: normalise(pose.keypoints[6].position.x),
+        rightY: normalise(pose.keypoints[6].position.y)
       })
     };
+
+    this.i = ++this.i % POSITION_BUFFER_SIZE;
+    const forEachAttribute = callback =>
+      ['ears', 'shoulders'].forEach(bodyPart =>
+        [
+          'leftX',
+          'rightX',
+          'leftY',
+          'rightY',
+          'width',
+          'height',
+          'span',
+          'angle'
+        ].forEach(attribute => callback(bodyPart, attribute))
+      );
+
+    // position buffer will contain undefined during first iteration
+    if (this.positionBuffer.includes(undefined)) {
+      // on first frame set the average value
+      if (!this.i) {
+        this.averageBodyPosition = body;
+      } else {
+        // as the buffer fills up update the average
+        forEachAttribute((bodyPart, attribute) => {
+          this.averageBodyPosition[bodyPart][attribute] =
+            (this.averageBodyPosition[bodyPart][attribute] * this.i +
+              body[bodyPart][attribute]) /
+            (this.i + 1);
+        });
+      }
+    } else {
+      // when the array is full replace the oldest value w/ the newest and recompute the average
+      const oldestPosition = this.positionBuffer[this.i];
+      forEachAttribute(
+        (bodyPart, attribute) =>
+          (this.averageBodyPosition[bodyPart][attribute] =
+            (this.averageBodyPosition[bodyPart][attribute] *
+              POSITION_BUFFER_SIZE -
+              oldestPosition[bodyPart][attribute] +
+              body[bodyPart][attribute]) /
+            POSITION_BUFFER_SIZE)
+      );
+    }
+    this.positionBuffer[this.i] = body;
 
     // Video background
     this.ctx.save();
@@ -117,27 +165,29 @@ class SnackChat extends Component {
     this.ctx.restore();
 
     // Filter
+    const shoulders = this.averageBodyPosition.shoulders;
     this.ctx.save();
-    this.ctx.rotate(body.shoulders.angle);
+    this.ctx.rotate(shoulders.angle);
     this.ctx.drawImage(
       this.filter,
-      body.shoulders.right.x -
-        body.shoulders.span * 1.5 +
-        body.shoulders.span * body.shoulders.angle,
-      body.shoulders.right.y - body.shoulders.span * 1.5,
-      body.shoulders.span * 4,
-      body.shoulders.span * 4
+      shoulders.rightX -
+        shoulders.span * 1.5 +
+        shoulders.span * shoulders.angle,
+      shoulders.rightY - shoulders.span * 1.5,
+      shoulders.span * 4,
+      shoulders.span * 4
     );
     this.ctx.restore();
 
     // Clip face
+    const ears = this.averageBodyPosition.ears;
     this.ctx.save();
     this.ctx.translate(
-      body.ears.right.x + body.ears.width / 2,
-      body.ears.right.y + body.ears.height * body.ears.angle
+      ears.rightX + ears.width / 2,
+      ears.rightY + ears.height * ears.angle
     );
-    this.ctx.rotate(body.ears.angle);
-    clipEllipse(this.ctx, 0, 0, body.ears.span * 1.5, body.ears.span * 1.5);
+    this.ctx.rotate(ears.angle);
+    clipEllipse(this.ctx, 0, 0, ears.span * 1.5, ears.span * 1.5);
     this.ctx.resetTransform();
 
     // Re-draw face
@@ -184,7 +234,7 @@ class SnackChat extends Component {
 SnackChat.propTypes = {
   setSnackChat: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
-  storeList: PropTypes.arrayOf(PropTypes.object),
+  storeList: PropTypes.object.isRequired,
   prediction: PropTypes.object
 };
 

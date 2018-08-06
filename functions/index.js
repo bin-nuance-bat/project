@@ -14,7 +14,7 @@ exports.sendSlackMessage = functions.https.onCall(data => {
     username: BOT_USERNAME,
     text: `Click to purchase your ${
       data.itemName
-    }: https://honesty.store/item/${data.acutalItemID}`
+    }: https://honesty.store/item/${data.actualItemID}`
   });
 
   return fetch(`https://slack.com/api/chat.postMessage?${options}`)

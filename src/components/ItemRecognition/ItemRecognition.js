@@ -19,7 +19,7 @@ class ItemRecognition extends Component {
 
     if (navigator.onLine) {
       this.model = new Model();
-      this.model.load();
+      this.model.load().then(() => this.setState({modelLoaded: true}));
       this.webcam = React.createRef();
       this.mobileNet = new MobileNet();
       this.controllerDataset = new ControllerDataset();
@@ -27,7 +27,8 @@ class ItemRecognition extends Component {
   }
 
   state = {
-    text: 'Scan item using the front facing camera'
+    text: 'Scan item using the front facing camera',
+    modelLoaded: false
   };
 
   componentDidMount() {
@@ -123,13 +124,15 @@ class ItemRecognition extends Component {
             )}
           </div>
         </header>
-        <WebcamCapture
-          className="item-recognition item-recognition--display"
-          ref={this.webcam}
-          onConnect={this.onConnect}
-          imgSize={224}
-          onFail={this.onFail}
-        />
+        {this.state.modelLoaded && (
+          <WebcamCapture
+            className="item-recognition item-recognition--display"
+            ref={this.webcam}
+            onConnect={this.onConnect}
+            imgSize={224}
+            onFail={this.onFail}
+          />
+        )}
       </div>
     );
   }
