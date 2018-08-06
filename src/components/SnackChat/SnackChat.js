@@ -74,13 +74,11 @@ class SnackChat extends Component {
   };
 
   playLoadingAnimation = () => {
-    const numberOfFallingSnacks = 3;
+    const numberOfFallingSnacks = 1;
     const itemPositions = [];
     for (let i = 1; i <= numberOfFallingSnacks; i++) {
       itemPositions.push({
-        x:
-          (this.canvas.current.width * i) / (numberOfFallingSnacks + 1) -
-          0.1 * this.canvas.current.width,
+        x: (this.canvas.current.width * i) / (numberOfFallingSnacks + 1),
         y: Math.random() * this.canvas.current.height,
         rotation: Math.random() * 2 * Math.PI
       });
@@ -101,19 +99,21 @@ class SnackChat extends Component {
       this.ctx.restore();
 
       // draw items
-      console.log(itemPositions);
       this.ctx.save();
       itemPositions.forEach(item => {
-        this.ctx.translate(item.x, item.y);
+        this.ctx.translate(
+          item.x - this.canvas.current.width * (Math.cos(item.rotation) + 1),
+          item.y
+        );
         this.ctx.rotate(item.rotation);
-        this.ctx.setTransform(1, 0, 0, 1, 0, 0);
         this.ctx.drawImage(
           this.filter,
-          item.x,
-          item.y,
+          0,
+          0,
           0.2 * this.canvas.current.width,
           0.2 * this.canvas.current.height
         );
+        this.ctx.setTransform(1, 0, 0, 1, 0, 0);
       });
       this.ctx.restore();
 
@@ -123,7 +123,7 @@ class SnackChat extends Component {
         item.rotation = (item.rotation + 0.1) % (Math.PI * 2);
       });
 
-      setTimeout(() => requestAnimationFrame(loadingAnimation), 100);
+      requestAnimationFrame(loadingAnimation);
     };
 
     this.ctx.fillStyle = 'rgba(0.6, 0.6, 0.6, 0.6)';
