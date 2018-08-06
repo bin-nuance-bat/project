@@ -165,38 +165,29 @@ class SnackChat extends Component {
     this.ctx.restore();
 
     // Filter
+    const shoulders = this.averageBodyPosition.shoulders;
     this.ctx.save();
-    this.ctx.rotate(this.averageBodyPosition.shoulders.angle);
+    this.ctx.rotate(shoulders.angle);
     this.ctx.drawImage(
       this.filter,
-      this.averageBodyPosition.shoulders.rightX -
-        this.averageBodyPosition.shoulders.span * 1.5 +
-        this.averageBodyPosition.shoulders.span *
-          this.averageBodyPosition.shoulders.angle,
-      this.averageBodyPosition.shoulders.rightY -
-        this.averageBodyPosition.shoulders.span * 1.5,
-      this.averageBodyPosition.shoulders.span * 4,
-      this.averageBodyPosition.shoulders.span * 4
+      shoulders.rightX -
+        shoulders.span * 1.5 +
+        shoulders.span * shoulders.angle,
+      shoulders.rightY - shoulders.span * 1.5,
+      shoulders.span * 4,
+      shoulders.span * 4
     );
     this.ctx.restore();
 
     // Clip face
+    const ears = this.averageBodyPosition.ears;
     this.ctx.save();
     this.ctx.translate(
-      this.averageBodyPosition.ears.rightX +
-        this.averageBodyPosition.ears.width / 2,
-      this.averageBodyPosition.ears.rightY +
-        this.averageBodyPosition.ears.height *
-          this.averageBodyPosition.ears.angle
+      ears.rightX + ears.width / 2,
+      ears.rightY + ears.height * ears.angle
     );
-    this.ctx.rotate(this.averageBodyPosition.ears.angle);
-    clipEllipse(
-      this.ctx,
-      0,
-      0,
-      this.averageBodyPosition.ears.span * 1.5,
-      this.averageBodyPosition.ears.span * 1.5
-    );
+    this.ctx.rotate(ears.angle);
+    clipEllipse(this.ctx, 0, 0, ears.span * 1.5, ears.span * 1.5);
     this.ctx.resetTransform();
 
     // Re-draw face
