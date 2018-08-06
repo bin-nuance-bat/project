@@ -36,9 +36,7 @@ class App extends Component {
     window.addEventListener('online', this.handleOnline);
     window.addEventListener('offline', this.handleOffline);
 
-    const isHiddenAdminPage =
-      window.location.pathname === '/admin/training' ||
-      window.location.pathname === '/admin/preview';
+    const isHiddenAdminPage = window.location.pathname.startsWith('/admin/');
     const isValidRoute =
       window.location.pathname === '/' ||
       window.location.pathname.startsWith('/admin');
