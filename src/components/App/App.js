@@ -103,10 +103,11 @@ class App extends Component {
 
   connectionError() {
     return (
-      !this.state.isOnline ||
-      this.props.loadStoreListError ||
-      this.props.loadUserListError ||
-      this.props.sendMessageError
+      (!this.state.isOnline ||
+        this.props.loadStoreListError ||
+        this.props.loadUserListError ||
+        this.props.sendMessageError) &&
+      this.state.loggedIn
     );
   }
 

@@ -5,7 +5,11 @@ const queryString = require('query-string');
 const HONESTY_STORE_LOGO = 'https://honesty.store/assets/android/icon@MDPI.png';
 const BOT_USERNAME = 'honesty.store';
 
-exports.sendSlackMessage = functions.https.onCall(data => {
+exports.sendSlackMessage = functions.https.onCall((data, context) => {
+  if (context.auth.uid != 'EoBqPe3ZSEPovZvUMrEO7XTRdN42') {
+    return {ok: false, msg: 'Not authenticated'};
+  }
+
   const token = functions.config().slack.token;
   const options = queryString.stringify({
     token,
@@ -22,7 +26,11 @@ exports.sendSlackMessage = functions.https.onCall(data => {
     .catch(() => ({ok: false}));
 });
 
-exports.loadSlackUsers = functions.https.onCall(() => {
+exports.loadSlackUsers = functions.https.onCall((data, context) => {
+  if (context.auth.uid != 'EoBqPe3ZSEPovZvUMrEO7XTRdN42') {
+    return {ok: false, msg: 'Not authenticated'};
+  }
+
   const token = functions.config().slack.token;
 
   return fetch(`https://slack.com/api/users.list?token=${token}`)
