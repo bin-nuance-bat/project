@@ -69,7 +69,7 @@ class SnackChat extends Component {
   countdown = async () => {
     this.timer = setInterval(
       () => this.setState(prevState => ({counter: prevState.counter - 1})),
-      1000
+      1500
     );
   };
 
@@ -79,7 +79,9 @@ class SnackChat extends Component {
     for (let i = 1; i <= numberOfFallingSnacks; i++) {
       itemPositions.push({
         x: (this.canvas.current.width * i) / (numberOfFallingSnacks + 1),
-        y: Math.random() * this.canvas.current.height,
+        y:
+          Math.random() * 1.4 * this.canvas.current.height -
+          0.2 * this.canvas.current.height,
         rotation: Math.random() * 2 * Math.PI
       });
     }
@@ -123,11 +125,15 @@ class SnackChat extends Component {
 
       // update positions
       itemPositions.forEach(item => {
-        item.y = (item.y + 3) % this.canvas.current.height;
+        item.y =
+          ((0.2 * this.canvas.current.height + item.y + 3) %
+            (1.4 * this.canvas.current.height)) -
+          0.2 * this.canvas.current.height;
         item.rotation = (item.rotation + 0.03) % (Math.PI * 2);
       });
 
       requestAnimationFrame(loadingAnimation);
+      this.setState({loading: false});
     };
 
     requestAnimationFrame(loadingAnimation);
@@ -228,9 +234,9 @@ class SnackChat extends Component {
     this.ctx.strokeStyle = 'red';
     this.filter = new Image();
     this.filter.src = this.props.storeList[this.props.actualItem].image;
-    // this.countdown();
+    this.countdown();
     this.playLoadingAnimation();
-    // requestAnimationFrame(this.update);
+    requestAnimationFrame(this.update);
   };
 
   render() {
