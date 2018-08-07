@@ -15,7 +15,7 @@ deploy:
     token: $FIREBASE_TOKEN
     skip_cleanup: true
     on:
-      branch: master
+      branch: BUG-FIX_travis-deployment
     project: honesty-store-kiosk-dev
 
   - provider: firebase
