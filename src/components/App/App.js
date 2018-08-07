@@ -33,6 +33,7 @@ class App extends Component {
 
   componentDidMount() {
     document.body.addEventListener('touchstart', this.resetTimeoutTimer);
+    document.body.addEventListener('touchmove', this.resetTimeoutTimer);
     window.addEventListener('online', this.handleOnline);
     window.addEventListener('offline', this.handleOffline);
 
@@ -84,6 +85,7 @@ class App extends Component {
     clearTimeout(this.timer);
     clearInterval(this.interval);
     document.body.removeEventListener('touchstart', this.resetTimeoutTimer);
+    document.body.removeEventListener('touchmove', this.resetTimeoutTimer);
     window.removeEventListener('online', this.handleOnline);
     window.removeEventListener('offline', this.handleOffline);
   }
