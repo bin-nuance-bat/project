@@ -62,26 +62,32 @@ class ItemRecognition extends Component {
   };
 
   setSuggestions = (items, index) => {
-    const suggestions = [];
-    while (suggestions.length < 3) {
-      if (items[index].id === 'unknown') continue;
-      suggestions.push(this.props.storeList[items[index].id]);
-      index++;
-    }
+    const suggestions = items
+      .slice(index)
+      .filter(item => item.id !== 'unknown')
+      .slice(0, 3)
+      .map(item => item.id);
     this.props.setSuggestions(suggestions);
   };
+
+  hasBeen(seconds) {
+    return (Date.now() - this.scanningStartTime) / 1000 > seconds;
+  }
 
   handleImg = img => {
     if (this.success) return;
 
     this.model.predict(img).then(async items => {
       const item = items[0];
-      if (
+      const isItemRecognised =
         item.value > ML_THRESHOLD &&
         item.id !== 'unknown' &&
-        !this.props.prediction
-      ) {
-        // Item recognised
+        !this.props.prediction;
+      const hasTimedOut = this.hasBeen(TIMEOUT_IN_SECONDS);
+      const showRotationMessage =
+        !this.state.subText &&
+        this.hasBeen(TIMEOUT_IN_SECONDS - SHOW_RETRY_FOR);
+      if (isItemRecognised) {
         this.success = true;
         this.addTrainingImage(img.src, item.id);
         this.setSuggestions(items, 1);
@@ -93,19 +99,10 @@ class ItemRecognition extends Component {
             this.props.history.replace('/confirmitem');
           }, 500);
         });
-      } else if (
-        (Date.now() - this.scanningStartTime) / 1000 >
-        TIMEOUT_IN_SECONDS
-      ) {
-        // Timed out
+      } else if (hasTimedOut) {
         this.setSuggestions(items, 0);
         this.props.history.replace('/editsnack');
-      } else if (
-        !this.state.subText &&
-        (Date.now() - this.scanningStartTime) / 1000 >
-          TIMEOUT_IN_SECONDS - SHOW_RETRY_FOR
-      ) {
-        // Nearly timed out
+      } else if (showRotationMessage) {
         this.setState({
           text: "We can't recognise the snack",
           subText: 'Try turning the snack so the logo is seen by the camera'
