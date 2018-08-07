@@ -1,5 +1,7 @@
 @import '../../utils/constants.scss';
 
+$second-length: 1.5s;
+
 .snackchat-body {
   width: 100%;
   padding-top: 100%;
@@ -22,7 +24,7 @@
   vertical-align: top;
   position: absolute;
   &-left {
-    left: 5%;
+    left: 2%;
   }
   &-center {
     left: 40%;
@@ -90,7 +92,7 @@
   position: relative;
   overflow: hidden;
   top: 10%;
-  left: 5%;
+  left: 0%;
 
   &-camera,
   &-left,
@@ -126,22 +128,22 @@
   }
 
   &-left {
-    -webkit-animation-delay: 1.5s;
-    animation-delay: 1.5s;
+    -webkit-animation-delay: $second-length;
+    animation-delay: $second-length;
   }
 
   &-center {
-    -webkit-animation-delay: 3s;
-    animation-delay: 3s;
+    -webkit-animation-delay: 2 * $second-length;
+    animation-delay: 2 * $second-length;
   }
 
   &-right {
-    -webkit-animation-delay: 4.5s;
-    animation-delay: 4.5s;
+    -webkit-animation-delay: 3 * $second-length;
+    animation-delay: 3 * $second-length;
   }
 
   &-camera {
-    -webkit-animation-delay: 6s;
-    animation-delay: 6s;
+    -webkit-animation-delay: 4 * $second-length;
+    animation-delay: 4 * $second-length;
   }
 }

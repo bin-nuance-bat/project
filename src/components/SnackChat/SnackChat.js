@@ -334,6 +334,7 @@ class SnackChat extends Component {
             </div>
           </header>
         )}
+
         <div className="snackchat-body">
           <canvas ref={this.canvas} width={FEED_SIZE} height={FEED_SIZE} />
         </div>
