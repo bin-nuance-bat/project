@@ -11,27 +11,6 @@ script:
   - npm test
 
 deploy:
-  - provider: firebase
-    token: $FIREBASE_TOKEN
-    skip_cleanup: true
-    on:
-      branch: master
-    project: honesty-store-kiosk-dev
-
-  - provider: firebase
-    token: $FIREBASE_TOKEN
-    skip_cleanup: true
-    on:
-      branch: env-qa
-    project: honesty-store-kiosk-qa
-
-  - provider: firebase
-    token: $FIREBASE_TOKEN
-    skip_cleanup: true
-    on:
-      branch: env-prod
-    project: honesty-store-kiosk
-
     - provider: firebase
     token: $FIREBASE_TOKEN
     skip_cleanup: true
