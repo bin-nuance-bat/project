@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Bubble = props => {
+const Bubble = ({letter}) => {
   return (
     <div>
       <svg
@@ -34,7 +34,7 @@ const Bubble = props => {
           fill="#FFFFFF"
           transform="translate(56, 85) scale(4.8)"
           textAnchor="middle">
-          {props.letter}
+          {letter}
         </text>
       </svg>
     </div>
