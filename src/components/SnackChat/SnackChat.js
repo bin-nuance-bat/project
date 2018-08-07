@@ -1,13 +1,19 @@
 import React, {Component} from 'react';
 import WebcamCapture from '../WebcamCapture/WebcamCapture';
+import HandsSlot from './../../utils/assets/hands/HandsSlot.svg';
+import HandsRight from './../../utils/assets/hands/HandsRight.svg';
+import HandsCenter from './../../utils/assets/hands/HandsCenter.svg';
+import HandsLeft from './../../utils/assets/hands/HandsLeft.svg';
+import HandsCamera from './../../utils/assets/hands/HandsCamera.svg';
 import PropTypes from 'prop-types';
 import * as posenet from '@tensorflow-models/posenet';
 import './SnackChat.css';
 
 const FEED_SIZE = 480;
 const CAPTURE_SIZE = 200;
-const COUNTDOWN_TIME = 3;
 const LOADING_ANIMATION_TIME = 3;
+const COUNTDOWN_TIME = 3;
+const PHOTO_ANIMATION_TIME = 3;
 const POSITION_BUFFER_SIZE = 10;
 
 function clipEllipse(ctx, centerX, centerY, width, height) {
@@ -51,7 +57,7 @@ class SnackChat extends Component {
 
   state = {
     loading: true,
-    counter: COUNTDOWN_TIME + LOADING_ANIMATION_TIME,
+    counter: COUNTDOWN_TIME + LOADING_ANIMATION_TIME + PHOTO_ANIMATION_TIME,
     captured: false
   };
 
@@ -84,7 +90,10 @@ class SnackChat extends Component {
     }
 
     const loadingAnimation = () => {
-      if (this.state.counter < COUNTDOWN_TIME) return;
+      if (this.state.counter <= COUNTDOWN_TIME + PHOTO_ANIMATION_TIME) {
+        this.setState({loading: false});
+        return;
+      }
 
       // Video background
       const video = this.webcam.current.webcam.current.video;
@@ -139,7 +148,6 @@ class SnackChat extends Component {
       this.canvas.current.width,
       this.canvas.current.height
     );
-    this.setState({loading: false});
   };
 
   positionBuffer = new Array(POSITION_BUFFER_SIZE);
@@ -151,7 +159,7 @@ class SnackChat extends Component {
       return;
     }
 
-    if (this.state.counter === 0 && !this.state.captured) {
+    if (this.state.counter <= PHOTO_ANIMATION_TIME && !this.state.captured) {
       clearInterval(this.timer);
       this.setState({captured: true});
       this.props.setSnackChat(this.canvas.current.toDataURL());
@@ -293,12 +301,36 @@ class SnackChat extends Component {
     return (
       <div className="page">
         {!this.state.loading ? (
-          <header className="snackchat--header">
-            Taking photo in
-            {this.state.counter}
+          <header>
+            <div className="snackchat--header-text snackchat--header-text-left">
+              {this.state.counter >= PHOTO_ANIMATION_TIME && 'Taking photo in'}
+            </div>
+            <div className="snackchat--hands">
+              <img className="snackchat--hands-slot" src={HandsSlot} alt="" />
+              <img className="snackchat--hands-right" src={HandsRight} alt="" />
+              <img
+                className="snackchat--hands-center"
+                src={HandsCenter}
+                alt=""
+              />
+              <img
+                className="snackchat--hands-camera"
+                src={HandsCamera}
+                alt=""
+              />
+              <img className="snackchat--hands-left" src={HandsLeft} alt="" />
+            </div>
+            <div className="snackchat--header-counter">
+              {this.state.counter >= PHOTO_ANIMATION_TIME &&
+                this.state.counter - PHOTO_ANIMATION_TIME}
+            </div>
           </header>
         ) : (
-          <header className="snackchat--header">Get ready!</header>
+          <header className="snackchat--header">
+            <div className="snackchat--header-text snackchat--header-text-center">
+              Get ready!
+            </div>
+          </header>
         )}
         <div className="snackchat-body">
           <canvas ref={this.canvas} width={FEED_SIZE} height={FEED_SIZE} />

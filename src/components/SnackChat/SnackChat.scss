@@ -15,7 +15,133 @@
   margin: 0 auto;
 }
 
-.snackchat--header {
+.snackchat--header-text {
   padding-top: 100px;
   font-size: 35px;
+  display: inline-block;
+  vertical-align: top;
+  position: absolute;
+  &-left {
+    left: 5%;
+  }
+  &-center {
+    left: 40%;
+  }
+}
+
+.snackchat--header-counter {
+  padding-top: 100px;
+  font-size: 50px;
+  display: inline-block;
+  left: 80%;
+  position: absolute;
+  vertical-align: top;
+}
+
+@-webkit-keyframes snackchat-hands-pop {
+  from {
+    -webkit-transform: translateY(5%) translateZ(1px);
+    transform: translateY(5%) translateZ(1px);
+  }
+  to {
+    -webkit-transform: translateY(100%) translateZ(1px);
+    transform: translateY(100%) translateZ(1px);
+  }
+}
+
+@keyframes snackchat-hands-pop {
+  from {
+    -webkit-transform: translateY(5%) translateZ(1px);
+    transform: translateY(5%) translateZ(1px);
+  }
+  to {
+    -webkit-transform: translateY(100%) translateZ(1px);
+    transform: translateY(100%) translateZ(1px);
+  }
+}
+
+@-webkit-keyframes snackchat-hands-camera {
+  from {
+    -webkit-transform: translateY(100%) translateZ(1px);
+    transform: translateY(100%) translateZ(1px);
+  }
+  to {
+    -webkit-transform: translateY(5%) translateZ(1px);
+    transform: translateY(5%) translateZ(1px);
+  }
+}
+
+@keyframes snackchat-hands-camera {
+  from {
+    -webkit-transform: translateY(100%) translateZ(1px);
+    transform: translateY(100%) translateZ(1px);
+  }
+  to {
+    -webkit-transform: translateY(5%) translateZ(1px);
+    transform: translateY(5%) translateZ(1px);
+  }
+}
+
+.snackchat--hands {
+  width: 240px;
+  height: 216px;
+  display: inline-block;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  top: 10%;
+  left: 5%;
+
+  &-camera,
+  &-left,
+  &-center,
+  &-right,
+  &-slot {
+    position: absolute;
+    display: block;
+  }
+
+  &-camera {
+    left: 25%;
+  }
+
+  &-left,
+  &-center,
+  &-right {
+    animation-name: snackchat-hands-pop;
+    animation-duration: 0.3s;
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier(0.47, 0.52, 0.58, 1.19);
+    animation-fill-mode: both;
+    will-change: transform;
+  }
+
+  &-camera {
+    animation-name: snackchat-hands-camera;
+    animation-duration: 0.3s;
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier(0.47, 0.52, 0.58, 1.19);
+    animation-fill-mode: both;
+    will-change: transform;
+  }
+
+  &-left {
+    -webkit-animation-delay: 1.5s;
+    animation-delay: 1.5s;
+  }
+
+  &-center {
+    -webkit-animation-delay: 3s;
+    animation-delay: 3s;
+  }
+
+  &-right {
+    -webkit-animation-delay: 4.5s;
+    animation-delay: 4.5s;
+  }
+
+  &-camera {
+    -webkit-animation-delay: 6s;
+    animation-delay: 6s;
+  }
 }
