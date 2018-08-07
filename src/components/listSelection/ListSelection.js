@@ -71,9 +71,10 @@ class ListSelection extends Component {
         --i;
       }
     }
-    const group = this.formattedItems[i][0];
-    window.location.hash = '#' + group;
-    this.setState({bubbleAt: group});
+    const goToGroup = this.formattedItems[i][0];
+    const touchedLetter = this.formattedItems[index][0];
+    window.location.hash = '#' + goToGroup;
+    this.setState({bubbleAt: touchedLetter});
   };
 
   handleOnTouchMove = event => {
