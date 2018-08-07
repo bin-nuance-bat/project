@@ -20,7 +20,9 @@ class SuccessPage extends Component {
   render() {
     return (
       <div className="page" onClick={this.goHomeAndClearTimeout}>
-        <div className="text text-remindersent">Reminder sent!</div>
+        <div id="success-message" className="text text-remindersent">
+          Reminder sent!
+        </div>
         <div className="success-hand">
           <Hand snack={this.props.storeList[this.props.actualItem].image} />
         </div>
