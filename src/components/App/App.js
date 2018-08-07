@@ -37,10 +37,12 @@ class App extends Component {
     window.addEventListener('online', this.handleOnline);
     window.addEventListener('offline', this.handleOffline);
 
+    const isHiddenAdminPage = window.location.pathname.startsWith('/admin/');
     const isValidRoute =
       window.location.pathname === '/' ||
       window.location.pathname.startsWith('/admin');
-    if (!isValidRoute) window.location.href = '/';
+    if (isHiddenAdminPage) window.location.href = '/admin';
+    else if (!isValidRoute) window.location.href = '/';
   }
 
   resetTimeoutTimer = () => {
