@@ -9,7 +9,7 @@ import MobileNet from '../Admin/Trainer/MobileNet';
 
 import './ItemRecognition.css';
 
-const TIMEOUT_IN_SECONDS = 10;
+const TIMEOUT_IN_SECONDS = 11;
 const ML_THRESHOLD = 0.35;
 const SHOW_RETRY_FOR = 5;
 
