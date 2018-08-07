@@ -7,6 +7,7 @@ install: npm install
 
 script:
   - npm run lint
+  - npm run install-functions
   - npm run build
   - npm test
 
@@ -15,16 +16,14 @@ deploy:
     token: $FIREBASE_TOKEN
     skip_cleanup: true
     on:
-      branch: master
+      branch: issue-125
     project: honesty-store-kiosk-dev
-
   - provider: firebase
     token: $FIREBASE_TOKEN
     skip_cleanup: true
     on:
       branch: env-qa
     project: honesty-store-kiosk-qa
-
   - provider: firebase
     token: $FIREBASE_TOKEN
     skip_cleanup: true
