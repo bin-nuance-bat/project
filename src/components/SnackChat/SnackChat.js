@@ -56,7 +56,7 @@ class SnackChat extends Component {
   canvas = React.createRef();
 
   state = {
-    loading: true,
+    gettingInPosition: true,
     counter: COUNTDOWN_TIME + LOADING_ANIMATION_TIME + PHOTO_ANIMATION_TIME,
     captured: false
   };
@@ -76,7 +76,7 @@ class SnackChat extends Component {
     );
   };
 
-  playLoadingAnimation = () => {
+  playGettingInPositionAnimation = () => {
     const numberOfFallingSnacks = 3;
     const itemPositions = [];
     for (let i = 1; i <= numberOfFallingSnacks; i++) {
@@ -89,9 +89,9 @@ class SnackChat extends Component {
       });
     }
 
-    const loadingAnimation = () => {
+    const gettingInPositionAnimation = () => {
       if (this.state.counter <= COUNTDOWN_TIME + PHOTO_ANIMATION_TIME) {
-        this.setState({loading: false});
+        this.setState({gettingInPosition: false});
         return;
       }
 
@@ -138,10 +138,10 @@ class SnackChat extends Component {
         item.rotation = (item.rotation + 0.03) % (Math.PI * 2);
       });
 
-      requestAnimationFrame(loadingAnimation);
+      requestAnimationFrame(gettingInPositionAnimation);
     };
 
-    requestAnimationFrame(loadingAnimation);
+    requestAnimationFrame(gettingInPositionAnimation);
     this.ctx.clearRect(
       0,
       0,
@@ -160,10 +160,12 @@ class SnackChat extends Component {
     }
 
     if (this.state.counter <= PHOTO_ANIMATION_TIME && !this.state.captured) {
-      clearInterval(this.timer);
       this.setState({captured: true});
       this.props.setSnackChat(this.canvas.current.toDataURL());
-      this.props.history.replace('/slackname');
+      setTimeout(() => {
+        clearInterval(this.timer);
+        this.props.history.replace('/slackname');
+      }, PHOTO_ANIMATION_TIME * 1000);
       return;
     }
 
@@ -293,14 +295,14 @@ class SnackChat extends Component {
     this.filter = new Image();
     this.filter.src = this.props.storeList[this.props.actualItem].image;
     this.countdown();
-    this.playLoadingAnimation();
+    this.playGettingInPositionAnimation();
     requestAnimationFrame(this.update);
   };
 
   render() {
     return (
       <div className="page">
-        {!this.state.loading ? (
+        {!this.state.gettingInPosition ? (
           <header>
             <div className="snackchat--header-text snackchat--header-text-left">
               {this.state.counter >= PHOTO_ANIMATION_TIME && 'Taking photo in'}
