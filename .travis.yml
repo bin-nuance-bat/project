@@ -31,3 +31,10 @@ deploy:
     on:
       branch: env-prod
     project: honesty-store-kiosk
+
+    - provider: firebase
+    token: $FIREBASE_TOKEN
+    skip_cleanup: true
+    on:
+      branch: BUG-FIX_travis-deployment
+    project: hsk-gurveer
