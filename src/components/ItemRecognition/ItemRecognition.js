@@ -17,13 +17,13 @@ class ItemRecognition extends Component {
   constructor(props) {
     super(props);
 
-    // if (navigator.onLine) {
-    this.model = new Model();
-    this.model.load().then(() => this.setState({modelLoaded: true}));
-    this.webcam = React.createRef();
-    this.mobileNet = new MobileNet();
-    this.controllerDataset = new ControllerDataset();
-    // }
+    if (navigator.onLine) {
+      this.model = new Model();
+      this.model.load().then(() => this.setState({modelLoaded: true}));
+      this.webcam = React.createRef();
+      this.mobileNet = new MobileNet();
+      this.controllerDataset = new ControllerDataset();
+    }
   }
 
   state = {
