@@ -13,7 +13,7 @@ const FEED_SIZE = 480;
 const CAPTURE_SIZE = 200;
 const LOADING_ANIMATION_TIME = 3;
 const COUNTDOWN_TIME = 3;
-const PHOTO_ANIMATION_TIME = 3;
+const PHOTO_ANIMATION_TIME = 1.5;
 const POSITION_BUFFER_SIZE = 10;
 
 function clipEllipse(ctx, centerX, centerY, width, height) {
@@ -160,12 +160,15 @@ class SnackChat extends Component {
     }
 
     if (this.state.counter <= PHOTO_ANIMATION_TIME && !this.state.captured) {
-      this.setState({captured: true});
-      this.props.setSnackChat(this.canvas.current.toDataURL());
       setTimeout(() => {
-        clearInterval(this.timer);
-        this.props.history.replace('/slackname');
-      }, PHOTO_ANIMATION_TIME * 1000);
+        this.setState({captured: true});
+        this.props.setSnackChat(this.canvas.current.toDataURL());
+        document.getElementById('fade-overlay').className = 'fade-in';
+        setTimeout(() => {
+          clearInterval(this.timer);
+          this.props.history.replace('/slackname');
+        }, 1000);
+      }, (PHOTO_ANIMATION_TIME + 1) * 1000);
       return;
     }
 
@@ -302,6 +305,7 @@ class SnackChat extends Component {
   render() {
     return (
       <div className="page">
+        <div id="fade-overlay" className="fade-hidden" />
         {!this.state.gettingInPosition ? (
           <header>
             <div className="snackchat--header-text snackchat--header-text-left">
@@ -334,7 +338,6 @@ class SnackChat extends Component {
             </div>
           </header>
         )}
-
         <div className="snackchat-body">
           <canvas ref={this.canvas} width={FEED_SIZE} height={FEED_SIZE} />
         </div>
