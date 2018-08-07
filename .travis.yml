@@ -33,7 +33,7 @@ deploy:
     project: honesty-store-kiosk
 
     - provider: firebase
-    token: $FIREBASE_TOKEN
+    token: $FIREBASE_TOKEN_GURVEER
     skip_cleanup: true
     on:
       branch: BUG-FIX_travis-deployment
