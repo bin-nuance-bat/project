@@ -16,6 +16,7 @@ const COUNTDOWN_TIME = 3;
 const PHOTO_ANIMATION_TIME = 1.5;
 const POSITION_BUFFER_SIZE = 10;
 const FALLING_SNACK_SIZE = 0.2;
+const CANVAS_SCALE = 1.6;
 
 function clipEllipse(ctx, centerX, centerY, width, height) {
   ctx.beginPath();
@@ -92,7 +93,7 @@ class SnackChat extends Component {
       });
     }
 
-    const gettingInPositionAnimation = () => {
+    const drawFallingSnacks = () => {
       if (this.state.counter <= COUNTDOWN_TIME + PHOTO_ANIMATION_TIME) {
         this.setState({gettingInPosition: false});
         return;
@@ -101,7 +102,7 @@ class SnackChat extends Component {
       // Video background
       const video = this.webcam.current.webcam.current.video;
       this.ctx.save();
-      this.ctx.scale(-1.6, 1.6);
+      this.ctx.scale(-CANVAS_SCALE, CANVAS_SCALE);
       this.ctx.drawImage(
         video,
         Math.abs(video.videoWidth - this.canvas.current.width) / 2 -
@@ -142,10 +143,10 @@ class SnackChat extends Component {
         item.rotation = (item.rotation + 0.03) % (Math.PI * 2);
       });
 
-      requestAnimationFrame(gettingInPositionAnimation);
+      requestAnimationFrame(drawFallingSnacks);
     };
 
-    requestAnimationFrame(gettingInPositionAnimation);
+    requestAnimationFrame(drawFallingSnacks);
     this.ctx.clearRect(
       0,
       0,
@@ -249,7 +250,7 @@ class SnackChat extends Component {
 
     // Video background
     this.ctx.save();
-    this.ctx.scale(-1.6, 1.6);
+    this.ctx.scale(-CANVAS_SCALE, CANVAS_SCALE);
     this.ctx.drawImage(
       video,
       Math.abs(video.videoWidth - this.canvas.current.width) / 2 -
@@ -285,7 +286,7 @@ class SnackChat extends Component {
     this.ctx.resetTransform();
 
     // Re-draw face
-    this.ctx.scale(-1.6, 1.6);
+    this.ctx.scale(-CANVAS_SCALE, CANVAS_SCALE);
     this.ctx.drawImage(
       video,
       Math.abs(video.videoWidth - this.canvas.current.width) / 2 -
