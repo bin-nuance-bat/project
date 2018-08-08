@@ -5,9 +5,6 @@ const fs = require('fs');
 const admin = require('firebase-admin');
 admin.initializeApp(functions.config().firebase);
 
-const HONESTY_STORE_LOGO = 'https://honesty.store/assets/android/icon@MDPI.png';
-const BOT_USERNAME = 'honesty.store';
-
 const authenticateUser = uid => {
   if (uid === functions.config().honestystore.uid) return Promise.resolve(true);
   return admin
