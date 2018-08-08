@@ -338,10 +338,7 @@ class SnackChat extends Component {
         <div className="snackchat-body">
           <canvas ref={this.canvas} width={FEED_SIZE} height={FEED_SIZE} />
         </div>
-        <div
-          style={{
-            display: 'none'
-          }}>
+        <div style={{display: 'none'}}>
           <WebcamCapture
             ref={this.webcam}
             imgSize={CAPTURE_SIZE}
