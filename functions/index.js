@@ -5,6 +5,11 @@ const fs = require('fs');
 const admin = require('firebase-admin');
 admin.initializeApp(functions.config().firebase);
 
+const ACCESS_DENIED = {
+  ok: false,
+  error: 'Access denied, you must be authenticated to use this function.'
+};
+
 const authenticateUser = uid => {
   if (uid === functions.config().honestystore.uid) return Promise.resolve(true);
   return admin
@@ -19,7 +24,7 @@ exports.sendSlackMessage = functions.https.onCall((data, context) => {
   return authenticateUser(context.auth.uid).then(isAllowedAccsess => {
     if (isAllowedAccsess) {
       const token = functions.config().slack.token;
-      
+
       const options = {
         auth: {bearer: token},
         json: true,
@@ -34,7 +39,7 @@ exports.sendSlackMessage = functions.https.onCall((data, context) => {
 
       return request.post('https://slack.com/api/chat.postMessage', options);
     } else {
-      return {ok: false, error: 'No accsess to function'};
+      return ACCESS_DENIED;
     }
   });
 });
@@ -58,7 +63,7 @@ exports.sendSnackChat = functions.https.onCall((data, context) => {
       };
       return request.post('https://slack.com/api/files.upload', options);
     } else {
-      return {ok: false, error: 'No accsess to function'};
+      return ACCESS_DENIED;
     }
   });
 });
@@ -74,7 +79,7 @@ exports.loadSlackUsers = functions.https.onCall((data, context) => {
 
       return request.get('https://slack.com/api/users.list', options);
     } else {
-      return {ok: false, error: 'No accsess to function'};
+      return ACCESS_DENIED;
     }
   });
 });
