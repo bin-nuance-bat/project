@@ -78,6 +78,17 @@ class SnackChat extends Component {
     );
   };
 
+  drawBackground = video => {
+    this.ctx.scale(-CANVAS_SCALE, CANVAS_SCALE);
+    this.ctx.drawImage(
+      video,
+      Math.abs(video.videoWidth - this.canvas.current.width) / 2 -
+        video.videoWidth,
+      0
+    );
+    this.ctx.restore();
+  };
+
   playGettingInPositionAnimation = () => {
     const numberOfFallingSnacks = 3;
     const itemPositions = [];
@@ -92,17 +103,6 @@ class SnackChat extends Component {
         rotation: Math.random() * 2 * Math.PI
       });
     }
-
-    drawBackground = video => {
-      this.ctx.scale(-CANVAS_SCALE, CANVAS_SCALE);
-      this.ctx.drawImage(
-        video,
-        Math.abs(video.videoWidth - this.canvas.current.width) / 2 -
-          video.videoWidth,
-        0
-      );
-      this.ctx.restore();
-    };
 
     const drawFallingSnacks = () => {
       if (this.state.counter <= COUNTDOWN_TIME + PHOTO_ANIMATION_TIME) {
