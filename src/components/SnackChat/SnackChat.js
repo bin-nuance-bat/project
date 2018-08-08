@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import * as posenet from '@tensorflow-models/posenet';
 import './SnackChat.css';
 
-const FEED_SIZE = 480;
+const FEED_SIZE = 768;
 const CAPTURE_SIZE = 200;
 const LOADING_ANIMATION_TIME = 3;
 const COUNTDOWN_TIME = 3;
@@ -98,11 +98,12 @@ class SnackChat extends Component {
       // Video background
       const video = this.webcam.current.webcam.current.video;
       this.ctx.save();
-      this.ctx.scale(-1, 1);
+      this.ctx.scale(-1.6, 1.6);
       this.ctx.drawImage(
         video,
-        (video.videoWidth - this.canvas.current.width) / 2 - video.videoWidth,
-        -(video.videoHeight - this.canvas.current.height) / 2
+        Math.abs(video.videoWidth - this.canvas.current.width) / 2 -
+          video.videoWidth,
+        0
       );
       this.ctx.restore();
 
@@ -245,11 +246,12 @@ class SnackChat extends Component {
 
     // Video background
     this.ctx.save();
-    this.ctx.scale(-1, 1);
+    this.ctx.scale(-1.6, 1.6);
     this.ctx.drawImage(
       video,
-      (video.videoWidth - this.canvas.current.width) / 2 - video.videoWidth,
-      -(video.videoHeight - this.canvas.current.height) / 2
+      Math.abs(video.videoWidth - this.canvas.current.width) / 2 -
+        video.videoWidth,
+      0
     );
     this.ctx.restore();
 
@@ -280,11 +282,12 @@ class SnackChat extends Component {
     this.ctx.resetTransform();
 
     // Re-draw face
-    this.ctx.scale(-1, 1);
+    this.ctx.scale(-1.6, 1.6);
     this.ctx.drawImage(
       video,
-      (video.videoWidth - this.canvas.current.width) / 2 - video.videoWidth,
-      -(video.videoHeight - this.canvas.current.height) / 2
+      Math.abs(video.videoWidth - this.canvas.current.width) / 2 -
+        video.videoWidth,
+      0
     );
     this.ctx.restore();
 
