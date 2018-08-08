@@ -19,7 +19,7 @@ exports.sendSlackMessage = functions.https.onCall((data, context) => {
   return authenticateUser(context.auth.uid).then(isAllowedAccsess => {
     if (isAllowedAccsess) {
       const token = functions.config().slack.token;
-
+      
       const options = {
         auth: {bearer: token},
         json: true,
@@ -67,7 +67,6 @@ exports.loadSlackUsers = functions.https.onCall((data, context) => {
   return authenticateUser(context.auth.uid).then(isAllowedAccsess => {
     if (isAllowedAccsess) {
       const token = functions.config().slack.token;
-
       const options = {
         auth: {bearer: token},
         json: true
