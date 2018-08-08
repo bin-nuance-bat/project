@@ -15,10 +15,11 @@ export const sendSlackMessage = userid => async (dispatch, getState) => {
   const state = getState();
   const actualItemID = state.actualItem;
   const itemName = state.storeList[actualItemID].name;
+  const snackChat = state.sendWithPhoto ? state.snackChat : null;
 
   try {
     const result = await retry(
-      () => attemptSendSlackMessage(userid, itemName, actualItemID),
+      () => attemptSendSlackMessage(userid, itemName, actualItemID, snackChat),
       () => dispatch(setSendMessageError(true))
     );
     dispatch(setSendMessageError(false));
@@ -29,12 +30,20 @@ export const sendSlackMessage = userid => async (dispatch, getState) => {
   }
 };
 
-const attemptSendSlackMessage = async (userid, itemName, actualItemID) => {
-  const send = firebase.functions().httpsCallable('sendSlackMessage');
+const attemptSendSlackMessage = async (
+  userid,
+  itemName,
+  actualItemID,
+  snackChat
+) => {
+  const endpoint = snackChat ? 'sendSnackChat' : 'sendSlackMessage';
+  const send = firebase.functions().httpsCallable(endpoint);
 
-  const result = await send({userid, itemName, actualItemID}).then(response => {
-    return response.data;
-  });
+  const result = await send({userid, itemName, actualItemID, snackChat}).then(
+    response => {
+      return response.data;
+    }
+  );
   if (!result.ok) {
     throw Error('A network error occured');
   }
