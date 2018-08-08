@@ -93,6 +93,17 @@ class SnackChat extends Component {
       });
     }
 
+    drawBackground = video => {
+      this.ctx.scale(-CANVAS_SCALE, CANVAS_SCALE);
+      this.ctx.drawImage(
+        video,
+        Math.abs(video.videoWidth - this.canvas.current.width) / 2 -
+          video.videoWidth,
+        0
+      );
+      this.ctx.restore();
+    };
+
     const drawFallingSnacks = () => {
       if (this.state.counter <= COUNTDOWN_TIME + PHOTO_ANIMATION_TIME) {
         this.setState({gettingInPosition: false});
@@ -102,14 +113,7 @@ class SnackChat extends Component {
       // Video background
       const video = this.webcam.current.webcam.current.video;
       this.ctx.save();
-      this.ctx.scale(-CANVAS_SCALE, CANVAS_SCALE);
-      this.ctx.drawImage(
-        video,
-        Math.abs(video.videoWidth - this.canvas.current.width) / 2 -
-          video.videoWidth,
-        0
-      );
-      this.ctx.restore();
+      this.drawBackground(video);
 
       this.ctx.fillStyle = 'rgba(0.6, 0.6, 0.6, 0.6)';
       this.ctx.fillRect(
@@ -250,14 +254,7 @@ class SnackChat extends Component {
 
     // Video background
     this.ctx.save();
-    this.ctx.scale(-CANVAS_SCALE, CANVAS_SCALE);
-    this.ctx.drawImage(
-      video,
-      Math.abs(video.videoWidth - this.canvas.current.width) / 2 -
-        video.videoWidth,
-      0
-    );
-    this.ctx.restore();
+    this.drawBackground(video);
 
     // Filter
     const shoulders = this.averageBodyPosition.shoulders;
@@ -286,14 +283,7 @@ class SnackChat extends Component {
     this.ctx.resetTransform();
 
     // Re-draw face
-    this.ctx.scale(-CANVAS_SCALE, CANVAS_SCALE);
-    this.ctx.drawImage(
-      video,
-      Math.abs(video.videoWidth - this.canvas.current.width) / 2 -
-        video.videoWidth,
-      0
-    );
-    this.ctx.restore();
+    this.drawBackground(video);
 
     requestAnimationFrame(this.update);
   };
