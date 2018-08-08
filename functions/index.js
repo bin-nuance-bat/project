@@ -15,8 +15,7 @@ const authenticateUser = uid => {
     .collection('users')
     .doc(uid)
     .get()
-    .then(doc => doc.data())
-    .then(result => result.admin);
+    .then(doc => doc.data().admin);
 };
 
 exports.sendSlackMessage = functions.https.onCall((data, context) => {
