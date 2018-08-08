@@ -19,7 +19,7 @@ class ItemRecognition extends Component {
 
     if (navigator.onLine) {
       this.model = new Model();
-      this.model.load();
+      this.model.load().then(() => this.setState({modelLoaded: true}));
       this.webcam = React.createRef();
       this.mobileNet = new MobileNet();
       this.controllerDataset = new ControllerDataset();
@@ -27,7 +27,8 @@ class ItemRecognition extends Component {
   }
 
   state = {
-    text: 'Scan item using the front facing camera'
+    text: 'Scan item using the front facing camera',
+    modelLoaded: false
   };
 
   componentDidMount() {
@@ -61,53 +62,65 @@ class ItemRecognition extends Component {
     );
   };
 
+  setSuggestions = (items, index) => {
+    const suggestions = items
+      .slice(index)
+      .filter(item => item.id !== 'unknown')
+      .slice(0, 3)
+      .map(item => item.id);
+    this.props.setSuggestions(suggestions);
+  };
+
+  hasBeen(seconds) {
+    return (Date.now() - this.scanningStartTime) / 1000 > seconds;
+  }
+
   handleImg = img => {
     if (this.success) return;
+
     this.model.predict(img).then(async items => {
       const item = items[0];
-      if (
-        (item.value > ML_THRESHOLD &&
-          item.id !== 'unknown' &&
-          !this.props.prediction) ||
-        (Date.now() - this.scanningStartTime) / 1000 > TIMEOUT_IN_SECONDS
-      ) {
+      const isItemRecognised =
+        item.value > ML_THRESHOLD &&
+        item.id !== 'unknown' &&
+        !this.props.prediction;
+      const hasTimedOut = this.hasBeen(TIMEOUT_IN_SECONDS);
+      const showRotationMessage =
+        !this.state.subText &&
+        this.hasBeen(TIMEOUT_IN_SECONDS - SHOW_RETRY_FOR);
+      if (isItemRecognised) {
         this.success = true;
         this.addTrainingImage(img.src, item.id);
+        this.setSuggestions(items, 1);
         await this.props.setPrediction(item.id, img.src);
-        const suggestions = [];
-        for (let i = 1; i < 4; i++) {
-          suggestions.push(this.props.storeList[items[i].id]);
-        }
-        this.props.setSuggestions(suggestions);
+
         this.webcam.current.success(() => {
           this.setState({text: 'Snack recognised!', subText: null});
           setTimeout(() => {
-            this.props.history.replace(
-              item.id === 'unknown' ? '/editsnack' : '/confirmitem'
-            );
+            this.props.history.replace('/confirmitem');
           }, 500);
         });
-      } else {
-        if (
-          !this.state.subText &&
-          (Date.now() - this.scanningStartTime) / 1000 >
-            TIMEOUT_IN_SECONDS - SHOW_RETRY_FOR
-        )
-          this.setState({
-            text: "We can't recognise the snack",
-            subText: 'Try turning the snack so the logo is seen by the camera'
-          });
-        if (this.webcam.current)
-          this.webcam.current.requestScreenshot().then(this.handleImg);
+      } else if (hasTimedOut) {
+        this.setSuggestions(items, 0);
+        this.props.history.replace('/editsnack');
+      } else if (showRotationMessage) {
+        this.setState({
+          text: "We can't recognise the snack",
+          subText: 'Try turning the snack so the logo is seen by the camera'
+        });
       }
+
+      // Get the next frame
+      if (this.webcam.current)
+        this.webcam.current.requestScreenshot().then(this.handleImg);
     });
   };
 
   render() {
     return (
       <div className="page">
-        <BackButton history={this.props.history} />
         <header>
+          <BackButton history={this.props.history} />
           <div>
             <div className="item-recognition item-recognition--instructions">
               {this.state.text}
@@ -119,12 +132,14 @@ class ItemRecognition extends Component {
             )}
           </div>
         </header>
-        <WebcamCapture
-          className="item-recognition item-recognition--display"
-          ref={this.webcam}
-          onConnect={this.onConnect}
-          imgSize={224}
-        />
+        {this.state.modelLoaded && (
+          <WebcamCapture
+            className="item-recognition item-recognition--display"
+            ref={this.webcam}
+            onConnect={this.onConnect}
+            imgSize={224}
+          />
+        )}
       </div>
     );
   }

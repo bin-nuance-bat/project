@@ -33,13 +33,16 @@ class App extends Component {
 
   componentDidMount() {
     document.body.addEventListener('touchstart', this.resetTimeoutTimer);
+    document.body.addEventListener('touchmove', this.resetTimeoutTimer);
     window.addEventListener('online', this.handleOnline);
     window.addEventListener('offline', this.handleOffline);
 
+    const isHiddenAdminPage = window.location.pathname.startsWith('/admin/');
     const isValidRoute =
       window.location.pathname === '/' ||
       window.location.pathname.startsWith('/admin');
-    if (!isValidRoute) window.location.href = '/';
+    if (isHiddenAdminPage) window.location.href = '/admin';
+    else if (!isValidRoute) window.location.href = '/';
   }
 
   resetTimeoutTimer = () => {
@@ -84,13 +87,14 @@ class App extends Component {
     clearTimeout(this.timer);
     clearInterval(this.interval);
     document.body.removeEventListener('touchstart', this.resetTimeoutTimer);
+    document.body.removeEventListener('touchmove', this.resetTimeoutTimer);
     window.removeEventListener('online', this.handleOnline);
     window.removeEventListener('offline', this.handleOffline);
   }
 
   render() {
     return (
-      <div key={this.state.isOnline}>
+      <div key={this.connectionError()}>
         <Router>
           <Switch>
             <Route exact path="/" component={Home} />
