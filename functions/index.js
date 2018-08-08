@@ -28,8 +28,7 @@ exports.sendSlackMessage = functions.https.onCall((data, context) => {
         json: true,
         body: {
           channel: data.userid,
-          icon_url: HONESTY_STORE_LOGO,
-          username: BOT_USERNAME,
+          as_user: true,
           text: `Click to purchase your ${
             data.itemName
           }: https://honesty.store/item/${data.actualItemID}`
