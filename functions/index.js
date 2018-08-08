@@ -1,39 +1,53 @@
 const functions = require('firebase-functions');
 const fetch = require('node-fetch');
 const queryString = require('query-string');
+const admin = require('firebase-admin');
+admin.initializeApp(functions.config().firebase);
 
 const HONESTY_STORE_LOGO = 'https://honesty.store/assets/android/icon@MDPI.png';
 const BOT_USERNAME = 'honesty.store';
+const authenticateUser = uid => {
+  return admin
+    .firestore()
+    .collection('users')
+    .doc(uid)
+    .get()
+    .then(doc => doc.data())
+    .then(result => result.kiosk || result.admin);
+};
 
 exports.sendSlackMessage = functions.https.onCall((data, context) => {
-  if (context.auth.uid != 'EoBqPe3ZSEPovZvUMrEO7XTRdN42') {
-    return {ok: false, msg: 'Not authenticated'};
-  }
+  return authenticateUser(context.auth.uid).then(isAllowedAccsess => {
+    if (isAllowedAccsess) {
+      const token = functions.config().slack.token;
+      const options = queryString.stringify({
+        token,
+        channel: data.userid,
+        icon_url: HONESTY_STORE_LOGO,
+        username: BOT_USERNAME,
+        text: `Click to purchase your ${
+          data.itemName
+        }: https://honesty.store/item/${data.actualItemID}`
+      });
 
-  const token = functions.config().slack.token;
-  const options = queryString.stringify({
-    token,
-    channel: data.userid,
-    icon_url: HONESTY_STORE_LOGO,
-    username: BOT_USERNAME,
-    text: `Click to purchase your ${
-      data.itemName
-    }: https://honesty.store/item/${data.actualItemID}`
+      return fetch(`https://slack.com/api/chat.postMessage?${options}`)
+        .then(response => response.json())
+        .catch(() => ({ok: false}));
+    } else {
+      return {ok: false, error: 'No accsess to function'};
+    }
   });
-
-  return fetch(`https://slack.com/api/chat.postMessage?${options}`)
-    .then(response => response.json())
-    .catch(() => ({ok: false}));
 });
 
 exports.loadSlackUsers = functions.https.onCall((data, context) => {
-  if (context.auth.uid != 'EoBqPe3ZSEPovZvUMrEO7XTRdN42') {
-    return {ok: false, msg: 'Not authenticated'};
-  }
-
-  const token = functions.config().slack.token;
-
-  return fetch(`https://slack.com/api/users.list?token=${token}`)
-    .then(response => response.json())
-    .catch(() => ({ok: false}));
+  return authenticateUser(context.auth.uid).then(isAllowedAccsess => {
+    if (isAllowedAccsess) {
+      const token = functions.config().slack.token;
+      return fetch(`https://slack.com/api/users.list?token=${token}`)
+        .then(response => response.json())
+        .catch(() => ({ok: false}));
+    } else {
+      return {ok: false, error: 'No accsess to function'};
+    }
+  });
 });
