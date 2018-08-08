@@ -119,8 +119,8 @@ class ItemRecognition extends Component {
   render() {
     return (
       <div className="page">
-        <BackButton history={this.props.history} />
         <header>
+          <BackButton history={this.props.history} />
           <div>
             <div className="item-recognition item-recognition--instructions">
               {this.state.text}
