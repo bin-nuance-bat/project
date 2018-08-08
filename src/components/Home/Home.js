@@ -54,7 +54,7 @@ class Home extends React.Component {
           <button
             className="button homepage--button--nophoto"
             onClick={this.handleReminderNoPhotoClick}>
-            Send a reminder {/* without a photo */}
+            Send a reminder without a photo
           </button>
         </div>
       </div>
