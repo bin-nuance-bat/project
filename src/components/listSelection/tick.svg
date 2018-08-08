@@ -1,0 +1,12 @@
+<svg width="41px" height="40px" viewBox="0 0 41 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Tick</title>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-Copy-21" transform="translate(-65.000000, -344.000000)">
+            <g id="Tick" transform="translate(66.000000, 345.000000)">
+                <path d="M29.6832778,12.6326199 C29.2610026,12.2266912 28.5763737,12.2266912 28.1540141,12.6326199 L15.1987797,25.0852276 L10.2189995,20.2986958 C9.79672436,19.8927671 9.11209541,19.8928077 8.68973578,20.2986958 C8.26741838,20.7045839 8.26741838,21.3626447 8.68973578,21.7685734 L14.4341478,27.2899831 C14.8562962,27.6958712 15.5414321,27.695587 15.9634115,27.2899831 L29.6832778,14.1025381 C30.1055952,13.6966501 30.1055529,13.0385486 29.6832778,12.6326199 Z" id="Shape" fill="#47BED8" fill-rule="nonzero"></path>
+                <ellipse id="Oval-2" stroke="#47BED8" stroke-width="2" cx="19.5" cy="19" rx="19.5" ry="19"></ellipse>
+            </g>
+        </g>
+    </g>
+</svg>
