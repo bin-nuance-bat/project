@@ -8,7 +8,7 @@ class SuccessPage extends Component {
     this.timeout = setTimeout(() => this.props.history.replace('/'), 10000);
   }
 
-  componentDidUnmount() {
+  componentWillUnmount() {
     clearTimeout(this.timeout);
   }
 
@@ -20,7 +20,9 @@ class SuccessPage extends Component {
   render() {
     return (
       <div className="page" onClick={this.goHomeAndClearTimeout}>
-        <div className="text text-remindersent">Reminder sent!</div>
+        <div id="success-message" className="text text-remindersent">
+          Reminder sent!
+        </div>
         <div className="success-hand">
           <Hand snack={this.props.storeList[this.props.actualItem].image} />
         </div>
@@ -31,7 +33,7 @@ class SuccessPage extends Component {
 SuccessPage.propTypes = {
   history: PropTypes.object.isRequired,
   actualItem: PropTypes.string.isRequired,
-  storeList: PropTypes.arrayOf(PropTypes.object).isRequired
+  storeList: PropTypes.object.isRequired
 };
 
 export default SuccessPage;

@@ -127,15 +127,19 @@ class WebcamCapture extends Component {
             ref={this.fileInput}
           />
         ) : (
-          <Webcam
-            audio={false}
-            width="100%"
-            height="100%"
-            ref={this.webcam}
-            screenshotFormat="image/jpeg"
-            className="webcam-capture--video"
-            screenshotWidth={this.props.imgSize * (4 / 3)}
-          />
+          this.state.cameraConnected && (
+            <div className="webcam-container">
+              <Webcam
+                audio={false}
+                width="100%"
+                height="100%"
+                ref={this.webcam}
+                screenshotFormat="image/jpeg"
+                className="webcam-capture--video"
+                screenshotWidth={this.props.imgSize * (4 / 3)}
+              />
+            </div>
+          )
         )}
       </div>
     );

@@ -6,7 +6,7 @@ const mapStateToProps = state => {
   return {
     items: Object.values(state.storeList),
     prediction: state.prediction,
-    suggestions: state.suggestions,
+    suggestions: state.suggestions.map(itemid => state.storeList[itemid]),
     sendWithPhoto: state.sendWithPhoto
   };
 };
