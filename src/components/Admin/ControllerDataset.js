@@ -64,7 +64,7 @@ export class ControllerDataset {
     await this.db
       .collection('training_data')
       .doc(dataset.id)
-      .update({trusted: true});
+      .update({trusted: true, label: dataset.item});
 
     await this.changeItemCount(dataset.item, 1);
   };
@@ -246,7 +246,8 @@ export class ControllerDataset {
       .then(snapshot => ({
         ...snapshot.docs[0].data(),
         id: snapshot.docs[0].id
-      }));
+      }))
+      .catch(() => null);
   }
 
   async getUntrustedImages() {
@@ -255,7 +256,7 @@ export class ControllerDataset {
       .collection('training_data')
       .where('trusted', '==', false)
       .orderBy('timestamp')
-      .limit(20)
+      .limit(10)
       .get()
       .then(snapshot => {
         snapshot.forEach(doc => {

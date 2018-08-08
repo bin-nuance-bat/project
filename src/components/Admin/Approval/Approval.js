@@ -29,11 +29,26 @@ class ImageApproval extends Component {
   };
 
   nextImage = index => {
+    let retries = 3;
     const handler = image => {
+      if (image === null) {
+        return this.setState(prevState => {
+          prevState.images.splice(index, 1);
+          return prevState;
+        });
+      }
+
       if (this.state.images.some(i => i.id === image.id)) {
-        this.controllerDataset
-          .getUntrustedImage(this.lastImageTimestamp())
-          .then(handler);
+        if (retries-- > 1) {
+          this.controllerDataset
+            .getUntrustedImage(this.lastImageTimestamp())
+            .then(handler);
+        } else {
+          this.setState(prevState => {
+            prevState.images.splice(index, 1);
+            return prevState;
+          });
+        }
       } else {
         this.setState(prevState => {
           prevState.images[index] = image;
