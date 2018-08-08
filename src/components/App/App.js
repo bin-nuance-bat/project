@@ -11,11 +11,16 @@ import UsernameEntry from '../UsernameEntry/container';
 import EditSnack from '../EditSnack/EditSnackContainer';
 import SuccessPage from '../SuccessPage/container';
 import NotificationBar from '../NotificationBar/NotificationBar';
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 
 import Admin from '../Admin/Admin';
 import Trainer from '../Admin/Trainer/Trainer';
 import ImageApproval from '../Admin/ImageApproval/ImageApproval';
 import Viewer from '../Admin/Preview/Viewer';
+
+import initFirebase from '../../utils/firebase';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 
 const WAIT_BEFORE_DISPLAY = 45;
 const PAGES_TO_SHOW_TIMEOUT = [
@@ -26,12 +31,38 @@ const PAGES_TO_SHOW_TIMEOUT = [
 ];
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    initFirebase();
+    this.firebaseAuth = firebase.auth();
+    window.auth = this.firebaseAuth;
+  }
+
   state = {
     showTimer: false,
-    isOnline: true
+    isOnline: true,
+    loggedIn: null
+  };
+
+  firebaseUiConfig = {
+    signInOptions: [
+      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+      {
+        provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
+        requireDisplayName: false
+      }
+    ],
+    callbacks: {
+      signInSuccessWithAuthResult: res =>
+        this.setState({loggedIn: res.user !== null})
+    }
   };
 
   componentDidMount() {
+    this.firebaseAuth.onAuthStateChanged(user =>
+      this.setState({loggedIn: user !== null})
+    );
+
     document.body.addEventListener('touchstart', this.resetTimeoutTimer);
     document.body.addEventListener('touchmove', this.resetTimeoutTimer);
     window.addEventListener('online', this.handleOnline);
@@ -76,10 +107,11 @@ class App extends Component {
 
   connectionError() {
     return (
-      !this.state.isOnline ||
-      this.props.loadStoreListError ||
-      this.props.loadUserListError ||
-      this.props.sendMessageError
+      (!this.state.isOnline ||
+        this.props.loadStoreListError ||
+        this.props.loadUserListError ||
+        this.props.sendMessageError) &&
+      this.state.loggedIn
     );
   }
 
@@ -93,6 +125,7 @@ class App extends Component {
   }
 
   render() {
+    if (this.state.loggedIn === null) return null;
     return (
       <div key={this.connectionError()}>
         <Router>
@@ -130,6 +163,12 @@ class App extends Component {
             mainText="Connection lost"
             autoActionWord="Retrying"
             preventInteraction
+          />
+        )}
+        {!this.state.loggedIn && (
+          <StyledFirebaseAuth
+            uiConfig={this.firebaseUiConfig}
+            firebaseAuth={this.firebaseAuth}
           />
         )}
       </div>
