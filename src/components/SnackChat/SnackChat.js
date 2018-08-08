@@ -15,6 +15,7 @@ const LOADING_ANIMATION_TIME = 3;
 const COUNTDOWN_TIME = 3;
 const PHOTO_ANIMATION_TIME = 1.5;
 const POSITION_BUFFER_SIZE = 10;
+const FALLING_SNACK_SIZE = 0.2;
 
 function clipEllipse(ctx, centerX, centerY, width, height) {
   ctx.beginPath();
@@ -83,8 +84,10 @@ class SnackChat extends Component {
       itemPositions.push({
         x: (this.canvas.current.width * i) / (numberOfFallingSnacks + 1),
         y:
-          Math.random() * 1.4 * this.canvas.current.height -
-          0.2 * this.canvas.current.height,
+          Math.random() *
+            (1 + 2 * FALLING_SNACK_SIZE) *
+            this.canvas.current.height -
+          FALLING_SNACK_SIZE * this.canvas.current.height,
         rotation: Math.random() * 2 * Math.PI
       });
     }
@@ -123,8 +126,8 @@ class SnackChat extends Component {
           this.filter,
           -0.1 * this.canvas.current.width,
           -0.1 * this.canvas.current.width,
-          0.2 * this.canvas.current.width,
-          0.2 * this.canvas.current.height
+          FALLING_SNACK_SIZE * this.canvas.current.width,
+          FALLING_SNACK_SIZE * this.canvas.current.height
         );
         this.ctx.setTransform(1, 0, 0, 1, 0, 0);
       });
@@ -133,9 +136,9 @@ class SnackChat extends Component {
       // update positions
       itemPositions.forEach(item => {
         item.y =
-          ((0.2 * this.canvas.current.height + item.y + 3) %
-            (1.4 * this.canvas.current.height)) -
-          0.2 * this.canvas.current.height;
+          ((FALLING_SNACK_SIZE * this.canvas.current.height + item.y + 3) %
+            ((1 + 2 * FALLING_SNACK_SIZE) * this.canvas.current.height)) -
+          FALLING_SNACK_SIZE * this.canvas.current.height;
         item.rotation = (item.rotation + 0.03) % (Math.PI * 2);
       });
 
