@@ -44,7 +44,7 @@ const attemptSendSlackMessage = async (
       return response.data;
     }
   );
-  if (!result.ok) {
+  if (!result.ok || result.error) {
     throw Error('A network error occured');
   }
   return result;
