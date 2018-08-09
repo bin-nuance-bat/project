@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './UsernameEntry.css';
+
 import ListSelection from '../listSelection/ListSelection';
+import BackButton from '../BackButton/BackButton';
+
+import './UsernameEntry.css';
 
 class UsernameEntry extends React.Component {
   state = {
@@ -29,20 +32,21 @@ class UsernameEntry extends React.Component {
   render() {
     return (
       <div className="username-entry--page" onTouchMove={this.deselect}>
-        <div className="username-entry--header" id="header">
-          <div className="text-select-slack">
-            Please select your slack handle to send a reminder
+        <header className="header">
+          <BackButton history={this.props.history} />
+          <div className="header-text">
+            Please select your slack handle to<br />send a reminder
           </div>
           {this.state.selectedUser && (
-            <div className="username-entry--confirm-div">
+            <div className="confirm-modal">
               <button
-                className="button username-entry--confirm-button"
+                className="button btn-primary btn-half-block btn-modal"
                 onClick={this.sendReminder}>
                 Next
               </button>
             </div>
           )}
-        </div>
+        </header>
         <div>
           {this.props.users.length !== 0 && (
             <ListSelection

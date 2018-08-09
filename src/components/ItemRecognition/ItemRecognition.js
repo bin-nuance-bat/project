@@ -119,16 +119,12 @@ class ItemRecognition extends Component {
   render() {
     return (
       <div className="page">
-        <header>
+        <header className="header">
           <BackButton history={this.props.history} />
           <div>
-            <div className="item-recognition item-recognition--instructions">
-              {this.state.text}
-            </div>
+            <div className="header-text">{this.state.text}</div>
             {this.state.subText && (
-              <div className="item-recognition--instructions-small">
-                {this.state.subText}
-              </div>
+              <div className="header-subtext">{this.state.subText}</div>
             )}
           </div>
         </header>

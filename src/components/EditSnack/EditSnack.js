@@ -14,12 +14,12 @@ class EditSnack extends Component {
   render() {
     return (
       <div className="edit-snack--page">
-        <div className="edit-snack--header" id="header">
+        <header className="header">
           <BackButton history={this.props.history} />
-          <div className="edit-snack edit-snack--text-info">
+          <div className="header-text">
             Sorry, I can’t recognise that snack <br /> Please select it below
           </div>
-        </div>
+        </header>
         <ListSelection
           iconStyle="snack-icon"
           items={this.props.items}

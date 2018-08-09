@@ -14,16 +14,18 @@ class ListSelection extends Component {
 
   componentDidMount() {
     const scrollSelect = document.getElementById('scroll-select');
-    const header = document.getElementById('header');
+    const header = document.getElementsByTagName('header')[0];
     scrollSelect.addEventListener('touchmove', this.preventDefault, false);
     header.addEventListener('touchmove', this.preventDefault, false);
 
     if (scrollSelect)
       this.scrollSelectTop = scrollSelect.getBoundingClientRect().top;
 
-    const selectElement = document.getElementById('select-element');
-    if (selectElement)
-      this.selectElementHeight = selectElement.getBoundingClientRect().height;
+    const selectElement = document.getElementsByClassName(
+      'list-selection--scroll-select-element'
+    );
+    if (selectElement.length > 0)
+      this.selectElementHeight = selectElement[0].getBoundingClientRect().height;
   }
 
   startsWithLetter = str => {
@@ -57,7 +59,11 @@ class ListSelection extends Component {
   })();
 
   handleOnTouchStart = index => {
+    // If we have suggestions in the list, increment the index to skip them
+    if (this.formattedItems[0][0] === '\u00A0') index++;
+
     let i = index;
+
     while (
       i < this.formattedItems.length &&
       this.formattedItems[i][1].length === 0
@@ -71,6 +77,7 @@ class ListSelection extends Component {
         --i;
       }
     }
+
     const goToGroup = this.formattedItems[i][0];
     const touchedLetter = this.formattedItems[index][0];
     window.location.hash = '#' + goToGroup;
@@ -83,11 +90,17 @@ class ListSelection extends Component {
         this.selectElementHeight,
       10
     );
+
+    // If we have suggestions in the list, increment the index to skip them
+    if (this.formattedItems[0][0] === '\u00A0') index++;
+
     if (index < 0 || Object.is(index, -0)) index = 0;
     if (index >= this.formattedItems.length)
       index = this.formattedItems.length - 1;
+
     let letter = this.formattedItems[index][0];
     if (letter === '\u00A0') letter = this.formattedItems[1][0];
+
     if (letter !== this.state.bubbleAt) {
       this.setState(prevState => ({
         bubbleAt: letter,
@@ -103,9 +116,9 @@ class ListSelection extends Component {
 
   componentWillUnmount() {
     const scrollSelect = document.getElementById('scroll-select');
-    const header = document.getElementById('header');
+    const header = document.getElementsByTagName('header');
     scrollSelect.removeEventListener('touchmove', this.preventDefault, false);
-    header.removeEventListener('touchmove', this.preventDefault, false);
+    header[0].removeEventListener('touchmove', this.preventDefault, false);
   }
 
   render() {
@@ -164,22 +177,23 @@ class ListSelection extends Component {
         </div>
 
         <div className="list-selection--scroll-select" id="scroll-select">
-          {this.formattedItems.map(([group], index) => (
-            <div
-              key={group}
-              className="list-selection--scroll-select-element"
-              id="select-element"
-              onTouchStart={() => this.handleOnTouchStart(index)}
-              onTouchMove={this.handleOnTouchMove}
-              onTouchEnd={this.handleOnTouchEnd}>
-              {this.state.bubbleAt === group && (
-                <div className="list-selection--bubble">
-                  <Bubble letter={group} />
-                </div>
-              )}
-              {group}
-            </div>
-          ))}
+          {this.formattedItems
+            .filter(([group]) => group !== '\u00A0')
+            .map(([group], index) => (
+              <div
+                key={group}
+                className="list-selection--scroll-select-element"
+                onTouchStart={() => this.handleOnTouchStart(index)}
+                onTouchMove={this.handleOnTouchMove}
+                onTouchEnd={this.handleOnTouchEnd}>
+                {this.state.bubbleAt === group && (
+                  <div className="list-selection--bubble">
+                    <Bubble letter={group} />
+                  </div>
+                )}
+                {group}
+              </div>
+            ))}
         </div>
       </div>
     );

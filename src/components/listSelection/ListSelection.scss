@@ -23,10 +23,10 @@ $username-icon-size: 48px;
 }
 
 .list-selection--body {
-  padding-top: 232px;
   background-color: $white;
-  height: 100%;
-  width: 95%;
+  display: flex;
+  align-items: center;
+  height: 768px;
 }
 
 .list-selection--list-text {
@@ -65,21 +65,17 @@ $username-icon-size: 48px;
 
 .list-selection--scroll-select {
   color: $blue;
-  position: fixed;
   font-size: 19px;
-  right: 0px;
-  top: 340px;
-  margin: 0px;
+  margin: auto 0px;
   width: 5%;
   text-align: center;
   font-family: FaricyNew-Bold;
-  z-index: 2;
 }
 
 .list-selection--list {
-  width: 100%;
+  width: 95%;
+  height: 100%;
   overflow-y: scroll;
-  height: 792px;
   -webkit-overflow-scrolling: touch;
 }
 
