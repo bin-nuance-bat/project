@@ -10,7 +10,7 @@ import MobileNet from '../Admin/Trainer/MobileNet';
 import './ItemRecognition.css';
 
 const TIMEOUT_IN_SECONDS = 10;
-const ML_THRESHOLD = 0.35;
+const ML_CERTAINTY = 3;
 const SHOW_RETRY_FOR = 5;
 
 class ItemRecognition extends Component {
@@ -31,8 +31,11 @@ class ItemRecognition extends Component {
     modelLoaded: false
   };
 
+  predictionStack = [];
+
   componentDidMount() {
     this.props.setPrediction(null, null);
+    this.predictionStack = [];
   }
 
   onConnect = () => {
@@ -75,19 +78,40 @@ class ItemRecognition extends Component {
     return (Date.now() - this.scanningStartTime) / 1000 > seconds;
   }
 
+  isItemRecognised = items => {
+    this.predictionStack.push(items.slice(0, ML_CERTAINTY));
+    const predictionCount = this.predictionStack.length;
+    if (predictionCount < ML_CERTAINTY) return false;
+    for (let i = 1; i < ML_CERTAINTY; i++) {
+      if (
+        this.predictionStack[predictionCount - i][0].id !==
+          this.predictionStack[predictionCount - i - 1][0].id ||
+        this.predictionStack[predictionCount - i][0].value /
+          this.predictionStack[predictionCount - i][1].value <
+          1.2
+      ) {
+        return false;
+      }
+    }
+    return true;
+  };
+
   handleImg = img => {
     if (this.success) return;
 
     this.model.predict(img).then(async items => {
       const item = items[0];
       const isItemRecognised =
-        item.value > ML_THRESHOLD &&
+        this.isItemRecognised(items) &&
         item.id !== 'unknown' &&
         !this.props.prediction;
+
       const hasTimedOut = this.hasBeen(TIMEOUT_IN_SECONDS);
+
       const showRotationMessage =
         !this.state.subText &&
         this.hasBeen(TIMEOUT_IN_SECONDS - SHOW_RETRY_FOR);
+
       if (isItemRecognised) {
         this.success = true;
         this.addTrainingImage(img.src, item.id);
