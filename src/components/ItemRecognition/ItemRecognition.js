@@ -9,7 +9,7 @@ import MobileNet from '../Admin/Trainer/MobileNet';
 
 import './ItemRecognition.css';
 
-const TIMEOUT_IN_SECONDS = 10;
+const TIMEOUT_IN_SECONDS = 1000;
 const ML_THRESHOLD = 0.35;
 const SHOW_RETRY_FOR = 5;
 
@@ -18,17 +18,17 @@ class ItemRecognition extends Component {
     super(props);
 
     if (navigator.onLine) {
-      this.model = new Model();
-      this.model.load().then(() => this.setState({modelLoaded: true}));
+      // this.model = new Model();
+      // this.model.load().then(() => this.setState({modelLoaded: true}));
       this.webcam = React.createRef();
-      this.mobileNet = new MobileNet();
-      this.controllerDataset = new ControllerDataset();
+      // this.mobileNet = new MobileNet();
+      // this.controllerDataset = new ControllerDataset();
     }
   }
 
   state = {
     text: 'Scan item using the front facing camera',
-    modelLoaded: false
+    modelLoaded: true
   };
 
   componentDidMount() {
@@ -78,43 +78,46 @@ class ItemRecognition extends Component {
   handleImg = img => {
     if (this.success) return;
 
-    this.model.predict(img).then(async items => {
-      const item = items[0];
-      const isItemRecognised =
-        item.value > ML_THRESHOLD &&
-        item.id !== 'unknown' &&
-        !this.props.prediction;
-      const hasTimedOut = this.hasBeen(TIMEOUT_IN_SECONDS);
-      const showRotationMessage =
-        !this.state.subText &&
-        this.hasBeen(TIMEOUT_IN_SECONDS - SHOW_RETRY_FOR);
-      if (isItemRecognised) {
-        this.success = true;
-        this.addTrainingImage(img.src, item.id);
-        this.setSuggestions(items, 1);
-        await this.props.setPrediction(item.id, img.src);
+    // this.model.predict(img).then(async items => {
+    //   const item = items[0];
+    //   const isItemRecognised =
+    //     item.value > ML_THRESHOLD &&
+    //     item.id !== 'unknown' &&
+    //     !this.props.prediction;
+    //   const hasTimedOut = this.hasBeen(TIMEOUT_IN_SECONDS);
+    //   const showRotationMessage =
+    //     !this.state.subText &&
+    //     this.hasBeen(TIMEOUT_IN_SECONDS - SHOW_RETRY_FOR);
+    //   if (isItemRecognised) {
+    //     this.success = true;
+    //     this.addTrainingImage(img.src, item.id);
+    //     this.setSuggestions(items, 1);
+    //     await this.props.setPrediction(item.id, img.src);
 
-        this.webcam.current.success(() => {
-          this.setState({text: 'Snack recognised!', subText: null});
-          setTimeout(() => {
-            this.props.history.replace('/confirmitem');
-          }, 500);
-        });
-      } else if (hasTimedOut) {
-        this.setSuggestions(items, 0);
-        this.props.history.replace('/editsnack');
-      } else if (showRotationMessage) {
-        this.setState({
-          text: "We can't recognise the snack",
-          subText: 'Try turning the snack so the logo is seen by the camera'
-        });
-      }
+    //     this.webcam.current.success(() => {
+    //       this.setState({text: 'Snack recognised!', subText: null});
+    //       setTimeout(() => {
+    //         this.props.history.replace('/confirmitem');
+    //       }, 500);
+    //     });
+    //   } else if (hasTimedOut) {
+    //     this.setSuggestions(items, 0);
+    //     this.props.history.replace('/editsnack');
+    //   } else if (showRotationMessage) {
+    //     this.setState({
+    //       text: "We can't recognise the snack",
+    //       subText: 'Try turning the snack so the logo is seen by the camera'
+    //     });
+    // }
 
-      // Get the next frame
-      if (this.webcam.current)
-        this.webcam.current.requestScreenshot().then(this.handleImg);
-    });
+    // Get the next frame
+    if (this.webcam.current)
+      this.webcam.current.requestScreenshot().then(this.handleImg);
+    //   });
   };
+  componentWillUnmount() {
+    this.model.dispose();
+  }
 
   render() {
     return (
