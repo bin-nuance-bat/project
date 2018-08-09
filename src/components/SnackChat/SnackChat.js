@@ -80,12 +80,7 @@ class SnackChat extends Component {
 
   drawBackground = video => {
     this.ctx.scale(-CANVAS_SCALE, CANVAS_SCALE);
-    this.ctx.drawImage(
-      video,
-      Math.abs(video.videoWidth - this.canvas.current.width) / 2 -
-        video.videoWidth,
-      0
-    );
+    this.ctx.drawImage(video, -FEED_SIZE * 0.625, 0);
     this.ctx.restore();
   };
 
@@ -117,13 +112,13 @@ class SnackChat extends Component {
 
       this.ctx.fillStyle = 'rgba(0.6, 0.6, 0.6, 0.6)';
       this.ctx.fillRect(
-        0,
+        -FEED_SIZE,
         0,
         this.canvas.current.width,
         this.canvas.current.height
       );
+
       // draw items
-      this.ctx.save();
       itemPositions.forEach(item => {
         this.ctx.translate(item.x, item.y);
         this.ctx.rotate(item.rotation);
@@ -136,7 +131,6 @@ class SnackChat extends Component {
         );
         this.ctx.setTransform(1, 0, 0, 1, 0, 0);
       });
-      this.ctx.restore();
 
       // update positions
       itemPositions.forEach(item => {
@@ -338,7 +332,7 @@ class SnackChat extends Component {
         <div className="snackchat-body">
           <canvas ref={this.canvas} width={FEED_SIZE} height={FEED_SIZE} />
         </div>
-        <div style={{display: 'none'}}>
+        <div>
           <WebcamCapture
             ref={this.webcam}
             imgSize={CAPTURE_SIZE}
