@@ -10,7 +10,8 @@ import MobileNet from '../Admin/Trainer/MobileNet';
 import './ItemRecognition.css';
 
 const TIMEOUT_IN_SECONDS = 10;
-const ML_CERTAINTY = 3;
+const MIN_CONSECUTIVE_PREDICTIONS = 3;
+const PREDICTION_RATIO_THRESHOLD = 1.2;
 const SHOW_RETRY_FOR = 5;
 
 class ItemRecognition extends Component {
@@ -31,11 +32,11 @@ class ItemRecognition extends Component {
     modelLoaded: false
   };
 
-  predictionStack = [];
+  predictionQueue = [];
 
   componentDidMount() {
     this.props.setPrediction(null, null);
-    this.predictionStack = [];
+    this.predictionQueue = [];
   }
 
   onConnect = () => {
@@ -79,21 +80,27 @@ class ItemRecognition extends Component {
   }
 
   isItemRecognised = items => {
-    this.predictionStack.push(items.slice(0, ML_CERTAINTY));
-    const predictionCount = this.predictionStack.length;
-    if (predictionCount < ML_CERTAINTY) return false;
-    for (let i = 1; i < ML_CERTAINTY; i++) {
-      if (
-        this.predictionStack[predictionCount - i][0].id !==
-          this.predictionStack[predictionCount - i - 1][0].id ||
-        this.predictionStack[predictionCount - i][0].value /
-          this.predictionStack[predictionCount - i][1].value <
-          1.2
-      ) {
-        return false;
-      }
+    this.predictionQueue.push(items.slice(0, MIN_CONSECUTIVE_PREDICTIONS));
+    if (this.predictionQueue.length < MIN_CONSECUTIVE_PREDICTIONS) {
+      return false;
     }
-    return true;
+
+    const predictions = this.predictionStack.slice(
+      -MIN_CONSECUTIVE_PREDICTIONS
+    );
+    const {id} = predictions[0][0];
+
+    const areAllBestPredictionsTheSame = predictions
+      .slice(1)
+      .every(([bestPrediction]) => bestPrediction.id === id);
+
+    const areAllBestPredictionsCertainEnough = predictions.every(
+      ([bestPrediction, secondBestPrediction]) =>
+        bestPrediction.value / secondBestPrediction.value >
+        PREDICTION_RATIO_THRESHOLD
+    );
+
+    return areAllBestPredictionsTheSame && areAllBestPredictionsCertainEnough;
   };
 
   handleImg = img => {
