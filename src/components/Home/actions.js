@@ -24,7 +24,7 @@ function setUsers(users) {
   };
 }
 
-function setUsersFetchError(usersFetchError) {
+export function setUsersFetchError(usersFetchError) {
   return {
     type: SET_USERS_FETCH_ERROR,
     usersFetchError
@@ -40,13 +40,13 @@ export const attemptLoadUsers = async () => {
   else return data;
 };
 
-export const loadUsers = () => dispatch => {
-  retry(attemptLoadUsers, () => dispatch(setUsersFetchError(true)))
+export const loadUsers = history => dispatch => {
+  return retry(attemptLoadUsers, () => dispatch(setUsersFetchError(true)))
     .then(data => data.members)
     .then(users => users.filter(user => !user.is_bot))
     .then(users => {
       dispatch(setUsers(users));
       dispatch(setUsersFetchError(false));
     })
-    .catch(() => dispatch(setUsersFetchError(true)));
+    .catch(() => history.replace('/error'));
 };

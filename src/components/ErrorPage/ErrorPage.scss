@@ -1,0 +1,23 @@
+@import '../../utils/constants.scss';
+
+.body {
+  background-color: $dark-blue;
+}
+
+.error-page--text--main {
+  padding-top: 330px;
+  margin: 0px;
+  font-family: 'FaricyNew-Bold';
+  font-size: 45px;
+}
+
+.error-page--text--sub {
+  padding-top: 8px;
+  margin: 0px;
+  font-family: 'FaricyNew';
+  font-size: 30px;
+}
+
+.error-page--cross {
+  padding-top: 124px;
+}

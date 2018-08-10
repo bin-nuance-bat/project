@@ -23,7 +23,7 @@ class UsernameEntry extends React.Component {
       this.state.selectedUser.id
     );
     if (result) this.props.history.replace('/success');
-    // TODO handle when result is false (i.e. message fails to send - redirect to error page?)
+    this.props.history.replace('/error');
   };
 
   render() {

@@ -11,13 +11,14 @@ import UsernameEntry from '../UsernameEntry/container';
 import EditSnack from '../EditSnack/EditSnackContainer';
 import SuccessPage from '../SuccessPage/container';
 import NotificationBar from '../NotificationBar/NotificationBar';
-import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import ErrorPage from '../ErrorPage/ErrorPageContainer';
 
 import Admin from '../Admin/Admin';
 import Trainer from '../Admin/Trainer/Trainer';
 import ImageApproval from '../Admin/ImageApproval/ImageApproval';
 import Viewer from '../Admin/Preview/Viewer';
 
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import initFirebase from '../../utils/firebase';
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -138,6 +139,7 @@ class App extends Component {
             <Route exact path="/editsnack" component={EditSnack} />
             <Route exact path="/slackname" component={UsernameEntry} />
             <Route exact path="/success" component={SuccessPage} />
+            <Route exact path="/error" component={ErrorPage} />
             <Route exact path="/admin" component={Admin} />
             <Route exact path="/admin/preview" component={Viewer} />
             <Route exact path="/admin/training" component={Trainer} />

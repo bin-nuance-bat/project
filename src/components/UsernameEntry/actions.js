@@ -4,7 +4,7 @@ import retry from '../../utils/retry';
 import firebase from 'firebase/app';
 import 'firebase/functions';
 
-function setSendMessageError(sendMessageError) {
+export function setSendMessageError(sendMessageError) {
   return {
     type: SET_SEND_MESSAGE_ERROR,
     sendMessageError

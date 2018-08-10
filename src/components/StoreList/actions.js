@@ -18,10 +18,10 @@ export function setLoadStoreListError(loadStoreListError) {
   };
 }
 
-export const loadStoreList = () => dispatch =>
+export const loadStoreList = history => dispatch =>
   retry(fetchItems, () => dispatch(setLoadStoreListError(true)))
     .then(storeList => {
       dispatch(setStoreList(storeList));
       dispatch(setLoadStoreListError(false));
     })
-    .catch(() => dispatch(setLoadStoreListError(true)));
+    .catch(() => history.replace('/error'));

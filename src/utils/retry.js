@@ -19,7 +19,7 @@ const retry = async (
       await new Promise(resolve => setTimeout(resolve, sleepTime));
     }
   }
-  return Promise.reject(latestError);
+  throw latestError;
 };
 
 export default retry;
