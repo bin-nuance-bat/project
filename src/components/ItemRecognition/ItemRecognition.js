@@ -85,7 +85,7 @@ class ItemRecognition extends Component {
       return false;
     }
 
-    const predictions = this.predictionStack.slice(
+    const predictions = this.predictionQueue.slice(
       -MIN_CONSECUTIVE_PREDICTIONS
     );
     const {id} = predictions[0][0];
