@@ -12,7 +12,7 @@ const Disclaimer = props => {
       <div className="disclaimer">
         <div className="disclaimer-item">
           <div>
-            <img src={Camera} className="disclaimer-icon" alt="" />{' '}
+            <img src={Camera} className="disclaimer-icon" alt="" />
           </div>
           <div className="disclaimer-text">
             As part of this process we will use the tablet&#39;s front-facing

@@ -35,7 +35,7 @@ class UsernameEntry extends React.Component {
         <header className="header">
           <BackButton history={this.props.history} />
           <div className="header-text">
-            Please select your slack handle to<br />send a reminder
+            Please select your slack handle to send a reminder
           </div>
           {this.state.selectedUser && (
             <div className="confirm-modal">

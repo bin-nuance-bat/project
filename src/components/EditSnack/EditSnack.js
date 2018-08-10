@@ -17,7 +17,7 @@ class EditSnack extends Component {
         <header className="header">
           <BackButton history={this.props.history} />
           <div className="header-text">
-            Sorry, I can’t recognise that snack <br /> Please select it below
+            Sorry, I can’t recognise that snack<br />Please select it below
           </div>
         </header>
         <ListSelection
