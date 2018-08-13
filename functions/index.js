@@ -17,7 +17,7 @@ const authenticateUser = (auth, success) => {
       'unauthenticated',
       'You must be authenticated to use this function'
     );
-
+  
   if (auth.uid === functions.config().honestystore.uid) return success();
   return admin
     .firestore()
