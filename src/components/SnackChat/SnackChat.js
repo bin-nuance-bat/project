@@ -16,29 +16,6 @@ const COUNTDOWN_TIME = 3;
 const PHOTO_ANIMATION_TIME = 1.5;
 const POSITION_BUFFER_SIZE = 10;
 const FALLING_SNACK_SIZE = 0.2;
-const CANVAS_SCALE = 1.6;
-
-function clipEllipse(ctx, centerX, centerY, width, height) {
-  ctx.beginPath();
-  ctx.moveTo(centerX, centerY - height / 2);
-  ctx.bezierCurveTo(
-    centerX + width / 2,
-    centerY - height / 2,
-    centerX + width / 2,
-    centerY + height / 2,
-    centerX,
-    centerY + height / 2
-  );
-  ctx.bezierCurveTo(
-    centerX - width / 2,
-    centerY + height / 2,
-    centerX - width / 2,
-    centerY - height / 2,
-    centerX,
-    centerY - height / 2
-  );
-  ctx.clip();
-}
 
 function normalise(n) {
   return (n *= FEED_SIZE / CAPTURE_SIZE);
@@ -59,6 +36,8 @@ class SnackChat extends Component {
 
   state = {
     gettingInPosition: true,
+    itemPositions: [],
+    averageBodyPosition: {},
     counter: COUNTDOWN_TIME + LOADING_ANIMATION_TIME + PHOTO_ANIMATION_TIME,
     captured: false
   };
@@ -78,23 +57,15 @@ class SnackChat extends Component {
     );
   };
 
-  drawBackground = video => {
-    this.ctx.scale(-CANVAS_SCALE, CANVAS_SCALE);
-    this.ctx.drawImage(video, -FEED_SIZE * 0.625, 0);
-    this.ctx.restore();
-  };
-
   playGettingInPositionAnimation = () => {
-    const numberOfFallingSnacks = 3;
     const itemPositions = [];
+    const numberOfFallingSnacks = 3;
     for (let i = 1; i <= numberOfFallingSnacks; i++) {
       itemPositions.push({
-        x: (this.canvas.current.width * i) / (numberOfFallingSnacks + 1),
+        x: (FEED_SIZE * i) / (numberOfFallingSnacks + 1),
         y:
-          Math.random() *
-            (1 + 2 * FALLING_SNACK_SIZE) *
-            this.canvas.current.height -
-          FALLING_SNACK_SIZE * this.canvas.current.height,
+          Math.random() * (1 + 2 * FALLING_SNACK_SIZE) * FEED_SIZE -
+          FALLING_SNACK_SIZE * FEED_SIZE,
         rotation: Math.random() * 2 * Math.PI
       });
     }
@@ -102,59 +73,26 @@ class SnackChat extends Component {
     const drawFallingSnacks = () => {
       if (this.state.counter <= COUNTDOWN_TIME + PHOTO_ANIMATION_TIME) {
         this.setState({gettingInPosition: false});
+        requestAnimationFrame(this.update);
         return;
+      } else {
+        this.setState({itemPositions});
       }
-
-      // Video background
-      const video = this.webcam.current.webcam.current.video;
-      this.ctx.save();
-      this.drawBackground(video);
-
-      this.ctx.fillStyle = 'rgba(0.6, 0.6, 0.6, 0.6)';
-      this.ctx.fillRect(
-        -FEED_SIZE,
-        0,
-        this.canvas.current.width,
-        this.canvas.current.height
-      );
-
-      // draw items
-      itemPositions.forEach(item => {
-        this.ctx.translate(item.x, item.y);
-        this.ctx.rotate(item.rotation);
-        this.ctx.drawImage(
-          this.filter,
-          -0.1 * this.canvas.current.width,
-          -0.1 * this.canvas.current.width,
-          FALLING_SNACK_SIZE * this.canvas.current.width,
-          FALLING_SNACK_SIZE * this.canvas.current.height
-        );
-        this.ctx.setTransform(1, 0, 0, 1, 0, 0);
-      });
 
       // update positions
       itemPositions.forEach(item => {
         item.y =
-          ((FALLING_SNACK_SIZE * this.canvas.current.height + item.y + 3) %
-            ((1 + 2 * FALLING_SNACK_SIZE) * this.canvas.current.height)) -
-          FALLING_SNACK_SIZE * this.canvas.current.height;
+          ((FALLING_SNACK_SIZE * FEED_SIZE + item.y + 3) %
+            ((1 + 2 * FALLING_SNACK_SIZE) * FEED_SIZE)) -
+          FALLING_SNACK_SIZE * FEED_SIZE;
         item.rotation = (item.rotation + 0.03) % (Math.PI * 2);
       });
-
       requestAnimationFrame(drawFallingSnacks);
     };
-
     requestAnimationFrame(drawFallingSnacks);
-    this.ctx.clearRect(
-      0,
-      0,
-      this.canvas.current.width,
-      this.canvas.current.height
-    );
   };
 
   positionBuffer = new Array(POSITION_BUFFER_SIZE);
-  averageBodyPosition;
   i = -1;
   update = async () => {
     if (!this.webcam.current.webcam.current || !this.net) {
@@ -163,21 +101,21 @@ class SnackChat extends Component {
     }
 
     if (this.state.counter <= PHOTO_ANIMATION_TIME && !this.state.captured) {
-      setTimeout(() => {
-        this.setState({captured: true});
-        this.props.setSnackChat(this.canvas.current.toDataURL());
-        document.getElementById('fade-overlay').className = 'fade-in';
+      // async so that the filter doesn't stop moving
+      this.setState({captured: true}, async () => {
         setTimeout(() => {
-          clearInterval(this.timer);
-          this.props.history.replace('/slackname');
-        }, 1000);
-      }, (PHOTO_ANIMATION_TIME + 1) * 1000);
-      return;
+          this.props.setSnackChat(this.canvas.current.toDataURL());
+          document.getElementById('fade-overlay').className = 'fade-in';
+          setTimeout(() => {
+            clearInterval(this.timer);
+            this.props.history.replace('/slackname');
+          }, 1000);
+        }, (PHOTO_ANIMATION_TIME + 1) * 1000);
+        return;
+      });
     }
 
-    const video = this.webcam.current.webcam.current.video;
     let frame;
-
     try {
       frame = await this.webcam.current.requestScreenshot();
     } catch (e) {
@@ -217,16 +155,17 @@ class SnackChat extends Component {
         ].forEach(attribute => callback(bodyPart, attribute))
       );
 
+    let averageBodyPosition = this.state.averageBodyPosition;
     // position buffer will contain undefined during first iteration
     if (this.positionBuffer.includes(undefined)) {
       // on first frame set the average value
       if (!this.i) {
-        this.averageBodyPosition = body;
+        averageBodyPosition = body;
       } else {
         // as the buffer fills up update the average
         forEachAttribute((bodyPart, attribute) => {
-          this.averageBodyPosition[bodyPart][attribute] =
-            (this.averageBodyPosition[bodyPart][attribute] * this.i +
+          averageBodyPosition[bodyPart][attribute] =
+            (averageBodyPosition[bodyPart][attribute] * this.i +
               body[bodyPart][attribute]) /
             (this.i + 1);
         });
@@ -236,64 +175,30 @@ class SnackChat extends Component {
       const oldestPosition = this.positionBuffer[this.i];
       forEachAttribute(
         (bodyPart, attribute) =>
-          (this.averageBodyPosition[bodyPart][attribute] =
-            (this.averageBodyPosition[bodyPart][attribute] *
-              POSITION_BUFFER_SIZE -
+          (averageBodyPosition[bodyPart][attribute] =
+            (averageBodyPosition[bodyPart][attribute] * POSITION_BUFFER_SIZE -
               oldestPosition[bodyPart][attribute] +
               body[bodyPart][attribute]) /
             POSITION_BUFFER_SIZE)
       );
     }
     this.positionBuffer[this.i] = body;
-
-    // Video background
-    this.ctx.save();
-    this.drawBackground(video);
-
-    // Filter
-    const shoulders = this.averageBodyPosition.shoulders;
-    this.ctx.save();
-    this.ctx.rotate(shoulders.angle);
-    this.ctx.drawImage(
-      this.filter,
-      shoulders.rightX -
-        shoulders.span * 1.5 +
-        shoulders.span * shoulders.angle,
-      shoulders.rightY - shoulders.span * 1.5,
-      shoulders.span * 4,
-      shoulders.span * 4
-    );
-    this.ctx.restore();
-
-    // Clip face
-    const ears = this.averageBodyPosition.ears;
-    this.ctx.save();
-    this.ctx.translate(
-      ears.rightX + ears.width / 2,
-      ears.rightY + ears.height * ears.angle
-    );
-    this.ctx.rotate(ears.angle);
-    clipEllipse(this.ctx, 0, 0, ears.span * 1.5, ears.span * 1.5);
-    this.ctx.resetTransform();
-
-    // Re-draw face
-    this.drawBackground(video);
+    this.setState({
+      averageBodyPosition
+    });
 
     requestAnimationFrame(this.update);
   };
 
   onConnect = () => {
-    this.ctx = this.canvas.current.getContext('2d');
-    this.ctx.lineWidth = 5;
-    this.ctx.strokeStyle = 'red';
-    this.filter = new Image();
-    this.filter.src = this.props.storeList[this.props.actualItem].image;
+    this.filter = this.props.storeList[this.props.actualItem].image;
     this.countdown();
     this.playGettingInPositionAnimation();
-    requestAnimationFrame(this.update);
   };
 
   render() {
+    const shoulders = this.state.averageBodyPosition.shoulders;
+    const ears = this.state.averageBodyPosition.ears;
     return (
       <div className="page">
         <div id="fade-overlay" className="fade-hidden" />
@@ -330,9 +235,84 @@ class SnackChat extends Component {
           </header>
         )}
         <div className="snackchat-body">
-          <canvas ref={this.canvas} width={FEED_SIZE} height={FEED_SIZE} />
-        </div>
-        <div>
+          {this.state.gettingInPosition && (
+            <div>
+              <div className="snackchat-overlay" />
+              <div>
+                {this.state.itemPositions.map((item, index) => (
+                  <div key={index}>
+                    <img
+                      src={this.filter}
+                      alt=""
+                      className="snackchat-falling-snack"
+                      style={{
+                        height: `${FEED_SIZE * FALLING_SNACK_SIZE}px`,
+                        width: `${FEED_SIZE * FALLING_SNACK_SIZE}px`,
+                        top: `${item.y}px`,
+                        right: `${item.x - FEED_SIZE * 0.1}px`,
+                        transform: `rotate(${item.rotation}rad)`
+                      }}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+          <div>
+            {!this.state.gettingInPosition &&
+              shoulders !== undefined && (
+                <div>
+                  <img
+                    src={this.filter}
+                    className="snackchat-filter"
+                    alt=""
+                    style={{
+                      left: `${shoulders.rightX -
+                        shoulders.span * 1.5 +
+                        shoulders.span * shoulders.angle}px`,
+                      top: `${shoulders.rightY - shoulders.span * 1.5}px`,
+                      height: `${shoulders.span * 4}px`,
+                      width: `${shoulders.span * 4}px`,
+                      clipPath: 'url(#face-clip)'
+                    }}
+                  />
+                  <svg width="0" height="0" style={{position: 'absolute'}}>
+                    <defs>
+                      <clipPath id="face-clip">
+                        <polygon
+                          points={
+                            // outer rectangle
+                            `${shoulders.span * 2} 0, ${shoulders.span *
+                              4} 0, ${shoulders.span * 4} ${shoulders.span *
+                              4}, 0 ${shoulders.span *
+                              4}, 0 0, ${shoulders.span * 2} 0` +
+                            // face ellipse
+                            `${(() => {
+                              const numberOfPoints = 40;
+                              let ellipseCoords = '';
+                              for (let i = 0; i <= numberOfPoints; ++i) {
+                                ellipseCoords += `,${shoulders.span * 2 +
+                                  ears.span *
+                                    0.75 *
+                                    Math.sin(
+                                      (i / numberOfPoints) * 2 * Math.PI
+                                    )} ${shoulders.span +
+                                  ears.span *
+                                    0.75 *
+                                    Math.cos(
+                                      (i / numberOfPoints) * 2 * Math.PI
+                                    )}`;
+                              }
+                              return ellipseCoords;
+                            })()}`
+                          }
+                        />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </div>
+              )}
+          </div>
           <WebcamCapture
             ref={this.webcam}
             imgSize={CAPTURE_SIZE}
