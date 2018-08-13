@@ -1,9 +1,14 @@
 const functions = require('firebase-functions');
 const request = require('request-promise-native');
-const toBuffer = require('data-uri-to-buffer');
+const crypto = require('crypto');
 const fs = require('fs');
+const toBuffer = require('data-uri-to-buffer');
 const admin = require('firebase-admin');
+
 admin.initializeApp(functions.config().firebase);
+
+const BOT_AVATAR = 'https://honesty.store/assets/android/icon@MDPI.png';
+const BOT_USERNAME = 'honesty.store';
 
 const authenticateUser = (auth, success) => {
   if (!auth)
@@ -30,54 +35,70 @@ const authenticateUser = (auth, success) => {
     });
 };
 
+const sendReminder = (user, itemName, itemId, imageUrl = null) => {
+  const req = {
+    url: 'https://slack.com/api/chat.postMessage',
+    auth: {bearer: functions.config().slack.token},
+    json: true,
+    body: {
+      channel: user,
+      username: BOT_USERNAME,
+      icon_url: BOT_AVATAR,
+      text: `Click to purchase your ${itemName}: https://honesty.store/item/${itemId}`,
+      attachments:
+        imageUrl === null
+          ? []
+          : [
+              {
+                fallback: 'SnackChat of your ' + itemName,
+                image_url: imageUrl,
+                title: 'Your SnackChat Reminder!'
+              }
+            ]
+    }
+  };
+  return request.post(req);
+};
+
 exports.sendSlackMessage = functions.https.onCall((data, context) => {
-  return authenticateUser(context.auth, () => {
-    const token = functions.config().slack.token;
-
-    const options = {
-      auth: {bearer: token},
-      json: true,
-      body: {
-        channel: data.userid,
-        as_user: true,
-        text: `Click to purchase your ${
-          data.itemName
-        }: https://honesty.store/item/${data.actualItemID}`
-      }
-    };
-
-    return request.post('https://slack.com/api/chat.postMessage', options);
-  });
+  return authenticateUser(context.auth, () =>
+    sendReminder(data.userid, data.itemName, data.actualItemID)
+  );
 });
 
 exports.sendSnackChat = functions.https.onCall((data, context) => {
   return authenticateUser(context.auth, () => {
-    fs.writeFileSync('/tmp/snackchat.jpg', toBuffer(data.snackChat));
-    const token = functions.config().slack.token;
-    const options = {
-      json: true,
-      formData: {
-        token,
-        channels: data.userid,
-        title: 'Your SnackChat',
-        initial_comment: `Click to purchase your ${
-          data.itemName
-        }: https://honesty.store/item/${data.actualItemID}`,
-        file: fs.createReadStream('/tmp/snackchat.jpg')
-      }
-    };
-    return request.post('https://slack.com/api/files.upload', options);
+    const tempFileName = '/tmp/snackchat.jpg';
+    const fileName = `snackchat/${crypto.randomBytes(20).toString('hex')}.jpg`;
+    const bucket = admin.storage().bucket();
+
+    fs.writeFileSync(tempFileName, toBuffer(data.snackChat));
+    return bucket
+      .upload(tempFileName, {
+        destination: fileName
+      })
+      .then(() => {
+        fs.unlinkSync(tempFileName);
+        return sendReminder(
+          data.userid,
+          data.itemName,
+          data.actualItemID,
+          'https://firebasestorage.googleapis.com/v0/b/' +
+            `${bucket.name}/o/${encodeURIComponent(fileName)}` +
+            '?alt=media'
+        );
+      });
   });
 });
 
 exports.loadSlackUsers = functions.https.onCall((data, context) => {
   return authenticateUser(context.auth, () => {
-    const token = functions.config().slack.token;
-    const options = {
-      auth: {bearer: token},
+    const req = {
+      url: 'https://slack.com/api/users.list',
+      auth: {bearer: functions.config().slack.token},
       json: true
     };
 
-    return request.get('https://slack.com/api/users.list', options);
+    return request.get(req);
   });
 });
