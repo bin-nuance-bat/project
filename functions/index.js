@@ -9,6 +9,7 @@ admin.initializeApp(functions.config().firebase);
 
 const BOT_AVATAR = 'https://honesty.store/assets/android/icon@MDPI.png';
 const BOT_USERNAME = 'honesty.store';
+const BOT_COLOR = '#0a3d5f';
 
 const authenticateUser = (auth, success) => {
   if (!auth)
@@ -44,17 +45,28 @@ const sendReminder = (user, itemName, itemId, imageUrl = null) => {
       channel: user,
       username: BOT_USERNAME,
       icon_url: BOT_AVATAR,
-      text: `Click to purchase your ${itemName}: https://honesty.store/item/${itemId}`,
-      attachments:
+      text: `Hey there, here is a SnackChat reminder for your ${itemName}!`,
+      attachments: [
+        {
+          fallback: `You can pay for your snack here: https://honesty.store/item/${itemId}`,
+          color: BOT_COLOR,
+          actions: [
+            {
+              type: 'button',
+              text: 'Pay for snack (60p)',
+              url: `https://honesty.store/item/${itemId}`
+            }
+          ]
+        },
         imageUrl === null
-          ? []
-          : [
-              {
-                fallback: 'SnackChat of your ' + itemName,
-                image_url: imageUrl,
-                title: 'Your SnackChat Reminder!'
-              }
-            ]
+          ? undefined
+          : {
+              fallback: 'Your SnackChat Reminder',
+              title: 'Your SnackChat Reminder',
+              color: BOT_COLOR,
+              image_url: imageUrl
+            }
+      ]
     }
   };
   return request.post(req);
