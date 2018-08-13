@@ -8,6 +8,7 @@ import HandsCamera from './../../utils/assets/hands/HandsCamera.svg';
 import PropTypes from 'prop-types';
 import * as posenet from '@tensorflow-models/posenet';
 import './SnackChat.css';
+import html2canvas from 'html2canvas';
 
 const FEED_SIZE = 768;
 const CAPTURE_SIZE = 200;
@@ -94,8 +95,9 @@ class SnackChat extends Component {
 
   positionBuffer = new Array(POSITION_BUFFER_SIZE);
   i = -1;
+  redirected = false;
   update = async () => {
-    if (!this.webcam.current.webcam.current || !this.net) {
+    if (this.redirected || !this.webcam.current.webcam.current || !this.net) {
       requestAnimationFrame(this.update);
       return;
     }
@@ -104,14 +106,18 @@ class SnackChat extends Component {
       // async so that the filter doesn't stop moving
       this.setState({captured: true}, async () => {
         setTimeout(() => {
-          this.props.setSnackChat(this.canvas.current.toDataURL());
-          document.getElementById('fade-overlay').className = 'fade-in';
-          setTimeout(() => {
-            clearInterval(this.timer);
-            this.props.history.replace('/slackname');
-          }, 1000);
+          html2canvas(document.getElementById('html2canvas-target')).then(
+            canvas => {
+              this.props.setSnackChat(canvas);
+              document.getElementById('fade-overlay').className = 'fade-in';
+              setTimeout(() => {
+                clearInterval(this.timer);
+                this.redirected = true;
+                this.props.history.replace('/slackname');
+              }, 1000);
+            }
+          );
         }, (PHOTO_ANIMATION_TIME + 1) * 1000);
-        return;
       });
     }
 
@@ -234,7 +240,7 @@ class SnackChat extends Component {
             </div>
           </header>
         )}
-        <div className="snackchat-body">
+        <div id="html2canvas-target" className="snackchat-body">
           {this.state.gettingInPosition && (
             <div>
               <div className="snackchat-overlay" />
