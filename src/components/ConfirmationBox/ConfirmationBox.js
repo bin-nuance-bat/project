@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './ConfirmationBox.css';
+
+import BackButton from '../BackButton/BackButton';
 import Hand from '../Hand/Hand';
+
+import './ConfirmationBox.css';
 
 class ConfirmationBox extends React.Component {
   handleYes = () => {
@@ -22,6 +25,7 @@ class ConfirmationBox extends React.Component {
         : null;
     return (
       <div className="page">
+        <BackButton history={this.props.history} />
         <div className="text-confirmation">{`Is this a ${
           this.props.name
         }?`}</div>

@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import _ from 'lodash';
 import './ListSelection.css';
-import line from './line.svg';
 import tick from './tick.svg';
 import PropTypes from 'prop-types';
 import Bubble from './Bubble';
@@ -21,9 +20,7 @@ class ListSelection extends Component {
     if (scrollSelect)
       this.scrollSelectTop = scrollSelect.getBoundingClientRect().top;
 
-    const selectElement = document.getElementsByClassName(
-      'list-selection--scroll-select-element'
-    );
+    const selectElement = document.getElementsByClassName('group');
     if (selectElement.length > 0)
       this.selectElementHeight = selectElement[0].getBoundingClientRect().height;
   }
@@ -123,71 +120,63 @@ class ListSelection extends Component {
 
   render() {
     return (
-      <div className="list-selection--body">
-        <div className="list-selection--list">
+      <div className="list-container">
+        <ol>
           {this.props.items.length > 0 &&
             this.formattedItems.map(
               ([group, groupItems]) =>
                 groupItems.length > 0 ? (
-                  <div key={group} id={group}>
-                    <p className="list-selection--list-text list-selection--list-text--group-header">
+                  <li key={group} id={group} className="list-group">
+                    <h2>
                       {group !== '\u00A0' ? group.toUpperCase() : 'Suggestions'}
-                    </p>
-                    <img
-                      src={line}
-                      className="list-selection--group-splitter"
-                      alt=""
-                    />
-                    {groupItems.map(item => (
-                      <div
-                        className={
-                          'list-selection--list-item ' +
-                          this.props.iconStyle +
-                          '-holder'
-                        }
-                        key={item.id}
-                        data-test={item.id}
-                        onClick={() => this.props.onClick(item)}>
-                        <img
-                          className={
-                            'list-selection--item-icon ' + this.props.iconStyle
-                          }
-                          src={
-                            item.name === this.props.selected
-                              ? tick
-                              : item.image
-                          }
-                          alt=""
-                        />
-                        <p
-                          className={`list-selection--list-text list-selection--list-text--item-name ${
-                            item.name === this.props.selected
-                              ? 'list-selection--selected'
-                              : ''
-                          }`}>
-                          {item.name}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
+                    </h2>
+                    <hr />
+                    <ul>
+                      {groupItems.map(item => (
+                        <li
+                          className="list-item"
+                          key={item.id}
+                          data-test={item.id}
+                          onClick={() => this.props.onClick(item)}>
+                          <img
+                            className="icon"
+                            src={
+                              item.name === this.props.selected
+                                ? tick
+                                : item.image
+                            }
+                            alt=""
+                          />
+                          <p
+                            className={
+                              item.name === this.props.selected
+                                ? 'selected'
+                                : ''
+                            }>
+                            {item.name}
+                          </p>
+                        </li>
+                      ))}
+                    </ul>
+                  </li>
                 ) : (
                   <div key={group} />
                 )
             )}
-        </div>
+        </ol>
 
-        <div className="list-selection--scroll-select" id="scroll-select">
+        <div className="group-select" id="scroll-select">
           {this.formattedItems
             .filter(([group]) => group !== '\u00A0')
             .map(([group], index) => (
               <div
                 key={group}
-                className="list-selection--scroll-select-element"
+                className="group"
                 onTouchStart={() => this.handleOnTouchStart(index)}
                 onTouchMove={this.handleOnTouchMove}
                 onTouchEnd={this.handleOnTouchEnd}>
                 {this.state.bubbleAt === group && (
-                  <div className="list-selection--bubble">
+                  <div className="bubble">
                     <Bubble letter={group} />
                   </div>
                 )}
