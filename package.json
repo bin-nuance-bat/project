@@ -35,15 +35,14 @@
     "install-functions": "cd functions && npm install && cd .."
   },
   "lint-staged": {
-    "*.js": [
+    "*.js*": [
       "npm run prettify",
       "git add"
     ]
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "npm test"
+      "pre-commit": "lint-staged"
     }
   },
   "devDependencies": {
