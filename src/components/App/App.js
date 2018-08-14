@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import PropTypes from 'prop-types';
-
 import Home from '../Home/container';
 import SnackChat from '../SnackChat/SnackChatContainer';
 import ItemRecognition from '../ItemRecognition/ItemRecognitionContainer';
@@ -11,17 +9,15 @@ import UsernameEntry from '../UsernameEntry/container';
 import EditSnack from '../EditSnack/EditSnackContainer';
 import SuccessPage from '../SuccessPage/container';
 import NotificationBar from '../NotificationBar/NotificationBar';
-import ErrorPage from '../ErrorPage/ErrorPageContainer';
-
 import Admin from '../Admin/Admin';
 import Trainer from '../Admin/Trainer/Trainer';
 import ImageApproval from '../Admin/ImageApproval/ImageApproval';
 import Viewer from '../Admin/Preview/Viewer';
-
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import initFirebase from '../../utils/firebase';
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import ErrorPage from '../ErrorPage/ErrorPage';
 
 const WAIT_BEFORE_DISPLAY = 45;
 const PAGES_TO_SHOW_TIMEOUT = [
@@ -107,13 +103,7 @@ class App extends Component {
   };
 
   connectionError() {
-    return (
-      (!this.state.isOnline ||
-        this.props.loadStoreListError ||
-        this.props.loadUserListError ||
-        this.props.sendMessageError) &&
-      this.state.loggedIn
-    );
+    return !this.state.isOnline && this.state.loggedIn;
   }
 
   componentWillUnmount() {
@@ -139,10 +129,10 @@ class App extends Component {
             <Route exact path="/editsnack" component={EditSnack} />
             <Route exact path="/slackname" component={UsernameEntry} />
             <Route exact path="/success" component={SuccessPage} />
-            <Route exact path="/error" component={ErrorPage} />
             <Route exact path="/admin" component={Admin} />
             <Route exact path="/admin/preview" component={Viewer} />
             <Route exact path="/admin/training" component={Trainer} />
+            <Route exact path="/error" component={ErrorPage} />
             <Route
               exact
               path="/admin/imageapproval"
@@ -177,11 +167,5 @@ class App extends Component {
     );
   }
 }
-
-App.propTypes = {
-  loadStoreListError: PropTypes.bool,
-  loadUserListError: PropTypes.bool,
-  sendMessageError: PropTypes.bool
-};
 
 export default App;

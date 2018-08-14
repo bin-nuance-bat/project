@@ -9,8 +9,12 @@ import PropTypes from 'prop-types';
 
 class Home extends React.Component {
   componentDidMount() {
-    this.props.loadStoreList(this.props.history);
-    this.props.loadUsers(this.props.history);
+    try {
+      this.props.loadStoreList();
+      this.props.loadUsers();
+    } catch (error) {
+      this.props.history.replace('/error');
+    }
   }
 
   handleSnackChatClick = () => {

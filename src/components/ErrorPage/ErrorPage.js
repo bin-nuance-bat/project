@@ -4,10 +4,6 @@ import cross from './cross.svg';
 import PropTypes from 'prop-types';
 
 class ErrorPage extends Component {
-  componentDidMount() {
-    this.props.clearErrors();
-  }
-
   restart = () => {
     this.props.history.replace('/');
   };
@@ -24,8 +20,8 @@ class ErrorPage extends Component {
     );
   }
 }
+
 ErrorPage.propTypes = {
-  clearErrors: PropTypes.func.isRequired,
   history: PropTypes.shape({replace: PropTypes.func.isRequired}).isRequired
 };
 

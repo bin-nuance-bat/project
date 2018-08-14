@@ -1,3 +1,5 @@
+import firebase from 'firebase/app';
+import 'firebase/functions';
 import React from 'react';
 import PropTypes from 'prop-types';
 import './UsernameEntry.css';
@@ -19,11 +21,19 @@ class UsernameEntry extends React.Component {
   };
 
   sendReminder = async () => {
-    const result = await this.props.sendSlackMessage(
-      this.state.selectedUser.id
-    );
-    if (result) this.props.history.replace('/success');
-    this.props.history.replace('/error');
+    const userid = this.state.selectedUser.id;
+
+    const actualItemID = this.props.actualItem;
+    const itemName = this.props.storeList[actualItemID].name;
+    const snackChat = this.props.sendWithPhoto ? this.props.snackChat : null;
+    const endpoint = snackChat ? 'sendSnackChat' : 'sendSlackMessage';
+    const send = firebase.functions().httpsCallable(endpoint);
+
+    await send({userid, itemName, actualItemID, snackChat})
+      .then(() => {
+        this.props.history.replace('/success');
+      })
+      .catch(this.props.history.replace('/error'));
   };
 
   render() {
@@ -63,7 +73,10 @@ class UsernameEntry extends React.Component {
 UsernameEntry.propTypes = {
   users: PropTypes.arrayOf(PropTypes.object).isRequired,
   history: PropTypes.shape({replace: PropTypes.func.isRequired}).isRequired,
-  sendSlackMessage: PropTypes.func.isRequired
+  actualItem: PropTypes.string.isRequired,
+  storeList: PropTypes.objectOf(PropTypes.object).isRequired,
+  sendWithPhoto: PropTypes.bool.isRequired,
+  snackChat: PropTypes.object
 };
 
 export default UsernameEntry;

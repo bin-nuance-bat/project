@@ -1,14 +1,7 @@
-import {
-  SET_SEND_WITH_PHOTO,
-  SET_USERS,
-  SET_USERS_FETCH_ERROR
-} from './actionTypes';
-
+import {SET_SEND_WITH_PHOTO, SET_USERS} from './actionTypes';
 import initFirebase from '../../utils/firebase';
 import firebase from 'firebase/app';
 import 'firebase/functions';
-
-import retry from '../../utils/retry';
 
 export function setSendWithPhoto(sendWithPhoto) {
   return {
@@ -24,13 +17,6 @@ function setUsers(users) {
   };
 }
 
-export function setUsersFetchError(usersFetchError) {
-  return {
-    type: SET_USERS_FETCH_ERROR,
-    usersFetchError
-  };
-}
-
 export const attemptLoadUsers = async () => {
   initFirebase();
   const load = firebase.functions().httpsCallable('loadSlackUsers');
@@ -40,13 +26,11 @@ export const attemptLoadUsers = async () => {
   else return data;
 };
 
-export const loadUsers = history => dispatch => {
-  return retry(attemptLoadUsers, () => dispatch(setUsersFetchError(true)))
+export const loadUsers = () => dispatch => {
+  return attemptLoadUsers()
     .then(data => data.members)
     .then(users => users.filter(user => !user.is_bot))
     .then(users => {
       dispatch(setUsers(users));
-      dispatch(setUsersFetchError(false));
-    })
-    .catch(() => history.replace('/error'));
+    });
 };
