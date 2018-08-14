@@ -152,18 +152,16 @@ $second-length: 1.5s;
   height: 75vh;
   opacity: 0.6;
   background-color: rgb(0.6, 0.6, 0.6);
-  z-index: 1;
-  position: fixed;
+  position: absolute;
+  top: 0px;
 }
 
 .snackchat-falling-snack {
   position: absolute;
-  z-index: 2;
 }
 
 .snackchat-filter {
   position: absolute;
-  z-index: 2;
 }
 
 #fade-overlay {

@@ -318,27 +318,30 @@ class SnackChat extends Component {
           </header>
         )}
         <div className="snackchat-body">
+          <WebcamCapture
+            ref={this.webcam}
+            imgSize={CAPTURE_SIZE}
+            onConnect={this.onConnect}
+          />
           {this.state.gettingInPosition && (
             <div>
               <div className="snackchat-overlay" />
-              <div>
-                {this.state.itemPositions.map((item, index) => (
-                  <div key={index}>
-                    <img
-                      src={this.filter}
-                      alt=""
-                      className="snackchat-falling-snack"
-                      style={{
-                        height: `${FEED_SIZE * FALLING_SNACK_SIZE}px`,
-                        width: `${FEED_SIZE * FALLING_SNACK_SIZE}px`,
-                        top: `${item.y}px`,
-                        right: `${item.x - FEED_SIZE * 0.1}px`,
-                        transform: `rotate(${item.rotation}rad)`
-                      }}
-                    />
-                  </div>
-                ))}
-              </div>
+              {this.state.itemPositions.map((item, index) => (
+                <div key={index}>
+                  <img
+                    src={this.filter}
+                    alt=""
+                    className="snackchat-falling-snack"
+                    style={{
+                      height: `${FEED_SIZE * FALLING_SNACK_SIZE}px`,
+                      width: `${FEED_SIZE * FALLING_SNACK_SIZE}px`,
+                      top: `${item.y}px`,
+                      right: `${item.x - FEED_SIZE * 0.1}px`,
+                      transform: `rotate(${item.rotation}rad)`
+                    }}
+                  />
+                </div>
+              ))}
             </div>
           )}
           <div>
@@ -396,11 +399,6 @@ class SnackChat extends Component {
                 </div>
               )}
           </div>
-          <WebcamCapture
-            ref={this.webcam}
-            imgSize={CAPTURE_SIZE}
-            onConnect={this.onConnect}
-          />
         </div>
       </div>
     );
