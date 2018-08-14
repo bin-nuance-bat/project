@@ -17,7 +17,7 @@ const authenticateUser = (auth, success) => {
       'unauthenticated',
       'You must be authenticated to use this function'
     );
-  
+
   if (auth.uid === functions.config().honestystore.uid) return success();
   return admin
     .firestore()
@@ -36,7 +36,7 @@ const authenticateUser = (auth, success) => {
     });
 };
 
-const sendReminder = (user, itemName, itemId, imageUrl = null) => {
+const sendReminder = (user, item, imageUrl = null) => {
   const req = {
     url: 'https://slack.com/api/chat.postMessage',
     auth: {bearer: functions.config().slack.token},
@@ -45,16 +45,16 @@ const sendReminder = (user, itemName, itemId, imageUrl = null) => {
       channel: user,
       username: BOT_USERNAME,
       icon_url: BOT_AVATAR,
-      text: `Hey there, here is a SnackChat reminder for your ${itemName}!`,
+      text: `Hey there, here is a SnackChat reminder for your ${item.name}!`,
       attachments: [
         {
-          fallback: `You can pay for your snack here: https://honesty.store/item/${itemId}`,
+          fallback: `Pay for snack: https://honesty.store/item/${item.id}`,
           color: BOT_COLOR,
           actions: [
             {
               type: 'button',
-              text: 'Pay for snack (60p)',
-              url: `https://honesty.store/item/${itemId}`
+              text: `Pay for snack (${item.price}p)`,
+              url: `https://honesty.store/item/${item.id}`
             }
           ]
         },
@@ -74,7 +74,7 @@ const sendReminder = (user, itemName, itemId, imageUrl = null) => {
 
 exports.sendSlackMessage = functions.https.onCall((data, context) => {
   return authenticateUser(context.auth, () =>
-    sendReminder(data.userid, data.itemName, data.actualItemID)
+    sendReminder(data.user, data.item)
   );
 });
 
@@ -92,9 +92,8 @@ exports.sendSnackChat = functions.https.onCall((data, context) => {
       .then(() => {
         fs.unlinkSync(tempFileName);
         return sendReminder(
-          data.userid,
-          data.itemName,
-          data.actualItemID,
+          data.user,
+          data.item,
           'https://firebasestorage.googleapis.com/v0/b/' +
             `${bucket.name}/o/${encodeURIComponent(fileName)}` +
             '?alt=media'
