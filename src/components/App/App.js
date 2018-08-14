@@ -60,8 +60,11 @@ class App extends Component {
       this.setState({loggedIn: user !== null})
     );
 
+    this.resetTimeoutTimer();
     document.body.addEventListener('touchstart', this.resetTimeoutTimer);
     document.body.addEventListener('touchmove', this.resetTimeoutTimer);
+    document.body.addEventListener('mousemove', this.resetTimeoutTimer);
+    document.body.addEventListener('scroll', this.resetTimeoutTimer);
     window.addEventListener('online', this.handleOnline);
     window.addEventListener('offline', this.handleOffline);
 

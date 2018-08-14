@@ -7,8 +7,6 @@ body {
 }
 
 .text {
-  color: $white;
-
   &-payinglater {
     font-size: 53px;
     padding-top: 150px;
@@ -48,8 +46,7 @@ body {
   width: 300px;
   height: 270px;
   display: inline-block;
-  margin-left: 184px;
-  margin-right: 184px;
+  margin: 0 auto 104px;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -88,22 +85,10 @@ body {
     animation-delay: 1.05s;
   }
 }
-.button.homepage--button {
-  &--snackchat {
-    width: 488px;
-    margin-top: 120px;
-    background-color: $light-blue;
-    color: $white;
-    margin-bottom: 32px;
-  }
 
-  &--nophoto {
-    background-color: $dark-blue;
-    width: 488px;
-    color: $white;
-    font-family: 'FaricyNew';
-    border: 2px solid white;
-  }
+.btn-block {
+  width: 488px;
+  margin: 16px auto;
 }
 
 .homepage--small-camera {

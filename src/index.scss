@@ -3,6 +3,7 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: $dark-blue;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
 }
@@ -17,12 +18,52 @@ body {
   height: 64px;
   padding: 0px;
   display: inline-block;
+  color: $white;
   border: none;
+}
+
+.btn-primary {
+  background-color: $light-blue;
+  border: none;
+}
+
+.btn-secondary {
+  background-color: $dark-blue;
+  border: 2px solid $white;
+}
+
+.btn-half-block {
+  width: 248px;
+  display: inline-block;
+  margin: 16px;
+  font-family: FaricyNew-Bold;
 }
 
 .page {
   background-color: $dark-blue;
-  height: 100vh;
+  height: 100%;
+}
+
+.header {
+  background-color: $dark-blue;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  z-index: 10;
+  height: 256px;
+  position: relative;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 104px;
+
+  &-text {
+    font-size: 35px;
+    margin: 8px auto;
+  }
+
+  &-subtext {
+    font-size: 30px;
+  }
 }
 
 #firebaseui_container {
