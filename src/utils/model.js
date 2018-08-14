@@ -18,22 +18,22 @@ export default class Model {
 
   async predict(element) {
     if (!this.model) return {value: 0, id: ''};
-
-    const input = tf.fromPixels(element);
-    const preProcessedInput = tf.div(
-      tf.sub(input.asType('float32'), PREPROCESS_DIVISOR),
-      PREPROCESS_DIVISOR
-    );
-    const reshapedInput = preProcessedInput.reshape([
-      1,
-      ...preProcessedInput.shape
-    ]);
-    const logits = this.model.execute(
-      {Placeholder: reshapedInput},
-      'final_result'
-    );
-
     const predictions = tf.tidy(() => {
+      const input = tf.fromPixels(element);
+      const preProcessedInput = tf.div(
+        tf.sub(input.asType('float32'), PREPROCESS_DIVISOR),
+        PREPROCESS_DIVISOR
+      );
+
+      const reshapedInput = preProcessedInput.reshape([
+        1,
+        ...preProcessedInput.shape
+      ]);
+      const logits = this.model.execute(
+        {Placeholder: reshapedInput},
+        'final_result'
+      );
+
       return tf.softmax(logits);
     });
 

@@ -113,6 +113,9 @@ class ItemRecognition extends Component {
         this.webcam.current.requestScreenshot().then(this.handleImg);
     });
   };
+  componentWillUnmount() {
+    this.model.dispose();
+  }
 
   render() {
     return (
