@@ -7,11 +7,9 @@ body {
 }
 
 .text {
-  color: $white;
-
   &-payinglater {
     font-size: 53px;
-    padding-top: 172px;
+    padding-top: 150px;
     font-weight: bold;
   }
 
@@ -48,8 +46,7 @@ body {
   width: 300px;
   height: 270px;
   display: inline-block;
-  margin-left: 184px;
-  margin-right: 184px;
+  margin: 0 auto 104px;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -88,22 +85,10 @@ body {
     animation-delay: 1.05s;
   }
 }
-.homepage--button {
-  &--snackchat {
-    width: 488px;
-    margin-top: 21px;
-    background-color: $light-blue;
-    color: $white;
-    margin-bottom: 32px;
-    visibility: hidden; // Hidden for 1.0 release
-  }
-  &--nophoto {
-    background-color: $light-blue; // Colour changed for 1.0 release
-    width: 488px;
-    color: $white;
-    font-family: 'FaricyNew-Bold';
-    //border: 2px solid white; // Hidden for 1.0 release
-  }
+
+.btn-block {
+  width: 488px;
+  margin: 16px auto;
 }
 
 .homepage--small-camera {

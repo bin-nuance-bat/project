@@ -1,12 +1,22 @@
 import React, {Component} from 'react';
 import WebcamCapture from '../WebcamCapture/WebcamCapture';
+import HandsSlot from './../../utils/assets/hands/HandsSlot.svg';
+import HandsRight from './../../utils/assets/hands/HandsRight.svg';
+import HandsCenter from './../../utils/assets/hands/HandsCenter.svg';
+import HandsLeft from './../../utils/assets/hands/HandsLeft.svg';
+import HandsCamera from './../../utils/assets/hands/HandsCamera.svg';
 import PropTypes from 'prop-types';
 import * as posenet from '@tensorflow-models/posenet';
 import './SnackChat.css';
 
-const FEED_SIZE = 480;
+const FEED_SIZE = 768;
 const CAPTURE_SIZE = 200;
+const LOADING_ANIMATION_TIME = 3;
+const COUNTDOWN_TIME = 3;
+const PHOTO_ANIMATION_TIME = 1.5;
 const POSITION_BUFFER_SIZE = 10;
+const FALLING_SNACK_SIZE = 0.2;
+const CANVAS_SCALE = 1.6;
 
 function clipEllipse(ctx, centerX, centerY, width, height) {
   ctx.beginPath();
@@ -48,23 +58,106 @@ class SnackChat extends Component {
   canvas = React.createRef();
 
   state = {
-    counter: 5,
+    gettingInPosition: true,
+    counter: COUNTDOWN_TIME + LOADING_ANIMATION_TIME + PHOTO_ANIMATION_TIME,
     captured: false
   };
 
   componentDidMount() {
     posenet.load(0.5).then(net => (this.net = net));
-    this.ctx = this.canvas.current.getContext('2d');
-    this.ctx.lineWidth = 5;
-    this.ctx.strokeStyle = 'red';
-    requestAnimationFrame(this.update);
-    this.filter = new Image();
-    this.filter.src = this.props.storeList[this.props.prediction.id].image;
   }
 
   componentWillUnmount() {
     clearInterval(this.timer);
   }
+
+  countdown = async () => {
+    this.timer = setInterval(
+      () => this.setState(prevState => ({counter: prevState.counter - 1})),
+      1500
+    );
+  };
+
+  drawBackground = video => {
+    this.ctx.scale(-CANVAS_SCALE, CANVAS_SCALE);
+    this.ctx.drawImage(
+      video,
+      Math.abs(video.videoWidth - this.canvas.current.width) / 2 -
+        video.videoWidth,
+      0
+    );
+    this.ctx.restore();
+  };
+
+  playGettingInPositionAnimation = () => {
+    const numberOfFallingSnacks = 3;
+    const itemPositions = [];
+    for (let i = 1; i <= numberOfFallingSnacks; i++) {
+      itemPositions.push({
+        x: (this.canvas.current.width * i) / (numberOfFallingSnacks + 1),
+        y:
+          Math.random() *
+            (1 + 2 * FALLING_SNACK_SIZE) *
+            this.canvas.current.height -
+          FALLING_SNACK_SIZE * this.canvas.current.height,
+        rotation: Math.random() * 2 * Math.PI
+      });
+    }
+
+    const drawFallingSnacks = () => {
+      if (this.state.counter <= COUNTDOWN_TIME + PHOTO_ANIMATION_TIME) {
+        this.setState({gettingInPosition: false});
+        return;
+      }
+
+      // Video background
+      const video = this.webcam.current.webcam.current.video;
+      this.ctx.save();
+      this.drawBackground(video);
+
+      this.ctx.fillStyle = 'rgba(0.6, 0.6, 0.6, 0.6)';
+      this.ctx.fillRect(
+        0,
+        0,
+        this.canvas.current.width,
+        this.canvas.current.height
+      );
+      // draw items
+      this.ctx.save();
+      itemPositions.forEach(item => {
+        this.ctx.translate(item.x, item.y);
+        this.ctx.rotate(item.rotation);
+        this.ctx.drawImage(
+          this.filter,
+          -0.1 * this.canvas.current.width,
+          -0.1 * this.canvas.current.width,
+          FALLING_SNACK_SIZE * this.canvas.current.width,
+          FALLING_SNACK_SIZE * this.canvas.current.height
+        );
+        this.ctx.setTransform(1, 0, 0, 1, 0, 0);
+      });
+      this.ctx.restore();
+
+      // update positions
+      itemPositions.forEach(item => {
+        item.y =
+          ((FALLING_SNACK_SIZE * this.canvas.current.height + item.y + 3) %
+            ((1 + 2 * FALLING_SNACK_SIZE) * this.canvas.current.height)) -
+          FALLING_SNACK_SIZE * this.canvas.current.height;
+        item.rotation = (item.rotation + 0.03) % (Math.PI * 2);
+      });
+
+      requestAnimationFrame(drawFallingSnacks);
+    };
+
+    requestAnimationFrame(drawFallingSnacks);
+    this.ctx.clearRect(
+      0,
+      0,
+      this.canvas.current.width,
+      this.canvas.current.height
+    );
+  };
 
   positionBuffer = new Array(POSITION_BUFFER_SIZE);
   averageBodyPosition;
@@ -75,11 +168,16 @@ class SnackChat extends Component {
       return;
     }
 
-    if (this.state.counter === 0 && !this.state.captured) {
-      clearInterval(this.timer);
-      this.setState({captured: true});
-      this.props.setSnackChat(this.canvas.current.toDataURL());
-      this.props.history.replace('/slackname');
+    if (this.state.counter <= PHOTO_ANIMATION_TIME && !this.state.captured) {
+      setTimeout(() => {
+        this.setState({captured: true});
+        this.props.setSnackChat(this.canvas.current.toDataURL());
+        document.getElementById('fade-overlay').className = 'fade-in';
+        setTimeout(() => {
+          clearInterval(this.timer);
+          this.props.history.replace('/slackname');
+        }, 1000);
+      }, (PHOTO_ANIMATION_TIME + 1) * 1000);
       return;
     }
 
@@ -156,13 +254,7 @@ class SnackChat extends Component {
 
     // Video background
     this.ctx.save();
-    this.ctx.scale(-1, 1);
-    this.ctx.drawImage(
-      video,
-      (video.videoWidth - this.canvas.current.width) / 2 - video.videoWidth,
-      -(video.videoHeight - this.canvas.current.height) / 2
-    );
-    this.ctx.restore();
+    this.drawBackground(video);
 
     // Filter
     const shoulders = this.averageBodyPosition.shoulders;
@@ -191,31 +283,58 @@ class SnackChat extends Component {
     this.ctx.resetTransform();
 
     // Re-draw face
-    this.ctx.scale(-1, 1);
-    this.ctx.drawImage(
-      video,
-      (video.videoWidth - this.canvas.current.width) / 2 - video.videoWidth,
-      -(video.videoHeight - this.canvas.current.height) / 2
-    );
-    this.ctx.restore();
+    this.drawBackground(video);
 
     requestAnimationFrame(this.update);
   };
 
   onConnect = () => {
-    this.timer = setInterval(
-      () => this.setState({counter: this.state.counter - 1}),
-      1000
-    );
+    this.ctx = this.canvas.current.getContext('2d');
+    this.ctx.lineWidth = 5;
+    this.ctx.strokeStyle = 'red';
+    this.filter = new Image();
+    this.filter.src = this.props.storeList[this.props.actualItem].image;
+    this.countdown();
+    this.playGettingInPositionAnimation();
+    requestAnimationFrame(this.update);
   };
 
   render() {
     return (
       <div className="page">
-        <header>
-          Smile, you are on snackchat:
-          {this.state.counter}
-        </header>
+        <div id="fade-overlay" className="fade-hidden" />
+        {!this.state.gettingInPosition ? (
+          <header>
+            <div className="snackchat--header-text snackchat--header-text-left">
+              {this.state.counter >= PHOTO_ANIMATION_TIME && 'Taking photo in'}
+            </div>
+            <div className="snackchat--hands">
+              <img className="snackchat--hands-slot" src={HandsSlot} alt="" />
+              <img className="snackchat--hands-right" src={HandsRight} alt="" />
+              <img
+                className="snackchat--hands-center"
+                src={HandsCenter}
+                alt=""
+              />
+              <img
+                className="snackchat--hands-camera"
+                src={HandsCamera}
+                alt=""
+              />
+              <img className="snackchat--hands-left" src={HandsLeft} alt="" />
+            </div>
+            <div className="snackchat--header-counter">
+              {this.state.counter >= PHOTO_ANIMATION_TIME &&
+                this.state.counter - PHOTO_ANIMATION_TIME}
+            </div>
+          </header>
+        ) : (
+          <header className="snackchat--header">
+            <div className="snackchat--header-text snackchat--header-text-center">
+              Get ready!
+            </div>
+          </header>
+        )}
         <div className="snackchat-body">
           <canvas ref={this.canvas} width={FEED_SIZE} height={FEED_SIZE} />
         </div>
@@ -235,7 +354,7 @@ SnackChat.propTypes = {
   setSnackChat: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
   storeList: PropTypes.object.isRequired,
-  prediction: PropTypes.object
+  actualItem: PropTypes.string.isRequired
 };
 
 export default SnackChat;

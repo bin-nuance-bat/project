@@ -4,7 +4,7 @@ import {setSnackChat} from './SnackChatActions';
 
 const mapStateToProps = state => ({
   storeList: state.storeList,
-  prediction: state.prediction
+  actualItem: state.actualItem
 });
 
 const mapDispatchToProps = {

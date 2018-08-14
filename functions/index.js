@@ -1,31 +1,83 @@
 const functions = require('firebase-functions');
-const fetch = require('node-fetch');
-const queryString = require('query-string');
+const request = require('request-promise-native');
+const toBuffer = require('data-uri-to-buffer');
+const fs = require('fs');
+const admin = require('firebase-admin');
+admin.initializeApp(functions.config().firebase);
 
-const HONESTY_STORE_LOGO = 'https://honesty.store/assets/android/icon@MDPI.png';
-const BOT_USERNAME = 'honesty.store';
+const authenticateUser = (auth, success) => {
+  if (!auth)
+    throw new functions.https.HttpsError(
+      'unauthenticated',
+      'You must be authenticated to use this function'
+    );
 
-exports.sendSlackMessage = functions.https.onCall(data => {
-  const token = functions.config().slack.token;
-  const options = queryString.stringify({
-    token,
-    channel: data.userid,
-    icon_url: HONESTY_STORE_LOGO,
-    username: BOT_USERNAME,
-    text: `Click to purchase your ${
-      data.itemName
-    }: https://honesty.store/item/${data.actualItemID}`
+  if (auth.uid === functions.config().honestystore.uid) return success();
+  return admin
+    .firestore()
+    .collection('users')
+    .doc(auth.uid)
+    .get()
+    .then(doc => {
+      if (!doc.data() || !doc.data().admin) {
+        throw new functions.https.HttpsError(
+          'permission-denied',
+          'You must be authenticated to use this function.'
+        );
+      } else {
+        return success();
+      }
+    });
+};
+
+exports.sendSlackMessage = functions.https.onCall((data, context) => {
+  return authenticateUser(context.auth, () => {
+    const token = functions.config().slack.token;
+
+    const options = {
+      auth: {bearer: token},
+      json: true,
+      body: {
+        channel: data.userid,
+        as_user: true,
+        text: `Click to purchase your ${
+          data.itemName
+        }: https://honesty.store/item/${data.actualItemID}`
+      }
+    };
+
+    return request.post('https://slack.com/api/chat.postMessage', options);
   });
-
-  return fetch(`https://slack.com/api/chat.postMessage?${options}`)
-    .then(response => response.json())
-    .catch(() => ({ok: false}));
 });
 
-exports.loadSlackUsers = functions.https.onCall(() => {
-  const token = functions.config().slack.token;
+exports.sendSnackChat = functions.https.onCall((data, context) => {
+  return authenticateUser(context.auth, () => {
+    fs.writeFileSync('/tmp/snackchat.jpg', toBuffer(data.snackChat));
+    const token = functions.config().slack.token;
+    const options = {
+      json: true,
+      formData: {
+        token,
+        channels: data.userid,
+        title: 'Your SnackChat',
+        initial_comment: `Click to purchase your ${
+          data.itemName
+        }: https://honesty.store/item/${data.actualItemID}`,
+        file: fs.createReadStream('/tmp/snackchat.jpg')
+      }
+    };
+    return request.post('https://slack.com/api/files.upload', options);
+  });
+});
 
-  return fetch(`https://slack.com/api/users.list?token=${token}`)
-    .then(response => response.json())
-    .catch(() => ({ok: false}));
+exports.loadSlackUsers = functions.https.onCall((data, context) => {
+  return authenticateUser(context.auth, () => {
+    const token = functions.config().slack.token;
+    const options = {
+      auth: {bearer: token},
+      json: true
+    };
+
+    return request.get('https://slack.com/api/users.list', options);
+  });
 });

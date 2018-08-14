@@ -1,9 +1,9 @@
 import React from 'react';
 import './Home.css';
-import HomeHandsSlot from './assets/HandsSlot.svg';
-import HomeHandsRight from './assets/HandsRight.svg';
-import HomeHandsCenter from './assets/HandsCenter.svg';
-import HomeHandsLeft from './assets/HandsLeft.svg';
+import HomeHandsSlot from './../../utils/assets/hands/HandsSlot.svg';
+import HomeHandsRight from './../../utils/assets/hands/HandsRight.svg';
+import HomeHandsCenter from './../../utils/assets/hands/HandsCenter.svg';
+import HomeHandsLeft from './../../utils/assets/hands/HandsLeft.svg';
 import Camera from './assets/Camera.svg';
 import PropTypes from 'prop-types';
 
@@ -45,17 +45,21 @@ class Home extends React.Component {
             />
             <img className="homepage--hands-left" src={HomeHandsLeft} alt="" />
           </div>
-          <button
-            className="button homepage--button--snackchat"
-            onClick={this.handleSnackChatClick}>
-            Send a SnackChat
-            <img className="homepage--small-camera" src={Camera} alt="" />
-          </button>
-          <button
-            className="button homepage--button--nophoto"
-            onClick={this.handleReminderNoPhotoClick}>
-            Send a reminder {/* without a photo */}
-          </button>
+          <div>
+            <button
+              className="button btn-primary btn-block"
+              onClick={this.handleSnackChatClick}>
+              Send a SnackChat
+              <img className="homepage--small-camera" src={Camera} alt="" />
+            </button>
+          </div>
+          <div>
+            <button
+              className="button btn-secondary btn-block"
+              onClick={this.handleReminderNoPhotoClick}>
+              Send a reminder without a photo
+            </button>
+          </div>
         </div>
       </div>
     );

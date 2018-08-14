@@ -23,9 +23,7 @@ class SuccessPage extends Component {
         <div id="success-message" className="text text-remindersent">
           Reminder sent!
         </div>
-        <div className="success-hand">
-          <Hand snack={this.props.storeList[this.props.actualItem].image} />
-        </div>
+        <Hand snack={this.props.storeList[this.props.actualItem].image} />
       </div>
     );
   }
