@@ -16,6 +16,7 @@ const COUNTDOWN_TIME = 3;
 const PHOTO_ANIMATION_TIME = 1.5;
 const POSITION_BUFFER_SIZE = 10;
 const FALLING_SNACK_SIZE = 0.2;
+const CANVAS_SCALE = 1.6;
 
 function normalise(n) {
   return (n *= FEED_SIZE / CAPTURE_SIZE);
@@ -92,6 +93,74 @@ class SnackChat extends Component {
     requestAnimationFrame(drawFallingSnacks);
   };
 
+  clipEllipse(ctx, centerX, centerY, width, height) {
+    ctx.beginPath();
+    ctx.moveTo(centerX, centerY - height / 2);
+    ctx.bezierCurveTo(
+      centerX + width / 2,
+      centerY - height / 2,
+      centerX + width / 2,
+      centerY + height / 2,
+      centerX,
+      centerY + height / 2
+    );
+    ctx.bezierCurveTo(
+      centerX - width / 2,
+      centerY + height / 2,
+      centerX - width / 2,
+      centerY - height / 2,
+      centerX,
+      centerY - height / 2
+    );
+    ctx.clip();
+  }
+
+  drawBackground = video => {
+    this.ctx.scale(-CANVAS_SCALE, CANVAS_SCALE);
+    this.ctx.drawImage(
+      video,
+      Math.abs(video.videoWidth - this.canvas.current.width) / 2 -
+        video.videoWidth,
+      0
+    );
+    this.ctx.restore();
+  };
+
+  generateSnackchat = async () => {
+    const video = this.webcam.current.webcam.current.video;
+
+    this.ctx.save();
+    this.drawBackground(video);
+
+    const filter = new Image();
+    filter.src = this.filter;
+
+    const shoulders = this.state.averageBodyPosition.shoulders;
+    this.ctx.save();
+    this.ctx.drawImage(
+      filter,
+      shoulders.rightX -
+        shoulders.span * 1.5 +
+        shoulders.span * shoulders.angle,
+      shoulders.rightY - shoulders.span * 1.5,
+      shoulders.span * 4,
+      shoulders.span * 4
+    );
+    this.ctx.restore();
+
+    const ears = this.state.averageBodyPosition.ears;
+    this.ctx.save();
+    this.ctx.translate(
+      ears.rightX + ears.width / 2,
+      ears.rightY + ears.height * ears.angle
+    );
+    this.ctx.rotate(ears.angle);
+    this.clipEllipse(this.ctx, 0, 0, ears.span * 1.5, ears.span * 1.5);
+    this.ctx.resetTransform();
+
+    this.drawBackground(video);
+  };
+
   positionBuffer = new Array(POSITION_BUFFER_SIZE);
   i = -1;
   redirected = false;
@@ -109,7 +178,8 @@ class SnackChat extends Component {
           setTimeout(() => {
             clearInterval(this.timer);
             document.getElementById('fade-overlay').className = 'fade-in';
-            // this.props.setSnackChat();
+            this.generateSnackchat();
+            this.props.setSnackChat(this.canvas.current.toDataURL());
             setTimeout(() => {
               this.redirected = true;
               this.props.history.replace('/slackname');
@@ -196,6 +266,7 @@ class SnackChat extends Component {
   };
 
   onConnect = () => {
+    this.ctx = this.canvas.current.getContext('2d');
     this.filter = this.props.storeList[this.props.actualItem].image;
     this.countdown();
     this.playGettingInPositionAnimation();
@@ -206,6 +277,12 @@ class SnackChat extends Component {
     const ears = this.state.averageBodyPosition.ears;
     return (
       <div className="page">
+        <canvas
+          ref={this.canvas}
+          width={FEED_SIZE}
+          height={FEED_SIZE}
+          style={{position: 'absolute', zIndex: '-2'}}
+        />
         <div id="fade-overlay" className="fade-hidden" />
         {!this.state.gettingInPosition ? (
           <header>
