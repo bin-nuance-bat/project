@@ -8,7 +8,6 @@ import HandsCamera from './../../utils/assets/hands/HandsCamera.svg';
 import PropTypes from 'prop-types';
 import * as posenet from '@tensorflow-models/posenet';
 import './SnackChat.css';
-import html2canvas from 'html2canvas';
 
 const FEED_SIZE = 768;
 const CAPTURE_SIZE = 200;
@@ -104,21 +103,21 @@ class SnackChat extends Component {
 
     if (this.state.counter <= PHOTO_ANIMATION_TIME && !this.state.captured) {
       // async so that the filter doesn't stop moving
-      this.setState({captured: true}, async () => {
-        setTimeout(() => {
-          html2canvas(document.getElementById('html2canvas-target')).then(
-            canvas => {
-              this.props.setSnackChat(canvas);
-              document.getElementById('fade-overlay').className = 'fade-in';
-              setTimeout(() => {
-                clearInterval(this.timer);
-                this.redirected = true;
-                this.props.history.replace('/slackname');
-              }, 1000);
-            }
-          );
-        }, (PHOTO_ANIMATION_TIME + 1) * 1000);
-      });
+      this.setState(
+        {captured: true},
+        async () => {
+          setTimeout(() => {
+            clearInterval(this.timer);
+            document.getElementById('fade-overlay').className = 'fade-in';
+            // this.props.setSnackChat();
+            setTimeout(() => {
+              this.redirected = true;
+              this.props.history.replace('/slackname');
+            }, 1000);
+          });
+        },
+        (PHOTO_ANIMATION_TIME + 1) * 1000
+      );
     }
 
     let frame;
@@ -240,7 +239,7 @@ class SnackChat extends Component {
             </div>
           </header>
         )}
-        <div id="html2canvas-target" className="snackchat-body">
+        <div className="snackchat-body">
           {this.state.gettingInPosition && (
             <div>
               <div className="snackchat-overlay" />
@@ -299,10 +298,10 @@ class SnackChat extends Component {
                               for (let i = 0; i <= numberOfPoints; ++i) {
                                 ellipseCoords += `,${shoulders.span * 2 +
                                   ears.span *
-                                    0.75 *
+                                    0.6 *
                                     Math.sin(
                                       (i / numberOfPoints) * 2 * Math.PI
-                                    )} ${shoulders.span +
+                                    )} ${0.9 * shoulders.span +
                                   ears.span *
                                     0.75 *
                                     Math.cos(
