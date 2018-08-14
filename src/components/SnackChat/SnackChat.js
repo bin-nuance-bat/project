@@ -188,6 +188,7 @@ class SnackChat extends Component {
         },
         (PHOTO_ANIMATION_TIME + 1) * 1000
       );
+      return;
     }
 
     let frame;
