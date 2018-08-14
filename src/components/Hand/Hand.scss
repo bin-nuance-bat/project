@@ -1,17 +1,28 @@
-$hand-width: 90%;
+.hand-container {
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  justify-content: flex-end;
+}
 
 .hand {
-  display: block;
-  text-align: center;
   position: relative;
+  width: 65%;
+  height: 80%;
 }
 
 .hand-component {
   position: absolute;
-  width: $hand-width;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .hand-snack {
   position: absolute;
-  width: 0.6 * $hand-width;
+  top: 0;
+  left: 0;
+  width: 60%;
+  height: 100%;
 }

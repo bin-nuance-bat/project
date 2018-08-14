@@ -7,8 +7,6 @@ import WebcamCapture from '../WebcamCapture/WebcamCapture';
 import BackButton from '../BackButton/BackButton';
 import MobileNet from '../Admin/Trainer/MobileNet';
 
-import './ItemRecognition.css';
-
 const TIMEOUT_IN_SECONDS = 10;
 const ML_THRESHOLD = 0.35;
 const SHOW_RETRY_FOR = 5;
@@ -119,16 +117,12 @@ class ItemRecognition extends Component {
   render() {
     return (
       <div className="page">
-        <header>
+        <header className="header">
           <BackButton history={this.props.history} />
           <div>
-            <div className="item-recognition item-recognition--instructions">
-              {this.state.text}
-            </div>
+            <div className="header-text">{this.state.text}</div>
             {this.state.subText && (
-              <div className="item-recognition--instructions-small">
-                {this.state.subText}
-              </div>
+              <div className="header-subtext">{this.state.subText}</div>
             )}
           </div>
         </header>
