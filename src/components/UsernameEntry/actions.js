@@ -11,15 +11,19 @@ function setSendMessageError(sendMessageError) {
   };
 }
 
-export const sendSlackMessage = userid => async (dispatch, getState) => {
+export const sendSlackMessage = user => async (dispatch, getState) => {
   const state = getState();
-  const actualItemID = state.actualItem;
-  const itemName = state.storeList[actualItemID].name;
+
+  const item = {
+    id: state.actualItem,
+    name: state.storeList[state.actualItem].name,
+    price: state.storeList[state.actualItem].price.total
+  };
   const snackChat = state.sendWithPhoto ? state.snackChat : null;
 
   try {
     const result = await retry(
-      () => attemptSendSlackMessage(userid, itemName, actualItemID, snackChat),
+      () => attemptSendSlackMessage(user, item, snackChat),
       () => dispatch(setSendMessageError(true))
     );
     dispatch(setSendMessageError(false));
@@ -30,20 +34,13 @@ export const sendSlackMessage = userid => async (dispatch, getState) => {
   }
 };
 
-const attemptSendSlackMessage = async (
-  userid,
-  itemName,
-  actualItemID,
-  snackChat
-) => {
+const attemptSendSlackMessage = async (user, item, snackChat) => {
   const endpoint = snackChat ? 'sendSnackChat' : 'sendSlackMessage';
   const send = firebase.functions().httpsCallable(endpoint);
 
-  const result = await send({userid, itemName, actualItemID, snackChat}).then(
-    response => {
-      return response.data;
-    }
-  );
+  const result = await send({user, item, snackChat}).then(response => {
+    return response.data;
+  });
   if (!result.ok || result.error) {
     throw Error('A network error occured');
   }
