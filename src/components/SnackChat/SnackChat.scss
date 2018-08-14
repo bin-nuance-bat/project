@@ -3,13 +3,14 @@
 $second-length: 1.5s;
 
 .snackchat-body {
-  width: 100%;
+  width: 100vw;
+  height: 75vh;
   overflow: hidden;
-  position: relative;
+  position: fixed;
+  bottom: 510px;
 }
 
 .snackchat-body canvas {
-  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -21,9 +22,11 @@ $second-length: 1.5s;
   font-size: 35px;
   display: inline-block;
   vertical-align: top;
-  position: absolute;
   &-left {
-    left: 2%;
+    left: 12%;
+    position: absolute;
+    width: 20%;
+    padding-top: 80px;
   }
   &-center {
     left: 40%;
@@ -85,7 +88,7 @@ $second-length: 1.5s;
 
 .snackchat--hands {
   width: 240px;
-  height: 216px;
+  height: 220px;
   display: inline-block;
   text-align: center;
   position: relative;

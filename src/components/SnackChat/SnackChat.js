@@ -8,6 +8,7 @@ import HandsCamera from './../../utils/assets/hands/HandsCamera.svg';
 import PropTypes from 'prop-types';
 import * as posenet from '@tensorflow-models/posenet';
 import './SnackChat.css';
+import BackButton from '../BackButton/BackButton';
 
 const FEED_SIZE = 768;
 const CAPTURE_SIZE = 200;
@@ -285,38 +286,44 @@ class SnackChat extends Component {
           style={{position: 'absolute', zIndex: '-2'}}
         />
         <div id="fade-overlay" className="fade-hidden" />
-        {!this.state.gettingInPosition ? (
-          <header>
-            <div className="snackchat--header-text snackchat--header-text-left">
-              {this.state.counter >= PHOTO_ANIMATION_TIME && 'Taking photo in'}
+        <header>
+          <BackButton />
+          {!this.state.gettingInPosition ? (
+            <div>
+              <div className="snackchat--header-text snackchat--header-text-left">
+                {this.state.counter >= PHOTO_ANIMATION_TIME &&
+                  'Taking photo in'}
+              </div>
+              <div className="snackchat--hands">
+                <img className="snackchat--hands-slot" src={HandsSlot} alt="" />
+                <img
+                  className="snackchat--hands-right"
+                  src={HandsRight}
+                  alt=""
+                />
+                <img
+                  className="snackchat--hands-center"
+                  src={HandsCenter}
+                  alt=""
+                />
+                <img
+                  className="snackchat--hands-camera"
+                  src={HandsCamera}
+                  alt=""
+                />
+                <img className="snackchat--hands-left" src={HandsLeft} alt="" />
+              </div>
+              <div className="snackchat--header-counter">
+                {this.state.counter >= PHOTO_ANIMATION_TIME &&
+                  this.state.counter - PHOTO_ANIMATION_TIME}
+              </div>
             </div>
-            <div className="snackchat--hands">
-              <img className="snackchat--hands-slot" src={HandsSlot} alt="" />
-              <img className="snackchat--hands-right" src={HandsRight} alt="" />
-              <img
-                className="snackchat--hands-center"
-                src={HandsCenter}
-                alt=""
-              />
-              <img
-                className="snackchat--hands-camera"
-                src={HandsCamera}
-                alt=""
-              />
-              <img className="snackchat--hands-left" src={HandsLeft} alt="" />
-            </div>
-            <div className="snackchat--header-counter">
-              {this.state.counter >= PHOTO_ANIMATION_TIME &&
-                this.state.counter - PHOTO_ANIMATION_TIME}
-            </div>
-          </header>
-        ) : (
-          <header className="snackchat--header">
+          ) : (
             <div className="snackchat--header-text snackchat--header-text-center">
               Get ready!
             </div>
-          </header>
-        )}
+          )}
+        </header>
         <div className="snackchat-body">
           <WebcamCapture
             ref={this.webcam}
