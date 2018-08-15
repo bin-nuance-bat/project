@@ -274,6 +274,11 @@ class SnackChat extends Component {
     this.playGettingInPositionAnimation();
   };
 
+  onFail = () => {
+    this.props.setSendWithPhoto(false);
+    this.props.history.replace('/slackname');
+  };
+
   render() {
     const shoulders = this.state.averageBodyPosition.shoulders;
     const ears = this.state.averageBodyPosition.ears;
@@ -329,6 +334,7 @@ class SnackChat extends Component {
             ref={this.webcam}
             imgSize={CAPTURE_SIZE}
             onConnect={this.onConnect}
+            onFail={this.onFail}
           />
           {this.state.gettingInPosition && (
             <div>
@@ -414,6 +420,7 @@ class SnackChat extends Component {
 
 SnackChat.propTypes = {
   setSnackChat: PropTypes.func.isRequired,
+  setSendWithPhoto: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
   storeList: PropTypes.object.isRequired,
   actualItem: PropTypes.string.isRequired

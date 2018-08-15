@@ -45,6 +45,10 @@ class ItemRecognition extends Component {
       });
   };
 
+  onFail = () => {
+    this.props.history.replace('/editsnack');
+  };
+
   addTrainingImage = (img, label) => {
     this.mobileNet.init().then(() =>
       this.mobileNet.getActivation(img).then(activation =>
@@ -136,6 +140,7 @@ class ItemRecognition extends Component {
             onConnect={this.onConnect}
             imgSize={224}
             showViewFinder
+            onFail={this.onFail}
           />
         )}
       </div>

@@ -3,28 +3,31 @@ import PropTypes from 'prop-types';
 
 import ListSelection from '../listSelection/ListSelection';
 import BackButton from '../BackButton/BackButton';
+import ConfirmationModal from '../ConfirmationModal/ConfirmationModal';
 
 import './UsernameEntry.css';
 
 class UsernameEntry extends React.Component {
   state = {
-    selectedUser: null
+    selection: null,
+    sending: false
   };
 
-  promptToConfirm = selectedUser => {
-    this.setState({selectedUser});
+  promptToConfirm = selection => {
+    this.setState(prevState => ({
+      selection: prevState.sending ? prevState.selection : selection
+    }));
   };
 
   deselect = () => {
     this.setState(
-      prevState => (prevState.selectedUser ? {selectedUser: null} : null)
+      prevState => (prevState.selection ? {selection: null} : null)
     );
   };
 
   sendReminder = async () => {
-    const result = await this.props.sendSlackMessage(
-      this.state.selectedUser.id
-    );
+    this.setState({sending: true});
+    const result = await this.props.sendSlackMessage(this.state.selection.id);
     if (result) this.props.history.replace('/success');
     // TODO handle when result is false (i.e. message fails to send - redirect to error page?)
   };
@@ -37,14 +40,11 @@ class UsernameEntry extends React.Component {
           <div className="header-text">
             Please select your slack handle to send a reminder
           </div>
-          {this.state.selectedUser && (
-            <div className="confirm-modal">
-              <button
-                className="button btn-primary btn-half-block btn-modal"
-                onClick={this.sendReminder}>
-                Next
-              </button>
-            </div>
+          {this.state.selection && (
+            <ConfirmationModal
+              disabled={this.state.sending}
+              onClick={this.sendReminder}
+            />
           )}
         </header>
         <div>
@@ -52,10 +52,7 @@ class UsernameEntry extends React.Component {
             <ListSelection
               items={this.props.users}
               onClick={this.promptToConfirm}
-              iconStyle="username-icon"
-              selected={
-                this.state.selectedUser ? this.state.selectedUser.name : null
-              }
+              selected={this.state.selection ? this.state.selection.name : null}
             />
           )}
         </div>

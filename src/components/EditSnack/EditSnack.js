@@ -1,14 +1,31 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import ListSelection from '../listSelection/ListSelection';
-import './EditSnack.css';
+
 import BackButton from '../BackButton/BackButton';
+import ConfirmationModal from '../ConfirmationModal/ConfirmationModal';
+import ListSelection from '../listSelection/ListSelection';
+
+import './EditSnack.css';
 
 class EditSnack extends Component {
-  handleClick = item => {
-    this.props.setActualItem(item.id);
+  state = {
+    selection: null
+  };
+
+  handleClick = () => {
+    this.props.setActualItem(this.state.selection.id);
     const nextPage = this.props.sendWithPhoto ? 'snackchat' : 'slackname';
     this.props.history.replace('/' + nextPage);
+  };
+
+  promptToConfirm = selection => {
+    this.setState({selection});
+  };
+
+  deselect = () => {
+    this.setState(
+      prevState => (prevState.selection ? {selection: null} : null)
+    );
   };
 
   render() {
@@ -17,14 +34,22 @@ class EditSnack extends Component {
         <header className="header">
           <BackButton history={this.props.history} />
           <div className="header-text">
-            Sorry, I can’t recognise that snack<br />Please select it below
+            Sorry, I can’t recognise that snack
+            <br />
+            Please select it below
           </div>
+          {this.state.selection && (
+            <ConfirmationModal
+              disabled={this.state.sending}
+              onClick={this.handleClick}
+            />
+          )}
         </header>
         <ListSelection
-          iconStyle="snack-icon"
           items={this.props.items}
-          onClick={this.handleClick}
+          onClick={this.promptToConfirm}
           suggestions={this.props.suggestions}
+          selected={this.state.selection ? this.state.selection.name : null}
         />
       </div>
     );

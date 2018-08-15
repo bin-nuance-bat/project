@@ -41,6 +41,9 @@ const sendReminder = (user, item, imageUrl = null) => {
     url: 'https://slack.com/api/chat.postMessage',
     auth: {bearer: functions.config().slack.token},
     json: true,
+    headers: {
+      'Content-Type': 'application/json; charset=utf-8'
+    },
     body: {
       channel: user,
       username: BOT_USERNAME,
