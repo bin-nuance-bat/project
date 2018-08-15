@@ -13,7 +13,9 @@ class UsernameEntry extends React.Component {
   };
 
   promptToConfirm = selectedUser => {
-    this.setState({selectedUser});
+    this.setState(prevState => ({
+      selectedUser: prevState.sending ? prevState.selectedUser : selectedUser
+    }));
   };
 
   deselect = () => {
