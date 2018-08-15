@@ -8,11 +8,14 @@ import './UsernameEntry.css';
 
 class UsernameEntry extends React.Component {
   state = {
-    selectedUser: null
+    selectedUser: null,
+    sending: false
   };
 
   promptToConfirm = selectedUser => {
-    this.setState({selectedUser});
+    this.setState(prevState => ({
+      selectedUser: prevState.sending ? prevState.selectedUser : selectedUser
+    }));
   };
 
   deselect = () => {
@@ -22,6 +25,7 @@ class UsernameEntry extends React.Component {
   };
 
   sendReminder = async () => {
+    this.setState({sending: true});
     const result = await this.props.sendSlackMessage(
       this.state.selectedUser.id
     );
@@ -41,8 +45,9 @@ class UsernameEntry extends React.Component {
             <div className="confirm-modal">
               <button
                 className="button btn-primary btn-half-block btn-modal"
+                disabled={this.state.sending}
                 onClick={this.sendReminder}>
-                Next
+                {this.state.sending ? 'Sending...' : 'Next'}
               </button>
             </div>
           )}
