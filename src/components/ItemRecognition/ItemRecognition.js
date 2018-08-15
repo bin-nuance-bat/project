@@ -46,7 +46,7 @@ class ItemRecognition extends Component {
   };
 
   onFail = () => {
-    //this.props.history.replace('/editsnack');
+    this.props.history.replace('/editsnack');
   };
 
   addTrainingImage = (img, label) => {
