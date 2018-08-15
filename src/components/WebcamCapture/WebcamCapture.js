@@ -118,26 +118,25 @@ class WebcamCapture extends Component {
 
     return (
       <div className="webcam-container">
+        {!this.state.fakeWebcam && (
+          <Webcam
+            audio={false}
+            width="100%"
+            height="100%"
+            ref={this.webcam}
+            screenshotFormat="image/jpeg"
+            className="webcam-capture--video"
+            screenshotWidth={this.props.imgSize * (4 / 3)}
+          />
+        )}
         <ViewFinder ref={this.viewFinder} />
-        {this.state.fakeWebcam ? (
+        {this.state.fakeWebcam && (
           <input
             id="fileUpload"
             type="file"
             accept="image/*"
             ref={this.fileInput}
           />
-        ) : (
-          this.state.cameraConnected && (
-            <Webcam
-              audio={false}
-              width="100%"
-              height="100%"
-              ref={this.webcam}
-              screenshotFormat="image/jpeg"
-              className="webcam-capture--video"
-              screenshotWidth={this.props.imgSize * (4 / 3)}
-            />
-          )
         )}
       </div>
     );
