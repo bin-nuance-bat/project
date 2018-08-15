@@ -1,15 +1,15 @@
 import * as tf from '@tensorflow/tfjs';
 import {loadFrozenModel} from '@tensorflow/tfjs-converter';
-import labels from './labels';
 
 const PREPROCESS_DIVISOR = tf.scalar(255 / 2);
 
 export default class Model {
   async load() {
     this.model = await loadFrozenModel(
-      '/model/web_model.pb',
+      '/model/tensorflowjs_model.pb',
       '/model/weights_manifest.json'
     );
+    this.labels = await fetch('/model/labels.json');
   }
 
   dispose() {
@@ -42,7 +42,7 @@ export default class Model {
 
     let predictionList = [];
     for (let i = 0; i < values.length; i++) {
-      predictionList.push({value: values[i], id: labels[i]});
+      predictionList.push({value: values[i], id: this.labels[i]});
     }
     predictionList = predictionList.sort((a, b) => {
       return b.value - a.value;
