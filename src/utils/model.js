@@ -9,7 +9,7 @@ export default class Model {
       '/model/tensorflowjs_model.pb',
       '/model/weights_manifest.json'
     );
-    this.labels = await fetch('/model/labels.json');
+    this.labels = await fetch('/model/labels.json').then(res => res.json());
   }
 
   dispose() {
