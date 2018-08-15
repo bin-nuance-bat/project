@@ -10,11 +10,14 @@ import './UsernameEntry.css';
 
 class UsernameEntry extends React.Component {
   state = {
-    selectedUser: null
+    selectedUser: null,
+    sending: false
   };
 
   promptToConfirm = selectedUser => {
-    this.setState({selectedUser});
+    this.setState(prevState => ({
+      selectedUser: prevState.sending ? prevState.selectedUser : selectedUser
+    }));
   };
 
   deselect = () => {
@@ -24,19 +27,24 @@ class UsernameEntry extends React.Component {
   };
 
   sendReminder = async () => {
-    const userid = this.state.selectedUser.id;
-
+    const user = this.state.selectedUser.id;
+    const storeList = this.props.storeList;
     const actualItemID = this.props.actualItem;
-    const itemName = this.props.storeList[actualItemID].name;
+    const item = {
+      id: actualItemID,
+      name: storeList[actualItemID].name,
+      price: storeList[actualItemID].price.total
+    };
     const snackChat = this.props.sendWithPhoto ? this.props.snackChat : null;
     const endpoint = snackChat ? 'sendSnackChat' : 'sendSlackMessage';
     const send = firebase.functions().httpsCallable(endpoint);
+    this.setState({sending: true});
 
-    await send({userid, itemName, actualItemID, snackChat})
+    await send({user, item, snackChat})
       .then(() => {
         this.props.history.replace('/success');
       })
-      .catch(this.props.history.replace('/error'));
+      .catch(() => this.props.history.replace('/error'));
   };
 
   render() {
@@ -51,8 +59,9 @@ class UsernameEntry extends React.Component {
             <div className="confirm-modal">
               <button
                 className="button btn-primary btn-half-block btn-modal"
+                disabled={this.state.sending}
                 onClick={this.sendReminder}>
-                Next
+                {this.state.sending ? 'Sending...' : 'Next'}
               </button>
             </div>
           )}
