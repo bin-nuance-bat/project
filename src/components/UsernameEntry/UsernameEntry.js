@@ -5,24 +5,25 @@ import PropTypes from 'prop-types';
 
 import ListSelection from '../listSelection/ListSelection';
 import BackButton from '../BackButton/BackButton';
+import ConfirmationModal from '../ConfirmationModal/ConfirmationModal';
 
 import './UsernameEntry.css';
 
 class UsernameEntry extends React.Component {
   state = {
-    selectedUser: null,
+    selection: null,
     sending: false
   };
 
-  promptToConfirm = selectedUser => {
+  promptToConfirm = selection => {
     this.setState(prevState => ({
-      selectedUser: prevState.sending ? prevState.selectedUser : selectedUser
+      selection: prevState.sending ? prevState.selection : selection
     }));
   };
 
   deselect = () => {
     this.setState(
-      prevState => (prevState.selectedUser ? {selectedUser: null} : null)
+      prevState => (prevState.selection ? {selection: null} : null)
     );
   };
 
@@ -39,7 +40,6 @@ class UsernameEntry extends React.Component {
     const endpoint = snackChat ? 'sendSnackChat' : 'sendSlackMessage';
     const send = firebase.functions().httpsCallable(endpoint);
     this.setState({sending: true});
-
     await send({user, item, snackChat})
       .then(() => {
         this.props.history.replace('/success');
@@ -55,15 +55,11 @@ class UsernameEntry extends React.Component {
           <div className="header-text">
             Please select your slack handle to send a reminder
           </div>
-          {this.state.selectedUser && (
-            <div className="confirm-modal">
-              <button
-                className="button btn-primary btn-half-block btn-modal"
-                disabled={this.state.sending}
-                onClick={this.sendReminder}>
-                {this.state.sending ? 'Sending...' : 'Next'}
-              </button>
-            </div>
+          {this.state.selection && (
+            <ConfirmationModal
+              disabled={this.state.sending}
+              onClick={this.sendReminder}
+            />
           )}
         </header>
         <div>
@@ -71,10 +67,7 @@ class UsernameEntry extends React.Component {
             <ListSelection
               items={this.props.users}
               onClick={this.promptToConfirm}
-              iconStyle="username-icon"
-              selected={
-                this.state.selectedUser ? this.state.selectedUser.name : null
-              }
+              selected={this.state.selection ? this.state.selection.name : null}
             />
           )}
         </div>
