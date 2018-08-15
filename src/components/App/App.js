@@ -26,7 +26,7 @@ const WAIT_BEFORE_DISPLAY = 45;
 const PAGES_TO_SHOW_TIMEOUT = [
   '/disclaimer',
   '/confirmitem',
-  // '/editsnack',
+  '/editsnack',
   '/slackname'
 ];
 
