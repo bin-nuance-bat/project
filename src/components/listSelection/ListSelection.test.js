@@ -68,16 +68,6 @@ const getItems = () => [
   }
 ];
 
-it('Generates the list correctly', () => {
-  const props = {
-    onClick: jest.fn(),
-    items: getItems(),
-    iconStyle: ''
-  };
-  const wrapper = render(<ListSelection {...props} />);
-  expect(wrapper).toMatchSnapshot();
-});
-
 it('should order the list alphabetically and add missing letters', () => {
   const props = {
     onClick: jest.fn(),
