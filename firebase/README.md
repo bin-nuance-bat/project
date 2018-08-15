@@ -18,7 +18,7 @@ $ gsutil lifecycle set lifecycle.json gs://<PROJECT_ID>.appspot.com
 $ gsutil cors set cors.json gs://<PROJECT_ID>.appspot.com
 ```
 
-Note: The last command configures CORS to allow requests from any URL. This is useful for debugging purposes and running the front end locally but may not be desirable in production.
+Note: The last command configures CORS to allow requests from any URL. This is useful for debugging purposes and running the front end locally but may not be desirable in production. You can modify `[cors.json](cors.json)` to allow specific domains if needed.
 
 ## Billing
 
