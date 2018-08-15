@@ -96,17 +96,19 @@ const Hand = props => {
       transformationMatrix = 'matrix(0.7, 0, 0, 0.7, -22, -30)';
   }
   return (
-    <div className="hand">
-      <img className="hand-component" src={handBg} alt="" />
-      <img
-        className="hand-snack"
-        src={props.snack}
-        style={{
-          transform: transformationMatrix
-        }}
-        alt=""
-      />
-      <img className="hand-component" src={handFg} alt="" />
+    <div className="hand-container">
+      <div className="hand">
+        <img className="hand-component" src={handBg} alt="" />
+        <img
+          className="hand-snack"
+          src={props.snack}
+          style={{
+            transform: transformationMatrix
+          }}
+          alt=""
+        />
+        <img className="hand-component" src={handFg} alt="" />
+      </div>
     </div>
   );
 };

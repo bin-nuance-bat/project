@@ -1,15 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './UsernameEntry.css';
+
 import ListSelection from '../listSelection/ListSelection';
+import BackButton from '../BackButton/BackButton';
+
+import './UsernameEntry.css';
 
 class UsernameEntry extends React.Component {
   state = {
-    selectedUser: null
+    selectedUser: null,
+    sending: false
   };
 
   promptToConfirm = selectedUser => {
-    this.setState({selectedUser});
+    this.setState(prevState => ({
+      selectedUser: prevState.sending ? prevState.selectedUser : selectedUser
+    }));
   };
 
   deselect = () => {
@@ -19,6 +25,7 @@ class UsernameEntry extends React.Component {
   };
 
   sendReminder = async () => {
+    this.setState({sending: true});
     const result = await this.props.sendSlackMessage(
       this.state.selectedUser.id
     );
@@ -29,20 +36,22 @@ class UsernameEntry extends React.Component {
   render() {
     return (
       <div className="username-entry--page" onTouchMove={this.deselect}>
-        <div className="username-entry--header" id="header">
-          <div className="text-select-slack">
+        <header className="header">
+          <BackButton history={this.props.history} />
+          <div className="header-text">
             Please select your slack handle to send a reminder
           </div>
           {this.state.selectedUser && (
-            <div className="username-entry--confirm-div">
+            <div className="confirm-modal">
               <button
-                className="button username-entry--confirm-button"
+                className="button btn-primary btn-half-block btn-modal"
+                disabled={this.state.sending}
                 onClick={this.sendReminder}>
-                Next
+                {this.state.sending ? 'Sending...' : 'Next'}
               </button>
             </div>
           )}
-        </div>
+        </header>
         <div>
           {this.props.users.length !== 0 && (
             <ListSelection

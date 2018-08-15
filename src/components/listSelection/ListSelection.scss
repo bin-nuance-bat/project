@@ -1,50 +1,60 @@
 @import '../../utils/constants.scss';
 
-$icon-distance: 56px;
-$item-text-distance: 24px;
-
-.list-selection--item-icon {
-  margin-left: $icon-distance;
-}
-
-$snack-icon-size: 50px;
-
-.snack-icon {
-  height: $snack-icon-size;
-  width: $snack-icon-size;
-}
-
-$username-icon-size: 48px;
-
-.username-icon {
-  height: $username-icon-size;
-  width: $username-icon-size;
-  border-radius: 4px;
-}
-
-.list-selection--body {
-  padding-top: 232px;
+.list-container {
   background-color: $white;
-  height: 100%;
-  width: 95%;
-}
-
-.list-selection--list-text {
+  display: flex;
+  align-items: center;
+  height: 768px;
+  text-align: left;
   color: $blue;
   font-size: 30px;
-  position: relative;
-  text-align: left;
-  margin: 0;
 
-  &--group-header {
-    margin-left: 32px;
-    margin-top: 32px;
+  ol,
+  ul,
+  li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
   }
 
-  &--item-name {
-    padding-left: $item-text-distance;
-    height: 50px;
-    line-height: 50px;
+  ol {
+    width: 95%;
+    height: 100%;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+
+    .list-group {
+      padding: 16px 32px;
+
+      h2 {
+        font-size: 1em;
+        margin: 0 0 16px;
+      }
+
+      hr {
+        margin: 0;
+        border-color: $grey;
+      }
+
+      .list-item {
+        margin: 28px 0;
+
+        h2,
+        p {
+          display: inline-block;
+          margin: 0;
+          line-height: 50px;
+        }
+
+        .icon {
+          width: 50px;
+          height: 50px;
+          border-radius: 4px;
+          margin: 0 24px;
+          float: left;
+        }
+      }
+    }
   }
 }
 
@@ -63,33 +73,22 @@ $username-icon-size: 48px;
   width: 685px;
 }
 
-.list-selection--scroll-select {
+.group-select {
   color: $blue;
-  position: fixed;
   font-size: 19px;
-  right: 0px;
-  top: 340px;
-  margin: 0px;
+  margin: auto 0px;
   width: 5%;
   text-align: center;
   font-family: FaricyNew-Bold;
-  z-index: 2;
-}
 
-.list-selection--list {
-  width: 100%;
-  overflow-y: scroll;
-  height: 792px;
-  -webkit-overflow-scrolling: touch;
-}
+  .group {
+    padding: 0 0px;
+    position: relative;
 
-.list-selection--scroll-select-element {
-  padding: 0 0px;
-  position: relative;
-}
-
-.list-selection--bubble {
-  position: absolute;
-  top: -80px;
-  left: -115px;
+    .bubble {
+      position: absolute;
+      top: -80px;
+      left: -115px;
+    }
+  }
 }

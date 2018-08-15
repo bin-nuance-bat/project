@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-
 import Webcam from 'react-webcam';
-import Notification from '../Notification/Notification';
 import ViewFinder from './ViewFinder';
 
 import './WebcamCapture.css';
@@ -10,11 +8,10 @@ import './WebcamCapture.css';
 class WebcamCapture extends Component {
   constructor() {
     super();
-    global.injectWebcam = ({isDetecting, cameraConnected}) => {
+    global.injectWebcam = ({isDetecting}) => {
       this.setState({
         fakeWebcam: true,
-        isDetecting,
-        cameraConnected
+        isDetecting
       });
       if (this.props.onConnect) this.props.onConnect();
     };
@@ -23,7 +20,6 @@ class WebcamCapture extends Component {
   state = {
     fakeWebcam: false,
     isDetecting: true,
-    cameraConnected: false,
     animation: 0
   };
 
@@ -63,18 +59,23 @@ class WebcamCapture extends Component {
     return await this.urlToImg(this.cropImage(image));
   };
 
+  secondAttempt = false;
   setupWebcam() {
     navigator.mediaDevices
       .getUserMedia({video: true})
       .then(() => {
         this.setState({
-          cameraConnected: true,
           isDetecting: false
         });
         if (this.props.onConnect) this.props.onConnect();
       })
       .catch(() => {
-        this.setState({cameraConnected: false, isDetecting: false});
+        if (!this.secondAttempt) {
+          this.secondAttempt = true;
+          this.setupWebcam();
+        } else {
+          this.props.onFail();
+        }
       });
   }
 
@@ -115,37 +116,38 @@ class WebcamCapture extends Component {
       return null;
     }
 
-    if (this.state.cameraConnected) {
-      return (
-        <div className="webcam-container">
-          <Webcam
-            audio={false}
-            width="100%"
-            height="100%"
-            ref={this.webcam}
-            screenshotFormat="image/jpeg"
-            className="webcam-capture--video"
-            screenshotWidth={this.props.imgSize * (4 / 3)}
+    return (
+      <div className="webcam-container">
+        <ViewFinder ref={this.viewFinder} />
+        {this.state.fakeWebcam ? (
+          <input
+            id="fileUpload"
+            type="file"
+            accept="image/*"
+            ref={this.fileInput}
           />
-          <ViewFinder ref={this.viewFinder} />
-          {this.state.fakeWebcam && (
-            <input
-              id="fileUpload"
-              type="file"
-              accept="image/*"
-              ref={this.fileInput}
+        ) : (
+          this.state.cameraConnected && (
+            <Webcam
+              audio={false}
+              width="100%"
+              height="100%"
+              ref={this.webcam}
+              screenshotFormat="image/jpeg"
+              className="webcam-capture--video"
+              screenshotWidth={this.props.imgSize * (4 / 3)}
             />
-          )}
-        </div>
-      );
-    }
-    return <Notification message="failed to load video feed" isError={true} />;
+          )
+        )}
+      </div>
+    );
   }
 }
 
 WebcamCapture.propTypes = {
   imgSize: PropTypes.number.isRequired,
-  onConnect: PropTypes.func
+  onConnect: PropTypes.func,
+  onFail: PropTypes.func
 };
 
 export default WebcamCapture;
