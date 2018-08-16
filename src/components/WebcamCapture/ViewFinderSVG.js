@@ -3,101 +3,130 @@ import PropTypes from 'prop-types';
 
 const SIZE = 768;
 const BORDER_WIDTH = 72;
+const BORDER_CENTER = BORDER_WIDTH / 2;
 const HUD_INITIAL_LENGTH = 64;
 const HUD_STROKE_WIDTH = 8;
 
 const ViewFinder = props => {
-  const bw = BORDER_WIDTH;
-  const bc = BORDER_WIDTH / 2;
-  const s = SIZE;
-  const hw = HUD_STROKE_WIDTH;
-  const hl = Math.min(
-    HUD_INITIAL_LENGTH + props.animation * (s / 2 - bw - HUD_INITIAL_LENGTH),
-    s / 2 - bw
+  const hudLength = Math.min(
+    HUD_INITIAL_LENGTH +
+      props.animation * (SIZE / 2 - BORDER_WIDTH - HUD_INITIAL_LENGTH),
+    SIZE / 2 - BORDER_WIDTH
   );
 
-  const color = hl === s / 2 - bw ? '#47BED8' : '#ffffff';
+  const color = hudLength === SIZE / 2 - BORDER_WIDTH ? '#47BED8' : '#ffffff';
 
   return (
-    <svg viewBox={[0, 0, s, s]} id="view-finder">
+    <svg viewBox={[0, 0, SIZE, SIZE]} id="view-finder">
       <polyline
         fill="none"
         stroke="#000000"
         opacity="0.5"
-        strokeWidth={bw}
-        points={[bc, bc, s - bc, bc, s - bc, s - bc, bc, s - bc, bc, bc]}
+        strokeWidth={BORDER_WIDTH}
+        points={[
+          BORDER_CENTER,
+          BORDER_CENTER,
+          SIZE - BORDER_CENTER,
+          BORDER_CENTER,
+          SIZE - BORDER_CENTER,
+          SIZE - BORDER_CENTER,
+          BORDER_CENTER,
+          SIZE - BORDER_CENTER,
+          BORDER_CENTER,
+          BORDER_CENTER
+        ]}
       />
 
-      <circle cx={bw} cy={bw} r={hw / 2} fill={color} />
-      <line
-        x1={bw}
-        y1={bw}
-        x2={bw}
-        y2={bw + hl}
-        stroke={color}
-        strokeWidth={hw}
+      <circle
+        cx={BORDER_WIDTH}
+        cy={BORDER_WIDTH}
+        r={HUD_STROKE_WIDTH / 2}
+        fill={color}
       />
       <line
-        x1={bw}
-        y1={bw}
-        x2={bw + hl}
-        y2={bw}
+        x1={BORDER_WIDTH}
+        y1={BORDER_WIDTH}
+        x2={BORDER_WIDTH}
+        y2={BORDER_WIDTH + hudLength}
         stroke={color}
-        strokeWidth={hw}
-      />
-
-      <circle cx={bw} cy={s - bw} r={hw / 2} fill={color} />
-      <line
-        x1={bw}
-        y1={s - bw - hl}
-        x2={bw}
-        y2={s - bw}
-        stroke={color}
-        strokeWidth={hw}
+        strokeWidth={HUD_STROKE_WIDTH}
       />
       <line
-        x1={bw}
-        y1={s - bw}
-        x2={bw + hl}
-        y2={s - bw}
+        x1={BORDER_WIDTH}
+        y1={BORDER_WIDTH}
+        x2={BORDER_WIDTH + hudLength}
+        y2={BORDER_WIDTH}
         stroke={color}
-        strokeWidth={hw}
+        strokeWidth={HUD_STROKE_WIDTH}
       />
 
-      <circle cx={s - bw} cy={bw} r={hw / 2} fill={color} />
-      <line
-        x1={s - bw - hl}
-        y1={bw}
-        x2={s - bw}
-        y2={bw}
-        stroke={color}
-        strokeWidth={hw}
+      <circle
+        cx={BORDER_WIDTH}
+        cy={SIZE - BORDER_WIDTH}
+        r={HUD_STROKE_WIDTH / 2}
+        fill={color}
       />
       <line
-        x1={s - bw}
-        y1={bw}
-        x2={s - bw}
-        y2={bw + hl}
+        x1={BORDER_WIDTH}
+        y1={SIZE - BORDER_WIDTH - hudLength}
+        x2={BORDER_WIDTH}
+        y2={SIZE - BORDER_WIDTH}
         stroke={color}
-        strokeWidth={hw}
+        strokeWidth={HUD_STROKE_WIDTH}
+      />
+      <line
+        x1={BORDER_WIDTH}
+        y1={SIZE - BORDER_WIDTH}
+        x2={BORDER_WIDTH + hudLength}
+        y2={SIZE - BORDER_WIDTH}
+        stroke={color}
+        strokeWidth={HUD_STROKE_WIDTH}
       />
 
-      <circle cx={s - bw} cy={s - bw} r={hw / 2} fill={color} />
-      <line
-        x1={s - bw - hl}
-        y1={s - bw}
-        x2={s - bw}
-        y2={s - bw}
-        stroke={color}
-        strokeWidth={hw}
+      <circle
+        cx={SIZE - BORDER_WIDTH}
+        cy={BORDER_WIDTH}
+        r={HUD_STROKE_WIDTH / 2}
+        fill={color}
       />
       <line
-        x1={s - bw}
-        y1={s - bw}
-        x2={s - bw}
-        y2={s - bw - hl}
+        x1={SIZE - BORDER_WIDTH - hudLength}
+        y1={BORDER_WIDTH}
+        x2={SIZE - BORDER_WIDTH}
+        y2={BORDER_WIDTH}
         stroke={color}
-        strokeWidth={hw}
+        strokeWidth={HUD_STROKE_WIDTH}
+      />
+      <line
+        x1={SIZE - BORDER_WIDTH}
+        y1={BORDER_WIDTH}
+        x2={SIZE - BORDER_WIDTH}
+        y2={BORDER_WIDTH + hudLength}
+        stroke={color}
+        strokeWidth={HUD_STROKE_WIDTH}
+      />
+
+      <circle
+        cx={SIZE - BORDER_WIDTH}
+        cy={SIZE - BORDER_WIDTH}
+        r={HUD_STROKE_WIDTH / 2}
+        fill={color}
+      />
+      <line
+        x1={SIZE - BORDER_WIDTH - hudLength}
+        y1={SIZE - BORDER_WIDTH}
+        x2={SIZE - BORDER_WIDTH}
+        y2={SIZE - BORDER_WIDTH}
+        stroke={color}
+        strokeWidth={HUD_STROKE_WIDTH}
+      />
+      <line
+        x1={SIZE - BORDER_WIDTH}
+        y1={SIZE - BORDER_WIDTH}
+        x2={SIZE - BORDER_WIDTH}
+        y2={SIZE - BORDER_WIDTH - hudLength}
+        stroke={color}
+        strokeWidth={HUD_STROKE_WIDTH}
       />
     </svg>
   );

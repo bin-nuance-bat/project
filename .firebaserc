@@ -1,6 +1,8 @@
 {
   "projects": {
     "default": "honesty-store-kiosk",
-    "dev": "honesty-store-kiosk-dev"
+    "dev": "honesty-store-kiosk-dev",
+    "qa": "honesty-store-kiosk-qa",
+    "training": "hsk-training"
   }
 }

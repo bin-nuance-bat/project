@@ -1,33 +1,58 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './UsernameEntry.css';
+
 import ListSelection from '../listSelection/ListSelection';
+import BackButton from '../BackButton/BackButton';
+import ConfirmationModal from '../ConfirmationModal/ConfirmationModal';
+
+import './UsernameEntry.css';
 
 class UsernameEntry extends React.Component {
-  sendReminder = async user => {
-    const result = await this.props.sendSlackMessage(user.id);
+  state = {
+    selection: null,
+    sending: false
+  };
+
+  promptToConfirm = selection => {
+    this.setState(prevState => ({
+      selection: prevState.sending ? prevState.selection : selection
+    }));
+  };
+
+  deselect = () => {
+    this.setState(
+      prevState => (prevState.selection ? {selection: null} : null)
+    );
+  };
+
+  sendReminder = async () => {
+    this.setState({sending: true});
+    const result = await this.props.sendSlackMessage(this.state.selection.id);
     if (result) this.props.history.replace('/success');
     // TODO handle when result is false (i.e. message fails to send - redirect to error page?)
   };
 
-  componentDidMount() {
-    this.props.loadUsers();
-  }
-
   render() {
     return (
-      <div className="username-entry--page">
-        <div className="username-entry--header" id="header">
-          <div className="text-select-slack">
+      <div className="username-entry--page" onTouchMove={this.deselect}>
+        <header className="header">
+          <BackButton history={this.props.history} />
+          <div className="header-text">
             Please select your slack handle to send a reminder
           </div>
-        </div>
+          {this.state.selection && (
+            <ConfirmationModal
+              disabled={this.state.sending}
+              onClick={this.sendReminder}
+            />
+          )}
+        </header>
         <div>
           {this.props.users.length !== 0 && (
             <ListSelection
               items={this.props.users}
-              onClick={this.sendReminder}
-              iconStyle="username-icon"
+              onClick={this.promptToConfirm}
+              selected={this.state.selection ? this.state.selection.name : null}
             />
           )}
         </div>
@@ -39,7 +64,6 @@ class UsernameEntry extends React.Component {
 UsernameEntry.propTypes = {
   users: PropTypes.arrayOf(PropTypes.object).isRequired,
   history: PropTypes.shape({replace: PropTypes.func.isRequired}).isRequired,
-  loadUsers: PropTypes.func.isRequired,
   sendSlackMessage: PropTypes.func.isRequired
 };
 

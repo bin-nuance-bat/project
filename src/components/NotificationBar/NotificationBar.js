@@ -57,18 +57,15 @@ class NotificationBar extends Component {
 
   render() {
     return (
-      <div
-        className={
-          'notification-bar--notification--' +
-          (this.state.show ? 'show' : 'hide')
-        }
-        id="notificationBar">
-        <div className="notification-bar--info">
-          <div className="notification-bar--alert">{this.props.mainText}</div>
-          <div className="notification-bar--sub-text">{this.getSubtext()}</div>
-        </div>
-        <div className="notification-bar--dismiss">
-          {this.props.userTouchActionText}
+      <div className="notification-bar">
+        <div
+          className={'notification' + (this.state.show && ' show')}
+          id="notificationBar">
+          <div className="info">
+            <div className="text">{this.props.mainText}</div>
+            <div className="sub-text">{this.getSubtext()}</div>
+          </div>
+          <div className="dismiss">{this.props.userTouchActionText}</div>
         </div>
       </div>
     );

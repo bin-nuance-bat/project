@@ -68,16 +68,6 @@ const getItems = () => [
   }
 ];
 
-it('Generates the list correctly', () => {
-  const props = {
-    onClick: jest.fn(),
-    items: getItems(),
-    iconStyle: ''
-  };
-  const wrapper = render(<ListSelection {...props} />);
-  expect(wrapper).toMatchSnapshot();
-});
-
 it('should order the list alphabetically and add missing letters', () => {
   const props = {
     onClick: jest.fn(),
@@ -116,7 +106,7 @@ it('should order the list alphabetically and add missing letters', () => {
   for (let i = 0; i < 26; i++) {
     expect(
       component[0].children.find(
-        child => child.attribs.class === 'list-selection--scroll-select'
+        child => child.attribs.class === 'group-select'
       ).children[i].children[0].data
     ).toEqual(alphabet[i]);
   }

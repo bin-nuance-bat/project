@@ -26,7 +26,8 @@ export default class Settings extends Component {
               className="admin-checkbox"
               onChange={this.toggleAdvanced}
               checked={this.state.advanced}
-            />Show advanced settings
+            />
+            Show advanced settings
           </label>
         </div>
 

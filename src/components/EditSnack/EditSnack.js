@@ -1,29 +1,55 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import ListSelection from '../listSelection/ListSelection';
-import './EditSnack.css';
+
 import BackButton from '../BackButton/BackButton';
+import ConfirmationModal from '../ConfirmationModal/ConfirmationModal';
+import ListSelection from '../listSelection/ListSelection';
+
+import './EditSnack.css';
 
 class EditSnack extends Component {
-  handleClick = item => {
-    this.props.setActualItem(item.id);
+  state = {
+    selection: null
+  };
+
+  handleClick = () => {
+    this.props.setActualItem(this.state.selection.id);
     const nextPage = this.props.sendWithPhoto ? 'snackchat' : 'slackname';
     this.props.history.replace('/' + nextPage);
+  };
+
+  promptToConfirm = selection => {
+    this.setState({selection});
+  };
+
+  deselect = () => {
+    this.setState(
+      prevState => (prevState.selection ? {selection: null} : null)
+    );
   };
 
   render() {
     return (
       <div className="edit-snack--page">
-        <div className="edit-snack--header" id="header">
+        <header className="header">
           <BackButton history={this.props.history} />
-          <div className="edit-snack edit-snack--text-info">
-            Sorry, I can’t recognise that snack <br /> Please select it below
+          <div className="header-text">
+            Sorry, I can’t recognise that snack
+            <br />
+            Please select it below
           </div>
-        </div>
+          {this.state.selection && (
+            <ConfirmationModal
+              disabled={this.state.sending}
+              onClick={this.handleClick}
+            />
+          )}
+        </header>
         <ListSelection
-          iconStyle="snack-icon"
           items={this.props.items}
-          onClick={this.handleClick}
+          onClick={this.promptToConfirm}
+          suggestions={this.props.suggestions}
+          selected={this.state.selection ? this.state.selection.name : null}
         />
       </div>
     );
@@ -39,7 +65,8 @@ EditSnack.propTypes = {
       name: PropTypes.string.isRequired,
       id: PropTypes.string.isRequired
     }).isRequired
-  ).isRequired
+  ).isRequired,
+  suggestions: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export default EditSnack;

@@ -1,0 +1,32 @@
+{
+  "indexes": [
+    {
+      "collectionId": "training_data",
+      "fields": [
+        { "fieldPath": "trusted", "mode": "ASCENDING" },
+        { "fieldPath": "timestamp", "mode": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionId": "training_data",
+      "fields": [
+        { "fieldPath": "label", "mode": "ASCENDING" },
+        { "fieldPath": "random", "mode": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionId": "training_data",
+      "fields": [
+        { "fieldPath": "trusted", "mode": "ASCENDING" },
+        { "fieldPath": "random", "mode": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionId": "training_data",
+      "fields": [
+        { "fieldPath": "label", "mode": "ASCENDING" },
+        { "fieldPath": "timestamp", "mode": "ASCENDING" }
+      ]
+    }
+  ]
+}

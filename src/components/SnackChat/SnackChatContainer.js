@@ -1,13 +1,15 @@
 import SnackChat from './SnackChat';
 import {connect} from 'react-redux';
 import {setSnackChat} from './SnackChatActions';
+import {setSendWithPhoto} from '../Home/actions';
 
 const mapStateToProps = state => ({
   storeList: state.storeList,
-  prediction: state.prediction
+  actualItem: state.actualItem
 });
 
 const mapDispatchToProps = {
+  setSendWithPhoto,
   setSnackChat
 };
 
