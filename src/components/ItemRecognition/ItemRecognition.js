@@ -8,7 +8,8 @@ import BackButton from '../BackButton/BackButton';
 import MobileNet from '../Admin/Trainer/MobileNet';
 
 const TIMEOUT_IN_SECONDS = 10;
-const ML_THRESHOLD = 0.35;
+const MIN_CONSECUTIVE_PREDICTIONS = 3;
+const PREDICTION_RATIO_THRESHOLD = 1.2;
 const SHOW_RETRY_FOR = 5;
 
 class ItemRecognition extends Component {
@@ -29,8 +30,11 @@ class ItemRecognition extends Component {
     modelLoaded: false
   };
 
+  predictionQueue = [];
+
   componentDidMount() {
     this.props.setPrediction(null, null);
+    this.predictionQueue = [];
   }
 
   onConnect = () => {
@@ -77,19 +81,46 @@ class ItemRecognition extends Component {
     return (Date.now() - this.scanningStartTime) / 1000 > seconds;
   }
 
+  isItemRecognised = items => {
+    this.predictionQueue.push(items.slice(0, MIN_CONSECUTIVE_PREDICTIONS));
+    if (this.predictionQueue.length < MIN_CONSECUTIVE_PREDICTIONS) {
+      return false;
+    }
+
+    const predictions = this.predictionQueue.slice(
+      -MIN_CONSECUTIVE_PREDICTIONS
+    );
+    const {id} = predictions[0][0];
+
+    const areAllBestPredictionsTheSame = predictions
+      .slice(1)
+      .every(([bestPrediction]) => bestPrediction.id === id);
+
+    const areAllBestPredictionsCertainEnough = predictions.every(
+      ([bestPrediction, secondBestPrediction]) =>
+        bestPrediction.value / secondBestPrediction.value >
+        PREDICTION_RATIO_THRESHOLD
+    );
+
+    return areAllBestPredictionsTheSame && areAllBestPredictionsCertainEnough;
+  };
+
   handleImg = img => {
     if (this.success) return;
 
     this.model.predict(img).then(async items => {
       const item = items[0];
       const isItemRecognised =
-        item.value > ML_THRESHOLD &&
+        this.isItemRecognised(items) &&
         item.id !== 'unknown' &&
         !this.props.prediction;
+
       const hasTimedOut = this.hasBeen(TIMEOUT_IN_SECONDS);
+
       const showRotationMessage =
         !this.state.subText &&
         this.hasBeen(TIMEOUT_IN_SECONDS - SHOW_RETRY_FOR);
+
       if (isItemRecognised) {
         this.success = true;
         this.addTrainingImage(img.src, item.id);
