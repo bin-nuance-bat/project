@@ -10,6 +10,11 @@ To perform training you will need Python 2.7 installed as well as the `tensorflo
 $ pip install tensorflowjs
 ```
 
+If you are using Windows you will most likely have to add an entry to your environment variables
+System properties -> Environment variables -> System variables
+
+PYTHON="C:\Python27"
+
 ## Training Data
 
 Training data should be placed in a directory `data` inside of this directory. In here you should have a subdirectory for each category of item you wish the model to recognise. These subdirectories should be named according to the items ID in the honesty.store. You should also include an unknown category. An example of the folder structure is shown below:
