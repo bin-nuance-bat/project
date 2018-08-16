@@ -292,7 +292,7 @@ class SnackChat extends Component {
         />
         <div id="fade-overlay" className="fade-hidden" />
         <header>
-          <BackButton />
+          <BackButton history={this.props.history} />
           {!this.state.gettingInPosition ? (
             <div>
               <div className="snackchat--header-text snackchat--header-text-left">
