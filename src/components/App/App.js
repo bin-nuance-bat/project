@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+
 import Home from '../Home/container';
 import SnackChat from '../SnackChat/SnackChatContainer';
 import ItemRecognition from '../ItemRecognition/ItemRecognitionContainer';
@@ -12,12 +13,14 @@ import NotificationBar from '../NotificationBar/NotificationBar';
 import Admin from '../Admin/Admin';
 import Trainer from '../Admin/Trainer/Trainer';
 import ImageApproval from '../Admin/ImageApproval/ImageApproval';
+import ErrorPage from '../ErrorPage/ErrorPage';
 import Viewer from '../Admin/Preview/Viewer';
+
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import initFirebase from '../../utils/firebase';
 import firebase from 'firebase/app';
+
 import 'firebase/auth';
-import ErrorPage from '../ErrorPage/ErrorPage';
 
 const WAIT_BEFORE_DISPLAY = 45;
 const PAGES_TO_SHOW_TIMEOUT = [

@@ -28,7 +28,7 @@ class UsernameEntry extends React.Component {
   };
 
   sendReminder = async () => {
-    const user = this.state.selectedUser.id;
+    const user = this.state.selection.id;
     const storeList = this.props.storeList;
     const actualItemID = this.props.actualItem;
     const item = {
