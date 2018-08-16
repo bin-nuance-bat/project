@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import WebcamCapture from '../WebcamCapture/WebcamCapture';
 import BackButton from '../BackButton/BackButton';
 
+import Model from '../../utils/model';
+
 const TIMEOUT_IN_SECONDS = 10;
 const ML_THRESHOLD = 0.35;
 const SHOW_RETRY_FOR = 5;
@@ -21,8 +23,11 @@ class ItemRecognition extends Component {
     text: 'Scan item using the front facing camera',
     modelLoaded: false
   };
+  model = null;
 
   componentDidMount() {
+    this.model = new Model();
+    this.model.load().then(() => this.setState({modelLoaded: true}));
     this.props.setPrediction(null, null);
   }
 
@@ -74,7 +79,6 @@ class ItemRecognition extends Component {
 
       if (isItemRecognised) {
         this.success = true;
-        this.data.addImage(img.src, item.id);
         this.setSuggestions(items, 1);
         await this.props.setPrediction(item.id, img.src);
 

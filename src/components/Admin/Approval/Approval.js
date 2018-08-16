@@ -27,37 +27,18 @@ class ImageApproval extends Component {
   };
 
   nextImage = index => {
-    let retries = 3;
-    const handler = image => {
-      if (image === null) {
-        return this.setState(prevState => {
-          prevState.images.splice(index, 1);
-          return prevState;
-        });
-      }
-
-      if (this.state.images.some(i => i.id === image.id)) {
-        if (retries-- > 1) {
-          this.data
-            .getImages(false, 1, this.lastImageTimestamp())
-            .then(handler);
-        } else {
-          this.setState(prevState => {
-            prevState.images.splice(index, 1);
-            return prevState;
-          });
-        }
-      } else {
-        this.setState(prevState => {
-          prevState.images[index] = image;
-          return prevState;
-        });
-      }
-    };
-
-    return this.controllerDataset
+    return this.data
       .getImages(false, 1, this.lastImageTimestamp())
-      .then(handler);
+      .then(images => {
+        this.setState(prevState => {
+          if (images.length === 1) {
+            prevState.images[index] = images[0];
+          } else {
+            prevState.images.splice(index, 1);
+          }
+          return prevState;
+        });
+      });
   };
 
   trustImage = event => {

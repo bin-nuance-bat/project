@@ -40,7 +40,6 @@ class DataController {
         })
         .then(doc =>
           this.storage
-            .ref()
             .child(`training_data/${label}/${doc.id}.jpg`)
             .putString(imageUri, 'data_url')
         ),
@@ -66,8 +65,11 @@ class DataController {
 
   deleteImage(imageId) {
     const ref = this.db.collection('training_data').doc(imageId);
-    ref.get().then(doc => {
-      this.updateItemCount(doc.data().label, -1);
+    return ref.get().then(doc => {
+      this.storage
+        .child(`training_data/${doc.data().label}/${doc.id}.jpg`)
+        .delete();
+      this.changeItemCount(doc.data().label, -1);
       return ref.delete();
     });
   }

@@ -10,6 +10,7 @@ class ConfirmationBox extends React.Component {
   handleYes = () => {
     const {setActualItem, id, sendWithPhoto, history} = this.props;
     setActualItem(id);
+    this.props.dataController.addImage(this.props.prediction.img, id);
     const nextPage = sendWithPhoto ? 'snackchat' : 'slackname';
     history.replace('/' + nextPage);
   };
@@ -55,7 +56,9 @@ ConfirmationBox.propTypes = {
   storeList: PropTypes.object.isRequired,
   setActualItem: PropTypes.func.isRequired,
   sendWithPhoto: PropTypes.bool.isRequired,
-  history: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired,
+  prediction: PropTypes.object.isRequired,
+  dataController: PropTypes.object.isRequired
 };
 
 export default ConfirmationBox;

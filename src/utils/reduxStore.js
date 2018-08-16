@@ -13,6 +13,7 @@ import {
 } from '../components/Home/reducer';
 import {actualItem} from '../components/ConfirmationBox/reducer';
 import {snackChat} from '../components/SnackChat/SnackChatReducer';
+import {dataController} from '../components/App/reducer';
 
 const rootReducer = combineReducers({
   storeList,
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
   suggestions,
   sendWithPhoto,
   actualItem,
+  dataController,
   snackChat,
   loadUserListError,
   sendMessageError

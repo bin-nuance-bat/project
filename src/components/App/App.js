@@ -21,6 +21,7 @@ import Collection from '../Admin/Collection/Collection';
 import initFirebase from '../../utils/firebase';
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import DataController from '../Admin/utils/DataController';
 
 const WAIT_BEFORE_DISPLAY = 45;
 const PAGES_TO_SHOW_TIMEOUT = [
@@ -62,6 +63,8 @@ class App extends Component {
     this.firebaseAuth.onAuthStateChanged(user =>
       this.setState({loggedIn: user !== null})
     );
+
+    this.props.setDataController(new DataController());
 
     this.resetTimeoutTimer();
     document.body.addEventListener('touchstart', this.resetTimeoutTimer);
@@ -176,6 +179,7 @@ class App extends Component {
 }
 
 App.propTypes = {
+  setDataController: PropTypes.func.isRequired,
   loadStoreListError: PropTypes.bool,
   loadUserListError: PropTypes.bool,
   sendMessageError: PropTypes.bool
