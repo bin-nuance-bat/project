@@ -7,7 +7,7 @@ const ImagePreview = props => {
   return (
     <div className="preview-image">
       <div>
-        <img src={props.image.uri} alt={props.image.id} />
+        <img src={props.image.url} alt={props.image.id} />
       </div>
       <div>
         {!props.image.trusted && (

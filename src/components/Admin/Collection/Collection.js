@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
-//import {ControllerDataset} from '../ControllerDataset';
 
-import Model from '../Trainer/Model';
-import {imageToTensor} from './../AdminUtils';
+import DataController from '../utils/DataController';
 
 import WebcamCapture from '../../WebcamCapture/WebcamCapture';
 import ItemSelector from '../ItemSelector';
@@ -16,45 +14,39 @@ class Collection extends Component {
     flash: 'flash'
   };
 
+  items = [];
   webcamCapture = React.createRef();
-
-  setReadyStatus = status => {
-    this.setState({status, busy: false});
-  };
-
-  setBusyStatus = status => {
-    this.setState({status, busy: true});
-  };
-
-  // eslint-disable-next-line
-  model = new Model(this.setReadyStatus, this.setBusyStatus, console.log);
-
-  componentDidMount() {
-    this.model.init();
-  }
 
   burstShot = () => {
     let counter = this.state.burstCount;
     const ticker = setInterval(async () => {
+      this.setState({
+        busy: true,
+        status:
+          `Capturing image ${this.state.bustCount - counter}` +
+          `/${this.state.burstCount}`
+      });
+
       const img = await this.webcamCapture.current.requestScreenshot();
-      this.model.addExample(
-        () => img.src,
-        () => imageToTensor(img),
-        this.state.item,
-        1,
-        false
-      );
+      this.data.addImage(img.src, this.state.item);
+
       counter--;
-      if (counter <= 0) clearInterval(ticker);
+      if (counter <= 0) {
+        clearInterval(ticker);
+        this.setState({busy: false, status: 'Done'});
+      }
     }, 1000);
   };
 
-  render() {
-    const items = Object.values(this.model ? this.model.items : {});
-    items.sort((a, b) => {
-      return a.name.localeCompare(b.name);
+  componentDidMount() {
+    this.data = new DataController();
+    this.data.getStoreList().then(items => {
+      this.items = Object.values(items);
+      this.setState({busy: false, status: 'Ready'});
     });
+  }
 
+  render() {
     return (
       <div className="page">
         <WebcamCapture
@@ -65,7 +57,7 @@ class Collection extends Component {
         <h2>{this.state.status}</h2>
         <ItemSelector
           item={this.state.item}
-          items={items}
+          items={this.items}
           setItem={i => this.setState({item: i})}
           disabled={this.state.busy}
         />

@@ -14,7 +14,6 @@ import NotificationBar from '../NotificationBar/NotificationBar';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 
 import Admin from '../Admin/Admin';
-import Trainer from '../Admin/Trainer/Trainer';
 import Approval from '../Admin/Approval/Approval';
 import Viewer from '../Admin/Preview/Viewer';
 import Collection from '../Admin/Collection/Collection';
@@ -144,7 +143,6 @@ class App extends Component {
             <Route exact path="/success" component={SuccessPage} />
             <Route exact path="/admin" component={Admin} />
             <Route exact path="/admin/preview" component={Viewer} />
-            <Route exact path="/admin/training" component={Trainer} />
             <Route exact path="/admin/approval" component={Approval} />
             <Route exact path="/admin/collection" component={Collection} />
           </Switch>

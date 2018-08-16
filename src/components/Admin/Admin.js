@@ -11,10 +11,7 @@ class Admin extends Component {
   state = {
     status: 'Loading...',
     loggedIn: false,
-    admin: false,
-    models: [],
-    currentModel: '',
-    modelSelect: ''
+    admin: false
   };
 
   authenticate = () => {
@@ -68,38 +65,6 @@ class Admin extends Component {
       admin: true,
       status: 'Welcome, ' + name
     });
-    initFirebase();
-    firebase
-      .firestore()
-      .collection('models')
-      .get()
-      .then(snapshot => {
-        snapshot.forEach(doc => {
-          this.setState(prevState => {
-            let state = {};
-            if (doc.data().deployed)
-              state = {currentModel: doc.id, modelSelect: doc.id};
-            return {
-              models: prevState.models.concat([
-                {id: doc.id, timestamp: doc.data().timestamp}
-              ]),
-              ...state
-            };
-          });
-        });
-      });
-  };
-
-  selectModel = async () => {
-    initFirebase();
-    this.setState({status: 'Deploying model...'});
-    const models = firebase.firestore().collection('models');
-    await models.doc(this.state.currentModel).update({deployed: false});
-    await models.doc(this.state.modelSelect).update({deployed: true});
-    this.setState({
-      currentModel: this.state.modelSelect,
-      status: 'Model deployed!'
-    });
   };
 
   navigate = event => {
@@ -142,24 +107,6 @@ class Admin extends Component {
                 data-url="/admin/preview"
                 onClick={this.navigate}>
                 Data Preview
-              </button>
-            </div>
-            <div>
-              <select
-                value={this.state.modelSelect}
-                onChange={e => this.setState({modelSelect: e.target.value})}>
-                {this.state.models.map(model => (
-                  <option key={model.id} value={model.id}>
-                    {new Date(model.timestamp).toLocaleString() +
-                      ' - ' +
-                      model.id}
-                  </option>
-                ))}
-              </select>
-              <button
-                className="button button-admin"
-                onClick={this.selectModel}>
-                Select Model
               </button>
             </div>
           </div>

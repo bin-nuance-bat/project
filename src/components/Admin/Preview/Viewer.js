@@ -1,12 +1,6 @@
 import React, {Component} from 'react';
-import firebase from 'firebase/app';
-import 'firebase/firestore';
 
-import getStore from '../../../utils/honestyStore';
-import {ControllerDataset} from '../ControllerDataset';
-import initFirebase from '../../../utils/firebase';
-import JSZip from 'jszip';
-import {saveAs} from 'file-saver/FileSaver';
+import DataController from '../utils/DataController';
 
 import ItemSelector from '../ItemSelector';
 import ImagePreview from './ImagePreview';
@@ -15,7 +9,7 @@ export default class Viewer extends Component {
   state = {
     item: 'all',
     images: [],
-    view: false,
+    view: true,
     status: 'Loading...',
     items: {
       all: {name: 'All Items', id: 'all'},
@@ -24,11 +18,9 @@ export default class Viewer extends Component {
   };
 
   componentDidMount() {
-    this.controllerDataset = new ControllerDataset();
-    initFirebase();
-    this.db = firebase.firestore();
-
-    getStore().then(store => {
+    this.data = new DataController();
+    window.datac = this.data;
+    this.data.getStoreList().then(store => {
       this.setState(prevState => ({
         items: {
           ...prevState.items,
@@ -41,75 +33,24 @@ export default class Viewer extends Component {
 
   getImages = () => {
     this.setState({status: 'Fetching images...'});
-    let ref = this.db.collection('training_data');
-    if (this.state.item !== 'all')
-      ref = ref.where('label', '==', this.state.item);
-    ref
-      .orderBy('timestamp')
-      .get()
-      .then(async rows => {
-        const images = [];
-        rows.forEach(row => {
-          const img = row.data();
-          images.push({
-            id: row.id,
-            uri: img.img,
-            item: img.label,
-            trusted: img.trusted
-          });
-        });
-
-        this.setState({
-          images,
-          status: `Got ${images.length} images of ${
-            this.state.items[this.state.item].name
-          }`
-        });
-
-        const reff = await this.controllerDataset.getItemReference(
-          this.state.item
-        );
-        this.controllerDataset.setItemCount(reff, images.length);
-      });
-  };
-
-  downloadImages = () => {
-    const zip = new JSZip();
-    for (const img of this.state.images) {
-      zip.file(
-        img.id + '.jpg',
-        img.uri.replace(/^data:image\/(png|jpeg);base64,/, ''),
-        {
-          base64: true
-        }
-      );
-    }
-    zip.generateAsync({type: 'blob'}).then(blob => {
-      saveAs(blob, this.state.item + '.zip');
-    });
+    this.data
+      .getImages(null, 500, 0, this.state.item)
+      .then(images => this.setState({images, status: 'Done'}));
   };
 
   toggleView = () => this.setState({view: !this.state.view});
 
   remove = event => {
-    this.controllerDataset
-      .deleteImage(event.target.dataset)
-      .then(() => this.getImages());
+    this.data.deleteImage(event.target.dataset.id).then(() => this.getImages());
   };
 
   trust = event => {
-    this.controllerDataset
-      .trustImage(event.target.dataset)
-      .then(() => this.getImages());
+    this.data.trustImage(event.target.dataset.id).then(() => this.getImages());
   };
 
   trustUnknown = event => {
-    this.controllerDataset
-      .setLabel(event.target.dataset.id, 'unknown')
-      .then(() => this.getImages());
-    this.controllerDataset
-      .trustImage(event.target.dataset)
-      .then(() => this.getImages());
+    this.data.changeImageLabel(event.target.dataset.id, 'unknown');
+    this.data.trustImage(event.target.dataset.id).then(() => this.getImages());
   };
 
   render() {
@@ -125,9 +66,6 @@ export default class Viewer extends Component {
         </button>
         <button className="button button-admin" onClick={this.toggleView}>
           Toggle Previews
-        </button>
-        <button className="button button-admin" onClick={this.downloadImages}>
-          Download Images
         </button>
         <br />
 

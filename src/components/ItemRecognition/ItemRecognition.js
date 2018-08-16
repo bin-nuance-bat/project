@@ -1,11 +1,8 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {ControllerDataset} from '../Admin/ControllerDataset';
-import Model from './../../utils/model';
 
 import WebcamCapture from '../WebcamCapture/WebcamCapture';
 import BackButton from '../BackButton/BackButton';
-import MobileNet from '../Admin/Trainer/MobileNet';
 
 const TIMEOUT_IN_SECONDS = 10;
 const ML_THRESHOLD = 0.35;
@@ -16,11 +13,7 @@ class ItemRecognition extends Component {
     super(props);
 
     if (navigator.onLine) {
-      this.model = new Model();
-      this.model.load().then(() => this.setState({modelLoaded: true}));
       this.webcam = React.createRef();
-      this.mobileNet = new MobileNet();
-      this.controllerDataset = new ControllerDataset();
     }
   }
 
@@ -49,21 +42,6 @@ class ItemRecognition extends Component {
     this.props.history.replace('/editsnack');
   };
 
-  addTrainingImage = (img, label) => {
-    this.mobileNet.init().then(() =>
-      this.mobileNet.getActivation(img).then(activation =>
-        this.controllerDataset.addImage(
-          {
-            img,
-            label,
-            activation
-          },
-          false
-        )
-      )
-    );
-  };
-
   setSuggestions = (items, index) => {
     const suggestions = items
       .slice(index)
@@ -82,17 +60,21 @@ class ItemRecognition extends Component {
 
     this.model.predict(img).then(async items => {
       const item = items[0];
+
       const isItemRecognised =
         item.value > ML_THRESHOLD &&
         item.id !== 'unknown' &&
         !this.props.prediction;
+
       const hasTimedOut = this.hasBeen(TIMEOUT_IN_SECONDS);
+
       const showRotationMessage =
         !this.state.subText &&
         this.hasBeen(TIMEOUT_IN_SECONDS - SHOW_RETRY_FOR);
+
       if (isItemRecognised) {
         this.success = true;
-        this.addTrainingImage(img.src, item.id);
+        this.data.addImage(img.src, item.id);
         this.setSuggestions(items, 1);
         await this.props.setPrediction(item.id, img.src);
 

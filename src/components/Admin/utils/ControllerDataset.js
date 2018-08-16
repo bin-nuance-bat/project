@@ -4,7 +4,7 @@ import 'firebase/firestore';
 import 'firebase/storage';
 import 'firebase/auth';
 
-import initFirebase from '../../utils/firebase';
+import initFirebase from '../../../utils/firebase';
 
 const VALIDATION_PERCENTAGE = 0.2;
 const ACTIVATION_SHAPE = [1, 7, 7, 256];

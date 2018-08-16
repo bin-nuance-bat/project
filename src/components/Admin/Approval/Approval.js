@@ -2,9 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 import ItemSelector from '../ItemSelector';
-
-import getStore from '../../../utils/honestyStore';
-import {ControllerDataset} from '../ControllerDataset';
+import DataController from '../utils/DataController';
 
 import './Approval.css';
 
@@ -16,8 +14,8 @@ class ImageApproval extends Component {
   };
 
   getImages = async () => {
-    return this.controllerDataset
-      .getUntrustedImages()
+    return this.data
+      .getImages(false, 10)
       .then(images => this.setState({images}));
   };
 
@@ -40,8 +38,8 @@ class ImageApproval extends Component {
 
       if (this.state.images.some(i => i.id === image.id)) {
         if (retries-- > 1) {
-          this.controllerDataset
-            .getUntrustedImage(this.lastImageTimestamp())
+          this.data
+            .getImages(false, 1, this.lastImageTimestamp())
             .then(handler);
         } else {
           this.setState(prevState => {
@@ -58,42 +56,34 @@ class ImageApproval extends Component {
     };
 
     return this.controllerDataset
-      .getUntrustedImage(this.lastImageTimestamp())
+      .getImages(false, 1, this.lastImageTimestamp())
       .then(handler);
   };
 
   trustImage = event => {
     const index = event.target.dataset.index;
-    this.controllerDataset
-      .trustImage({
-        id: event.target.dataset.id,
-        item: event.target.dataset.label
-      })
+    this.data
+      .trustImage(event.target.dataset.id)
       .then(() => this.nextImage(index));
   };
 
   setAsUnknown = event => {
     const index = event.target.dataset.index;
-    this.controllerDataset
-      .trustImage({
-        id: event.target.dataset.id,
-        item: 'unknown'
-      })
+    this.data.changeImageLabel(event.target.dataset.id, 'unknown');
+    this.data
+      .trustImage(event.target.dataset.id)
       .then(() => this.nextImage(index));
   };
 
   deleteImage = event => {
     const index = event.target.dataset.index;
-    this.controllerDataset
-      .deleteImage({
-        id: event.target.dataset.id,
-        item: event.target.dataset.label
-      })
+    this.data
+      .deleteImage(event.target.dataset.id)
       .then(() => this.nextImage(index));
   };
 
   changeCategory = (id, newCategory) => {
-    this.controllerDataset.setLabel(id, newCategory);
+    this.data.changeImageLabel(id, newCategory);
   };
 
   back = () => {
@@ -101,7 +91,8 @@ class ImageApproval extends Component {
   };
 
   componentDidMount() {
-    getStore().then(storeList => {
+    this.data = new DataController();
+    this.data.getStoreList().then(storeList => {
       this.setState({
         storeList: Object.values({
           ...storeList
@@ -109,7 +100,6 @@ class ImageApproval extends Component {
       });
       this.getImages().then(() => this.setState({loading: false}));
     });
-    this.controllerDataset = new ControllerDataset();
   }
 
   render() {
@@ -127,7 +117,7 @@ class ImageApproval extends Component {
         {this.state.images.map((image, index) => {
           return (
             <div key={image.id} className="preview-pane">
-              <img style={{maxHeight: 224}} src={image.img} alt="" />
+              <img style={{maxHeight: 224}} src={image.url} alt="" />
               <ItemSelector
                 item={image.label}
                 items={this.state.storeList}
