@@ -152,10 +152,6 @@ class ItemRecognition extends Component {
     });
   };
 
-  onBack = () => {
-    this.setState({backClicked: true});
-  };
-
   componentWillUnmount() {
     this.model.dispose();
   }
