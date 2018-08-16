@@ -279,50 +279,113 @@ class SnackChat extends Component {
     this.props.history.replace('/slackname');
   };
 
+  // render functions ================================================
+
+  renderHandsHeader = () => (
+    <div>
+      <div className="snackchat--header-text snackchat--header-text-left">
+        {this.state.counter >= PHOTO_ANIMATION_TIME && 'Taking photo in'}
+      </div>
+      <div className="snackchat--hands">
+        <img className="snackchat--hands-slot" src={HandsSlot} alt="" />
+        <img className="snackchat--hands-right" src={HandsRight} alt="" />
+        <img className="snackchat--hands-center" src={HandsCenter} alt="" />
+        <img className="snackchat--hands-camera" src={HandsCamera} alt="" />
+        <img className="snackchat--hands-left" src={HandsLeft} alt="" />
+      </div>
+      <div className="snackchat--header-counter">
+        {this.state.counter >= PHOTO_ANIMATION_TIME &&
+          this.state.counter - PHOTO_ANIMATION_TIME}
+      </div>
+    </div>
+  );
+
+  renderFallingItems = () => (
+    <div>
+      <div className="snackchat-overlay" />
+      {this.state.itemPositions.map((item, index) => (
+        <div key={index}>
+          <img
+            src={this.filter}
+            alt=""
+            className="snackchat-falling-snack"
+            style={{
+              height: FEED_SIZE * FALLING_SNACK_SIZE,
+              width: FEED_SIZE * FALLING_SNACK_SIZE,
+              top: item.y,
+              right: item.x - FEED_SIZE * 0.1,
+              transform: `rotate(${item.rotation}rad)`
+            }}
+          />
+        </div>
+      ))}
+    </div>
+  );
+
+  generateEllipseCoords = shoulders => {
+    const {ears} = this.state.averageBodyPosition;
+    const numberOfPoints = 40;
+    let ellipseCoords = '';
+    for (let i = 0; i <= numberOfPoints; ++i) {
+      ellipseCoords += `,${shoulders.span * 2 +
+        ears.span * 0.6 * Math.sin((i / numberOfPoints) * 2 * Math.PI)} ${0.9 *
+        shoulders.span +
+        ears.span * 0.75 * Math.cos((i / numberOfPoints) * 2 * Math.PI)}`;
+    }
+    return ellipseCoords;
+  };
+
+  renderFilter = shoulders => {
+    return (
+      <div>
+        <img
+          src={this.filter}
+          className="snackchat-filter"
+          alt=""
+          style={{
+            left:
+              shoulders.rightX -
+              shoulders.span * 1.5 +
+              shoulders.span * shoulders.angle,
+            top: shoulders.rightY - shoulders.span * 1.5,
+            height: shoulders.span * 4,
+            width: shoulders.span * 4,
+            clipPath: 'url(#face-clip)'
+          }}
+        />
+        <svg width={0} height={0} style={{position: 'absolute'}}>
+          <defs>
+            <clipPath id="face-clip">
+              <polygon
+                points={
+                  `${shoulders.span * 2} 0, ${shoulders.span *
+                    4} 0, ${shoulders.span * 4} ${shoulders.span *
+                    4}, 0 ${shoulders.span * 4}, 0 0, ${shoulders.span * 2} 0` +
+                  this.generateEllipseCoords(shoulders)
+                }
+              />
+            </clipPath>
+          </defs>
+        </svg>
+      </div>
+    );
+  };
+
   render() {
-    const shoulders = this.state.averageBodyPosition.shoulders;
-    const ears = this.state.averageBodyPosition.ears;
+    const {shoulders} = this.state.averageBodyPosition;
     return (
       <div className="page">
         <canvas
           ref={this.canvas}
           width={FEED_SIZE}
           height={FEED_SIZE}
-          style={{position: 'absolute', zIndex: '-2'}}
+          style={{position: 'absolute', zIndex: -2}}
         />
         <div id="fade-overlay" className="fade-hidden" />
         <header>
           <BackButton history={this.props.history} />
           {!this.state.gettingInPosition ? (
-            <div>
-              <div className="snackchat--header-text snackchat--header-text-left">
-                {this.state.counter >= PHOTO_ANIMATION_TIME &&
-                  'Taking photo in'}
-              </div>
-              <div className="snackchat--hands">
-                <img className="snackchat--hands-slot" src={HandsSlot} alt="" />
-                <img
-                  className="snackchat--hands-right"
-                  src={HandsRight}
-                  alt=""
-                />
-                <img
-                  className="snackchat--hands-center"
-                  src={HandsCenter}
-                  alt=""
-                />
-                <img
-                  className="snackchat--hands-camera"
-                  src={HandsCamera}
-                  alt=""
-                />
-                <img className="snackchat--hands-left" src={HandsLeft} alt="" />
-              </div>
-              <div className="snackchat--header-counter">
-                {this.state.counter >= PHOTO_ANIMATION_TIME &&
-                  this.state.counter - PHOTO_ANIMATION_TIME}
-              </div>
-            </div>
+            this.renderHandsHeader()
           ) : (
             <div className="snackchat--header-text snackchat--header-text-center">
               Get ready!
@@ -336,81 +399,11 @@ class SnackChat extends Component {
             onConnect={this.onConnect}
             onFail={this.onFail}
           />
-          {this.state.gettingInPosition && (
-            <div>
-              <div className="snackchat-overlay" />
-              {this.state.itemPositions.map((item, index) => (
-                <div key={index}>
-                  <img
-                    src={this.filter}
-                    alt=""
-                    className="snackchat-falling-snack"
-                    style={{
-                      height: `${FEED_SIZE * FALLING_SNACK_SIZE}px`,
-                      width: `${FEED_SIZE * FALLING_SNACK_SIZE}px`,
-                      top: `${item.y}px`,
-                      right: `${item.x - FEED_SIZE * 0.1}px`,
-                      transform: `rotate(${item.rotation}rad)`
-                    }}
-                  />
-                </div>
-              ))}
-            </div>
-          )}
+          {this.state.gettingInPosition && this.renderFallingItems()}
           <div>
             {!this.state.gettingInPosition &&
-              shoulders !== undefined && (
-                <div>
-                  <img
-                    src={this.filter}
-                    className="snackchat-filter"
-                    alt=""
-                    style={{
-                      left: `${shoulders.rightX -
-                        shoulders.span * 1.5 +
-                        shoulders.span * shoulders.angle}px`,
-                      top: `${shoulders.rightY - shoulders.span * 1.5}px`,
-                      height: `${shoulders.span * 4}px`,
-                      width: `${shoulders.span * 4}px`,
-                      clipPath: 'url(#face-clip)'
-                    }}
-                  />
-                  <svg width="0" height="0" style={{position: 'absolute'}}>
-                    <defs>
-                      <clipPath id="face-clip">
-                        <polygon
-                          points={
-                            // outer rectangle
-                            `${shoulders.span * 2} 0, ${shoulders.span *
-                              4} 0, ${shoulders.span * 4} ${shoulders.span *
-                              4}, 0 ${shoulders.span *
-                              4}, 0 0, ${shoulders.span * 2} 0` +
-                            // face ellipse
-                            `${(() => {
-                              const numberOfPoints = 40;
-                              let ellipseCoords = '';
-                              for (let i = 0; i <= numberOfPoints; ++i) {
-                                ellipseCoords += `,${shoulders.span * 2 +
-                                  ears.span *
-                                    0.6 *
-                                    Math.sin(
-                                      (i / numberOfPoints) * 2 * Math.PI
-                                    )} ${0.9 * shoulders.span +
-                                  ears.span *
-                                    0.75 *
-                                    Math.cos(
-                                      (i / numberOfPoints) * 2 * Math.PI
-                                    )}`;
-                              }
-                              return ellipseCoords;
-                            })()}`
-                          }
-                        />
-                      </clipPath>
-                    </defs>
-                  </svg>
-                </div>
-              )}
+              shoulders !== undefined &&
+              this.renderFilter(shoulders)}
           </div>
         </div>
       </div>
