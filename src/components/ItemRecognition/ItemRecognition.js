@@ -141,6 +141,9 @@ class ItemRecognition extends Component {
           text: "We can't recognise the snack",
           subText: 'Try turning the snack so the logo is seen by the camera'
         });
+      } else if (this.state.backClicked) {
+        this.props.history.replace('/disclaimer');
+        return;
       }
 
       // Get the next frame
@@ -148,6 +151,11 @@ class ItemRecognition extends Component {
         this.webcam.current.requestScreenshot().then(this.handleImg);
     });
   };
+
+  onBack = () => {
+    this.setState({backClicked: true});
+  };
+
   componentWillUnmount() {
     this.model.dispose();
   }
@@ -156,7 +164,7 @@ class ItemRecognition extends Component {
     return (
       <div className="page">
         <header className="header">
-          <BackButton history={this.props.history} />
+          <BackButton handleClick={() => this.setState({backClicked: true})} />
           <div>
             <div className="header-text">{this.state.text}</div>
             {this.state.subText && (

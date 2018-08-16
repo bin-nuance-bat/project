@@ -7,9 +7,7 @@ import BackArrow from './BackArrow.svg';
 const BackButton = props => {
   return (
     <div>
-      <button
-        className="button btn-back"
-        onClick={() => props.history.replace('/')}>
+      <button className="button btn-back" onClick={props.handleClick}>
         <img src={BackArrow} alt="" />
       </button>
     </div>
@@ -17,7 +15,7 @@ const BackButton = props => {
 };
 
 BackButton.propTypes = {
-  history: PropTypes.object.isRequired
+  handleClick: PropTypes.func.isRequired
 };
 
 export default BackButton;
