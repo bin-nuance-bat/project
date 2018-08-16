@@ -2,10 +2,22 @@ import * as tf from '@tensorflow/tfjs';
 import {loadFrozenModel} from '@tensorflow/tfjs-converter';
 import labels from './labels';
 
+import {setTensorTracker} from '@tensorflow/tfjs-core/dist/tensor';
+import {MathBackendWebGL} from '@tensorflow/tfjs-core/dist/kernels/backend_webgl';
+
 const PREPROCESS_DIVISOR = tf.scalar(255 / 2);
 
 export default class Model {
   async load() {
+    tf.ENV.reset();
+    tf.ENV.registerBackend(
+      'webgl',
+      () => new MathBackendWebGL(),
+      2,
+      setTensorTracker
+    );
+    tf.Environment.setBackend('webgl');
+
     this.model = await loadFrozenModel(
       '/model/web_model.pb',
       '/model/weights_manifest.json'
@@ -14,6 +26,8 @@ export default class Model {
 
   dispose() {
     if (this.model) this.model.dispose();
+    tf.ENV.removeBackend('webgl');
+    tf.ENV.reset();
   }
 
   async predict(element) {
