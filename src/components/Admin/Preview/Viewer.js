@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
 import DataController from '../utils/DataController';
 
 import ItemSelector from '../ItemSelector';
 import ImagePreview from './ImagePreview';
 
-export default class Viewer extends Component {
+class Viewer extends Component {
   state = {
     item: 'all',
     images: [],
@@ -53,9 +54,18 @@ export default class Viewer extends Component {
     this.data.trustImage(event.target.dataset.id).then(() => this.getImages());
   };
 
+  back = () => {
+    this.props.history.replace('/admin');
+  };
+
   render() {
     return (
       <div className="page">
+        <div>
+          <button className="button button-admin" onClick={this.back}>
+            &laquo; Back
+          </button>
+        </div>
         <ItemSelector
           item={this.state.item}
           items={Object.values(this.state.items)}
@@ -85,3 +95,9 @@ export default class Viewer extends Component {
     );
   }
 }
+
+Viewer.propTypes = {
+  history: PropTypes.object.isRequired
+};
+
+export default Viewer;

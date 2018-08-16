@@ -74,7 +74,7 @@ class WebcamCapture extends Component {
           this.secondAttempt = true;
           this.setupWebcam();
         } else {
-          this.props.onFail();
+          if (this.props.onFail) this.props.onFail();
         }
       });
   }

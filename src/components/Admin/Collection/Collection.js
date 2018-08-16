@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
 import DataController from '../utils/DataController';
 
@@ -46,6 +47,10 @@ class Collection extends Component {
     });
   }
 
+  back = () => {
+    this.props.history.replace('/admin');
+  };
+
   render() {
     return (
       <div className="page">
@@ -80,9 +85,18 @@ class Collection extends Component {
           }>
           Capture Images
         </button>
+        <div>
+          <button className="button button-admin" onClick={this.back}>
+            &laquo; Back
+          </button>
+        </div>
       </div>
     );
   }
 }
+
+Collection.propTypes = {
+  history: PropTypes.object.isRequired
+};
 
 export default Collection;
