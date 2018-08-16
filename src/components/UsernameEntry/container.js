@@ -5,7 +5,10 @@ import {getUsers} from './UsernameEntrySelectors';
 
 const mapStateToProps = state => {
   return {
-    users: getUsers(state)
+    users: getUsers(state),
+    sendWithPhoto: state.sendWithPhoto,
+    actualItem: state.actualItem,
+    prediction: state.prediction
   };
 };
 

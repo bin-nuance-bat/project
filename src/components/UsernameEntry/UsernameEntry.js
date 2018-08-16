@@ -36,7 +36,17 @@ class UsernameEntry extends React.Component {
     return (
       <div className="username-entry--page" onTouchMove={this.deselect}>
         <header className="header">
-          <BackButton history={this.props.history} />
+          <BackButton
+            handleClick={() =>
+              this.props.history.replace(
+                this.props.sendWithPhoto
+                  ? '/snackchat'
+                  : this.props.actualItem === this.props.prediction.id
+                    ? '/confirmitem'
+                    : '/editsnack'
+              )
+            }
+          />
           <div className="header-text">
             Please select your slack handle to send a reminder
           </div>
@@ -64,7 +74,10 @@ class UsernameEntry extends React.Component {
 UsernameEntry.propTypes = {
   users: PropTypes.arrayOf(PropTypes.object).isRequired,
   history: PropTypes.shape({replace: PropTypes.func.isRequired}).isRequired,
-  sendSlackMessage: PropTypes.func.isRequired
+  sendSlackMessage: PropTypes.func.isRequired,
+  sendWithPhoto: PropTypes.bool.isRequired,
+  actualItem: PropTypes.string.isRequired,
+  prediction: PropTypes.object.isRequired
 };
 
 export default UsernameEntry;

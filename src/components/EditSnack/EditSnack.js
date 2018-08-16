@@ -32,7 +32,9 @@ class EditSnack extends Component {
     return (
       <div className="edit-snack--page">
         <header className="header">
-          <BackButton history={this.props.history} />
+          <BackButton
+            handleClick={() => this.props.history.replace('/confirmitem')}
+          />
           <div className="header-text">
             Sorry, I can’t recognise that snack
             <br />

@@ -25,7 +25,9 @@ class ConfirmationBox extends React.Component {
         : null;
     return (
       <div className="page">
-        <BackButton history={this.props.history} />
+        <BackButton
+          handleClick={() => this.props.history.replace('/scanitem')}
+        />
         <div className="text-confirmation">{`Is this a ${
           this.props.name
         }?`}</div>

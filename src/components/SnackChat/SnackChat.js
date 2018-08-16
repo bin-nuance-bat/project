@@ -8,6 +8,7 @@ import HandsCamera from './../../utils/assets/hands/HandsCamera.svg';
 import PropTypes from 'prop-types';
 import * as posenet from '@tensorflow-models/posenet';
 import './SnackChat.css';
+import BackButton from '../BackButton/BackButton';
 
 const FEED_SIZE = 768;
 const CAPTURE_SIZE = 200;
@@ -105,6 +106,8 @@ class SnackChat extends Component {
     }
 
     const drawFallingSnacks = () => {
+      if (this.state.backClicked) return;
+
       if (this.state.counter <= COUNTDOWN_TIME + PHOTO_ANIMATION_TIME) {
         this.setState({gettingInPosition: false});
         return;
@@ -163,6 +166,11 @@ class SnackChat extends Component {
   averageBodyPosition;
   i = -1;
   update = async () => {
+    if (this.state.backClicked) {
+      this.onBack();
+      return;
+    }
+
     if (!this.webcam.current.webcam.current || !this.net) {
       requestAnimationFrame(this.update);
       return;
@@ -304,9 +312,18 @@ class SnackChat extends Component {
     this.props.history.replace('/slackname');
   };
 
+  onBack = () => {
+    this.props.history.replace(
+      this.props.actualItem === this.props.prediction.id
+        ? '/confirmitem'
+        : '/editsnack'
+    );
+  };
+
   render() {
     return (
       <div className="page">
+        <BackButton handleClick={() => this.setState({backClicked: true})} />
         <div id="fade-overlay" className="fade-hidden" />
         {!this.state.gettingInPosition ? (
           <header>
@@ -361,7 +378,8 @@ SnackChat.propTypes = {
   setSendWithPhoto: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
   storeList: PropTypes.object.isRequired,
-  actualItem: PropTypes.string.isRequired
+  actualItem: PropTypes.string.isRequired,
+  prediction: PropTypes.object.isRequired
 };
 
 export default SnackChat;
