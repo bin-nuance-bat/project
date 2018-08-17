@@ -34,7 +34,12 @@ class ImageApproval extends Component {
           if (images.length < 1) {
             prevState.images.splice(index, 1);
           } else {
-            prevState.images[index] = images[0];
+            const [image] = images;
+            if (prevState.images.filter(i => i.id === image.id).length > 0) {
+              this.getImages();
+            } else {
+              prevState.images[index] = image;
+            }
           }
           return prevState;
         });

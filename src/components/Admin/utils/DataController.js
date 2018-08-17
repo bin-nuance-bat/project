@@ -8,6 +8,7 @@ class DataController {
   constructor() {
     this.storage = firebase.storage().ref();
     this.db = firebase.firestore();
+    window.db = this.db;
   }
 
   async getItemClasses() {
