@@ -365,8 +365,8 @@ class SnackChat extends Component {
                 points={
                   `${shoulders.span * 2} 0, ${shoulders.span *
                     4} 0, ${shoulders.span * 4} ${shoulders.span *
-                    4}, 0 ${shoulders.span * 4}, 0 0, ${shoulders.span * 2} 0` +
-                  this.generateEllipseCoords()
+                    4}, 0 ${shoulders.span * 4}, 0 0, ${shoulders.span *
+                    2} 0,` + this.generateEllipseCoords()
                 }
               />
             </clipPath>
