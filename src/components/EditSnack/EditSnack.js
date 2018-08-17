@@ -33,7 +33,11 @@ class EditSnack extends Component {
       <div className="edit-snack--page">
         <header className="header">
           <BackButton
-            handleClick={() => this.props.history.replace('/confirmitem')}
+            handleClick={() =>
+              this.props.history.replace(
+                this.props.prediction === null ? '/scanitem' : '/confirmitem'
+              )
+            }
           />
           <div className="header-text">
             Sorry, I can’t recognise that snack
@@ -68,7 +72,8 @@ EditSnack.propTypes = {
       id: PropTypes.string.isRequired
     }).isRequired
   ).isRequired,
-  suggestions: PropTypes.arrayOf(PropTypes.object).isRequired
+  suggestions: PropTypes.arrayOf(PropTypes.object).isRequired,
+  prediction: PropTypes.object
 };
 
 export default EditSnack;
