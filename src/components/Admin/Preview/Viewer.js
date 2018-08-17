@@ -19,9 +19,9 @@ class Viewer extends Component {
   };
 
   componentDidMount() {
-    this.data = new DataController();
-    window.datac = this.data;
-    this.data.getStoreList().then(store => {
+    this.dataController = new DataController();
+    window.datac = this.dataController;
+    this.dataController.getStoreList().then(store => {
       this.setState(prevState => ({
         items: {
           ...prevState.items,
@@ -34,7 +34,7 @@ class Viewer extends Component {
 
   getImages = () => {
     this.setState({status: 'Fetching images...'});
-    this.data.getImages(null, 500, 0, this.state.item).then(images =>
+    this.dataController.getImages(null, 500, 0, this.state.item).then(images =>
       this.setState({
         images,
         status: `Got ${images.length} images. Rendering... (May take a moment)`
@@ -45,16 +45,22 @@ class Viewer extends Component {
   toggleView = () => this.setState({view: !this.state.view});
 
   remove = event => {
-    this.data.deleteImage(event.target.dataset.id).then(() => this.getImages());
+    this.dataController
+      .deleteImage(event.target.dataset.id)
+      .then(() => this.getImages());
   };
 
   trust = event => {
-    this.data.trustImage(event.target.dataset.id).then(() => this.getImages());
+    this.dataController
+      .trustImage(event.target.dataset.id)
+      .then(() => this.getImages());
   };
 
   trustUnknown = event => {
-    this.data.changeImageLabel(event.target.dataset.id, 'unknown');
-    this.data.trustImage(event.target.dataset.id).then(() => this.getImages());
+    this.dataController.changeImageLabel(event.target.dataset.id, 'unknown');
+    this.dataController
+      .trustImage(event.target.dataset.id)
+      .then(() => this.getImages());
   };
 
   back = () => {

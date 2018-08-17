@@ -14,20 +14,20 @@ class ImageApproval extends Component {
   };
 
   getImages = async () => {
-    return this.data
+    return this.dataController
       .getImages(false, 10)
       .then(images => this.setState({images}));
   };
 
   lastImageTimestamp = () => {
-    return this.state.images
-      .map(image => image.timestamp)
-      .sort()
-      .pop();
+    return this.state.images.reduce(
+      (highest, current) => Math.max(highest, current.timestamp),
+      0
+    );
   };
 
   nextImage = index => {
-    return this.data
+    return this.dataController
       .getImages(false, 1, this.lastImageTimestamp())
       .then(images => {
         this.setState(prevState => {
@@ -43,28 +43,28 @@ class ImageApproval extends Component {
 
   trustImage = event => {
     const index = event.target.dataset.index;
-    this.data
+    this.dataController
       .trustImage(event.target.dataset.id)
       .then(() => this.nextImage(index));
   };
 
   setAsUnknown = event => {
     const index = event.target.dataset.index;
-    this.data.changeImageLabel(event.target.dataset.id, 'unknown');
-    this.data
+    this.dataController.changeImageLabel(event.target.dataset.id, 'unknown');
+    this.dataController
       .trustImage(event.target.dataset.id)
       .then(() => this.nextImage(index));
   };
 
   deleteImage = event => {
     const index = event.target.dataset.index;
-    this.data
+    this.dataController
       .deleteImage(event.target.dataset.id)
       .then(() => this.nextImage(index));
   };
 
   changeCategory = (id, newCategory) => {
-    this.data.changeImageLabel(id, newCategory);
+    this.dataController.changeImageLabel(id, newCategory);
   };
 
   back = () => {
@@ -72,8 +72,8 @@ class ImageApproval extends Component {
   };
 
   componentDidMount() {
-    this.data = new DataController();
-    this.data.getStoreList().then(storeList => {
+    this.dataController = new DataController();
+    this.dataController.getStoreList().then(storeList => {
       this.setState({
         storeList: Object.values({
           ...storeList

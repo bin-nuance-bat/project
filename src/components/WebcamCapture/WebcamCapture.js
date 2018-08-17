@@ -74,7 +74,7 @@ class WebcamCapture extends Component {
           this.secondAttempt = true;
           this.setupWebcam();
         } else {
-          if (this.props.onFail) this.props.onFail();
+          this.props.onFail();
         }
       });
   }
@@ -146,7 +146,7 @@ class WebcamCapture extends Component {
 WebcamCapture.propTypes = {
   imgSize: PropTypes.number.isRequired,
   onConnect: PropTypes.func,
-  onFail: PropTypes.func
+  onFail: PropTypes.func.isRequired
 };
 
 export default WebcamCapture;

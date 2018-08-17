@@ -23,12 +23,12 @@ class Collection extends Component {
       this.setState({
         busy: true,
         status:
-          `Capturing image ${this.state.bustCount - counter}` +
+          `Capturing image ${this.state.burstCount - counter}` +
           `/${this.state.burstCount}`
       });
 
       const img = await this.webcamCapture.current.requestScreenshot();
-      this.data.addImage(img.src, this.state.item);
+      this.dataController.addImage(img.src, this.state.item);
 
       counter--;
       if (counter <= 0) {
@@ -39,8 +39,8 @@ class Collection extends Component {
   };
 
   componentDidMount() {
-    this.data = new DataController();
-    this.data.getStoreList().then(items => {
+    this.dataController = new DataController();
+    this.dataController.getStoreList().then(items => {
       this.items = Object.values(items);
       this.setState({busy: false, status: 'Ready'});
     });
@@ -53,7 +53,11 @@ class Collection extends Component {
   render() {
     return (
       <div className="page">
-        <WebcamCapture ref={this.webcamCapture} imgSize={224} />
+        <WebcamCapture
+          ref={this.webcamCapture}
+          imgSize={224}
+          onFail={() => {}}
+        />
         <h2>{this.state.status}</h2>
         <ItemSelector
           item={this.state.item}
