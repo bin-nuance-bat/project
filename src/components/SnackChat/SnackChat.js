@@ -121,12 +121,11 @@ class SnackChat extends Component {
 
   drawBackground = video => {
     this.ctx.scale(-CANVAS_SCALE, CANVAS_SCALE);
-    this.ctx.drawImage(
-      video,
+    // account for difference in width of video feed and canvas so background image is horizontally centred
+    const x =
       Math.abs(video.videoWidth - this.canvas.current.width) / 2 -
-        video.videoWidth,
-      0
-    );
+      video.videoWidth;
+    this.ctx.drawImage(video, x, 0);
     this.ctx.restore();
   };
 
