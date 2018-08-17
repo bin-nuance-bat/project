@@ -162,6 +162,20 @@ class SnackChat extends Component {
     this.drawBackground(video);
   };
 
+  // async so that the filter doesn't stop moving
+  takeSnackchat = async () => {
+    setTimeout(() => {
+      clearInterval(this.timer);
+      document.getElementById('fade-overlay').className = 'fade-in';
+      this.generateSnackchat();
+      this.props.setSnackChat(this.canvas.current.toDataURL());
+      setTimeout(() => {
+        this.redirected = true;
+        this.props.history.replace('/slackname');
+      }, 1000);
+    }, (PHOTO_ANIMATION_TIME + 1) * 1000);
+  };
+
   positionBuffer = new Array(POSITION_BUFFER_SIZE);
   i = -1;
   redirected = false;
@@ -171,23 +185,11 @@ class SnackChat extends Component {
       return;
     }
 
-    if (this.state.counter <= PHOTO_ANIMATION_TIME && !this.state.captured) {
-      // async so that the filter doesn't stop moving
+    if (this.state.counter <= PHOTO_ANIMATION_TIME) {
       this.setState(
-        {captured: true},
-        async () => {
-          setTimeout(() => {
-            clearInterval(this.timer);
-            document.getElementById('fade-overlay').className = 'fade-in';
-            this.generateSnackchat();
-            this.props.setSnackChat(this.canvas.current.toDataURL());
-            setTimeout(() => {
-              this.redirected = true;
-              this.props.history.replace('/slackname');
-            }, 1000);
-          });
-        },
-        (PHOTO_ANIMATION_TIME + 1) * 1000
+        prevState => (
+          prevState.captured ? null : this.takeSnackchat(), {captured: true}
+        )
       );
       return;
     }
