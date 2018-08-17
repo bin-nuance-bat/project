@@ -31,10 +31,10 @@ class ImageApproval extends Component {
       .getImages(false, 1, this.lastImageTimestamp())
       .then(images => {
         this.setState(prevState => {
-          if (images.length === 1) {
-            prevState.images[index] = images[0];
-          } else {
+          if (images.length < 1) {
             prevState.images.splice(index, 1);
+          } else {
+            prevState.images[index] = images[0];
           }
           return prevState;
         });
