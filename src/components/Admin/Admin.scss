@@ -1,36 +1,5 @@
 @import '../../utils/constants.scss';
 
-.trainer {
-  display: flex;
-  margin-bottom: 30px;
-}
-
-.col {
-  padding: 0 20px;
-  flex: 1;
-}
-
-.item-table {
-  max-height: calc(100vh - 30px);
-  padding-bottom: 30px;
-  overflow-y: scroll;
-}
-
-select {
-  color: $black;
-  margin: 10px 0;
-}
-
-select,
-input {
-  padding: 5px;
-  width: 100%;
-}
-
-input[type='checkbox'].admin-checkbox {
-  width: auto;
-}
-
 .button.button-admin {
   width: auto;
   height: auto;
@@ -41,32 +10,7 @@ input[type='checkbox'].admin-checkbox {
 }
 
 .button-admin:disabled {
-  background-color: $dark-blue;
-}
-
-.formGroup {
-  display: block;
-}
-
-#status-text {
-  font-size: 22px;
-  line-height: 30px;
-}
-
-.loading-bar {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-
-.loading-bar .progress {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  height: 30px;
-  background-color: $light-blue;
-  z-index: -1;
+  background-color: $grey;
 }
 
 .admin-title {

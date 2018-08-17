@@ -1,4 +1,9 @@
 .preview-image {
-	margin: 5px;
-	display: inline-block;
+  margin: 5px;
+  display: inline-block;
+  width: 224px;
+
+  img {
+    max-height: 224px;
+  }
 }

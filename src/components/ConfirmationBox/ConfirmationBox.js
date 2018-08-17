@@ -8,8 +8,10 @@ import './ConfirmationBox.css';
 
 class ConfirmationBox extends React.Component {
   handleYes = () => {
-    const {setActualItem, id, sendWithPhoto, history} = this.props;
+    const {setActualItem, sendWithPhoto, history} = this.props;
+    const {img, id} = this.props.prediction;
     setActualItem(id);
+    if (this.props.dataController) this.props.dataController.addImage(img, id);
     const nextPage = sendWithPhoto ? 'snackchat' : 'slackname';
     history.replace('/' + nextPage);
   };
@@ -20,8 +22,8 @@ class ConfirmationBox extends React.Component {
 
   render() {
     const image =
-      this.props.id && this.props.storeList[this.props.id]
-        ? this.props.storeList[this.props.id].image
+      this.props.prediction.id && this.props.storeList[this.props.prediction.id]
+        ? this.props.storeList[this.props.prediction.id].image
         : null;
     return (
       <div className="page">
@@ -29,7 +31,7 @@ class ConfirmationBox extends React.Component {
           handleClick={() => this.props.history.replace('/scanitem')}
         />
         <div className="text-confirmation">{`Is this a ${
-          this.props.name
+          this.props.storeList[this.props.prediction.id].name
         }?`}</div>
         <Hand snack={image} />
         <div>
@@ -52,12 +54,12 @@ class ConfirmationBox extends React.Component {
 }
 
 ConfirmationBox.propTypes = {
-  name: PropTypes.string.isRequired,
-  id: PropTypes.string,
   storeList: PropTypes.object.isRequired,
   setActualItem: PropTypes.func.isRequired,
   sendWithPhoto: PropTypes.bool.isRequired,
-  history: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired,
+  prediction: PropTypes.object.isRequired,
+  dataController: PropTypes.object
 };
 
 export default ConfirmationBox;

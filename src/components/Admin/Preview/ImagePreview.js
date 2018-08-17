@@ -7,27 +7,27 @@ const ImagePreview = props => {
   return (
     <div className="preview-image">
       <div>
-        <img src={props.image.uri} alt={props.image.id} />
+        <img src={props.image.url} alt={props.image.id} />
       </div>
       <div>
         {!props.image.trusted && (
           <button
             onClick={props.approve}
             data-id={props.image.id}
-            data-item={props.image.item}>
+            data-label={props.image.label}>
             Approve
           </button>
         )}
         <button
           onClick={props.remove}
           data-id={props.image.id}
-          data-item={props.image.item}>
+          data-label={props.image.label}>
           Delete
         </button>
         <button
           onClick={props.trustUnknown}
           data-id={props.image.id}
-          data-item={props.image.item}>
+          data-label={props.image.label}>
           Unknown
         </button>
       </div>
