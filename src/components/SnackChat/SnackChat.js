@@ -322,17 +322,23 @@ class SnackChat extends Component {
     </div>
   );
 
-  generateEllipseCoords = shoulders => {
-    const {ears} = this.state.averageBodyPosition;
+  generateEllipseCoords = () => {
+    const {shoulders, ears} = this.state.averageBodyPosition;
     const numberOfPoints = 40;
-    let ellipseCoords = '';
-    for (let i = 0; i <= numberOfPoints; ++i) {
-      ellipseCoords += `,${shoulders.span * 2 +
-        ears.span * 0.6 * Math.sin((i / numberOfPoints) * 2 * Math.PI)} ${0.9 *
-        shoulders.span +
-        ears.span * 0.75 * Math.cos((i / numberOfPoints) * 2 * Math.PI)}`;
-    }
-    return ellipseCoords;
+    const centerX = shoulders.span * 2;
+    const centerY = shoulders.span;
+    const horizontalScale = ears.span * 0.6;
+    const verticalScale = ears.span * 0.75;
+
+    return Array.from({length: numberOfPoints + 1})
+      .map((_, index) => {
+        const angle = (index / numberOfPoints) * 2 * Math.PI;
+        const x = centerX + horizontalScale * Math.sin(angle);
+        const y = centerY + verticalScale * Math.cos(angle);
+
+        return `${x} ${y}`;
+      })
+      .join(',');
   };
 
   renderFilter = shoulders => {
@@ -361,7 +367,7 @@ class SnackChat extends Component {
                   `${shoulders.span * 2} 0, ${shoulders.span *
                     4} 0, ${shoulders.span * 4} ${shoulders.span *
                     4}, 0 ${shoulders.span * 4}, 0 0, ${shoulders.span * 2} 0` +
-                  this.generateEllipseCoords(shoulders)
+                  this.generateEllipseCoords()
                 }
               />
             </clipPath>
