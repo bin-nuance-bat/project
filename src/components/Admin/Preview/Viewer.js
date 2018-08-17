@@ -34,9 +34,12 @@ class Viewer extends Component {
 
   getImages = () => {
     this.setState({status: 'Fetching images...'});
-    this.data
-      .getImages(null, 500, 0, this.state.item)
-      .then(images => this.setState({images, status: 'Done'}));
+    this.data.getImages(null, 500, 0, this.state.item).then(images =>
+      this.setState({
+        images,
+        status: `Got ${images.length} images. Rendering... (May take a moment)`
+      })
+    );
   };
 
   toggleView = () => this.setState({view: !this.state.view});
