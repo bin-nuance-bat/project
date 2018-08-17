@@ -97,6 +97,9 @@ class SnackChat extends Component {
   clipEllipse(ctx, centerX, centerY, width, height) {
     ctx.beginPath();
     ctx.moveTo(centerX, centerY - height / 2);
+    // bezier curves produce the ellipse shape, each is a "(" shape.
+    // start point is the position of the current path
+    // first four params are the coordinates of the two control points, 5th and 6th params are the coordinates of the end point
     ctx.bezierCurveTo(
       centerX + width / 2,
       centerY - height / 2,
