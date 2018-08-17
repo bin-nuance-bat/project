@@ -138,20 +138,18 @@ class SnackChat extends Component {
     const filter = new Image();
     filter.src = this.filter;
 
-    const shoulders = this.state.averageBodyPosition.shoulders;
+    const {shoulders} = this.state.averageBodyPosition;
     this.ctx.save();
-    this.ctx.drawImage(
-      filter,
+    const x =
       shoulders.rightX -
-        shoulders.span * 1.5 +
-        shoulders.span * shoulders.angle,
-      shoulders.rightY - shoulders.span * 1.5,
-      shoulders.span * 4,
-      shoulders.span * 4
-    );
+      shoulders.span * 1.5 +
+      shoulders.span * shoulders.angle;
+    const y = shoulders.rightY - shoulders.span * 1.5;
+    const dimension = shoulders.span * 4;
+    this.ctx.drawImage(filter, x, y, dimension, dimension);
     this.ctx.restore();
 
-    const ears = this.state.averageBodyPosition.ears;
+    const {ears} = this.state.averageBodyPosition;
     this.ctx.save();
     this.ctx.translate(
       ears.rightX + ears.width / 2,
@@ -234,7 +232,7 @@ class SnackChat extends Component {
         ].forEach(attribute => callback(bodyPart, attribute))
       );
 
-    let averageBodyPosition = this.state.averageBodyPosition;
+    let {averageBodyPosition} = this.state;
     // position buffer will contain undefined during first iteration
     if (this.positionBuffer.includes(undefined)) {
       // on first frame set the average value
@@ -280,8 +278,6 @@ class SnackChat extends Component {
     this.props.setSendWithPhoto(false);
     this.props.history.replace('/slackname');
   };
-
-  // render functions ================================================
 
   renderHandsHeader = () => (
     <div>
