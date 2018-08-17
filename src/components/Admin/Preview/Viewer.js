@@ -13,6 +13,7 @@ class Viewer extends Component {
     item: 'all',
     images: [],
     limit: 100,
+    since: '2018-08-01',
     view: true,
     status: 'Loading...',
     items: {
@@ -39,7 +40,12 @@ class Viewer extends Component {
   getImages = () => {
     this.setState({status: 'Fetching images...', busy: true});
     this.dataController
-      .getImages(null, parseInt(this.state.limit, 10), 0, this.state.item)
+      .getImages(
+        null,
+        parseInt(this.state.limit, 10),
+        Date.parse(this.state.since),
+        this.state.item
+      )
       .then(images =>
         this.setState({
           images,
@@ -125,6 +131,14 @@ class Viewer extends Component {
             type="text"
             value={this.state.limit}
             onChange={e => this.setState({limit: e.target.value})}
+          />
+        </div>
+        <div>
+          Images Since:
+          <input
+            type="date"
+            value={this.state.since}
+            onChange={e => this.setState({since: e.target.value})}
           />
         </div>
         <button
