@@ -9,6 +9,7 @@ const PREPROCESS_DIVISOR = tf.scalar(255 / 2);
 
 export default class Model {
   async load() {
+    console.log('Resetting WebGL backend');
     tf.ENV.reset();
     tf.ENV.registerBackend(
       'webgl',
@@ -18,6 +19,7 @@ export default class Model {
     );
     tf.Environment.setBackend('webgl');
 
+    console.log('Loading model');
     this.model = await loadFrozenModel(
       '/model/web_model.pb',
       '/model/weights_manifest.json'
@@ -26,6 +28,7 @@ export default class Model {
 
   dispose() {
     if (this.model) this.model.dispose();
+    console.log('Removing backend');
     tf.ENV.removeBackend('webgl');
     tf.ENV.reset();
   }
