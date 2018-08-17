@@ -80,29 +80,27 @@ class DataController {
     startAfter = 0,
     label = 'all'
   ) {
-    const images = [];
     let ref = this.db.collection('training_data');
     if (trusted !== null) ref = ref.where('trusted', '==', trusted);
     if (label !== 'all') ref = ref.where('label', '==', label);
 
-    await ref
+    return ref
       .orderBy('timestamp')
       .startAfter(startAfter)
       .limit(maxImages)
       .get()
-      .then(async snapshot => {
-        snapshot.forEach(async doc => {
-          images.push({
+      .then(async snapshot =>
+        Promise.all(
+          snapshot.docs.map(async doc => ({
             id: doc.id,
             label: doc.data().label,
             trusted: doc.data().trusted,
             url: await this.storage
               .child(`training_data/${doc.data().label}/${doc.id}.jpg`)
               .getDownloadURL()
-          });
-        });
-      });
-    return images;
+          }))
+        )
+      );
   }
 
   async getStoreList() {

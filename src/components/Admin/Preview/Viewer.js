@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import JSZip from 'jszip';
+import {saveAs} from 'file-saver';
 
 import DataController from '../utils/DataController';
 
@@ -10,6 +12,7 @@ class Viewer extends Component {
   state = {
     item: 'all',
     images: [],
+    limit: 100,
     view: true,
     status: 'Loading...',
     items: {
@@ -27,22 +30,58 @@ class Viewer extends Component {
           ...prevState.items,
           ...store
         },
-        status: 'Ready'
+        status: 'Ready',
+        busy: false
       }));
     });
   }
 
   getImages = () => {
-    this.setState({status: 'Fetching images...'});
-    this.dataController.getImages(null, 500, 0, this.state.item).then(images =>
-      this.setState({
-        images,
-        status: `Got ${images.length} images. Rendering... (May take a moment)`
-      })
-    );
+    this.setState({status: 'Fetching images...', busy: true});
+    this.dataController
+      .getImages(null, parseInt(this.state.limit, 10), 0, this.state.item)
+      .then(images =>
+        this.setState({
+          images,
+          busy: false,
+          status: `Got ${images.length} images.`
+        })
+      );
   };
 
   toggleView = () => this.setState({view: !this.state.view});
+
+  download = () => {
+    this.setState({
+      status: `Downloading images... (0/${this.state.images.length})`,
+      busy: true
+    });
+
+    const zip = new JSZip();
+
+    const updateDownloadCount = () => {
+      this.setState({
+        status:
+          'Downloading images... ' +
+          `(${zip.files.length}/${this.state.images.length})`
+      });
+    };
+
+    Promise.all(
+      this.state.images.map(image =>
+        urlToBase64(image.url)
+          .then(data =>
+            zip.file(`${image.label}/${image.id}.jpg`, data, {base64: true})
+          )
+          .then(updateDownloadCount)
+      )
+    ).then(() => {
+      zip.generateAsync({type: 'blob'}).then(file => {
+        saveAs(file, 'data.zip');
+        this.setState({status: 'Done', busy: false});
+      });
+    });
+  };
 
   remove = event => {
     this.dataController
@@ -80,11 +119,31 @@ class Viewer extends Component {
           items={Object.values(this.state.items)}
           setItem={item => this.setState({item})}
         />
-        <button className="button button-admin" onClick={this.getImages}>
+        <div>
+          Max Images:
+          <input
+            type="text"
+            value={this.state.limit}
+            onChange={e => this.setState({limit: e.target.value})}
+          />
+        </div>
+        <button
+          className="button button-admin"
+          disabled={this.state.busy}
+          onClick={this.getImages}>
           Fetch Images
         </button>
-        <button className="button button-admin" onClick={this.toggleView}>
-          Toggle Previews
+        <button
+          className="button button-admin"
+          disabled={this.state.busy}
+          onClick={this.toggleView}>
+          {this.state.view ? 'Hide' : 'Show'} Previews
+        </button>
+        <button
+          className="button button-admin"
+          disabled={this.state.busy}
+          onClick={this.download}>
+          Download Images
         </button>
         <br />
 
@@ -108,5 +167,24 @@ class Viewer extends Component {
 Viewer.propTypes = {
   history: PropTypes.object.isRequired
 };
+
+function urlToBase64(url) {
+  return new Promise(resolve => {
+    const img = new Image();
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      canvas.width = img.width;
+      canvas.height = img.height;
+      canvas.getContext('2d').drawImage(img, 0, 0);
+      resolve(
+        canvas
+          .toDataURL('image/jpeg')
+          .replace(/^data:image\/(png|jpeg);base64,/, '')
+      );
+    };
+    img.crossOrigin = 'Anonymous';
+    img.src = url;
+  });
+}
 
 export default Viewer;
