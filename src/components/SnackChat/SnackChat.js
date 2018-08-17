@@ -129,7 +129,7 @@ class SnackChat extends Component {
     this.ctx.restore();
   };
 
-  generateSnackchat = async () => {
+  generateSnackchat = () => {
     const {video} = this.webcam.current.webcam.current;
 
     this.ctx.save();
@@ -163,7 +163,7 @@ class SnackChat extends Component {
   };
 
   // async so that the filter doesn't stop moving
-  takeSnackchat = async () => {
+  takeSnackchat = () => {
     setTimeout(() => {
       clearInterval(this.timer);
       document.getElementById('fade-overlay').className = 'fade-in';
