@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 class ErrorPage extends Component {
   restart = () => {
-    this.props.history.replace('/');
+    window.location.reload();
   };
 
   render() {

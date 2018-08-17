@@ -40,11 +40,13 @@ class UsernameEntry extends React.Component {
     const endpoint = snackChat ? 'sendSnackChat' : 'sendSlackMessage';
     const send = firebase.functions().httpsCallable(endpoint);
     this.setState({sending: true});
-    await send({user, item, snackChat})
-      .then(() => {
-        this.props.history.replace('/success');
+    await send({user, item, snackChat}).catch(() =>
+      send({user, item, snackChat}).catch(() => {
+        this.props.history.replace('/error');
+        return;
       })
-      .catch(() => this.props.history.replace('/error'));
+    );
+    this.props.history.replace('/success');
   };
 
   render() {
@@ -55,7 +57,7 @@ class UsernameEntry extends React.Component {
           <div className="header-text">
             Please select your slack handle to send a reminder
           </div>
-          {this.state.selection && (
+          {(this.state.selection || this.state.sending) && (
             <ConfirmationModal
               disabled={this.state.sending}
               onClick={this.sendReminder}

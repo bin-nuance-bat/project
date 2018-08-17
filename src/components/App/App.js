@@ -68,8 +68,6 @@ class App extends Component {
     document.body.addEventListener('touchmove', this.resetTimeoutTimer);
     document.body.addEventListener('mousemove', this.resetTimeoutTimer);
     document.body.addEventListener('scroll', this.resetTimeoutTimer);
-    window.addEventListener('online', this.handleOnline);
-    window.addEventListener('offline', this.handleOffline);
 
     const isHiddenAdminPage = window.location.pathname.startsWith('/admin/');
     const isValidRoute =
@@ -98,33 +96,17 @@ class App extends Component {
     }
   };
 
-  handleOnline = () => {
-    this.setState({
-      isOnline: true
-    });
-  };
-
-  handleOffline = () => {
-    this.setState({isOnline: false});
-  };
-
-  connectionError() {
-    return !this.state.isOnline && this.state.loggedIn;
-  }
-
   componentWillUnmount() {
     clearTimeout(this.timer);
     clearInterval(this.interval);
     document.body.removeEventListener('touchstart', this.resetTimeoutTimer);
     document.body.removeEventListener('touchmove', this.resetTimeoutTimer);
-    window.removeEventListener('online', this.handleOnline);
-    window.removeEventListener('offline', this.handleOffline);
   }
 
   render() {
     if (this.state.loggedIn === null) return null;
     return (
-      <div key={this.connectionError()}>
+      <div>
         <Router>
           <Switch>
             <Route exact path="/" component={Home} />
@@ -146,21 +128,13 @@ class App extends Component {
             />
           </Switch>
         </Router>
-        {this.state.showTimer &&
-          !this.connectionError() && (
-            <NotificationBar
-              mainText="Are you still there?"
-              autoActionWord="Timeout"
-              userTouchActionText="DISMISS"
-              handleTouch={this.resetTimeoutTimer}
-              handleTimeout={this.onTimeout}
-            />
-          )}
-        {this.connectionError() && (
+        {this.state.showTimer && (
           <NotificationBar
-            mainText="Connection lost"
-            autoActionWord="Retrying"
-            preventInteraction
+            mainText="Are you still there?"
+            autoActionWord="Timeout"
+            userTouchActionText="DISMISS"
+            handleTouch={this.resetTimeoutTimer}
+            handleTimeout={this.onTimeout}
           />
         )}
         {!this.state.loggedIn && (
