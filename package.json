@@ -81,7 +81,17 @@
       "semi": "error",
       "no-var": "error",
       "no-shadow": "error",
-      "object-shorthand": "error"
+      "object-shorthand": "error",
+      "prefer-destructuring": [
+        "error",
+        {
+          "array": true,
+          "object": true
+        },
+        {
+          "enforceForRenamedProperties": false
+        }
+      ]
     }
   },
   "resolutions": {

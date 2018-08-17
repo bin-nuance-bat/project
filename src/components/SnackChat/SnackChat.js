@@ -130,7 +130,7 @@ class SnackChat extends Component {
   };
 
   generateSnackchat = async () => {
-    const video = this.webcam.current.webcam.current.video;
+    const {video} = this.webcam.current.webcam.current;
 
     this.ctx.save();
     this.drawBackground(video);
