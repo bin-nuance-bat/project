@@ -11,8 +11,7 @@ class Collection extends Component {
     item: 'unknown',
     burstCount: '10',
     status: 'Loading...',
-    busy: true,
-    flash: 'flash'
+    busy: true
   };
 
   items = [];
@@ -54,11 +53,7 @@ class Collection extends Component {
   render() {
     return (
       <div className="page">
-        <WebcamCapture
-          className={this.state.flash}
-          ref={this.webcamCapture}
-          imgSize={224}
-        />
+        <WebcamCapture ref={this.webcamCapture} imgSize={224} />
         <h2>{this.state.status}</h2>
         <ItemSelector
           item={this.state.item}
