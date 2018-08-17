@@ -187,9 +187,8 @@ class SnackChat extends Component {
 
     if (this.state.counter <= PHOTO_ANIMATION_TIME) {
       this.setState(
-        prevState => (
-          prevState.captured ? null : this.takeSnackchat(), {captured: true}
-        )
+        prevState =>
+          prevState.captured ? null : (this.takeSnackchat(), {captured: true})
       );
       return;
     }
