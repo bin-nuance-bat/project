@@ -1,5 +1,6 @@
 import App from './App';
 import {connect} from 'react-redux';
+import {setDataController} from './actions';
 
 const mapStateToProps = state => ({
   loadStoreListError: state.loadStoreListError,
@@ -7,4 +8,11 @@ const mapStateToProps = state => ({
   sendMessageError: state.sendMessageError
 });
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = {
+  setDataController
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
