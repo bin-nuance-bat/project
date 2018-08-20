@@ -32,21 +32,20 @@ class UsernameEntry extends React.Component {
     // TODO handle when result is false (i.e. message fails to send - redirect to error page?)
   };
 
+  handleBack = () =>
+    this.props.history.replace(
+      this.props.sendWithPhoto
+        ? '/snackchat'
+        : this.props.actualItem === this.props.prediction.id
+          ? '/confirmitem'
+          : '/editsnack'
+    );
+
   render() {
     return (
       <div className="username-entry--page" onTouchMove={this.deselect}>
         <header className="header">
-          <BackButton
-            handleClick={() =>
-              this.props.history.replace(
-                this.props.sendWithPhoto
-                  ? '/snackchat'
-                  : this.props.actualItem === this.props.prediction.id
-                    ? '/confirmitem'
-                    : '/editsnack'
-              )
-            }
-          />
+          <BackButton handleClick={this.handleBack} />
           <div className="header-text">
             Please select your slack handle to send a reminder
           </div>
