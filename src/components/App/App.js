@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import PropTypes from 'propTypes';
+import PropTypes from 'prop-types';
 
 import Home from '../Home/container';
 import SnackChat from '../SnackChat/SnackChatContainer';
@@ -65,6 +65,7 @@ class App extends Component {
       this.setState({loggedIn: user !== null})
     );
 
+    console.log(this.props.setDataController);
     this.props.setDataController(new DataController());
 
     this.resetTimeoutTimer();
