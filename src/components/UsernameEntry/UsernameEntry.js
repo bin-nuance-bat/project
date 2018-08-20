@@ -27,7 +27,7 @@ class UsernameEntry extends React.Component {
     );
   };
 
-  sendReminder = async () => {
+  sendReminder = () => {
     const user = this.state.selection.id;
     const storeList = this.props.storeList;
     const actualItemID = this.props.actualItem;
@@ -40,13 +40,9 @@ class UsernameEntry extends React.Component {
     const endpoint = snackChat ? 'sendSnackChat' : 'sendSlackMessage';
     const send = firebase.functions().httpsCallable(endpoint);
     this.setState({sending: true});
-    await send({user, item, snackChat}).catch(() =>
-      send({user, item, snackChat}).catch(() => {
-        this.props.history.replace('/error');
-        return;
-      })
-    );
-    this.props.history.replace('/success');
+    send({user, item, snackChat})
+      .then(() => this.props.history.replace('/success'))
+      .catch(() => this.props.history.replace('/error'));
   };
 
   render() {

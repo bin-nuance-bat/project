@@ -23,14 +23,12 @@ export const attemptLoadUsers = async () => {
   const result = await load();
   const data = result.data;
   if (!data.ok) throw Error('Failed to fetch users');
-  else return data;
+  else {
+    const users = data.members.filter(user => !user.is_bot);
+    return users;
+  }
 };
 
-export const loadUsers = () => dispatch => {
-  return attemptLoadUsers()
-    .then(data => data.members)
-    .then(users => users.filter(user => !user.is_bot))
-    .then(users => {
-      dispatch(setUsers(users));
-    });
+export const loadUsers = () => async dispatch => {
+  return await attemptLoadUsers().then(users => dispatch(setUsers(users)));
 };

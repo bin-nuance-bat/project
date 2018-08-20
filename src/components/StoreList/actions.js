@@ -15,8 +15,8 @@ export function setLoadStoreListError(loadStoreListError) {
   };
 }
 
-export const loadStoreList = () => dispatch =>
-  fetchItems().then(storeList => {
-    dispatch(setStoreList(storeList));
-    dispatch(setLoadStoreListError(false));
-  });
+export const loadStoreList = () => async dispatch => {
+  return await fetchItems().then(storeList =>
+    dispatch(setStoreList(storeList))
+  );
+};

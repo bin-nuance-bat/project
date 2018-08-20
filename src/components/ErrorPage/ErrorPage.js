@@ -16,6 +16,7 @@ class ErrorPage extends Component {
           Can you try that again, please?
         </p>
         <img className="error-page--cross" src={cross} alt="" />
+        <p className="error-page--text--sub ">Tap to refresh</p>
       </div>
     );
   }
