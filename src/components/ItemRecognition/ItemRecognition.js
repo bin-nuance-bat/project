@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {ControllerDataset} from '../Admin/ControllerDataset';
-import Model from './../../utils/model';
 
 import WebcamCapture from '../WebcamCapture/WebcamCapture';
 import BackButton from '../BackButton/BackButton';
-import MobileNet from '../Admin/Trainer/MobileNet';
+
+import Model from '../../utils/model';
 
 const TIMEOUT_IN_SECONDS = 10;
 const MIN_CONSECUTIVE_PREDICTIONS = 3;
@@ -13,23 +12,19 @@ const PREDICTION_RATIO_THRESHOLD = 1.2;
 const SHOW_RETRY_FOR = 5;
 
 class ItemRecognition extends Component {
-  constructor(props) {
-    super(props);
-    this.model = new Model();
-    this.model.load().then(() => this.setState({modelLoaded: true}));
-    this.webcam = React.createRef();
-    this.mobileNet = new MobileNet();
-    this.controllerDataset = new ControllerDataset();
-  }
+  webcam = React.createRef();
 
   state = {
     text: 'Scan item using the front facing camera',
     modelLoaded: false
   };
+  model = null;
 
   predictionQueue = [];
 
   componentDidMount() {
+    this.model = new Model();
+    this.model.load().then(() => this.setState({modelLoaded: true}));
     this.props.setPrediction(null, null);
     this.predictionQueue = [];
   }
@@ -48,21 +43,6 @@ class ItemRecognition extends Component {
 
   onFail = () => {
     this.props.history.replace('/editsnack');
-  };
-
-  addTrainingImage = (img, label) => {
-    this.mobileNet.init().then(() =>
-      this.mobileNet.getActivation(img).then(activation =>
-        this.controllerDataset.addImage(
-          {
-            img,
-            label,
-            activation
-          },
-          false
-        )
-      )
-    );
   };
 
   setSuggestions = (items, index) => {
@@ -107,6 +87,7 @@ class ItemRecognition extends Component {
 
     this.model.predict(img).then(async items => {
       const item = items[0];
+
       const isItemRecognised =
         this.isItemRecognised(items) &&
         item.id !== 'unknown' &&
@@ -120,7 +101,6 @@ class ItemRecognition extends Component {
 
       if (isItemRecognised) {
         this.success = true;
-        this.addTrainingImage(img.src, item.id);
         this.setSuggestions(items, 1);
         await this.props.setPrediction(item.id, img.src);
 

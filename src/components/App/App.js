@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import PropTypes from 'propTypes';
 
 import Home from '../Home/container';
 import SnackChat from '../SnackChat/SnackChatContainer';
@@ -11,16 +12,17 @@ import EditSnack from '../EditSnack/EditSnackContainer';
 import SuccessPage from '../SuccessPage/container';
 import NotificationBar from '../NotificationBar/NotificationBar';
 import Admin from '../Admin/Admin';
-import Trainer from '../Admin/Trainer/Trainer';
-import ImageApproval from '../Admin/ImageApproval/ImageApproval';
+import Approval from '../Admin/Approval/Approval';
 import ErrorPage from '../ErrorPage/ErrorPage';
 import Viewer from '../Admin/Preview/Viewer';
+import Collection from '../Admin/Collection/Collection';
 
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import initFirebase from '../../utils/firebase';
 import firebase from 'firebase/app';
 
 import 'firebase/auth';
+import DataController from '../Admin/utils/DataController';
 
 const WAIT_BEFORE_DISPLAY = 45;
 const PAGES_TO_SHOW_TIMEOUT = [
@@ -62,6 +64,8 @@ class App extends Component {
     this.firebaseAuth.onAuthStateChanged(user =>
       this.setState({loggedIn: user !== null})
     );
+
+    this.props.setDataController(new DataController());
 
     this.resetTimeoutTimer();
     document.body.addEventListener('touchstart', this.resetTimeoutTimer);
@@ -119,13 +123,9 @@ class App extends Component {
             <Route exact path="/success" component={SuccessPage} />
             <Route exact path="/admin" component={Admin} />
             <Route exact path="/admin/preview" component={Viewer} />
-            <Route exact path="/admin/training" component={Trainer} />
+            <Route exact path="/admin/approval" component={Approval} />
+            <Route exact path="/admin/collection" component={Collection} />
             <Route exact path="/error" component={ErrorPage} />
-            <Route
-              exact
-              path="/admin/imageapproval"
-              component={ImageApproval}
-            />
           </Switch>
         </Router>
         {this.state.showTimer && (
@@ -147,5 +147,9 @@ class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  setDataController: PropTypes.func.isRequired
+};
 
 export default App;

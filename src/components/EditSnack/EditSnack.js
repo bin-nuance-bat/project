@@ -14,6 +14,12 @@ class EditSnack extends Component {
 
   handleClick = () => {
     this.props.setActualItem(this.state.selection.id);
+    if (this.props.prediction.img) {
+      this.props.dataController.addImage(
+        this.props.prediction.img,
+        this.state.selection.id
+      );
+    }
     const nextPage = this.props.sendWithPhoto ? 'snackchat' : 'slackname';
     this.props.history.replace('/' + nextPage);
   };
@@ -66,7 +72,9 @@ EditSnack.propTypes = {
       id: PropTypes.string.isRequired
     }).isRequired
   ).isRequired,
-  suggestions: PropTypes.arrayOf(PropTypes.object).isRequired
+  suggestions: PropTypes.arrayOf(PropTypes.object).isRequired,
+  prediction: PropTypes.object.isRequired,
+  dataController: PropTypes.object.isRequired
 };
 
 export default EditSnack;

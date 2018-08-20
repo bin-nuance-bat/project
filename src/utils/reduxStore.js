@@ -8,6 +8,7 @@ import {
 import {sendWithPhoto, users} from '../components/Home/reducer';
 import {actualItem} from '../components/ConfirmationBox/reducer';
 import {snackChat} from '../components/SnackChat/SnackChatReducer';
+import {dataController} from '../components/App/reducer';
 
 const rootReducer = combineReducers({
   storeList,
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
   suggestions,
   sendWithPhoto,
   actualItem,
-  snackChat
+  snackChat,
+  dataController
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
