@@ -162,7 +162,6 @@ class SnackChat extends Component {
     this.drawBackground(video);
   };
 
-  // async so that the filter doesn't stop moving
   takeSnackchat = () => {
     setTimeout(() => {
       clearInterval(this.timer);
