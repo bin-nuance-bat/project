@@ -64,7 +64,7 @@ class App extends Component {
     this.firebaseAuth.onAuthStateChanged(user =>
       this.setState({loggedIn: user !== null})
     );
-    
+
     this.props.setDataController(new DataController());
 
     this.resetTimeoutTimer();
