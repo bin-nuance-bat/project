@@ -11,8 +11,7 @@ class ImageApproval extends Component {
     loading: true,
     image: null,
     images: [],
-    storeList: {unknown: {name: 'Unknown', id: 'unknown'}},
-    index: 0
+    storeList: {unknown: {name: 'Unknown', id: 'unknown'}}
   };
 
   getImages = async () => {
