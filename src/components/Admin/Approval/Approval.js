@@ -26,10 +26,8 @@ class ImageApproval extends Component {
 
   displayNextImage = () => {
     this.setState(prevState => {
-      let image = prevState.images.shift();
-      image = image ? image : null;
       return {
-        image,
+        image: prevState.images.shift() || null,
         images: prevState.images
       };
     });
