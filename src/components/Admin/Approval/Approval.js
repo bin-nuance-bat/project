@@ -24,13 +24,7 @@ class ImageApproval extends Component {
   };
 
   lastImageTimestamp = () => {
-    return Math.max(
-      this.state.images.reduce(
-        (highest, current) => Math.max(highest, current.timestamp),
-        0
-      ),
-      this.state.image.timestamp
-    );
+    return Math.max(...this.state.images.map(i => i.timestamp));
   };
 
   displayNextImage = () => {
@@ -44,15 +38,14 @@ class ImageApproval extends Component {
   fetchImage = () => {
     if (this.state.images.length < IMAGE_QUEUE_SIZE) {
       this.dataController
-        .getImages(false, 5, this.lastImageTimestamp())
+        .getImages(false, 3, this.lastImageTimestamp())
         .then(images => {
-          const newImages = [];
-          for (const image of images) {
-            if (this.state.images.filter(i => i.id === image.id).length === 0)
-              newImages.push(image);
-          }
+          // Make sure we only include images not already in state
+          const ids = this.state.images.map(image => image.id);
           this.setState(prevState => {
-            prevState.images.push(...newImages);
+            prevState.images.push(
+              ...images.filter(image => !ids.includes(image.id))
+            );
             if (prevState.images.length < IMAGE_QUEUE_SIZE) this.fetchImage();
             return prevState;
           });

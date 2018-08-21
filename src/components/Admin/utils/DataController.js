@@ -8,7 +8,6 @@ class DataController {
   constructor() {
     this.storage = firebase.storage().ref();
     this.db = firebase.firestore();
-    window.db = this.db;
   }
 
   async getItemClasses() {
@@ -76,14 +75,14 @@ class DataController {
   }
 
   async getImages(
-    trusted = null,
+    isTrusted = null,
     maxImages = 1,
     startAfter = 0,
-    label = 'all'
+    imageLabel = 'all'
   ) {
     let ref = this.db.collection('training_data');
-    if (trusted !== null) ref = ref.where('trusted', '==', trusted);
-    if (label !== 'all') ref = ref.where('label', '==', label);
+    if (isTrusted !== null) ref = ref.where('trusted', '==', isTrusted);
+    if (imageLabel !== 'all') ref = ref.where('label', '==', imageLabel);
 
     return ref
       .orderBy('timestamp')
@@ -101,10 +100,12 @@ class DataController {
             } catch (e) {
               url = null;
             }
+            const {label, trusted, timestamp} = doc.data();
             return {
               id: doc.id,
-              label: doc.data().label,
-              trusted: doc.data().trusted,
+              label,
+              trusted,
+              timestamp,
               url
             };
           })
