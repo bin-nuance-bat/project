@@ -105,6 +105,8 @@ class App extends Component {
     clearInterval(this.interval);
     document.body.removeEventListener('touchstart', this.resetTimeoutTimer);
     document.body.removeEventListener('touchmove', this.resetTimeoutTimer);
+    document.body.removeEventListener('mousemove', this.resetTimeoutTimer);
+    document.body.removeEventListener('scroll', this.resetTimeoutTimer);
   }
 
   render() {
