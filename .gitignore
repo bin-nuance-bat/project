@@ -62,3 +62,8 @@ typings/
 
 # SASS generated css files
 src/**/*.css
+
+# Model training files
+model_training/data/*
+model_training/tmp/*
+model_training/model/*
