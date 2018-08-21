@@ -1,3 +1,5 @@
+import firebase from 'firebase/app';
+import 'firebase/functions';
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -25,11 +27,22 @@ class UsernameEntry extends React.Component {
     );
   };
 
-  sendReminder = async () => {
+  sendReminder = () => {
+    const user = this.state.selection.id;
+    const storeList = this.props.storeList;
+    const actualItemID = this.props.actualItem;
+    const item = {
+      id: actualItemID,
+      name: storeList[actualItemID].name,
+      price: storeList[actualItemID].price.total
+    };
+    const snackChat = this.props.sendWithPhoto ? this.props.snackChat : null;
+    const endpoint = snackChat ? 'sendSnackChat' : 'sendSlackMessage';
+    const send = firebase.functions().httpsCallable(endpoint);
     this.setState({sending: true});
-    const result = await this.props.sendSlackMessage(this.state.selection.id);
-    if (result) this.props.history.replace('/success');
-    // TODO handle when result is false (i.e. message fails to send - redirect to error page?)
+    send({user, item, snackChat})
+      .then(() => this.props.history.replace('/success'))
+      .catch(() => this.props.history.replace('/error'));
   };
 
   render() {
@@ -40,7 +53,7 @@ class UsernameEntry extends React.Component {
           <div className="header-text">
             Please select your slack handle to send a reminder
           </div>
-          {this.state.selection && (
+          {(this.state.selection || this.state.sending) && (
             <ConfirmationModal
               disabled={this.state.sending}
               onClick={this.sendReminder}
@@ -64,7 +77,10 @@ class UsernameEntry extends React.Component {
 UsernameEntry.propTypes = {
   users: PropTypes.arrayOf(PropTypes.object).isRequired,
   history: PropTypes.shape({replace: PropTypes.func.isRequired}).isRequired,
-  sendSlackMessage: PropTypes.func.isRequired
+  actualItem: PropTypes.string.isRequired,
+  storeList: PropTypes.objectOf(PropTypes.object).isRequired,
+  sendWithPhoto: PropTypes.bool.isRequired,
+  snackChat: PropTypes.object
 };
 
 export default UsernameEntry;

@@ -14,7 +14,7 @@ class EditSnack extends Component {
 
   handleClick = () => {
     this.props.setActualItem(this.state.selection.id);
-    if (this.props.prediction.img) {
+    if (this.props.prediction) {
       this.props.dataController.addImage(
         this.props.prediction.img,
         this.state.selection.id
