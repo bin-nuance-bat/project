@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 import ItemSelector from '../ItemSelector';
 import DataController from '../utils/DataController';
 
-import './Approval.css';
-
 const IMAGE_QUEUE_SIZE = 20;
 
 class ImageApproval extends Component {
@@ -13,7 +11,7 @@ class ImageApproval extends Component {
     loading: true,
     image: null,
     images: [],
-    storeList: [{name: 'unknown', id: 'unknown'}],
+    storeList: {unknown: {name: 'Unknown', id: 'unknown'}},
     index: 0
   };
 
@@ -29,9 +27,13 @@ class ImageApproval extends Component {
 
   displayNextImage = () => {
     this.setState(prevState => {
-      return {image: prevState.images.shift(), images: prevState.images};
+      let image = prevState.images.shift();
+      image = image ? image : null;
+      return {
+        image,
+        images: prevState.images
+      };
     });
-
     this.fetchImage();
   };
 
@@ -79,17 +81,16 @@ class ImageApproval extends Component {
 
   componentDidMount() {
     this.dataController = new DataController();
-    this.dataController.getStoreList().then(storeList => {
-      this.setState({
-        storeList: Object.values({
-          ...storeList
-        })
-      });
+    Promise.all([
+      this.dataController.getStoreList().then(storeList => {
+        this.setState({
+          storeList
+        });
+      }),
       this.getImages().then(() => {
         this.displayNextImage();
-        this.setState({loading: false});
-      });
-    });
+      })
+    ]).then(() => this.setState({loading: false}));
   }
 
   render() {
@@ -105,12 +106,18 @@ class ImageApproval extends Component {
             &laquo; Back
           </button>
         </div>
-        {image && (
+        {image ? (
           <div key={image.id} className="preview-pane">
-            <img style={{maxHeight: 224}} src={image.url} alt="" />
+            <h2>
+              {this.state.storeList[image.label] !== undefined &&
+                this.state.storeList[image.label].name}
+            </h2>
+            <div>
+              <img style={{maxHeight: 224}} src={image.url} alt="" />
+            </div>
             <ItemSelector
               item={image.label}
-              items={this.state.storeList}
+              items={Object.values(this.state.storeList)}
               setItem={cat => {
                 this.changeCategory(image.id, cat);
                 this.setState(prevState => {
@@ -142,6 +149,8 @@ class ImageApproval extends Component {
               </button>
             </div>
           </div>
+        ) : (
+          <p>No more images to approve.</p>
         )}
         {/* Used to load images in background - speeds up rendering. */}
         <div hidden>
