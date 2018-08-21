@@ -64,6 +64,6 @@ typings/
 src/**/*.css
 
 # Model training files
-model_training/data/*
+model_training/training_data/*
 model_training/tmp/*
 model_training/model/*

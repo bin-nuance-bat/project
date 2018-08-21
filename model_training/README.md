@@ -12,14 +12,14 @@ $ pip install tensorflowjs
 
 ## Training Data
 
-Training data should be placed in a directory `data` inside of this directory. In here you should have a subdirectory for each category of item you wish the model to recognise. These subdirectories should be named according to the items ID in the honesty.store. You should also include an unknown category. An example of the folder structure is shown below:
+Training data should be placed in a directory `training_data` inside of this directory. In here you should have a subdirectory for each category of item you wish the model to recognise. These subdirectories should be named according to the items ID in the honesty.store. You should also include an unknown category. An example of the folder structure is shown below:
 
 ```
 project
 ├── firebase
 ├── functions
 ├── model_training
-|   ├── data
+|   ├── training_data
 |   |   ├── 1eb45850-3bb1-4b66-a816-27d856f03afe
 |   |   |   ├── 0UcozuglhkZrFXPaTDLX.jpg
 |   |   |   ├── 0YAX6oF8H4lELvAs4Bt5.jpg
@@ -36,6 +36,8 @@ project
 |   ...
 ...
 ```
+
+If using the `honesty-store-kiosk` firebase project, you can also automatically download all training data by executing `download.sh` in this directory. This requires [`gsutil`](https://cloud.google.com/storage/docs/gsutil_install) to be installed and configured, however.
 
 ## Training
 
