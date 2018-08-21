@@ -4,7 +4,7 @@ Everything you need to train and evaluate models is found in this directory.
 
 ## Prerequisites
 
-To perform training you will need Python 2.7 installed as well as the `tensorflowjs_converter` package from pip.
+To perform training you will need [Python](https://www.python.org/downloads/release/python-362/) installed (we used 3.6.2 as this was what was suggested on the tensorflow website). If using windows be sure to add Python to your path variable (you can do this through the python installer) and increase your maximum path length if prompted to do so at the end of installation. Then, you can install the `tesorflowjs` package using pip. For more detailed tensorflow installation instructions see [here](https://www.tensorflow.org/install/).
 
 ```bash
 $ pip install tensorflowjs
@@ -37,7 +37,7 @@ project
 ...
 ```
 
-If using the `honesty-store-kiosk` firebase project, you can also automatically download all training data by executing `download.sh` in this directory. This requires [`gsutil`](https://cloud.google.com/storage/docs/gsutil_install) to be installed and configured, however.
+If using the `honesty-store-kiosk` firebase project, you can also automatically download all training data by executing `download.sh` in this directory. This requires [`gsutil`](https://cloud.google.com/storage/docs/gsutil_install) to be installed and configured, however. Run the intaller package from Google Cloud and when prompted to initialise gsutil you should do so, logging in to your Google Account in the browser when asked.
 
 ## Training
 
