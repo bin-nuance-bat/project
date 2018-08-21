@@ -7,21 +7,22 @@ configure({adapter: new Adapter()});
 
 const getProps = () => {
   return {
-    name: 'coke',
-    id: 'sampleid',
     history: {
       replace: jest.fn()
     },
     setActualItem: jest.fn(),
     sendWithPhoto: false,
-    img:
-      'OTgyZDllM2ViOTk2ZjU1OWU2MzNmNGQxOTRkZWYzNzYxZDkwOWY1YTNiNjQ3ZDFhODUxZmVhZDY3YzMyYzlkMQ==',
     storeList: {
-      sampleid: {
-        name: 'coke',
+      'ccad58e3-e27a-4463-9139-17a36ff7f7b8': {
+        name: 'Coke',
         image:
           'OTgyZDllM2ViOTk2ZjU1OWU2MzNmNGQxOTRkZWYzNzYxZDkwOWY1YTNiNjQ3ZDFhODUxZmVhZDY3YzMyYzlkMQ=='
       }
+    },
+    prediction: {
+      id: 'ccad58e3-e27a-4463-9139-17a36ff7f7b8',
+      img:
+        'OTgyZDllM2ViOTk2ZjU1OWU2MzNmNGQxOTRkZWYzNzYxZDkwOWY1YTNiNjQ3ZDFhODUxZmVhZDY3YzMyYzlkMQ=='
     }
   };
 };
@@ -32,7 +33,7 @@ it('calls setActualItem when yes is clicked', () => {
   const wrapper = shallow(<ConfirmationBox {...mockProps} />);
 
   wrapper.find({'data-test': 'YES'}).simulate('click');
-  expect(mockProps.setActualItem).toHaveBeenCalledWith(mockProps.id);
+  expect(mockProps.setActualItem).toHaveBeenCalledWith(mockProps.prediction.id);
 });
 
 it('Goes to username entry page if yes clicked', () => {

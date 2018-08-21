@@ -44,6 +44,12 @@
           display: inline-block;
           margin: 0;
           line-height: 50px;
+
+          .qualifier {
+            color: $light-blue;
+            font-size: 24px;
+            margin: 0 8px;
+          }
         }
 
         .icon {

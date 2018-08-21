@@ -154,6 +154,11 @@ class ListSelection extends Component {
                                 : ''
                             }>
                             {item.name}
+                            {item.qualifier && (
+                              <span className="qualifier">
+                                {item.qualifier}
+                              </span>
+                            )}
                           </p>
                         </li>
                       ))}
