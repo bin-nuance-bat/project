@@ -3,11 +3,11 @@
 $second-length: 1.5s;
 
 .snackchat-body {
-  width: 100vw;
-  height: 75vh;
+  // width: 100vw;
+  // height: 75vh;
   overflow: hidden;
-  position: fixed;
-  bottom: 510px;
+  // position: fixed;
+  bottom: 0px;
 }
 
 .snackchat-body canvas {
@@ -151,8 +151,6 @@ $second-length: 1.5s;
 }
 
 .snackchat-overlay {
-  width: 100vw;
-  height: 75vh;
   opacity: 0.6;
   background-color: rgb(0.6, 0.6, 0.6);
   position: absolute;

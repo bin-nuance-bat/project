@@ -9,13 +9,14 @@ import PropTypes from 'prop-types';
 import * as posenet from '@tensorflow-models/posenet';
 import './SnackChat.css';
 import BackButton from '../BackButton/BackButton';
+import getSnackTransform from '../../utils/snackTransform';
 
 const FEED_SIZE = 768;
 const CAPTURE_SIZE = 200;
-const LOADING_ANIMATION_TIME = 3;
+const LOADING_ANIMATION_TIME = 300;
 const COUNTDOWN_TIME = 3;
-const PHOTO_ANIMATION_TIME = 1.5;
-const POSITION_BUFFER_SIZE = 10;
+const PHOTO_ANIMATION_TIME = 2;
+const POSITION_BUFFER_SIZE = 5;
 const FALLING_SNACK_SIZE = 0.2;
 const CANVAS_SCALE = 1.6;
 
@@ -172,7 +173,7 @@ class SnackChat extends Component {
         this.redirected = true;
         this.props.history.replace('/slackname');
       }, 1000);
-    }, (PHOTO_ANIMATION_TIME + 1) * 1000);
+    }, PHOTO_ANIMATION_TIME * 1000);
   };
 
   positionBuffer = new Array(POSITION_BUFFER_SIZE);
@@ -267,9 +268,19 @@ class SnackChat extends Component {
     requestAnimationFrame(this.update);
   };
 
+  setTransformation = () => {
+    const transform = getSnackTransform(this.filter);
+
+    // remove translation used to position item in hand
+    transform[4] = 0;
+    transform[5] = 0;
+    this.transform = transform;
+  };
+
   onConnect = () => {
     this.ctx = this.canvas.current.getContext('2d');
     this.filter = this.props.storeList[this.props.actualItem].image;
+    this.setTransformation();
     this.countdown();
     this.playGettingInPositionAnimation();
   };
@@ -299,8 +310,7 @@ class SnackChat extends Component {
   );
 
   renderFallingItems = () => (
-    <div>
-      <div className="snackchat-overlay" />
+    <div className="snackchat-overlay webcam-container">
       {this.state.itemPositions.map((item, index) => (
         <div key={index}>
           <img
@@ -321,12 +331,13 @@ class SnackChat extends Component {
   );
 
   generateEllipseCoords = () => {
-    const {shoulders, ears} = this.state.averageBodyPosition;
+    const {shoulders} = this.state.averageBodyPosition;
     const numberOfPoints = 40;
     const centerX = shoulders.span * 2;
     const centerY = shoulders.span;
-    const horizontalScale = ears.span * 0.6;
-    const verticalScale = ears.span * 0.75;
+    const horizontalScale = shoulders.span * 0.4;
+    const verticalScale =
+      shoulders.span * (this.transform[0] === 0 ? 0.25 : 0.5);
 
     return Array.from({length: numberOfPoints + 1})
       .map((_, index) => {
@@ -352,8 +363,9 @@ class SnackChat extends Component {
               shoulders.span * 1.5 +
               shoulders.span * shoulders.angle,
             top: shoulders.rightY - shoulders.span * 1.5,
-            height: shoulders.span * 4,
+            height: shoulders.span * (this.transform[0] === 0 ? 2 : 4),
             width: shoulders.span * 4,
+            transform: `matrix(${this.transform.join(',')})`,
             clipPath: 'url(#face-clip)'
           }}
         />
@@ -386,7 +398,7 @@ class SnackChat extends Component {
           style={{position: 'absolute', zIndex: -2}}
         />
         <div id="fade-overlay" className="fade-hidden" />
-        <header>
+        <header className="header">
           <BackButton history={this.props.history} />
           {!this.state.gettingInPosition ? (
             this.renderHandsHeader()
@@ -404,7 +416,7 @@ class SnackChat extends Component {
             onFail={this.onFail}
           />
           {this.state.gettingInPosition && this.renderFallingItems()}
-          <div>
+          <div className="webcam-container">
             {!this.state.gettingInPosition &&
               shoulders !== undefined &&
               this.renderFilter(shoulders)}
