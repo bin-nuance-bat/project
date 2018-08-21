@@ -8,6 +8,7 @@ class DataController {
   constructor() {
     this.storage = firebase.storage().ref();
     this.db = firebase.firestore();
+    window.db = this.db;
   }
 
   async getItemClasses() {
@@ -91,14 +92,22 @@ class DataController {
       .get()
       .then(async snapshot =>
         Promise.all(
-          snapshot.docs.map(async doc => ({
-            id: doc.id,
-            label: doc.data().label,
-            trusted: doc.data().trusted,
-            url: await this.storage
-              .child(`training_data/${doc.data().label}/${doc.id}.jpg`)
-              .getDownloadURL()
-          }))
+          snapshot.docs.map(async doc => {
+            let url;
+            try {
+              url = await this.storage
+                .child(`training_data/${doc.data().label}/${doc.id}.jpg`)
+                .getDownloadURL();
+            } catch (e) {
+              url = null;
+            }
+            return {
+              id: doc.id,
+              label: doc.data().label,
+              trusted: doc.data().trusted,
+              url
+            };
+          })
         )
       );
   }
