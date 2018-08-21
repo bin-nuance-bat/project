@@ -154,6 +154,11 @@ class ListSelection extends Component {
                                 : ''
                             }>
                             {item.name}
+                            {item.qualifier && (
+                              <span className="qualifier">
+                                {item.qualifier}
+                              </span>
+                            )}
                           </p>
                         </li>
                       ))}
@@ -191,7 +196,6 @@ class ListSelection extends Component {
 
 ListSelection.propTypes = {
   onClick: PropTypes.func.isRequired,
-  iconStyle: PropTypes.string.isRequired,
   items: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
