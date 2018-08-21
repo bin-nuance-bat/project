@@ -153,6 +153,7 @@ class ItemRecognition extends Component {
             ref={this.webcam}
             onConnect={this.onConnect}
             imgSize={224}
+            showViewFinder
             onFail={this.onFail}
           />
         )}
