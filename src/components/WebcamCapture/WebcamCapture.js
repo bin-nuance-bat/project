@@ -147,7 +147,7 @@ WebcamCapture.propTypes = {
   showViewFinder: PropTypes.bool,
   imgSize: PropTypes.number.isRequired,
   onConnect: PropTypes.func,
-  onFail: PropTypes.func
+  onFail: PropTypes.func.isRequired
 };
 
 export default WebcamCapture;

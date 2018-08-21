@@ -6,19 +6,12 @@ class ItemSelector extends Component {
     items: []
   };
 
-  componentDidMount = this.componentDidUpdate;
-
-  componentDidUpdate() {
-    const sortedItems = this.props.items.sort((a, b) => {
-      return a.name.localeCompare(b.name);
-    });
-    if (
-      this.state.items.every((value, index) => value !== sortedItems[index])
-    ) {
-      this.setState({
-        items: sortedItems
-      });
-    }
+  static getDerivedStateFromProps(props) {
+    return {
+      items: props.items.sort((a, b) => {
+        return a.name.localeCompare(b.name);
+      })
+    };
   }
 
   render() {
