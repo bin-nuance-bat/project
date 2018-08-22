@@ -68,3 +68,4 @@ model_training/training_data/*
 model_training/eval_data/*
 model_training/tmp/*
 model_training/model/*
+model_training/*.csv

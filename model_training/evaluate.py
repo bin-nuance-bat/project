@@ -188,13 +188,15 @@ if __name__ == "__main__":
     sys.stdout.write("\b" * (num_classes + 24))
   sys.stdout.write("\n")
 
+  accuracy = 100 * correct_guesses / (correct_guesses + incorrect_guesses)
+
   res_file.write(
     "Overall,{}%\n".format(
       readable_labels[label['name']],
       round(accuracy, 1)
+    )
   )
-
   res_file.close()
-  accuracy = 100 * correct_guesses / (correct_guesses + incorrect_guesses)
+  
   print("Overall model accuracy: " + str(round(accuracy, 1)) + "%")
   print("For detailed results see generated results.csv")
