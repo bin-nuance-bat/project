@@ -192,11 +192,10 @@ if __name__ == "__main__":
 
   res_file.write(
     "Overall,{}%\n".format(
-      readable_labels[label['name']],
       round(accuracy, 1)
     )
   )
   res_file.close()
-  
+
   print("Overall model accuracy: " + str(round(accuracy, 1)) + "%")
   print("For detailed results see generated results.csv")
