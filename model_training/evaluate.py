@@ -24,6 +24,7 @@ import tensorflow as tf
 
 import json
 import os
+import sys
 
 
 def load_graph(model_file):
@@ -127,6 +128,7 @@ if __name__ == "__main__":
 
   graph = load_graph(model_file)
   labels = load_labels(label_file)
+  readable_labels = load_labels("readable_labels.json")
   
   input_name = "import/" + input_layer
   output_name = "import/" + output_layer
@@ -136,12 +138,17 @@ if __name__ == "__main__":
   correct_guesses = 0
   incorrect_guesses = 0
   test_data = path_to_dict('./eval_data')['children']
+  num_classes = len(test_data)
+  res_file = open("results.csv", "w")
+  res_file.write("Item,Correct Predictions,Mean Certainty\n")
 
-  print("Evaluating...")
-  for label in test_data:
+  for idx, label in enumerate(test_data):
     if label['type'] != "directory":
       continue
-    print("Testing iamges for class: " + label['name'])
+    
+    certainty = 0
+    guesses = [0, 0]
+
     for img in label['children']:
       file_name = "./eval_data/" + label['name'] + "/" + img['name']
       t = read_tensor_from_image_file(
@@ -156,12 +163,38 @@ if __name__ == "__main__":
             input_operation.outputs[0]: t
         })
       results = np.squeeze(results)
-      top = results.argsort()[-1:][::-1][0]
+      top_k = results.argsort()[-3:][::-1]
 
-      if (labels[top] == label['name']):
+      if (labels[top_k[0]] == label['name']):
         correct_guesses = correct_guesses + 1
+        guesses[0] = guesses[0] + 1
       else:
         incorrect_guesses = incorrect_guesses + 1
+        guesses[1] = guesses[1] + 1
 
+      for i in top_k:
+        if labels[i] == label['name']:
+          certainty = certainty + results[i]
+    
+    res_file.write(
+      "{},{}%,{}%\n".format(
+        readable_labels[label['name']],
+        round(100 * guesses[0] / (guesses[0] + guesses[1])),
+        round(certainty * 100 / len(label['children']), 2))
+    )
+
+    sys.stdout.write("Evaluating model: [{}{}] {}%".format("=" * idx, " " * (num_classes - idx), round(100 * idx / num_classes)))
+    sys.stdout.flush()
+    sys.stdout.write("\b" * (num_classes + 24))
+  sys.stdout.write("\n")
+
+  res_file.write(
+    "Overall,{}%\n".format(
+      readable_labels[label['name']],
+      round(accuracy, 1)
+  )
+
+  res_file.close()
   accuracy = 100 * correct_guesses / (correct_guesses + incorrect_guesses)
-  print("Model accuracy: " + str(round(accuracy, 1)) + "%")
+  print("Overall model accuracy: " + str(round(accuracy, 1)) + "%")
+  print("For detailed results see generated results.csv")
