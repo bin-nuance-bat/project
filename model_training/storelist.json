@@ -1,0 +1,1168 @@
+{
+  "storeList": {
+    "unknown": {
+      "id": "unknown",
+      "name": "Unknown"
+    },
+    "fbe05463-a538-47aa-b4f1-654faa0a5b82": {
+      "id": "fbe05463-a538-47aa-b4f1-654faa0a5b82",
+      "name": "Granulated Sugar",
+      "qualifier": "2 Teaspoons",
+      "image": "/static/media/misc-bar.ce69306f.svg",
+      "isMarketplace": true,
+      "count": 978,
+      "price": {
+        "total": 6,
+        "breakdown": {
+          "wholesaleCost": 5,
+          "serviceFee": 1,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "318ff9ec-4cd3-4eff-8f12-76f1e3ffa835"
+    },
+    "e615de4e-ce10-451b-80ad-9717662a904a": {
+      "id": "e615de4e-ce10-451b-80ad-9717662a904a",
+      "name": "Pepsi Max",
+      "qualifier": null,
+      "image": "/static/media/pepsi-max-can.8a6bac7a.svg",
+      "isMarketplace": false,
+      "count": -8,
+      "price": {
+        "total": 38,
+        "breakdown": {
+          "wholesaleCost": 34,
+          "serviceFee": 4,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "ff1ddc0b-3b8a-4621-8790-f214c7a60ad4": {
+      "id": "ff1ddc0b-3b8a-4621-8790-f214c7a60ad4",
+      "name": "Diet Pepsi",
+      "qualifier": null,
+      "image": "/static/media/diet-pepsi-can.9e6809ff.svg",
+      "isMarketplace": false,
+      "count": 10,
+      "price": {
+        "total": 38,
+        "breakdown": {
+          "wholesaleCost": 34,
+          "serviceFee": 4,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "db9990e4-f669-4c80-98d2-ef0ce75ab982": {
+      "id": "db9990e4-f669-4c80-98d2-ef0ce75ab982",
+      "name": "Sprite Zero",
+      "qualifier": null,
+      "image": "/static/media/misc-can.00c131d0.svg",
+      "isMarketplace": false,
+      "count": 5,
+      "price": {
+        "total": 40,
+        "breakdown": {
+          "wholesaleCost": 36,
+          "serviceFee": 4,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "a3afbc77-53b2-41a3-ab85-56ee11e45945": {
+      "id": "a3afbc77-53b2-41a3-ab85-56ee11e45945",
+      "name": "Frazzles",
+      "qualifier": null,
+      "image": "/static/media/misc-crisps.ee0cbe3f.svg",
+      "isMarketplace": false,
+      "count": 4,
+      "price": {
+        "total": 25,
+        "breakdown": {
+          "wholesaleCost": 22,
+          "serviceFee": 3,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "1799e858-2beb-4613-b3c5-2381ac77c6a0": {
+      "id": "1799e858-2beb-4613-b3c5-2381ac77c6a0",
+      "name": "Jacob's",
+      "qualifier": "Mini Cheddars",
+      "image": "/static/media/mini-cheddars.c9e54bfd.svg",
+      "isMarketplace": false,
+      "count": 45,
+      "price": {
+        "total": 25,
+        "breakdown": {
+          "wholesaleCost": 22,
+          "serviceFee": 3,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "106a6820-4761-4948-a7b1-0f10d270a859": {
+      "id": "106a6820-4761-4948-a7b1-0f10d270a859",
+      "name": "Twix",
+      "qualifier": null,
+      "image": "/static/media/twix.2dde5d7f.svg",
+      "isMarketplace": false,
+      "count": 21,
+      "price": {
+        "total": 35,
+        "breakdown": {
+          "wholesaleCost": 31,
+          "serviceFee": 4,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "ecb7afbd-4272-47d0-b8d2-f5b4dbd66ed3": {
+      "id": "ecb7afbd-4272-47d0-b8d2-f5b4dbd66ed3",
+      "name": "Fanta Fruit Twist Zero",
+      "qualifier": null,
+      "image": "/static/media/misc-can.00c131d0.svg",
+      "isMarketplace": false,
+      "count": 2,
+      "price": {
+        "total": 54,
+        "breakdown": {
+          "wholesaleCost": 49,
+          "serviceFee": 5,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "c786086f-c183-4a6a-b9a4-72d142982cff": {
+      "id": "c786086f-c183-4a6a-b9a4-72d142982cff",
+      "name": "Boost",
+      "qualifier": null,
+      "image": "/static/media/boost.1f227403.svg",
+      "isMarketplace": false,
+      "count": 3,
+      "price": {
+        "total": 35,
+        "breakdown": {
+          "wholesaleCost": 31,
+          "serviceFee": 4,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "78816fba-150d-4282-b43d-900df45cea8b": {
+      "id": "78816fba-150d-4282-b43d-900df45cea8b",
+      "name": "Skittles",
+      "qualifier": null,
+      "image": "/static/media/skittles.05ec0e45.svg",
+      "isMarketplace": false,
+      "count": 0,
+      "price": {
+        "total": 32,
+        "breakdown": {
+          "wholesaleCost": 29,
+          "serviceFee": 3,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "a2000689-09ef-4a1d-9569-014e156d6f59": {
+      "id": "a2000689-09ef-4a1d-9569-014e156d6f59",
+      "name": "Haribo",
+      "qualifier": null,
+      "image": "/static/media/misc-bar.ce69306f.svg",
+      "isMarketplace": false,
+      "count": 0,
+      "price": {
+        "total": 12,
+        "breakdown": {
+          "wholesaleCost": 10,
+          "serviceFee": 2,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "8e5d198e-9bd2-4c9f-8e14-5c600dba8683": {
+      "id": "8e5d198e-9bd2-4c9f-8e14-5c600dba8683",
+      "name": "Highland Spring",
+      "qualifier": null,
+      "image": "/static/media/misc-can.00c131d0.svg",
+      "isMarketplace": true,
+      "count": 3,
+      "price": {
+        "total": 35,
+        "breakdown": {
+          "wholesaleCost": 31,
+          "serviceFee": 4,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "f9c8b541-0a30-4adc-8e0d-887e6db9f301"
+    },
+    "2c805c67-6139-4098-ba9f-7074753e1b22": {
+      "id": "2c805c67-6139-4098-ba9f-7074753e1b22",
+      "name": "7-UP Zero",
+      "qualifier": null,
+      "image": "/static/media/misc-can.00c131d0.svg",
+      "isMarketplace": false,
+      "count": 0,
+      "price": {
+        "total": 54,
+        "breakdown": {
+          "wholesaleCost": 49,
+          "serviceFee": 5,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "f589039e-c93b-45c1-99fc-1ee457ecb570": {
+      "id": "f589039e-c93b-45c1-99fc-1ee457ecb570",
+      "name": "Wotsits",
+      "qualifier": null,
+      "image": "/static/media/misc-crisps.ee0cbe3f.svg",
+      "isMarketplace": false,
+      "count": 15,
+      "price": {
+        "total": 25,
+        "breakdown": {
+          "wholesaleCost": 22,
+          "serviceFee": 3,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "190ee06f-455f-4778-b3db-1dfc74c3e966": {
+      "id": "190ee06f-455f-4778-b3db-1dfc74c3e966",
+      "name": "Diet Coke",
+      "qualifier": null,
+      "image": "/static/media/diet-cola-can.4131fa8c.svg",
+      "isMarketplace": false,
+      "count": 203,
+      "price": {
+        "total": 42,
+        "breakdown": {
+          "wholesaleCost": 38,
+          "serviceFee": 4,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "fbbf6cb9-a1b8-49c5-83d3-c13c385ad455": {
+      "id": "fbbf6cb9-a1b8-49c5-83d3-c13c385ad455",
+      "name": "Fanta Zero",
+      "qualifier": null,
+      "image": "/static/media/misc-can.00c131d0.svg",
+      "isMarketplace": false,
+      "count": 8,
+      "price": {
+        "total": 40,
+        "breakdown": {
+          "wholesaleCost": 36,
+          "serviceFee": 4,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "079e71ed-537b-4d74-a377-9db2c1dc0d4e": {
+      "id": "079e71ed-537b-4d74-a377-9db2c1dc0d4e",
+      "name": "Lion Bar",
+      "qualifier": null,
+      "image": "/static/media/misc-bar.ce69306f.svg",
+      "isMarketplace": false,
+      "count": 2,
+      "price": {
+        "total": 35,
+        "breakdown": {
+          "wholesaleCost": 31,
+          "serviceFee": 4,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "8ee1fb0a-49e1-4da5-8cc1-f16ebf37f345": {
+      "id": "8ee1fb0a-49e1-4da5-8cc1-f16ebf37f345",
+      "name": "Sparkling Iced Mate Tea",
+      "qualifier": "Charitea",
+      "image": "/static/media/misc-bottle.f5f1f0d9.svg",
+      "isMarketplace": true,
+      "count": 0,
+      "price": {
+        "total": 100,
+        "breakdown": {
+          "wholesaleCost": 90,
+          "serviceFee": 10,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "f9c8b541-0a30-4adc-8e0d-887e6db9f301"
+    },
+    "69e052f7-f58e-4304-a021-100dfdb37605": {
+      "id": "69e052f7-f58e-4304-a021-100dfdb37605",
+      "name": "Pot Noodle",
+      "qualifier": "Bombay Badboy",
+      "image": "/static/media/misc-crisps.ee0cbe3f.svg",
+      "isMarketplace": true,
+      "count": 3,
+      "price": {
+        "total": 121,
+        "breakdown": {
+          "wholesaleCost": 110,
+          "serviceFee": 11,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "f9c8b541-0a30-4adc-8e0d-887e6db9f301"
+    },
+    "b18ed2f6-6a9f-4e79-986e-41e52b117137": {
+      "id": "b18ed2f6-6a9f-4e79-986e-41e52b117137",
+      "name": "Wrigley's",
+      "qualifier": "Extra Peppermint",
+      "image": "/static/media/misc-bar.ce69306f.svg",
+      "isMarketplace": true,
+      "count": 0,
+      "price": {
+        "total": 20,
+        "breakdown": {
+          "wholesaleCost": 18,
+          "serviceFee": 2,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "f9c8b541-0a30-4adc-8e0d-887e6db9f301"
+    },
+    "1b47151d-977a-4419-8e21-7db0442afb1c": {
+      "id": "1b47151d-977a-4419-8e21-7db0442afb1c",
+      "name": "Nakd",
+      "qualifier": "Cocoa Orange",
+      "image": "/static/media/nakd-cocoa-orange.49909957.svg",
+      "isMarketplace": true,
+      "count": 0,
+      "price": {
+        "total": 60,
+        "breakdown": {
+          "wholesaleCost": 54,
+          "serviceFee": 6,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "f9c8b541-0a30-4adc-8e0d-887e6db9f301"
+    },
+    "ec567630-356e-4f2a-a319-4bb70372afb2": {
+      "id": "ec567630-356e-4f2a-a319-4bb70372afb2",
+      "name": "Trek",
+      "qualifier": "Banana Bread Flapjack",
+      "image": "/static/media/trek-banana-bread-flapjack.ee1d1128.svg",
+      "isMarketplace": true,
+      "count": 2,
+      "price": {
+        "total": 85,
+        "breakdown": {
+          "wholesaleCost": 77,
+          "serviceFee": 8,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "f9c8b541-0a30-4adc-8e0d-887e6db9f301"
+    },
+    "c1cef041-fe9d-49a7-9e06-b04ea1252339": {
+      "id": "c1cef041-fe9d-49a7-9e06-b04ea1252339",
+      "name": "Polos",
+      "qualifier": null,
+      "image": "/static/media/misc-bar.ce69306f.svg",
+      "isMarketplace": false,
+      "count": 26,
+      "price": {
+        "total": 44,
+        "breakdown": {
+          "wholesaleCost": 40,
+          "serviceFee": 4,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "c93a8b71-2d01-4ed2-86af-695943a105e9": {
+      "id": "c93a8b71-2d01-4ed2-86af-695943a105e9",
+      "name": "Pringles",
+      "qualifier": null,
+      "image": "/static/media/misc-bar.ce69306f.svg",
+      "isMarketplace": true,
+      "count": 0,
+      "price": {
+        "total": 90,
+        "breakdown": {
+          "wholesaleCost": 81,
+          "serviceFee": 9,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "f9c8b541-0a30-4adc-8e0d-887e6db9f301"
+    },
+    "eb3c8771-0cb0-4410-9863-f5cc30e9c85d": {
+      "id": "eb3c8771-0cb0-4410-9863-f5cc30e9c85d",
+      "name": "Double Decker",
+      "qualifier": null,
+      "image": "/static/media/misc-bar.ce69306f.svg",
+      "isMarketplace": false,
+      "count": 19,
+      "price": {
+        "total": 35,
+        "breakdown": {
+          "wholesaleCost": 31,
+          "serviceFee": 4,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "8e474d3f-5a32-45a1-9214-7b8e2361d221": {
+      "id": "8e474d3f-5a32-45a1-9214-7b8e2361d221",
+      "name": "Picnic bar",
+      "qualifier": null,
+      "image": "/static/media/misc-bar.ce69306f.svg",
+      "isMarketplace": false,
+      "count": 25,
+      "price": {
+        "total": 35,
+        "breakdown": {
+          "wholesaleCost": 31,
+          "serviceFee": 4,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "f01f533f-8bf6-4291-8fb8-a76c3bedc276": {
+      "id": "f01f533f-8bf6-4291-8fb8-a76c3bedc276",
+      "name": "Twirl twin bar",
+      "qualifier": null,
+      "image": "/static/media/misc-bar.ce69306f.svg",
+      "isMarketplace": false,
+      "count": 10,
+      "price": {
+        "total": 35,
+        "breakdown": {
+          "wholesaleCost": 31,
+          "serviceFee": 4,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "3ad9b71d-7627-421f-bddd-592996adbb45": {
+      "id": "3ad9b71d-7627-421f-bddd-592996adbb45",
+      "name": "Flake",
+      "qualifier": null,
+      "image": "/static/media/misc-bar.ce69306f.svg",
+      "isMarketplace": false,
+      "count": 37,
+      "price": {
+        "total": 35,
+        "breakdown": {
+          "wholesaleCost": 31,
+          "serviceFee": 4,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "606e12d4-6367-4fc3-aa7a-92ee17ccac2c": {
+      "id": "606e12d4-6367-4fc3-aa7a-92ee17ccac2c",
+      "name": "Freddo",
+      "qualifier": null,
+      "image": "/static/media/freddo.651be225.svg",
+      "isMarketplace": false,
+      "count": 8,
+      "price": {
+        "total": 20,
+        "breakdown": {
+          "wholesaleCost": 18,
+          "serviceFee": 2,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "e91e7274-fe28-405c-86c8-5768197eb6ac": {
+      "id": "e91e7274-fe28-405c-86c8-5768197eb6ac",
+      "name": "Smarties",
+      "qualifier": null,
+      "image": "/static/media/smarties.791744f6.svg",
+      "isMarketplace": false,
+      "count": 3,
+      "price": {
+        "total": 35,
+        "breakdown": {
+          "wholesaleCost": 31,
+          "serviceFee": 4,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "8e9bb2db-9437-4733-acc1-f5e218e0a603": {
+      "id": "8e9bb2db-9437-4733-acc1-f5e218e0a603",
+      "name": "Fruit Pastilles",
+      "qualifier": null,
+      "image": "/static/media/fruit-pastilles-roll.d6ad5f86.svg",
+      "isMarketplace": false,
+      "count": 9,
+      "price": {
+        "total": 35,
+        "breakdown": {
+          "wholesaleCost": 31,
+          "serviceFee": 4,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "685873a1-414a-4631-814b-b495bae5a349": {
+      "id": "685873a1-414a-4631-814b-b495bae5a349",
+      "name": "Bounty",
+      "qualifier": null,
+      "image": "/static/media/misc-bar.ce69306f.svg",
+      "isMarketplace": false,
+      "count": 13,
+      "price": {
+        "total": 35,
+        "breakdown": {
+          "wholesaleCost": 31,
+          "serviceFee": 4,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "8cf7f61b-f847-48c0-bbb9-1f9e19e00b1c": {
+      "id": "8cf7f61b-f847-48c0-bbb9-1f9e19e00b1c",
+      "name": "Galaxy",
+      "qualifier": null,
+      "image": "/static/media/misc-bar.ce69306f.svg",
+      "isMarketplace": false,
+      "count": 13,
+      "price": {
+        "total": 35,
+        "breakdown": {
+          "wholesaleCost": 31,
+          "serviceFee": 4,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "e7d57402-6f60-4fb3-a585-7651cebbd4fa": {
+      "id": "e7d57402-6f60-4fb3-a585-7651cebbd4fa",
+      "name": "Wispa",
+      "qualifier": null,
+      "image": "/static/media/misc-bar.ce69306f.svg",
+      "isMarketplace": false,
+      "count": 37,
+      "price": {
+        "total": 35,
+        "breakdown": {
+          "wholesaleCost": 31,
+          "serviceFee": 4,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "220cdfb9-31a4-4150-a109-2e24ca24e1dc": {
+      "id": "220cdfb9-31a4-4150-a109-2e24ca24e1dc",
+      "name": "Crunchie",
+      "qualifier": null,
+      "image": "/static/media/crunchie.278cfd0e.svg",
+      "isMarketplace": false,
+      "count": 22,
+      "price": {
+        "total": 35,
+        "breakdown": {
+          "wholesaleCost": 31,
+          "serviceFee": 4,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "83f5f7c5-75c3-4324-8912-65b1696bc857": {
+      "id": "83f5f7c5-75c3-4324-8912-65b1696bc857",
+      "name": "Caramel",
+      "qualifier": null,
+      "image": "/static/media/misc-bar.ce69306f.svg",
+      "isMarketplace": false,
+      "count": 12,
+      "price": {
+        "total": 35,
+        "breakdown": {
+          "wholesaleCost": 31,
+          "serviceFee": 4,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "48f0aa63-84ca-46a9-8f83-b6b40acdde79": {
+      "id": "48f0aa63-84ca-46a9-8f83-b6b40acdde79",
+      "name": "Dairy Milk",
+      "qualifier": null,
+      "image": "/static/media/misc-bar.ce69306f.svg",
+      "isMarketplace": false,
+      "count": 6,
+      "price": {
+        "total": 35,
+        "breakdown": {
+          "wholesaleCost": 31,
+          "serviceFee": 4,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "1230f19d-0702-49b3-9904-52864144121c": {
+      "id": "1230f19d-0702-49b3-9904-52864144121c",
+      "name": "Yorkie Raisin Bar",
+      "qualifier": null,
+      "image": "/static/media/misc-bar.ce69306f.svg",
+      "isMarketplace": false,
+      "count": 8,
+      "price": {
+        "total": 42,
+        "breakdown": {
+          "wholesaleCost": 38,
+          "serviceFee": 4,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "0914a1fa-cbc9-493a-b151-c78ee249dd39": {
+      "id": "0914a1fa-cbc9-493a-b151-c78ee249dd39",
+      "name": "Toffee Crisp",
+      "qualifier": null,
+      "image": "/static/media/misc-bar.ce69306f.svg",
+      "isMarketplace": false,
+      "count": 15,
+      "price": {
+        "total": 35,
+        "breakdown": {
+          "wholesaleCost": 31,
+          "serviceFee": 4,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "eb34ac84-0431-45f5-b9d5-bdf459ee1ce3": {
+      "id": "eb34ac84-0431-45f5-b9d5-bdf459ee1ce3",
+      "name": "Aero Mint",
+      "qualifier": null,
+      "image": "/static/media/misc-bar.ce69306f.svg",
+      "isMarketplace": false,
+      "count": 25,
+      "price": {
+        "total": 35,
+        "breakdown": {
+          "wholesaleCost": 31,
+          "serviceFee": 4,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "55dcb8be-4257-4c06-9507-1f698a40dfef": {
+      "id": "55dcb8be-4257-4c06-9507-1f698a40dfef",
+      "name": "Aero",
+      "qualifier": null,
+      "image": "/static/media/misc-bar.ce69306f.svg",
+      "isMarketplace": false,
+      "count": 21,
+      "price": {
+        "total": 35,
+        "breakdown": {
+          "wholesaleCost": 31,
+          "serviceFee": 4,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "177f0cd3-bc1f-4243-a0b8-bb8cbac15370": {
+      "id": "177f0cd3-bc1f-4243-a0b8-bb8cbac15370",
+      "name": "Fudge",
+      "qualifier": null,
+      "image": "/static/media/misc-bar.ce69306f.svg",
+      "isMarketplace": false,
+      "count": 48,
+      "price": {
+        "total": 25,
+        "breakdown": {
+          "wholesaleCost": 22,
+          "serviceFee": 3,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "025636ff-4088-4c53-a297-88e673b8eeaa": {
+      "id": "025636ff-4088-4c53-a297-88e673b8eeaa",
+      "name": "Snickers",
+      "qualifier": null,
+      "image": "/static/media/misc-bar.ce69306f.svg",
+      "isMarketplace": false,
+      "count": 20,
+      "price": {
+        "total": 35,
+        "breakdown": {
+          "wholesaleCost": 31,
+          "serviceFee": 4,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "1eb45850-3bb1-4b66-a816-27d856f03afe": {
+      "id": "1eb45850-3bb1-4b66-a816-27d856f03afe",
+      "name": "Mars Bar",
+      "qualifier": null,
+      "image": "/static/media/mars.8af347d8.svg",
+      "isMarketplace": false,
+      "count": 26,
+      "price": {
+        "total": 35,
+        "breakdown": {
+          "wholesaleCost": 31,
+          "serviceFee": 4,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "219d89cd-a7f9-4ffe-90e5-e2193a71a044": {
+      "id": "219d89cd-a7f9-4ffe-90e5-e2193a71a044",
+      "name": "Curly Wurly",
+      "qualifier": null,
+      "image": "/static/media/curly-wurly.d1123c45.svg",
+      "isMarketplace": false,
+      "count": 7,
+      "price": {
+        "total": 35,
+        "breakdown": {
+          "wholesaleCost": 31,
+          "serviceFee": 4,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "4958744b-a9d7-4cca-a9ee-4721bd74155c": {
+      "id": "4958744b-a9d7-4cca-a9ee-4721bd74155c",
+      "name": "Mentos",
+      "qualifier": null,
+      "image": "/static/media/misc-bar.ce69306f.svg",
+      "isMarketplace": false,
+      "count": 5,
+      "price": {
+        "total": 25,
+        "breakdown": {
+          "wholesaleCost": 22,
+          "serviceFee": 3,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "6d96feee-f2de-42b3-9f27-d47a0cee8183": {
+      "id": "6d96feee-f2de-42b3-9f27-d47a0cee8183",
+      "name": "Fruitella",
+      "qualifier": null,
+      "image": "/static/media/misc-bar.ce69306f.svg",
+      "isMarketplace": false,
+      "count": 8,
+      "price": {
+        "total": 25,
+        "breakdown": {
+          "wholesaleCost": 22,
+          "serviceFee": 3,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "ccad58e3-e27a-4463-9139-17a36ff7f7b8": {
+      "id": "ccad58e3-e27a-4463-9139-17a36ff7f7b8",
+      "name": "Coke",
+      "qualifier": null,
+      "image": "/static/media/coca-cola-can.d1eeba8d.svg",
+      "isMarketplace": false,
+      "count": 81,
+      "price": {
+        "total": 42,
+        "breakdown": {
+          "wholesaleCost": 38,
+          "serviceFee": 4,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "5d6fc7cb-dbec-438e-9a64-702e5841020d": {
+      "id": "5d6fc7cb-dbec-438e-9a64-702e5841020d",
+      "name": "Vimto Remix",
+      "qualifier": "Mango, Strawberry & Pineapple",
+      "image": "/static/media/misc-can.00c131d0.svg",
+      "isMarketplace": false,
+      "count": 28,
+      "price": {
+        "total": 42,
+        "breakdown": {
+          "wholesaleCost": 38,
+          "serviceFee": 4,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "a72e0e4f-7465-4b03-9b33-78a90afd4b30": {
+      "id": "a72e0e4f-7465-4b03-9b33-78a90afd4b30",
+      "name": "Irn Bru",
+      "qualifier": null,
+      "image": "/static/media/misc-can.00c131d0.svg",
+      "isMarketplace": false,
+      "count": 35,
+      "price": {
+        "total": 40,
+        "breakdown": {
+          "wholesaleCost": 36,
+          "serviceFee": 4,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "5afe3d67-aff9-420f-94e5-30c6bedda819": {
+      "id": "5afe3d67-aff9-420f-94e5-30c6bedda819",
+      "name": "Quavers",
+      "qualifier": null,
+      "image": "/static/media/misc-crisps.ee0cbe3f.svg",
+      "isMarketplace": false,
+      "count": 26,
+      "price": {
+        "total": 25,
+        "breakdown": {
+          "wholesaleCost": 22,
+          "serviceFee": 3,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "d5d10152-3f8a-419b-9abd-6d6e916ea64a": {
+      "id": "d5d10152-3f8a-419b-9abd-6d6e916ea64a",
+      "name": "Coke Zero",
+      "qualifier": null,
+      "image": "/static/media/coca-cola-zero-can.228cf9b4.svg",
+      "isMarketplace": false,
+      "count": 17,
+      "price": {
+        "total": 42,
+        "breakdown": {
+          "wholesaleCost": 38,
+          "serviceFee": 4,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "02bbc0fd-54c4-45bb-9b77-21b79b356aa6": {
+      "id": "02bbc0fd-54c4-45bb-9b77-21b79b356aa6",
+      "name": "KitKat Chunky",
+      "qualifier": null,
+      "image": "/static/media/kit-kat-chunky.6d200234.svg",
+      "isMarketplace": false,
+      "count": 28,
+      "price": {
+        "total": 35,
+        "breakdown": {
+          "wholesaleCost": 31,
+          "serviceFee": 4,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "3b7a6669-770c-4dbb-97e2-0e0aae3ca5ff": {
+      "id": "3b7a6669-770c-4dbb-97e2-0e0aae3ca5ff",
+      "name": "Walkers (Variety)",
+      "qualifier": null,
+      "image": "/static/media/misc-crisps.ee0cbe3f.svg",
+      "isMarketplace": false,
+      "count": 89,
+      "price": {
+        "total": 25,
+        "breakdown": {
+          "wholesaleCost": 22,
+          "serviceFee": 3,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "e46f081f-cfd8-49a0-aa6b-b6ab7fd0d82f": {
+      "id": "e46f081f-cfd8-49a0-aa6b-b6ab7fd0d82f",
+      "name": "Hula Hoops",
+      "qualifier": null,
+      "image": "/static/media/misc-crisps.ee0cbe3f.svg",
+      "isMarketplace": false,
+      "count": 80,
+      "price": {
+        "total": 25,
+        "breakdown": {
+          "wholesaleCost": 22,
+          "serviceFee": 3,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "39a4c9f2-cde7-468f-a98b-7525ed8d1c32": {
+      "id": "39a4c9f2-cde7-468f-a98b-7525ed8d1c32",
+      "name": "McCoys",
+      "qualifier": "Variety",
+      "image": "/static/media/mccoys.ee6a43cd.svg",
+      "isMarketplace": false,
+      "count": 34,
+      "price": {
+        "total": 25,
+        "breakdown": {
+          "wholesaleCost": 22,
+          "serviceFee": 3,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "73ad2ae7-e90e-41e5-a3f9-1c161b4f797d": {
+      "id": "73ad2ae7-e90e-41e5-a3f9-1c161b4f797d",
+      "name": "Vimto ",
+      "qualifier": "Zero",
+      "image": "/static/media/misc-can.00c131d0.svg",
+      "isMarketplace": false,
+      "count": 8,
+      "price": {
+        "total": 42,
+        "breakdown": {
+          "wholesaleCost": 38,
+          "serviceFee": 4,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "9127e1db-2a2c-41c5-908f-781ac816b633"
+    },
+    "21125f1b-5e59-4bd8-ba5e-7ed58ff5af52": {
+      "id": "21125f1b-5e59-4bd8-ba5e-7ed58ff5af52",
+      "name": "Clif Bar",
+      "qualifier": null,
+      "image": "/static/media/misc-bar.ce69306f.svg",
+      "isMarketplace": true,
+      "count": 19,
+      "price": {
+        "total": 143,
+        "breakdown": {
+          "wholesaleCost": 130,
+          "serviceFee": 13,
+          "donation": 0,
+          "handlingFee": 0,
+          "creditCardFee": 0,
+          "VAT": 0
+        }
+      },
+      "sellerId": "f57ec434-2ff8-4bbc-ab4f-6ceafb5403e6"
+    }
+  }
+}
