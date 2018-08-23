@@ -8,7 +8,7 @@ import Model from '../../utils/model';
 
 const TIMEOUT_IN_SECONDS = 10;
 const MIN_CONSECUTIVE_PREDICTIONS = 3;
-const PREDICTION_RATIO_THRESHOLD = 1.2;
+const PREDICTION_RATIO_THRESHOLD = 1.5;
 const SHOW_RETRY_FOR = 5;
 
 class ItemRecognition extends Component {
