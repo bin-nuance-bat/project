@@ -149,7 +149,7 @@ class ItemRecognition extends Component {
     return (
       <div className="page">
         <header className="header">
-          <BackButton handleClick={() => this.clickBack} />
+          <BackButton handleClick={this.clickBack} />
           <div>
             <div className="header-text">{this.state.text}</div>
             {this.state.subText && (
