@@ -11,15 +11,16 @@ import UsernameEntry from '../UsernameEntry/container';
 import EditSnack from '../EditSnack/EditSnackContainer';
 import SuccessPage from '../SuccessPage/container';
 import NotificationBar from '../NotificationBar/NotificationBar';
-import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
-
 import Admin from '../Admin/Admin';
 import Approval from '../Admin/Approval/Approval';
+import ErrorPage from '../ErrorPage/ErrorPage';
 import Viewer from '../Admin/Preview/Viewer';
 import Collection from '../Admin/Collection/Collection';
 
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import initFirebase from '../../utils/firebase';
 import firebase from 'firebase/app';
+
 import 'firebase/auth';
 import DataController from '../Admin/utils/DataController';
 
@@ -71,8 +72,6 @@ class App extends Component {
     document.body.addEventListener('touchmove', this.resetTimeoutTimer);
     document.body.addEventListener('mousemove', this.resetTimeoutTimer);
     document.body.addEventListener('scroll', this.resetTimeoutTimer);
-    window.addEventListener('online', this.handleOnline);
-    window.addEventListener('offline', this.handleOffline);
 
     const isHiddenAdminPage = window.location.pathname.startsWith('/admin/');
     const isValidRoute =
@@ -101,39 +100,19 @@ class App extends Component {
     }
   };
 
-  handleOnline = () => {
-    this.setState({
-      isOnline: true
-    });
-  };
-
-  handleOffline = () => {
-    this.setState({isOnline: false});
-  };
-
-  connectionError() {
-    return (
-      (!this.state.isOnline ||
-        this.props.loadStoreListError ||
-        this.props.loadUserListError ||
-        this.props.sendMessageError) &&
-      this.state.loggedIn
-    );
-  }
-
   componentWillUnmount() {
     clearTimeout(this.timer);
     clearInterval(this.interval);
     document.body.removeEventListener('touchstart', this.resetTimeoutTimer);
     document.body.removeEventListener('touchmove', this.resetTimeoutTimer);
-    window.removeEventListener('online', this.handleOnline);
-    window.removeEventListener('offline', this.handleOffline);
+    document.body.removeEventListener('mousemove', this.resetTimeoutTimer);
+    document.body.removeEventListener('scroll', this.resetTimeoutTimer);
   }
 
   render() {
     if (this.state.loggedIn === null) return null;
     return (
-      <div key={this.connectionError()}>
+      <div>
         <Router>
           <Switch>
             <Route exact path="/" component={Home} />
@@ -148,23 +127,16 @@ class App extends Component {
             <Route exact path="/admin/preview" component={Viewer} />
             <Route exact path="/admin/approval" component={Approval} />
             <Route exact path="/admin/collection" component={Collection} />
+            <Route exact path="/error" component={ErrorPage} />
           </Switch>
         </Router>
-        {this.state.showTimer &&
-          !this.connectionError() && (
-            <NotificationBar
-              mainText="Are you still there?"
-              autoActionWord="Timeout"
-              userTouchActionText="DISMISS"
-              handleTouch={this.resetTimeoutTimer}
-              handleTimeout={this.onTimeout}
-            />
-          )}
-        {this.connectionError() && (
+        {this.state.showTimer && (
           <NotificationBar
-            mainText="Connection lost"
-            autoActionWord="Retrying"
-            preventInteraction
+            mainText="Are you still there?"
+            autoActionWord="Timeout"
+            userTouchActionText="DISMISS"
+            handleTouch={this.resetTimeoutTimer}
+            handleTimeout={this.onTimeout}
           />
         )}
         {!this.state.loggedIn && (
@@ -179,10 +151,7 @@ class App extends Component {
 }
 
 App.propTypes = {
-  setDataController: PropTypes.func.isRequired,
-  loadStoreListError: PropTypes.bool,
-  loadUserListError: PropTypes.bool,
-  sendMessageError: PropTypes.bool
+  setDataController: PropTypes.func.isRequired
 };
 
 export default App;
