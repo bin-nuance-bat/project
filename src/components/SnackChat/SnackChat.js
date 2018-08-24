@@ -12,8 +12,8 @@ import BackButton from '../BackButton/BackButton';
 
 const FEED_SIZE = 768;
 const CAPTURE_SIZE = 200;
-const LOADING_ANIMATION_TIME = 3;
-const COUNTDOWN_TIME = 3;
+const LOADING_ANIMATION_TIME = 1;
+const COUNTDOWN_TIME = 50;
 const PHOTO_ANIMATION_TIME = 1.5;
 const POSITION_BUFFER_SIZE = 10;
 const FALLING_SNACK_SIZE = 0.2;
@@ -80,6 +80,9 @@ class SnackChat extends Component {
   };
 
   drawBackground = video => {
+    if (this.backClicked) {
+      return;
+    }
     this.ctx.scale(-CANVAS_SCALE, CANVAS_SCALE);
     this.ctx.drawImage(
       video,
@@ -116,7 +119,7 @@ class SnackChat extends Component {
       // Video background
       const video = this.webcam.current.webcam.current.video;
       this.ctx.save();
-      this.drawBackground(video);
+      this.drawBackground(video, 0);
 
       this.ctx.fillStyle = 'rgba(0.6, 0.6, 0.6, 0.6)';
       this.ctx.fillRect(
@@ -150,10 +153,14 @@ class SnackChat extends Component {
         item.rotation = (item.rotation + 0.03) % (Math.PI * 2);
       });
 
-      requestAnimationFrame(drawFallingSnacks);
+      this.fallingSnacksAnimationFrameID = requestAnimationFrame(
+        drawFallingSnacks
+      );
     };
 
-    requestAnimationFrame(drawFallingSnacks);
+    this.fallingSnacksAnimationFrameID = requestAnimationFrame(
+      drawFallingSnacks
+    );
     this.ctx.clearRect(
       0,
       0,
@@ -166,13 +173,12 @@ class SnackChat extends Component {
   averageBodyPosition;
   i = -1;
   update = async () => {
-    if (this.state.backClicked) {
-      this.onBack();
+    if (this.backClicked) {
       return;
     }
 
     if (!this.webcam.current.webcam.current || !this.net) {
-      requestAnimationFrame(this.update);
+      this.snackChatAnimationFrameID = requestAnimationFrame(this.update);
       return;
     }
 
@@ -195,7 +201,7 @@ class SnackChat extends Component {
     try {
       frame = await this.webcam.current.requestScreenshot();
     } catch (e) {
-      requestAnimationFrame(this.update);
+      this.snackChatAnimationFrameID = requestAnimationFrame(this.update);
       return;
     }
 
@@ -293,7 +299,7 @@ class SnackChat extends Component {
     // Re-draw face
     this.drawBackground(video);
 
-    requestAnimationFrame(this.update);
+    this.snackChatAnimationFrameID = requestAnimationFrame(this.update);
   };
 
   onConnect = () => {
@@ -304,7 +310,7 @@ class SnackChat extends Component {
     this.filter.src = this.props.storeList[this.props.actualItem].image;
     this.countdown();
     this.playGettingInPositionAnimation();
-    requestAnimationFrame(this.update);
+    this.snackChatAnimationFrameID = requestAnimationFrame(this.update);
   };
 
   onFail = () => {
@@ -313,6 +319,8 @@ class SnackChat extends Component {
   };
 
   onBack = () => {
+    this.backClicked = true;
+    clearInterval(this.timer);
     this.props.history.replace(
       this.props.actualItem === this.props.prediction.id
         ? '/confirmitem'
@@ -323,13 +331,13 @@ class SnackChat extends Component {
   render() {
     return (
       <div className="page">
-        <BackButton handleClick={() => this.setState({backClicked: true})} />
         <div id="fade-overlay" className="fade-hidden" />
         {!this.state.gettingInPosition ? (
           <header>
-            <div className="snackchat--header-text snackchat--header-text-left">
+            <BackButton handleClick={this.onBack} />
+            {/* <div className="snackchat--header-text snackchat--header-text-left">
               {this.state.counter >= PHOTO_ANIMATION_TIME && 'Taking photo in'}
-            </div>
+            </div> */}
             <div className="snackchat--hands">
               <img className="snackchat--hands-slot" src={HandsSlot} alt="" />
               <img className="snackchat--hands-right" src={HandsRight} alt="" />
