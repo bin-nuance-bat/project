@@ -34,7 +34,7 @@ export default class Model {
         'final_result'
       );
 
-      return tf.softmax(logits);
+      return logits;
     });
 
     const values = predictions.dataSync();
