@@ -4,7 +4,6 @@ import HomeHandsSlot from './../../utils/assets/hands/HandsSlot.svg';
 import HomeHandsRight from './../../utils/assets/hands/HandsRight.svg';
 import HomeHandsCenter from './../../utils/assets/hands/HandsCenter.svg';
 import HomeHandsLeft from './../../utils/assets/hands/HandsLeft.svg';
-import Camera from './assets/Camera.svg';
 import PropTypes from 'prop-types';
 
 class Home extends React.Component {
@@ -52,16 +51,8 @@ class Home extends React.Component {
           <div>
             <button
               className="button btn-primary btn-block"
-              onClick={this.handleSnackChatClick}>
-              Send a SnackChat
-              <img className="homepage--small-camera" src={Camera} alt="" />
-            </button>
-          </div>
-          <div>
-            <button
-              className="button btn-secondary btn-block"
               onClick={this.handleReminderNoPhotoClick}>
-              Send a reminder without a photo
+              Send a Reminder
             </button>
           </div>
         </div>
