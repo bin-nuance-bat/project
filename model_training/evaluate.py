@@ -84,8 +84,8 @@ if __name__ == "__main__":
     labels = load_labels(label_file)
     readable_labels = load_labels("readable_labels.json")
 
-    correct_guesses = [0]
-    incorrect_guesses = [0]
+    correct_guesses = 0
+    incorrect_guesses = 0
     test_data = path_to_dict('./eval_data')['children']
     num_classes = len(test_data)
     res_file = open("results.csv", "w")
@@ -105,12 +105,17 @@ if __name__ == "__main__":
             if label['type'] != "directory":
                 continue
 
-            certainty = [0]
+            certainty = 0
             guesses = [0, 0]  # correct, incorrect
-            ratio = [0]
+            ratio = 0
             incorrect_labels = []
 
             def test_image(img):
+                global certainty
+                global ratio
+                global correct_guesses
+                global incorrect_guesses
+
                 file_name = "./eval_data/" + label['name'] + "/" + img['name']
                 t = read_tensor_from_image_file(
                     file_name,
@@ -126,18 +131,18 @@ if __name__ == "__main__":
                 top_k = results.argsort()[-3:][::-1]
 
                 if (labels[top_k[0]] == label['name']):
-                    correct_guesses[0] = correct_guesses[0] + 1
+                    correct_guesses = correct_guesses + 1
                     guesses[0] = guesses[0] + 1
-                    ratio[0] = ratio[0] + \
+                    ratio = ratio + \
                         (results[top_k[0]] / results[top_k[1]])
                 else:
-                    incorrect_guesses[0] = incorrect_guesses[0] + 1
+                    incorrect_guesses = incorrect_guesses + 1
                     guesses[1] = guesses[1] + 1
                     incorrect_labels.append(readable_labels[labels[top_k[0]]])
 
                 for i in top_k:
                     if labels[i] == label['name']:
-                        certainty[0] = certainty[0] + results[i]
+                        certainty = certainty + results[i]
 
             threads = []
             for img in label['children']:
@@ -152,8 +157,8 @@ if __name__ == "__main__":
                 "{},{}%,{}%,{},{}\n".format(
                     readable_labels[label['name']],
                     round(100 * guesses[0] / (guesses[0] + guesses[1])),
-                    round(certainty[0] * 100 / len(label['children']), 2),
-                    round(ratio[0] / len(label['children']), 2),
+                    round(certainty * 100 / len(label['children']), 2),
+                    round(ratio / len(label['children']), 2),
                     '"' + ", ".join(incorrect_labels) + '"'
                 )
             )
@@ -162,8 +167,8 @@ if __name__ == "__main__":
 
     sys.stdout.write("\n")
 
-    accuracy = 100 * correct_guesses[0] / \
-        (correct_guesses[0] + incorrect_guesses[0])
+    accuracy = 100 * correct_guesses / \
+        (correct_guesses + incorrect_guesses)
 
     res_file.write(
         "Overall,{}%\n".format(
