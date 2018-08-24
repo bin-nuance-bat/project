@@ -89,6 +89,11 @@ class ItemRecognition extends Component {
   };
 
   handleImg = img => {
+    if (this.backClicked) {
+      this.props.history.replace('/disclaimer');
+      return;
+    }
+
     if (this.success) return;
 
     this.model.predict(img).then(async items => {
@@ -124,9 +129,6 @@ class ItemRecognition extends Component {
           text: "We can't recognise the snack",
           subText: 'Try turning the snack so the logo is seen by the camera'
         });
-      } else if (this.state.backClicked) {
-        this.props.history.replace('/disclaimer');
-        return;
       }
 
       // Get the next frame
@@ -143,7 +145,7 @@ class ItemRecognition extends Component {
     return (
       <div className="page">
         <header className="header">
-          <BackButton handleClick={() => this.setState({backClicked: true})} />
+          <BackButton handleClick={() => (this.backClicked = true)} />
           <div>
             <div className="header-text">{this.state.text}</div>
             {this.state.subText && (
