@@ -310,7 +310,8 @@ class SnackChat extends Component {
   );
 
   renderFallingItems = () => (
-    <div className="snackchat-overlay webcam-container">
+    <div>
+      <div className="snackchat-overlay webcam-container" />
       {this.state.itemPositions.map((item, index) => (
         <div key={index}>
           <img
