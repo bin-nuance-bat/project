@@ -132,6 +132,7 @@ class SnackChat extends Component {
 
   generateSnackchat = () => {
     const {video} = this.webcam.current.webcam.current;
+    const scale = Math.abs(this.transform[0] || this.transform[1]);
 
     this.ctx.save();
     this.drawBackground(video);
@@ -141,23 +142,29 @@ class SnackChat extends Component {
 
     const {shoulders} = this.state.averageBodyPosition;
     this.ctx.save();
+    if (this.transform[0] === 0) this.ctx.rotate(Math.PI / 2);
     const x =
       shoulders.rightX -
       shoulders.span * 1.5 +
       shoulders.span * shoulders.angle;
-    const y = shoulders.rightY - shoulders.span * 1.5;
-    const dimension = shoulders.span * 4;
-    this.ctx.drawImage(filter, x, y, dimension, dimension);
+    const y =
+      shoulders.rightY -
+      shoulders.span *
+        (this.transform[0] === 0 || this.transform[0] > 1 ? 1 : 1.5);
+    const width = shoulders.span * 4;
+    const height = shoulders.span * (this.transform[0] === 0 ? 2 : 4);
+    this.ctx.drawImage(filter, x, y, width * scale, height * scale);
     this.ctx.restore();
 
-    const {ears} = this.state.averageBodyPosition;
     this.ctx.save();
-    this.ctx.translate(
-      ears.rightX + ears.width / 2,
-      ears.rightY + ears.height * ears.angle
+    this.ctx.translate(shoulders.span * 2, shoulders.span);
+    this.clipEllipse(
+      this.ctx,
+      0,
+      0,
+      shoulders.span * 0.4,
+      shoulders.span * (this.transform[0] === 0 ? 0.25 : 0.5)
     );
-    this.ctx.rotate(ears.angle);
-    this.clipEllipse(this.ctx, 0, 0, ears.span * 1.5, ears.span * 1.5);
     this.ctx.resetTransform();
 
     this.drawBackground(video);
