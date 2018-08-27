@@ -23,8 +23,8 @@ class Home extends React.Component {
     this.props.history.replace('/disclaimer');
   };
 
-  error = () => {
-    this.props.history.replace('/error');
+  error = error => {
+    if (error.code !== 'unauthenticated') this.props.history.replace('/error');
   };
 
   render() {
