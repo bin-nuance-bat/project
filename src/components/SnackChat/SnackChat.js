@@ -365,7 +365,8 @@ class SnackChat extends Component {
               shoulders.span * shoulders.angle,
             top:
               shoulders.rightY -
-              shoulders.span * (this.transform[0] === 0 ? 1 : 1.5),
+              shoulders.span *
+                (this.transform[0] === 0 || this.transform[0] > 1 ? 1 : 1.5),
             height: shoulders.span * (this.transform[0] === 0 ? 2 : 4),
             width: shoulders.span * 4,
             transform: `matrix(${this.transform.join(',')})`,
