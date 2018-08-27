@@ -321,7 +321,7 @@ class SnackChat extends Component {
             style={{
               height: FEED_SIZE * FALLING_SNACK_SIZE,
               width: FEED_SIZE * FALLING_SNACK_SIZE,
-              top: item.y,
+              top: item.y + 120,
               right: item.x - FEED_SIZE * 0.1,
               transform: `rotate(${item.rotation}rad)`
             }}
