@@ -37,6 +37,7 @@ const authenticateUser = (auth, success) => {
 };
 
 const sendReminder = (user, item, imageUrl = null) => {
+  item.price = item.price < 100 ? item.price + 'p' : '£' + item.price / 100;
   const req = {
     url: 'https://slack.com/api/chat.postMessage',
     auth: {bearer: functions.config().slack.token},
@@ -56,7 +57,7 @@ const sendReminder = (user, item, imageUrl = null) => {
           actions: [
             {
               type: 'button',
-              text: `Pay for snack (${item.price}p)`,
+              text: `Pay for snack (${item.price})`,
               url: `https://honesty.store/item/${item.id}`
             }
           ]
