@@ -13,10 +13,10 @@ import getSnackTransform from '../../utils/snackTransform';
 
 const FEED_SIZE = 768;
 const CAPTURE_SIZE = 200;
-const LOADING_ANIMATION_TIME = 300;
+const LOADING_ANIMATION_TIME = 3;
 const COUNTDOWN_TIME = 3;
 const PHOTO_ANIMATION_TIME = 2;
-const POSITION_BUFFER_SIZE = 5;
+const POSITION_BUFFER_SIZE = 3;
 const FALLING_SNACK_SIZE = 0.2;
 const CANVAS_SCALE = 1.6;
 
@@ -363,7 +363,9 @@ class SnackChat extends Component {
               shoulders.rightX -
               shoulders.span * 1.5 +
               shoulders.span * shoulders.angle,
-            top: shoulders.rightY - shoulders.span * 1.5,
+            top:
+              shoulders.rightY -
+              shoulders.span * (this.transform[0] === 0 ? 1 : 1.5),
             height: shoulders.span * (this.transform[0] === 0 ? 2 : 4),
             width: shoulders.span * 4,
             transform: `matrix(${this.transform.join(',')})`,
@@ -417,11 +419,9 @@ class SnackChat extends Component {
             onFail={this.onFail}
           />
           {this.state.gettingInPosition && this.renderFallingItems()}
-          <div className="webcam-container">
-            {!this.state.gettingInPosition &&
-              shoulders !== undefined &&
-              this.renderFilter(shoulders)}
-          </div>
+          {!this.state.gettingInPosition &&
+            shoulders !== undefined &&
+            this.renderFilter(shoulders)}
         </div>
       </div>
     );
