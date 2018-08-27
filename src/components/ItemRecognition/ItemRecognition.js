@@ -12,13 +12,7 @@ const PREDICTION_RATIO_THRESHOLD = 1.2;
 const SHOW_RETRY_FOR = 5;
 
 class ItemRecognition extends Component {
-  constructor(props) {
-    super(props);
-
-    if (navigator.onLine) {
-      this.webcam = React.createRef();
-    }
-  }
+  webcam = React.createRef();
 
   state = {
     text: 'Scan item using the front facing camera',

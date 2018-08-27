@@ -1,32 +1,24 @@
 import {createStore, applyMiddleware, combineReducers, compose} from 'redux';
 import thunk from 'redux-thunk';
-import {storeList, loadStoreListError} from '../components/StoreList/reducer';
+import {storeList} from '../components/StoreList/reducer';
 import {
   prediction,
   suggestions
 } from '../components/ItemRecognition/ItemRecognitionReducer';
-import {sendMessageError} from '../components/UsernameEntry/reducer';
-import {
-  sendWithPhoto,
-  users,
-  loadUserListError
-} from '../components/Home/reducer';
+import {sendWithPhoto, users} from '../components/Home/reducer';
 import {actualItem} from '../components/ConfirmationBox/reducer';
 import {snackChat} from '../components/SnackChat/SnackChatReducer';
 import {dataController} from '../components/App/reducer';
 
 const rootReducer = combineReducers({
   storeList,
-  loadStoreListError,
   users,
   prediction,
   suggestions,
   sendWithPhoto,
   actualItem,
-  dataController,
   snackChat,
-  loadUserListError,
-  sendMessageError
+  dataController
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
