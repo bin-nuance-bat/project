@@ -12,8 +12,8 @@ import BackButton from '../BackButton/BackButton';
 
 const FEED_SIZE = 768;
 const CAPTURE_SIZE = 200;
-const LOADING_ANIMATION_TIME = 1;
-const COUNTDOWN_TIME = 50;
+const LOADING_ANIMATION_TIME = 3;
+const COUNTDOWN_TIME = 3;
 const PHOTO_ANIMATION_TIME = 1.5;
 const POSITION_BUFFER_SIZE = 10;
 const FALLING_SNACK_SIZE = 0.2;
