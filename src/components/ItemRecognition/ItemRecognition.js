@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-import WebcamCapture from '../WebcamCapture/WebcamCapture';
+import WebcamCapture from '../WebcamCapture/container';
 import BackButton from '../BackButton/BackButton';
 
 import Model from '../../utils/model';
@@ -30,6 +30,7 @@ class ItemRecognition extends Component {
   }
 
   onConnect = () => {
+    console.log(this.webcam.current);
     this.webcam.current
       .requestScreenshot()
       .then(img => {

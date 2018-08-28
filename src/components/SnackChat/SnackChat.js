@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import WebcamCapture from '../WebcamCapture/WebcamCapture';
+import WebcamCapture from '../WebcamCapture/container';
 import HandsSlot from './../../utils/assets/hands/HandsSlot.svg';
 import HandsRight from './../../utils/assets/hands/HandsRight.svg';
 import HandsCenter from './../../utils/assets/hands/HandsCenter.svg';

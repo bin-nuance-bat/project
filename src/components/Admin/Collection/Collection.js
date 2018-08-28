@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import DataController from '../utils/DataController';
 
-import WebcamCapture from '../../WebcamCapture/WebcamCapture';
+import WebcamCapture from '../../WebcamCapture/container';
 import ItemSelector from '../ItemSelector';
 
 class Collection extends Component {
