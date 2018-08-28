@@ -62,6 +62,11 @@ class ItemRecognition extends Component {
   };
 
   handleImg = img => {
+    if (this.backClicked) {
+      this.props.history.replace('/disclaimer');
+      return;
+    }
+
     if (this.success) return;
 
     this.model.predict(img).then(async items => {
@@ -104,6 +109,11 @@ class ItemRecognition extends Component {
         this.webcam.current.requestScreenshot().then(this.handleImg);
     });
   };
+
+  clickBack = () => {
+    this.backClicked = true;
+  };
+
   componentWillUnmount() {
     this.model.dispose();
   }
@@ -112,7 +122,7 @@ class ItemRecognition extends Component {
     return (
       <div className="page">
         <header className="header">
-          <BackButton history={this.props.history} />
+          <BackButton handleClick={this.clickBack} />
           <div>
             <div className="header-text">{this.state.text}</div>
             {this.state.subText && (

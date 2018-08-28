@@ -45,11 +45,21 @@ class UsernameEntry extends React.Component {
       .catch(() => this.props.history.replace('/error'));
   };
 
+  handleBack = () => {
+    this.props.history.replace(
+      this.props.sendWithPhoto
+        ? '/snackchat'
+        : this.props.actualItem === this.props.predictionID
+          ? '/confirmitem'
+          : '/editsnack'
+    );
+  };
+
   render() {
     return (
       <div className="username-entry--page" onTouchMove={this.deselect}>
         <header className="header">
-          <BackButton history={this.props.history} />
+          {!this.state.sending && <BackButton handleClick={this.handleBack} />}
           <div className="header-text">
             Please select your slack handle to send a reminder
           </div>
@@ -78,9 +88,10 @@ UsernameEntry.propTypes = {
   users: PropTypes.arrayOf(PropTypes.object).isRequired,
   history: PropTypes.shape({replace: PropTypes.func.isRequired}).isRequired,
   actualItem: PropTypes.string.isRequired,
+  predictionID: PropTypes.string.isRequired,
   storeList: PropTypes.objectOf(PropTypes.object).isRequired,
   sendWithPhoto: PropTypes.bool.isRequired,
-  snackChat: PropTypes.object
+  snackChat: PropTypes.string
 };
 
 export default UsernameEntry;

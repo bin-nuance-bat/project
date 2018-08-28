@@ -8,7 +8,7 @@ import BackButton from './../BackButton/BackButton';
 const Disclaimer = props => {
   return (
     <div className="page">
-      <BackButton history={props.history} />
+      <BackButton handleClick={() => props.history.replace('/')} />
       <div className="disclaimer">
         <div className="disclaimer-item">
           <div>

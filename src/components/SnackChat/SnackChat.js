@@ -74,6 +74,8 @@ class SnackChat extends Component {
     }
 
     const drawFallingSnacks = () => {
+      if (this.state.backClicked) return;
+
       if (this.state.counter <= COUNTDOWN_TIME + PHOTO_ANIMATION_TIME) {
         this.setState({gettingInPosition: false});
         requestAnimationFrame(this.update);
@@ -204,7 +206,7 @@ class SnackChat extends Component {
     try {
       frame = await this.webcam.current.requestScreenshot();
     } catch (e) {
-      requestAnimationFrame(this.update);
+      this.snackChatAnimationFrameID = requestAnimationFrame(this.update);
       return;
     }
 
@@ -295,6 +297,16 @@ class SnackChat extends Component {
   onFail = () => {
     this.props.setSendWithPhoto(false);
     this.props.history.replace('/slackname');
+  };
+
+  onBack = () => {
+    this.backClicked = true;
+    clearInterval(this.timer);
+    this.props.history.replace(
+      this.props.actualItem === this.props.prediction.id
+        ? '/confirmitem'
+        : '/editsnack'
+    );
   };
 
   renderHandsHeader = () => (
@@ -410,7 +422,7 @@ class SnackChat extends Component {
         />
         <div id="fade-overlay" className="fade-hidden" />
         <header className="header">
-          <BackButton history={this.props.history} />
+          <BackButton handleClick={this.onBack} />
           {!this.state.gettingInPosition ? (
             this.renderHandsHeader()
           ) : (
@@ -441,7 +453,8 @@ SnackChat.propTypes = {
   setSendWithPhoto: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
   storeList: PropTypes.object.isRequired,
-  actualItem: PropTypes.string.isRequired
+  actualItem: PropTypes.string.isRequired,
+  prediction: PropTypes.object.isRequired
 };
 
 export default SnackChat;
