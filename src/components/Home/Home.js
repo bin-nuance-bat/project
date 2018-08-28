@@ -9,8 +9,8 @@ import PropTypes from 'prop-types';
 
 class Home extends React.Component {
   componentDidMount() {
-    this.props.loadStoreList().catch(this.error);
-    this.props.loadUsers().catch(this.error);
+    this.props.loadStoreList().catch(this.handleError);
+    this.props.loadUsers().catch(this.handleError);
   }
 
   handleSnackChatClick = () => {
@@ -23,7 +23,7 @@ class Home extends React.Component {
     this.props.history.replace('/disclaimer');
   };
 
-  error = error => {
+  handleError = error => {
     if (error.code !== 'unauthenticated') this.props.history.replace('/error');
   };
 
