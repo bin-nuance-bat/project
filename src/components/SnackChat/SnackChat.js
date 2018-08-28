@@ -16,7 +16,7 @@ const CAPTURE_SIZE = 200;
 const LOADING_ANIMATION_TIME = 3;
 const COUNTDOWN_TIME = 3;
 const PHOTO_ANIMATION_TIME = 2;
-const POSITION_BUFFER_SIZE = 3;
+const POSITION_BUFFER_SIZE = 5;
 const FALLING_SNACK_SIZE = 0.2;
 const CANVAS_SCALE = 1.6;
 
@@ -210,7 +210,7 @@ class SnackChat extends Component {
       return;
     }
 
-    const pose = await this.net.estimateSinglePose(frame, 0.5, true, 8);
+    const pose = await this.net.estimateSinglePose(frame, 0.25, true, 16);
 
     const body = {
       ears: calcAngles({
