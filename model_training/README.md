@@ -47,6 +47,10 @@ Once training is complete you will see a new model has been generated in the `mo
 
 Therefore, once training is complete, you need only build and deploy the application again to see the new model take effect.
 
-## Validation
+## Evaluation
 
-Work in Progress.
+In order to evaluate a models accuracy, a Python script is included. You should place evaluation data in a directory named `eval_data` using the same directory structure as the training data. Once again, if using the official firebase project, the `download.sh` script will have already done this for you. In order to obtain an accuracy score for the model you have trained simply execute the following command:
+
+```bash
+python evaluate.py
+```

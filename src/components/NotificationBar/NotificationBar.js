@@ -58,9 +58,7 @@ class NotificationBar extends Component {
   render() {
     return (
       <div className="notification-bar">
-        <div
-          className={'notification' + (this.state.show && ' show')}
-          id="notificationBar">
+        <div className={'notification'} id="notificationBar">
           <div className="info">
             <div className="text">{this.props.mainText}</div>
             <div className="sub-text">{this.getSubtext()}</div>

@@ -1188,13 +1188,13 @@ if __name__ == '__main__':
   parser.add_argument(
       '--output_labels',
       type=str,
-      default='tmp/output_labels.txt',
+      default='tmp/output_labels.json',
       help='Where to save the trained graph\'s labels.'
   )
   parser.add_argument(
       '--summaries_dir',
       type=str,
-      default='/tmp/retrain_logs',
+      default='tmp/retrain_logs',
       help='Where to save summary logs for TensorBoard.'
   )
   parser.add_argument(
