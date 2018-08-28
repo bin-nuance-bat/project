@@ -335,9 +335,9 @@ class SnackChat extends Component {
         {!this.state.gettingInPosition ? (
           <header>
             <BackButton handleClick={this.onBack} />
-            {/* <div className="snackchat--header-text snackchat--header-text-left">
+            <div className="snackchat--header-text snackchat--header-text-left">
               {this.state.counter >= PHOTO_ANIMATION_TIME && 'Taking photo in'}
-            </div> */}
+            </div>
             <div className="snackchat--hands">
               <img className="snackchat--hands-slot" src={HandsSlot} alt="" />
               <img className="snackchat--hands-right" src={HandsRight} alt="" />
