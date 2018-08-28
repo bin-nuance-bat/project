@@ -12,6 +12,24 @@ class EditSnack extends Component {
     selection: null
   };
 
+  goBack = async () => {
+    let lastPage;
+    const haveCameraAccess =
+      (await navigator.permissions
+        .query({name: 'camera'})
+        .then(result => result.state)) === 'granted';
+
+    if (this.props.prediction) {
+      lastPage = 'confirmitem';
+    } else if (haveCameraAccess) {
+      lastPage = 'scanitem';
+    } else {
+      lastPage = 'disclaimer';
+    }
+
+    this.props.history.replace(lastPage);
+  };
+
   handleClick = () => {
     this.props.setActualItem(this.state.selection.id);
     if (this.props.prediction) {
@@ -38,7 +56,7 @@ class EditSnack extends Component {
     return (
       <div className="edit-snack--page">
         <header className="header">
-          <BackButton history={this.props.history} />
+          <BackButton handleClick={this.goBack} />
           <div className="header-text">
             Sorry, I can’t recognise that snack
             <br />
@@ -73,7 +91,7 @@ EditSnack.propTypes = {
     }).isRequired
   ).isRequired,
   suggestions: PropTypes.arrayOf(PropTypes.object).isRequired,
-  prediction: PropTypes.object.isRequired,
+  prediction: PropTypes.object,
   dataController: PropTypes.object.isRequired
 };
 

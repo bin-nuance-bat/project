@@ -8,6 +8,7 @@ import HandsCamera from './../../utils/assets/hands/HandsCamera.svg';
 import PropTypes from 'prop-types';
 import * as posenet from '@tensorflow-models/posenet';
 import './SnackChat.css';
+import BackButton from '../BackButton/BackButton';
 
 const FEED_SIZE = 768;
 const CAPTURE_SIZE = 200;
@@ -79,6 +80,9 @@ class SnackChat extends Component {
   };
 
   drawBackground = video => {
+    if (this.backClicked) {
+      return;
+    }
     this.ctx.scale(-CANVAS_SCALE, CANVAS_SCALE);
     this.ctx.drawImage(
       video,
@@ -105,6 +109,8 @@ class SnackChat extends Component {
     }
 
     const drawFallingSnacks = () => {
+      if (this.state.backClicked) return;
+
       if (this.state.counter <= COUNTDOWN_TIME + PHOTO_ANIMATION_TIME) {
         this.setState({gettingInPosition: false});
         return;
@@ -113,7 +119,7 @@ class SnackChat extends Component {
       // Video background
       const video = this.webcam.current.webcam.current.video;
       this.ctx.save();
-      this.drawBackground(video);
+      this.drawBackground(video, 0);
 
       this.ctx.fillStyle = 'rgba(0.6, 0.6, 0.6, 0.6)';
       this.ctx.fillRect(
@@ -147,10 +153,14 @@ class SnackChat extends Component {
         item.rotation = (item.rotation + 0.03) % (Math.PI * 2);
       });
 
-      requestAnimationFrame(drawFallingSnacks);
+      this.fallingSnacksAnimationFrameID = requestAnimationFrame(
+        drawFallingSnacks
+      );
     };
 
-    requestAnimationFrame(drawFallingSnacks);
+    this.fallingSnacksAnimationFrameID = requestAnimationFrame(
+      drawFallingSnacks
+    );
     this.ctx.clearRect(
       0,
       0,
@@ -163,8 +173,12 @@ class SnackChat extends Component {
   averageBodyPosition;
   i = -1;
   update = async () => {
+    if (this.backClicked) {
+      return;
+    }
+
     if (!this.webcam.current.webcam.current || !this.net) {
-      requestAnimationFrame(this.update);
+      this.snackChatAnimationFrameID = requestAnimationFrame(this.update);
       return;
     }
 
@@ -187,7 +201,7 @@ class SnackChat extends Component {
     try {
       frame = await this.webcam.current.requestScreenshot();
     } catch (e) {
-      requestAnimationFrame(this.update);
+      this.snackChatAnimationFrameID = requestAnimationFrame(this.update);
       return;
     }
 
@@ -285,7 +299,7 @@ class SnackChat extends Component {
     // Re-draw face
     this.drawBackground(video);
 
-    requestAnimationFrame(this.update);
+    this.snackChatAnimationFrameID = requestAnimationFrame(this.update);
   };
 
   onConnect = () => {
@@ -296,12 +310,22 @@ class SnackChat extends Component {
     this.filter.src = this.props.storeList[this.props.actualItem].image;
     this.countdown();
     this.playGettingInPositionAnimation();
-    requestAnimationFrame(this.update);
+    this.snackChatAnimationFrameID = requestAnimationFrame(this.update);
   };
 
   onFail = () => {
     this.props.setSendWithPhoto(false);
     this.props.history.replace('/slackname');
+  };
+
+  onBack = () => {
+    this.backClicked = true;
+    clearInterval(this.timer);
+    this.props.history.replace(
+      this.props.actualItem === this.props.prediction.id
+        ? '/confirmitem'
+        : '/editsnack'
+    );
   };
 
   render() {
@@ -310,6 +334,7 @@ class SnackChat extends Component {
         <div id="fade-overlay" className="fade-hidden" />
         {!this.state.gettingInPosition ? (
           <header>
+            <BackButton handleClick={this.onBack} />
             <div className="snackchat--header-text snackchat--header-text-left">
               {this.state.counter >= PHOTO_ANIMATION_TIME && 'Taking photo in'}
             </div>
@@ -361,7 +386,8 @@ SnackChat.propTypes = {
   setSendWithPhoto: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
   storeList: PropTypes.object.isRequired,
-  actualItem: PropTypes.string.isRequired
+  actualItem: PropTypes.string.isRequired,
+  prediction: PropTypes.object.isRequired
 };
 
 export default SnackChat;
