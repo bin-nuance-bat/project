@@ -77,9 +77,6 @@ class SnackChat extends Component {
 
   componentDidMount() {
     posenet.load(0.5).then(net => (this.net = net));
-    this.ctx = this.canvas.current.getContext('2d');
-    this.filter = this.props.storeList[this.props.actualItem].image;
-    this.setTransformation();
   }
 
   componentWillUnmount() {
@@ -325,6 +322,9 @@ class SnackChat extends Component {
   };
 
   onConnect = () => {
+    this.ctx = this.canvas.current.getContext('2d');
+    this.filter = this.props.storeList[this.props.actualItem].image;
+    this.setTransformation();
     this.countdown();
     this.playGettingInPositionAnimation();
   };
@@ -450,7 +450,7 @@ class SnackChat extends Component {
 
   render() {
     const {shoulders} = this.state.averageBodyPosition;
-    if (this.state.calculatingBoundingBox) return <div>{this.filter}</div>;
+    // if(this.state.calculatingBoundingBox) return <div>{this.filter}</div>;
     return (
       <div className="page">
         <canvas
