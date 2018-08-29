@@ -57,17 +57,17 @@ class Home extends React.Component {
           <div>
             <button
               className="button btn-primary btn-block"
-              onClick={this.handleSnackChatClick}>
-              Send a SnackChat
+              onClick={this.handleReminderNoPhotoClick}>
+              Send a Reminder
               <img className="homepage--small-camera" src={Camera} alt="" />
             </button>
           </div>
           <div>
-            <button
+            {/* <button
               className="button btn-secondary btn-block"
               onClick={this.handleReminderNoPhotoClick}>
               Send a reminder without a photo
-            </button>
+            </button> */}
           </div>
         </div>
       </div>

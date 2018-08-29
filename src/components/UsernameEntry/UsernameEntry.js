@@ -28,6 +28,11 @@ class UsernameEntry extends React.Component {
   };
 
   sendReminder = () => {
+    if (this.props.dataController)
+      this.props.dataController.addImage(
+        this.props.capturedImg,
+        this.props.actualItem
+      );
     const user = this.state.selection.id;
     const storeList = this.props.storeList;
     const actualItemID = this.props.actualItem;
@@ -91,7 +96,9 @@ UsernameEntry.propTypes = {
   predictionID: PropTypes.string,
   storeList: PropTypes.objectOf(PropTypes.object).isRequired,
   sendWithPhoto: PropTypes.bool.isRequired,
-  snackChat: PropTypes.object
+  snackChat: PropTypes.object,
+  dataController: PropTypes.object.isRequired,
+  capturedImg: PropTypes.string.isRequired
 };
 
 export default UsernameEntry;

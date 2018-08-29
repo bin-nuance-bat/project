@@ -9,9 +9,8 @@ import './ConfirmationBox.css';
 class ConfirmationBox extends React.Component {
   handleYes = () => {
     const {setActualItem, sendWithPhoto, history} = this.props;
-    const {img, id} = this.props.prediction;
+    const {id} = this.props.prediction;
     setActualItem(id);
-    if (this.props.dataController) this.props.dataController.addImage(img, id);
     const nextPage = sendWithPhoto ? 'snackchat' : 'slackname';
     history.replace('/' + nextPage);
   };

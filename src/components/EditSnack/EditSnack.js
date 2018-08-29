@@ -32,12 +32,6 @@ class EditSnack extends Component {
 
   handleClick = () => {
     this.props.setActualItem(this.state.selection.id);
-    if (this.props.prediction) {
-      this.props.dataController.addImage(
-        this.props.prediction.img,
-        this.state.selection.id
-      );
-    }
     const nextPage = this.props.sendWithPhoto ? 'snackchat' : 'slackname';
     this.props.history.replace('/' + nextPage);
   };
