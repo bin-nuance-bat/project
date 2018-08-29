@@ -1,3 +1,32 @@
+// const getBBox = (svg) =>
+//   [...svg.querySelectorAll('*')]
+//     .map(element => element.getBBox())
+//     .map(({ x, y, width, height }) => ({
+//       left: x,
+//       top: y,
+//       bottom: y + height,
+//       right: x + width
+//     }))
+//     .reduce(
+//       (union, element) => ({
+//         left: Math.min(element.left, union.left),
+//         top: Math.min(element.top, union.top),
+//         right: Math.max(element.right, union.right),
+//         bottom: Math.max(element.right, union.right)
+//       })
+//     );
+
+// const bboxes = [...document.body.querySelectorAll('svg')]
+//   .map(getBBox)
+//   .map(bbox => {
+//     const width = bbox.right - bbox.left;
+//     const height = bbox.bottom - bbox.top;
+//     const aspectRatio = width / height;
+//     return { ...bbox, width, height, aspectRatio };
+//   });
+
+// console.log(bboxes)
+
 import React, {Component} from 'react';
 import WebcamCapture from '../WebcamCapture/WebcamCapture';
 import HandsSlot from './../../utils/assets/hands/HandsSlot.svg';
@@ -15,8 +44,8 @@ const FEED_SIZE = 768;
 const CAPTURE_SIZE = 200;
 const LOADING_ANIMATION_TIME = 3;
 const COUNTDOWN_TIME = 3;
-const PHOTO_ANIMATION_TIME = 2;
-const POSITION_BUFFER_SIZE = 5;
+const PHOTO_ANIMATION_TIME = 3;
+const POSITION_BUFFER_SIZE = 3;
 const FALLING_SNACK_SIZE = 0.2;
 const CANVAS_SCALE = 1.6;
 
@@ -38,6 +67,7 @@ class SnackChat extends Component {
   canvas = React.createRef();
 
   state = {
+    calculatingBoundingBox: true,
     gettingInPosition: true,
     itemPositions: [],
     averageBodyPosition: {},
@@ -47,6 +77,9 @@ class SnackChat extends Component {
 
   componentDidMount() {
     posenet.load(0.5).then(net => (this.net = net));
+    this.ctx = this.canvas.current.getContext('2d');
+    this.filter = this.props.storeList[this.props.actualItem].image;
+    this.setTransformation();
   }
 
   componentWillUnmount() {
@@ -189,7 +222,12 @@ class SnackChat extends Component {
   i = -1;
   redirected = false;
   update = async () => {
-    if (this.redirected || !this.webcam.current.webcam.current || !this.net) {
+    if (
+      !this ||
+      this.redirected ||
+      !this.webcam.current.webcam.current ||
+      !this.net
+    ) {
       requestAnimationFrame(this.update);
       return;
     }
@@ -287,9 +325,6 @@ class SnackChat extends Component {
   };
 
   onConnect = () => {
-    this.ctx = this.canvas.current.getContext('2d');
-    this.filter = this.props.storeList[this.props.actualItem].image;
-    this.setTransformation();
     this.countdown();
     this.playGettingInPositionAnimation();
   };
@@ -303,6 +338,7 @@ class SnackChat extends Component {
     this.backClicked = true;
     clearInterval(this.timer);
     this.props.history.replace(
+      this.props.prediction &&
       this.props.actualItem === this.props.prediction.id
         ? '/confirmitem'
         : '/editsnack'
@@ -351,10 +387,10 @@ class SnackChat extends Component {
   );
 
   generateEllipseCoords = () => {
-    const {shoulders} = this.state.averageBodyPosition;
+    const {shoulders, ears} = this.state.averageBodyPosition;
     const numberOfPoints = 40;
-    const centerX = shoulders.span * 2;
-    const centerY = shoulders.span;
+    const centerX = ears.rightX + ears.span / 2;
+    const centerY = ears.height;
     const horizontalScale = shoulders.span * 0.4;
     const verticalScale =
       shoulders.span * (this.transform[0] === 0 ? 0.25 : 0.5);
@@ -371,6 +407,9 @@ class SnackChat extends Component {
   };
 
   renderFilter = shoulders => {
+    const width = shoulders.span * 4; // want this to be shoulders.span * shoulders.span/widthOfBoundingBox
+    const height = shoulders.span * (this.transform[0] === 0 ? 2 : 4);
+
     return (
       <div>
         <img
@@ -386,8 +425,8 @@ class SnackChat extends Component {
               shoulders.rightY -
               shoulders.span *
                 (this.transform[0] === 0 || this.transform[0] > 1 ? 1 : 1.5),
-            height: shoulders.span * (this.transform[0] === 0 ? 2 : 4),
-            width: shoulders.span * 4,
+            height,
+            width,
             transform: `matrix(${this.transform.join(',')})`,
             clipPath: 'url(#face-clip)'
           }}
@@ -397,9 +436,8 @@ class SnackChat extends Component {
             <clipPath id="face-clip">
               <polygon
                 points={
-                  `${shoulders.span * 2} 0, ${shoulders.span *
-                    4} 0, ${shoulders.span * 4} ${shoulders.span *
-                    4}, 0 ${shoulders.span * 4}, 0 0, ${shoulders.span *
+                  `${width /
+                    2} 0, ${width} 0, ${width} ${height}, 0 ${height}, 0 0, ${width /
                     2} 0,` + this.generateEllipseCoords()
                 }
               />
@@ -412,6 +450,7 @@ class SnackChat extends Component {
 
   render() {
     const {shoulders} = this.state.averageBodyPosition;
+    if (this.state.calculatingBoundingBox) return <div>{this.filter}</div>;
     return (
       <div className="page">
         <canvas
@@ -454,7 +493,7 @@ SnackChat.propTypes = {
   history: PropTypes.object.isRequired,
   storeList: PropTypes.object.isRequired,
   actualItem: PropTypes.string.isRequired,
-  prediction: PropTypes.object.isRequired
+  prediction: PropTypes.object
 };
 
 export default SnackChat;
