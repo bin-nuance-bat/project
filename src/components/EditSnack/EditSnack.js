@@ -13,20 +13,7 @@ class EditSnack extends Component {
   };
 
   goBack = async () => {
-    let lastPage;
-    const haveCameraAccess =
-      (await navigator.permissions
-        .query({name: 'camera'})
-        .then(result => result.state)) === 'granted';
-
-    if (this.props.prediction) {
-      lastPage = 'confirmitem';
-    } else if (haveCameraAccess) {
-      lastPage = 'scanitem';
-    } else {
-      lastPage = 'disclaimer';
-    }
-
+    const lastPage = this.props.prediction ? 'confirmitem' : 'scanitem';
     this.props.history.replace(lastPage);
   };
 
@@ -50,7 +37,7 @@ class EditSnack extends Component {
     return (
       <div className="edit-snack--page">
         <header className="header">
-          <BackButton handleClick={this.goBack} />
+          <BackButton handleClick={this.goBack} className="massiveZIndex" />
           <div className="header-text">
             Sorry, I can’t recognise that snack
             <br />
