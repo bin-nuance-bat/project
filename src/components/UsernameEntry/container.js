@@ -8,7 +8,7 @@ const mapStateToProps = state => ({
   storeList: state.storeList,
   sendWithPhoto: state.sendWithPhoto,
   snackChat: state.snackChat,
-  prediction: state.prediction
+  predictionID: state.prediction ? state.prediction.id : null
 });
 
 export default connect(mapStateToProps)(UsernameEntry);
