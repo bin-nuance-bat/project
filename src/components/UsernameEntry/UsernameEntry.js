@@ -46,6 +46,7 @@ class UsernameEntry extends React.Component {
   };
 
   handleBack = () => {
+    console.log(this.props.predictionID);
     this.props.history.replace(
       this.props.sendWithPhoto
         ? '/snackchat'
@@ -88,9 +89,9 @@ UsernameEntry.propTypes = {
   users: PropTypes.arrayOf(PropTypes.object).isRequired,
   history: PropTypes.shape({replace: PropTypes.func.isRequired}).isRequired,
   actualItem: PropTypes.string.isRequired,
-  predictionID: PropTypes.string.isRequired,
   storeList: PropTypes.objectOf(PropTypes.object).isRequired,
   sendWithPhoto: PropTypes.bool.isRequired,
+  predictionID: PropTypes.string.isRequired,
   snackChat: PropTypes.object
 };
 
