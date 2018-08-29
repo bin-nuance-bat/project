@@ -9,8 +9,13 @@ import PropTypes from 'prop-types';
 
 class Home extends React.Component {
   componentDidMount() {
+    const hourHasPassed =
+      !this.props.latestUsersFetchTime ||
+      Date.now() - this.props.latestUsersFetchTime > 36e5;
+    if (hourHasPassed) {
+      this.props.loadUsers().catch(this.handleError);
+    }
     this.props.loadStoreList().catch(this.handleError);
-    this.props.loadUsers().catch(this.handleError);
   }
 
   handleSnackChatClick = () => {
@@ -74,7 +79,8 @@ Home.propTypes = {
   loadStoreList: PropTypes.func.isRequired,
   setSendWithPhoto: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
-  loadUsers: PropTypes.func.isRequired
+  loadUsers: PropTypes.func.isRequired,
+  latestUsersFetchTime: PropTypes.number
 };
 
 export default Home;

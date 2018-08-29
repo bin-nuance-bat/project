@@ -30,5 +30,7 @@ export const attemptLoadUsers = async () => {
 };
 
 export const loadUsers = () => async dispatch => {
-  return await attemptLoadUsers().then(users => dispatch(setUsers(users)));
+  return await attemptLoadUsers().then(users =>
+    dispatch(setUsers({time: Date.now(), data: users}))
+  );
 };
