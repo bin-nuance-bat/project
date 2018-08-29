@@ -13,31 +13,12 @@ class EditSnack extends Component {
   };
 
   goBack = async () => {
-    let lastPage;
-    const haveCameraAccess =
-      (await navigator.permissions
-        .query({name: 'camera'})
-        .then(result => result.state)) === 'granted';
-
-    if (this.props.prediction) {
-      lastPage = 'confirmitem';
-    } else if (haveCameraAccess) {
-      lastPage = 'scanitem';
-    } else {
-      lastPage = 'disclaimer';
-    }
-
+    const lastPage = this.props.prediction ? 'confirmitem' : 'scanitem';
     this.props.history.replace(lastPage);
   };
 
   handleClick = () => {
     this.props.setActualItem(this.state.selection.id);
-    if (this.props.prediction) {
-      this.props.dataController.addImage(
-        this.props.prediction.img,
-        this.state.selection.id
-      );
-    }
     const nextPage = this.props.sendWithPhoto ? 'snackchat' : 'slackname';
     this.props.history.replace('/' + nextPage);
   };
