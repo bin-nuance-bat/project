@@ -20,10 +20,7 @@ describe('<WebcamCapture />', () => {
   });
 
   it('Renders file input when fakeWebcam state is set', () => {
-
-    const wrapper = shallow(
-      <WebcamCapture imgSize={300} onFail={jest.fn()} />
-    );
+    const wrapper = shallow(<WebcamCapture imgSize={300} onFail={jest.fn()} />);
 
     wrapper.setState({
       isDetecting: false,
