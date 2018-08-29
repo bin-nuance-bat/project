@@ -7,8 +7,7 @@ const mapStateToProps = state => ({
   actualItem: state.actualItem,
   storeList: state.storeList,
   sendWithPhoto: state.sendWithPhoto,
-  snackChat: state.snackChat,
-  predictionID: state.prediction.id
+  snackChat: state.snackChat
 });
 
 export default connect(mapStateToProps)(UsernameEntry);

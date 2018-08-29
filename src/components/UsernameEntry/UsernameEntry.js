@@ -88,7 +88,6 @@ UsernameEntry.propTypes = {
   users: PropTypes.arrayOf(PropTypes.object).isRequired,
   history: PropTypes.shape({replace: PropTypes.func.isRequired}).isRequired,
   actualItem: PropTypes.string.isRequired,
-  predictionID: PropTypes.string.isRequired,
   storeList: PropTypes.objectOf(PropTypes.object).isRequired,
   sendWithPhoto: PropTypes.bool.isRequired,
   snackChat: PropTypes.object
