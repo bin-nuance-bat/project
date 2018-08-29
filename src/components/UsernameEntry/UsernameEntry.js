@@ -1,4 +1,4 @@
-import firebase, {database} from 'firebase/app';
+import firebase from 'firebase/app';
 import 'firebase/functions';
 import React from 'react';
 import PropTypes from 'prop-types';
