@@ -11,7 +11,7 @@ class Home extends React.Component {
   componentDidMount() {
     const hourHasPassed =
       !this.props.latestUsersFetchTime ||
-      Math.abs(Date.now() - this.props.latestUsersFetchTime) > 36e5;
+      Date.now() - this.props.latestUsersFetchTime > 36e5;
     if (hourHasPassed) {
       this.props.loadUsers().catch(this.handleError);
     }
