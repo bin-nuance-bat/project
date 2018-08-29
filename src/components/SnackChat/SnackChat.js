@@ -44,7 +44,7 @@ const FEED_SIZE = 768;
 const CAPTURE_SIZE = 200;
 const LOADING_ANIMATION_TIME = 3;
 const COUNTDOWN_TIME = 3;
-const PHOTO_ANIMATION_TIME = 3;
+const PHOTO_ANIMATION_TIME = 1.5;
 const POSITION_BUFFER_SIZE = 3;
 const FALLING_SNACK_SIZE = 0.2;
 const CANVAS_SCALE = 1.6;
@@ -179,24 +179,28 @@ class SnackChat extends Component {
     if (rotate) this.ctx.rotate(Math.PI / 2);
     const x = shoulders.rightX - (rotate ? sideLength / 3 : sideLength / 4);
     const y = shoulders.rightY - shoulders.span;
+    console.log('x', x);
+    console.log('y', y);
+    console.log('filter', filter);
+    console.log('sideLength', sideLength);
     this.ctx.drawImage(filter, x, y, sideLength, sideLength);
     this.ctx.restore();
 
-    this.ctx.save();
-    this.ctx.translate(
-      rotate ? (shoulders.rightX + shoulders.leftX) / 1.75 : x + sideLength / 2,
-      rotate ? (shoulders.rightY + shoulders.leftY) / 2 : y + sideLength / 4.75
-    );
-    this.clipEllipse(
-      this.ctx,
-      0,
-      0,
-      shoulders.span * (rotate ? 0.4 : 0.3),
-      shoulders.span * (rotate ? 0.25 : 0.4)
-    );
-    this.ctx.resetTransform();
+    // this.ctx.save();
+    // this.ctx.translate(
+    //   rotate ? (shoulders.rightX + shoulders.leftX) / 1.75 : x + sideLength / 2,
+    //   rotate ? (shoulders.rightY + shoulders.leftY) / 2 : y + sideLength / 4.75
+    // );
+    // this.clipEllipse(
+    //   this.ctx,
+    //   0,
+    //   0,
+    //   shoulders.span * (rotate ? 0.4 : 0.3),
+    //   shoulders.span * (rotate ? 0.25 : 0.4)
+    // );
+    // this.ctx.resetTransform();
 
-    this.drawBackground(video);
+    // this.drawBackground(video);
   };
 
   takeSnackchat = () => {
@@ -409,6 +413,10 @@ class SnackChat extends Component {
     const sideLength = shoulders.span * (rotate ? 3 : 2);
     const left = shoulders.rightX - (rotate ? sideLength / 3 : sideLength / 4);
     const top = shoulders.rightY - shoulders.span;
+    console.log('x', left);
+    console.log('y', top);
+    console.log('filter', this.filter);
+    console.log('sideLength', sideLength);
     return (
       <div>
         <img
