@@ -322,6 +322,7 @@ class SnackChat extends Component {
     this.backClicked = true;
     clearInterval(this.timer);
     this.props.history.replace(
+      this.props.prediction &&
       this.props.actualItem === this.props.prediction.id
         ? '/confirmitem'
         : '/editsnack'
@@ -387,7 +388,7 @@ SnackChat.propTypes = {
   history: PropTypes.object.isRequired,
   storeList: PropTypes.object.isRequired,
   actualItem: PropTypes.string.isRequired,
-  prediction: PropTypes.object.isRequired
+  prediction: PropTypes.object
 };
 
 export default SnackChat;

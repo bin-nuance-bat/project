@@ -49,7 +49,8 @@ class UsernameEntry extends React.Component {
     this.props.history.replace(
       this.props.sendWithPhoto
         ? '/snackchat'
-        : this.props.actualItem === this.props.predictionID
+        : this.props.prediction &&
+          this.props.actualItem === this.props.prediction.id
           ? '/confirmitem'
           : '/editsnack'
     );
@@ -88,7 +89,7 @@ UsernameEntry.propTypes = {
   users: PropTypes.arrayOf(PropTypes.object).isRequired,
   history: PropTypes.shape({replace: PropTypes.func.isRequired}).isRequired,
   actualItem: PropTypes.string.isRequired,
-  predictionID: PropTypes.string.isRequired,
+  prediction: PropTypes.object,
   storeList: PropTypes.objectOf(PropTypes.object).isRequired,
   sendWithPhoto: PropTypes.bool.isRequired,
   snackChat: PropTypes.object
