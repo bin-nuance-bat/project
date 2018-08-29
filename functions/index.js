@@ -50,7 +50,7 @@ const sendReminder = (user, item, imageUrl = null) => {
       channel: user,
       username: BOT_USERNAME,
       icon_url: BOT_AVATAR,
-      text: `Hey there, here is a SnackChat reminder for your ${item.name}!`,
+      text: `Hey there, click to purchase you ${item.name}!`,
       attachments: [
         {
           fallback: `Pay for snack: https://honesty.store/item/${item.id}`,
