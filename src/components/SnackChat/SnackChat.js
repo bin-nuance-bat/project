@@ -164,7 +164,6 @@ class SnackChat extends Component {
 
   generateSnackchat = () => {
     const {video} = this.webcam.current.webcam.current;
-    const scale = Math.abs(this.transform[0] || this.transform[1]);
 
     this.ctx.save();
     this.drawBackground(video);
@@ -173,29 +172,27 @@ class SnackChat extends Component {
     filter.src = this.filter;
 
     const {shoulders} = this.state.averageBodyPosition;
+    const rotate = this.transform[0] === 0;
+    const sideLength = shoulders.span * (rotate ? 3 : 2);
+
     this.ctx.save();
-    if (this.transform[0] === 0) this.ctx.rotate(Math.PI / 2);
-    const x =
-      shoulders.rightX -
-      shoulders.span * 1.5 +
-      shoulders.span * shoulders.angle;
-    const y =
-      shoulders.rightY -
-      shoulders.span *
-        (this.transform[0] === 0 || this.transform[0] > 1 ? 1 : 1.5);
-    const width = shoulders.span * 4;
-    const height = shoulders.span * (this.transform[0] === 0 ? 2 : 4);
-    this.ctx.drawImage(filter, x, y, width * scale, height * scale);
+    if (rotate) this.ctx.rotate(Math.PI / 2);
+    const x = shoulders.rightX - (rotate ? sideLength / 3 : sideLength / 4);
+    const y = shoulders.rightY - shoulders.span;
+    this.ctx.drawImage(filter, x, y, sideLength, sideLength);
     this.ctx.restore();
 
     this.ctx.save();
-    this.ctx.translate(shoulders.span * 2, shoulders.span);
+    this.ctx.translate(
+      rotate ? (shoulders.rightX + shoulders.leftX) / 1.75 : x + sideLength / 2,
+      rotate ? (shoulders.rightY + shoulders.leftY) / 2 : y + sideLength / 4.75
+    );
     this.clipEllipse(
       this.ctx,
       0,
       0,
-      shoulders.span * 0.4,
-      shoulders.span * (this.transform[0] === 0 ? 0.25 : 0.5)
+      shoulders.span * (rotate ? 0.4 : 0.3),
+      shoulders.span * (rotate ? 0.25 : 0.4)
     );
     this.ctx.resetTransform();
 
@@ -203,12 +200,12 @@ class SnackChat extends Component {
   };
 
   takeSnackchat = () => {
-    setTimeout(() => {
+    this.snackchatTimeout = setTimeout(() => {
       clearInterval(this.timer);
       document.getElementById('fade-overlay').className = 'fade-in';
       this.generateSnackchat();
       this.props.setSnackChat(this.canvas.current.toDataURL());
-      setTimeout(() => {
+      this.redirectTimeout = setTimeout(() => {
         this.redirected = true;
         this.props.history.replace('/slackname');
       }, 1000);
@@ -221,7 +218,7 @@ class SnackChat extends Component {
   update = async () => {
     if (
       !this ||
-      this.redirected ||
+      this.backClicked ||
       !this.webcam.current.webcam.current ||
       !this.net
     ) {
@@ -337,6 +334,8 @@ class SnackChat extends Component {
   onBack = () => {
     this.backClicked = true;
     clearInterval(this.timer);
+    clearTimeout(this.snackchatTimeout);
+    clearTimeout(this.redirectTimeout);
     this.props.history.replace(
       this.props.prediction &&
       this.props.actualItem === this.props.prediction.id
@@ -348,7 +347,7 @@ class SnackChat extends Component {
   renderHandsHeader = () => (
     <div>
       <div className="snackchat--header-text snackchat--header-text-left">
-        {this.state.counter >= PHOTO_ANIMATION_TIME && 'Taking photo in'}
+        {this.state.counter >= PHOTO_ANIMATION_TIME && `Taking photo in`}
       </div>
       <div className="snackchat--hands">
         <img className="snackchat--hands-slot" src={HandsSlot} alt="" />
@@ -367,33 +366,32 @@ class SnackChat extends Component {
   renderFallingItems = () => (
     <div>
       <div className="snackchat-overlay webcam-container" />
-      {this.state.itemPositions.map((item, index) => (
-        <div key={index}>
-          <img
-            src={this.filter}
-            alt=""
-            className="snackchat-falling-snack"
-            style={{
-              height: FEED_SIZE * FALLING_SNACK_SIZE,
-              width: FEED_SIZE * FALLING_SNACK_SIZE,
-              top: item.y + 120,
-              right: item.x - FEED_SIZE * 0.1,
-              transform: `rotate(${item.rotation}rad)`
-            }}
-          />
-        </div>
-      ))}
+      {this.state.itemPositions.map((item, index) => {
+        return (
+          <div key={index}>
+            <img
+              src={this.filter}
+              alt=""
+              className="snackchat-falling-snack"
+              style={{
+                height: FEED_SIZE * FALLING_SNACK_SIZE,
+                width: FEED_SIZE * FALLING_SNACK_SIZE,
+                top: item.y + 120,
+                right: item.x - FEED_SIZE * 0.1,
+                transform: `rotate(${item.rotation}rad)`
+              }}
+            />
+          </div>
+        );
+      })}
     </div>
   );
 
-  generateEllipseCoords = () => {
-    const {shoulders, ears} = this.state.averageBodyPosition;
+  generateEllipseCoords = (centerX, centerY, rotate) => {
+    const {shoulders} = this.state.averageBodyPosition;
     const numberOfPoints = 40;
-    const centerX = ears.rightX + ears.span / 2;
-    const centerY = ears.height;
-    const horizontalScale = shoulders.span * 0.4;
-    const verticalScale =
-      shoulders.span * (this.transform[0] === 0 ? 0.25 : 0.5);
+    const horizontalScale = shoulders.span * (rotate ? 0.4 : 0.3);
+    const verticalScale = shoulders.span * (rotate ? 0.25 : 0.4);
 
     return Array.from({length: numberOfPoints + 1})
       .map((_, index) => {
@@ -407,9 +405,10 @@ class SnackChat extends Component {
   };
 
   renderFilter = shoulders => {
-    const width = shoulders.span * 4; // want this to be shoulders.span * shoulders.span/widthOfBoundingBox
-    const height = shoulders.span * (this.transform[0] === 0 ? 2 : 4);
-
+    const rotate = this.transform[0] === 0;
+    const sideLength = shoulders.span * (rotate ? 3 : 2);
+    const left = shoulders.rightX - (rotate ? sideLength / 3 : sideLength / 4);
+    const top = shoulders.rightY - shoulders.span;
     return (
       <div>
         <img
@@ -417,17 +416,10 @@ class SnackChat extends Component {
           className="snackchat-filter"
           alt=""
           style={{
-            left:
-              shoulders.rightX -
-              shoulders.span * 1.5 +
-              shoulders.span * shoulders.angle,
-            top:
-              shoulders.rightY -
-              shoulders.span *
-                (this.transform[0] === 0 || this.transform[0] > 1 ? 1 : 1.5),
-            height,
-            width,
-            transform: `matrix(${this.transform.join(',')})`,
+            left,
+            top,
+            width: sideLength,
+            transform: `rotate(${rotate ? Math.PI / 2 : 0}rad)`,
             clipPath: 'url(#face-clip)'
           }}
         />
@@ -436,9 +428,18 @@ class SnackChat extends Component {
             <clipPath id="face-clip">
               <polygon
                 points={
-                  `${width /
-                    2} 0, ${width} 0, ${width} ${height}, 0 ${height}, 0 0, ${width /
-                    2} 0,` + this.generateEllipseCoords()
+                  `${sideLength /
+                    2} 0, ${sideLength} 0, ${sideLength} ${sideLength}, 0 ${sideLength}, 0 0, ${sideLength /
+                    2} 0,` +
+                  this.generateEllipseCoords(
+                    rotate
+                      ? (shoulders.rightX + shoulders.leftX) / 1.75
+                      : left + sideLength / 2,
+                    rotate
+                      ? (shoulders.rightY + shoulders.leftY) / 2
+                      : top + sideLength / 4.75,
+                    rotate
+                  )
                 }
               />
             </clipPath>
