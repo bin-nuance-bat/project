@@ -26,10 +26,8 @@ class ImageApproval extends Component {
 
   displayNextImage = () => {
     this.setState(prevState => {
-      return {
-        image: prevState.images.shift() || null,
-        images: prevState.images
-      };
+      const [image = null, ...images] = prevState.images;
+      return {image, images};
     });
     this.fetchImage();
   };
@@ -40,32 +38,35 @@ class ImageApproval extends Component {
         .getImages(false, 3, this.lastImageTimestamp())
         .then(images => {
           // Make sure we only include images not already in state
-          const ids = this.state.images.map(image => image.id);
           this.setState(prevState => {
-            prevState.images.push(
-              ...images.filter(image => !ids.includes(image.id))
-            );
-            if (prevState.images.length < IMAGE_QUEUE_SIZE) this.fetchImage();
-            return prevState;
+            const storedImageIds = prevState.images.map(image => image.id);
+            return {
+              images: prevState.images.concat(
+                images.filter(image => !storedImageIds.includes(image.id))
+              )
+            };
           });
         });
     }
   };
 
   trustImage = event => {
+    const imageId = event.target.parentElement.parentElement.dataset.id;
     this.displayNextImage();
-    this.dataController.trustImage(event.target.dataset.id);
+    this.dataController.trustImage(imageId);
   };
 
   setAsUnknown = event => {
     this.displayNextImage();
-    this.dataController.changeImageLabel(event.target.dataset.id, 'unknown');
-    this.dataController.trustImage(event.target.dataset.id);
+    const imageId = event.target.parentElement.parentElement.dataset.id;
+    this.dataController.changeImageLabel(imageId, 'unknown');
+    this.dataController.trustImage(imageId);
   };
 
   deleteImage = event => {
     this.displayNextImage();
-    this.dataController.deleteImage(event.target.dataset.id);
+    const imageId = event.target.parentElement.parentElement.dataset.id;
+    this.dataController.deleteImage(imageId);
   };
 
   changeCategory = (id, newCategory) => {
@@ -104,7 +105,7 @@ class ImageApproval extends Component {
           </button>
         </div>
         {image ? (
-          <div key={image.id} className="preview-pane">
+          <div key={image.id} data-id={image.id} className="preview-pane">
             <h2>
               {this.state.storeList[image.label] !== undefined &&
                 this.state.storeList[image.label].name}
@@ -124,23 +125,16 @@ class ImageApproval extends Component {
               }}
             />
             <div>
-              <button
-                className="button button-admin"
-                data-id={image.id}
-                data-label={image.label}
-                onClick={this.trustImage}>
+              <button className="button button-admin" onClick={this.trustImage}>
                 Trust
               </button>
               <button
                 className="button button-admin"
-                data-id={image.id}
                 onClick={this.setAsUnknown}>
                 Unknown
               </button>
               <button
                 className="button button-admin"
-                data-id={image.id}
-                data-label={image.label}
                 onClick={this.deleteImage}>
                 Delete
               </button>

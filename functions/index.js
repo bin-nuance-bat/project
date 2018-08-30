@@ -116,3 +116,12 @@ exports.loadSlackUsers = functions.https.onCall((data, context) => {
     return request.get(req);
   });
 });
+
+exports.changeImageLabel = functions.firestore
+  .document('training_data/{imageId}')
+  .onUpdate(change => {
+    const bucket = admin.storage().bucket();
+    const {id, oldLabel} = change.before.data();
+    const {newLabel} = change.after.data();
+    bucket.file(`${oldLabel}/${id}.jpg`).move(`${newLabel}/${id}.jpg`);
+  });
