@@ -121,9 +121,17 @@ exports.loadSlackUsers = functions.https.onCall((data, context) => {
 
 exports.changeImageLabel = functions.firestore
   .document('training_data/{imageId}')
-  .onUpdate(change => {
+  .onUpdate((change, context) => {
     const bucket = admin.storage().bucket();
-    const {id, oldLabel} = change.before.data();
-    const {newLabel} = change.after.data();
-    bucket.file(`${oldLabel}/${id}.jpg`).move(`${newLabel}/${id}.jpg`);
+    const oldLabel = change.before.data().label;
+    const newLabel = change.after.data().label;
+    if (oldLabel === newLabel) return null;
+    return new Promise(resolve =>
+      bucket
+        .file(`training_data/${oldLabel}/${context.params.imageId}.jpg`)
+        .move(
+          `training_data/${newLabel}/${context.params.imageId}.jpg`,
+          (err, dest, res) => resolve(res)
+        )
+    );
   });
