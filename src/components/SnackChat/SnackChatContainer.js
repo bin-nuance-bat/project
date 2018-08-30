@@ -5,7 +5,8 @@ import {setSendWithPhoto} from '../Home/actions';
 
 const mapStateToProps = state => ({
   storeList: state.storeList,
-  actualItem: state.actualItem
+  actualItem: state.actualItem,
+  predictionID: state.prediction ? state.prediction.id : null
 });
 
 const mapDispatchToProps = {

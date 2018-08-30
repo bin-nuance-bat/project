@@ -12,14 +12,13 @@ class EditSnack extends Component {
     selection: null
   };
 
+  goBack = async () => {
+    const lastPage = this.props.prediction ? 'confirmitem' : 'scanitem';
+    this.props.history.replace(lastPage);
+  };
+
   handleClick = () => {
     this.props.setActualItem(this.state.selection.id);
-    if (this.props.prediction.img) {
-      this.props.dataController.addImage(
-        this.props.prediction.img,
-        this.state.selection.id
-      );
-    }
     const nextPage = this.props.sendWithPhoto ? 'snackchat' : 'slackname';
     this.props.history.replace('/' + nextPage);
   };
@@ -38,7 +37,7 @@ class EditSnack extends Component {
     return (
       <div className="edit-snack--page">
         <header className="header">
-          <BackButton history={this.props.history} />
+          <BackButton handleClick={this.goBack} className="massiveZIndex" />
           <div className="header-text">
             Sorry, I can’t recognise that snack
             <br />
@@ -73,7 +72,7 @@ EditSnack.propTypes = {
     }).isRequired
   ).isRequired,
   suggestions: PropTypes.arrayOf(PropTypes.object).isRequired,
-  prediction: PropTypes.object.isRequired,
+  prediction: PropTypes.object,
   dataController: PropTypes.object.isRequired
 };
 

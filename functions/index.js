@@ -37,6 +37,8 @@ const authenticateUser = (auth, success) => {
 };
 
 const sendReminder = (user, item, imageUrl = null) => {
+  const price = item.price;
+  const priceText = price < 100 ? `${price}p` : `£${(price / 100).toFixed(2)}`;
   const req = {
     url: 'https://slack.com/api/chat.postMessage',
     auth: {bearer: functions.config().slack.token},
@@ -48,7 +50,7 @@ const sendReminder = (user, item, imageUrl = null) => {
       channel: user,
       username: BOT_USERNAME,
       icon_url: BOT_AVATAR,
-      text: `Hey there, here is a SnackChat reminder for your ${item.name}!`,
+      text: `Hey there, click to purchase your ${item.name}!`,
       attachments: [
         {
           fallback: `Pay for snack: https://honesty.store/item/${item.id}`,
@@ -56,7 +58,7 @@ const sendReminder = (user, item, imageUrl = null) => {
           actions: [
             {
               type: 'button',
-              text: `Pay for snack (${item.price}p)`,
+              text: `Pay for snack (${priceText})`,
               url: `https://honesty.store/item/${item.id}`
             }
           ]

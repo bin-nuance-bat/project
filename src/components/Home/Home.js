@@ -9,8 +9,13 @@ import PropTypes from 'prop-types';
 
 class Home extends React.Component {
   componentDidMount() {
-    this.props.loadStoreList();
-    this.props.loadUsers();
+    const hourHasPassed =
+      !this.props.latestUsersFetchTime ||
+      Date.now() - this.props.latestUsersFetchTime > 36e5;
+    if (hourHasPassed) {
+      this.props.loadUsers().catch(this.handleError);
+    }
+    this.props.loadStoreList().catch(this.handleError);
   }
 
   handleSnackChatClick = () => {
@@ -21,6 +26,10 @@ class Home extends React.Component {
   handleReminderNoPhotoClick = () => {
     this.props.setSendWithPhoto(false);
     this.props.history.replace('/disclaimer');
+  };
+
+  handleError = error => {
+    if (error.code !== 'unauthenticated') this.props.history.replace('/error');
   };
 
   render() {
@@ -48,17 +57,17 @@ class Home extends React.Component {
           <div>
             <button
               className="button btn-primary btn-block"
-              onClick={this.handleSnackChatClick}>
-              Send a SnackChat
+              onClick={this.handleReminderNoPhotoClick}>
+              Send a Reminder
               <img className="homepage--small-camera" src={Camera} alt="" />
             </button>
           </div>
           <div>
-            <button
+            {/* <button
               className="button btn-secondary btn-block"
               onClick={this.handleReminderNoPhotoClick}>
               Send a reminder without a photo
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
@@ -70,7 +79,8 @@ Home.propTypes = {
   loadStoreList: PropTypes.func.isRequired,
   setSendWithPhoto: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
-  loadUsers: PropTypes.func.isRequired
+  loadUsers: PropTypes.func.isRequired,
+  latestUsersFetchTime: PropTypes.number
 };
 
 export default Home;

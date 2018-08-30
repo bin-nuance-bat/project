@@ -1,19 +1,16 @@
 import {connect} from 'react-redux';
 import UsernameEntry from './UsernameEntry';
-import {sendSlackMessage} from './actions';
 import {getUsers} from './UsernameEntrySelectors';
 
-const mapStateToProps = state => {
-  return {
-    users: getUsers(state)
-  };
-};
+const mapStateToProps = state => ({
+  users: getUsers(state),
+  actualItem: state.actualItem,
+  storeList: state.storeList,
+  sendWithPhoto: state.sendWithPhoto,
+  snackChat: state.snackChat,
+  predictionID: state.prediction ? state.prediction.id : null,
+  capturedImg: state.prediction ? state.prediction.img : null,
+  dataController: state.dataController
+});
 
-const mapDispatchToProps = {
-  sendSlackMessage
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(UsernameEntry);
+export default connect(mapStateToProps)(UsernameEntry);

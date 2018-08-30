@@ -7,18 +7,11 @@ import BackButton from '../BackButton/BackButton';
 import Model from '../../utils/model';
 
 const TIMEOUT_IN_SECONDS = 10;
-const MIN_CONSECUTIVE_PREDICTIONS = 3;
-const PREDICTION_RATIO_THRESHOLD = 1.2;
+const ML_THRESHOLD = 0.8;
 const SHOW_RETRY_FOR = 5;
 
 class ItemRecognition extends Component {
-  constructor(props) {
-    super(props);
-
-    if (navigator.onLine) {
-      this.webcam = React.createRef();
-    }
-  }
+  webcam = React.createRef();
 
   state = {
     text: 'Scan item using the front facing camera',
@@ -65,30 +58,15 @@ class ItemRecognition extends Component {
   }
 
   isItemRecognised = items => {
-    this.predictionQueue.push(items.slice(0, MIN_CONSECUTIVE_PREDICTIONS));
-    if (this.predictionQueue.length < MIN_CONSECUTIVE_PREDICTIONS) {
-      return false;
-    }
-
-    const predictions = this.predictionQueue.slice(
-      -MIN_CONSECUTIVE_PREDICTIONS
-    );
-    const {id} = predictions[0][0];
-
-    const areAllBestPredictionsTheSame = predictions
-      .slice(1)
-      .every(([bestPrediction]) => bestPrediction.id === id);
-
-    const areAllBestPredictionsCertainEnough = predictions.every(
-      ([bestPrediction, secondBestPrediction]) =>
-        bestPrediction.value / secondBestPrediction.value >
-        PREDICTION_RATIO_THRESHOLD
-    );
-
-    return areAllBestPredictionsTheSame && areAllBestPredictionsCertainEnough;
+    return items[0].value > ML_THRESHOLD;
   };
 
   handleImg = img => {
+    if (this.backClicked) {
+      this.props.history.replace('/disclaimer');
+      return;
+    }
+
     if (this.success) return;
 
     this.model.predict(img).then(async items => {
@@ -131,6 +109,11 @@ class ItemRecognition extends Component {
         this.webcam.current.requestScreenshot().then(this.handleImg);
     });
   };
+
+  clickBack = () => {
+    this.backClicked = true;
+  };
+
   componentWillUnmount() {
     this.model.dispose();
   }
@@ -139,7 +122,7 @@ class ItemRecognition extends Component {
     return (
       <div className="page">
         <header className="header">
-          <BackButton history={this.props.history} />
+          <BackButton handleClick={this.clickBack} />
           <div>
             <div className="header-text">{this.state.text}</div>
             {this.state.subText && (
@@ -152,7 +135,7 @@ class ItemRecognition extends Component {
             className="item-recognition item-recognition--display"
             ref={this.webcam}
             onConnect={this.onConnect}
-            imgSize={224}
+            imgSize={160}
             onFail={this.onFail}
           />
         )}

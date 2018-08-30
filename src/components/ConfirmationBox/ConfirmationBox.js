@@ -9,9 +9,8 @@ import './ConfirmationBox.css';
 class ConfirmationBox extends React.Component {
   handleYes = () => {
     const {setActualItem, sendWithPhoto, history} = this.props;
-    const {img, id} = this.props.prediction;
+    const {id} = this.props.prediction;
     setActualItem(id);
-    if (this.props.dataController) this.props.dataController.addImage(img, id);
     const nextPage = sendWithPhoto ? 'snackchat' : 'slackname';
     history.replace('/' + nextPage);
   };
@@ -27,7 +26,9 @@ class ConfirmationBox extends React.Component {
         : null;
     return (
       <div className="page">
-        <BackButton history={this.props.history} />
+        <BackButton
+          handleClick={() => this.props.history.replace('/scanitem')}
+        />
         <div className="text-confirmation">{`Is this a ${
           this.props.storeList[this.props.prediction.id].name
         }?`}</div>
