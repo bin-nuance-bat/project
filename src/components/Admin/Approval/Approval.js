@@ -118,10 +118,9 @@ class ImageApproval extends Component {
               items={Object.values(this.state.storeList)}
               setItem={cat => {
                 this.changeCategory(image.id, cat);
-                this.setState(prevState => {
-                  prevState.image.label = cat;
-                  return prevState;
-                });
+                this.setState(prevState => ({
+                  image: {...prevState.image, label: cat}
+                }));
               }}
             />
             <div>

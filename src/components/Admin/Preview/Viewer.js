@@ -90,22 +90,19 @@ class Viewer extends Component {
   };
 
   remove = event => {
-    this.dataController
-      .deleteImage(event.target.dataset.id)
-      .then(() => this.getImages());
+    const imageId = event.target.parentElement.parentElement.dataset.id;
+    this.dataController.deleteImage(imageId).then(() => this.getImages());
   };
 
   trust = event => {
-    this.dataController
-      .trustImage(event.target.dataset.id)
-      .then(() => this.getImages());
+    const imageId = event.target.parentElement.parentElement.dataset.id;
+    this.dataController.trustImage(imageId).then(() => this.getImages());
   };
 
   trustUnknown = event => {
-    this.dataController.changeImageLabel(event.target.dataset.id, 'unknown');
-    this.dataController
-      .trustImage(event.target.dataset.id)
-      .then(() => this.getImages());
+    const imageId = event.target.parentElement.parentElement.dataset.id;
+    this.dataController.changeImageLabel(imageId, 'unknown');
+    this.dataController.trustImage(imageId).then(() => this.getImages());
   };
 
   back = () => {
