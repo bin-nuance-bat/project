@@ -37,7 +37,7 @@ class EditSnack extends Component {
     return (
       <div className="edit-snack--page">
         <header className="header">
-          <BackButton handleClick={this.goBack} />
+          <BackButton handleClick={this.goBack} className="massiveZIndex" />
           <div className="header-text">
             Sorry, I can’t recognise that snack
             <br />
