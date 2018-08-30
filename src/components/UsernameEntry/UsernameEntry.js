@@ -66,7 +66,9 @@ class UsernameEntry extends React.Component {
         <header className="header">
           {!this.state.sending && <BackButton handleClick={this.handleBack} />}
           <div className="header-text">
-            Please select your slack handle to send a reminder
+            {this.props.users.length === 0
+              ? 'Fetching users...'
+              : 'Please select your slack handle to send a reminder'}
           </div>
           {(this.state.selection || this.state.sending) && (
             <ConfirmationModal

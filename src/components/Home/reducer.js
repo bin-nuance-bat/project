@@ -5,7 +5,7 @@ export function sendWithPhoto(state = true, action) {
   return state;
 }
 
-export function users(state = [], action) {
+export function users(state = {time: null, data: []}, action) {
   if (action.type === SET_USERS) return action.users;
   return state;
 }
