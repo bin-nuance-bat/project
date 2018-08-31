@@ -1,9 +1,8 @@
 import {connect} from 'react-redux';
 import UsernameEntry from './UsernameEntry';
-import {getUsers} from './UsernameEntrySelectors';
 
 const mapStateToProps = state => ({
-  users: getUsers(state),
+  users: state.users.data,
   actualItem: state.actualItem,
   storeList: state.storeList,
   sendWithPhoto: state.sendWithPhoto,

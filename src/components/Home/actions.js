@@ -25,7 +25,12 @@ export const attemptLoadUsers = async () => {
   if (!data.ok) throw Error('Failed to fetch users');
   else {
     const users = data.members.filter(user => !user.is_bot);
-    return users;
+    const usersData = users.map(user => ({
+      name: user.name,
+      id: user.id,
+      image: user.profile['image_48']
+    }));
+    return usersData;
   }
 };
 
