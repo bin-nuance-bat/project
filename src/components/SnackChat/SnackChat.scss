@@ -40,6 +40,11 @@ $second-length: 1.5s;
   vertical-align: top;
 }
 
+.snackchat-stage {
+  position: relative;
+  bottom: 768px;
+}
+
 @-webkit-keyframes snackchat-hands-pop {
   from {
     -webkit-transform: translateY(5%) translateZ(1px);
