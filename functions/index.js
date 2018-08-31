@@ -37,7 +37,7 @@ const authenticateUser = (auth, success) => {
 };
 
 const sendReminder = (user, item, imageUrl = null) => {
-  const price = item.price;
+  const {price} = item;
   const priceText = price < 100 ? `${price}p` : `£${(price / 100).toFixed(2)}`;
   const req = {
     url: 'https://slack.com/api/chat.postMessage',

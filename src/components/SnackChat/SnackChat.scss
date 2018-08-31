@@ -3,14 +3,11 @@
 $second-length: 1.5s;
 
 .snackchat-body {
-  width: 100%;
-  padding-top: 100%;
   overflow: hidden;
-  position: relative;
+  bottom: 0px;
 }
 
 .snackchat-body canvas {
-  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -22,12 +19,15 @@ $second-length: 1.5s;
   font-size: 35px;
   display: inline-block;
   vertical-align: top;
-  position: absolute;
   &-left {
-    left: 2%;
+    left: 12%;
+    position: absolute;
+    width: 20%;
+    padding-top: 80px;
   }
   &-center {
     left: 40%;
+    padding-top: 0px;
   }
 }
 
@@ -57,8 +57,8 @@ $second-length: 1.5s;
     transform: translateY(5%) translateZ(1px);
   }
   to {
-    -webkit-transform: translateY(100%) translateZ(1px);
-    transform: translateY(100%) translateZ(1px);
+    -webkit-transform: translateY(102%) translateZ(1px);
+    transform: translateY(102%) translateZ(1px);
   }
 }
 
@@ -86,7 +86,7 @@ $second-length: 1.5s;
 
 .snackchat--hands {
   width: 240px;
-  height: 216px;
+  height: 220px;
   display: inline-block;
   text-align: center;
   position: relative;
@@ -146,6 +146,21 @@ $second-length: 1.5s;
     -webkit-animation-delay: 4 * $second-length;
     animation-delay: 4 * $second-length;
   }
+}
+
+.snackchat-overlay {
+  opacity: 0.6;
+  background-color: rgb(0.6, 0.6, 0.6);
+  position: absolute;
+  top: 256px;
+}
+
+.snackchat-falling-snack {
+  position: absolute;
+}
+
+.snackchat-filter {
+  position: absolute;
 }
 
 #fade-overlay {

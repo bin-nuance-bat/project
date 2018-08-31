@@ -54,7 +54,7 @@ class UsernameEntry extends React.Component {
     this.props.history.replace(
       this.props.sendWithPhoto
         ? '/snackchat'
-        : this.props.actualItem === this.props.predictionID
+        : this.props.actualItem === this.props.prediction.id
           ? '/confirmitem'
           : '/editsnack'
     );

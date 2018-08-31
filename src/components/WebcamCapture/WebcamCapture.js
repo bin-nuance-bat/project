@@ -129,7 +129,7 @@ class WebcamCapture extends Component {
             screenshotWidth={this.props.imgSize * (4 / 3)}
           />
         )}
-        <ViewFinder ref={this.viewFinder} />
+        {this.props.showViewFinder && <ViewFinder ref={this.viewFinder} />}
         {this.state.fakeWebcam && (
           <input
             id="fileUpload"
@@ -144,6 +144,7 @@ class WebcamCapture extends Component {
 }
 
 WebcamCapture.propTypes = {
+  showViewFinder: PropTypes.bool,
   imgSize: PropTypes.number.isRequired,
   onConnect: PropTypes.func,
   onFail: PropTypes.func.isRequired
