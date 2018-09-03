@@ -18,7 +18,6 @@
   }
 
   ol {
-    width: 95%;
     height: 100%;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
@@ -82,7 +81,7 @@
 .group-select {
   color: $blue;
   font-size: 19px;
-  margin: auto 0px;
+  margin: auto 20px;
   width: 5%;
   text-align: center;
   font-family: FaricyNew-Bold;
