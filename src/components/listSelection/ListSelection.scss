@@ -18,9 +18,9 @@
   }
 
   ol {
-    width: 95%;
     height: 100%;
     overflow-y: scroll;
+    width: 100%;
     -webkit-overflow-scrolling: touch;
 
     .list-group {
@@ -82,7 +82,7 @@
 .group-select {
   color: $blue;
   font-size: 19px;
-  margin: auto 0px;
+  margin: auto 20px;
   width: 5%;
   text-align: center;
   font-family: FaricyNew-Bold;
