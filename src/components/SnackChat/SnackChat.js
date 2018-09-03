@@ -13,11 +13,10 @@ const FEED_SIZE = 768;
 const CAPTURE_SIZE = 200;
 
 function calcAngles(bodyPart) {
-  bodyPart.width = bodyPart.leftX - bodyPart.rightX;
+  bodyPart.width = Math.abs(bodyPart.rightX - bodyPart.leftX);
   bodyPart.height = bodyPart.rightY - bodyPart.leftY;
   bodyPart.span = Math.sqrt(bodyPart.width ** 2 + bodyPart.height ** 2);
-  bodyPart.angle = Math.atan(bodyPart.width / bodyPart.height);
-  bodyPart.angle += ((bodyPart.height > 0 ? -1 : 1) * Math.PI) / 2 + Math.PI;
+  bodyPart.angle = Math.atan(bodyPart.height / bodyPart.width);
   return bodyPart;
 }
 
@@ -27,18 +26,31 @@ function normalise(n) {
 
 class SnackChat extends Component {
   state = {
-    loading: true,
-    rotation: 0
+    loading: true
   };
 
   webcamCap = React.createRef();
+  filter = React.createRef();
 
   componentDidMount() {
-    posenet.load(0.5).then(net => (this.net = net));
-    this.props.loadStoreList().then(() => {
-      this.setState({loading: false});
+    posenet.load(0.5).then(net => {
+      this.net = net;
+      this.setState({loading: false, countdown: 5});
+      this.ticker = setInterval(() => {
+        this.setState(prevState => {
+          if (prevState.countdown === 0) {
+            this.captureSnackChat();
+            clearInterval(this.ticker);
+            return null;
+          }
+          return {countdown: prevState.countdown - 1};
+        });
+      }, 1000);
     });
-    window.scaleFactor = 0.3;
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.ticker);
   }
 
   getPose = async () => {
@@ -49,16 +61,10 @@ class SnackChat extends Component {
     try {
       frame = await this.webcamCap.current.requestScreenshot();
     } catch (e) {
-      //console.error(e);
       return null;
     }
 
-    const pose = await this.net.estimateSinglePose(
-      frame,
-      window.scaleFactor,
-      true,
-      16
-    );
+    const pose = await this.net.estimateSinglePose(frame, 0.3, true, 16);
 
     const body = {
       ears: calcAngles({
@@ -78,41 +84,75 @@ class SnackChat extends Component {
     return body;
   };
 
+  onFail = () => {
+    this.props.setSendWithPhoto(false);
+    this.props.history.replace('/slackname');
+  };
+
+  onBack = () => {
+    this.backClicked = true;
+    clearInterval(this.timer);
+    this.props.history.replace(
+      this.props.actualItem === this.props.predictionID
+        ? '/confirmitem'
+        : '/editsnack'
+    );
+  };
+
+  captureSnackChat = async () => {
+    const canvas = document.createElement('canvas');
+    canvas.width = CAPTURE_SIZE;
+    canvas.height = CAPTURE_SIZE;
+    const ctx = canvas.getContext('2d');
+    const img = await this.webcamCap.current.requestScreenshot();
+    ctx.scale(-1, 1);
+    ctx.drawImage(img, 0, 0, -CAPTURE_SIZE, CAPTURE_SIZE);
+    ctx.scale(-1, 1);
+    const filter = this.filter.current.toImage();
+    filter.onload = () => {
+      ctx.drawImage(filter, 0, 0, CAPTURE_SIZE, CAPTURE_SIZE);
+      this.props.setSnackChat(canvas.toDataURL());
+      this.props.history.replace('/slackname');
+    };
+  };
+
   render() {
     return (
       <div className="page">
         <header className="header">
-          <BackButton handleClick={() => {}} />
-          <div className="header-text">SnackChat</div>
+          <BackButton handleClick={this.onBack} />
+          <div className="header-text">
+            Smile! Taking your SnackChat in...
+            <br />
+            {this.state.countdown}
+          </div>
         </header>
         <div>
           <WebcamCapture
             imgSize={CAPTURE_SIZE}
-            onFail={() => {}}
+            onFail={this.onFail}
             ref={this.webcamCap}
           />
-          {!this.state.loading && (
-            <Stage
-              width={FEED_SIZE}
-              height={FEED_SIZE}
-              options={{transparent: true}}
-              className="snackchat-stage">
-              <Provider>
-                {app => (
-                  <FilterView
-                    image={
-                      this.props.storeList[
-                        '606e12d4-6367-4fc3-aa7a-92ee17ccac2c'
-                      ].image
-                    }
-                    app={app}
-                    getPose={this.getPose}
-                    video={this.webcamCap.current.webcam.current.video}
-                  />
-                )}
-              </Provider>
-            </Stage>
-          )}
+          {!this.state.loading &&
+            this.webcamCap.current.webcam.current && (
+              <Stage
+                width={FEED_SIZE}
+                height={FEED_SIZE}
+                options={{transparent: true}}
+                className="snackchat-stage">
+                <Provider>
+                  {app => (
+                    <FilterView
+                      image={this.props.storeList[this.props.actualItem].image}
+                      app={app}
+                      getPose={this.getPose}
+                      video={this.webcamCap.current.webcam.current.video}
+                      ref={this.filter}
+                    />
+                  )}
+                </Provider>
+              </Stage>
+            )}
         </div>
       </div>
     );
@@ -124,7 +164,7 @@ SnackChat.propTypes = {
   setSendWithPhoto: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
   storeList: PropTypes.object.isRequired,
-  // actualItem: PropTypes.string.isRequired,
+  actualItem: PropTypes.string.isRequired,
   predictionID: PropTypes.string
 };
 

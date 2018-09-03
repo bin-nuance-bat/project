@@ -115,7 +115,7 @@ class App extends Component {
       <div>
         <Router>
           <Switch>
-            <Route exact path="/" component={SnackChat} />
+            <Route exact path="/" component={Home} />
             <Route exact path="/snackchat" component={SnackChat} />
             <Route exact path="/disclaimer" component={Disclaimer} />
             <Route exact path="/scanitem" component={ItemRecognition} />
