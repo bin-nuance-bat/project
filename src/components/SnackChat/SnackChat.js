@@ -103,6 +103,7 @@ class SnackChat extends Component {
   };
 
   setHorizontalFlag = bboxes => {
+    console.log(bboxes);
     if (bboxes[0].height < bboxes[0].width) {
       this.setState({horizontalItem: true});
     }

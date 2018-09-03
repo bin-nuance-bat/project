@@ -13,6 +13,7 @@ class GetBBox extends Component {
 
   getBBox = svg =>
     [...svg.querySelectorAll('*')]
+      .filter(element => Boolean(element.getBBox))
       .map(element => element.getBBox())
       .map(({x, y, width, height}) => ({
         left: x,
@@ -35,7 +36,7 @@ class GetBBox extends Component {
           const width = bbox.right - bbox.left;
           const height = bbox.bottom - bbox.top;
           const aspectRatio = width / height;
-          return {...bbox, width, height, aspectRatio};
+          return {width, height, aspectRatio};
         });
 
       this.props.callback(bboxes);
