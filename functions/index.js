@@ -133,12 +133,12 @@ exports.loadSlackShortListAndBlackList = functions.https.onCall(
   }
 );
 
-exports.addUserToShortList = functions.https.onCall((data, context) => {
+exports.addUserToShortList = functions.https.onCall((username, context) => {
   return authenticateUser(context.auth, () => {
     return admin
       .firestore()
       .collection('slack_users')
       .doc('short_and_black_list')
-      .update({[data]: 'SHORT_LIST'});
+      .update({[username]: 'SHORT_LIST'});
   });
 });
