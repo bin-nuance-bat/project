@@ -42,6 +42,13 @@ class UsernameEntry extends React.Component {
         this.props.capturedImg,
         this.props.actualItem
       );
+
+    if (this.state.showFullList) {
+      const addUserToShortList = firebase
+        .functions()
+        .httpsCallable('addUserToShortList');
+      addUserToShortList(this.state.selection.name);
+    }
     const user = this.state.selection.id;
     const storeList = this.props.storeList;
     const actualItemID = this.props.actualItem;
