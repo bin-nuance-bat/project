@@ -90,7 +90,7 @@ exports.sendSnackChat = functions.https.onCall((data, context) => {
   return authenticateUser(context.auth, () => {
     const tempFileName = '/tmp/snackchat.jpg';
     const fileName = `snackchat/${crypto.randomBytes(20).toString('hex')}.jpg`;
-    const bucket = admin.storage().bucket();
+    const bucket = admin.storage().bucket('gs://snackchat');
 
     fs.writeFileSync(tempFileName, toBuffer(data.snackChat));
     return bucket
