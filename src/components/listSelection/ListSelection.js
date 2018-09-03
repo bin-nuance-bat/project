@@ -5,10 +5,15 @@ import tick from './tick.svg';
 import PropTypes from 'prop-types';
 import Bubble from './Bubble';
 
+const startsWithLetter = str => {
+  return str.match(/^[a-z]/i);
+};
+
 class ListSelection extends Component {
   state = {
     prevLetter: null,
-    bubbleAt: null
+    bubbleAt: null,
+    formattedItems: []
   };
 
   componentDidMount() {
@@ -25,20 +30,15 @@ class ListSelection extends Component {
       this.selectElementHeight = selectElement[0].getBoundingClientRect().height;
   }
 
-  startsWithLetter = str => {
-    return str.match(/^[a-z]/i);
-  };
-
   preventDefault = e => {
     e.preventDefault();
   };
 
-  formattedItems = (() => {
+  static getDerivedStateFromProps = props => {
     const items = Object.entries(
       _.groupBy(
-        _.sortBy(this.props.items, 'name'),
-        item =>
-          this.startsWithLetter(item.name) ? item.name[0].toUpperCase() : '#'
+        _.sortBy(props.items, 'name'),
+        item => (startsWithLetter(item.name) ? item.name[0].toUpperCase() : '#')
       )
     );
     if (items.length > 0) {
@@ -50,33 +50,33 @@ class ListSelection extends Component {
           items.splice(j, 0, [expectedCharacter, []]);
       }
     }
-    if (this.props.suggestions && this.props.suggestions !== [])
-      items.unshift(['\u00A0', this.props.suggestions]);
-    return items;
-  })();
+    if (props.additionalOptions && props.additionalOptions !== [])
+      items.unshift(['\u00A0', props.additionalOptions.options]);
+    return {formattedItems: items};
+  };
 
   handleOnTouchStart = index => {
     // If we have suggestions in the list, increment the index to skip them
-    if (this.formattedItems[0][0] === '\u00A0') index++;
+    if (this.state.formattedItems[0][0] === '\u00A0') index++;
 
     let i = index;
 
     while (
-      i < this.formattedItems.length &&
-      this.formattedItems[i][1].length === 0
+      i < this.state.formattedItems.length &&
+      this.state.formattedItems[i][1].length === 0
     ) {
       ++i;
     }
 
-    if (i === this.formattedItems.length) {
+    if (i === this.state.formattedItems.length) {
       i = index;
-      while (i > 0 && this.formattedItems[i][1].length === 0) {
+      while (i > 0 && this.state.formattedItems[i][1].length === 0) {
         --i;
       }
     }
 
-    const goToGroup = this.formattedItems[i][0];
-    const touchedLetter = this.formattedItems[index][0];
+    const goToGroup = this.state.formattedItems[i][0];
+    const touchedLetter = this.state.formattedItems[index][0];
     window.location.hash = '#' + goToGroup;
     this.setState({bubbleAt: touchedLetter});
   };
@@ -89,14 +89,14 @@ class ListSelection extends Component {
     );
 
     // If we have suggestions in the list, increment the index to skip them
-    if (this.formattedItems[0][0] === '\u00A0') index++;
+    if (this.state.formattedItems[0][0] === '\u00A0') index++;
 
     if (index < 0 || Object.is(index, -0)) index = 0;
-    if (index >= this.formattedItems.length)
-      index = this.formattedItems.length - 1;
+    if (index >= this.state.formattedItems.length)
+      index = this.state.formattedItems.length - 1;
 
-    let letter = this.formattedItems[index][0];
-    if (letter === '\u00A0') letter = this.formattedItems[1][0];
+    let letter = this.state.formattedItems[index][0];
+    if (letter === '\u00A0') letter = this.state.formattedItems[1][0];
 
     if (letter !== this.state.bubbleAt) {
       this.setState(prevState => ({
@@ -123,12 +123,14 @@ class ListSelection extends Component {
       <div className="list-container">
         <ol>
           {this.props.items.length > 0 &&
-            this.formattedItems.map(
+            this.state.formattedItems.map(
               ([group, groupItems]) =>
                 groupItems.length > 0 ? (
                   <li key={group} id={group} className="list-group">
                     <h2>
-                      {group !== '\u00A0' ? group.toUpperCase() : 'Suggestions'}
+                      {group !== '\u00A0'
+                        ? group.toUpperCase()
+                        : this.props.additionalOptions.heading}
                     </h2>
                     <hr />
                     <ul>
@@ -171,7 +173,7 @@ class ListSelection extends Component {
         </ol>
 
         <div className="group-select" id="scroll-select">
-          {this.formattedItems
+          {this.state.formattedItems
             .filter(([group]) => group !== '\u00A0')
             .map(([group], index) => (
               <div

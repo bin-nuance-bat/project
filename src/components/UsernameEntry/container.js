@@ -9,7 +9,10 @@ const mapStateToProps = state => ({
   snackChat: state.snackChat,
   predictionID: state.prediction ? state.prediction.id : null,
   capturedImg: state.prediction ? state.prediction.img : null,
-  dataController: state.dataController
+  dataController: state.dataController,
+  shortList: state.users.data.filter(
+    user => ({U03JBRHBZ: true}[user.id] === true)
+  )
 });
 
 export default connect(mapStateToProps)(UsernameEntry);
