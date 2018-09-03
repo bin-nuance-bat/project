@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import WebcamCapture from '../WebcamCapture/WebcamCapture';
-import HandsSlot from './../..//assets/hands/HandsSlot.svg';
-import HandsRight from './../..//assets/hands/HandsRight.svg';
-import HandsCenter from './../..//assets/hands/HandsCenter.svg';
-import HandsLeft from './../../assets/hands/HandsLeft.svg';
-import HandsCamera from './../../assets/hands/HandsCamera.svg';
+import HandsSlot from '../../assets/hands/HandsSlot.svg';
+import HandsRight from '../../assets/hands/HandsRight.svg';
+import HandsCenter from '../../assets/hands/HandsCenter.svg';
+import HandsLeft from '../../assets/hands/HandsLeft.svg';
+import HandsCamera from '../../assets/hands/HandsCamera.svg';
 import PropTypes from 'prop-types';
 import * as posenet from '@tensorflow-models/posenet';
 import './SnackChat.css';

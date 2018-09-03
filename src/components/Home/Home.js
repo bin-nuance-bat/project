@@ -1,9 +1,9 @@
 import React from 'react';
 import './Home.css';
-import HomeHandsSlot from './../../assets/hands/HandsSlot.svg';
-import HomeHandsRight from './../../assets/hands/HandsRight.svg';
-import HomeHandsCenter from './../../assets/hands/HandsCenter.svg';
-import HomeHandsLeft from './../../assets/hands/HandsLeft.svg';
+import HomeHandsSlot from '../../assets/hands/HandsSlot.svg';
+import HomeHandsRight from '../../assets/hands/HandsRight.svg';
+import HomeHandsCenter from '../../assets/hands/HandsCenter.svg';
+import HomeHandsLeft from '../../assets/hands/HandsLeft.svg';
 import Camera from './assets/Camera.svg';
 import PropTypes from 'prop-types';
 
