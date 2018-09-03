@@ -118,7 +118,7 @@ exports.loadSlackUsers = functions.https.onCall((data, context) => {
     return request.get(req);
   });
 });
-// need a better name
+
 exports.loadSlackShortListAndBlackList = functions.https.onCall(
   (data, context) => {
     return authenticateUser(context.auth, () => {

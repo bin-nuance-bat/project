@@ -16,7 +16,6 @@ class Home extends React.Component {
       this.props.loadUsers().catch(this.handleError);
     }
     this.props.loadStoreList().catch(this.handleError);
-    // how do we want this to behave on fail
     this.props.loadSlackUserReference();
   }
 
@@ -82,7 +81,8 @@ Home.propTypes = {
   setSendWithPhoto: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
   loadUsers: PropTypes.func.isRequired,
-  latestUsersFetchTime: PropTypes.number
+  latestUsersFetchTime: PropTypes.number,
+  loadSlackUserReference: PropTypes.func.isRequired
 };
 
 export default Home;

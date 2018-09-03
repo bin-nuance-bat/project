@@ -204,6 +204,10 @@ ListSelection.propTypes = {
       id: PropTypes.string.isRequired
     }).isRequired
   ).isRequired,
+  additionalOptions: PropTypes.shape({
+    heading: PropTypes.string.isRequired,
+    options: PropTypes.array.isRequired
+  }),
   suggestions: PropTypes.arrayOf(PropTypes.object),
   selected: PropTypes.string
 };
