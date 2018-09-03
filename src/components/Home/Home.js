@@ -16,6 +16,8 @@ class Home extends React.Component {
       this.props.loadUsers().catch(this.handleError);
     }
     this.props.loadStoreList().catch(this.handleError);
+    // how do we want this to behave on fail
+    this.props.loadSlackUserReference();
   }
 
   handleSnackChatClick = () => {
