@@ -7,9 +7,19 @@ const PIVOT = new PIXI.Point(50, 50);
 const POSE_BUFFER_LEN = 3;
 
 class FilterView extends Component {
+  getBlankPose = () => ({
+    filterSize: this.props.app.screen.width / 2,
+    filterX: this.props.app.screen.width / 2,
+    filterY: this.props.app.screen.height / 2,
+    rotation: 0,
+    faceX: this.props.app.screen.width / 2,
+    faceY: this.props.app.screen.height / 2,
+    faceSpan: 0
+  });
+
   state = {
     mask: null,
-    ...getBlankPose()
+    ...this.getBlankPose()
   };
 
   filter = new PIXI.Texture.fromImage(this.props.image);
@@ -67,7 +77,7 @@ class FilterView extends Component {
     this.poseBuffer[this.poseBufferIndex++] = newPose;
     this.poseBufferIndex %= POSE_BUFFER_LEN;
 
-    const avgPose = getBlankPose();
+    const avgPose = this.getBlankPose();
     for (const key of Object.keys(newPose)) {
       for (let i = 0; i < POSE_BUFFER_LEN; i++) {
         avgPose[key] *= i;
@@ -173,18 +183,6 @@ class FilterView extends Component {
       </Container>
     );
   }
-}
-
-function getBlankPose() {
-  return {
-    filterSize: 0,
-    filterX: 0,
-    filterY: 0,
-    rotation: 0,
-    faceX: 0,
-    faceY: 0,
-    faceSpan: 0
-  };
 }
 
 FilterView.propTypes = {

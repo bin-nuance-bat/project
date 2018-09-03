@@ -5,6 +5,7 @@ import {Stage, Provider} from '@inlet/react-pixi';
 import FilterView from './FilterView';
 import WebcamCapture from '../WebcamCapture/WebcamCapture';
 import BackButton from '../BackButton/BackButton';
+import GetBBox from '../GetBBox/GetBBox';
 
 import * as posenet from '@tensorflow-models/posenet';
 import './SnackChat.css';
@@ -12,21 +13,14 @@ import './SnackChat.css';
 const FEED_SIZE = 768;
 const CAPTURE_SIZE = 200;
 
-function calcAngles(bodyPart) {
-  bodyPart.width = Math.abs(bodyPart.rightX - bodyPart.leftX);
-  bodyPart.height = bodyPart.rightY - bodyPart.leftY;
-  bodyPart.span = Math.sqrt(bodyPart.width ** 2 + bodyPart.height ** 2);
-  bodyPart.angle = Math.atan(bodyPart.height / bodyPart.width);
-  return bodyPart;
-}
-
 function normalise(n) {
   return (n *= FEED_SIZE / CAPTURE_SIZE);
 }
 
 class SnackChat extends Component {
   state = {
-    loading: true
+    loading: true,
+    horizontalItem: false
   };
 
   webcamCap = React.createRef();
@@ -67,13 +61,13 @@ class SnackChat extends Component {
     const pose = await this.net.estimateSinglePose(frame, 0.3, true, 16);
 
     const body = {
-      ears: calcAngles({
+      ears: this.calcAngles({
         leftX: normalise(pose.keypoints[4].position.x),
         leftY: normalise(pose.keypoints[4].position.y),
         rightX: normalise(pose.keypoints[3].position.x),
         rightY: normalise(pose.keypoints[3].position.y)
       }),
-      shoulders: calcAngles({
+      shoulders: this.calcAngles({
         leftX: normalise(pose.keypoints[6].position.x),
         leftY: normalise(pose.keypoints[6].position.y),
         rightX: normalise(pose.keypoints[5].position.x),
@@ -82,6 +76,15 @@ class SnackChat extends Component {
     };
 
     return body;
+  };
+
+  calcAngles = bodyPart => {
+    bodyPart.width = Math.abs(bodyPart.rightX - bodyPart.leftX);
+    bodyPart.height = bodyPart.rightY - bodyPart.leftY;
+    bodyPart.span = Math.sqrt(bodyPart.width ** 2 + bodyPart.height ** 2);
+    bodyPart.angle = Math.atan(bodyPart.height / bodyPart.width);
+    bodyPart.angle += this.state.horizontalItem ? Math.PI / 2 : 0;
+    return bodyPart;
   };
 
   onFail = () => {
@@ -97,6 +100,12 @@ class SnackChat extends Component {
         ? '/confirmitem'
         : '/editsnack'
     );
+  };
+
+  setHorizontalFlag = bboxes => {
+    if (bboxes[0].height < bboxes[0].width) {
+      this.setState({horizontalItem: true});
+    }
   };
 
   captureSnackChat = async () => {
@@ -154,6 +163,10 @@ class SnackChat extends Component {
               </Stage>
             )}
         </div>
+        <GetBBox
+          svg={this.props.storeList[this.props.actualItem].image}
+          callback={this.setHorizontalFlag}
+        />
       </div>
     );
   }
