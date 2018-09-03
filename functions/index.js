@@ -118,3 +118,17 @@ exports.loadSlackUsers = functions.https.onCall((data, context) => {
     return request.get(req);
   });
 });
+// need a better name
+exports.loadSlackShortListAndBlackList = functions.https.onCall(
+  (data, context) => {
+    return authenticateUser(context.auth, () => {
+      const list = admin
+        .firestore()
+        .collection('slack_users')
+        .doc('short_and_black_list')
+        .get()
+        .then(doc => doc.data());
+      return list;
+    });
+  }
+);
