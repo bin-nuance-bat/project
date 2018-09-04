@@ -12,7 +12,16 @@ import './UsernameEntry.css';
 class UsernameEntry extends React.Component {
   state = {
     selection: null,
-    sending: false
+    sending: false,
+    showFullList: false
+  };
+
+  handleClick = selection => {
+    if (selection.id === 'GET_FULL_LIST') {
+      this.setState({showFullList: true});
+    } else {
+      this.promptToConfirm(selection);
+    }
   };
 
   promptToConfirm = selection => {
@@ -33,6 +42,14 @@ class UsernameEntry extends React.Component {
         this.props.capturedImg,
         this.props.actualItem
       );
+
+    if (this.state.showFullList) {
+      const addUserToList = firebase
+        .functions()
+        .httpsCallable('addUserToShortList');
+      addUserToList(this.state.selection.name);
+    }
+
     const user = this.state.selection.id;
     const storeList = this.props.storeList;
     const actualItemID = this.props.actualItem;
@@ -61,6 +78,16 @@ class UsernameEntry extends React.Component {
   };
 
   render() {
+    const add_user_option = {
+      heading: 'Not here?',
+      options: [
+        {
+          name: 'Add user',
+          id: 'GET_FULL_LIST',
+          image: 'assets/Plus.svg'
+        }
+      ]
+    };
     return (
       <div className="username-entry--page" onTouchMove={this.deselect}>
         <header className="header">
@@ -74,9 +101,16 @@ class UsernameEntry extends React.Component {
         <div>
           {this.props.users.length !== 0 && (
             <ListSelection
-              items={this.props.users}
-              onClick={this.promptToConfirm}
+              items={
+                this.state.showFullList
+                  ? this.props.users
+                  : this.props.shortList
+              }
+              onClick={this.handleClick}
               selected={this.state.selection ? this.state.selection.name : null}
+              additionalOptions={
+                this.state.showFullList ? undefined : add_user_option
+              }
             />
           )}
         </div>
@@ -93,6 +127,7 @@ class UsernameEntry extends React.Component {
 
 UsernameEntry.propTypes = {
   users: PropTypes.arrayOf(PropTypes.object).isRequired,
+  shortList: PropTypes.arrayOf(PropTypes.object).isRequired,
   history: PropTypes.shape({replace: PropTypes.func.isRequired}).isRequired,
   actualItem: PropTypes.string.isRequired,
   predictionID: PropTypes.string,
