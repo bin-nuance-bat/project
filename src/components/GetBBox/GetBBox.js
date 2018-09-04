@@ -25,7 +25,7 @@ class GetBBox extends Component {
         left: Math.min(element.left, union.left),
         top: Math.min(element.top, union.top),
         right: Math.max(element.right, union.right),
-        bottom: Math.max(element.right, union.right)
+        bottom: Math.max(element.bottom, union.bottom)
       }));
 
   componentDidUpdate() {

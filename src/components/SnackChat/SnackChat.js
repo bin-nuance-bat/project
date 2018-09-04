@@ -58,7 +58,7 @@ class SnackChat extends Component {
       return null;
     }
 
-    const pose = await this.net.estimateSinglePose(frame, 0.3, true, 16);
+    const pose = await this.net.estimateSinglePose(frame, 0.75, true, 16);
 
     const body = {
       ears: this.calcAngles({
@@ -109,20 +109,27 @@ class SnackChat extends Component {
   };
 
   captureSnackChat = async () => {
+    const [img, filter] = await Promise.all([
+      this.webcamCap.current.requestScreenshot(),
+      this.filter.current.toImage()
+    ]);
+
     const canvas = document.createElement('canvas');
     canvas.width = CAPTURE_SIZE;
     canvas.height = CAPTURE_SIZE;
     const ctx = canvas.getContext('2d');
-    const img = await this.webcamCap.current.requestScreenshot();
+
     ctx.scale(-1, 1);
     ctx.drawImage(img, 0, 0, -CAPTURE_SIZE, CAPTURE_SIZE);
     ctx.scale(-1, 1);
-    const filter = this.filter.current.toImage();
+
     filter.onload = () => {
       ctx.drawImage(filter, 0, 0, CAPTURE_SIZE, CAPTURE_SIZE);
       this.props.setSnackChat(canvas.toDataURL());
       this.props.history.replace('/slackname');
     };
+
+    if (filter.complete) filter.onload();
   };
 
   render() {
@@ -131,9 +138,10 @@ class SnackChat extends Component {
         <header className="header">
           <BackButton handleClick={this.onBack} />
           <div className="header-text">
-            Smile! Taking your SnackChat in...
+            You're on SnackChat!
             <br />
-            {this.state.countdown}
+            Get into position in {this.state.countdown}
+            ...
           </div>
         </header>
         <div>
@@ -148,7 +156,10 @@ class SnackChat extends Component {
                 width={FEED_SIZE}
                 height={FEED_SIZE}
                 options={{transparent: true}}
-                className="snackchat-stage">
+                className="snackchat-stage"
+                style={{
+                  visibility: FilterView.LIVE_PREVIEW ? 'visible' : 'hidden'
+                }}>
                 <Provider>
                   {app => (
                     <FilterView

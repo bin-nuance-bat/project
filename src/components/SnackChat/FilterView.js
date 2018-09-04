@@ -6,6 +6,9 @@ import * as PIXI from 'pixi.js';
 const PIVOT = new PIXI.Point(50, 50);
 const POSE_BUFFER_LEN = 3;
 
+const FACE_SIZE_MULTIPLIER = 1;
+const SNACK_SIZE_MULTIPLIER = 1;
+
 class FilterView extends Component {
   getBlankPose = () => ({
     filterSize: this.props.app.screen.width / 2,
@@ -19,8 +22,11 @@ class FilterView extends Component {
 
   state = {
     mask: null,
+    capture: false,
     ...this.getBlankPose()
   };
+
+  static LIVE_PREVIEW = false;
 
   filter = new PIXI.Texture.fromImage(this.props.image);
   graphics = new PIXI.Graphics();
@@ -30,15 +36,7 @@ class FilterView extends Component {
   componentDidMount() {
     this._isMounted = true;
     for (let i = 0; i < POSE_BUFFER_LEN; i++) {
-      this.poseBuffer.push({
-        filterSize: 0,
-        filterX: 0,
-        filterY: 0,
-        faceSpan: 0,
-        faceX: 0,
-        faceY: 0,
-        rotation: 0
-      });
+      this.poseBuffer.push(this.getBlankPose());
     }
     this.updatePose();
   }
@@ -48,7 +46,7 @@ class FilterView extends Component {
   }
 
   getAveragePose = pose => {
-    const filterSize = pose.shoulders.span * 3;
+    const filterSize = pose.shoulders.span * 2.5 * SNACK_SIZE_MULTIPLIER;
 
     const filterX =
       pose.shoulders.leftX +
@@ -61,7 +59,7 @@ class FilterView extends Component {
       pose.ears.leftX + Math.abs((pose.ears.leftX - pose.ears.rightX) / 2);
     const faceY =
       pose.ears.leftY + Math.abs((pose.ears.leftY - pose.ears.rightY) / 2);
-    const faceSpan = pose.ears.span * 0.5;
+    const faceSpan = pose.ears.span * 0.5 * FACE_SIZE_MULTIPLIER;
 
     const rotation = pose.shoulders.angle;
 
@@ -90,7 +88,7 @@ class FilterView extends Component {
   };
 
   updatePose = () => {
-    this.props.getPose().then(pose => {
+    return this.props.getPose().then(pose => {
       if (!pose) return requestAnimationFrame(this.updatePose);
       if (!this._isMounted) return;
 
@@ -163,23 +161,29 @@ class FilterView extends Component {
   };
 
   toImage = () => {
-    return this.props.app.renderer.extract.image(this.props.app.stage);
+    return new Promise(resolve => {
+      this.setState({capture: true}, () => {
+        resolve(this.props.app.renderer.extract.image(this.props.app.stage));
+      });
+    });
   };
 
   render() {
     const {filterSize, filterX, filterY, rotation, mask} = this.state;
     return (
       <Container>
-        <Sprite
-          texture={this.filter}
-          x={filterX}
-          y={filterY}
-          width={filterSize}
-          height={filterSize}
-          rotation={rotation}
-          pivot={PIVOT}
-          mask={mask}
-        />
+        {(this.LIVE_PREVIEW || this.state.capture) && (
+          <Sprite
+            texture={this.filter}
+            x={filterX}
+            y={filterY}
+            width={filterSize}
+            height={filterSize}
+            rotation={rotation}
+            pivot={PIVOT}
+            mask={mask}
+          />
+        )}
       </Container>
     );
   }
