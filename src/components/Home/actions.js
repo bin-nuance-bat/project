@@ -3,8 +3,7 @@ import {
   SET_SEND_WITH_PHOTO,
   SET_USERS,
   SET_USER_REFERENCE,
-  SET_STORELIST,
-  SET_LOAD_STORE_LIST_ERROR
+  SET_STORELIST
 } from './actionTypes';
 import initFirebase from '../../utils/firebase';
 import firebase from 'firebase/app';
@@ -35,13 +34,6 @@ export function setStoreList(storeList) {
   return {
     type: SET_STORELIST,
     storeList
-  };
-}
-
-export function setLoadStoreListError(loadStoreListError) {
-  return {
-    type: SET_LOAD_STORE_LIST_ERROR,
-    loadStoreListError
   };
 }
 
