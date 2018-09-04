@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140" width="100" height="100">
   <polygon points="106 129 98 139 42 139 34 129 34 18 42 5 42 4 98 4 98 5 106 18 106 129" fill="#e0e0e0" />
   <polygon points="42 5 42 4 70 4 70 139 42 139 34 129 34 18 42 5" fill="#ececec" />
   <polygon points="42 5 42 4 70 4 70 139 42 139 34 129 34 18 42 5" fill="#ececec" />
