@@ -119,6 +119,7 @@ exports.loadSlackUsers = functions.https.onCall((data, context) => {
   });
 });
 
+
 exports.changeImageLabel = functions.firestore
   .document('training_data/{imageId}')
   .onUpdate((change, context) => {
@@ -135,3 +136,27 @@ exports.changeImageLabel = functions.firestore
         )
     );
   });
+
+exports.loadSlackShortListAndBlackList = functions.https.onCall(
+  (data, context) => {
+    return authenticateUser(context.auth, () => {
+      const list = admin
+        .firestore()
+        .collection('slack_users')
+        .doc('short_and_black_list')
+        .get()
+        .then(doc => doc.data());
+      return list;
+    });
+  }
+);
+
+exports.addUserToShortList = functions.https.onCall((username, context) => {
+  return authenticateUser(context.auth, () => {
+    return admin
+      .firestore()
+      .collection('slack_users')
+      .doc('short_and_black_list')
+      .update({[username]: 'SHORT_LIST'});
+  });
+});

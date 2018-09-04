@@ -36,7 +36,6 @@ const Hand = props => {
   ];
   const horizontalVeryWide = ['nakd-coconut-bliss-nibbles', 'skittles'];
   const horizontalNarrow = ['fruit-pastilles-roll'];
-  const verticalLeftAligned = ['freddo'];
   const verticalRightAligned = [
     'coca-cola-can',
     'coca-cola-zero-can',
@@ -49,7 +48,8 @@ const Hand = props => {
     'propercorn-fiery-worcester',
     'propercorn-lightly-salted',
     'propercorn-sweet-coconut-vanilla',
-    'smokey-almonds-corn-cranberry'
+    'smokey-almonds-corn-cranberry',
+    'freddo'
   ];
   const verticalTall = ['misc-bottle'];
   const smallSquare = [
@@ -86,8 +86,6 @@ const Hand = props => {
       transformationMatrix = 'matrix(0, 1.4, -1.4, 0, -35, 10)';
     else if (verticalRightAligned.some(item => props.snack.includes(item)))
       transformationMatrix = 'matrix(1.05, 0, 0, 1.05, -30, -20)';
-    else if (verticalLeftAligned.some(item => props.snack.includes(item)))
-      transformationMatrix = 'matrix(1.05, 0, 0, 1.05, 40, -20)';
     else if (verticalTall.some(item => props.snack.includes(item)))
       transformationMatrix = 'matrix(1.4, 0, 0, 1.4, -35, -30)';
     else if (smallSquare.some(item => props.snack.includes(item)))

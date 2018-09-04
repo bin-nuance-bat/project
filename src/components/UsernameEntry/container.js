@@ -1,9 +1,13 @@
 import {connect} from 'react-redux';
 import UsernameEntry from './UsernameEntry';
-import {getUsers} from './UsernameEntrySelectors';
 
 const mapStateToProps = state => ({
-  users: getUsers(state),
+  users: state.users.data.filter(
+    user => state.userReference[user.name] !== 'BLACK_LIST'
+  ),
+  shortList: state.users.data.filter(
+    user => state.userReference[user.name] === 'SHORT_LIST'
+  ),
   actualItem: state.actualItem,
   storeList: state.storeList,
   sendWithPhoto: state.sendWithPhoto,
