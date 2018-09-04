@@ -97,12 +97,6 @@ class UsernameEntry extends React.Component {
               ? 'Fetching users...'
               : 'Please select your slack handle to send a reminder'}
           </div>
-          {(this.state.selection || this.state.sending) && (
-            <ConfirmationModal
-              disabled={this.state.sending}
-              onClick={this.sendReminder}
-            />
-          )}
         </header>
         <div>
           {this.props.users.length !== 0 && (
@@ -120,6 +114,12 @@ class UsernameEntry extends React.Component {
             />
           )}
         </div>
+        {(this.state.selection || this.state.sending) && (
+          <ConfirmationModal
+            disabled={this.state.sending}
+            onClick={this.sendReminder}
+          />
+        )}
       </div>
     );
   }
