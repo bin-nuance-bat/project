@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 import {Container, Sprite} from '@inlet/react-pixi';
 import * as PIXI from 'pixi.js';
 
-const PIVOT = new PIXI.Point(50, 50);
-const POSE_BUFFER_LEN = 3;
+const PIVOT = new PIXI.Point(250, 250);
+
+// Increase this if enabling live preview for smoother animation
+const POSE_BUFFER_LEN = 1;
 
 const FACE_SIZE_MULTIPLIER = 1;
 const SNACK_SIZE_MULTIPLIER = 1;
@@ -38,7 +40,7 @@ class FilterView extends Component {
     for (let i = 0; i < POSE_BUFFER_LEN; i++) {
       this.poseBuffer.push(this.getBlankPose());
     }
-    this.updatePose();
+    if (FilterView.LIVE_PREVIEW) this.updatePose();
   }
 
   componentWillUnmount() {
@@ -156,14 +158,15 @@ class FilterView extends Component {
         pose
       });
 
-      requestAnimationFrame(this.updatePose);
+      if (FilterView.LIVE_PREVIEW) requestAnimationFrame(this.updatePose);
     });
   };
 
-  toImage = () => {
+  toImage = async () => {
+    await this.updatePose();
     return new Promise(resolve => {
       this.setState({capture: true}, () => {
-        resolve(this.props.app.renderer.extract.image(this.props.app.stage));
+        resolve(this.props.app.renderer.extract.canvas(this.props.app.stage));
       });
     });
   };
@@ -172,7 +175,7 @@ class FilterView extends Component {
     const {filterSize, filterX, filterY, rotation, mask} = this.state;
     return (
       <Container>
-        {(this.LIVE_PREVIEW || this.state.capture) && (
+        {(FilterView.LIVE_PREVIEW || this.state.capture) && (
           <Sprite
             texture={this.filter}
             x={filterX}

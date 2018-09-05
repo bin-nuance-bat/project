@@ -29,15 +29,8 @@ class ItemRecognition extends Component {
   }
 
   onConnect = () => {
-    this.webcam.current
-      .requestScreenshot()
-      .then(img => {
-        this.scanningStartTime = Date.now();
-        this.handleImg(img);
-      })
-      .catch(() => {
-        setTimeout(this.onConnect, 100);
-      });
+    this.scanningStartTime = Date.now();
+    requestAnimationFrame(this.predict);
   };
 
   onFail = () => {
@@ -61,16 +54,18 @@ class ItemRecognition extends Component {
     return items[0].value > ML_THRESHOLD;
   };
 
-  handleImg = img => {
-    if (this.backClicked) {
-      this.props.history.replace('/disclaimer');
-      return;
-    }
-
+  predict = () => {
+    if (this.backClicked) return this.props.history.replace('/disclaimer');
     if (this.success) return;
 
-    this.model.predict(img).then(async items => {
+    if (!this.webcam.current) return requestAnimationFrame(this.predict);
+
+    const canvas = this.webcam.current.getCanvas();
+    if (!canvas) return requestAnimationFrame(this.predict);
+
+    this.model.predict(canvas).then(async items => {
       const item = items[0];
+      const imgSrc = canvas.toDataURL('image/jpeg');
 
       const isItemRecognised =
         this.isItemRecognised(items) &&
@@ -86,7 +81,7 @@ class ItemRecognition extends Component {
       if (isItemRecognised) {
         this.success = true;
         this.setSuggestions(items, 1);
-        await this.props.setPrediction(item.id, img.src);
+        await this.props.setPrediction(item.id, imgSrc);
 
         this.webcam.current.success(() => {
           this.setState({text: 'Snack recognised!', subText: null});
@@ -96,7 +91,7 @@ class ItemRecognition extends Component {
         });
       } else if (hasTimedOut) {
         this.setSuggestions(items, 0);
-        this.props.setPrediction('unknown', img.src);
+        this.props.setPrediction('unknown', imgSrc);
         this.props.history.replace('/editsnack');
         return;
       } else if (showRotationMessage) {
@@ -107,8 +102,7 @@ class ItemRecognition extends Component {
       }
 
       // Get the next frame
-      if (this.webcam.current)
-        this.webcam.current.requestScreenshot().then(this.handleImg);
+      if (this.webcam.current) requestAnimationFrame(this.predict);
     });
   };
 

@@ -11,7 +11,7 @@ import * as posenet from '@tensorflow-models/posenet';
 import './SnackChat.css';
 
 const FEED_SIZE = 768;
-const CAPTURE_SIZE = 200;
+const CAPTURE_SIZE = 500;
 
 function normalise(n) {
   return (n *= FEED_SIZE / CAPTURE_SIZE);
@@ -20,7 +20,8 @@ function normalise(n) {
 class SnackChat extends Component {
   state = {
     loading: true,
-    horizontalItem: false
+    horizontalItem: false,
+    countdown: ''
   };
 
   webcamCap = React.createRef();
@@ -48,18 +49,10 @@ class SnackChat extends Component {
   }
 
   getPose = async () => {
-    if (!this.net) return null;
+    if (!this.net || !this.webcamCap.current) return null;
+    this.canvas = this.webcamCap.current.getCanvas();
 
-    let frame;
-
-    try {
-      frame = await this.webcamCap.current.requestScreenshot();
-    } catch (e) {
-      return null;
-    }
-
-    const pose = await this.net.estimateSinglePose(frame, 0.75, true, 16);
-
+    const pose = await this.net.estimateSinglePose(this.canvas, 0.3, false, 16);
     const body = {
       ears: this.calcAngles({
         leftX: normalise(pose.keypoints[4].position.x),
@@ -109,27 +102,15 @@ class SnackChat extends Component {
   };
 
   captureSnackChat = async () => {
-    const [img, filter] = await Promise.all([
-      this.webcamCap.current.requestScreenshot(),
-      this.filter.current.toImage()
-    ]);
+    const filter = await this.filter.current.toImage();
+    window.filter = filter;
 
-    const canvas = document.createElement('canvas');
-    canvas.width = CAPTURE_SIZE;
-    canvas.height = CAPTURE_SIZE;
+    const canvas = this.canvas;
     const ctx = canvas.getContext('2d');
 
-    ctx.scale(-1, 1);
-    ctx.drawImage(img, 0, 0, -CAPTURE_SIZE, CAPTURE_SIZE);
-    ctx.scale(-1, 1);
-
-    filter.onload = () => {
-      ctx.drawImage(filter, 0, 0, CAPTURE_SIZE, CAPTURE_SIZE);
-      this.props.setSnackChat(canvas.toDataURL());
-      this.props.history.replace('/slackname');
-    };
-
-    if (filter.complete) filter.onload();
+    ctx.drawImage(filter, 0, 0, CAPTURE_SIZE, CAPTURE_SIZE);
+    this.props.setSnackChat(canvas.toDataURL());
+    this.props.history.replace('/slackname');
   };
 
   render() {
@@ -138,7 +119,7 @@ class SnackChat extends Component {
         <header className="header">
           <BackButton handleClick={this.onBack} />
           <div className="header-text">
-            You're on SnackChat!
+            You&#39;re on SnackChat!
             <br />
             Get into position in {this.state.countdown}
             ...
@@ -157,9 +138,11 @@ class SnackChat extends Component {
                 height={FEED_SIZE}
                 options={{transparent: true}}
                 className="snackchat-stage"
-                style={{
-                  visibility: FilterView.LIVE_PREVIEW ? 'visible' : 'hidden'
-                }}>
+                style={
+                  {
+                    /*  visibility: FilterView.LIVE_PREVIEW ? 'visible' : 'hidden'*/
+                  }
+                }>
                 <Provider>
                   {app => (
                     <FilterView
