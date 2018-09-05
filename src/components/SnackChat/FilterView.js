@@ -173,29 +173,23 @@ class FilterView extends Component {
 
   toImage = async () => {
     await this.updatePose();
-    return new Promise(resolve => {
-      this.setState({capture: true}, () => {
-        resolve(this.props.app.renderer.extract.canvas(this.props.app.stage));
-      });
-    });
+    return this.props.app.renderer.extract.canvas(this.props.app.stage);
   };
 
   render() {
     const {filterSize, filterX, filterY, rotation, mask} = this.state;
     return (
       <Container>
-        {(FilterView.LIVE_PREVIEW || this.state.capture) && (
-          <Sprite
-            texture={this.filter}
-            x={filterX}
-            y={filterY}
-            width={filterSize}
-            height={filterSize}
-            rotation={rotation}
-            pivot={PIVOT}
-            mask={mask}
-          />
-        )}
+        <Sprite
+          texture={this.filter}
+          x={filterX}
+          y={filterY}
+          width={filterSize}
+          height={filterSize}
+          rotation={rotation}
+          pivot={PIVOT}
+          mask={mask}
+        />
       </Container>
     );
   }
