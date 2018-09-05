@@ -40,7 +40,8 @@ class ItemRecognition extends Component {
       });
   };
 
-  onFail = () => {
+  onFail = async () => {
+    await this.props.setPrediction('', '');
     this.props.history.replace('/editsnack');
   };
 
@@ -150,7 +151,7 @@ ItemRecognition.propTypes = {
   setPrediction: PropTypes.func.isRequired,
   prediction: PropTypes.shape({
     name: PropTypes.string,
-    img: PropTypes.string.isRequired
+    img: PropTypes.string
   }),
   history: PropTypes.object.isRequired,
   storeList: PropTypes.object.isRequired,

@@ -12,8 +12,7 @@ const suggest = suggestions => ({
 });
 
 export const setPrediction = (id, img) => dispatch => {
-  if (img) dispatch(predict({id, img}));
-  else dispatch(predict(null));
+  dispatch(predict({id, img}));
 };
 
 export const setSuggestions = suggestions => dispatch => {
