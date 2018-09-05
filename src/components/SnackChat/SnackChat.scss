@@ -40,128 +40,24 @@ $second-length: 1.5s;
   vertical-align: top;
 }
 
-@-webkit-keyframes snackchat-hands-pop {
-  from {
-    -webkit-transform: translateY(5%) translateZ(1px);
-    transform: translateY(5%) translateZ(1px);
-  }
-  to {
-    -webkit-transform: translateY(100%) translateZ(1px);
-    transform: translateY(100%) translateZ(1px);
-  }
-}
-
-@keyframes snackchat-hands-pop {
-  from {
-    -webkit-transform: translateY(5%) translateZ(1px);
-    transform: translateY(5%) translateZ(1px);
-  }
-  to {
-    -webkit-transform: translateY(100%) translateZ(1px);
-    transform: translateY(100%) translateZ(1px);
-  }
-}
-
-@-webkit-keyframes snackchat-hands-camera {
-  from {
-    -webkit-transform: translateY(100%) translateZ(1px);
-    transform: translateY(100%) translateZ(1px);
-  }
-  to {
-    -webkit-transform: translateY(5%) translateZ(1px);
-    transform: translateY(5%) translateZ(1px);
-  }
-}
-
-@keyframes snackchat-hands-camera {
-  from {
-    -webkit-transform: translateY(100%) translateZ(1px);
-    transform: translateY(100%) translateZ(1px);
-  }
-  to {
-    -webkit-transform: translateY(5%) translateZ(1px);
-    transform: translateY(5%) translateZ(1px);
-  }
-}
-
-.snackchat--hands {
-  width: 240px;
-  height: 216px;
-  display: inline-block;
-  text-align: center;
+.snackchat-stage {
   position: relative;
-  overflow: hidden;
-  top: 10%;
-  left: 0%;
-
-  &-camera,
-  &-left,
-  &-center,
-  &-right,
-  &-slot {
-    position: absolute;
-    display: block;
-  }
-
-  &-camera {
-    left: 25%;
-  }
-
-  &-left,
-  &-center,
-  &-right {
-    animation-name: snackchat-hands-pop;
-    animation-duration: 0.3s;
-    animation-iteration-count: 1;
-    animation-timing-function: cubic-bezier(0.47, 0.52, 0.58, 1.19);
-    animation-fill-mode: both;
-    will-change: transform;
-  }
-
-  &-camera {
-    animation-name: snackchat-hands-camera;
-    animation-duration: 0.3s;
-    animation-iteration-count: 1;
-    animation-timing-function: cubic-bezier(0.47, 0.52, 0.58, 1.19);
-    animation-fill-mode: both;
-    will-change: transform;
-  }
-
-  &-left {
-    -webkit-animation-delay: $second-length;
-    animation-delay: $second-length;
-  }
-
-  &-center {
-    -webkit-animation-delay: 2 * $second-length;
-    animation-delay: 2 * $second-length;
-  }
-
-  &-right {
-    -webkit-animation-delay: 3 * $second-length;
-    animation-delay: 3 * $second-length;
-  }
-
-  &-camera {
-    -webkit-animation-delay: 4 * $second-length;
-    animation-delay: 4 * $second-length;
-  }
+  bottom: 768px;
 }
 
-#fade-overlay {
-  height: 100vh;
-  width: 100vw;
-  background-color: $white;
+#overlay {
   position: fixed;
-}
-
-.fade-hidden {
-  z-index: 0;
-  opacity: 0;
-}
-
-.fade-in {
-  z-index: 11;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   opacity: 1;
+  z-index: 10;
+}
+
+.flash {
+  opacity: 0 !important;
+  background-color: $white;
+  display: block;
   transition: 1s opacity;
 }

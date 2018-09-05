@@ -2,15 +2,15 @@ import React from 'react';
 import {shallow, configure} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import WebcamCapture from './WebcamCapture';
-import Webcam from 'react-webcam';
+import Webcam from '../Webcam/Webcam';
 
 configure({adapter: new Adapter()});
 
 describe('<WebcamCapture />', () => {
-  it('Renders webcam with screenshot width of 4/3 * imgSize', () => {
+  it('Renders webcam with screenshot width of imgSize', () => {
     const wrapper = shallow(<WebcamCapture imgSize={300} onFail={jest.fn()} />);
     wrapper.setState({isDetecting: false});
-    expect(wrapper.find(Webcam).props().screenshotWidth).toEqual(400);
+    expect(wrapper.find(Webcam).props().screenshotWidth).toEqual(300);
   });
 
   it('Renders webcam with screenshot format of jpeg', () => {

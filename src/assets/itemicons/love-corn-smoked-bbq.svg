@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140" width="500" height="500">
   <rect x="10" y="4" width="120" height="132" fill="#5a1928" />
   <rect x="10" y="4" width="60" height="132" fill="#631b2e" />
   <rect x="10" y="126" width="120" height="10" fill="#601e2f" />
