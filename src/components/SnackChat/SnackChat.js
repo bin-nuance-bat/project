@@ -30,18 +30,22 @@ class SnackChat extends Component {
   componentDidMount() {
     posenet.load(0.5).then(net => {
       this.net = net;
-      this.setState({loading: false, countdown: 5});
+      this.setState({loading: false, countdown: 3});
       this.ticker = setInterval(() => {
         this.setState(prevState => {
-          if (prevState.countdown === 0) {
-            this.captureSnackChat();
-            clearInterval(this.ticker);
-            return null;
-          }
+          if (prevState.countdown === 1) clearInterval(this.ticker);
           return {countdown: prevState.countdown - 1};
         });
       }, 1000);
     });
+  }
+
+  componentDidUpdate() {
+    if (this.state.countdown === 0) {
+      // Delay needed to allow browser to render
+      // TODO: Find a better solution
+      setTimeout(this.captureSnackChat, 100);
+    }
   }
 
   componentWillUnmount() {
@@ -116,6 +120,10 @@ class SnackChat extends Component {
   render() {
     return (
       <div className="page">
+        <div
+          id="overlay"
+          className={this.state.countdown <= 0 ? 'flash' : ''}
+        />
         <header className="header">
           <BackButton handleClick={this.onBack} />
           <div className="header-text">

@@ -173,7 +173,8 @@ class FilterView extends Component {
 
   toImage = async () => {
     await this.updatePose();
-    return this.props.app.renderer.extract.canvas(this.props.app.stage);
+    this.props.app.render();
+    return this.props.app.view;
   };
 
   render() {
