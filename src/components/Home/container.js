@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import Home from './Home';
-import {setSendWithPhoto, loadUsers} from './actions';
+import {setSendWithPhoto, loadUsers, loadSlackUserReference} from './actions';
 import {loadStoreList} from './../StoreList/actions';
 
 const mapStateToProps = state => ({
@@ -8,6 +8,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
+  loadSlackUserReference,
   setSendWithPhoto,
   loadStoreList,
   loadUsers

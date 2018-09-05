@@ -43,19 +43,22 @@ class EditSnack extends Component {
             <br />
             Please select it below
           </div>
-          {this.state.selection && (
-            <ConfirmationModal
-              disabled={this.state.sending}
-              onClick={this.handleClick}
-            />
-          )}
         </header>
         <ListSelection
           items={this.props.items}
           onClick={this.promptToConfirm}
-          suggestions={this.props.suggestions}
+          additionalOptions={{
+            heading: 'Suggestions',
+            options: this.props.suggestions
+          }}
           selected={this.state.selection ? this.state.selection.name : null}
         />
+        {this.state.selection && (
+          <ConfirmationModal
+            disabled={this.state.sending}
+            onClick={this.handleClick}
+          />
+        )}
       </div>
     );
   }

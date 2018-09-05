@@ -24,6 +24,7 @@ class NotificationBar extends Component {
   tick = () => {
     this.setState(prevState => {
       if (prevState.countdown === 1) {
+        this.context.router.history.replace('/');
         this.props.handleTimeout();
       }
       return {countdown: prevState.countdown - 1};
@@ -77,6 +78,10 @@ NotificationBar.propTypes = {
   handleTouch: PropTypes.func,
   handleTimeout: PropTypes.func,
   preventInteraction: PropTypes.bool
+};
+
+NotificationBar.contextTypes = {
+  router: PropTypes.object.isRequired
 };
 
 export default NotificationBar;
