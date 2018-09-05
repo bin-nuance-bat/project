@@ -46,7 +46,7 @@ $ firebase functions:config:set slack.token=SLACK_TOKEN
 
 ### Database
 
-The database should not require configuartion to set up. It is used to track training data, as there is no way of listing files in storage each entry keeps track of one image. To add or remove users from the slack handle short/black lists to to the slack_users collection. To give people admin/kiosk privileges add the relavent boolean flags to the document pretaing to their UID in users collection. When users is updated a cloud function is triggered to update the [custom claims](https://firebase.google.com/docs/auth/admin/create-custom-tokens) of that user,so don't store too much information here. Custom claims is what handles firebase and storage rules.
+The database should not require configuration to set up. It is used to track training data. There is no way of listing files in storage so each entry keeps track of one image. To add or remove users from the slack short/black lists, use the slack_users collection. To give people admin/kiosk privileges add the relevant Boolean flags to the document titled with their UID in users collection. When users is updated a cloud function is triggered to update the [custom claims](https://firebase.google.com/docs/auth/admin/create-custom-tokens) of that user, so don't store too much information here. Custom claims is what handles the firebase and storage rules.
 
 ## Billing
 
