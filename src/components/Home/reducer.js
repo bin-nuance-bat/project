@@ -1,8 +1,14 @@
 import {
   SET_SEND_WITH_PHOTO,
   SET_USERS,
-  SET_USER_REFERENCE
+  SET_USER_REFERENCE,
+  SET_STORELIST
 } from './actionTypes';
+
+export function storeList(state = {}, action) {
+  if (action.type === SET_STORELIST) return action.storeList;
+  return state;
+}
 
 export function sendWithPhoto(state = true, action) {
   if (action.type === SET_SEND_WITH_PHOTO) return action.sendWithPhoto;

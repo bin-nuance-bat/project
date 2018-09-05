@@ -93,7 +93,7 @@ class WebcamCapture extends Component {
       -(img.width - this.props.imgSize) / 2,
       -(img.height - this.props.imgSize) / 2
     );
-    return this.canvas.toDataURL();
+    return this.canvas.toDataURL('image/jpeg');
   }
 
   success = callback => this.viewFinder.current.success(callback);

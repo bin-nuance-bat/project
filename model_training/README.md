@@ -37,7 +37,7 @@ project
 ...
 ```
 
-If using the `honesty-store-kiosk` firebase project, you can also automatically download all training data by executing `download.sh` in this directory. This requires [`gsutil`](https://cloud.google.com/storage/docs/gsutil_install) to be installed and configured, however. Run the intaller package from Google Cloud and when prompted to initialise gsutil you should do so, logging in to your Google Account in the browser when asked.
+If using the `honesty-store-kiosk` firebase project, you can also automatically download all training data by executing `download.sh` in this directory. This requires [`gsutil`](https://cloud.google.com/storage/docs/gsutil_install) to be installed and configured, however. Run the intaller package from Google Cloud and when prompted to initialise gsutil you should do so, logging in to your Google Account in the browser when asked. NOTE: that `download.sh` downloads all images (including untrusted). To download only trusted images use the admin panel.
 
 ## Training
 

@@ -17,11 +17,13 @@ You will need to set up a new firebase project and enable the following features
 Storage rules will be automatically configured when you deploy the application to firebase. However, you will also need to configure the lifecycle and CORS settings. To do so you must first install `gsutil` from [here](https://cloud.google.com/storage/docs/gsutil_install). Then, navigate to this directory in your terminal before running the following 2 commands:
 
 ```shell
-$ gsutil lifecycle set lifecycle.json gs://<PROJECT_ID>.appspot.com
+$ gsutil lifecycle set lifecycle.json gs://snackchat
 $ gsutil cors set cors.json gs://<PROJECT_ID>.appspot.com
 ```
 
 Note: The last command configures CORS to allow requests from any URL. This is useful for debugging purposes and running the front end locally but may not be desirable in production. You can modify [`cors.json`](cors.json) to allow specific domains if needed.
+
+Storage is currently used to save the training data, evaluation data and snackchats (deleted after 24 hours)
 
 ### Authentication
 
@@ -41,6 +43,10 @@ Then, using you kiosk account UID from the previous step, along with a Slack leg
 $ firebase functions:config:set honestystore.uid=KIOSK_ACCOUNT_UID
 $ firebase functions:config:set slack.token=SLACK_TOKEN
 ```
+
+### Database
+
+The database should not require configuration to set up. It is used to track training data. There is no way of listing files in storage so each entry keeps track of one image. To add or remove users from the slack short/black lists, use the slack_users collection. To give people admin/kiosk privileges add the relevant Boolean flags to the document titled with their UID in users collection. When users is updated a cloud function is triggered to update the [custom claims](https://firebase.google.com/docs/auth/admin/create-custom-tokens) of that user, so don't store too much information here. Custom claims is what handles the firebase and storage rules.
 
 ## Billing
 

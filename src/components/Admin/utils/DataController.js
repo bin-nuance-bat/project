@@ -75,14 +75,14 @@ class DataController {
   }
 
   async getImages(
-    trusted = null,
+    isTrusted = null,
     maxImages = 1,
     startAfter = 0,
-    label = 'all'
+    imageLabel = 'all'
   ) {
     let ref = this.db.collection('training_data');
-    if (trusted !== null) ref = ref.where('trusted', '==', trusted);
-    if (label !== 'all') ref = ref.where('label', '==', label);
+    if (isTrusted !== null) ref = ref.where('trusted', '==', isTrusted);
+    if (imageLabel !== 'all') ref = ref.where('label', '==', imageLabel);
 
     return ref
       .orderBy('timestamp')
@@ -91,14 +91,24 @@ class DataController {
       .get()
       .then(async snapshot =>
         Promise.all(
-          snapshot.docs.map(async doc => ({
-            id: doc.id,
-            label: doc.data().label,
-            trusted: doc.data().trusted,
-            url: await this.storage
-              .child(`training_data/${doc.data().label}/${doc.id}.jpg`)
-              .getDownloadURL()
-          }))
+          snapshot.docs.map(async doc => {
+            let url;
+            try {
+              url = await this.storage
+                .child(`training_data/${doc.data().label}/${doc.id}.jpg`)
+                .getDownloadURL();
+            } catch (e) {
+              url = null;
+            }
+            const {label, trusted, timestamp} = doc.data();
+            return {
+              id: doc.id,
+              label,
+              trusted,
+              timestamp,
+              url
+            };
+          })
         )
       );
   }
