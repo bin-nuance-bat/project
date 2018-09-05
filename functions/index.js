@@ -143,16 +143,6 @@ exports.addUserToShortList = functions.https.onCall((username, context) => {
   });
 });
 
-exports.testUser = functions.https.onCall((username, context) => {
-  admin
-    .auth()
-    .getUser(context.auth.uid)
-    .then(userRecord => {
-      //eslint-disable-next-line
-      console.log(userRecord);
-    });
-});
-
 exports.updateCustomClaims = functions.firestore
   .document('users/{userId}')
   .onWrite((snap, context) => {
