@@ -96,7 +96,7 @@ class ItemRecognition extends Component {
         });
       } else if (hasTimedOut) {
         this.setSuggestions(items, 0);
-        this.props.setPrediction('unknown', img.src);
+        this.props.setPrediction('', img.src);
         this.props.history.replace('/editsnack');
         return;
       } else if (showRotationMessage) {
