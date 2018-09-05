@@ -1,7 +1,9 @@
+import fetchItems from '../../utils/honestyStore.js';
 import {
   SET_SEND_WITH_PHOTO,
   SET_USERS,
-  SET_USER_REFERENCE
+  SET_USER_REFERENCE,
+  SET_STORELIST
 } from './actionTypes';
 import initFirebase from '../../utils/firebase';
 import firebase from 'firebase/app';
@@ -27,6 +29,19 @@ function setUsers(users) {
     users
   };
 }
+
+export function setStoreList(storeList) {
+  return {
+    type: SET_STORELIST,
+    storeList
+  };
+}
+
+export const loadStoreList = () => async dispatch => {
+  return await fetchItems().then(storeList =>
+    dispatch(setStoreList(storeList))
+  );
+};
 
 export const attemptLoadUsers = async () => {
   initFirebase();

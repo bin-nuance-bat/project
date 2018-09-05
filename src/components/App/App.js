@@ -90,14 +90,14 @@ class App extends Component {
     );
   };
 
-  onTimeout = () => {
-    window.location.href = '/';
-  };
-
   showTimeoutMessage = () => {
     if (PAGES_TO_SHOW_TIMEOUT.indexOf(window.location.pathname) !== -1) {
       this.setState({showTimer: true});
     }
+  };
+
+  handleTimeout = () => {
+    this.resetTimeoutTimer();
   };
 
   componentWillUnmount() {
@@ -114,31 +114,33 @@ class App extends Component {
     return (
       <div>
         <Router>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/snackchat" component={SnackChat} />
-            <Route exact path="/disclaimer" component={Disclaimer} />
-            <Route exact path="/scanitem" component={ItemRecognition} />
-            <Route exact path="/confirmitem" component={ConfirmationBox} />
-            <Route exact path="/editsnack" component={EditSnack} />
-            <Route exact path="/slackname" component={UsernameEntry} />
-            <Route exact path="/success" component={SuccessPage} />
-            <Route exact path="/admin" component={Admin} />
-            <Route exact path="/admin/preview" component={Viewer} />
-            <Route exact path="/admin/approval" component={Approval} />
-            <Route exact path="/admin/collection" component={Collection} />
-            <Route exact path="/error" component={ErrorPage} />
-          </Switch>
+          <div>
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/snackchat" component={SnackChat} />
+              <Route exact path="/disclaimer" component={Disclaimer} />
+              <Route exact path="/scanitem" component={ItemRecognition} />
+              <Route exact path="/confirmitem" component={ConfirmationBox} />
+              <Route exact path="/editsnack" component={EditSnack} />
+              <Route exact path="/slackname" component={UsernameEntry} />
+              <Route exact path="/success" component={SuccessPage} />
+              <Route exact path="/admin" component={Admin} />
+              <Route exact path="/admin/preview" component={Viewer} />
+              <Route exact path="/admin/approval" component={Approval} />
+              <Route exact path="/admin/collection" component={Collection} />
+              <Route exact path="/error" component={ErrorPage} />
+            </Switch>
+            {this.state.showTimer && (
+              <NotificationBar
+                mainText="Are you still there?"
+                autoActionWord="Timeout"
+                userTouchActionText="DISMISS"
+                handleTouch={this.resetTimeoutTimer}
+                handleTimeout={this.handleTimeout}
+              />
+            )}
+          </div>
         </Router>
-        {this.state.showTimer && (
-          <NotificationBar
-            mainText="Are you still there?"
-            autoActionWord="Timeout"
-            userTouchActionText="DISMISS"
-            handleTouch={this.resetTimeoutTimer}
-            handleTimeout={this.onTimeout}
-          />
-        )}
         {!this.state.loggedIn && (
           <StyledFirebaseAuth
             uiConfig={this.firebaseUiConfig}

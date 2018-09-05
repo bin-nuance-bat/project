@@ -1,11 +1,15 @@
 import {createStore, applyMiddleware, combineReducers, compose} from 'redux';
 import thunk from 'redux-thunk';
-import {storeList} from '../components/StoreList/reducer';
 import {
   prediction,
   suggestions
 } from '../components/ItemRecognition/ItemRecognitionReducer';
-import {sendWithPhoto, users, userReference} from '../components/Home/reducer';
+import {
+  sendWithPhoto,
+  users,
+  userReference,
+  storeList
+} from '../components/Home/reducer';
 import {actualItem} from '../components/ConfirmationBox/reducer';
 import {snackChat} from '../components/SnackChat/SnackChatReducer';
 import {dataController} from '../components/App/reducer';
