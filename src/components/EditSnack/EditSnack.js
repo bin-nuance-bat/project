@@ -13,7 +13,7 @@ class EditSnack extends Component {
   };
 
   goBack = async () => {
-    const lastPage = this.props.prediction ? 'confirmitem' : 'scanitem';
+    const lastPage = this.props.prediction.id ? 'confirmitem' : 'scanitem';
     this.props.history.replace(lastPage);
   };
 
