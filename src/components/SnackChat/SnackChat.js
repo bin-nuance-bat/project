@@ -12,6 +12,22 @@ import './SnackChat.css';
 
 const FEED_SIZE = 768;
 const CAPTURE_SIZE = 500;
+const COUNTDOWN_DURATION = 5;
+
+const LOADING_CAPTIONS = [
+  'Crunching bits',
+  'Taking bytes',
+  'Censoring inappropriate content',
+  'Zooming... Enhancing',
+  'Removing unsanctioned emotions'
+];
+
+function randomCaption() {
+  const index = Math.floor(
+    Math.random() * Math.random() * LOADING_CAPTIONS.length
+  );
+  return LOADING_CAPTIONS[index];
+}
 
 function normalise(n) {
   return (n *= FEED_SIZE / CAPTURE_SIZE);
@@ -21,7 +37,7 @@ class SnackChat extends Component {
   state = {
     loading: true,
     horizontalItem: false,
-    countdown: ''
+    countdown: COUNTDOWN_DURATION
   };
 
   webcamCap = React.createRef();
@@ -30,7 +46,7 @@ class SnackChat extends Component {
   componentDidMount() {
     posenet.load(0.5).then(net => {
       this.net = net;
-      this.setState({loading: false, countdown: 5});
+      this.setState({loading: false});
       this.ticker = setInterval(() => {
         this.setState(prevState => {
           if (prevState.countdown === 1) clearInterval(this.ticker);
@@ -125,10 +141,9 @@ class SnackChat extends Component {
         <header className="header">
           <BackButton handleClick={this.onBack} />
           <div className="header-text">
-            You&#39;re on SnackChat!
-            <br />
-            Get into position in {this.state.countdown}
-            ...
+            {this.state.countdown > 0
+              ? `Taking photo in ${this.state.countdown}...`
+              : `${randomCaption()}...`}
           </div>
         </header>
         <div>
