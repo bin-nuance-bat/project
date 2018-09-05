@@ -47,7 +47,10 @@ class EditSnack extends Component {
         <ListSelection
           items={this.props.items}
           onClick={this.promptToConfirm}
-          suggestions={this.props.suggestions}
+          additionalOptions={{
+            heading: 'Suggestions',
+            options: this.props.suggestions
+          }}
           selected={this.state.selection ? this.state.selection.name : null}
         />
         {this.state.selection && (

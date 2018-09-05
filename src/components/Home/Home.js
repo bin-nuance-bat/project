@@ -1,9 +1,9 @@
 import React from 'react';
 import './Home.css';
-import HomeHandsSlot from './../../utils/assets/hands/HandsSlot.svg';
-import HomeHandsRight from './../../utils/assets/hands/HandsRight.svg';
-import HomeHandsCenter from './../../utils/assets/hands/HandsCenter.svg';
-import HomeHandsLeft from './../../utils/assets/hands/HandsLeft.svg';
+import HomeHandsSlot from '../../assets/hands/HandsSlot.svg';
+import HomeHandsRight from '../../assets/hands/HandsRight.svg';
+import HomeHandsCenter from '../../assets/hands/HandsCenter.svg';
+import HomeHandsLeft from '../../assets/hands/HandsLeft.svg';
 import Camera from './assets/Camera.svg';
 import PropTypes from 'prop-types';
 
@@ -16,6 +16,7 @@ class Home extends React.Component {
       this.props.loadUsers().catch(this.handleError);
     }
     this.props.loadStoreList().catch(this.handleError);
+    this.props.loadSlackUserReference();
   }
 
   handleSnackChatClick = () => {
@@ -80,7 +81,8 @@ Home.propTypes = {
   setSendWithPhoto: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
   loadUsers: PropTypes.func.isRequired,
-  latestUsersFetchTime: PropTypes.number
+  latestUsersFetchTime: PropTypes.number,
+  loadSlackUserReference: PropTypes.func.isRequired
 };
 
 export default Home;

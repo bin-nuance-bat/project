@@ -1,2 +1,3 @@
 export const SET_SEND_WITH_PHOTO = 'SET_SEND_WITH_PHOTO';
 export const SET_USERS = 'SET_USERS';
+export const SET_USER_REFERENCE = 'SET_USER_REFERENCE';
