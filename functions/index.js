@@ -87,7 +87,7 @@ exports.sendSnackChat = functions.https.onCall((data, context) => {
   return authenticateUser(context.auth, () => {
     const tempFileName = '/tmp/snackchat.jpg';
     const fileName = `snackchat/${crypto.randomBytes(20).toString('hex')}.jpg`;
-    const bucket = admin.storage().bucket();
+    const bucket = admin.storage().bucket('gs://snackchat');
 
     fs.writeFileSync(tempFileName, toBuffer(data.snackChat));
     return bucket
@@ -118,6 +118,24 @@ exports.loadSlackUsers = functions.https.onCall((data, context) => {
     return request.get(req);
   });
 });
+
+
+exports.changeImageLabel = functions.firestore
+  .document('training_data/{imageId}')
+  .onUpdate((change, context) => {
+    const bucket = admin.storage().bucket();
+    const oldLabel = change.before.data().label;
+    const newLabel = change.after.data().label;
+    if (oldLabel === newLabel) return null;
+    return new Promise(resolve =>
+      bucket
+        .file(`training_data/${oldLabel}/${context.params.imageId}.jpg`)
+        .move(
+          `training_data/${newLabel}/${context.params.imageId}.jpg`,
+          (err, dest, res) => resolve(res)
+        )
+    );
+  });
 
 exports.loadSlackShortListAndBlackList = functions.https.onCall(
   (data, context) => {

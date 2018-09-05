@@ -1,7 +1,11 @@
 import {connect} from 'react-redux';
 import Home from './Home';
-import {setSendWithPhoto, loadUsers, loadSlackUserReference} from './actions';
-import {loadStoreList} from './../StoreList/actions';
+import {
+  loadStoreList,
+  setSendWithPhoto,
+  loadUsers,
+  loadSlackUserReference
+} from './actions';
 
 const mapStateToProps = state => ({
   latestUsersFetchTime: state.users ? state.users.time : null
