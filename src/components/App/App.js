@@ -55,8 +55,11 @@ class App extends Component {
       }
     ],
     callbacks: {
-      signInSuccessWithAuthResult: res =>
-        this.setState({loggedIn: res.user !== null})
+      signInSuccessWithAuthResult: res => {
+        this.setState({loggedIn: res.user !== null});
+        this.props.loadUsers();
+        this.props.loadSlackUserReference();
+      }
     }
   };
 
