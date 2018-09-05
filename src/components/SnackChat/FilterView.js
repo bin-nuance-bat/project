@@ -2,10 +2,12 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Container, Sprite} from '@inlet/react-pixi';
 import * as PIXI from 'pixi.js';
+import _ from 'lodash';
 
+// Centre point of SVGs - they're all 500x500 px
 const PIVOT = new PIXI.Point(250, 250);
 
-// Increase this if enabling live preview for smoother animation
+// Increase this if enabling live preview for a smoother animation
 const POSE_BUFFER_LEN = 1;
 
 const FACE_SIZE_MULTIPLIER = 1;
@@ -47,41 +49,51 @@ class FilterView extends Component {
     this._isMounted = false;
   }
 
-  getAveragePose = pose => {
-    const filterSize = pose.shoulders.span * 2.5 * SNACK_SIZE_MULTIPLIER;
-
+  getAveragePose = predictedPose => {
+    // Centre of shoulders
     const filterX =
-      pose.shoulders.leftX +
-      Math.abs((pose.shoulders.leftX - pose.shoulders.rightX) / 2);
+      predictedPose.shoulders.leftX +
+      Math.abs(
+        (predictedPose.shoulders.leftX - predictedPose.shoulders.rightX) / 2
+      );
     const filterY =
-      pose.shoulders.leftY +
-      Math.abs((pose.shoulders.leftY - pose.shoulders.rightY) / 2);
+      predictedPose.shoulders.leftY +
+      Math.abs(
+        (predictedPose.shoulders.leftY - predictedPose.shoulders.rightY) / 2
+      );
+    const filterSize =
+      predictedPose.shoulders.span * 2.5 * SNACK_SIZE_MULTIPLIER;
 
+    // Centre of face
     const faceX =
-      pose.ears.leftX + Math.abs((pose.ears.leftX - pose.ears.rightX) / 2);
+      predictedPose.ears.leftX +
+      Math.abs((predictedPose.ears.leftX - predictedPose.ears.rightX) / 2);
     const faceY =
-      pose.ears.leftY + Math.abs((pose.ears.leftY - pose.ears.rightY) / 2);
-    const faceSpan = pose.ears.span * 0.5 * FACE_SIZE_MULTIPLIER;
+      predictedPose.ears.leftY +
+      Math.abs((predictedPose.ears.leftY - predictedPose.ears.rightY) / 2);
+    const faceSpan = predictedPose.ears.span * 0.5 * FACE_SIZE_MULTIPLIER;
 
-    const rotation = pose.shoulders.angle;
+    const rotation = predictedPose.shoulders.angle;
 
     const newPose = {
-      filterSize,
       filterX,
       filterY,
+      filterSize,
       faceX,
       faceY,
       faceSpan,
       rotation
     };
+
     this.poseBuffer[this.poseBufferIndex++] = newPose;
     this.poseBufferIndex %= POSE_BUFFER_LEN;
 
-    const avgPose = Object.keys(newPose).reduce((obj, key) => {
-      obj[key] =
-        this.poseBuffer.reduce((total, p) => total + p[key], 0) /
-        POSE_BUFFER_LEN;
-      return obj;
+    const avgPose = Object.keys(newPose).reduce((poseAverages, poseKey) => {
+      const poseKeyAvg = _.meanBy(this.poseBuffer, pose => pose[poseKey]);
+      return {
+        ...poseAverages,
+        [poseKey]: poseKeyAvg
+      };
     }, {});
 
     return avgPose;
@@ -94,9 +106,9 @@ class FilterView extends Component {
 
       const {width, height} = this.props.app.screen;
       const {
-        filterSize,
         filterX,
         filterY,
+        filterSize,
         faceX,
         faceY,
         faceSpan,
@@ -152,8 +164,7 @@ class FilterView extends Component {
         filterX,
         filterY,
         mask,
-        rotation,
-        pose
+        rotation
       });
 
       if (FilterView.LIVE_PREVIEW) requestAnimationFrame(this.updatePose);

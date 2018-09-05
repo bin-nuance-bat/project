@@ -138,11 +138,9 @@ class SnackChat extends Component {
                 height={FEED_SIZE}
                 options={{transparent: true}}
                 className="snackchat-stage"
-                style={
-                  {
-                    /*  visibility: FilterView.LIVE_PREVIEW ? 'visible' : 'hidden'*/
-                  }
-                }>
+                style={{
+                  visibility: FilterView.LIVE_PREVIEW ? 'visible' : 'hidden'
+                }}>
                 <Provider>
                   {app => (
                     <FilterView
