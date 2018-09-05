@@ -5,31 +5,16 @@ import './ImagePreview.css';
 
 const ImagePreview = props => {
   return (
-    <div className="preview-image">
+    <div className="preview-image" data-id={props.image.id}>
       <div>
         <img src={props.image.url} alt={props.image.id} />
       </div>
       <div>
         {!props.image.trusted && (
-          <button
-            onClick={props.approve}
-            data-id={props.image.id}
-            data-label={props.image.label}>
-            Approve
-          </button>
+          <button onClick={props.approve}>Approve</button>
         )}
-        <button
-          onClick={props.remove}
-          data-id={props.image.id}
-          data-label={props.image.label}>
-          Delete
-        </button>
-        <button
-          onClick={props.trustUnknown}
-          data-id={props.image.id}
-          data-label={props.image.label}>
-          Unknown
-        </button>
+        <button onClick={props.remove}>Delete</button>
+        <button onClick={props.trustUnknown}>Unknown</button>
       </div>
     </div>
   );

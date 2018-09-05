@@ -17,7 +17,7 @@ You will need to set up a new firebase project and enable the following features
 Storage rules will be automatically configured when you deploy the application to firebase. However, you will also need to configure the lifecycle and CORS settings. To do so you must first install `gsutil` from [here](https://cloud.google.com/storage/docs/gsutil_install). Then, navigate to this directory in your terminal before running the following 2 commands:
 
 ```shell
-$ gsutil lifecycle set lifecycle.json gs://<PROJECT_ID>.appspot.com
+$ gsutil lifecycle set lifecycle.json gs://snackchat
 $ gsutil cors set cors.json gs://<PROJECT_ID>.appspot.com
 ```
 

@@ -4,68 +4,69 @@ import PropTypes from 'prop-types';
 import ItemSelector from '../ItemSelector';
 import DataController from '../utils/DataController';
 
-import './Approval.css';
+const IMAGE_QUEUE_SIZE = 20;
 
 class ImageApproval extends Component {
   state = {
     loading: true,
+    image: null,
     images: [],
-    storeList: [{name: 'unknown', id: 'unknown'}]
+    storeList: {unknown: {name: 'Unknown', id: 'unknown'}}
   };
 
   getImages = async () => {
     return this.dataController
-      .getImages(false, 10)
+      .getImages(false, IMAGE_QUEUE_SIZE)
       .then(images => this.setState({images}));
   };
 
   lastImageTimestamp = () => {
-    return this.state.images.reduce(
-      (highest, current) => Math.max(highest, current.timestamp),
-      0
-    );
+    return Math.max(...this.state.images.map(i => i.timestamp));
   };
 
-  nextImage = index => {
-    return this.dataController
-      .getImages(false, 1, this.lastImageTimestamp())
-      .then(images => {
-        this.setState(prevState => {
-          if (images.length < 1) {
-            prevState.images.splice(index, 1);
-          } else {
-            const [image] = images;
-            if (prevState.images.filter(i => i.id === image.id).length > 0) {
-              this.getImages();
-            } else {
-              prevState.images[index] = image;
-            }
-          }
-          return prevState;
+  displayNextImage = () => {
+    this.setState(prevState => {
+      const [image = null, ...images] = prevState.images;
+      return {image, images};
+    });
+    this.fetchImage();
+  };
+
+  fetchImage = () => {
+    if (this.state.images.length < IMAGE_QUEUE_SIZE) {
+      this.dataController
+        .getImages(false, 3, this.lastImageTimestamp())
+        .then(images => {
+          // Make sure we only include images not already in state
+          this.setState(prevState => {
+            const storedImageIds = prevState.images.map(image => image.id);
+            return {
+              images: prevState.images.concat(
+                images.filter(image => !storedImageIds.includes(image.id))
+              )
+            };
+          });
         });
-      });
+    }
   };
 
   trustImage = event => {
-    const index = event.target.dataset.index;
-    this.dataController
-      .trustImage(event.target.dataset.id)
-      .then(() => this.nextImage(index));
+    const imageId = event.target.parentElement.parentElement.dataset.id;
+    this.displayNextImage();
+    this.dataController.trustImage(imageId);
   };
 
   setAsUnknown = event => {
-    const index = event.target.dataset.index;
-    this.dataController.changeImageLabel(event.target.dataset.id, 'unknown');
-    this.dataController
-      .trustImage(event.target.dataset.id)
-      .then(() => this.nextImage(index));
+    this.displayNextImage();
+    const imageId = event.target.parentElement.parentElement.dataset.id;
+    this.dataController.changeImageLabel(imageId, 'unknown');
+    this.dataController.trustImage(imageId);
   };
 
   deleteImage = event => {
-    const index = event.target.dataset.index;
-    this.dataController
-      .deleteImage(event.target.dataset.id)
-      .then(() => this.nextImage(index));
+    this.displayNextImage();
+    const imageId = event.target.parentElement.parentElement.dataset.id;
+    this.dataController.deleteImage(imageId);
   };
 
   changeCategory = (id, newCategory) => {
@@ -78,14 +79,16 @@ class ImageApproval extends Component {
 
   componentDidMount() {
     this.dataController = new DataController();
-    this.dataController.getStoreList().then(storeList => {
-      this.setState({
-        storeList: Object.values({
-          ...storeList
-        })
-      });
-      this.getImages().then(() => this.setState({loading: false}));
-    });
+    Promise.all([
+      this.dataController.getStoreList().then(storeList => {
+        this.setState({
+          storeList
+        });
+      }),
+      this.getImages().then(() => {
+        this.displayNextImage();
+      })
+    ]).then(() => this.setState({loading: false}));
   }
 
   render() {
@@ -93,6 +96,7 @@ class ImageApproval extends Component {
     if (this.state.images === [])
       return <div>No untrusted images available</div>;
 
+    const {image} = this.state;
     return (
       <div className="preview">
         <div>
@@ -100,49 +104,50 @@ class ImageApproval extends Component {
             &laquo; Back
           </button>
         </div>
-        {this.state.images.map((image, index) => {
-          return (
-            <div key={image.id} className="preview-pane">
+        {image ? (
+          <div key={image.id} data-id={image.id} className="preview-pane">
+            <h2>
+              {this.state.storeList[image.label] !== undefined &&
+                this.state.storeList[image.label].name}
+            </h2>
+            <div>
               <img style={{maxHeight: 224}} src={image.url} alt="" />
-              <ItemSelector
-                item={image.label}
-                items={this.state.storeList}
-                setItem={cat => {
-                  this.changeCategory(image.id, cat);
-                  this.setState(prevState => {
-                    prevState.images[index].label = cat;
-                    return prevState;
-                  });
-                }}
-              />
-              <div>
-                <button
-                  className="button button-admin"
-                  data-id={image.id}
-                  data-index={index}
-                  data-label={image.label}
-                  onClick={this.trustImage}>
-                  Trust
-                </button>
-                <button
-                  className="button button-admin"
-                  data-id={image.id}
-                  data-index={index}
-                  onClick={this.setAsUnknown}>
-                  Unknown
-                </button>
-                <button
-                  className="button button-admin"
-                  data-id={image.id}
-                  data-index={index}
-                  data-label={image.label}
-                  onClick={this.deleteImage}>
-                  Delete
-                </button>
-              </div>
             </div>
-          );
-        })}
+            <ItemSelector
+              item={image.label}
+              items={Object.values(this.state.storeList)}
+              setItem={cat => {
+                this.changeCategory(image.id, cat);
+                this.setState(prevState => ({
+                  image: {...prevState.image, label: cat}
+                }));
+              }}
+            />
+            <div>
+              <button className="button button-admin" onClick={this.trustImage}>
+                Trust
+              </button>
+              <button
+                className="button button-admin"
+                onClick={this.setAsUnknown}>
+                Unknown
+              </button>
+              <button
+                className="button button-admin"
+                onClick={this.deleteImage}>
+                Delete
+              </button>
+            </div>
+          </div>
+        ) : (
+          <p>No more images to approve.</p>
+        )}
+        {/* Used to load images in background - speeds up rendering. */}
+        <div hidden>
+          {this.state.images.map(i => (
+            <img key={i.id} src={i.url} alt="" />
+          ))}
+        </div>
       </div>
     );
   }
