@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-// import './GetBoundingBox.css';
 import PropTypes from 'prop-types';
 
 class GetBBox extends Component {
