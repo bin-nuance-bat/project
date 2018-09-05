@@ -77,14 +77,12 @@ class FilterView extends Component {
     this.poseBuffer[this.poseBufferIndex++] = newPose;
     this.poseBufferIndex %= POSE_BUFFER_LEN;
 
-    const avgPose = this.getBlankPose();
-    for (const key of Object.keys(newPose)) {
-      let poseTotal = 0;
-      for (let i = 0; i < POSE_BUFFER_LEN; i++) {
-        poseTotal += this.poseBuffer[i][key];
-      }
-      avgPose[key] = poseTotal / POSE_BUFFER_LEN
-    }
+    const avgPose = Object.keys(newPose).reduce((obj, key) => {
+      obj[key] =
+        this.poseBuffer.reduce((total, p) => total + p[key], 0) /
+        POSE_BUFFER_LEN;
+      return obj;
+    }, {});
 
     return avgPose;
   };
