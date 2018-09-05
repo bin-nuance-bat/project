@@ -40,7 +40,8 @@ class ItemRecognition extends Component {
       });
   };
 
-  onFail = () => {
+  onFail = async () => {
+    await this.props.setPrediction('', '');
     this.props.history.replace('/editsnack');
   };
 
