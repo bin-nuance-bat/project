@@ -156,7 +156,9 @@ class App extends Component {
 }
 
 App.propTypes = {
-  setDataController: PropTypes.func.isRequired
+  setDataController: PropTypes.func.isRequired,
+  loadUsers: PropTypes.func.isRequired,
+  loadSlackUserReference: PropTypes.func.isRequired
 };
 
 export default App;
