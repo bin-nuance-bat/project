@@ -30,7 +30,7 @@ class SnackChat extends Component {
   componentDidMount() {
     posenet.load(0.5).then(net => {
       this.net = net;
-      this.setState({loading: false, countdown: 3});
+      this.setState({loading: false, countdown: 5});
       this.ticker = setInterval(() => {
         this.setState(prevState => {
           if (prevState.countdown === 1) clearInterval(this.ticker);
@@ -42,9 +42,7 @@ class SnackChat extends Component {
 
   componentDidUpdate() {
     if (this.state.countdown === 0) {
-      // Delay needed to allow browser to render
-      // TODO: Find a better solution
-      setTimeout(this.captureSnackChat, 100);
+      requestAnimationFrame(() => requestAnimationFrame(this.captureSnackChat));
     }
   }
 
