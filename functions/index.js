@@ -160,3 +160,21 @@ exports.addUserToShortList = functions.https.onCall((username, context) => {
       .update({[username]: 'SHORT_LIST'});
   });
 });
+
+exports.updateCustomClaims = functions.firestore
+  .document('users/{userId}')
+  .onWrite((snap, context) => {
+    admin
+      .firestore()
+      .collection('users')
+      .doc(context.params.userId)
+      .get()
+      .then(doc => {
+        return doc.data();
+      })
+      .then(data => {
+        admin
+          .auth()
+          .setCustomUserClaims(context.params.userId, data ? data : {});
+      });
+  });

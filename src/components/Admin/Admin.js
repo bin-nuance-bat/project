@@ -45,7 +45,8 @@ class Admin extends Component {
         this.setState({status: 'You are not an administrator.'});
         userRef.set({
           name: userEntry.displayName,
-          admin: false
+          admin: false,
+          kiosk: false
         });
       }
     });
