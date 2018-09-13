@@ -122,54 +122,55 @@ class ListSelection extends Component {
     return (
       <div className="list-container">
         <ol>
-          {this.props.items.length > 0 &&
-            this.state.formattedItems.map(
-              ([group, groupItems]) =>
-                groupItems.length > 0 ? (
-                  <li key={group} id={group} className="list-group">
-                    <h2>
-                      {group !== '\u00A0'
-                        ? group.toUpperCase()
-                        : this.props.additionalOptions.heading}
-                    </h2>
-                    <hr />
-                    <ul>
-                      {groupItems.map(item => (
-                        <li
-                          className="list-item"
-                          key={item.id}
-                          data-test={item.id}
-                          onClick={() => this.props.onClick(item)}>
-                          <img
-                            className="icon"
-                            src={
-                              item.name === this.props.selected
-                                ? tick
-                                : item.image
-                            }
-                            alt=""
-                          />
-                          <p
-                            className={
-                              item.name === this.props.selected
-                                ? 'selected'
-                                : ''
-                            }>
-                            {item.name}
-                            {item.qualifier && (
-                              <span className="qualifier">
-                                {item.qualifier}
-                              </span>
-                            )}
-                          </p>
-                        </li>
-                      ))}
-                    </ul>
-                  </li>
-                ) : (
-                  <div key={group} />
-                )
-            )}
+          {this.props.additionalOptions || this.props.items.length > 0
+            ? this.state.formattedItems.map(
+                ([group, groupItems]) =>
+                  groupItems.length > 0 ? (
+                    <li key={group} id={group} className="list-group">
+                      <h2>
+                        {group !== '\u00A0'
+                          ? group.toUpperCase()
+                          : this.props.additionalOptions.heading}
+                      </h2>
+                      <hr />
+                      <ul>
+                        {groupItems.map(item => (
+                          <li
+                            className="list-item"
+                            key={item.id}
+                            data-test={item.id}
+                            onClick={() => this.props.onClick(item)}>
+                            <img
+                              className="icon"
+                              src={
+                                item.name === this.props.selected
+                                  ? tick
+                                  : item.image
+                              }
+                              alt=""
+                            />
+                            <p
+                              className={
+                                item.name === this.props.selected
+                                  ? 'selected'
+                                  : ''
+                              }>
+                              {item.name}
+                              {item.qualifier && (
+                                <span className="qualifier">
+                                  {item.qualifier}
+                                </span>
+                              )}
+                            </p>
+                          </li>
+                        ))}
+                      </ul>
+                    </li>
+                  ) : (
+                    <div key={group} />
+                  )
+              )
+            : null}
         </ol>
 
         <div className="group-select" id="scroll-select">
