@@ -18,14 +18,13 @@ const authenticateUser = (auth, success) => {
       'You must be authenticated to use this function'
     );
 
-  if (auth.uid === functions.config().honestystore.uid) return success();
   return admin
     .firestore()
     .collection('users')
     .doc(auth.uid)
     .get()
     .then(doc => {
-      if (!doc.data() || !doc.data().admin) {
+      if (!doc.data() || !doc.data().kiosk) {
         throw new functions.https.HttpsError(
           'permission-denied',
           'You must be authenticated to use this function.'
@@ -118,7 +117,6 @@ exports.loadSlackUsers = functions.https.onCall((data, context) => {
     return request.get(req);
   });
 });
-
 
 exports.changeImageLabel = functions.firestore
   .document('training_data/{imageId}')
