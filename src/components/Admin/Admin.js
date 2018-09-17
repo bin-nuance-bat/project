@@ -39,7 +39,9 @@ class Admin extends Component {
         if (userDoc.data().admin) {
           this.initAdmin(userDoc.data().name);
         } else {
-          this.setState({status: 'You are not an administrator.'});
+          this.setState({
+            status: `You are not an administrator, ${userDoc.data().name}`
+          });
         }
       } else {
         this.setState({status: 'You are not an administrator.'});
