@@ -19,30 +19,40 @@ class DataController {
     return classes;
   }
 
+  submitTrainingData(label, imageUri) {
+    return this.db
+      .collection('training_data')
+      .add({
+        label,
+        random: Math.random(),
+        timestamp: Date.now(),
+        trusted: false
+      })
+      .then(doc =>
+        this.storage
+          .child(`training_data/${label}/${doc.id}.jpg`)
+          .putString(imageUri, 'data_url')
+      )
+      .catch(error => {
+        console.error('Failure to store image:', error.message);
+      });
+  }
+
   changeItemCount(label, change) {
     const ref = this.db.collection('item_data').doc(label);
     return ref
       .get()
       .then(doc =>
         ref.set({count: (doc.exists ? doc.data().count : 0) + change})
-      );
+      )
+      .catch(error => {
+        console.error('Failure to change item count:', error.message);
+      });
   }
 
   addImage(imageUri, label) {
     return Promise.all([
-      this.db
-        .collection('training_data')
-        .add({
-          label,
-          random: Math.random(),
-          timestamp: Date.now(),
-          trusted: false
-        })
-        .then(doc =>
-          this.storage
-            .child(`training_data/${label}/${doc.id}.jpg`)
-            .putString(imageUri, 'data_url')
-        ),
+      this.submitTrainingData(label, imageUri),
       this.changeItemCount(label, 1)
     ]);
   }
