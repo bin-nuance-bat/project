@@ -24,6 +24,8 @@ You should create a `.env` file in the project root according to the `.env.tmpl`
 
 The Firebase functions we use make API calls to slack. As this is an external network request, you will be required to enable billing on your firebase account and change your plan to the Blaze pay-as-you-go pricing plan (or better).
 
+As with any pricing plan, make sure you get approval from whoever is responsible for paying for any charges.
+
 ## Storage
 
 Storage rules will be automatically configured when you deploy the application to firebase (see below).
@@ -92,7 +94,7 @@ Now run the following
 
 ```shell
 {HONESTY_DIR}\functions $ firebase functions:config:set slack.token=SLACK_TOKEN
-{HONESTY_DIR}\functions $ firebase functions:config:set slack.storageurl=SLACK_STORAGE_URL
+{HONESTY_DIR}\functions $ firebase functions:config:set snackchat.storageurl=gs://<SNACKCHAT_BUCKET>
 ```
 
 ## Deployment

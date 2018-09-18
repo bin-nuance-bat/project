@@ -87,7 +87,7 @@ exports.sendSnackChat = functions.https.onCall((data, context) => {
     const tempFileName = '/tmp/snackchat.jpg';
     const fileName = `snackchat/${crypto.randomBytes(20).toString('hex')}.jpg`;
     const snackchatUrl =
-      functions.config().slack.storageurl || 'gs://snackchat';
+      functions.config().snackchat.storageurl || 'gs://snackchat';
     const bucket = admin.storage().bucket(snackchatUrl);
 
     fs.writeFileSync(tempFileName, toBuffer(data.snackChat));
