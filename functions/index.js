@@ -18,14 +18,13 @@ const authenticateUser = (auth, success) => {
       'You must be authenticated to use this function'
     );
 
-  if (auth.uid === functions.config().honestystore.uid) return success();
   return admin
     .firestore()
     .collection('users')
     .doc(auth.uid)
     .get()
     .then(doc => {
-      if (!doc.data() || !doc.data().admin) {
+      if (!doc.data() || !doc.data().kiosk) {
         throw new functions.https.HttpsError(
           'permission-denied',
           'You must be authenticated to use this function.'
@@ -87,7 +86,9 @@ exports.sendSnackChat = functions.https.onCall((data, context) => {
   return authenticateUser(context.auth, () => {
     const tempFileName = '/tmp/snackchat.jpg';
     const fileName = `snackchat/${crypto.randomBytes(20).toString('hex')}.jpg`;
-    const bucket = admin.storage().bucket('gs://snackchat');
+    const snackchatUrl =
+      functions.config().snackchat.storageurl || 'gs://snackchat';
+    const bucket = admin.storage().bucket(snackchatUrl);
 
     fs.writeFileSync(tempFileName, toBuffer(data.snackChat));
     return bucket
@@ -118,7 +119,6 @@ exports.loadSlackUsers = functions.https.onCall((data, context) => {
     return request.get(req);
   });
 });
-
 
 exports.changeImageLabel = functions.firestore
   .document('training_data/{imageId}')
