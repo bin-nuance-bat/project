@@ -57,7 +57,9 @@ class ItemRecognition extends Component {
   };
 
   isUnassigned(prediction) {
-    return !prediction || (prediction.id === null && prediction.img === null);
+    return (
+      prediction != null || (prediction.id === null && prediction.img === null)
+    );
   }
 
   predict = () => {
