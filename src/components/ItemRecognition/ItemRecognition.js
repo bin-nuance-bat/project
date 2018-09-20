@@ -48,12 +48,19 @@ class ItemRecognition extends Component {
   };
 
   hasBeen(seconds) {
-    return (Date.now() - this.scanningStartTime) / 1000 > seconds;
+    const time = (Date.now() - this.scanningStartTime) / 1000;
+    return time > seconds;
   }
 
   isItemRecognised = items => {
     return items[0].value > ML_THRESHOLD;
   };
+
+  isUnassigned(prediction) {
+    return (
+      prediction != null || (prediction.id === null && prediction.img === null)
+    );
+  }
 
   predict = () => {
     if (this.backClicked) return this.props.history.replace('/disclaimer');
@@ -68,10 +75,11 @@ class ItemRecognition extends Component {
       const item = items[0];
       const imgSrc = canvas.toDataURL('image/jpeg');
 
-      const isItemRecognised =
-        this.isItemRecognised(items) &&
-        item.id !== 'unknown' &&
-        !this.props.prediction;
+      const recognised = this.isItemRecognised(items);
+      const known = item.id !== 'unknown';
+      const unassigned = this.isUnassigned(this.props.prediction);
+
+      const isItemRecognised = recognised && known && unassigned;
 
       const hasTimedOut = this.hasBeen(TIMEOUT_IN_SECONDS);
 
