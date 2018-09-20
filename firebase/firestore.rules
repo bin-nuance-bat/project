@@ -6,7 +6,7 @@ service cloud.firestore {
     }
     
     match /item_data/{document} {
-    	allow create, update: if request.auth.token.kiosk == true;
+    	allow create, update, get: if request.auth.token.kiosk == true;
     }
     
     match /users/{user} {

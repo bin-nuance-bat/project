@@ -22,8 +22,7 @@ const ViewFinder = props => {
         fill="none"
         stroke="#000000"
         opacity="0.5"
-        // eslint-disable-next-line
-        stroke-linecap="square"
+        strokeLinecap="square"
         strokeWidth={BORDER_WIDTH}
         points={[
           BORDER_CENTER,
