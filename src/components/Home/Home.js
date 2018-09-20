@@ -17,6 +17,9 @@ class Home extends React.Component {
     }
     this.props.loadStoreList().catch(this.handleError);
     this.props.loadSlackUserReference();
+
+    // Maintain access to video beyond root
+    navigator.mediaDevices.getUserMedia({video: true});
   }
 
   handleSnackChatClick = () => {
