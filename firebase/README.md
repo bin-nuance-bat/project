@@ -132,7 +132,7 @@ The database will require a `slack_users` collection, which can simply be left e
 
 ### Training Data
 
-`training_data` and `item_data` will be automatically created by the app.
+`training_data` will be automatically created by the app.
 
 The database is used to track training data. There is no way of listing files in storage so each entry keeps track of one image. To give people admin/kiosk privileges add the relevant Boolean flags to the document titled with their UID in users collection. When users is updated a cloud function is triggered to update the [custom claims](https://firebase.google.com/docs/auth/admin/create-custom-tokens) of that user, so don't store too much information here. Custom claims is what handles the firebase and storage rules.
 

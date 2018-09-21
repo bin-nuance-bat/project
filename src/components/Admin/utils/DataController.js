@@ -10,15 +10,6 @@ class DataController {
     this.db = firebase.firestore();
   }
 
-  async getItemClasses() {
-    const items = await this.db.collection('item_data').get();
-    const classes = [];
-    items.forEach(doc => {
-      if (doc.data().count > 0) classes.push(doc.id);
-    });
-    return classes;
-  }
-
   submitTrainingData(label, imageUri) {
     return this.db
       .collection('training_data')
@@ -38,23 +29,8 @@ class DataController {
       });
   }
 
-  changeItemCount(label, change) {
-    const ref = this.db.collection('item_data').doc(label);
-    return ref
-      .get()
-      .then(doc =>
-        ref.set({count: (doc.exists ? doc.data().count : 0) + change})
-      )
-      .catch(error => {
-        console.error('Failure to change item count:', error.message);
-      });
-  }
-
   addImage(imageUri, label) {
-    return Promise.all([
-      this.submitTrainingData(label, imageUri),
-      this.changeItemCount(label, 1)
-    ]);
+    return Promise.all([this.submitTrainingData(label, imageUri)]);
   }
 
   trustImage(imageId) {
@@ -67,8 +43,6 @@ class DataController {
   changeImageLabel(imageId, newLabel) {
     const ref = this.db.collection('training_data').doc(imageId);
     return ref.get().then(doc => {
-      this.changeItemCount(doc.data().label, -1);
-      this.changeItemCount(newLabel, 1);
       return ref.update({label: newLabel});
     });
   }
@@ -79,7 +53,6 @@ class DataController {
       this.storage
         .child(`training_data/${doc.data().label}/${doc.id}.jpg`)
         .delete();
-      this.changeItemCount(doc.data().label, -1);
       return ref.delete();
     });
   }
