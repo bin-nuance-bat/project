@@ -22,10 +22,19 @@ class ItemRecognition extends Component {
   predictionQueue = [];
 
   componentDidMount() {
-    this.model = new Model();
-    this.model.load().then(() => this.setState({modelLoaded: true}));
     this.props.setPrediction(null, null);
     this.predictionQueue = [];
+    this.initialiseModel();
+  }
+
+  async initialiseModel() {
+    try {
+      this.model = new Model();
+      await this.model.load();
+      this.setState({modelLoaded: true});
+    } catch (e) {
+      this.props.history.replace('/error');
+    }
   }
 
   onConnect = () => {
