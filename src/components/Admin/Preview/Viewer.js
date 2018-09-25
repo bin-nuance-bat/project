@@ -8,6 +8,8 @@ import DataController from '../utils/DataController';
 import ItemSelector from '../ItemSelector';
 import ImagePreview from './ImagePreview';
 
+import './Viewer.css';
+
 class Viewer extends Component {
   state = {
     item: 'all',
@@ -23,6 +25,8 @@ class Viewer extends Component {
   };
 
   componentDidMount() {
+    document.body.style.position = 'static';
+
     this.dataController = new DataController();
     window.datac = this.dataController;
     this.dataController.getStoreList().then(store => {
@@ -35,6 +39,10 @@ class Viewer extends Component {
         busy: false
       }));
     });
+  }
+
+  componentWillUnmount() {
+    document.body.style.position = 'fixed';
   }
 
   getImages = () => {
