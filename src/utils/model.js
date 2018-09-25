@@ -34,7 +34,7 @@ export default class Model {
   }
 
   async predict(element) {
-    if (!this.model) return [{value: 0, id: ''}];
+    if (this.model == null) return [{value: 0, id: ''}];
     const predictions = tf.tidy(() => {
       const input = tf.fromPixels(element);
       const preProcessDivisor = tf.scalar(255 / 2);
