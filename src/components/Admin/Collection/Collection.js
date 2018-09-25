@@ -44,6 +44,11 @@ class Collection extends Component {
       this.items = Object.values(items);
       this.setState({busy: false, status: 'Ready'});
     });
+    document.body.style.position = 'static';
+  }
+
+  componentWillUnmount() {
+    document.body.style.position = 'fixed';
   }
 
   back = () => {
