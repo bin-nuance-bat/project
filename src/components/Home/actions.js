@@ -38,9 +38,7 @@ export function setStoreList(storeList) {
 }
 
 export const loadStoreList = () => async dispatch => {
-  return await fetchItems().then(storeList =>
-    dispatch(setStoreList(storeList))
-  );
+  return dispatch(setStoreList(await fetchItems()));
 };
 
 export const attemptLoadUsers = async () => {
@@ -48,6 +46,7 @@ export const attemptLoadUsers = async () => {
   const load = firebase.functions().httpsCallable('loadSlackUsers');
   const result = await load();
   const data = result.data;
+
   if (!data.ok) throw Error('Failed to fetch users');
   else {
     const users = data.members.filter(user => !user.is_bot);
@@ -61,9 +60,8 @@ export const attemptLoadUsers = async () => {
 };
 
 export const loadUsers = () => async dispatch => {
-  return await attemptLoadUsers().then(users =>
-    dispatch(setUsers({time: Date.now(), data: users}))
-  );
+  const users = await attemptLoadUsers();
+  return dispatch(setUsers({time: Date.now(), data: users}));
 };
 
 export const loadSlackUserReference = () => async dispatch => {
