@@ -6,6 +6,7 @@ const toBuffer = require('data-uri-to-buffer');
 const admin = require('firebase-admin');
 
 admin.initializeApp(functions.config().firebase);
+admin.firestore().settings({timestampsInSnapshots: true});
 
 const BOT_AVATAR = 'https://honesty.store/assets/android/icon@MDPI.png';
 const BOT_USERNAME = 'honesty.store';
