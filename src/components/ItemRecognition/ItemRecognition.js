@@ -79,10 +79,10 @@ class ItemRecognition extends Component {
     if (this.backClicked) return this.props.history.replace('/disclaimer');
 
     const camera = this.webcam.current;
-    if (camera == null) return this.schedulePredict();
+    if (!camera) return this.schedulePredict();
 
     const canvas = camera.getCanvas();
-    if (canvas == null) return this.schedulePredict();
+    if (!canvas) return this.schedulePredict();
 
     const items = await this.model.predict(canvas);
 
