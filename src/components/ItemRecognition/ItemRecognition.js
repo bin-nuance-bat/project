@@ -22,22 +22,24 @@ class ItemRecognition extends Component {
   predictionQueue = [];
 
   componentDidMount() {
-    this.model = new Model();
-    this.model.load().then(() => this.setState({modelLoaded: true}));
     this.props.setPrediction(null, null);
     this.predictionQueue = [];
+    this.initialiseModel();
+  }
+
+  async initialiseModel() {
+    try {
+      this.model = new Model();
+      await this.model.load();
+      this.setState({modelLoaded: true});
+    } catch (e) {
+      this.props.history.replace('/error');
+    }
   }
 
   onConnect = () => {
-    this.webcam.current
-      .requestScreenshot()
-      .then(img => {
-        this.scanningStartTime = Date.now();
-        this.handleImg(img);
-      })
-      .catch(() => {
-        setTimeout(this.onConnect, 100);
-      });
+    this.scanningStartTime = Date.now();
+    requestAnimationFrame(this.predict);
   };
 
   onFail = async () => {
@@ -55,28 +57,38 @@ class ItemRecognition extends Component {
   };
 
   hasBeen(seconds) {
-    return (Date.now() - this.scanningStartTime) / 1000 > seconds;
+    const time = (Date.now() - this.scanningStartTime) / 1000;
+    return time > seconds;
   }
 
   isItemRecognised = items => {
     return items[0].value > ML_THRESHOLD;
   };
 
-  handleImg = img => {
-    if (this.backClicked) {
-      this.props.history.replace('/disclaimer');
-      return;
-    }
+  isUnassigned(prediction) {
+    return (
+      prediction != null || (prediction.id === null && prediction.img === null)
+    );
+  }
 
+  predict = () => {
+    if (this.backClicked) return this.props.history.replace('/disclaimer');
     if (this.success) return;
 
-    this.model.predict(img).then(async items => {
-      const item = items[0];
+    if (!this.webcam.current) return requestAnimationFrame(this.predict);
 
-      const isItemRecognised =
-        this.isItemRecognised(items) &&
-        item.id !== 'unknown' &&
-        !this.props.prediction;
+    const canvas = this.webcam.current.getCanvas();
+    if (!canvas) return requestAnimationFrame(this.predict);
+
+    this.model.predict(canvas).then(async items => {
+      const item = items[0];
+      const imgSrc = canvas.toDataURL('image/jpeg');
+
+      const recognised = this.isItemRecognised(items);
+      const known = item.id !== 'unknown';
+      const unassigned = this.isUnassigned(this.props.prediction);
+
+      const isItemRecognised = recognised && known && unassigned;
 
       const hasTimedOut = this.hasBeen(TIMEOUT_IN_SECONDS);
 
@@ -87,7 +99,7 @@ class ItemRecognition extends Component {
       if (isItemRecognised) {
         this.success = true;
         this.setSuggestions(items, 1);
-        await this.props.setPrediction(item.id, img.src);
+        await this.props.setPrediction(item.id, imgSrc);
 
         this.webcam.current.success(() => {
           this.setState({text: 'Snack recognised!', subText: null});
@@ -97,7 +109,7 @@ class ItemRecognition extends Component {
         });
       } else if (hasTimedOut) {
         this.setSuggestions(items, 0);
-        this.props.setPrediction('', img.src);
+        this.props.setPrediction('', imgSrc);
         this.props.history.replace('/editsnack');
         return;
       } else if (showRotationMessage) {
@@ -108,8 +120,7 @@ class ItemRecognition extends Component {
       }
 
       // Get the next frame
-      if (this.webcam.current)
-        this.webcam.current.requestScreenshot().then(this.handleImg);
+      if (this.webcam.current) requestAnimationFrame(this.predict);
     });
   };
 

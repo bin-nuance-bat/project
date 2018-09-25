@@ -1,12 +1,12 @@
 service firebase.storage {
-  match /b/snackchat/o {
-    match /snackchat/{allPaths=**} {
+  match /b/{SNACKCHAT_DIR}/o {
+    match /{SNACKCHAT_DIR}/{allPaths=**} {
       allow read;
       allow create: if request.auth.token.kiosk == true;
       allow write: if request.auth.token.admin == true;
     }
   }
-  match /b/honesty-store-kiosk.appspot.com/o {
+  match /b/{YOUR_PROJECT_ID}.appspot.com/o {
     match /eval_data/{allPaths=**} {
       allow read, write: if request.auth.token.admin == true;
     }

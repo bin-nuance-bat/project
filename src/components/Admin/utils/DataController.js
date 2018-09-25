@@ -10,41 +10,27 @@ class DataController {
     this.db = firebase.firestore();
   }
 
-  async getItemClasses() {
-    const items = await this.db.collection('item_data').get();
-    const classes = [];
-    items.forEach(doc => {
-      if (doc.data().count > 0) classes.push(doc.id);
-    });
-    return classes;
-  }
-
-  changeItemCount(label, change) {
-    const ref = this.db.collection('item_data').doc(label);
-    return ref
-      .get()
+  submitTrainingData(label, imageUri) {
+    return this.db
+      .collection('training_data')
+      .add({
+        label,
+        random: Math.random(),
+        timestamp: Date.now(),
+        trusted: false
+      })
       .then(doc =>
-        ref.set({count: (doc.exists ? doc.data().count : 0) + change})
-      );
+        this.storage
+          .child(`training_data/${label}/${doc.id}.jpg`)
+          .putString(imageUri, 'data_url')
+      )
+      .catch(error => {
+        console.error('Failure to store image:', error.message);
+      });
   }
 
   addImage(imageUri, label) {
-    return Promise.all([
-      this.db
-        .collection('training_data')
-        .add({
-          label,
-          random: Math.random(),
-          timestamp: Date.now(),
-          trusted: false
-        })
-        .then(doc =>
-          this.storage
-            .child(`training_data/${label}/${doc.id}.jpg`)
-            .putString(imageUri, 'data_url')
-        ),
-      this.changeItemCount(label, 1)
-    ]);
+    return Promise.all([this.submitTrainingData(label, imageUri)]);
   }
 
   trustImage(imageId) {
@@ -57,8 +43,6 @@ class DataController {
   changeImageLabel(imageId, newLabel) {
     const ref = this.db.collection('training_data').doc(imageId);
     return ref.get().then(doc => {
-      this.changeItemCount(doc.data().label, -1);
-      this.changeItemCount(newLabel, 1);
       return ref.update({label: newLabel});
     });
   }
@@ -69,20 +53,19 @@ class DataController {
       this.storage
         .child(`training_data/${doc.data().label}/${doc.id}.jpg`)
         .delete();
-      this.changeItemCount(doc.data().label, -1);
       return ref.delete();
     });
   }
 
   async getImages(
-    trusted = null,
+    isTrusted = null,
     maxImages = 1,
     startAfter = 0,
-    label = 'all'
+    imageLabel = 'all'
   ) {
     let ref = this.db.collection('training_data');
-    if (trusted !== null) ref = ref.where('trusted', '==', trusted);
-    if (label !== 'all') ref = ref.where('label', '==', label);
+    if (isTrusted !== null) ref = ref.where('trusted', '==', isTrusted);
+    if (imageLabel !== 'all') ref = ref.where('label', '==', imageLabel);
 
     return ref
       .orderBy('timestamp')
@@ -91,14 +74,24 @@ class DataController {
       .get()
       .then(async snapshot =>
         Promise.all(
-          snapshot.docs.map(async doc => ({
-            id: doc.id,
-            label: doc.data().label,
-            trusted: doc.data().trusted,
-            url: await this.storage
-              .child(`training_data/${doc.data().label}/${doc.id}.jpg`)
-              .getDownloadURL()
-          }))
+          snapshot.docs.map(async doc => {
+            let url;
+            try {
+              url = await this.storage
+                .child(`training_data/${doc.data().label}/${doc.id}.jpg`)
+                .getDownloadURL();
+            } catch (e) {
+              url = null;
+            }
+            const {label, trusted, timestamp} = doc.data();
+            return {
+              id: doc.id,
+              label,
+              trusted,
+              timestamp,
+              url
+            };
+          })
         )
       );
   }

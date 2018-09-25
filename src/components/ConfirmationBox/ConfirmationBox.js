@@ -20,25 +20,42 @@ class ConfirmationBox extends React.Component {
   };
 
   render() {
-    const image =
-      this.props.prediction.id && this.props.storeList[this.props.prediction.id]
-        ? this.props.storeList[this.props.prediction.id].image
-        : null;
+    if (
+      !(
+        this.props.prediction.id &&
+        this.props.storeList[this.props.prediction.id]
+      )
+    ) {
+      return (
+        <div className="page">
+          <BackButton
+            handleClick={() => this.props.history.replace('/scanitem')}
+          />
+        </div>
+      );
+    }
+
+    const item = this.props.storeList[this.props.prediction.id];
+
+    const image = item.image;
+    const name = item.name;
+    const qualifier = item.qualifier ? ` (${item.qualifier})` : '';
+
     return (
       <div className="page">
         <BackButton
           handleClick={() => this.props.history.replace('/scanitem')}
         />
-        <div className="text-confirmation">{`Is this a ${
-          this.props.storeList[this.props.prediction.id].name
-        }?`}</div>
+        <div className="text-confirmation">
+          {`Is this a ${name}${qualifier}?`}
+        </div>
         <Hand snack={image} />
         <div>
           <button
             className="button btn-half-block btn-no"
             data-test="NO"
             onClick={this.handleNo}>
-            Edit Snack
+            No
           </button>
           <button
             className="button btn-half-block btn-yes"

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import Webcam from 'react-webcam';
+import Webcam from '../Webcam/Webcam';
 import ViewFinder from './ViewFinder';
 
 import './WebcamCapture.css';
@@ -59,6 +59,10 @@ class WebcamCapture extends Component {
     return await this.urlToImg(this.cropImage(image));
   };
 
+  getCanvas = () => {
+    return this.webcam.current.getCanvas();
+  };
+
   secondAttempt = false;
   setupWebcam() {
     navigator.mediaDevices
@@ -87,24 +91,11 @@ class WebcamCapture extends Component {
     });
   }
 
-  cropImage(img) {
-    this.ctx.drawImage(
-      img,
-      -(img.width - this.props.imgSize) / 2,
-      -(img.height - this.props.imgSize) / 2
-    );
-    return this.canvas.toDataURL();
-  }
-
   success = callback => this.viewFinder.current.success(callback);
 
   componentDidMount() {
     if (!navigator.mediaDevices) return;
     this.setupWebcam();
-    this.canvas = document.createElement('canvas');
-    this.canvas.width = this.props.imgSize;
-    this.canvas.height = this.props.imgSize;
-    this.ctx = this.canvas.getContext('2d');
   }
 
   componentWillUnmount() {
@@ -126,7 +117,7 @@ class WebcamCapture extends Component {
             ref={this.webcam}
             screenshotFormat="image/jpeg"
             className="webcam-capture--video"
-            screenshotWidth={this.props.imgSize * (4 / 3)}
+            screenshotWidth={this.props.imgSize}
           />
         )}
         <ViewFinder ref={this.viewFinder} />

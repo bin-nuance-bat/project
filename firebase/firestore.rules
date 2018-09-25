@@ -1,23 +1,17 @@
 service cloud.firestore {
   match /databases/{database}/documents {
-  	match /models/{model} {
-    	allow read;
-    }
   
     match /training_data/{document} {
-      allow create: if request.resource.data.trusted == false;
+      allow create, update: if request.resource.data.trusted == false && request.auth.token.kiosk == true;
     }
     
     match /users/{user} {
     	allow get: if request.auth.uid == user
-    	allow create: if request.resource.data.admin == false;
+    	allow create, update: if request.resource.data.admin == false && request.resource.data.kiosk == false;
     }
     
     match /{document=**} {
-    	function isAdmin(userId) {
-      	return get(/databases/$(database)/documents/users/$(userId)).data.admin;
-      }
-      allow read, write: if isAdmin(request.auth.uid);
+      allow read, write: if request.auth.token.admin == true;
     }
   }
 }

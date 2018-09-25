@@ -17,6 +17,9 @@ class Home extends React.Component {
     }
     this.props.loadStoreList().catch(this.handleError);
     this.props.loadSlackUserReference();
+
+    // Maintain access to video beyond root
+    navigator.mediaDevices.getUserMedia({video: true});
   }
 
   handleSnackChatClick = () => {
@@ -58,17 +61,17 @@ class Home extends React.Component {
           <div>
             <button
               className="button btn-primary btn-block"
-              onClick={this.handleReminderNoPhotoClick}>
-              Send a Reminder
+              onClick={this.handleSnackChatClick}>
+              Send a SnackChat
               <img className="homepage--small-camera" src={Camera} alt="" />
             </button>
           </div>
           <div>
-            {/* <button
+            <button
               className="button btn-secondary btn-block"
               onClick={this.handleReminderNoPhotoClick}>
               Send a reminder without a photo
-            </button> */}
+            </button>
           </div>
         </div>
       </div>

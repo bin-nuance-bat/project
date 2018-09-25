@@ -133,7 +133,7 @@ UsernameEntry.propTypes = {
   predictionID: PropTypes.string,
   storeList: PropTypes.objectOf(PropTypes.object).isRequired,
   sendWithPhoto: PropTypes.bool.isRequired,
-  snackChat: PropTypes.object,
+  snackChat: PropTypes.string,
   dataController: PropTypes.object.isRequired,
   capturedImg: PropTypes.string
 };

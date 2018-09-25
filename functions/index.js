@@ -6,6 +6,7 @@ const toBuffer = require('data-uri-to-buffer');
 const admin = require('firebase-admin');
 
 admin.initializeApp(functions.config().firebase);
+admin.firestore().settings({timestampsInSnapshots: true});
 
 const BOT_AVATAR = 'https://honesty.store/assets/android/icon@MDPI.png';
 const BOT_USERNAME = 'honesty.store';
@@ -18,14 +19,13 @@ const authenticateUser = (auth, success) => {
       'You must be authenticated to use this function'
     );
 
-  if (auth.uid === functions.config().honestystore.uid) return success();
   return admin
     .firestore()
     .collection('users')
     .doc(auth.uid)
     .get()
     .then(doc => {
-      if (!doc.data() || !doc.data().admin) {
+      if (!doc.data() || !doc.data().kiosk) {
         throw new functions.https.HttpsError(
           'permission-denied',
           'You must be authenticated to use this function.'
@@ -87,7 +87,9 @@ exports.sendSnackChat = functions.https.onCall((data, context) => {
   return authenticateUser(context.auth, () => {
     const tempFileName = '/tmp/snackchat.jpg';
     const fileName = `snackchat/${crypto.randomBytes(20).toString('hex')}.jpg`;
-    const bucket = admin.storage().bucket();
+    const snackchatUrl =
+      functions.config().snackchat.storageurl || 'gs://snackchat';
+    const bucket = admin.storage().bucket(snackchatUrl);
 
     fs.writeFileSync(tempFileName, toBuffer(data.snackChat));
     return bucket
@@ -119,6 +121,23 @@ exports.loadSlackUsers = functions.https.onCall((data, context) => {
   });
 });
 
+exports.changeImageLabel = functions.firestore
+  .document('training_data/{imageId}')
+  .onUpdate((change, context) => {
+    const bucket = admin.storage().bucket();
+    const oldLabel = change.before.data().label;
+    const newLabel = change.after.data().label;
+    if (oldLabel === newLabel) return null;
+    return new Promise(resolve =>
+      bucket
+        .file(`training_data/${oldLabel}/${context.params.imageId}.jpg`)
+        .move(
+          `training_data/${newLabel}/${context.params.imageId}.jpg`,
+          (err, dest, res) => resolve(res)
+        )
+    );
+  });
+
 exports.loadSlackShortListAndBlackList = functions.https.onCall(
   (data, context) => {
     return authenticateUser(context.auth, () => {
@@ -142,3 +161,21 @@ exports.addUserToShortList = functions.https.onCall((username, context) => {
       .update({[username]: 'SHORT_LIST'});
   });
 });
+
+exports.updateCustomClaims = functions.firestore
+  .document('users/{userId}')
+  .onWrite((snap, context) => {
+    admin
+      .firestore()
+      .collection('users')
+      .doc(context.params.userId)
+      .get()
+      .then(doc => {
+        return doc.data();
+      })
+      .then(data => {
+        admin
+          .auth()
+          .setCustomUserClaims(context.params.userId, data ? data : {});
+      });
+  });
