@@ -92,18 +92,25 @@ class Viewer extends Component {
     });
   };
 
+  getId = event => event.target.parentElement.parentElement.dataset.id;
+
   remove = event => {
-    const imageId = event.target.parentElement.parentElement.dataset.id;
+    const imageId = this.getId(event);
     this.dataController.deleteImage(imageId).then(() => this.getImages());
   };
 
   trust = event => {
-    const imageId = event.target.parentElement.parentElement.dataset.id;
+    const imageId = this.getId(event);
     this.dataController.trustImage(imageId).then(() => this.getImages());
   };
 
+  untrust = event => {
+    const imageId = this.getId(event);
+    this.dataController.trustImage(imageId, false).then(() => this.getImages());
+  };
+
   trustUnknown = event => {
-    const imageId = event.target.parentElement.parentElement.dataset.id;
+    const imageId = this.getId(event);
     this.dataController.changeImageLabel(imageId, 'unknown');
     this.dataController.trustImage(imageId).then(() => this.getImages());
   };
@@ -197,6 +204,7 @@ class Viewer extends Component {
                   key={image.id}
                   image={image}
                   approve={this.trust}
+                  disapprove={this.untrust}
                   remove={this.remove}
                   trustUnknown={this.trustUnknown}
                   product={productName(product)}

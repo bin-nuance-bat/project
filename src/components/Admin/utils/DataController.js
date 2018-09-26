@@ -33,11 +33,11 @@ class DataController {
     return Promise.all([this.submitTrainingData(label, imageUri)]);
   }
 
-  trustImage(imageId) {
+  trustImage(imageId, trusted = true) {
     return this.db
       .collection('training_data')
       .doc(imageId)
-      .update({trusted: true});
+      .update({trusted});
   }
 
   changeImageLabel(imageId, newLabel) {

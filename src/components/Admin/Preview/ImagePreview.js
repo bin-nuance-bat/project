@@ -13,7 +13,9 @@ const ImagePreview = props => {
       <div>
         {!props.image.trusted ? (
           <button onClick={props.approve}>Approve</button>
-        ) : null}
+        ) : (
+          <button onClick={props.disapprove}>Disapprove</button>
+        )}
         <button onClick={props.remove}>Delete</button>
         <button onClick={props.trustUnknown}>Unknown</button>
       </div>
