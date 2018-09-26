@@ -5,6 +5,7 @@ import DataController from '../utils/DataController';
 
 import WebcamCapture from '../../WebcamCapture/WebcamCapture';
 import ItemSelector from '../ItemSelector';
+import Scrollable from '../Scrollable';
 
 class Collection extends Component {
   state = {
@@ -44,11 +45,6 @@ class Collection extends Component {
       this.items = Object.values(items);
       this.setState({busy: false, status: 'Ready'});
     });
-    document.body.style.position = 'static';
-  }
-
-  componentWillUnmount() {
-    document.body.style.position = 'fixed';
   }
 
   back = () => {
@@ -57,44 +53,46 @@ class Collection extends Component {
 
   render() {
     return (
-      <div className="page">
-        <WebcamCapture
-          ref={this.webcamCapture}
-          imgSize={224}
-          onFail={() => {}}
-        />
-        <h2>{this.state.status}</h2>
-        <ItemSelector
-          item={this.state.item}
-          items={this.items}
-          setItem={i => this.setState({item: i})}
-          disabled={this.state.busy}
-        />
-        <div>
-          <label>Burst Count:</label>
-          <input
-            type="number"
-            value={this.state.burstCount}
-            min={1}
-            max={100}
-            disabled={this.state.busy}
-            onChange={e => this.setState({burstCount: e.target.value})}
+      <Scrollable>
+        <div className="page">
+          <WebcamCapture
+            ref={this.webcamCapture}
+            imgSize={224}
+            onFail={() => {}}
           />
-        </div>
-        <button
-          className="button button-admin"
-          onClick={this.burstShot}
-          disabled={
-            this.state.busy || !this.webcamCapture.current.webcam.current
-          }>
-          Capture Images
-        </button>
-        <div>
-          <button className="button button-admin" onClick={this.back}>
-            &laquo; Back
+          <h2>{this.state.status}</h2>
+          <ItemSelector
+            item={this.state.item}
+            items={this.items}
+            setItem={i => this.setState({item: i})}
+            disabled={this.state.busy}
+          />
+          <div>
+            <label>Burst Count:</label>
+            <input
+              type="number"
+              value={this.state.burstCount}
+              min={1}
+              max={100}
+              disabled={this.state.busy}
+              onChange={e => this.setState({burstCount: e.target.value})}
+            />
+          </div>
+          <button
+            className="button button-admin"
+            onClick={this.burstShot}
+            disabled={
+              this.state.busy || !this.webcamCapture.current.webcam.current
+            }>
+            Capture Images
           </button>
+          <div>
+            <button className="button button-admin" onClick={this.back}>
+              &laquo; Back
+            </button>
+          </div>
         </div>
-      </div>
+      </Scrollable>
     );
   }
 }

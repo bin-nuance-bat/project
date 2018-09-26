@@ -4,6 +4,7 @@ import JSZip from 'jszip';
 import {saveAs} from 'file-saver';
 
 import DataController from '../utils/DataController';
+import Scrollable from '../Scrollable';
 
 import ItemSelector from '../ItemSelector';
 import ImagePreview from './ImagePreview';
@@ -23,8 +24,6 @@ class Viewer extends Component {
   };
 
   componentDidMount() {
-    document.body.style.position = 'static';
-
     this.dataController = new DataController();
     window.datac = this.dataController;
     this.dataController.getStoreList().then(store => {
@@ -37,10 +36,6 @@ class Viewer extends Component {
         busy: false
       }));
     });
-  }
-
-  componentWillUnmount() {
-    document.body.style.position = 'fixed';
   }
 
   getImages = () => {
@@ -117,66 +112,68 @@ class Viewer extends Component {
 
   render() {
     return (
-      <div className="page">
-        <div>
-          <button className="button button-admin" onClick={this.back}>
-            &laquo; Back
-          </button>
-        </div>
-        <ItemSelector
-          item={this.state.item}
-          items={Object.values(this.state.items)}
-          setItem={item => this.setState({item})}
-        />
-        <div>
-          Max Images:
-          <input
-            type="text"
-            value={this.state.limit}
-            onChange={e => this.setState({limit: e.target.value})}
+      <Scrollable>
+        <div className="page">
+          <div>
+            <button className="button button-admin" onClick={this.back}>
+              &laquo; Back
+            </button>
+          </div>
+          <ItemSelector
+            item={this.state.item}
+            items={Object.values(this.state.items)}
+            setItem={item => this.setState({item})}
           />
-        </div>
-        <div>
-          Images Since:
-          <input
-            type="date"
-            value={this.state.since}
-            onChange={e => this.setState({since: e.target.value})}
-          />
-        </div>
-        <button
-          className="button button-admin"
-          disabled={this.state.busy}
-          onClick={this.getImages}>
-          Fetch Images
-        </button>
-        <button
-          className="button button-admin"
-          disabled={this.state.busy}
-          onClick={this.toggleView}>
-          {this.state.view ? 'Hide' : 'Show'} Previews
-        </button>
-        <button
-          className="button button-admin"
-          disabled={this.state.busy}
-          onClick={this.download}>
-          Download Images
-        </button>
-        <br />
-
-        <p>{this.state.status}</p>
-
-        {this.state.view &&
-          this.state.images.map(image => (
-            <ImagePreview
-              key={image.id}
-              image={image}
-              approve={this.trust}
-              remove={this.remove}
-              trustUnknown={this.trustUnknown}
+          <div>
+            Max Images:
+            <input
+              type="text"
+              value={this.state.limit}
+              onChange={e => this.setState({limit: e.target.value})}
             />
-          ))}
-      </div>
+          </div>
+          <div>
+            Images Since:
+            <input
+              type="date"
+              value={this.state.since}
+              onChange={e => this.setState({since: e.target.value})}
+            />
+          </div>
+          <button
+            className="button button-admin"
+            disabled={this.state.busy}
+            onClick={this.getImages}>
+            Fetch Images
+          </button>
+          <button
+            className="button button-admin"
+            disabled={this.state.busy}
+            onClick={this.toggleView}>
+            {this.state.view ? 'Hide' : 'Show'} Previews
+          </button>
+          <button
+            className="button button-admin"
+            disabled={this.state.busy}
+            onClick={this.download}>
+            Download Images
+          </button>
+          <br />
+
+          <p>{this.state.status}</p>
+
+          {this.state.view &&
+            this.state.images.map(image => (
+              <ImagePreview
+                key={image.id}
+                image={image}
+                approve={this.trust}
+                remove={this.remove}
+                trustUnknown={this.trustUnknown}
+              />
+            ))}
+        </div>
+      </Scrollable>
     );
   }
 }
