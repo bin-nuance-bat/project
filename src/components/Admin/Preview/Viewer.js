@@ -8,8 +8,6 @@ import DataController from '../utils/DataController';
 import ItemSelector from '../ItemSelector';
 import ImagePreview from './ImagePreview';
 
-import './Viewer.css';
-
 class Viewer extends Component {
   state = {
     item: 'all',
