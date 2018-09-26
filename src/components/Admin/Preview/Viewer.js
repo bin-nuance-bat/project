@@ -21,7 +21,8 @@ class Viewer extends Component {
     items: {
       all: {name: 'All Items', id: 'all'},
       unknown: {name: 'Unknown Item', id: 'unknown'}
-    }
+    },
+    trustFilter: () => true
   };
 
   componentDidMount() {
@@ -112,6 +113,8 @@ class Viewer extends Component {
   };
 
   render() {
+    const {item, items, limit, since, busy, view, status, images} = this.state;
+
     return (
       <Scrollable>
         <div className="page">
@@ -121,15 +124,15 @@ class Viewer extends Component {
             </button>
           </div>
           <ItemSelector
-            item={this.state.item}
-            items={Object.values(this.state.items)}
-            setItem={item => this.setState({item})}
+            item={item}
+            items={Object.values(items)}
+            setItem={i => this.setState({item: i})}
           />
-                    <div>
+          <div>
             Max Images:
             <input
               type="text"
-              value={this.state.limit}
+              value={limit}
               onChange={e => this.setState({limit: e.target.value})}
             />
           </div>
@@ -137,48 +140,70 @@ class Viewer extends Component {
             Images Since:
             <input
               type="date"
-              value={this.state.since}
+              value={since}
               onChange={e => this.setState({since: e.target.value})}
             />
+          </div>
+          <button
+            className="button button-admin"
+            disabled={busy}
+            onClick={this.getImages}>
+            Fetch Images
+          </button>
+          <button
+            className="button button-admin"
+            disabled={busy}
+            onClick={this.toggleView}>
+            {view ? 'Hide' : 'Show'} Previews
+          </button>
+          <button
+            className="button button-admin"
+            disabled={busy}
+            onClick={this.download}>
+            Download Images
+          </button>
+          <br />
+
+          <p>{status}</p>
+          <div>
+            <select
+              onChange={e => {
+                const {value} = e.target;
+                const func =
+                  value === 'TRUSTED'
+                    ? image => image.trusted
+                    : value === 'UNTRUSTED'
+                      ? image => !image.trusted
+                      : image => image;
+                this.setState({trustFilter: func});
+              }}>
+              <option key={'all'} value={'ALL'}>
+                All
+              </option>
+              <option key={'trusted'} value={'TRUSTED'}>
+                Trusted
+              </option>
+              <option key={'untrusted'} value={'UNTRUSTED'}>
+                Untrusted
+              </option>
+            </select>
+          </div>
+          {view &&
+            images.filter(this.state.trustFilter).map(image => {
+              const product = items[image.label];
+
+              return (
+                <ImagePreview
+                  key={image.id}
+                  image={image}
+                  approve={this.trust}
+                  remove={this.remove}
+                  trustUnknown={this.trustUnknown}
+                  product={productName(product)}
+                />
+              );
+            })}
         </div>
-        <button
-          className="button button-admin"
-          disabled={this.state.busy}
-          onClick={this.getImages}>
-          Fetch Images
-        </button>
-        <button
-          className="button button-admin"
-          disabled={this.state.busy}
-          onClick={this.toggleView}>
-          {this.state.view ? 'Hide' : 'Show'} Previews
-        </button>
-        <button
-          className="button button-admin"
-          disabled={this.state.busy}
-          onClick={this.download}>
-          Download Images
-        </button>
-        <br />
-
-        <p>{this.state.status}</p>
-
-        {this.state.view &&
-          this.state.images.map(image => {
-            const product = this.state.items[image.label];
-
-            return (
-              <ImagePreview
-                key={image.id}
-                image={image}
-                approve={this.trust}
-                remove={this.remove}
-                trustUnknown={this.trustUnknown}
-                product={productName(product)}
-              />
-            );
-          })}
-      </div>
       </Scrollable>
     );
   }
