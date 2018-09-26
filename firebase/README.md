@@ -2,7 +2,7 @@
 
 ## Setup
 
-You will need to set up a new firebase project and enable the following features:
+You will need to set up a new firebase project (https://console.firebase.google.com) and enable the following features:
 
 - Authentication (With Google and Email signin)
 - Database (Firestore)
@@ -10,7 +10,7 @@ You will need to set up a new firebase project and enable the following features
 - Hosting
 - Functions
 
-Note that you will not need to run `firebase init` as suggested during setup, because the project is already initialised with a .firebaserc file
+Note that you will not need to run `firebase init` as suggested during setup of certain features, because the project is already initialised with a .firebaserc file
 
 ## Configuration
 
@@ -99,7 +99,7 @@ Now run the following
 
 ## Deployment
 
-The following commands. If you haven't built your code, you will get an error when it 
+The following command will update your firebase with the changes specified above. If you haven't built your code, you will get an error when it tries to deploy the site to hosting, but this will still allow you to run the site via localhost.
 ```
 {HONESTY_DIR} $ firebase deploy
 ```
