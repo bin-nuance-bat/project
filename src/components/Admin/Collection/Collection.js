@@ -16,7 +16,7 @@ class Collection extends Component {
   };
 
   items = [];
-  webcamCapture = React.createRef();
+  webcam = React.createRef();
 
   burstShot = () => {
     let counter = this.state.burstCount;
@@ -28,8 +28,11 @@ class Collection extends Component {
           `/${this.state.burstCount}`
       });
 
-      const img = await this.webcamCapture.current.requestScreenshot();
-      this.dataController.addImage(img.src, this.state.item);
+      const camera = this.webcam.current;
+      const canvas = camera.getCanvas();
+      const imgSrc = canvas.toDataURL('image/jpeg');
+
+      this.dataController.addImage(imgSrc, this.state.item);
 
       counter--;
       if (counter <= 0) {
@@ -55,11 +58,7 @@ class Collection extends Component {
     return (
       <Scrollable>
         <div className="page">
-          <WebcamCapture
-            ref={this.webcamCapture}
-            imgSize={224}
-            onFail={() => {}}
-          />
+          <WebcamCapture ref={this.webcam} imgSize={160} onFail={() => {}} />
           <h2>{this.state.status}</h2>
           <ItemSelector
             item={this.state.item}
@@ -81,9 +80,7 @@ class Collection extends Component {
           <button
             className="button button-admin"
             onClick={this.burstShot}
-            disabled={
-              this.state.busy || !this.webcamCapture.current.webcam.current
-            }>
+            disabled={this.state.busy || !this.webcam.current.webcam.current}>
             Capture Images
           </button>
           <div>
