@@ -8,6 +8,7 @@ import Scrollable from '../Scrollable';
 
 import ItemSelector from '../ItemSelector';
 import ImagePreview from './ImagePreview';
+import productName from '../../../utils/productName';
 
 class Viewer extends Component {
   state = {
@@ -124,7 +125,7 @@ class Viewer extends Component {
             items={Object.values(this.state.items)}
             setItem={item => this.setState({item})}
           />
-          <div>
+                    <div>
             Max Images:
             <input
               type="text"
@@ -139,40 +140,45 @@ class Viewer extends Component {
               value={this.state.since}
               onChange={e => this.setState({since: e.target.value})}
             />
-          </div>
-          <button
-            className="button button-admin"
-            disabled={this.state.busy}
-            onClick={this.getImages}>
-            Fetch Images
-          </button>
-          <button
-            className="button button-admin"
-            disabled={this.state.busy}
-            onClick={this.toggleView}>
-            {this.state.view ? 'Hide' : 'Show'} Previews
-          </button>
-          <button
-            className="button button-admin"
-            disabled={this.state.busy}
-            onClick={this.download}>
-            Download Images
-          </button>
-          <br />
+        </div>
+        <button
+          className="button button-admin"
+          disabled={this.state.busy}
+          onClick={this.getImages}>
+          Fetch Images
+        </button>
+        <button
+          className="button button-admin"
+          disabled={this.state.busy}
+          onClick={this.toggleView}>
+          {this.state.view ? 'Hide' : 'Show'} Previews
+        </button>
+        <button
+          className="button button-admin"
+          disabled={this.state.busy}
+          onClick={this.download}>
+          Download Images
+        </button>
+        <br />
 
-          <p>{this.state.status}</p>
+        <p>{this.state.status}</p>
 
-          {this.state.view &&
-            this.state.images.map(image => (
+        {this.state.view &&
+          this.state.images.map(image => {
+            const product = this.state.items[image.label];
+
+            return (
               <ImagePreview
                 key={image.id}
                 image={image}
                 approve={this.trust}
                 remove={this.remove}
                 trustUnknown={this.trustUnknown}
+                product={productName(product)}
               />
-            ))}
-        </div>
+            );
+          })}
+      </div>
       </Scrollable>
     );
   }

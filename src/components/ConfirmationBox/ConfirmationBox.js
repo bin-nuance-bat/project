@@ -5,6 +5,7 @@ import BackButton from '../BackButton/BackButton';
 import Hand from '../Hand/Hand';
 
 import './ConfirmationBox.css';
+import productName from '../../utils/productName';
 
 class ConfirmationBox extends React.Component {
   handleYes = () => {
@@ -36,10 +37,7 @@ class ConfirmationBox extends React.Component {
     }
 
     const item = this.props.storeList[this.props.prediction.id];
-
     const image = item.image;
-    const name = item.name;
-    const qualifier = item.qualifier ? ` (${item.qualifier})` : '';
 
     return (
       <div className="page">
@@ -47,7 +45,7 @@ class ConfirmationBox extends React.Component {
           handleClick={() => this.props.history.replace('/scanitem')}
         />
         <div className="text-confirmation">
-          {`Is this a ${name}${qualifier}?`}
+          {`Is this a ${productName(item)}?`}
         </div>
         <Hand snack={image} />
         <div>

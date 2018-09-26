@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import productName from '../../utils/productName';
 
 class ItemSelector extends Component {
   state = {
@@ -22,7 +23,7 @@ class ItemSelector extends Component {
         onChange={e => this.props.setItem(e.target.value)}>
         {this.state.items.map(item => (
           <option key={item.id} value={item.id}>
-            {item.name} {item.qualifier && `(${item.qualifier})`}
+            {productName(item)}
           </option>
         ))}
       </select>
