@@ -20,30 +20,31 @@ class ImageApproval extends Component {
       .then(images => this.setState({images}));
   };
 
-  lastImageTimestamp = () => {
-    return Math.max(...this.state.images.map(i => i.timestamp));
-  };
-
   displayNextImage = () => {
     this.setState(prevState => {
       const [image = null, ...images] = prevState.images;
+      this.fetchImage(prevState.images);
       return {image, images};
     });
-    this.fetchImage();
   };
 
-  fetchImage = () => {
-    if (this.state.images.length < IMAGE_QUEUE_SIZE) {
+  fetchImage = prevImages => {
+    const lastImageTimestamp = () => {
+      return Math.max(...prevImages.map(i => i.timestamp));
+    };
+
+    if (prevImages.length < IMAGE_QUEUE_SIZE) {
+      const storedImageIds = prevImages.map(image => image.id);
       this.dataController
-        .getImages(false, 3, this.lastImageTimestamp())
+        .getImages(false, 3, lastImageTimestamp())
         .then(images => {
           // Make sure we only include images not already in state
+          const filtered = images.filter(
+            image => !storedImageIds.includes(image.id)
+          );
           this.setState(prevState => {
-            const storedImageIds = prevState.images.map(image => image.id);
             return {
-              images: prevState.images.concat(
-                images.filter(image => !storedImageIds.includes(image.id))
-              )
+              images: prevState.images.concat(filtered)
             };
           });
         });
