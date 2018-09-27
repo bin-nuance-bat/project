@@ -8,6 +8,7 @@ import Scrollable from '../Scrollable';
 
 import ItemSelector from '../ItemSelector';
 import ImagePreview from './ImagePreview';
+import productName from '../../../utils/productName';
 
 class Viewer extends Component {
   state = {
@@ -20,7 +21,8 @@ class Viewer extends Component {
     items: {
       all: {name: 'All Items', id: 'all'},
       unknown: {name: 'Unknown Item', id: 'unknown'}
-    }
+    },
+    trustFilter: () => true
   };
 
   componentDidMount() {
@@ -90,18 +92,25 @@ class Viewer extends Component {
     });
   };
 
+  getId = event => event.target.parentElement.parentElement.dataset.id;
+
   remove = event => {
-    const imageId = event.target.parentElement.parentElement.dataset.id;
+    const imageId = this.getId(event);
     this.dataController.deleteImage(imageId).then(() => this.getImages());
   };
 
   trust = event => {
-    const imageId = event.target.parentElement.parentElement.dataset.id;
+    const imageId = this.getId(event);
     this.dataController.trustImage(imageId).then(() => this.getImages());
   };
 
+  untrust = event => {
+    const imageId = this.getId(event);
+    this.dataController.trustImage(imageId, false).then(() => this.getImages());
+  };
+
   trustUnknown = event => {
-    const imageId = event.target.parentElement.parentElement.dataset.id;
+    const imageId = this.getId(event);
     this.dataController.changeImageLabel(imageId, 'unknown');
     this.dataController.trustImage(imageId).then(() => this.getImages());
   };
@@ -111,6 +120,8 @@ class Viewer extends Component {
   };
 
   render() {
+    const {item, items, limit, since, busy, view, status, images} = this.state;
+
     return (
       <Scrollable>
         <div className="page">
@@ -120,15 +131,15 @@ class Viewer extends Component {
             </button>
           </div>
           <ItemSelector
-            item={this.state.item}
-            items={Object.values(this.state.items)}
-            setItem={item => this.setState({item})}
+            item={item}
+            items={Object.values(items)}
+            setItem={i => this.setState({item: i})}
           />
           <div>
             Max Images:
             <input
               type="text"
-              value={this.state.limit}
+              value={limit}
               onChange={e => this.setState({limit: e.target.value})}
             />
           </div>
@@ -136,42 +147,70 @@ class Viewer extends Component {
             Images Since:
             <input
               type="date"
-              value={this.state.since}
+              value={since}
               onChange={e => this.setState({since: e.target.value})}
             />
           </div>
           <button
             className="button button-admin"
-            disabled={this.state.busy}
+            disabled={busy}
             onClick={this.getImages}>
             Fetch Images
           </button>
           <button
             className="button button-admin"
-            disabled={this.state.busy}
+            disabled={busy}
             onClick={this.toggleView}>
-            {this.state.view ? 'Hide' : 'Show'} Previews
+            {view ? 'Hide' : 'Show'} Previews
           </button>
           <button
             className="button button-admin"
-            disabled={this.state.busy}
+            disabled={busy}
             onClick={this.download}>
             Download Images
           </button>
           <br />
 
-          <p>{this.state.status}</p>
+          <p>{status}</p>
+          <div>
+            <select
+              onChange={e => {
+                const {value} = e.target;
+                const func =
+                  value === 'TRUSTED'
+                    ? image => image.trusted
+                    : value === 'UNTRUSTED'
+                      ? image => !image.trusted
+                      : image => image;
+                this.setState({trustFilter: func});
+              }}>
+              <option key={'all'} value={'ALL'}>
+                All
+              </option>
+              <option key={'trusted'} value={'TRUSTED'}>
+                Trusted
+              </option>
+              <option key={'untrusted'} value={'UNTRUSTED'}>
+                Untrusted
+              </option>
+            </select>
+          </div>
+          {view &&
+            images.filter(this.state.trustFilter).map(image => {
+              const product = items[image.label];
 
-          {this.state.view &&
-            this.state.images.map(image => (
-              <ImagePreview
-                key={image.id}
-                image={image}
-                approve={this.trust}
-                remove={this.remove}
-                trustUnknown={this.trustUnknown}
-              />
-            ))}
+              return (
+                <ImagePreview
+                  key={image.id}
+                  image={image}
+                  approve={this.trust}
+                  disapprove={this.untrust}
+                  remove={this.remove}
+                  trustUnknown={this.trustUnknown}
+                  product={productName(product)}
+                />
+              );
+            })}
         </div>
       </Scrollable>
     );
