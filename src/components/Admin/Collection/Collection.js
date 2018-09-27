@@ -22,7 +22,7 @@ class Collection extends Component {
   burstShot = () => {
     clearInterval(this.ticker);
     let counter = 1;
-    const target = parseInt(this.state.burstCount);
+    const target = parseInt(this.state.burstCount, 10);
     if (!target) {
       console.error('Invalid target', target);
       return;
@@ -34,7 +34,6 @@ class Collection extends Component {
     });
 
     this.ticker = setInterval(async () => {
-      console.info(counter, target);
       this.setState({
         status: `Capturing image ${counter}/${target}`,
         busy: true
