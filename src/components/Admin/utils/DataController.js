@@ -50,9 +50,11 @@ class DataController {
   deleteImage(imageId) {
     const ref = this.db.collection('training_data').doc(imageId);
     return ref.get().then(doc => {
-      this.storage
-        .child(`training_data/${doc.data().label}/${doc.id}.jpg`)
-        .delete();
+      if (doc.data()) {
+        this.storage
+          .child(`training_data/${doc.data().label}/${doc.id}.jpg`)
+          .delete();
+      }
       return ref.delete();
     });
   }
