@@ -17,15 +17,27 @@ class Collection extends Component {
 
   items = [];
   webcam = React.createRef();
+  ticker = null;
 
   burstShot = () => {
-    let counter = this.state.burstCount;
-    const ticker = setInterval(async () => {
+    clearInterval(this.ticker);
+    let counter = 1;
+    const target = parseInt(this.state.burstCount);
+    if (!target) {
+      console.error('Invalid target', target);
+      return;
+    }
+
+    this.setState({
+      status: `Capturing image ${counter}/${target}`,
+      busy: true
+    });
+
+    this.ticker = setInterval(async () => {
+      console.info(counter, target);
       this.setState({
-        busy: true,
-        status:
-          `Capturing image ${this.state.burstCount - counter}` +
-          `/${this.state.burstCount}`
+        status: `Capturing image ${counter}/${target}`,
+        busy: true
       });
 
       const camera = this.webcam.current;
@@ -34,12 +46,12 @@ class Collection extends Component {
 
       this.dataController.addImage(imgSrc, this.state.item);
 
-      counter--;
-      if (counter <= 0) {
-        clearInterval(ticker);
+      ++counter;
+      if (counter > target) {
+        clearInterval(this.ticker);
         this.setState({busy: false, status: 'Done'});
       }
-    }, 1000);
+    }, 500);
   };
 
   componentDidMount() {
@@ -51,6 +63,7 @@ class Collection extends Component {
   }
 
   back = () => {
+    clearInterval(this.ticker);
     this.props.history.replace('/admin');
   };
 
