@@ -61,8 +61,11 @@ class Collection extends Component {
     });
   }
 
-  back = () => {
+  componentWillUnmount() {
     clearInterval(this.ticker);
+  }
+
+  back = () => {
     this.props.history.replace('/admin');
   };
 
