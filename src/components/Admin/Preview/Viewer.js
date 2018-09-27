@@ -53,7 +53,7 @@ class Viewer extends Component {
         this.setState({
           images,
           busy: false,
-          status: `Got ${images.length} images.`
+          status: `Got ${images.length} images`
         })
       );
   };
@@ -61,28 +61,27 @@ class Viewer extends Component {
   toggleView = () => this.setState({view: !this.state.view});
 
   download = () => {
-    this.setState({
-      status: `Downloading images... (0/${this.state.images.length})`,
-      busy: true
-    });
+    let zipped = 0;
+    const images = this.state.images.filter(this.state.trustFilter);
+    const total = images.length;
 
-    const zip = new JSZip();
-
-    const updateDownloadCount = () => {
+    const updateDownloadCount = z => {
       this.setState({
-        status:
-          'Downloading images... ' +
-          `(${zip.files.length}/${this.state.images.length})`
+        status: `Downloading images... (${z}/${total})`,
+        busy: true
       });
     };
 
+    updateDownloadCount(zipped);
+    const zip = new JSZip();
+
     Promise.all(
-      this.state.images.map(image =>
+      images.map(image =>
         urlToBase64(image.url)
           .then(data =>
             zip.file(`${image.label}/${image.id}.jpg`, data, {base64: true})
           )
-          .then(updateDownloadCount)
+          .then(() => updateDownloadCount(++zipped))
       )
     ).then(() => {
       zip.generateAsync({type: 'blob'}).then(file => {
@@ -121,6 +120,8 @@ class Viewer extends Component {
 
   render() {
     const {item, items, limit, since, busy, view, status, images} = this.state;
+
+    const visibleImages = images.filter(this.state.trustFilter);
 
     return (
       <Scrollable>
@@ -171,7 +172,9 @@ class Viewer extends Component {
           </button>
           <br />
 
-          <p>{status}</p>
+          <p>
+            {status}, {`${visibleImages.length} images shown`}
+          </p>
           <div>
             <select
               onChange={e => {
@@ -196,7 +199,7 @@ class Viewer extends Component {
             </select>
           </div>
           {view &&
-            images.filter(this.state.trustFilter).map(image => {
+            visibleImages.map(image => {
               const product = items[image.label];
 
               return (
