@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import JSZip from 'jszip';
 import {saveAs} from 'file-saver';
+import {DateTime} from 'luxon';
 
 import DataController from '../utils/DataController';
 import Scrollable from '../Scrollable';
@@ -15,7 +16,9 @@ class Viewer extends Component {
     item: 'all',
     images: [],
     limit: 100,
-    since: '2018-08-01',
+    since: DateTime.local()
+      .minus({weeks: 1})
+      .toISODate(),
     view: true,
     status: 'Loading...',
     items: {
