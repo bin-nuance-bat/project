@@ -27,38 +27,6 @@ class WebcamCapture extends Component {
   viewFinder = React.createRef();
   fileInput = React.createRef();
 
-  requestFakeScreenshot = () =>
-    new Promise((resolve, reject) => {
-      const input = this.fileInput.current;
-      if (input.files == null || input.files[0] == null) {
-        return reject(new Error('No files present'));
-      }
-      const reader = new FileReader();
-      reader.onload = event => {
-        resolve(event.target.result);
-      };
-      reader.readAsDataURL(input.files[0]);
-    });
-
-  requestWebcamScreenshot = async () => {
-    if (!this.webcam.current) {
-      throw new Error('Failed to load webcam.');
-    }
-    const screenshot = await this.webcam.current.getScreenshot();
-    if (screenshot === null) {
-      throw new Error('Failed to load webcam.');
-    }
-    return screenshot;
-  };
-
-  requestScreenshot = async () => {
-    const screenshot = this.state.fakeWebcam
-      ? this.requestFakeScreenshot()
-      : this.requestWebcamScreenshot();
-    const image = await this.urlToImg(await screenshot);
-    return await this.urlToImg(this.cropImage(image));
-  };
-
   getCanvas = () => {
     return this.webcam.current.getCanvas();
   };
@@ -81,14 +49,6 @@ class WebcamCapture extends Component {
           this.props.onFail();
         }
       });
-  }
-
-  async urlToImg(url) {
-    return new Promise(resolve => {
-      const img = new Image();
-      img.onload = () => resolve(img);
-      img.src = url;
-    });
   }
 
   success = callback => this.viewFinder.current.success(callback);
