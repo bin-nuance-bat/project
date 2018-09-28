@@ -1,5 +1,5 @@
 const addItemImage = imageMap => item => {
-  const apiPath = 'static/media/' + item.image;
+  const apiPath = `static/media/${item.image}`;
   const relativePath =
     imageMap[apiPath] || imageMap['static/media/misc-bar.svg'];
   const image = `https://honesty.store/${relativePath}`;
@@ -10,27 +10,30 @@ const addItemImage = imageMap => item => {
   };
 };
 
-const getStore = async () => {
-  const json = await fetch('https://honesty.store/api/v1/register', {
+const getItems = async () => {
+  const res = await fetch('https://honesty.store/api/v1/register', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({storeCode: 'sl-ncl'})
-  }).then(res => res.json());
-  let items = json.response.store.items;
+  });
+  const json = await res.json();
+  return json.response.store.items;
+};
 
-  const imageMap = await fetch(
-    'https://honesty.store/asset-manifest.json'
-  ).then(res => res.json());
+const getImageMap = async () => {
+  const res = await fetch('https://honesty.store/asset-manifest.json');
+  return await res.json();
+};
 
-  items = items.map(addItemImage(imageMap));
-  items = items.reduce((map, obj) => {
+const getStore = async () => {
+  const [items, imageMap] = await Promise.all([getItems(), getImageMap()]);
+
+  return items.map(addItemImage(imageMap)).reduce((map, obj) => {
     map[obj.id] = obj;
     return map;
   }, {});
-
-  return items;
 };
 
 export default getStore;
