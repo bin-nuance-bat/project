@@ -118,7 +118,7 @@ In that document, add these fields.
 
 ```
   admin: false
-  admin: true
+  kiosk: true
   name: "Kiosk"
 ```
 
