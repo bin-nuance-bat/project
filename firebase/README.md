@@ -32,7 +32,7 @@ Storage rules will be automatically configured when you deploy the application t
 
 However, you will also need to configure the lifecycle and CORS settings.
 
-To do so you must first install `gsutil` from [here](https://cloud.google.com/storage/docs/gsutil_install). Then, navigate to this directory in your terminal before running the following 2 commands:
+To do so you must first install `gsutil` from [here](https://cloud.google.com/storage/docs/gsutil_install).
 
 Now you need to set up gsutil to use your account. Run: 
 ```
@@ -44,6 +44,8 @@ And follow the instructions for logging in with your Google account and setting 
 When you initialise storage in your console, you will get a default bucket with the name "gs://<PROJECT_ID>.appspot.com".
 
 Now add a new bucket to your storage. This will be a directory for storing your snackchat data, to which we then apply a lifecycle via gsutil, so that any images will be cleared out after 24 hours.
+
+Navigate to this directory in your terminal before running the following 2 commands:
 
 ```shell
 {HONESTY_DIR}\firebase $ gsutil lifecycle set lifecycle.json gs://<SNACKCHAT_BUCKET>
@@ -112,7 +114,11 @@ Now the firebase functions are correctly initialised, you will need to manually 
 
 Add an email/password entry to the sign-in method on the authentication screen for the kiosk's account.
 
-Create a `users` collection in the database, and add a document with the name set to the kiosk's "User UID" from its authentication entry.
+Create a `users` collection in the database
+
+![](./screenshots/database-1.png)
+
+ Add a document with the `Document ID` set to the kiosk's `User UID` from the authentication entry.
 
 In that document, add these fields.
 
@@ -121,6 +127,8 @@ In that document, add these fields.
   kiosk: true
   name: "Kiosk"
 ```
+
+![](./screenshots/database-2.png)
 
 ### Short/Blacklist
 
