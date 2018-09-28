@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import {DateTime} from 'luxon';
 
 import ItemSelector from '../ItemSelector';
 import DataController from '../utils/DataController';
@@ -95,11 +96,11 @@ class ImageApproval extends Component {
   }
 
   render() {
-    if (this.state.loading) return <div>Loading...</div>;
-    if (this.state.images === [])
-      return <div>No untrusted images available</div>;
+    const {loading, images, image, storeList} = this.state;
 
-    const {image} = this.state;
+    if (loading) return <div>Loading...</div>;
+    if (images === []) return <div>No untrusted images available</div>;
+
     return (
       <div className="preview">
         <div>
@@ -109,16 +110,20 @@ class ImageApproval extends Component {
         </div>
         {image ? (
           <div key={image.id} data-id={image.id} className="preview-pane">
-            <h2>
-              {this.state.storeList[image.label] !== undefined &&
-                this.state.storeList[image.label].name}
-            </h2>
+            <h2>{storeList[image.label].name || null}</h2>
             <div>
-              <img style={{maxHeight: 224}} src={image.url} alt="" />
+              <img src={image.url} alt="" />
+            </div>
+            <div>{image.id}</div>
+            <div>
+              captured:{' '}
+              {DateTime.fromMillis(image.timestamp)
+                .setLocale('en-gb')
+                .toLocaleString(DateTime.DATETIME_MED)}
             </div>
             <ItemSelector
               item={image.label}
-              items={Object.values(this.state.storeList)}
+              items={Object.values(storeList)}
               setItem={cat => {
                 this.changeCategory(image.id, cat);
                 this.setState(prevState => ({
@@ -147,7 +152,7 @@ class ImageApproval extends Component {
         )}
         {/* Used to load images in background - speeds up rendering. */}
         <div hidden>
-          {this.state.images.map(i => (
+          {images.map(i => (
             <img key={i.id} src={i.url} alt="" />
           ))}
         </div>
