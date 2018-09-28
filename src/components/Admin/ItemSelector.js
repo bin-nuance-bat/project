@@ -10,6 +10,7 @@ class ItemSelector extends Component {
   static getDerivedStateFromProps(props) {
     return {
       items: props.items.sort((a, b) => {
+        if (a.id === b.id) return 0;
         if (a.id === 'all') return -1;
         if (b.id === 'all') return 1;
         if (a.id === 'unknown') return -1;
