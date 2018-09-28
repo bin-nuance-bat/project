@@ -110,7 +110,10 @@ class ImageApproval extends Component {
         </div>
         {image ? (
           <div key={image.id} data-id={image.id} className="preview-pane">
-            <h2>{storeList[image.label].name || null}</h2>
+            <h2>
+              {this.state.storeList[image.label] &&
+                this.state.storeList[image.label].name}
+            </h2>
             <div>
               <img src={image.url} alt="" />
             </div>
