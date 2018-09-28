@@ -1,50 +1,36 @@
-const importImages = require.context('../assets/itemicons', true, /\.svg$/);
-const imgFilesObject = importImages.keys().reduce((images, key) => {
-  images[key] = importImages(key);
-  return images;
-}, {});
+const addItemImage = imageMap => item => {
+  const apiPath = 'static/media/' + item.image;
+  const relativePath =
+    imageMap[apiPath] || imageMap['static/media/misc-bar.svg'];
+  const image = `https://honesty.store/${relativePath}`;
 
-const getImagePath = item => {
-  const givenPath = './' + item.image;
-  let actualImagePath;
-
-  if (imgFilesObject[givenPath]) {
-    actualImagePath =
-      './' + item.image + (item.image.endsWith('.svg') ? '' : '.svg');
-  } else {
-    actualImagePath = './misc-bar.svg';
-  }
-
-  return actualImagePath;
-};
-
-const addItemImage = item => {
-  const imagePath = getImagePath(item);
-  const image = importImages(imagePath);
   return {
     ...item,
     image
   };
 };
 
-const getStore = () => {
-  return fetch('https://honesty.store/api/v1/register', {
+const getStore = async () => {
+  const json = await fetch('https://honesty.store/api/v1/register', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({storeCode: 'sl-ncl'})
-  })
-    .then(res => res.json())
-    .then(res => {
-      let items = res.response.store.items;
-      items = items.map(addItemImage);
-      items = items.reduce((map, obj) => {
-        map[obj.id] = obj;
-        return map;
-      }, {});
-      return items;
-    });
+  }).then(res => res.json());
+  let items = json.response.store.items;
+
+  const imageMap = await fetch(
+    'https://honesty.store/asset-manifest.json'
+  ).then(res => res.json());
+
+  items = items.map(addItemImage(imageMap));
+  items = items.reduce((map, obj) => {
+    map[obj.id] = obj;
+    return map;
+  }, {});
+
+  return items;
 };
 
 export default getStore;
