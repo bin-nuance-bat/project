@@ -12,8 +12,6 @@ You will need to set up a new firebase project (https://console.firebase.google.
 
 Note that you will not need to run `firebase init` as suggested during setup of certain features, because the project is already initialised with a .firebaserc file
 
-## Configuration
-
 ## Environment variables
 
 You should create a `.env` file in the project root according to the `.env.tmpl` file. This needs populating with your firebase project ID and API key. Instructions for doing so can be found in the [template file](../.env.tmpl). When building the application, these values will be compiled into the javascript.

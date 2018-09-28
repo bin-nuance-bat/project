@@ -48,6 +48,8 @@ $ npm run build
 
 This will generate a production build in the `build/` directory. Simply deploy everything in this directory to a web server (for example, we use [Google Firebase](https://firebase.google.com/) hosting) and access `/index.html` to use the app.
 
+**The README for configuring Firebase can be found [Here](./firebase/README.md)**
+
 ## Built With
 
 - [honesty.store](https://honesty.store) - The original app that our project aims to extend
