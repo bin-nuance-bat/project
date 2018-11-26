@@ -1,9 +1,19 @@
 @import '../../utils/constants.scss';
 
-body {
-  color: $white;
-  width: 100%;
-  text-align: center;
+.homepage {
+  height: 100vh;
+  &-secondary-theme {
+    color: $dark-blue;
+    background-color: $white;
+    .btn-primary {
+      background-color: $dark-blue;
+    }
+    .btn-secondary {
+      background-color: $white;
+      color: $dark-blue;
+      border-color: $dark-blue
+    }
+  }
 }
 
 .text {

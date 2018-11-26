@@ -1,5 +1,39 @@
 @import './utils/constants.scss';
 
+@font-face {
+  font-family: 'FaricyNew';
+  src: url('/assets/fonts/32D3D0_7_0.woff2') format('woff2'),
+    url('/assets/fonts/32D3D0_7_0.woff') format('woff');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'FaricyNew-Light';
+  src: url('/assets/fonts/32D3D0_2_0.woff2') format('woff2'),
+    url('/assets/fonts/32D3D0_2_0.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'FaricyNew-Bold';
+  src: url('/assets/fonts/32D3D0_3_0.woff2') format('woff2'),
+    url('/assets/fonts/32D3D0_3_0.woff') format('woff');
+  font-weight: bold;
+}
+
+body,
+input,
+textarea {
+  font-family: 'FaricyNew', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'FaricyNew';
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -7,6 +41,9 @@ body {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   position: fixed;
+  color: $white;
+  width: 100%;
+  text-align: center;
 }
 
 * {
@@ -42,7 +79,7 @@ body {
 
 .page {
   background-color: $dark-blue;
-  height: 100%;
+  height: 100vh;
 }
 
 .header {
