@@ -6,6 +6,7 @@ import HomeHandsCenter from '../../assets/hands/HandsCenter.svg';
 import HomeHandsLeft from '../../assets/hands/HandsLeft.svg';
 import Camera from './assets/Camera.svg';
 import PropTypes from 'prop-types';
+import Revealer from '../Revealer/Revealer';
 
 class Home extends React.Component {
   componentDidMount() {
@@ -39,6 +40,7 @@ class Home extends React.Component {
   render() {
     return (
       <div className="page">
+        <Revealer />
         <div className="homepage">
           <div className="text text-payinglater">Paying later?</div>
           <div className="text text-subheading">
