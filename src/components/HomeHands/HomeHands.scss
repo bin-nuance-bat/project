@@ -1,0 +1,58 @@
+.home-hands {
+  width: 300px;
+  height: 270px;
+  display: inline-block;
+  margin: 0 auto 104px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  &-left,
+  &-center,
+  &-right,
+  &-slot {
+    position: absolute;
+    display: block;
+ }
+
+  &-left,
+  &-center,
+  &-right {
+    transform: translateY(100%) translateZ(1px);
+  }
+
+  &.hands-up .home-hands {
+    &-left,
+    &-center,
+    &-right {
+      animation-name: home-hands-pop;
+      animation-duration: 0.3s;
+      animation-iteration-count: 1;
+      animation-timing-function: cubic-bezier(0.47, 0.52, 0.58, 1.19);
+      animation-fill-mode: both;
+      animation-direction: normal;
+      will-change: transform;
+    }
+
+    &-left {
+      animation-delay: 1s;
+    }
+
+    &-center {
+      animation-delay: 1.15s;
+    }
+
+    &-right {
+      animation-delay: 1.05s;
+    }
+  }
+}
+
+@keyframes home-hands-pop {
+  from {
+    transform: translateY(100%) translateZ(1px);
+  }
+  to {
+    transform: translateY(5%) translateZ(1px);
+  }
+}
