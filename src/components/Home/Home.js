@@ -1,14 +1,19 @@
 import React from 'react';
 import './Home.css';
-import HomeHandsSlot from '../../assets/hands/HandsSlot.svg';
-import HomeHandsRight from '../../assets/hands/HandsRight.svg';
-import HomeHandsCenter from '../../assets/hands/HandsCenter.svg';
-import HomeHandsLeft from '../../assets/hands/HandsLeft.svg';
 import Camera from './assets/Camera.svg';
 import PropTypes from 'prop-types';
 import Revealer from '../Revealer/Revealer';
+import HomeHands from '../HomeHands/HomeHands';
+
+const REVEAL_DELAY_SECONDS = 120;
 
 class Home extends React.Component {
+  constructor(props) {
+    super(props);
+    this.revealIntervalId = 0;
+    this.state = {theme: 'primary', reveal: '', hands: true};
+  }
+
   componentDidMount() {
     const hourHasPassed =
       !this.props.latestUsersFetchTime ||
@@ -21,7 +26,30 @@ class Home extends React.Component {
 
     // Maintain access to video beyond root
     navigator.mediaDevices.getUserMedia({video: true});
+
+    this.revealIntervalId = setInterval(
+      this.toggleReveal,
+      REVEAL_DELAY_SECONDS * 1000
+    );
   }
+
+  componentWillUnmount() {
+    clearInterval(this.revealIntervalId);
+  }
+
+  toggleReveal = () => {
+    const reveal = this.state.theme === 'primary' ? 'in' : 'out';
+    this.setState({reveal});
+  };
+
+  handlePageObscured = () => {
+    const newTheme = this.state.theme === 'primary' ? 'secondary' : 'primary';
+    this.setState({theme: newTheme, hands: false});
+  };
+
+  handlePageRevealed = () => {
+    this.setState({reveal: '', hands: true});
+  };
 
   handleSnackChatClick = () => {
     this.props.setSendWithPhoto(true);
@@ -40,26 +68,17 @@ class Home extends React.Component {
   render() {
     return (
       <div className="page">
-        <Revealer />
-        <div className="homepage">
+        <Revealer
+          reveal={this.state.reveal}
+          onPageObscured={this.handlePageObscured}
+          onPageRevealed={this.handlePageRevealed}
+        />
+        <div className={`homepage homepage-theme-${this.state.theme}`}>
           <div className="text text-payinglater">Paying later?</div>
           <div className="text text-subheading">
             Why not send yourself a reminder on Slack?
           </div>
-          <div className="homepage--hands">
-            <img className="homepage--hands-slot" src={HomeHandsSlot} alt="" />
-            <img
-              className="homepage--hands-right"
-              src={HomeHandsRight}
-              alt=""
-            />
-            <img
-              className="homepage--hands-center"
-              src={HomeHandsCenter}
-              alt=""
-            />
-            <img className="homepage--hands-left" src={HomeHandsLeft} alt="" />
-          </div>
+          <HomeHands up={this.state.hands} />
           <div>
             <button
               className="button btn-primary btn-block"

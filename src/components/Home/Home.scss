@@ -2,7 +2,7 @@
 
 .homepage {
   height: 100vh;
-  &-secondary-theme {
+  &-theme-secondary {
     color: $dark-blue;
     background-color: $white;
     .btn-primary {
@@ -11,7 +11,7 @@
     .btn-secondary {
       background-color: $white;
       color: $dark-blue;
-      border-color: $dark-blue
+      border-color: $dark-blue;
     }
   }
 }
@@ -27,72 +27,6 @@
     margin-top: 32px;
     font-size: 30px;
     margin-bottom: 88px;
-  }
-}
-
-@-webkit-keyframes home-hands-pop {
-  from {
-    -webkit-transform: translateY(100%) translateZ(1px);
-    transform: translateY(100%) translateZ(1px);
-  }
-  to {
-    -webkit-transform: translateY(5%) translateZ(1px);
-    transform: translateY(5%) translateZ(1px);
-  }
-}
-
-@keyframes home-hands-pop {
-  from {
-    -webkit-transform: translateY(100%) translateZ(1px);
-    transform: translateY(100%) translateZ(1px);
-  }
-  to {
-    -webkit-transform: translateY(5%) translateZ(1px);
-    transform: translateY(5%) translateZ(1px);
-  }
-}
-
-.homepage--hands {
-  width: 300px;
-  height: 270px;
-  display: inline-block;
-  margin: 0 auto 104px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-
-  &-left,
-  &-center,
-  &-right,
-  &-slot {
-    position: absolute;
-    display: block;
-  }
-
-  &-left,
-  &-center,
-  &-right {
-    animation-name: home-hands-pop;
-    animation-duration: 0.3s;
-    animation-iteration-count: 1;
-    animation-timing-function: cubic-bezier(0.47, 0.52, 0.58, 1.19);
-    animation-fill-mode: both;
-    will-change: transform;
-  }
-
-  &-left {
-    -webkit-animation-delay: 1s;
-    animation-delay: 1s;
-  }
-
-  &-center {
-    -webkit-animation-delay: 1.15s;
-    animation-delay: 1.15s;
-  }
-
-  &-right {
-    -webkit-animation-delay: 1.05s;
-    animation-delay: 1.05s;
   }
 }
 
