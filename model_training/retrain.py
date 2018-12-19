@@ -126,6 +126,7 @@ import hashlib
 import os.path
 import random
 import re
+import shutil
 import sys
 
 import numpy as np
@@ -186,8 +187,9 @@ def create_image_lists(image_dir, testing_percentage, validation_percentage):
       tf.logging.warning('No files found')
       continue
     if len(file_list) < 20:
-      tf.logging.warning(
-          'WARNING: Folder has less than 20 images, which may cause issues.')
+      tf.logging.info("Less than 20 files in '" + dir_name + "' so deleting this directory.")
+      shutil.rmtree(image_dir + '/' + dir_name)
+      continue
     elif len(file_list) > MAX_NUM_IMAGES_PER_CLASS:
       tf.logging.warning(
           'WARNING: Folder {} has more than {} images. Some images will '
