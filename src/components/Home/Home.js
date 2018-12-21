@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import Revealer from '../Revealer/Revealer';
 import HomeHands from '../HomeHands/HomeHands';
 
-const REVEAL_DELAY_SECONDS = 120;
+const REVEAL_DELAY_SECONDS = 20;
 
 class Home extends React.Component {
   constructor(props) {
