@@ -10,12 +10,12 @@ import Scrollable from '../Scrollable';
 class Collection extends Component {
   state = {
     item: 'unknown',
+    items: [{name: 'Unknown', id: 'unknown'}],
     burstCount: '10',
     status: 'Loading...',
     busy: true
   };
 
-  items = [];
   webcam = React.createRef();
   ticker = null;
 
@@ -55,9 +55,12 @@ class Collection extends Component {
 
   componentDidMount() {
     this.dataController = new DataController();
-    this.dataController.getStoreList().then(items => {
-      this.items = Object.values(items);
-      this.setState({busy: false, status: 'Ready'});
+    this.dataController.getStoreList().then(storeList => {
+      const items = [
+        {name: 'Unknown', id: 'unknown'},
+        ...Object.values(storeList)
+      ];
+      this.setState({busy: false, status: 'Ready', items});
     });
   }
 
@@ -70,32 +73,34 @@ class Collection extends Component {
   };
 
   render() {
+    const {status, item, items, busy, burstCount} = this.state;
+
     return (
       <Scrollable>
         <div className="page">
           <WebcamCapture ref={this.webcam} imgSize={160} onFail={() => {}} />
-          <h2>{this.state.status}</h2>
+          <h2>{status}</h2>
           <ItemSelector
-            item={this.state.item}
-            items={this.items}
+            item={item}
+            items={items}
             setItem={i => this.setState({item: i})}
-            disabled={this.state.busy}
+            disabled={busy}
           />
           <div>
             <label>Burst Count:</label>
             <input
               type="number"
-              value={this.state.burstCount}
+              value={burstCount}
               min={1}
               max={100}
-              disabled={this.state.busy}
+              disabled={busy}
               onChange={e => this.setState({burstCount: e.target.value})}
             />
           </div>
           <button
             className="button button-admin"
             onClick={this.burstShot}
-            disabled={this.state.busy || !this.webcam.current.webcam.current}>
+            disabled={busy || !this.webcam.current.webcam.current}>
             Capture Images
           </button>
           <div>

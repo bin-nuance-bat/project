@@ -85,6 +85,7 @@ class ImageApproval extends Component {
     this.dataController = new DataController();
     Promise.all([
       this.dataController.getStoreList().then(storeList => {
+        storeList = {unknown: {name: 'Unknown', id: 'unknown'}, ...storeList};
         this.setState({
           storeList
         });
