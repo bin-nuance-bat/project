@@ -149,7 +149,7 @@ class ItemRecognition extends Component {
             className="item-recognition item-recognition--display"
             ref={this.webcam}
             onConnect={this.onConnect}
-            imgSize={160}
+            imgSize={224}
             onFail={this.onFail}
           />
         )}
