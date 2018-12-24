@@ -73,7 +73,7 @@ class Collection extends Component {
     return (
       <Scrollable>
         <div className="page">
-          <WebcamCapture ref={this.webcam} imgSize={160} onFail={() => {}} />
+          <WebcamCapture ref={this.webcam} imgSize={224} onFail={() => {}} />
           <h2>{this.state.status}</h2>
           <ItemSelector
             item={this.state.item}
