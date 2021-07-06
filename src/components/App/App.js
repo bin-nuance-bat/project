@@ -55,8 +55,11 @@ class App extends Component {
       }
     ],
     callbacks: {
-      signInSuccessWithAuthResult: res =>
-        this.setState({loggedIn: res.user !== null})
+      signInSuccessWithAuthResult: res => {
+        this.setState({loggedIn: res.user !== null});
+        this.props.loadUsers();
+        this.props.loadSlackUserReference();
+      }
     }
   };
 
@@ -153,7 +156,9 @@ class App extends Component {
 }
 
 App.propTypes = {
-  setDataController: PropTypes.func.isRequired
+  setDataController: PropTypes.func.isRequired,
+  loadUsers: PropTypes.func.isRequired,
+  loadSlackUserReference: PropTypes.func.isRequired
 };
 
 export default App;
